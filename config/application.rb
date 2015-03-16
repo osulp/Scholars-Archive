@@ -8,11 +8,14 @@ Bundler.require(*Rails.groups)
 
 module ScholarsArchive
   class Application < Rails::Application
+    ::APPLICATION_CONFIG = YAML.load_file(Rails.root.join('config/config.yml'))|| {}
     
     config.generators do |g|
       g.test_framework :rspec, :spec => true
     end
 
+    # Configure CAS
+    config.rubycas.cas_base_url = APPLICATION_CONFIG["rubycas"]["cas_base_url"]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

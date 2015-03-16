@@ -8,6 +8,14 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
+  remote: git://github.com/osulp/rubycas-client-rails.git
+  revision: 6eab4d18cfd47c34027158841268707fd50b050c
+  specs:
+    rubycas-client-rails (0.1.1)
+      rails (>= 3.0.0)
+      rubycas-client (~> 2.3.9.rc1)
+
+GIT
   remote: git://github.com/projecthydra/sufia.git
   revision: 878fc4418b2ca315958e0c503754b2e8c3e39bc3
   branch: master
@@ -50,6 +58,14 @@ GIT
       rails (~> 4.0)
       resque (~> 1.23)
       resque-pool (~> 0.3)
+
+GIT
+  remote: git://github.com/terrellt/rubycas-client.git
+  revision: 266e01e465ff8fc58bc8cc8370189f874d581d3a
+  branch: master
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
 
 GEM
   remote: https://rubygems.org/
@@ -497,11 +513,6 @@ GEM
       json
       multipart-post
       oauth2
-    rubycas-client (2.3.9)
-      activesupport
-    rubycas-client-rails (0.1.0)
-      rails (>= 3.0.0)
-      rubycas-client (>= 2.2.0)
     rubyzip (1.1.7)
     sass (3.4.13)
     sass-rails (5.0.1)
@@ -612,8 +623,8 @@ DEPENDENCIES
   rails (= 4.2.0)
   rsolr (~> 1.0.6)
   rspec-rails
-  rubycas-client
-  rubycas-client-rails
+  rubycas-client!
+  rubycas-client-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

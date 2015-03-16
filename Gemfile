@@ -55,8 +55,8 @@ gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 
-gem 'rubycas-client'
-gem 'rubycas-client-rails'
+gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
+gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
 gem 'devise_cas_authenticatable'
 
 group :development, :test do
