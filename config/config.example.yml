@@ -1,0 +1,4 @@
+rubycas:
+  cas_base_url: https://cas.myorganization.com
+  validate_url: https://cas.myorganization.com/cas/samlValidate
+  cas_destination_logout_param_name: url
