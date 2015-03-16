@@ -48,6 +48,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry', '~> 0.10.0'
+  gem 'pry-byebug'
+  gem 'capybara'
 end
 
 

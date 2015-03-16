@@ -161,6 +161,12 @@ GEM
       columnize (= 0.9.0)
       rb-readline (= 0.5.2)
     cancancan (1.10.1)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -373,6 +379,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.1.0)
+      byebug (~> 4.0)
+      pry (~> 0.10)
     pry-rails (0.2.0)
       pry
     rack (1.6.0)
@@ -582,6 +591,8 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     xml-simple (1.1.5)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
     yaml_db (0.3.0)
       rails (>= 3.0, < 4.3)
       rake (>= 0.8.7)
@@ -591,6 +602,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  capybara
   coffee-rails (~> 4.1.0)
   devise
   devise-guests (~> 0.3)
@@ -599,6 +611,7 @@ DEPENDENCIES
   jquery-rails
   kaminari!
   pry (~> 0.10.0)
+  pry-byebug
   pry-rails
   rails (= 4.2.0)
   rsolr (~> 1.0.6)
