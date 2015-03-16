@@ -57,6 +57,7 @@ gem 'devise-guests', '~> 0.3'
 
 gem 'rubycas-client'
 gem 'rubycas-client-rails'
+gem 'devise_cas_authenticatable'
 
 group :development, :test do
   gem 'jettywrapper'
