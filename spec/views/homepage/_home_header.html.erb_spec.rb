@@ -9,11 +9,6 @@ RSpec.describe "homepage/_home_header.html.erb" do
       stub_template "homepage/_marketing" => "marketing"
       render
     end
-    context "when not logged in" do
-      it "should display" do
-        expect(rendered).to have_content I18n.t("sufia.share_button")
-      end
-    end
     context "when logged in" do
       let(:user) do
         u = User.new
