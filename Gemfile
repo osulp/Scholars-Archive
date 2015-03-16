@@ -46,6 +46,8 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry', '~> 0.10.0'
 end
 
 
@@ -53,6 +55,5 @@ gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 group :development, :test do
-  gem 'rspec-rails'
   gem 'jettywrapper'
 end
