@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :cas_authenticatable
-#, :registerable,
-#         :recoverable, :rememberable, :trackable, :validatable
 
   # Handle CAS extra attributes and save to DB
   def cas_extra_attributes=(extra_attributes)
