@@ -8,6 +8,14 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
+  remote: git://github.com/osulp/rubycas-client-rails.git
+  revision: 6eab4d18cfd47c34027158841268707fd50b050c
+  specs:
+    rubycas-client-rails (0.1.1)
+      rails (>= 3.0.0)
+      rubycas-client (~> 2.3.9.rc1)
+
+GIT
   remote: git://github.com/projecthydra/sufia.git
   revision: 878fc4418b2ca315958e0c503754b2e8c3e39bc3
   branch: master
@@ -50,6 +58,14 @@ GIT
       rails (~> 4.0)
       resque (~> 1.23)
       resque-pool (~> 0.3)
+
+GIT
+  remote: git://github.com/terrellt/rubycas-client.git
+  revision: 266e01e465ff8fc58bc8cc8370189f874d581d3a
+  branch: master
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
 
 GEM
   remote: https://rubygems.org/
@@ -190,6 +206,9 @@ GEM
       warden (~> 1.2.3)
     devise-guests (0.3.3)
       devise
+    devise_cas_authenticatable (1.3.7)
+      devise (>= 1.2.0)
+      rubycas-client (>= 2.2.1)
     diff-lcs (1.2.5)
     dropbox-sdk (1.6.4)
       json
@@ -594,6 +613,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-guests (~> 0.3)
+  devise_cas_authenticatable
   jbuilder (~> 2.0)
   jettywrapper
   jquery-rails
@@ -603,6 +623,8 @@ DEPENDENCIES
   rails (= 4.2.0)
   rsolr (~> 1.0.6)
   rspec-rails
+  rubycas-client!
+  rubycas-client-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
