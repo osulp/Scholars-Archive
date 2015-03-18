@@ -2,5 +2,13 @@ machine:
   ruby:
     version: 2.2.1
 dependencies:
+  cache_directories:
+    - "tmp"
   post:
     - mv config/config.example.yml config/config.yml
+database:
+  post:
+    - bundle exec rake jetty:clean
+test:
+  override:
+    - bundle exec rake ci
