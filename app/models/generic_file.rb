@@ -39,7 +39,7 @@ class GenericFile < ActiveFedora::Base
   property :provenance, predicate: ::RDF::DC.provenance do |index|
     index.as :stored_searchable
   end
-  property :isReferncedBy, predicate: ::RDF::DC.isReferencedBy do |index|
+  property :isReferencedBy, predicate: ::RDF::DC.isReferencedBy do |index|
     index.as :stored_searchable
   end
   property :relation, predicate: ::RDF::DC.relation do |index|
@@ -54,16 +54,13 @@ class GenericFile < ActiveFedora::Base
   property :title, predicate: ::RDF::DC.title do |index|
     index.as :stored_searchable
   end
-  property :type, predicate: ::RDF::DC.type do |index|
+  property :dc_type, predicate: ::RDF::DC.type do |index|
     index.as :stored_searchable, :facetable
   end
   property :date, predicate: ::RDF::DC.date do |index|
     index.as :stored_searchable, :facetable
   end
-  property :isCitedBy, predicate: ::RDF::DC.isCitedBy do |index|
-    index.as :stored_searchable
-  end
-  property :isIdenticalTo, predicate: ::RDF::DC.isIdenticalTo do |index|
+  property :isCitedBy, predicate: ::RDF::URI("http://purl.org/spar/cito/isCitedBy") do |index|
     index.as :stored_searchable
   end
   property :isPartOf, predicate: ::RDF::DC.isPartOf do |index|
@@ -75,7 +72,7 @@ class GenericFile < ActiveFedora::Base
   property :doi, predicate: ::RDF::Vocab::Identifiers.doi do |index|
     index.as :stored_searchable
   end
-  property :uri, predicate: ::RDF::Vocab::Identifiers.uri do |index|
+  property :uri_id, predicate: ::RDF::Vocab::Identifiers.uri do |index|
     index.as :stored_searchable
   end
   property :hdl, predicate: ::RDF::Vocab::Identifiers.hdl do |index|
