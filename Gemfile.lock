@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra/sufia.git
-  revision: 878fc4418b2ca315958e0c503754b2e8c3e39bc3
+  revision: 63d56fa1a48c9edf500d484fe2e2aa6097c79048
   branch: master
   specs:
     sufia (6.0.0.rc4)
@@ -135,20 +135,20 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    autoprefixer-rails (5.1.7)
+    autoprefixer-rails (5.1.7.1)
       execjs
       json
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    blacklight (5.10.2)
+    blacklight (5.11.0)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (~> 0.13)
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.11)
-    blacklight-gallery (0.2.0)
+    blacklight-gallery (0.2.1)
       blacklight (~> 5.0)
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.0.9)
@@ -218,7 +218,7 @@ GEM
     diff-lcs (1.2.5)
     dropbox-sdk (1.6.4)
       json
-    ebnf (0.3.6)
+    ebnf (0.3.7)
       haml (~> 4.0)
       rdf (~> 1.1)
       sxp (~> 0.1, >= 0.1.3)
