@@ -1,5 +1,5 @@
-# app/forms/my_file_edit_form.rb
-class MyFileEditForm < MyGenericFilePresenter
+# app/forms/file_edit_form.rb
+class FileEditForm < FilePresenter
   include HydraEditor::Form
   include HydraEditor::Form::Permissions
 

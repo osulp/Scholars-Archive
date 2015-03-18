@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sufia', :github => "projecthydra/sufia", :branch => "master"
+gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'  # required to handle pagination properly in dashboard. See https://github.com/amatsuda/kaminari/pull/322
+gem 'rdf-vocab'
 
 # Deploy
 gem 'capistrano', '~>2.0'

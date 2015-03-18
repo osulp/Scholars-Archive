@@ -26,3 +26,4 @@ config/god.conf
 config/puma.rb
 # Ignore coverage
 /coverage
+config/config.yml

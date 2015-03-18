@@ -5,4 +5,8 @@ class GenericFile < ActiveFedora::Base
   property :spatial, predicate: ::RDF::DC.spatial do |index|
     index.as :stored_searchable, :facetable
   end
+
+  property :doi, predicate: ::RDF::Vocab::Identifiers.doi do |index|
+    index.as :stored_searchable, :facetable
+  end
 end

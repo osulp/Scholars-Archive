@@ -530,6 +530,9 @@ GEM
       rdf (~> 1.1, >= 1.1.10)
     rdf-vocab (0.8.1)
       rdf (~> 1.1, >= 1.1.10)
+      rdf (~> 1.1, >= 1.1.4)
+    rdf-vocab (0.6.0)
+      linkeddata
     rdf-xsd (1.1.3)
       rdf (~> 1.1, >= 1.1.9)
     rdoc (4.2.0)
@@ -703,6 +706,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   rails (= 4.2.0)
+  rdf-vocab
   rsolr (~> 1.0.6)
   rspec-rails
   rubycas-client!
