@@ -1,3 +1,6 @@
 machine:
   ruby:
     version: 2.2.1
+dependencies:
+  post:
+    - mv config/config.example.yml config/config.yml
