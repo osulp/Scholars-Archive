@@ -72,9 +72,6 @@ class GenericFile < ActiveFedora::Base
   property :doi, predicate: ::RDF::Vocab::Identifiers.doi do |index|
     index.as :stored_searchable
   end
-  property :uri_id, predicate: ::RDF::Vocab::Identifiers.uri do |index|
-    index.as :stored_searchable
-  end
   property :hdl, predicate: ::RDF::Vocab::Identifiers.hdl do |index|
     index.as :stored_searchable
   end
