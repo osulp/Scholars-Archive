@@ -4,7 +4,10 @@ class Ability
 
   
   def generic_file_abilities
-    can :create, [GenericFile, Collection] if user_groups.include? 'admin'
+    if user_groups.include? 'admin'
+      can :view_share_work, GenericFile
+      can :create, [GenericFile, Collection] if user_groups.include? 'admin'
+    end
   end
   # Define any customized permissions here.
   def custom_permissions
