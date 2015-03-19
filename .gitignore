@@ -24,3 +24,5 @@
 # Ignore deployment config files
 config/god.conf
 config/puma.rb
+# Ignore coverage
+/coverage
