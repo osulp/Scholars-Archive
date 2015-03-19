@@ -30,7 +30,7 @@ gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'  # re
 gem 'capistrano', '~>2.0'
 
 # Server
-gem 'puma'
+gem 'passenger'
 
 # MySQL
 gem 'mysql2'
