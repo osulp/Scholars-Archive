@@ -50,6 +50,7 @@ group :development, :test do
   gem 'pry', '~> 0.10.0'
   gem 'pry-byebug'
   gem 'capybara'
+  gem 'coveralls'
 end
 
 
