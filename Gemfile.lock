@@ -417,6 +417,9 @@ GEM
     orm_adapter (0.5.0)
     parslet (1.7.0)
       blankslate (>= 2.0, <= 4.0)
+    passenger (5.0.4)
+      rack
+      rake (>= 0.8.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -426,8 +429,6 @@ GEM
       pry (~> 0.10)
     pry-rails (0.2.0)
       pry
-    puma (2.8.2)
-      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -669,10 +670,10 @@ DEPENDENCIES
   jquery-rails
   kaminari!
   mysql2
+  passenger
   pry (~> 0.10.0)
   pry-byebug
   pry-rails
-  puma
   rails (= 4.2.0)
   rsolr (~> 1.0.6)
   rspec-rails
