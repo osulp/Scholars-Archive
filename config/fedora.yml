@@ -9,7 +9,12 @@ test:
   url: http://localhost:8983/fedora/rest
   base_path: /test
 production:
-  user: fedoraAdmin
-  password: fedoraAdmin
-  url: http://127.0.0.1:8983/fedora/rest
+  user: <%= ENV["SCHOLARSARCHIVE_FEDORA_USERNAME"] || "fedoraAdmin" %>
+  password: <%= ENV["SCHOLARSARCHIVE_FEDORA_PASSWORD"] || "fedoraAdmin" %>
+  url: <%= ENV["SCHOLARSARCHIVE_FEDORA_URL"] || "http://127.0.0.1:8983/fedora/rest" %>
   base_path: /prod
+staging:
+  user: <%= ENV["SCHOLARSARCHIVE_FEDORA_USERNAME"] || "fedoraAdmin" %>
+  password: <%= ENV["SCHOLARSARCHIVE_FEDORA_PASSWORD"] || "fedoraAdmin" %>
+  url: <%= ENV["SCHOLARSARCHIVE_FEDORA_URL"] || "http://127.0.0.1:8983/fedora/rest" %>
+  base_path: /staging

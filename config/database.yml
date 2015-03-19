@@ -20,6 +20,18 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-production:
-  <<: *default
-  database: db/production.sqlite3
+production: &production
+  adapter: <%= ENV['SCHOLARSARCHIVE_ADAPTER'] || "sqlite3" %>
+  database: <%= ENV['SCHOLARSARCHIVE_DB'] || 'db/production.sqlite3' %>
+  encoding: utf8
+  reconnect: false
+  username: <%= ENV['SCHOLARSARCHIVE_DB_USERNAME'] %>
+  password: <%= ENV['SCHOLARSARCHIVE_DB_PASSWORD'] %>
+  host: <%= ENV['SCHOLARSARCHIVE_DB_HOST'] %>
+  port: <%= ENV['SCHOLARSARCHIVE_DB_PORT'] || 3306 %>
+  pool: 5
+  timeout: 5000
+
+staging:
+  <<: *production
+
