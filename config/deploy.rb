@@ -27,7 +27,6 @@ after 'deploy:finalize_update', 'deploy:symlink_config'
 after 'deploy:update_code', 'deploy:migrate'
 after 'deploy:restart', 'deploy:cleanup'
 
-after "deploy:update", "newrelic:notice_deployment"
 
 namespace :deploy do
   desc "Symlinks required configuration files"
