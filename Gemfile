@@ -26,15 +26,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sufia', :github => "projecthydra/sufia", :branch => "master"
 gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'  # required to handle pagination properly in dashboard. See https://github.com/amatsuda/kaminari/pull/322
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# Deploy
 gem 'capistrano', '~>2.0'
+
+# Server
+gem 'puma'
+
+# MySQL
+gem 'mysql2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

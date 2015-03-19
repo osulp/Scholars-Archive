@@ -374,6 +374,7 @@ GEM
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mysql2 (0.3.16)
     nest (1.1.2)
       redis
     net-http-persistent (2.9.4)
@@ -417,6 +418,8 @@ GEM
       pry (~> 0.10)
     pry-rails (0.2.0)
       pry
+    puma (2.8.2)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -645,9 +648,11 @@ DEPENDENCIES
   jettywrapper
   jquery-rails
   kaminari!
+  mysql2
   pry (~> 0.10.0)
   pry-byebug
   pry-rails
+  puma
   rails (= 4.2.0)
   rsolr (~> 1.0.6)
   rspec-rails
