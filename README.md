@@ -10,9 +10,10 @@ Libraries & Press
 Setup
 -----------------
 1. Run `bundle install`
-2. Run `rake db:migrate`
-3. Run `rake jetty:clean`
-4. Run `rake sufia:jetty:config`
-5. Run `rake jetty:start`
+2. Run 'cp config.example.yml config.yml '
+3. Run `rake db:migrate`
+4. Run `rake jetty:clean`
+5. Run `rake sufia:jetty:config`
+6. Run `rake jetty:start`
 
 All rails commands after that should work appropriately.
