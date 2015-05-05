@@ -271,6 +271,7 @@ GEM
     haml (4.0.6)
       tilt
     highline (1.7.2)
+    hike (1.2.3)
     htmlentities (4.3.3)
     httmultiparty (0.3.16)
       httparty (>= 0.7.3)
@@ -631,8 +632,11 @@ GEM
       net-http-persistent (~> 2.9)
       rdf (~> 1.1)
     spring (1.3.5)
-    sprockets (3.0.3)
+    sprockets (2.12.3)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
       rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -706,6 +710,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  sprockets (~> 2.0)
   sqlite3
   sufia!
   turbolinks
