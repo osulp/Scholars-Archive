@@ -1,6 +1,18 @@
 # Returns an array containing the vhost 'CoSign service' value and URL
 Sufia.config do |config|
 
+  config.enable_contact_form_delivery = true
+  config.contact_form_delivery_body = <<-EOM
+    Greetings,
+    Thank you for contacting us with your question or issue about ScholarArchive.
+    Our service team will review the submitted form. Within three business days after submission,
+    a member of the team will get back to you via email with a more specific response.
+    If this is an urgent concern, please consult this page, https://hydra-sa-dev.library.oregonstate.edu/help/.
+    Sincerely,
+    The ScholarArchive Service Team
+  EOM
+  config.contact_form_delivery_from = 'scholarsarchive@oregonstate.edu'
+
   config.fits_to_desc_mapping= {
     file_title: :title,
     file_author: :creator
