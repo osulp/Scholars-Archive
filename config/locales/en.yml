@@ -21,6 +21,7 @@
 
 en:
   hello: "Hello world"
+  browse_works: "Browse Uploaded Work"
   sufia:
     institution_name: "Oregon State University Libraries & Press"
     institution_name_full: "Oregon State University Libraries & Press"
