@@ -100,7 +100,7 @@ Sufia.config do |config|
   config.analytics = true
 
   # Specify a Google Analytics tracking ID to gather usage statistics
-  config.google_analytics_id = 'UA-xxxxxx-xx'
+  config.google_analytics_id = 'UA-1860356-2'
 
   # Specify a date you wish to start collecting Google Analytic statistics for.
   config.analytic_start_date = DateTime.new(2015,5,6)
