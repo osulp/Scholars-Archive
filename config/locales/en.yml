@@ -22,6 +22,11 @@
 en:
   hello: "Hello world"
   browse_works: "Browse Uploaded Work"
+  footer_links: '<a class="white-text" href="http://oregonstate.edu">OSU</a>&nbsp;|&nbsp;
+  <a class="white-text" href="http://osulibrary.oregonstate.edu/"> OSU Libraries & Press</a>&nbsp;|&nbsp; 
+  <a class="white-text" href="http://main.oregonstate.edu/official-web-disclaimer">Disclaimer</a>&nbsp;|&nbsp;
+  <a class="white-text" href="http://osulibrary.oregonstate.edu/accessibility-services">Accessibility</a>' 
+  footer_copyright: '<strong>Copyright &copy; 2015 Oregon State University Libraries & Press</strong> Licensed under the Apache License, Version 2.0'
   sufia:
     institution_name: "Oregon State University Libraries & Press"
     institution_name_full: "Oregon State University Libraries & Press"
