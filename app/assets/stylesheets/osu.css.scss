@@ -4,6 +4,29 @@
   background-image: image-url("building.jpg");
 }
 
+div#masthead.container-fluid > .row{
+  padding-bottom: 1em;
+}
+
+#masthead_controls .navbar {
+  background-color: $osu-orange;
+}
+
+#masthead_controls {
+  background-color: $osu-orange; 
+}
+
+#masthead_controls .navbar a:link, 
+#masthead_controls .navbar a:visited,
+#masthead_controls .navbar-default .navbar-nav > .active > a {
+  background-color: $osu-orange;
+}
+
+#masthead_controls .navbar a:hover,
+#masthead_controls .navbar-default .navbar-nav > .active > a:hover {
+  background-color: $osu-black;
+}
+
 /*Mobile phone*/
 @media (max-width: 479px) {
   #masthead.container-fluid {
@@ -72,7 +95,6 @@
   }
 
   #masthead #user_utility_links.btn-group {
-    margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-right: -0.5em;
   }
@@ -83,6 +105,7 @@
 @media (min-width: 480px) and (max-width: 767px) {
   #masthead .institution_name {
     font-size: 1.7em;
+    line-height: 2em;
   }
 
   div#masthead_controls.container-fluid { 
@@ -134,10 +157,36 @@
 /*Desktop*/
 @media (min-width: 768px) and (max-width: 979px)
 {
+  #masthead .institution_name {
+    font-size: 2em;
+    line-height: 2em;
+  }
+
+  #masthead #user_utility_links span.hidden-xs {
+    display: none;
+  }
 
 }
 
-@media (min-width: 980px) {
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  #masthead .institution_name {
+    font-size: 2em;
+    line-height: 2em;
+  }
+
+
+}
+
+@media (min-width: 1200px) {
+  #masthead .institution_name {
+    font-size: 3em;
+    line-height: 2em;
+  }
+
 
 }
 
@@ -145,6 +194,7 @@
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 979px) {
 
 }
+
