@@ -8,95 +8,34 @@ div#masthead.container-fluid > .row{
   padding-bottom: 1em;
 }
 
-#masthead_controls .navbar {
-  background-color: $osu-orange;
+#masthead {
+  .institution_name {
+    line-height: 2em;
+  }
 }
+
 
 #masthead_controls {
-  background-color: $osu-orange; 
-}
+  .row {
+    background: $blue-medium-bright;
+  }
 
-#masthead_controls .navbar a:link, 
-#masthead_controls .navbar a:visited,
-#masthead_controls .navbar-default .navbar-nav > .active > a {
-  background-color: $osu-orange;
-}
+  .navbar a:hover,
+  .navbar-default .navbar-nav > .active > a:hover {
+    background-color: $osu-black;
+  }
 
-#masthead_controls .navbar a:hover,
-#masthead_controls .navbar-default .navbar-nav > .active > a:hover {
-  background-color: $osu-black;
 }
 
 /*Mobile phone*/
 @media (max-width: 479px) {
   #masthead.container-fluid {
     background: none repeat scroll 0% 0% $osu-black;
-    border-bottom: none;
-    text-align: left;
-    font-size: 13px;
-  }
-
-  #masthead {
-    min-height: 2.5em;
   }
 
   #masthead .institution_name {
     font-size: 1.5em;
-    line-height: 2em;
     margin-left: 0em;
-  }
-  
-  #masthead_controls {
-    background-color: transparent;
-    border-bottom: none;
-  }
-
-  div#masthead_controls.container-fluid { 
-    background: $osu-orange;
-  }
-
-  #masthead_controls.container-fluid .navbar.navbar-default {
-    background-color: transparent;
-  }
-
-  #masthead-controls .row .col-xs-12.col-sm-5.col-md-6 {
-    background: $osu-orange;
-  }
-
-  #masthead_controls .navbar a:link, 
-  #masthead_controls .navbar a:visited {
-    background: $osu-orange;
-    border-top: 1px solid $osu-orange;
-    color: #FFF;
-  }
-
-  #masthead_controls .navbar-default .navbar-nav > .active > a {
-    font-weight: bold;
-    background: none repeat scroll 0% 0% $osu-orange;
-  }
-
-  #masthead_controls .navbar-default .navbar-nav > li > a:hover,
-  #masthead_controls .navbar-default .navbar-nav > li > a:focus {
-    background: none repeat scroll 0% 0% $osu-black;
-  }
-
-  #masthead_controls .navbar-default .navbar-nav > .active > a:hover {
-    background: none repeat scroll 0% 0% $osu-orange;
-  }
-
-  #masthead_controls .navbar li,
-  #masthead_controls .navbar li:first-child {
-    border-right: 2px solid $osu-orange;
-    border-left: 2px solid $osu-orange;
-  }
-
-  #masthead_controls nav.navbar.navbar-default {
-    margin-top: -0.55em;
-  }
-
-  #masthead #user_utility_links.btn-group {
-    margin-bottom: 0.5em;
-    margin-right: -0.5em;
   }
 
 }
@@ -105,52 +44,7 @@ div#masthead.container-fluid > .row{
 @media (min-width: 480px) and (max-width: 767px) {
   #masthead .institution_name {
     font-size: 1.7em;
-    line-height: 2em;
   }
-
-  div#masthead_controls.container-fluid { 
-    background: $osu-orange;
-  }
-
-  #masthead_controls.container-fluid .navbar.navbar-default {
-    background-color: transparent;
-  }
-
-  #masthead-controls .row .col-xs-12.col-sm-5.col-md-6 {
-    background: $osu-orange;
-  }
-
-  #masthead_controls .navbar a:link, 
-  #masthead_controls .navbar a:visited {
-    background: $osu-orange;
-    border-top: 1px solid $osu-orange;
-    color: #FFF;
-  }
-
-  #masthead_controls .navbar-default .navbar-nav > .active > a {
-    font-weight: bold;
-    background: none repeat scroll 0% 0% $osu-orange;
-  }
-
-  #masthead_controls .navbar-default .navbar-nav > li > a:hover,
-  #masthead_controls .navbar-default .navbar-nav > li > a:focus {
-    background: none repeat scroll 0% 0% $osu-black;
-  }
-
-  #masthead_controls .navbar-default .navbar-nav > .active > a:hover {
-    background: none repeat scroll 0% 0% $osu-orange;
-  }
-
-  #masthead_controls .navbar li,
-  #masthead_controls .navbar li:first-child {
-    border-right: 2px solid $osu-orange;
-    border-left: 2px solid $osu-orange;
-  }
-
-}
-
-@media (min-width: 481px) {
-
 }
 
 
@@ -159,7 +53,6 @@ div#masthead.container-fluid > .row{
 {
   #masthead .institution_name {
     font-size: 2em;
-    line-height: 2em;
   }
 
   #masthead #user_utility_links span.hidden-xs {
@@ -168,33 +61,19 @@ div#masthead.container-fluid > .row{
 
 }
 
-@media (min-width: 768px) {
-
-}
 
 @media (min-width: 980px) and (max-width: 1199px) {
   #masthead .institution_name {
-    font-size: 2em;
-    line-height: 2em;
+    font-size: 3em;
   }
-
 
 }
 
 @media (min-width: 1200px) {
   #masthead .institution_name {
-    font-size: 3em;
-    line-height: 2em;
+    font-size: 3.5em;
   }
 
-
 }
 
-@media (max-width: 979px) {
-
-}
-
-@media (max-width: 979px) {
-
-}
 
