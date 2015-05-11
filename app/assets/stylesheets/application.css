@@ -12,6 +12,7 @@
  *
  *= require sufia
  *= require osu
+ *= require word-wrap
  *= require_tree .
  *= require_self
  */
