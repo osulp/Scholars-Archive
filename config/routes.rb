@@ -62,4 +62,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  resource :help, :controller => :help do
+    get "faculty"
+    get "graduate"
+    get "undergraduate"
+  end
+
 end
