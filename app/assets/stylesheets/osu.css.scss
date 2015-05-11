@@ -1,3 +1,79 @@
+@import 'osu_settings';
+
 #home_header {
   background-image: image-url("building.jpg");
 }
+
+div#masthead.container-fluid > .row{
+  padding-bottom: 1em;
+}
+
+#masthead {
+  .institution_name {
+    line-height: 2em;
+  }
+}
+
+
+#masthead_controls {
+  .row {
+    background: $blue-medium-bright;
+  }
+
+  .navbar a:hover,
+  .navbar-default .navbar-nav > .active > a:hover {
+    background-color: $osu-black;
+  }
+
+}
+
+/*Mobile phone*/
+@media (max-width: 479px) {
+  #masthead.container-fluid {
+    background: none repeat scroll 0% 0% $osu-black;
+  }
+
+  #masthead .institution_name {
+    font-size: 1.5em;
+    margin-left: 0em;
+  }
+
+}
+
+/*Tablets*/
+@media (min-width: 480px) and (max-width: 767px) {
+  #masthead .institution_name {
+    font-size: 1.7em;
+  }
+}
+
+
+/*Desktop*/
+@media (min-width: 768px) and (max-width: 979px)
+{
+  #masthead .institution_name {
+    font-size: 2em;
+  }
+
+  #masthead #user_utility_links span.hidden-xs {
+    display: none;
+  }
+
+}
+
+
+@media (min-width: 980px) and (max-width: 1199px) {
+  #masthead .institution_name {
+    font-size: 3em;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  #masthead .institution_name {
+    font-size: 3.5em;
+  }
+
+}
+
+
