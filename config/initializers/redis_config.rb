@@ -11,6 +11,7 @@ if defined?(PhusionPassenger)
       $redis = Redis.new(host: config[:host], port: config[:port], thread_safe: true) rescue nil
       Resque.redis = $redis
       Resque.redis.client.reconnect if Resque.redis
+      Resque.redis.namespace = "#{Sufia.config.redis_namespace}:#{Rails.env}"
     end
   end
 else
