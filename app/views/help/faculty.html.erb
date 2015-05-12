@@ -1,9 +1,8 @@
 <div class="row">
   <div class="col-md-9">
     <h1>ScholarsArchive@OSU Faculty Frequently Asked Questions</h1>
-    <%= editable_content_block @page %>
-    <%= tiny_mce_stuff if can? :update, ContentBlock%>
-  </div>
+    <%= render partial: 'help_content_block' %>
+ </div>
 
   <div class="col-md-3">
     <%= render partial: '/help_context' %>
