@@ -1,25 +1,8 @@
-
 <div class="row">
   <div class="col-md-9">
-    <p><p><h1>SCHOLARSARCHIVE@OSU FACULTY FREQUENTLY ASKED QUESTIONS</h1></p></p>
-    <p><p><a href="#deposit">1. How do I deposit my research into ScholarsArchive@OSU?</a></p></p>
-    <p><a href="#allowed">2. How do I know if I’m legally allowed to deposit my research into ScholarsArchive@OSU?</a></p>
-
-
-    <p><p><h2><a id="deposit" title="deposit" name="deposit"></a>1. How do I deposit my research into ScholarsArchive@OSU?</h2></p></p>
-
-    <p>Use the Open Access Policy <a href="http://deposit.library.oregonstate.edu/">web form</a> to deposit an article or to get a waiver to the Open Access Policy. Or, ScholarsArchive@OSU staff can deposit articles, presentations, technical reports and other materials for you. Contact us at <mailto="scholarsarchive@oregonstate.edu">scholarsarchive@oregonstate.edu</a> for more information.</p>
-
-    <p><h2><a id="allowed" title="allowed" name="allowed"></a>2. How do I know if I’m legally allowed to deposit my research into ScholarsArchive@OSU?</p></h2>
-    <p>Oregon State University has made publishers aware of the terms of the <a href="http://cdss.library.oregonstate.edu/sites/default/files/osu_openacesspolicy_final_single_page.pdf">Open Access Policy</a> license under which the University retains "permission to make available [Oregon State University faculty] scholarly articles and to reproduce and distribute those articles for the purpose of open dissemination". This license will have force unless it is waived for a particular article (see above for obtaining a waiver).</p>
-
-    <p>Some publisher's agreements contain provisions that are inconsistent with the prior license granted to Oregon State University under the terms of the Policy. If you wish to prepare an "author addendum" to attach to your publisher agreement, follow the steps described here.</p>
-
-
-
-
-
-
+    <h1>ScholarsArchive@OSU Faculty Frequently Asked Questions</h1>
+    <%= editable_content_block @page %>
+    <%= tiny_mce_stuff if can? :update, ContentBlock%>
   </div>
 
   <div class="col-md-3">

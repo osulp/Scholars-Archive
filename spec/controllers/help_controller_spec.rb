@@ -4,7 +4,6 @@ RSpec.describe HelpController do
   describe "#faculty" do
     it "should render faculty template" do
       get :faculty
-
       expect(response).to render_template "faculty"
     end
   end
@@ -12,7 +11,6 @@ RSpec.describe HelpController do
   describe "#graduate" do
     it "should render graduate template" do
       get :graduate
-      
       expect(response).to render_template "graduate"
     end
   end
@@ -20,8 +18,16 @@ RSpec.describe HelpController do
   describe "#undergraduate" do
     it "should render undergraduate template" do
       get :undergraduate
-
       expect(response).to render_template "undergraduate"
     end
   end
+
+  describe "#general" do
+    it "should render general template" do
+      get :general, id: "general_help_page"
+      expect(response).to render_template "general"
+
+    end
+  end
+
 end

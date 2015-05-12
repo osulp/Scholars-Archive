@@ -10,4 +10,7 @@ RSpec.describe "help routing" do
   it "should route /help/undergraduate to help#undergraduate" do
     expect(get "/help/undergraduate").to route_to "help#undergraduate"
   end
+  it "should rout /help to help#general" do
+    expect(get "/help").to route_to "help#general"
+  end
 end

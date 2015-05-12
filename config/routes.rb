@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   blacklight_for :catalog
   devise_for :users
   Hydra::BatchEdit.add_routes(self)
@@ -8,7 +7,10 @@ Rails.application.routes.draw do
     get "faculty"
     get "graduate"
     get "undergraduate"
+    get "general"
   end
+
+  get '/help', to: 'help#general'
 
   devise_scope :user do
     get "/users/sign_out", :to => "sessions#destroy"
