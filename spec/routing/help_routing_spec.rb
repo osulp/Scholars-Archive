@@ -1,13 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "help routing" do
-  it "should route /help/faculty to help#faculty" do
-    expect(get "/help/faculty").to route_to "help#faculty"
+  it "should route /help/something to help#page" do
+    expect(get "/help/something").to route_to "help#page", :page => "something"
   end
-  it "should route /help/graduate to help#graduate" do
-    expect(get "/help/graduate").to route_to "help#graduate"
-  end
-  it "should route /help/undergraduate to help#undergraduate" do
-    expect(get "/help/undergraduate").to route_to "help#undergraduate"
+  it "should route /help to help#page" do
+    expect(get "/help").to route_to "help#page", :page => "general"
   end
 end
