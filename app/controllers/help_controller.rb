@@ -14,7 +14,6 @@ class HelpController < ApplicationController
   def validate_page_type
     unless valid_pages.include?(page_name.to_sym)
       raise ActionController::RoutingError.new('Not Found')
-      render :status => :not_found
     end
   end
 
