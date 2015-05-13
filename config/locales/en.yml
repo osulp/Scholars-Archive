@@ -27,6 +27,12 @@ en:
   <a class="white-text" href="http://main.oregonstate.edu/official-web-disclaimer">Disclaimer</a>&nbsp;|&nbsp;
   <a class="white-text" href="http://osulibrary.oregonstate.edu/accessibility-services">Accessibility</a>' 
   footer_copyright: '<strong>Copyright &copy; 2015 Oregon State University Libraries & Press</strong> Licensed under the Apache License, Version 2.0'
+  help:
+    types:
+      help_graduate: ScholarsArchive@OSU Graduate Student Frequently Asked Questions
+      help_undergraduate: ScholarsArchive@OSU Undergraduate Student Frequently Asked Questions
+      help_general: ScholarsArchive@OSU FAQ
+      help_faculty: ScholarsArchive@OSU Faculty Frequently Asked Questions
   sufia:
     institution_name: "Oregon State University Libraries & Press"
     institution_name_full: "Oregon State University Libraries & Press"

@@ -1,33 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe HelpController do
-  describe "#faculty" do
-    it "should render faculty template" do
-      get :faculty
-      expect(response).to render_template "faculty"
+  describe "#page" do
+    context "when given a bad page" do
+      it "should return a 404" do
+        expect{ get :page, :page => "bla" }.to raise_error ActionController::RoutingError
+      end
+    end
+    context "when given a good page" do
+      before do
+        get :page, :page => "undergraduate"
+      end
+      it "should set @page" do
+        expect(assigns(:page)).to be_kind_of ContentBlock
+      end
+      it "should render the appropriate template" do
+        expect(response).to render_template "page"
+      end
     end
   end
-
-  describe "#graduate" do
-    it "should render graduate template" do
-      get :graduate
-      expect(response).to render_template "graduate"
-    end
-  end
-
-  describe "#undergraduate" do
-    it "should render undergraduate template" do
-      get :undergraduate
-      expect(response).to render_template "undergraduate"
-    end
-  end
-
-  describe "#general" do
-    it "should render general template" do
-      get :general, id: "general_help_page"
-      expect(response).to render_template "general"
-
-    end
-  end
-
 end
