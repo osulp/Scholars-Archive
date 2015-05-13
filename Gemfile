@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sufia', :github => "projecthydra/sufia", :branch => "master"
 
-gem 'redis', '~>3.1.0'
+gem 'redis', '~>2.2.0'
 # Deploy
 gem 'capistrano', '~>2.0'
 
