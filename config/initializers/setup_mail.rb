@@ -1,3 +1,4 @@
-ActionMailer::Base.smtp_settings = {
-   address: "mail.oregonstate.edu"
-}
+Sufia::Engine.configure do
+  config.contact_email = "scholarsarchive@oregonstate.edu"
+  config.from_email = "scholarsarchive@oregonstate.edu"
+end
