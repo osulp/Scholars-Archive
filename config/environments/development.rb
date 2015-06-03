@@ -1,3 +1,7 @@
+Sufia::Engine.configure do
+  config.contact_email = 'scholarsarchive@oregonstate.edu'
+  config.from_email = "scholarsarchive@oregonstate.edu"
+end
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
