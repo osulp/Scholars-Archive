@@ -4,6 +4,6 @@ class FilePresenter < Sufia::GenericFilePresenter
                 :tag, :rights, :publisher, :date, :subject, :language,
                 :spatial, :temporal, :abstract, :tableOfContents, :format, 
 		:bibliographicCitation, :provenance, :isReferencedBy, :relation,
-		:rights, :title, :isCitedBy, :isIdenticalTo, :isPartOf,
+		:rights, :isCitedBy, :isIdenticalTo, :isPartOf,
 		:isVersionOf, :doi, :hdl, :orcid, :rid]
 end
