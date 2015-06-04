@@ -27,7 +27,7 @@ en:
         isVersionOf: "A related resource of which the described resource is a version, edition, or adaptation"
         doi: "Persistent interoperable identifier for object"
         hdl: "Another persistent identifier for object"
-        orcid: "Persistend identifier for researcher"
+        orcid: "Persistent identifier for researcher"
         rid: "Another persistent identifier for researcher"
         creator: "The person or group responsible for the file being uploaded. Usually this is the author of the content"
         publisher: "The person or group making the file available. Generally this is the institution"
