@@ -22,6 +22,7 @@
 /dump.rdb
 
 # Ignore deployment config files
+config/analytics.yml
 config/god.conf
 config/puma.rb
 # Ignore coverage
