@@ -27,6 +27,10 @@ div#masthead.container-fluid > .row{
 
 }
 
+#footer a:hover {
+  color: white;
+}
+
 /*Mobile phone*/
 @media (max-width: 479px) {
   #masthead.container-fluid {
