@@ -5,53 +5,30 @@ en:
     labels:
       generic_file:
 	tableOfContents: "Table of Contents"
-      metadata_help:
-	tableOfContents: "A list of subunits of the resource"
-      generic_file:
 	bibliographicCitation: "Bibliographic Citation"
-      metadata_help:
-	bibliographicCitation: "A bibliographic reference for the resource"
-      generic_file:
 	isReferencedBy: "Referenced By"
-      metadata_help:
-	isReferencedBy: "A related resource that references, cites, or otherwise points to the described resource"
-      generic_file:
 	dc_type: "Resource Type"
-      metadata_help:
-	dc_type: "The nature or genre of the resource"
-      generic_file:
 	isCitedBy: "Cited By"
-      metadata_help:
-	isCitedBy: "Cited by resource"
-      generic_file:
 	isIdenticalTo: "Identical To"
-      metadata_help:
-	isIdenticalTo: "Identical to resource"
-      generic_file:
 	isPartOf: "Part Of"
-      metadata_help:
-	isPartOf: "A related resource in which the described resource is physically or logically included"
-      generic_file:
 	isVersionOf: "Version Of"
-      metadata_help:
-	isVersionOf: "A related resource of which the described resource is a version, edition, or adaptation"
-      generic_file:
 	doi: "Digital Object Identidfier"
-      metadata_help:
-	isCitedBy: "persistent interoperable identifiers"
-      generic_file:
 	hdl: "Handle identifier"
-      metadata_help:
-	hdl: "Another persistent identifier"
-      generic_file:
 	orcid: "Open Researcher and Contributor ID"
-      metadata_help:
-	orcid: "persistend identifier for researcher"
-      generic_file:
 	rid: "Research ID"
       metadata_help:
+	tableOfContents: "A list of subunits of the resource"
+	bibliographicCitation: "A bibliographic reference for the resource"
+	isReferencedBy: "A related resource that references, cites, or otherwise points to the described resource"
+	dc_type: "The nature or genre of the resource"
+	isCitedBy: "Cited by resource"
+	isIdenticalTo: "Identical to resource"
+	isPartOf: "A related resource in which the described resource is physically or logically included"
+	isVersionOf: "A related resource of which the described resource is a version, edition, or adaptation"
+	doi: "persistent interoperable identifiers"
+	hdl: "Another persistent identifier"
+	orcid: "persistend identifier for researcher"
 	rid: "another persistent identifier for researcher"
-
-
-
-
+	creator: "The person or group responsible for the file being uploaded. Usually this is the author of the content"
+	publisher: "The person or group making the file available. Generally this is the institution"
+	rights: "Licensing and distribution information governing access to the file"
