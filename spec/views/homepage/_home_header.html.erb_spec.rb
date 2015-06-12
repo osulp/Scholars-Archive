@@ -9,7 +9,7 @@ RSpec.describe "homepage/_home_header.html.erb" do
   end
   context "when visiting the root path as a guest/registered user" do
     it "should display the Browse Uploaded Work button" do
-      expect(rendered).to have_content("Browse Uploaded Work")
+      expect(rendered).to have_content("Browse Uploaded Content")
     end
   end
   context "when visiting the root path as an admin" do
