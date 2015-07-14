@@ -54,7 +54,7 @@ class GenericFile < ActiveFedora::Base
   property :title, predicate: ::RDF::DC.title do |index|
     index.as :stored_searchable
   end
-  property :dc_type, predicate: ::RDF::DC.type do |index|
+  property :resource_type, predicate: ::RDF::DC.type do |index|
     index.as :stored_searchable, :facetable
   end
   property :date, predicate: ::RDF::DC.date do |index|
