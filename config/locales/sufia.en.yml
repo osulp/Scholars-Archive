@@ -16,7 +16,8 @@ en:
         hdl: "Handle Identifier"
         orcid: "Open Researcher and Contributor ID"
         rid: "Researcher ID"
-      metadata_help:
+    metadata_help:
+      generic_file:
         tableOfContents: "A list of subunits of the resource"
         bibliographicCitation: "A bibliographic reference for the resource"
         isReferencedBy: "A related resource that references, cites, or otherwise points to the described resource"
