@@ -64,5 +64,6 @@ gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails
 gem 'devise_cas_authenticatable'
 
 group :development, :test do
-  gem 'jettywrapper'
+  # gem 'jettywrapper'
+  gem 'jettywrapper', :github => "projecthydra/jettywrapper"
 end
