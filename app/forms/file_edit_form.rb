@@ -6,10 +6,6 @@ class FileEditForm < FilePresenter
   self.model_class = GenericFile
   self.required_fields = [:title, :creator, :tag, :rights]
 
-  def property_hint(property)
-    Array.wrap(validators[property]).map(&:description).compact.to_sentence
-  end
-
   def has_content?
     model.content.has_content?
   end

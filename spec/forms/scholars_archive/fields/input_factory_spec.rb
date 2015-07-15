@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ScholarsArchive::Fields::InputFactory do
   subject { described_class.new(base_factory, decorator) }
   let(:base_factory) { object_double(HydraEditor::Fields::Factory) }
-  let(:decorator) { object_double(HasHintOption) }
+  let(:decorator) { object_double(HasURIInputType) }
   let(:object) { instance_double(FileEditForm) }
   let(:decorated_input) { double("decorated input") }
   let(:input) { double("input") }
