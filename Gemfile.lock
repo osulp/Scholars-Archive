@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/jechols/hydra-editor.git
+  revision: 2057d33f4fd7f05147bd5176eb0e2aa8833229e9
+  branch: feature/configurable-field-generator
+  specs:
+    hydra-editor (1.0.4)
+      active-fedora (>= 9.0.0)
+      cancancan (~> 1.8)
+      rails (~> 4.1)
+      simple_form (~> 3.1.0)
+
+GIT
   remote: git://github.com/osulp/rubycas-client-rails.git
   revision: 6eab4d18cfd47c34027158841268707fd50b050c
   specs:
@@ -136,6 +147,7 @@ GEM
     acts_as_follower (0.2.1)
     addressable (2.3.8)
     arel (6.0.0)
+    attr_extras (4.4.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
@@ -319,11 +331,6 @@ GEM
       hydra-file_characterization (~> 0.3)
       mime-types (~> 1)
       mini_magick (>= 3.2, < 5)
-    hydra-editor (1.0.4)
-      active-fedora (>= 9.0.0)
-      cancancan (~> 1.8)
-      rails (~> 4.1)
-      simple_form (~> 3.1.0)
     hydra-file_characterization (0.3.1)
       activesupport (>= 3.0.0)
     hydra-head (9.1.4)
@@ -691,6 +698,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  attr_extras
   byebug
   capistrano (~> 2.0)
   capybara
@@ -699,6 +707,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   devise_cas_authenticatable
+  hydra-editor!
   jbuilder (~> 2.0)
   jettywrapper!
   jquery-rails
