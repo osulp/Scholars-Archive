@@ -62,6 +62,8 @@ gem 'devise-guests', '~> 0.3'
 gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
 gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
 gem 'devise_cas_authenticatable'
+gem 'hydra-editor', :github => "jechols/hydra-editor", :branch => "feature/configurable-field-generator"
+gem 'attr_extras'
 
 group :development, :test do
   # gem 'jettywrapper'

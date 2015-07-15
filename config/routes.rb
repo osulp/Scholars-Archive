@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     get "/users/sign_out", :to => "sessions#destroy"
   end
 
+ 
   # This must be the very last route in the file because it has a catch-all route for 404 errors.
   # This behavior seems to show up only in production mode.
   root to: 'homepage#index'
-
+  mount HydraEditor::Engine => '/'
   mount Sufia::Engine => '/'
 end
