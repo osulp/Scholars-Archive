@@ -695,33 +695,45 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active-fedora
+  active-fedora (~> 9.2.0)
+  active-triples (~> 0.7.1)
   attr_extras
   byebug
   capistrano (~> 2.0)
   capybara
   coffee-rails (~> 4.1.0)
   coveralls
+  daemons (~> 1.2.3)
   devise
   devise-guests (~> 0.3)
   devise_cas_authenticatable
+  htmlentities (~> 4.3.4)
   hydra-editor!
   jbuilder (~> 2.0)
   jettywrapper!
   jquery-rails
-  linkeddata
+  json (~> 1.8.3)
+  ldp (~> 0.3.1)
+  linkeddata (~> 1.1.11.1)
+  minitest (~> 5.7.0)
   mysql2
   passenger
   pry (~> 0.10.0)
   pry-byebug
   pry-rails
   rails (= 4.2.0)
+  rdf (~> 1.1.14)
+  rdf-reasoner (~> 0.2.2)
+  rdf-turtle (~> 1.1.7)
+  rdf-vocab (~> 0.8.4)
+  rdf-xsd (~> 1.1.4)
   rsolr (~> 1.0.6)
   rspec-rails
   rubycas-client!
   rubycas-client-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sparql (~> 1.1.7)
   spring
   sprockets (~> 2.0)
   sqlite3
