@@ -714,6 +714,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jettywrapper!
   jquery-rails
+  linkeddata
   marmotta
   mysql2
   passenger
