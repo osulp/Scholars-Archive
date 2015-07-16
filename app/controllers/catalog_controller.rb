@@ -55,14 +55,14 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
-    config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
-    config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
-    config.add_facet_field solr_name("tag", :facetable), label: "Keyword", limit: 5
-    config.add_facet_field solr_name("subject", :facetable), label: "Subject", limit: 5
-    config.add_facet_field solr_name("language", :facetable), label: "Language", limit: 5
-    config.add_facet_field solr_name("based_near", :facetable), label: "Location", limit: 5
-    config.add_facet_field solr_name("publisher", :facetable), label: "Publisher", limit: 5
-    config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
+    config.add_facet_field solr_name("resource_type", :symbol), label: "Resource Type", limit: 5
+    config.add_facet_field solr_name("creator", :symbol), label: "Creator", limit: 5
+    config.add_facet_field solr_name("tag", :symbol), label: "Keyword", limit: 5
+    config.add_facet_field solr_name("subject", :symbol), label: "Subject", limit: 5
+    config.add_facet_field solr_name("language", :symbol), label: "Language", limit: 5
+    config.add_facet_field solr_name("based_near", :symbol), label: "Location", limit: 5
+    config.add_facet_field solr_name("publisher", :symbol), label: "Publisher", limit: 5
+    config.add_facet_field solr_name("file_format", :symbol), label: "File Format", limit: 5
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
