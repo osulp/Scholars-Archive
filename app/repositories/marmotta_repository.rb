@@ -22,6 +22,6 @@ class MarmottaRepository
   private
 
   def marmotta_resource
-    @marmotta_resource ||= MarmottaResource.new(uri, connection: OregonDigital.marmotta)
+    @marmotta_resource ||= Marmotta::Resource.new(uri, connection: ScholarsArchive.marmotta)
   end
 end
