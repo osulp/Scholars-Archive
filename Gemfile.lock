@@ -305,6 +305,7 @@ GEM
     httparty (0.13.3)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    hurley (0.1)
     hydra-access-controls (9.1.4)
       active-fedora (~> 9.0)
       activesupport (~> 4.0)
@@ -398,6 +399,11 @@ GEM
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
       rails (>= 3.2.0)
+    marmotta (0.1.0)
+      hurley
+      json-ld
+      rdf
+      sparql-client
     memoist (0.12.0)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -708,6 +714,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jettywrapper!
   jquery-rails
+  marmotta
   mysql2
   passenger
   pry (~> 0.10.0)
