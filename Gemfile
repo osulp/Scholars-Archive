@@ -35,8 +35,6 @@ gem 'passenger'
 # MySQL
 gem 'mysql2'
 
-gem 'linkeddata', '~> 1.1.11.1', :github => 'ruby-rdf/linkeddata'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
