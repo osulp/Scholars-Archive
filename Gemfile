@@ -34,20 +34,8 @@ gem 'passenger'
 
 # MySQL
 gem 'mysql2'
-gem 'json', '~> 1.8.3'
-gem 'minitest', '~> 5.7.0'
-gem 'rdf', '~> 1.1.14'
-gem 'htmlentities', '~> 4.3.4'
-gem 'rdf-xsd', '~> 1.1.4'
-gem 'rdf-turtle', '~> 1.1.7'
-gem 'rdf-vocab', '~> 0.8.4'
-gem 'rdf-reasoner', '~> 0.2.2'
-gem 'sparql', '~> 1.1.7'
-gem 'linkeddata'
-gem 'active-triples', '~> 0.7.1'
-gem 'ldp', '~> 0.3.1'
-gem 'daemons', '~> 1.2.3'
-gem 'active-fedora', '~> 9.2.0'
+
+gem 'linkeddata', '~> 1.1.11.1', :github => 'ruby-rdf/linkeddata'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
