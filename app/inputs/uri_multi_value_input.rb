@@ -1,4 +1,8 @@
-class UriMultiValueInput < MultiValueInput
+class UriMultiValueInput < MultiValuedWithHelpInput
+  def input_type
+    'uri_multi_value'.freeze
+  end
+  
   protected
 
   def build_field(value, index)
