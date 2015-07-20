@@ -28,4 +28,8 @@ RSpec.describe GenericFile do
   it "should be able to persist" do
     expect{GenericFile.new.save}.not_to raise_error
   end
+
+  def build_resource(properties = {})
+    return TriplePoweredResource.new(properties)
+  end
 end
