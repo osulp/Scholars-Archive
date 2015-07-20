@@ -28,3 +28,7 @@ config/puma.rb
 # Ignore coverage
 /coverage
 config/config.yml
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
