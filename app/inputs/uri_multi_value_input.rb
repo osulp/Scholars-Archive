@@ -1,4 +1,4 @@
-class UriMultiValueInput < MultiValuedWithHelpInput
+class UriMultiValueInput < MultiValueWithHelpInput
   def input_type
     'uri_multi_value'.freeze
   end
