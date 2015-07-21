@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sufia', :github => "projecthydra/sufia", :branch => "master"
+gem 'kaminari', github: 'jcoyne/kaminari', branch: 'sufia'
 
 # Deploy
 gem 'capistrano', '~>2.0'
