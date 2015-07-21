@@ -36,6 +36,8 @@ gem 'passenger'
 # MySQL
 gem 'mysql2'
 
+gem 'linkeddata', '1.1.11'
+
 gem 'marmotta'
 
 gem 'rails_config'
