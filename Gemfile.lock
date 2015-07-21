@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/jcoyne/kaminari.git
+  revision: 7f7108e12bdd64eb5a76177633768feb14df5453
+  branch: sufia
+  specs:
+    kaminari (1.0.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/jechols/hydra-editor.git
   revision: 2057d33f4fd7f05147bd5176eb0e2aa8833229e9
   branch: feature/configurable-field-generator
@@ -30,10 +39,10 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra/sufia.git
-  revision: 2ff1c213d5c4822825bc1630993b369e1d16ea92
+  revision: ffb34222afff9a65bd15c58ffddfad8e148ff8ac
   branch: master
   specs:
-    sufia (6.0.0)
+    sufia (6.2.0)
       blacklight (~> 5.12)
       blacklight-gallery (~> 0.1)
       blacklight_advanced_search (>= 5.1.4, < 6.0)
@@ -44,15 +53,18 @@ GIT
       font-awesome-rails (~> 4.2)
       hydra-batch-edit (~> 1.1)
       hydra-editor (~> 1.0)
+      json-schema
       mail_form (~> 1.5)
+      oauth
       rails_autolink (~> 1.1)
+      railties (>= 4.2.0)
       sass-rails
       select2-rails (~> 3.5.9)
-      sufia-models (= 6.0.0)
-      tinymce-rails (~> 4.0.19)
+      sufia-models (= 6.2.0)
+      tinymce-rails (~> 4.1)
       tinymce-rails-imageupload (~> 4.0.16.beta)
       yaml_db (~> 0.2)
-    sufia-models (6.0.0)
+    sufia-models (6.2.0)
       active-fedora (~> 9.1, >= 9.1.1)
       active_fedora-noid (~> 0.1)
       activerecord-import (~> 0.5)
@@ -118,7 +130,7 @@ GEM
       deprecation (~> 0.1)
       linkeddata (~> 1.1)
       rdf (~> 1.1)
-    active_fedora-noid (0.2.0)
+    active_fedora-noid (0.3.0)
       active-fedora (~> 9.0)
       noid (~> 0.7)
     activejob (4.2.0)
@@ -131,7 +143,7 @@ GEM
       activemodel (= 4.2.0)
       activesupport (= 4.2.0)
       arel (~> 6.0)
-    activerecord-import (0.7.0)
+    activerecord-import (0.10.0)
       activerecord (>= 3.0)
     activeresource (4.0.0)
       activemodel (~> 4.0)
@@ -145,13 +157,13 @@ GEM
       tzinfo (~> 1.1)
     acts_as_follower (0.2.1)
     addressable (2.3.8)
-    arel (6.0.0)
+    arel (6.0.2)
     attr_extras (4.4.0)
     autoparse (0.3.3)
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    autoprefixer-rails (5.1.11)
+    autoprefixer-rails (5.2.1.1)
       execjs
       json
     bcp47 (0.3.3)
@@ -159,7 +171,7 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    blacklight (5.13.1)
+    blacklight (5.14.0)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (>= 0.15)
@@ -175,9 +187,9 @@ GEM
       blacklight (~> 5.10)
       parslet
     blankslate (3.1.3)
-    bootstrap-sass (3.3.4.1)
+    bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
+      sass (>= 3.3.0)
     breadcrumbs_on_rails (2.3.0)
     browse-everything (0.8.2)
       bootstrap-sass
@@ -193,7 +205,7 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
-    cancancan (1.10.1)
+    cancancan (1.12.0)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -232,7 +244,7 @@ GEM
     debug_inspector (0.0.2)
     deprecation (0.2.2)
       activesupport
-    devise (3.4.1)
+    devise (3.5.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -302,11 +314,11 @@ GEM
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     http_logger (0.5.1)
-    httparty (0.13.3)
+    httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     hurley (0.1)
-    hydra-access-controls (9.1.4)
+    hydra-access-controls (9.2.0)
       active-fedora (~> 9.0)
       activesupport (~> 4.0)
       blacklight (~> 5.10)
@@ -320,8 +332,9 @@ GEM
       blacklight (~> 5.10)
       deprecation (~> 0.1)
       hydra-head (~> 9.1)
-    hydra-core (9.1.4)
-      hydra-access-controls (= 9.1.4)
+    hydra-core (9.2.0)
+      active-fedora (~> 9.1)
+      hydra-access-controls (= 9.2.0)
       jettywrapper (>= 2.0.0)
       rails (~> 4.0)
     hydra-derivatives (1.1.0)
@@ -333,9 +346,9 @@ GEM
       mini_magick (>= 3.2, < 5)
     hydra-file_characterization (0.3.1)
       activesupport (>= 3.0.0)
-    hydra-head (9.1.4)
-      hydra-access-controls (= 9.1.4)
-      hydra-core (= 9.1.4)
+    hydra-head (9.2.0)
+      hydra-access-controls (= 9.2.0)
+      hydra-core (= 9.2.0)
       rails (>= 3.2.6)
     i18n (0.7.0)
     jbuilder (2.2.13)
@@ -348,10 +361,9 @@ GEM
     json (1.8.3)
     json-ld (1.1.8)
       rdf (~> 1.1, >= 1.1.7)
-    jwt (1.4.1)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
+    json-schema (2.5.1)
+      addressable (~> 2.3.7)
+    jwt (1.5.1)
     launchy (2.4.3)
       addressable (~> 2.3)
     ldp (0.3.1)
@@ -359,7 +371,7 @@ GEM
       http_logger
       linkeddata (>= 1.1)
       slop
-    legato (0.4.0)
+    legato (0.5.1)
       multi_json
     link_header (0.0.8)
     linkeddata (1.1.11)
@@ -395,7 +407,7 @@ GEM
     mail_form (1.5.1)
       actionmailer (>= 3.2, < 5)
       activemodel (>= 3.2, < 5)
-    mailboxer (0.12.5)
+    mailboxer (0.13.0)
       carrierwave (>= 0.5.8)
       foreigner (>= 0.9.1)
       rails (>= 3.2.0)
@@ -408,7 +420,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mimemagic (0.3.0)
-    mini_magick (4.2.3)
+    mini_magick (4.2.7)
     mini_portile (0.6.2)
     minitest (5.7.0)
     mono_logger (1.1.0)
@@ -463,7 +475,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    rack (1.6.0)
+    rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -595,7 +607,7 @@ GEM
       multipart-post
       oauth2
     rubyzip (1.1.7)
-    sass (3.4.13)
+    sass (3.4.16)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -607,11 +619,11 @@ GEM
       rdoc (~> 4.0)
     select2-rails (3.5.9.3)
       thor (~> 0.14)
-    signet (0.6.0)
+    signet (0.6.1)
       addressable (~> 2.3)
       extlib (~> 0.9)
       faraday (~> 0.9)
-      jwt (~> 1.0)
+      jwt (~> 1.5)
       multi_json (~> 1.10)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -649,12 +661,12 @@ GEM
       net-http-persistent (~> 2.9)
       rdf (~> 1.1)
     spring (1.3.6)
-    sprockets (2.12.3)
+    sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.4)
+    sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -667,7 +679,7 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     tins (1.5.1)
-    tinymce-rails (4.0.28.2)
+    tinymce-rails (4.1.6)
       railties (>= 3.1.1)
     tinymce-rails-imageupload (4.0.16.beta)
       railties (>= 3.2, < 5)
@@ -716,6 +728,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jettywrapper!
   jquery-rails
+  kaminari!
+  linkeddata (= 1.1.11)
   marmotta
   mysql2
   passenger
