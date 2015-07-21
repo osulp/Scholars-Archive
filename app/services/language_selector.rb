@@ -13,6 +13,7 @@ class LanguageSelector
 
   def found_labels
     @found_labels ||= literals.select do |literal|
+      binding.pry
       preferred_labels.include?(literal.language.to_s)
     end
   end
