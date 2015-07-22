@@ -35,22 +35,7 @@ class ScholarsArchiveSchema < ActiveTriples::Schema
  
 
   def self.sufia_default
-    [
-      :resource_type,
-      :title, 
-      :creator, 
-      :contributor, 
-      :description, 
-      :tag, 
-      :rights,
-      :publisher, 
-      :date_created, 
-      :subject, 
-      :language, 
-      :identifier, 
-      :based_near, 
-      :related_url
-    ]
+    Sufia::GenericFilePresenter.terms
   end
 
   def self.presenter_properties
