@@ -25,7 +25,7 @@ class LanguageSelector
   # element. Necessary because the initializer takes a resource rather than
   # literals.
   class LabelFinder < SimpleDelegator
-   def labels
+    def labels
       LanguageSelector.new(super).labels
     end
   end
