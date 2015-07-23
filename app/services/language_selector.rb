@@ -1,4 +1,4 @@
-ss LanguageSelector
+class LanguageSelector
   pattr_initialize :literals
   
   def labels
