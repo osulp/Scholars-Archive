@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/osulp/Scholars-Archive.png?label=ready&title=Ready)](https://waffle.io/osulp/Scholars-Archive)
 Scholars Archive
 ===========================
 [![Circle CI](https://circleci.com/gh/osulp/Scholars-Archive.svg?style=svg)](https://circleci.com/gh/osulp/Scholars-Archive)
