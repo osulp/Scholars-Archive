@@ -1,5 +1,6 @@
 class ScholarsArchiveSchema < ActiveTriples::Schema
 
+  property :subject, predicate: ::RDF::DC.subject
   property :spatial, predicate: ::RDF::DC.spatial
   property :temporal, predicate: ::RDF::DC.temporal
   property :tableOfContents, predicate: ::RDF::DC.tableOfContents
