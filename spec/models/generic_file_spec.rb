@@ -32,4 +32,9 @@ RSpec.describe GenericFile do
       expect(ActiveFedora::SolrService.query("id:#{RSolr.solr_escape(id)}").first["subject_preferred_label_ssim"]).to eq ["Test"]
     end
   end
+
+  it "should be able to persist" do
+    expect{GenericFile.new.save}.not_to raise_error
+  end
+
 end
