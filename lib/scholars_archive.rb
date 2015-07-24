@@ -4,5 +4,4 @@ module ScholarsArchive
   end
 
   module_function :marmotta
-  module_function :marmotta_url
 end
