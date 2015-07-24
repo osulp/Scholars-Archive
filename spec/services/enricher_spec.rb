@@ -15,10 +15,7 @@ RSpec.describe Enricher do
   
   let(:uri) { resource.rdf_subject }
   let(:resource) do
-    r = TriplePoweredResource.new("http://localhost:40/1")
-    r.preflabel = "Test"
-    r.persist!
-    r
+    build_resource(uri:"http://localhost:40/1", label:"Test")
   end
 
   describe "#atomic update" do
