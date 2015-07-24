@@ -33,8 +33,4 @@ RSpec.describe Enricher do
     end
   end
 
-  it "should be able to persist" do
-    expect{GenericFile.new.save}.not_to raise_error
-  end
-
 end
