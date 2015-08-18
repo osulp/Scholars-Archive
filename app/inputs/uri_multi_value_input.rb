@@ -1,4 +1,6 @@
 class UriMultiValueInput < MultiValueWithHelpInput
+  include WithHelpIcon
+
   def input_type
     'uri_multi_value'.freeze
   end

@@ -1,3 +1,32 @@
 en:
   sufia:
     deposit_agreement: "the OSU Libraries & Press Deposit Agreement"
+  simple_form:
+    labels:
+      generic_file:
+        resource_type: "Resource Type"
+        date: "Year Published"
+        creator: "Creator/Author"
+        rights: "Rights Statement"
+        spatial: "Georeference"
+        bibliographicCitation: "Preferred Citation"
+        relation: "Related Resources"
+        doi: "Digital Object Identifier (DOI)"
+        orcid: "ORCID"
+        rid: "Researcher ID"
+    metadata_help:
+      generic_file:
+        title: "Title of the digital object"
+        resource_type: "The general type of object"
+        tag: "Terms that describe the subject matter of the digital object."
+        creator: "The individual(s) who created or authored the digital object"
+        contributor: "Other individual(s) whom were involved with the creation of the digital object"
+        abstractOrSummary: "A brief summary describing the digital object"
+        publisher: "The publisher of the digital object - for most items in ScholarsArchive@OSU, the publisher is set to Oregon State University as a default"
+        date: "The year the digital object was published or created"
+        language: "The primary language the digital object is written/spoken in"
+        spatial: "Region, named place, bounding coordinates about which the digital object is focused"
+        bibliographicCitation: "Preferred citation for the digital object"
+        provenance: "Provenance events for the digital object"
+        relation: "Other items in the repository that are relatied to this digital object"
+        doi: "Digital Object Identifier for this digital object"
