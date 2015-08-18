@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'sufia', :github => "projecthydra/sufia", :branch => "master"
 gem 'kaminari', github: 'jcoyne/kaminari', branch: 'sufia'
+gem 'active-fedora', :github => 'projecthydra/active_fedora'
 
 # Deploy
 gem 'capistrano', '~>2.0'
