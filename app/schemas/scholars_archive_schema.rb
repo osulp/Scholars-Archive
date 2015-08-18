@@ -1,8 +1,6 @@
 class ScholarsArchiveSchema < ActiveTriples::Schema
 
   property :spatial, predicate: ::RDF::DC.spatial
-  property :bibliographicCitation, predicate: ::RDF::DC.bibliographicCitation 
-  property :relation, predicate: ::RDF::DC.relation 
   property :temporal, predicate: ::RDF::DC.temporal
   property :tableOfContents, predicate: ::RDF::DC.tableOfContents
   property :format, predicate: ::RDF::DC.format
