@@ -58,6 +58,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'capybara'
   gem 'coveralls'
+  gem 'factory_girl_rails'
 end
 
 

@@ -27,6 +27,8 @@ en:
   <a class="white-text" href="http://main.oregonstate.edu/official-web-disclaimer">Disclaimer</a>&nbsp;|&nbsp;
   <a class="white-text" href="http://osulibrary.oregonstate.edu/accessibility-services">Accessibility</a>' 
   footer_copyright: '<strong>Copyright &copy; 2015 Oregon State University Libraries & Press</strong> Licensed under the Apache License, Version 2.0'
+  default_publisher: "Oregon State University"
+  default_language_uri: "http://id.loc.gov/vocabulary/iso639-1/en"
   help:
     types:
       help_graduate: ScholarsArchive@OSU Graduate Student Frequently Asked Questions

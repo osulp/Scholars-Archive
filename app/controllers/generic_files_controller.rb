@@ -7,8 +7,8 @@ class GenericFilesController < ApplicationController
   self.edit_form_class = FileEditForm
 
   def edit
-    @generic_file["publisher"] = [t('sufia.default_publisher')] if @generic_file["publisher"].empty?
-    @generic_file["language"] = [RDF::URI(t('sufia.default_language_uri'))] if @generic_file["language"].empty?
+    @generic_file["publisher"] = [t('default_publisher')] if @generic_file["publisher"].empty?
+    @generic_file["language"] = [RDF::URI(t('default_language_uri'))] if @generic_file["language"].empty?
     super
   end
 
