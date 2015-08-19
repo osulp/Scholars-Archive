@@ -1,8 +1,6 @@
 en:
   sufia:
     deposit_agreement: "the OSU Libraries & Press Deposit Agreement"
-    default_publisher: "Oregon State University"
-    default_language_uri: "http://id.loc.gov/vocabulary/iso639-1/en"
   simple_form:
     labels:
       generic_file:
