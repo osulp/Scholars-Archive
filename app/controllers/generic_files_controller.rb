@@ -9,6 +9,7 @@ class GenericFilesController < ApplicationController
   def edit
     @generic_file["publisher"] = [t('default_publisher')] if @generic_file["publisher"].empty?
     @generic_file["language"] = [RDF::URI(t('default_language_uri'))] if @generic_file["language"].empty?
+    @generic_file["rights"] = [t('default_rights')] if @generic_file["rights"].empty?
     super
   end
 

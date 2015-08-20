@@ -29,6 +29,7 @@ en:
   footer_copyright: '<strong>Copyright &copy; 2015 Oregon State University Libraries & Press</strong> Licensed under the Apache License, Version 2.0'
   default_publisher: "Oregon State University"
   default_language_uri: "http://id.loc.gov/vocabulary/iso639-1/en"
+  default_rights: "CC0"
   help:
     types:
       help_graduate: ScholarsArchive@OSU Graduate Student Frequently Asked Questions

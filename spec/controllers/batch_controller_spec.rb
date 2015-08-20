@@ -5,6 +5,7 @@ RSpec.describe BatchController do
   let(:user) { FactoryGirl.create(:joe, :admin) }
   let(:publisher) { 'Oregon State University' }
   let(:language_uri) { 'http://id.loc.gov/vocabulary/iso639-1/en' }
+  let(:rights) {'CC0'}
   before do
     sign_in user
   end
@@ -27,5 +28,10 @@ RSpec.describe BatchController do
       expect(assigns[:form].language[0]).to eq language_uri
     end
 
+    it "defaults rights" do
+      get :edit, id: b1.id
+      expect(assigns[:form]).not_to be_persisted
+      expect(assigns[:form].rights[0]).to eq rights
+    end
   end
 end

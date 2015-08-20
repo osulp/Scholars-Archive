@@ -9,6 +9,7 @@ class BatchController < ApplicationController
     @form = edit_form
     @form["publisher"] = [t('default_publisher')] if @form["publisher"].first.empty?
     @form["language"] = [RDF::URI(t('default_language_uri'))] if @form["language"].first.empty?
+    @form["rights"] = [t('default_rights')] if @form["rights"].first.empty?
   end
 
   private
