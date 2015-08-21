@@ -6,5 +6,6 @@ class ScholarsArchiveSchema < ActiveTriples::Schema
   property :doi, predicate: ::RDF::Vocab::Identifiers.doi
   property :orcid, predicate: ::RDF::Vocab::Identifiers.orcid
   property :rid, predicate: ::RDF::Vocab::Identifiers.rid
+  property :keyword, predicate: ::RDF::DC11.subject
  
 end
