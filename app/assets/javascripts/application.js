@@ -17,3 +17,5 @@
 //= require blacklight/blacklight
 //= require sufia
 //= require edit_record
+//
+//= require nested_fields

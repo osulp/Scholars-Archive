@@ -9,4 +9,22 @@ class FileEditForm < FilePresenter
   def has_content?
     model.content.has_content?
   end
+
+  def initialize_fields
+    model.nested_authors.build
+    super
+  end
+
+  def self.build_permitted_params
+    permitted = super
+    permitted << {
+      :nested_authors_attributes => [
+        :id,
+        :_destroy,
+        :name,
+        :orcid
+      ]
+    }
+    permitted
+  end
 end
