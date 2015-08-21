@@ -80,6 +80,7 @@ RSpec.describe GenericFile do
 
     expect(g.nested_authors.first.name).to eq ["Bob"]
     expect(g.nested_authors.first.orcid).to eq ["Test"]
+    expect(g.nested_authors.first.new_record?).to eq false
   end
   it "should be able to create multiple nested authors" do
     g = described_class.new
