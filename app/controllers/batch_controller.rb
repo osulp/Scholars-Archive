@@ -4,6 +4,7 @@ class BatchController < ApplicationController
   self.edit_form_class = BatchEditForm
 
   protected
+
   def edit_form
     generic_file = ::GenericFile.new(default_values)
     edit_form_class.new(generic_file)
