@@ -11,7 +11,7 @@ class BatchController < ApplicationController
   private
 
   def merged_attributes
-    @form.model.attributes.merge(sanitized_defaults) 
+    @form.attributes.merge(sanitized_defaults) 
   end
 
   def sanitized_defaults
