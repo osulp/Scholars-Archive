@@ -5,13 +5,24 @@ class BatchController < ApplicationController
 
   def edit
     super
-    defaults_object.set_default_values
+    @form.instance_variable_set(:@attributes, merged_attributes)
   end
 
-  private 
+  private
 
-  def defaults_object
-    DefaultValuesObject.new(@form)
+  def merged_attributes
+    @form.model.attributes.merge(sanitized_defaults) 
+  end
+
+  def sanitized_defaults
+    default_values.delete_if { |key, value| !@form[key].first.empty? }
+  end
+
+  def default_values
+    {
+      "publisher" => [I18n.t('form_defaults.publisher')],
+      "language" => [I18n.t('form_defaults.language_uri')]
+    }
   end
 
 end
