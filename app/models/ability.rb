@@ -8,6 +8,7 @@ class Ability
       can :view_share_work, GenericFile
       can :create, [GenericFile, Collection] if user_groups.include? 'admin'
     end
+    can :citation, GenericFile
   end
   # Define any customized permissions here.
   def custom_permissions

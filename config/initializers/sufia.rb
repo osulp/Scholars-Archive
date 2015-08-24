@@ -110,6 +110,7 @@ Sufia.config do |config|
 
   # Specify the form of hostpath to be used in Endnote exports
   # config.persistent_hostpath = 'http://localhost/files/'
+  config.citations = true
 
   # If you have ffmpeg installed and want to transcode audio and video uncomment this line
   # config.enable_ffmpeg = true
