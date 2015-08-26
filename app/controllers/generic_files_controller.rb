@@ -6,6 +6,13 @@ class GenericFilesController < ApplicationController
   self.presenter_class = FilePresenter
   self.edit_form_class = FileEditForm
 
+  def edit
+    @generic_file["publisher"] = [t('default_publisher')] if @generic_file["publisher"].empty?
+    @generic_file["language"] = [RDF::URI(t('default_language_uri'))] if @generic_file["language"].empty?
+    @generic_file["rights"] = [t('default_rights')] if @generic_file["rights"].empty?
+    super
+  end
+
   def update_metadata
     file_attributes = edit_form_class.model_attributes(params[:generic_file])
     updated_attributes = AttributeURIConverter.new(file_attributes).convert_attributes
