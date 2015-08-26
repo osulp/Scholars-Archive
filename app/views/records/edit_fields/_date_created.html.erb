@@ -1,0 +1,31 @@
+<div id="date_wrapper">
+  <div class="row"> 
+    <legend>Dates</legend>
+    <div class="warning-anchor"></div> 
+    <div class="col-sm-6">
+      <select name="new_date_type" id="new_date_type" class="form-control">
+        <option value="Select a date type">Select a date type</option>
+        <option value="accepted">Accepted</option>
+        <option value="available">Available</option>
+        <option value="copyrighted">Copyrighted</option>
+        <option value="collected">Collected</option>
+        <option value="issued">Issued</option>
+        <option value="submitted">Submitted</option>
+        <option value="modified">Modified</option>
+        <option value="valid_date">Valid</option>
+      </select>
+    </div>
+    <div class="col-sm-3">
+      <button class="btn" id="add_new_date_type">
+        <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;plus"></i></span>
+      </button>
+    </div>
+  </div>
+    <%= f.input :date_created, as: :multi_value_with_help, :label_html => {:class => "date-header-label"}%>
+  <% f.object.class.date_terms.each do |date_term| %>
+    <% unless f.object.model.get_values(date_term).empty? %>
+      <%= f.input date_term, as: :multi_value_with_help, :label_html => {:class => "date-header-label"} %>
+    <% end %>
+  <% end %>
+</div>
+
