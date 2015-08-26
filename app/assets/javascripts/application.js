@@ -19,3 +19,4 @@
 //= require edit_record
 //
 //= require nested_fields
+//= require add_date_field
