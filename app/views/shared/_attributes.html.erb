@@ -9,9 +9,7 @@
         </tr>
         <tr>
           <th><span class="attribute-label h4">Author:</span></th>
-          <% work.nested_authors.each do |author| %>
-            <td><%= author %></td>
-          <% end %>
+          <td><%= work.nested_authors.join(", ") %></td>
         </tr>
         <tr>
           <th><span class="attribute-label h4">Description:</span></th>
