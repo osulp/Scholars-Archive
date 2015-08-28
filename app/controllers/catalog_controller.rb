@@ -154,6 +154,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('nested_authors_label') do |field|
+      field.label = "Author"
       field.solr_parameters = { :"spellcheck.dictionary" => "nested_authors_label" }
       solr_name = solr_name("nested_authors_label", :stored_searchable)
       field.solr_local_parameters = {

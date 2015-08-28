@@ -1,7 +1,7 @@
 <% record.nested_authors.each do |author| %>
   <span itemprop="creator" itemscope itemtype="http://schema.org/Person">
     <% author["name"].each do |name| %>
-      <span itemprop="name"><%= name %></span>
+      <span itemprop="name"><%= link_to_field('nested_authors_label', name) %></span>
     <% end %>
   </span>
   <br />
