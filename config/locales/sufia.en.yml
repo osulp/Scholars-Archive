@@ -14,6 +14,7 @@ en:
         doi: "Digital Object Identifier (DOI)"
         orcid: "ORCID"
         rid: "Researcher ID"
+        nested_authors: "Author"
     metadata_help:
       generic_file:
         title: "Title of the digital object"
