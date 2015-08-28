@@ -117,4 +117,17 @@ RSpec.describe GenericFile do
       expect(g.nested_authors.first.name).to eq ["Bob"]
     end
   end
+
+  describe "indexing" do
+    it "should index nested authors" do
+      g = described_class.new
+      g.nested_authors.build
+      g.nested_authors.first.name = "Trey"
+      
+      expect(g.to_solr).to include ({
+        "nested_authors_label_ssim" => ["Trey"],
+        "nested_authors_label_tesim" => ["Trey"]
+      })
+    end
+  end
 end

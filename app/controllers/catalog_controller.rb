@@ -56,7 +56,7 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name("resource_type", :symbol), label: "Resource Type", limit: 5
-    config.add_facet_field solr_name("creator", :symbol), label: "Creator", limit: 5
+    config.add_facet_field solr_name("nested_authors_label", :symbol), label: "Author", limit: 5
     config.add_facet_field solr_name("tag", :symbol), label: "Keyword", limit: 5
     config.add_facet_field solr_name("subject", :symbol), label: "Subject", limit: 5
     config.add_facet_field solr_name("language", :symbol), label: "Language", limit: 5
@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("description", :stored_searchable), label: "Description", itemprop: 'description'
     config.add_index_field solr_name("tag", :stored_searchable), label: "Keyword", itemprop: 'keywords'
     config.add_index_field solr_name("subject", :stored_searchable), label: "Subject", itemprop: 'about'
-    config.add_index_field solr_name("creator", :stored_searchable), label: "Creator", itemprop: 'creator'
+    config.add_index_field solr_name("nested_authors_label", :stored_searchable), label: "Author", itemprop: 'author'
     config.add_index_field solr_name("contributor", :stored_searchable), label: "Contributor", itemprop: 'contributor'
     config.add_index_field solr_name("publisher", :stored_searchable), label: "Publisher", itemprop: 'publisher'
     config.add_index_field solr_name("based_near", :stored_searchable), label: "Location", itemprop: 'contentLocation'
@@ -94,7 +94,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("description", :stored_searchable), label: "Description"
     config.add_show_field solr_name("tag", :stored_searchable), label: "Keyword"
     config.add_show_field solr_name("subject", :stored_searchable), label: "Subject"
-    config.add_show_field solr_name("creator", :stored_searchable), label: "Creator"
+    config.add_show_field solr_name("nested_authors_label", :stored_searchable), label: "Author"
     config.add_show_field solr_name("contributor", :stored_searchable), label: "Contributor"
     config.add_show_field solr_name("publisher", :stored_searchable), label: "Publisher"
     config.add_show_field solr_name("based_near", :stored_searchable), label: "Location"
@@ -153,9 +153,10 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('creator') do |field|
-      field.solr_parameters = { :"spellcheck.dictionary" => "creator" }
-      solr_name = solr_name("creator", :stored_searchable)
+    config.add_search_field('nested_authors_label') do |field|
+      field.label = "Author"
+      field.solr_parameters = { :"spellcheck.dictionary" => "nested_authors_label" }
+      solr_name = solr_name("nested_authors_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

@@ -5,7 +5,7 @@ class FileEditForm < FilePresenter
   delegate :has_content?, :to => :content
   include HydraEditor::Form::Permissions
   self.model_class = GenericFile
-  self.required_fields = [:title, :creator, :rights, :keyword]
+  self.required_fields = [:title, :rights, :keyword]
 
   def initialize_fields
     model.nested_authors.build
