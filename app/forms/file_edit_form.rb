@@ -4,7 +4,7 @@ class FileEditForm < FilePresenter
   delegate :validators, :to => :model
   include HydraEditor::Form::Permissions
   self.model_class = GenericFile
-  self.required_fields = [:title, :creator, :rights, :keyword]
+  self.required_fields = [:title, :rights, :keyword]
 
   def has_content?
     model.content.has_content?
