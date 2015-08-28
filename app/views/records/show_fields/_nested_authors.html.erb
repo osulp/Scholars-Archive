@@ -1,0 +1,8 @@
+<% record.nested_authors.each do |author| %>
+  <span itemprop="creator" itemscope itemtype="http://schema.org/Person">
+    <% author["name"].each do |name| %>
+      <span itemprop="name"><%= name %></span>
+    <% end %>
+  </span>
+  <br />
+<% end %>
