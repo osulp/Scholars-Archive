@@ -24,7 +24,7 @@ class SolrDocument
   use_extension( Blacklight::Document::DublinCore)    
 
   def nested_authors
-    self.[]("nested_authors_label_ssim")
+    self.[]("nested_authors_label_ssim") || []
   end
 
 end
