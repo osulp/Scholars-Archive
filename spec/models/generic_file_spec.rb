@@ -125,7 +125,8 @@ RSpec.describe GenericFile do
       g.nested_authors.first.name = "Trey"
       
       expect(g.to_solr).to include ({
-        "nested_authors_label_ssim" => ["Trey"]
+        "nested_authors_label_ssim" => ["Trey"],
+        "nested_authors_label_tesim" => ["Trey"]
       })
     end
   end
