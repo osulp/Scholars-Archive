@@ -4,6 +4,10 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
+require 'capybara/rails'
+Capybara.javascript_driver = :poltergeist
+
 include Warden::Test::Helpers
 Warden.test_mode!
 
@@ -49,6 +53,7 @@ RSpec.configure do |config|
   #       # ...
   #     end
   #
+
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!

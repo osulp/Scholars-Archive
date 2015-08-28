@@ -11,7 +11,6 @@ class GenericFile < ActiveFedora::Base
       ActiveFedora::Indexers::GlobalIndexer.new([:stored_searchable, :symbol])
     )
   property :nested_authors, :predicate => ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => NestedAuthor
-  property :date_fields, :predicate => ::RDF::URI('http://id.loc.gov/vocabulary/relators/dpc.html')
   accepts_nested_attributes_for :nested_authors, :allow_destroy => true, :reject_if => :all_blank
 
   def to_solr(solr_doc = {})
