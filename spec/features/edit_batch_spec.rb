@@ -30,7 +30,13 @@ describe "edit batch form and find proper date fields", type: :feature do
   end
 
   context "when ingesting a file", js:true do
-    it "should display proper date fields" do
+    it "should only display the default date field" do
+      expect(page).to have_content "Date Created"
+      field_labels.each_pair do |key, value|
+        expect(page).to_not have_content key
+      end
+    end
+    it "should display proper date fields when the Add Date button is clicked" do
       field_labels.each_pair do |key, value|
         expect(page).to_not have_content key
         add_date_type(value)
