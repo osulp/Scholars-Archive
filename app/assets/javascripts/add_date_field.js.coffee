@@ -6,7 +6,7 @@ jQuery ->
     notice = '<div class="alert alert-info alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> That date field already exists </div>'
     type = $('#new_date_type').val()
     type_string = type_manipulation(type)
-    date_created = $("#date_wrapper .form-group.generic_file_date_created")
+    date_created = $(".form-group.generic_file_date_created")
     html = html_manipulation(date_created.clone(), type, type_string)
 
     html.find("ul.listing li:not(:last-child)").remove()
