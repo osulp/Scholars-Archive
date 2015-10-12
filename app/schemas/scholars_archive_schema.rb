@@ -10,7 +10,7 @@ class ScholarsArchiveSchema < ActiveTriples::Schema
   property :accepted, predicate: ::RDF::DC.dateAccepted
   property :available, predicate: ::RDF::DC.available
   property :copyrighted, predicate: ::RDF::DC.dateCopyrighted
-  # property :collected, predicate: ::RDF::DC.
+  property :collected, predicate: ::RDF::URI('http://rs.tdwg.org/dwc/terms/measurementDeterminedBy')
   property :issued, predicate: ::RDF::DC.issued
   property :valid_date, predicate: ::RDF::DC.valid
 
