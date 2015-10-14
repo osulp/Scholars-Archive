@@ -3,10 +3,6 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'capybara/rspec'
-require 'capybara/poltergeist'
-require 'capybara/rails'
-Capybara.javascript_driver = :poltergeist
 
 include Warden::Test::Helpers
 Warden.test_mode!
