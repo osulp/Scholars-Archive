@@ -6,6 +6,11 @@ class FileEditForm < FilePresenter
   include HydraEditor::Form::Permissions
   self.model_class = GenericFile
   self.required_fields = [:title, :rights, :keyword]
+  self.terms -= [:accepted, :available, :copyrighted, :collected, :created, :issued, :submitted, :modified, :valid_date]
+
+  def has_content?
+    model.content.has_content?
+  end
 
   def initialize_fields
     model.nested_authors.build
@@ -14,6 +19,11 @@ class FileEditForm < FilePresenter
 
   def self.build_permitted_params
     permitted = super
+    date_terms.each do |date_term|
+      permitted << {
+        date_term => []
+      }
+    end
     permitted << {
       :nested_authors_attributes => [
         :id,
@@ -23,5 +33,18 @@ class FileEditForm < FilePresenter
       ]
     }
     permitted
+  end
+
+  private
+
+  def self.date_terms
+    [
+      :accepted,
+      :available,
+      :copyrighted,
+      :collected,
+      :issued,
+      :valid_date
+    ]
   end
 end
