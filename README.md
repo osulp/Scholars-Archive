@@ -17,3 +17,5 @@ Setup
 6. Run `rake jetty:start`
 
 All rails commands after that should work appropriately.
+
+CAS will need to be set up for logins to work, values go in config/config.yml. Also when developing locally an approved site URL must make the request, so you will need to edit your hosts file so localhost or similar is not sent to the CAS service.
