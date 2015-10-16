@@ -10,7 +10,7 @@ Libraries & Press
 Setup
 -----------------
 1. Run `bundle install`
-2. Run 'cp config.example.yml config.yml '
+2. Run 'cp config/config.example.yml config/config.yml '
 3. Run `rake db:migrate`
 4. Run `rake jetty:clean`
 5. Run `rake sufia:jetty:config`
