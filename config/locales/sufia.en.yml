@@ -1,6 +1,15 @@
 en:
   sufia:
     deposit_agreement: "the OSU Libraries & Press Deposit Agreement"
+    search:
+      form:
+        q:
+          label:          "Search ScholarsArchive@OSU"
+          placeholder:    "Enter search terms"
+        option:
+          all:
+            label_short:  "All"
+            label_long:   "All of ScholarsArchive@OSU"
   simple_form:
     labels:
       generic_file:
