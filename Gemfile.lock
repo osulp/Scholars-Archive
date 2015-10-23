@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: git://github.com/osulp/sufia.git
-  revision: bfa156b80bee15816f707a39328b17280f00ae67
+  revision: 2619397918d075ece4b9cc0824975d54299496f4
   branch: master
   specs:
     sufia (6.3.0)
@@ -76,7 +76,7 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra/active_fedora.git
-  revision: 74814c1265c52ad139bdff8bd9d3767d66c4244e
+  revision: 0e226a76e7dd859a6c646a21fa44f78433ac337a
   specs:
     active-fedora (9.5.0)
       active-triples (~> 0.7.1)
