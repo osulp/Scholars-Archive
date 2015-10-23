@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'sufia', :github => "projecthydra/sufia", :branch => "master"
+gem 'sufia', github: "osulp/sufia", branch: 'master'
 gem 'kaminari', github: 'jcoyne/kaminari', branch: 'sufia'
 gem 'active-fedora', :github => 'projecthydra/active_fedora'
 
@@ -41,7 +41,7 @@ gem 'linkeddata', '1.1.11'
 
 gem 'marmotta'
 
-gem 'rails_config'
+gem 'config', github: 'railsconfig/config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
