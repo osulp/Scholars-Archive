@@ -444,7 +444,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.4.1)
+    mysql2 (0.3.20)
     nest (1.1.2)
       redis
     net-http-persistent (2.9.4)
@@ -755,7 +755,7 @@ DEPENDENCIES
   kaminari!
   linkeddata (= 1.1.11)
   marmotta
-  mysql2
+  mysql2 (~> 0.3.18)
   passenger
   poltergeist
   pry (~> 0.10.0)

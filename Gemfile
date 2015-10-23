@@ -35,7 +35,7 @@ gem 'capistrano', '~>2.0'
 gem 'passenger'
 
 # MySQL
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 gem 'linkeddata', '1.1.11'
 
