@@ -160,6 +160,5 @@ function setGraphLabels(graph) {
   $(titleId).remove();
   title = $('<div><h3>'+graph.title+'</h3></div>').attr('id',titleId.substring(1,titleId.length)).addClass("graph-title");
   $(graph.container).prepend(title); 
-  // title.css('left', title.position()['left'] - title.width() / 2);
 }
 
