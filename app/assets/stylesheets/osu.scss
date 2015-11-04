@@ -31,6 +31,25 @@ div#masthead.container-fluid > .row{
   color: white;
 }
 
+/* Stats page */
+
+.stats-container {
+  padding-top: 35px;
+  padding-bottom: 35px;
+  height: 510px;
+}
+
+#select_preset {
+  position:relative;
+  left: 40.5%;
+}
+
+.graph-title {
+  top: -45px;
+  position:absolute;
+  left: 43%;
+}
+
 /*Mobile phone*/
 @media (max-width: 479px) {
   #masthead.container-fluid {
