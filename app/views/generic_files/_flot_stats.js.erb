@@ -156,20 +156,10 @@ function setDefaultPlotSelection(plot) {
 }
 
 function setGraphLabels(graph) {
-  containerId = graph.container.substring(1, graph.container.length);
-  $("."+containerId+"-graph-title").remove();
-  title = $('<div><h3>'+graph.title+'</h3></div>').addClass(containerId+"-graph-title");
-  titleStyle = getTitleStyle(graph);
-  title.css(titleStyle);
+  titleId = graph.container+'-title';
+  $(titleId).remove();
+  title = $('<div><h3>'+graph.title+'</h3></div>').attr('id',titleId.substring(1,titleId.length)).addClass("graph-title");
   $(graph.container).prepend(title); 
-  title.css('left', title.position()['left'] - title.width() / 2);
-}
-
-function getTitleStyle(graph) {
-  return {'position': 'absolute', 'left': $(graph.container+' .flot-base').width()/2 + $('.flot-x-axis .tickLabel:first').position()['left']/2, 'top': -60}
-}
-
-function getLabelStyle(graph) {
-  return {'position': 'absolute', 'left': $('.flot-x-axis').width()/2 + $('.flot-x-axis .tickLabel:first').position()['left']/2, 'top': $(graph.container+' .flot-base').height() + 5}
+  // title.css('left', title.position()['left'] - title.width() / 2);
 }
 
