@@ -17,6 +17,7 @@ module ScholarsArchive
         false
       else
         attributes.delete(:visibility)
+        binding.pry
         generic_file.apply_embargo(attributes[:embargo_release_date], attributes.delete(:visibility_during_embargo), attributes.delete(:visibility_after_embargo))
         generic_file.save 
         true

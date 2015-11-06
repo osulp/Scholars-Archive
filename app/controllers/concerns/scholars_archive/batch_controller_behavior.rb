@@ -55,10 +55,10 @@ module ScholarsArchive
           params[:id],
           params[:title],
           edit_form_class.model_attributes(params[:generic_file]),
-          params[:visibility],
-          params[:embargo_release_date],
-          params[:visibility_during_embargo],
-          params[:visibility_after_embargo]
+          params[:visibility]
+          #params[:embargo_release_date],
+          #params[:visibility_during_embargo],
+          #params[:visibility_after_embargo]
         )
       end
   end
