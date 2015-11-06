@@ -31,6 +31,21 @@ div#masthead.container-fluid > .row{
   color: white;
 }
 
+/* Custom style for permission form */
+form#new_generic_file .well .radio label,
+form#permission .well .radio label{
+  display: list-item;
+  list-style: none;
+}
+
+.well .label-info {
+  background-color: $blue-medium-bright;
+}
+
+#embargo-options {
+  padding-left:1.35em;
+}
+
 /*Mobile phone*/
 @media (max-width: 479px) {
   #masthead.container-fluid {
