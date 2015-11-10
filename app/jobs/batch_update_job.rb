@@ -6,109 +6,73 @@ class BatchUpdateJob
     :batch_update
   end
 
-  attr_reader :login, :batch_id, :title, :file_attributes, :visibility, :release_date, :vis_during_embargo, :vis_after_embargo
-  attr_writer :saved, :denied
+  attr_accessor :login, :title, :file_attributes, :batch_id, :visibility, :saved, :denied, :embargo_release_date, :visibility_during_embargo,
+    :visibility_after_embargo
 
-  # Called from BatchController
-  # @param [String] login of the current user
-  # @param [String] batch_id for the Batch object containing the files
-  # @param [Hash] title contains the filename of each file
-  # @param [Hash] file_attributes applied to every file in the batch
-  # @param [String] visibility
-  def initialize(login, batch_id, title, file_attributes, visibility)#, release_date, vis_during_embargo, vis_after_embargo)
-    @login = login
-    @batch_id = batch_id
-    @title = title || {}
-    @file_attributes = file_attributes
-    @visibility = visibility
-    #@release_date = release_date
-    #@vis_during_embargo = vis_during_embargo
-    #@vis_after_embargo = vis_after_embargo
+  def initialize(login, batch_id, title, file_attributes, visibility, embargo_release_date=nil, visibility_during_embargo=nil,
+                 visibility_after_embargo=nil)
+    self.login = login
+    self.title = title || {}
+        self.file_attributes = file_attributes
+    self.visibility = visibility
+    self.embargo_release_date = embargo_release_date
+    self.visibility_during_embargo = visibility_during_embargo
+    self.visibility_after_embargo = visibility_after_embargo
+    self.batch_id = batch_id
+    self.saved = []
+    self.denied = []
   end
 
   def run
-    batch.generic_files.each { |gf| update_file(gf) }
+    batch = Batch.find_or_create(self.batch_id)
+    user = User.find_by_user_key(self.login)
+    batch.generic_files.each do |gf|
+      update_file(gf, user)
+    end
+
     batch.update(status: ["Complete"])
-    send_user_message
+
+    if denied.empty?
+      send_user_success_message(user, batch) unless saved.empty?
+    else
+      send_user_failure_message(user, batch)
+    end
   end
 
-  # Updates the metadata for one file in the batch. Override this method if you wish to perform
-  # additional operations to these files.
-  # @param [GenericFile] gf
-  def apply_metadata(gf)
+  def update_file(gf, user)
+    unless user.can? :edit, gf
+      ActiveFedora::Base.logger.error "User #{user.user_key} DENIED access to #{gf.id}!"
+      denied << gf
+      return
+    end
     gf.title = title[gf.id] if title[gf.id]
     gf.attributes = file_attributes
-    gf.visibility = visibility
-    #gf.embargo_release_date = release_date
-    #gf.visibility_during_embargo = vis_during_embargo
-    #gf.visibility_after_embargo = vis_after_embargo
-  end
-
-  # Queues jobs to run on each file. By default, this includes ContentUpdateEventJob, but
-  # can be augmented with additional custom jobs
-  # @param [GenericFile] gf
-  def queue_additional_jobs(gf)
+    gf.visibility = visibility unless visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO
+    if visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO
+      gf.apply_embargo(embargo_release_date, visibility_during_embargo, visibility_after_embargo)
+    end
+    save_tries = 0
+    begin
+      gf.save!
+    rescue RSolr::Error::Http => error
+      save_tries += 1
+      ActiveFedora::Base.logger.warn "BatchUpdateJob caught RSOLR error on #{gf.id}: #{error.inspect}"
+      # fail for good if the tries is greater than 3
+      raise error if save_tries >=3
+      sleep 0.01
+      retry
+    end #
     Sufia.queue.push(ContentUpdateEventJob.new(gf.id, login))
+    saved << gf
   end
 
-  def send_user_success_message
+  def send_user_success_message user, batch
     message = saved.count > 1 ? multiple_success(batch.id, saved) : single_success(batch.id, saved.first)
-    User.batchuser.send_message(user, message, success_subject, false)
+    User.batchuser.send_message(user, message, success_subject, sanitize_text = false)
   end
 
-  def send_user_failure_message
+  def send_user_failure_message user, batch
     message = denied.count > 1 ? multiple_failure(batch.id, denied) : single_failure(batch.id, denied.first)
-    User.batchuser.send_message(user, message, failure_subject, false)
+    User.batchuser.send_message(user, message, failure_subject, sanitize_text = false)
   end
-
-  private
-
-    def update_file(gf, you = nil)
-      you ||= user
-      unless you.can? :edit, gf
-        ActiveFedora::Base.logger.error "User #{you.user_key} DENIED access to #{gf.id}!"
-        denied << gf
-        return
-      end
-
-      apply_metadata(gf)
-
-      save_tries = 0
-      begin
-        gf.save!
-      rescue RSolr::Error::Http => error
-        save_tries += 1
-        ActiveFedora::Base.logger.warn "BatchUpdateJob caught RSOLR error on #{gf.id}: #{error.inspect}"
-        # fail for good if the tries is greater than 3
-        raise error if save_tries >= 3
-        sleep 0.01
-        retry
-      end
-      queue_additional_jobs(gf)
-      saved << gf
-    end
-
-    def send_user_message
-      if denied.empty?
-        send_user_success_message unless saved.empty?
-      else
-        send_user_failure_message
-      end
-    end
-
-    def batch
-      @batch ||= Batch.find_or_create(batch_id)
-    end
-
-    def user
-      @user ||= User.find_by_user_key(login)
-    end
-
-    def saved
-      @saved ||= []
-    end
-
-    def denied
-      @denied ||= []
-    end
 end
