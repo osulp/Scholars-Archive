@@ -1,5 +1,4 @@
 $(function() {
-  <%# <% binding.pry %>
   var stats = <%= @stats.to_flot.to_json.html_safe %>;
 
   function weekendAreas(axes) {
@@ -29,13 +28,18 @@ $(function() {
     xaxis: {
       mode: "time",
       tickLength: 5,
-      axisLabel: "Test",
-      // timeformat: "%d/%m <br> %H:%M",
-      // tickSize: [1, "day"],
-      // min: 0,
-      // max: 4
+      axisLabel: "Date",
+      axisLabelUseCanvas: true,
+      axisLabelFontSizePixels: 12,
+      axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+      axisLabelPadding: 5
     },
     yaxis: {
+      axisLabel: "Downloads and Pageviews",
+      axisLabelUseCanvas: true,
+      axisLabelFontSizePixels: 12,
+      axisLabelFontFamily: 'Verdana, Arial, Helvetica, Tahoma, sans-serif',
+      axisLabelPadding: 5,
       tickDecimals: 0,
       min: 0
     },
