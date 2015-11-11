@@ -21,3 +21,4 @@
 //
 //= require nested_fields
 //= require add_date_field
+//= require jquery.flot.axislabels
