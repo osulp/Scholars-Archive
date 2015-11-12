@@ -32,11 +32,6 @@ class BatchUpdateJob
 
     batch.update(status: ["Complete"])
 
-    if denied.empty?
-      send_user_success_message(user, batch) unless saved.empty?
-    else
-      send_user_failure_message(user, batch)
-    end
   end
 
   def update_file(gf, user)
@@ -66,13 +61,4 @@ class BatchUpdateJob
     saved << gf
   end
 
-  def send_user_success_message user, batch
-    message = saved.count > 1 ? multiple_success(batch.id, saved) : single_success(batch.id, saved.first)
-    User.batchuser.send_message(user, message, success_subject, sanitize_text = false)
-  end
-
-  def send_user_failure_message user, batch
-    message = denied.count > 1 ? multiple_failure(batch.id, denied) : single_failure(batch.id, denied.first)
-    User.batchuser.send_message(user, message, failure_subject, sanitize_text = false)
-  end
 end

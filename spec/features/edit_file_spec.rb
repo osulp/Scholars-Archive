@@ -31,8 +31,8 @@ describe "Generic File" do
       select 'Oregon State University', from: 'visibility_after_embargo'
       fill_in 'embargo_release_date', with: '2020-01-01' 
       click_button 'Save'
-      visit "/files/#{file.id}"
-      expect(page).to have_content "Embargo"
+      visit "/files/#{file.id}/edit"
+      expect(page).to have_content "Private"
       expect(file.reload).to be_under_embargo
     end
 

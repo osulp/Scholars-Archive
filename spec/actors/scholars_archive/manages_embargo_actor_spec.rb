@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe ManagesEmbargoActor do
+RSpec.describe ScholarsArchive::ManagesEmbargoActor do
 
   let(:model) {
-    Class.new (GenericFiles::Actor){
-      include ManagesEmbargoActor
+    Class.new (ScholarsArchive::GenericFile::Actor){
+      include ScholarsArchive::ManagesEmbargoActor
     }
   }
 

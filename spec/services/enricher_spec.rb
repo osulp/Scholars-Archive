@@ -26,7 +26,7 @@ RSpec.describe Enricher do
     it "should return enriched solr field" do
       enricher = Enricher.new(id)
       enricher.enrich!
-      expect(ActiveFedora::SolrService.query("id:#{RSolr.solr_escape(id)}").first["subject_preferred_label_ssim"]).to eq ["Test"]
+      expect(ActiveFedora::SolrService.query("id:#{RSolr.solr_escape(id)}").first["subject_preferred_label_tesim"]).to eq ["Test"]
     end
   end
 

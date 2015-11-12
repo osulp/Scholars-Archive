@@ -27,49 +27,9 @@ GIT
       rubycas-client (~> 2.3.9.rc1)
 
 GIT
-  remote: git://github.com/projecthydra/active_fedora.git
-  revision: 0e226a76e7dd859a6c646a21fa44f78433ac337a
-  specs:
-    active-fedora (9.5.0)
-      active-triples (~> 0.7.1)
-      activesupport (>= 4.1.0)
-      deprecation
-      ldp (~> 0.4.0)
-      linkeddata
-      nom-xml (>= 0.5.1)
-      om (~> 3.1)
-      rdf-rdfxml (~> 1.1.0)
-      rsolr (~> 1.0.10)
-
-GIT
-  remote: git://github.com/projecthydra/jettywrapper.git
-  revision: 648c768fe3f02089f37ecaddd7b7d6e844e9e6cd
-  specs:
-    jettywrapper (2.0.3)
-      activesupport (>= 3.0.0)
-      childprocess
-      i18n
-      logger
-      rubyzip (~> 1.0)
-
-GIT
-  remote: git://github.com/railsconfig/config.git
-  revision: 60ecef49a3da926cb2bbeb0b6cf5e590758f197e
-  specs:
-    config (1.0.0)
-      activesupport (>= 3.0)
-      deep_merge (~> 1.0.0)
-
-GIT
-  remote: git://github.com/terrellt/rubycas-client.git
-  revision: 266e01e465ff8fc58bc8cc8370189f874d581d3a
+  remote: git://github.com/osulp/sufia.git
+  revision: 2619397918d075ece4b9cc0824975d54299496f4
   branch: master
-  specs:
-    rubycas-client (2.3.10.rc1)
-      activesupport
-
-PATH
-  remote: ~/Projects/sufia
   specs:
     sufia (6.3.0)
       blacklight (~> 5.12)
@@ -113,6 +73,48 @@ PATH
       rails (~> 4.0)
       resque (~> 1.23)
       resque-pool (~> 0.3)
+
+GIT
+  remote: git://github.com/projecthydra/active_fedora.git
+  revision: 0e226a76e7dd859a6c646a21fa44f78433ac337a
+  specs:
+    active-fedora (9.5.0)
+      active-triples (~> 0.7.1)
+      activesupport (>= 4.1.0)
+      deprecation
+      ldp (~> 0.4.0)
+      linkeddata
+      nom-xml (>= 0.5.1)
+      om (~> 3.1)
+      rdf-rdfxml (~> 1.1.0)
+      rsolr (~> 1.0.10)
+
+GIT
+  remote: git://github.com/projecthydra/jettywrapper.git
+  revision: 648c768fe3f02089f37ecaddd7b7d6e844e9e6cd
+  specs:
+    jettywrapper (2.0.3)
+      activesupport (>= 3.0.0)
+      childprocess
+      i18n
+      logger
+      rubyzip (~> 1.0)
+
+GIT
+  remote: git://github.com/railsconfig/config.git
+  revision: 60ecef49a3da926cb2bbeb0b6cf5e590758f197e
+  specs:
+    config (1.0.0)
+      activesupport (>= 3.0)
+      deep_merge (~> 1.0.0)
+
+GIT
+  remote: git://github.com/terrellt/rubycas-client.git
+  revision: 266e01e465ff8fc58bc8cc8370189f874d581d3a
+  branch: master
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
 
 GEM
   remote: https://rubygems.org/
@@ -175,7 +177,7 @@ GEM
       addressable (>= 2.3.1)
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
-    autoprefixer-rails (6.0.3)
+    autoprefixer-rails (6.1.0.1)
       execjs
       json
     bcp47 (0.3.3)
@@ -183,7 +185,7 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    blacklight (5.15.0)
+    blacklight (5.16.3)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (>= 0.15)
@@ -195,7 +197,7 @@ GEM
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
       rails
-    blacklight_advanced_search (5.2.0)
+    blacklight_advanced_search (5.2.1)
       blacklight (~> 5.15)
       parslet
     blankslate (3.1.3)
@@ -304,8 +306,9 @@ GEM
       multi_json (~> 1.10)
       retriable (~> 1.4)
       signet (~> 0.6)
-    google_drive (1.0.1)
-      google-api-client (>= 0.7.0)
+    google_drive (1.0.2)
+      google-api-client (>= 0.7.0, < 0.9)
+      minitest (>= 5.1.0)
       nokogiri (>= 1.4.4, != 1.5.2, != 1.5.1)
       oauth (>= 0.3.6)
       oauth2 (>= 0.5.0)
@@ -332,12 +335,12 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     hurley (0.2)
-    hydra-access-controls (9.3.0)
+    hydra-access-controls (9.5.0)
       active-fedora (~> 9.0)
       activesupport (~> 4.0)
-      blacklight (~> 5.10)
+      blacklight (~> 5.16)
       cancancan (~> 1.8)
-      deprecation (~> 0.1)
+      deprecation (~> 0.2)
       sass-rails
     hydra-batch-edit (1.1.1)
       blacklight
@@ -346,9 +349,9 @@ GEM
       blacklight (~> 5.10)
       deprecation (~> 0.1)
       hydra-head (~> 9.1)
-    hydra-core (9.3.0)
+    hydra-core (9.5.0)
       active-fedora (~> 9.1)
-      hydra-access-controls (= 9.3.0)
+      hydra-access-controls (= 9.5.0)
       jettywrapper (>= 2.0.0)
       rails (~> 4.0)
     hydra-derivatives (1.1.0)
@@ -360,9 +363,9 @@ GEM
       mini_magick (>= 3.2, < 5)
     hydra-file_characterization (0.3.3)
       activesupport (>= 3.0.0)
-    hydra-head (9.3.0)
-      hydra-access-controls (= 9.3.0)
-      hydra-core (= 9.3.0)
+    hydra-head (9.5.0)
+      hydra-access-controls (= 9.5.0)
+      hydra-core (= 9.5.0)
       rails (>= 3.2.6)
     i18n (0.7.0)
     jbuilder (2.3.2)
@@ -380,7 +383,7 @@ GEM
       rdf (~> 1.1, >= 1.1.7)
     json-schema (2.5.1)
       addressable (~> 2.3.7)
-    jwt (1.5.1)
+    jwt (1.5.2)
     launchy (2.4.3)
       addressable (~> 2.3)
     ldp (0.4.1)
@@ -699,7 +702,7 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     tins (1.6.0)
-    tinymce-rails (4.2.6)
+    tinymce-rails (4.2.7)
       railties (>= 3.1.1)
     tinymce-rails-imageupload (4.0.16.beta)
       railties (>= 3.2, < 5)

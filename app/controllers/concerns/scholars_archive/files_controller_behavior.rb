@@ -10,7 +10,7 @@ module ScholarsArchive
 
     protected
       def actor
-        @actor ||= ::GenericFiles::Actor.new(@generic_file, current_user, attributes)
+        @actor ||= ScholarsArchive::GenericFile::Actor.new(@generic_file, current_user, attributes)
       end
 
       def attributes
