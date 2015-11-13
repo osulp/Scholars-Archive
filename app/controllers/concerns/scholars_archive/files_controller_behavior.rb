@@ -21,13 +21,10 @@ module ScholarsArchive
         Batch.find_or_create(params[:batch_id])
 
         update_metadata_from_upload_screen
-        if params[:resource_type].present?
-          actor.create_metadata_with_resource_type(params[:batch_id], params[:resource_type])
-        else
-          actor.create_metadata(params[:batch_id])
-        end
 
-        if actor.create_content(file, file.original_filename, file_path, file.content_type)
+        actor.create_metadata(params[:batch_id])
+
+        if actor.create_content(file, file.original_filename, file_path, file.content_type, params[:collection])
           respond_to do |format|
             format.html {
               render 'jq_upload', formats: 'json', content_type: 'text/html'
