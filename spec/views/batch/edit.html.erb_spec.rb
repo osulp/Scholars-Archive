@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "batch/edit.html.erb" do
+
   let(:batch) { Batch.create }
   let(:generic_file) do
     GenericFile.new.tap do |f|
@@ -12,7 +13,7 @@ RSpec.describe "batch/edit.html.erb" do
     assign :batch, batch
     assign :form, form
     allow(controller).to receive(:current_user).and_return(User.create(:username => "bla@bla.org"))
-    render
+    render :template => "batch/edit.html.erb"
   end
 
   it "should render a rights statement" do

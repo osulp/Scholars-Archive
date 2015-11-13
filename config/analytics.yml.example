@@ -1,9 +1,0 @@
-#
-# To integrate your app with Google Analytics, uncomment the lines below and add your API key information.
-#
-analytics:
-   app_name: Scholars-Archive
-   app_version: 2.0
-   privkey_path: /home/some/key.p12
-   privkey_secret: secret
-   client_email: example@developer.gserviceaccount.com
