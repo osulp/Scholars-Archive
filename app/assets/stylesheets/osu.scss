@@ -43,13 +43,21 @@ input#datepicker {
   width: 96%;
 }
 
-.well .label-info {
+.well .label-info,
+a.visibility-link .label-info {
   background-color: $blue-medium-bright;
 }
 
-#embargo-options {
-  padding-left:1.35em;
+.form-group.form-embargo {
+  padding-left:1.65em;
 }
+
+select#visibility_during_embargo,
+input#datepicker, 
+select#visibility_after_embargo {
+  width: 100%;
+}
+
 
 /*Mobile phone*/
 @media (max-width: 479px) {
