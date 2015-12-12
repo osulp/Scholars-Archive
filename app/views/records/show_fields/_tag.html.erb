@@ -1,0 +1,4 @@
+<% record.tag.each do |t| %>
+  <% facet = add_facet_params(Solrizer.solr_name("tag", :facetable), t['id'])  %>
+  <span itemprop="keywords"><%= link_to(t['preflabel'].first, catalog_index_path(facet)) %></span><br />
+<% end %>
