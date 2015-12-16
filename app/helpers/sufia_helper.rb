@@ -11,4 +11,8 @@ module SufiaHelper
     end
   end
 
+  def link_to_fields(fields, field_string)
+    fields.map { |tag| link_to_facet(tag, field_string) }
+  end
+
 end
