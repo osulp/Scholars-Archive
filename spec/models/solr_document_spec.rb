@@ -19,4 +19,26 @@ RSpec.describe SolrDocument do
       end
     end
   end
+
+  describe "#tag_list" do
+    let(:water) { Hash["id" => "http://id.loc.gov/authorities/subjects/sh85145447", "preflabel" => "Water"] }
+    let(:fire) { Hash["id" => "http://id.loc.gov/authorities/subjects/sh85048449", "preflabel" => "Fire"] }
+    context "when there are no uri tags" do
+      it "should return an empty array" do
+        document = described_class.new({})
+        allow(document).to receive(:tag_list) { [] }
+        expect(document.tag_list).to eq []
+      end
+    end
+    context "when there are uri tags" do
+      it "should return an an array of tags with labels" do
+        document = described_class.new({})
+        allow(document).to receive(:tag_list) { [water, fire] }
+        expect(document.tag_list).to eq [water, fire]
+        expect(document.tag_list.count).to eq 2
+        expect(document.tag_list.first['preflabel']).to eq "Water"
+        expect(document.tag_list.second['preflabel']).to eq "Fire"
+      end
+    end
+  end
 end
