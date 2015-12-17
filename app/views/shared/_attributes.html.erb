@@ -4,10 +4,6 @@
           <td><%= work.title %></td>
         </tr>
         <tr>
-          <th><span class="attribute-label h4">Depositor:</span></div>
-          <td><%= link_to_profile work.depositor("no depositor value") %></td>
-        </tr>
-        <tr>
           <th><span class="attribute-label h4">Author:</span></th>
           <td><%= work.nested_authors.join(", ") %></td>
         </tr>
