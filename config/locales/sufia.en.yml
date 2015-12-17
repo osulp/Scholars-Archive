@@ -28,7 +28,7 @@ en:
       generic_file:
         title: "Title of the digital object"
         resource_type: "The general type of object"
-        tag: "Terms that describe the subject matter of the digital object."
+        keyword: "Terms that describe the subject matter of the digital object."
         creator: "The individual(s) who created or authored the digital object"
         contributor: "Other individual(s) whom were involved with the creation of the digital object"
         abstractOrSummary: "A brief summary describing the digital object"
