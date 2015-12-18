@@ -1,6 +1,6 @@
 class ScholarsArchiveSchema < ActiveTriples::Schema
-
-  property :keyword, predicate: ::RDF::DC11.subject
+  property :tag, predicate: ::RDF::DC11.subject
+  property :language, predicate: ::RDF::DC11.language
   property :spatial, predicate: ::RDF::DC.spatial
   property :provenance, predicate: ::RDF::DC.provenance
   property :date, predicate: ::RDF::DC.date

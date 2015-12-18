@@ -13,7 +13,9 @@
         </tr>
         <tr>
           <th><span class="attribute-label h4">Keywords:</span></th>
-          <td><%= work.tags.join(', ') %></td>
+          <td>
+            <%= link_to_fields(work.tag_list, Solrizer.solr_name("tag", :facetable)).join(', ').html_safe %>
+          </td>
         </tr>
         <tr>
           <th><span class="attribute-label h4">Date Uploaded:</span></th>

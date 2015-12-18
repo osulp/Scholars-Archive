@@ -27,4 +27,8 @@ class SolrDocument
     self.[]("nested_authors_label_ssim") || []
   end
 
+  def tag_list
+    self.to_model.tag.to_a || []
+  end
+
 end
