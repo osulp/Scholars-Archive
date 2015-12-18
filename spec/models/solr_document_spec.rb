@@ -23,21 +23,27 @@ RSpec.describe SolrDocument do
   describe "#tag_list" do
     let(:water) { Hash["id" => "http://id.loc.gov/authorities/subjects/sh85145447", "preflabel" => "Water"] }
     let(:fire) { Hash["id" => "http://id.loc.gov/authorities/subjects/sh85048449", "preflabel" => "Fire"] }
+    let(:file) { 
+      GenericFile.new.tap do |f| 
+        f.apply_depositor_metadata("bob")
+      end
+    }
     context "when there are no uri tags" do
       it "should return an empty array" do
         document = described_class.new({})
-        allow(document).to receive(:tag_list) { [] }
+        allow(document).to receive(:to_model) { file }
         expect(document.tag_list).to eq []
       end
     end
     context "when there are uri tags" do
       it "should return an an array of tags with labels" do
         document = described_class.new({})
-        allow(document).to receive(:tag_list) { [water, fire] }
-        expect(document.tag_list).to eq [water, fire]
+        # allow(document).to receive(:tag_list) { [water, fire] }
+        file.tag = [fire['id'], water['id']]
+        allow(document).to receive(:to_model) { file }
         expect(document.tag_list.count).to eq 2
-        expect(document.tag_list.first['preflabel']).to eq "Water"
-        expect(document.tag_list.second['preflabel']).to eq "Fire"
+        expect(document.tag_list.first).to eq fire['id'] 
+        expect(document.tag_list.second).to eq water['id']
       end
     end
   end
