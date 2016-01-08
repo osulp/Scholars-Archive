@@ -17,22 +17,6 @@ class FileEditForm < FilePresenter
     super
   end
 
-  def self.model_attributes(form_params)
-    clean_params = sanitize_params(form_params)
-    terms.each do |key|
-      clean_params[key].delete('') if clean_params[key]
-    end
-    clean_params
-  end
-
-  def self.sanitize_params(form_params)
-    form_params.permit(*permitted_params)
-  end
-
-  def self.permitted_params
-    @permitted ||= build_permitted_params
-  end
-
   def self.build_permitted_params
     permitted = super
     date_terms.each do |date_term|
