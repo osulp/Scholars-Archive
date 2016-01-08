@@ -47,7 +47,6 @@ describe BatchUpdateJob do
       it "should save the uri field as a TriplePoweredResource" do
         job.run
         expect(file.reload.date.first).to be_kind_of TriplePoweredResource
-        expect(file.reload.date.first.preferred_label).to eq "Polish" 
       end
 
     end
