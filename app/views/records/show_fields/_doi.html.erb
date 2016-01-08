@@ -1,0 +1,3 @@
+<% record.doi.each do |doi| %>
+  <span itemprop="doi"><%= link_to_facet(doi, Solrizer.solr_name("doi", :facetable)) %></span><br />
+<% end %>

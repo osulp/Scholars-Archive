@@ -1,0 +1,3 @@
+<% record.provenance.each do |event| %>
+  <span itemprop="provenance"><%= link_to_facet(event, Solrizer.solr_name("provenance", :facetable)) %></span><br />
+<% end %>

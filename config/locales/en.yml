@@ -28,7 +28,7 @@ en:
   <a class="white-text" href="http://osulibrary.oregonstate.edu/accessibility-services">Accessibility</a>' 
   footer_copyright: '<strong>Copyright &copy; 2015 Oregon State University Libraries & Press</strong> Licensed under the Apache License, Version 2.0'
   form_defaults:
-    publisher: "Oregon State University"
+    publisher: "http://id.loc.gov/authorities/names/n80017721"
     language_uri: "http://id.loc.gov/vocabulary/iso639-1/en"
   help:
     types:

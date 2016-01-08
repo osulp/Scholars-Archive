@@ -21,7 +21,7 @@
       </button>
     </div>
   </div>
-    <%= f.input :date_created, as: :multi_value_with_help, :label_html => {:class => "date-header-label"}%>
+  <%= f.input :date_created, as: :multi_value_with_help, :label_html => {:class => "date-header-label"}%>
   <% f.object.class.date_terms.each do |date_term| %>
     <% unless f.object.model.get_values(date_term).empty? %>
       <%= f.input date_term, as: :multi_value_with_help, :label_html => {:class => "date-header-label"} %>

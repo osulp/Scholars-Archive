@@ -1,0 +1,3 @@
+<% record.spatial.each do |spatial| %>
+  <span itemprop="spatial"><%= link_to_facet(spatial, Solrizer.solr_name("spatial", :facetable)) %></span><br />
+<% end %>

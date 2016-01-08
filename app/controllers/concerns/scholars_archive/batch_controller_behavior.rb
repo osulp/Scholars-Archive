@@ -50,7 +50,7 @@ module ScholarsArchive
       end
 
       def batch_update_job
-        @batch_update_job ||= BatchUpdateJob.new(
+        @batch_update_job = ScholarsArchive::BatchUpdateJob.new(
           current_user.user_key,
           params[:id],
           params[:title],
