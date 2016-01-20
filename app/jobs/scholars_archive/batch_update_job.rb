@@ -42,6 +42,9 @@ module ScholarsArchive
         return
       end
       gf.title = title[gf.id] if title[gf.id]
+      
+      transform_uri_params 
+
       gf.attributes = file_attributes
       gf.visibility = visibility unless visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO
       if visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO
@@ -59,21 +62,6 @@ module ScholarsArchive
         retry
       end #
   
-       transform_uri_params
-
-       gf.attributes = file_attributes
-       save_tries = 0
-       begin
-         gf.save
-       rescue RSolr::Error::Http => error
-         save_tries += 1
-         ActiveFedora::Base.logger.warn "BatchUpdateJob caught RSOLR error on #{gf.id}: #{error.inspect}"
-         # fail for good if the tries is greater than 3
-         raise error if save_tries >=3
-         sleep 0.01
-         retry
-       end
-
       Sufia.queue.push(ContentUpdateEventJob.new(gf.id, login))
       saved << gf
     end
