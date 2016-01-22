@@ -132,7 +132,7 @@ $(function() {
     plot.setSelection(ranges);
   });
 
-  selectPrevMonthsBtn = $("<button>Select Last 3 Months</button>").attr('id', 'select_preset');
+  selectPrevMonthsBtn = $('<button class="btn btn-primary">Select Last 3 Months</button>').attr('id', 'select_preset');
   selectPrevMonthsBtn.click(function(){
     setDefaultPlotSelection(plot);
   });
