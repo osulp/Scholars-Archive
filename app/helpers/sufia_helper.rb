@@ -27,7 +27,6 @@ module SufiaHelper
     else
       display = displayvalue.blank? ? fieldvalue : displayvalue
     end
-    display = displayvalue.blank? ? fieldvalue : displayvalue
     link_to(display, link_url)
   end
 end
