@@ -1,3 +1,0 @@
-<% record.date.each do |year| %>
-  <span itemprop="year_published"><%= link_to_facet(year, Solrizer.solr_name("date", :facetable)) %></span><br />
-<% end %>
