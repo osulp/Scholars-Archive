@@ -5,8 +5,8 @@ class FileEditForm < FilePresenter
   delegate :has_content?, :to => :content
   include HydraEditor::Form::Permissions
   self.model_class = GenericFile
-  self.required_fields = [:title, :rights, :keyword]
-  self.terms -= [:accepted, :available, :copyrighted, :collected, :created, :issued, :submitted, :modified, :valid_date]
+  self.required_fields = [:title, :rights]
+  self.terms -= [:accepted, :available, :copyrighted, :collected, :creator, :created, :issued, :submitted, :modified, :valid_date, :keyword]
 
   def has_content?
     model.content.has_content?
@@ -24,6 +24,8 @@ class FileEditForm < FilePresenter
         date_term => []
       }
     end
+    permitted << { :keyword => [] }
+    permitted << { :creator => [] }
     permitted << {
       :nested_authors_attributes => [
         :id,

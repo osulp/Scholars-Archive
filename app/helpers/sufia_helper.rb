@@ -15,4 +15,18 @@ module SufiaHelper
     fields.map { |tag| link_to_facet(tag, field_string) }
   end
 
+  def link_to_field(fieldname, fieldvalue, displayvalue = nil)
+    if fieldvalue["id"]
+      p = { search_field: 'advanced', fieldname => '"' + fieldvalue["id"] + '"' }
+    else
+      p = { search_field: 'advanced', fieldname => '"' + fieldvalue + '"' }
+    end
+    link_url = catalog_index_path(p)
+    if fieldvalue["preflabel"]
+      display = displayvalue.blank? ? fieldvalue["preflabel"] : displayvalue
+    else
+      display = displayvalue.blank? ? fieldvalue : displayvalue
+    end
+    link_to(display, link_url)
+  end
 end

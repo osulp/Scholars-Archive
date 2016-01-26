@@ -14,8 +14,8 @@ class BatchController < ApplicationController
     {
       "creator" => [current_user.name],
       "title" => @batch.generic_files.map(&:label),
-      "publisher" => [I18n.t('form_defaults.publisher')],
-      "language" => [I18n.t('form_defaults.language_uri')]
+      "publisher" => [TriplePoweredResource.new(RDF::URI(I18n.t('form_defaults.publisher')))],
+      "language" => [TriplePoweredResource.new(RDF::URI(I18n.t('form_defaults.language_uri')))]
     }
   end
 
