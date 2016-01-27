@@ -1,6 +1,27 @@
 <div id="date_wrapper">
   <div class="row"> 
-    <legend>Dates</legend>
+    <legend>Dates
+      <i class='help-icon' data-toggle="modal" data-target="#myModal"></i>
+    </legend>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Date Types Summary</h4>
+          </div>
+          <div class="modal-body">
+            <%= raw t('sufia.dates_modal') %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="warning-anchor"></div> 
     <div class="col-sm-6">
       <select name="new_date_type" id="new_date_type" class="form-control">
