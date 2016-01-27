@@ -49,7 +49,7 @@ $(function() {
         fill: true
       },
       points: {
-        show: true,
+        show: false,
         fill: true
       }
     },
@@ -60,7 +60,8 @@ $(function() {
       hoverable: true,
       clickable: true,
       markings: weekendAreas
-    }
+    },
+    colors: ['#385E86', "#C34500"]
   };
 
   var plot = $.plot("#usage-stats", stats, options);
@@ -110,7 +111,8 @@ $(function() {
     },
     legend: {
       show: false
-    }
+    },
+    colors: ['#385E86', "#C34500"]
   });
 
   $("#usage-stats").bind("plotselected", function(event, ranges) {
