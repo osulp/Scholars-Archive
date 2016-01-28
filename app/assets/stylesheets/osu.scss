@@ -76,6 +76,16 @@ select#visibility_after_embargo {
 
 /* Stats page */
 
+table.table-analytics {
+  width: 820px;
+}
+
+table.table-analytics thead,
+table.table-analytics tr td:first-child {
+  background: $osu-blue-dark;
+  color: white;
+}
+
 .stats-container {
   padding-top: 35px;
   padding-bottom: 35px;
@@ -114,7 +124,7 @@ select#visibility_after_embargo {
 }
 
 
-/*Desktop*/
+/*Desktop small*/
 @media (min-width: 768px) and (max-width: 979px)
 {
   #masthead .institution_name {
@@ -127,12 +137,20 @@ select#visibility_after_embargo {
 
 }
 
+/*Desktop large*/
 
 @media (min-width: 980px) and (max-width: 1199px) {
   #masthead .institution_name {
     font-size: 3em;
   }
+}
 
+@media (min-width: 980px)
+{
+  .about-stats-table-footer {
+    width: 850px;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 1200px) {
