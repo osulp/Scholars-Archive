@@ -1,7 +1,4 @@
 jQuery ->
-  $('#myModal').on('shown.bs.modal', ->
-    $('#myInput').focus()
-  )
   $('#add_new_date_type').on("click", (event) ->
     event.preventDefault()
     
