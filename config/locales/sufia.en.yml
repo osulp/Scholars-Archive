@@ -1,5 +1,36 @@
 en:
   sufia:
+    dates_modal: "<b>Date Created</b></br>
+    The date the resource itself was put
+    together; this could be a date range or a
+    single date for a final component, e.g., the
+    finalised file with all of the data.</br>
+    <b>Date Accepted</b></br>
+    The date that the publisher accepted the
+    resource into their system.</br>
+    <b>Date Available</b></br>
+    The date the resource is made publicly
+    available. May be a range.</br>
+    <b>Date Copyrighted</b></br>
+    The specific, documented date at which the
+    resource receives a copyrighted status, if
+    applicable</br>
+    <b>Date Collected</b></br>
+    The date or date range in which the resource
+    content was collected.</br>
+    <b>Date Issued</b></br> 
+    The date that the resource is published or
+    distributed e.g. to a data center</br>
+    <b>Date Submitted</b></br>
+    The date the creator submits the resource to
+    the publisher. This could be different from
+    Accepted if the publisher then applies a
+    selection process.</br>
+    <b>Date Modified</b></br>
+    <b>Date Valid</b></br>
+    The date or date range during which the
+    dataset or resource  is accurate.</br>"
+
     deposit_agreement: "the OSU Libraries & Press Deposit Agreement"
     search:
       form:
