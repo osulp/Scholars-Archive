@@ -40,11 +40,7 @@ module ScholarsArchive
     end
 
     def label
-      if options[:value].respond_to?(:preferred_label)
-        options[:value].preferred_label
-      else
-        options[:value].rdf_label.first.to_s
-      end
+      options[:value].rdf_label.first.to_s
     end
 
     def subject
