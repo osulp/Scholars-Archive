@@ -1,0 +1,4 @@
+<div class='featured-researcher'>
+  <%= raw(featured_researcher_block.value) %>
+  <%= button_to "Delete", delete_researcher_path(featured_researcher_block[:id]), :class => "btn btn-primary" %>
+</div>
