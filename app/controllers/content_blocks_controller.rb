@@ -1,6 +1,7 @@
 class ContentBlocksController < ApplicationController
-  load_and_authorize_resource except: [:index, :delete]
+  load_and_authorize_resource except: [:index, :destroy]
   before_action :load_featured_researchers, only: :index
+  before_action :verify_is_admin, only: :destroy
   authorize_resource only: :index
 
   def index
@@ -16,7 +17,7 @@ class ContentBlocksController < ApplicationController
     redirect_to :back
   end
 
-  def delete
+  def destroy
     @researcher = ContentBlock.find(params[:id])
     if @researcher.destroy
       flash[:success] = "Sucessfully deleted."
@@ -38,5 +39,12 @@ class ContentBlocksController < ApplicationController
 
     def load_featured_researchers
       @content_blocks = ContentBlock.recent_researchers.page(params[:page])
+    end
+
+    def verify_is_admin
+      unless current_user && current_user.group_list.include?("admin")
+        flash[:error] = "You do not have the proper permissions to take this action."
+        redirect_to :back
+      end
     end
 end
