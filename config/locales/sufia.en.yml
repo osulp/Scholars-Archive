@@ -30,7 +30,14 @@ en:
     <b>Date Valid</b></br>
     The date or date range during which the
     dataset or resource  is accurate.</br>"
-
+    geo_coordinates_modal: "<b>Geographic Coordinates</b></br>
+    Description...</br>
+    <b>Point</b></br>
+    Description...</br>
+    <b>Bounding Box</b></br>
+    Description...</br>
+    <b>Geonames</b></br>
+    Description...</br>"
     deposit_agreement: "the OSU Libraries & Press Deposit Agreement"
     search:
       form:

@@ -21,5 +21,6 @@
 //
 //= require nested_fields
 //= require add_date_field
+//= require add_geo_field
 //= require jquery.flot.axislabels
 //= require enable_modal

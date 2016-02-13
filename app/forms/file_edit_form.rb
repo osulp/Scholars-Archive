@@ -6,7 +6,8 @@ class FileEditForm < FilePresenter
   include HydraEditor::Form::Permissions
   self.model_class = GenericFile
   self.required_fields = [:title, :rights]
-  self.terms -= [:accepted, :available, :copyrighted, :collected, :creator, :created, :issued, :submitted, :modified, :valid_date, :keyword]
+  self.terms -= [:accepted, :available, :copyrighted, :collected, :creator, :created, :issued, :submitted, :modified, :valid_date, :keyword, :decimalLatitude, :decimalLongitude, :decimalLatUpperBox, :decimalLongUpperBox, :decimalLatLowerBox, :decimalLongLowerBox
+  ]
 
   def has_content?
     model.content.has_content?
@@ -57,6 +58,22 @@ class FileEditForm < FilePresenter
       :issued,
       :valid_date,
       :date
+    ]
+  end
+
+  def self.geo_point_terms
+    [
+      :decimalLatitude,
+      :decimalLongitude,
+    ]
+  end
+
+  def self.geo_box_terms
+    [
+      :decimalLatUpperBox,
+      :decimalLongUpperBox,
+      :decimalLatLowerBox,
+      :decimalLongLowerBox
     ]
   end
 end
