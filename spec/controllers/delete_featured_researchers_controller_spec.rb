@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ContentBlocksController do 
+RSpec.describe DeleteFeaturedResearchersController do 
   let(:researcher) {ContentBlock.create(name: ContentBlock::RESEARCHER)}
   describe "delete" do
     context "as an admin" do
