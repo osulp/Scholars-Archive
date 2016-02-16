@@ -60,3 +60,22 @@
 .button_to-inline {
   display: inline-block;
 }
+
+// Mainpage "upload content" had a white nested P
+.home_share_work p {
+  background-color: transparent;
+}
+
+// Sufia default styles sets this awkwardly small when nested inside an H1
+#descriptions_display h1 .required abbr {
+  font-size: inherit;
+}
+
+// Help icon sizing made consistent, relative size was causing larger labels
+// to have icons that looked awkwardly large
+#descriptions_display i.help-icon {
+  top: 3px;
+  font-size: 20px;
+}
+
+
