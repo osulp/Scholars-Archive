@@ -36,8 +36,8 @@
       </button>
     </div>
   </div>
-  <%= f.input :decimalLatitude, as: :multi_value, :label_html => {:class => "geo-header-label"}%>
-  <%= f.input :decimalLongitude, as: :multi_value, :label_html => {:class => "geo-header-label"}%>
+
+  <%= f.input :spatial, as: :multi_value, :label_html => {:class => "geo-header-label"}%>
 
   <% f.object.class.geo_terms.each do |geo_term| %>
     <% unless f.object.model.get_values(geo_term).empty? %>
