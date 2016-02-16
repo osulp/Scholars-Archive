@@ -1,0 +1,6 @@
+<div class='featured-researcher'>
+  <%= raw(featured_researcher_block.value) %>
+  <% if current_user && current_user.group_list.include?("admin") %>
+    <%= button_to "Delete", delete_researcher_path(featured_researcher_block[:id]), :method => :delete, :class => "btn btn-primary" %>
+  <% end %>
+</div>

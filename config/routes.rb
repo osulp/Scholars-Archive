@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/help/:page', :to => "help#page"
   get '/help', :to => "help#page", :page => "general"
 
+  delete '/featured_researchers/:id/delete', :to => "delete_featured_researchers#destroy", :as => "delete_researcher"
+
   devise_scope :user do
     get "/users/sign_out", :to => "sessions#destroy"
   end
