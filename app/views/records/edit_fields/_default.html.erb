@@ -1,1 +1,3 @@
-<%= f.object.generate_input(f, key) %>
+<% unless f.object.class.hidden_fields.include? key %>
+  <%= f.object.generate_input(f, key) %>
+<% end %>

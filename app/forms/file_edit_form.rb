@@ -12,6 +12,13 @@ class FileEditForm < FilePresenter
     model.content.has_content?
   end
 
+  # prevents _default.html.erb field generator from rendering these fields
+  # with the intention of manually specifying these fields within other partials
+  # such as _date_created.html.erb including this :date field as well.
+  def self.hidden_fields
+    [:date]
+  end
+
   def initialize_fields
     model.nested_authors.build
     super
