@@ -14,17 +14,17 @@ jQuery ->
 
     #append and managing fields
     $('.warning-anchor').append(notice) if $('.generic_file_'+type).length > 0 
-    $('#date_wrapper').append(html) if $('.generic_file_'+type).length == 0
+    $('#geo_wrapper').append(html) if $('.generic_file_'+type).length == 0
     $('.form-group.generic_file_'+type).manage_fields()
 
     html.find('.input-group-btn:first').remove() if html.find('.input-group-btn').length == 2
   )
 
   html_manipulation = (html, type, type_string) ->
-    html.removeClass('generic_file_date_created').addClass('generic_file_'+type)
-    html.find('#generic_file_date_created_help').attr('id', 'generic_file_'+type+'_help')
-    html.find('input.generic_file_date_created').removeClass('generic_file_date_created').addClass('generic_file_'+type).attr('name', "generic_file["+type+"][]").attr("id", "generic_file_"+type).val('')
-    html.find('.date-header-label').text('Date ' + type_string)
+    html.removeClass('generic_file_spatial').addClass('generic_file_'+type)
+    html.find('#generic_file_spatial_help').attr('id', 'generic_file_'+type+'_help')
+    html.find('input.generic_file_spatial').removeClass('generic_file_spatial').addClass('generic_file_'+type).attr('name', "generic_file["+type+"][]").attr("id", "generic_file_"+type).val('')
+    html.find('.geo-header-label').text(type_string)
     html.find('.input-group-btn:last > .add').unbind()
     return html
 

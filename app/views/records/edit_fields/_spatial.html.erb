@@ -1,11 +1,11 @@
 <div id="geo_wrapper">
   <div class="row"> 
     <legend>Geographic Coordinates
-      <i class='help-icon' data-toggle="modal" data-target="#myModal"></i>
+      <i class='help-icon' data-toggle="modal" data-target="#myGeoCoordinatesModal"></i>
     </legend>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myGeoCoordinatesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -25,9 +25,9 @@
     <div class="col-sm-6">
       <select name="new_geo_type" id="new_geo_type" class="form-control">
         <option value="Select a geographic coordinate type">Select a geographic coordinate type</option>
+        <option value="spatial">Geographic Name</option>
         <option value="point">Point</option>
         <option value="bbox">Bounding Box</option>
-        <option value="geoname">Geoname</option>
       </select>
     </div>
     <div class="col-sm-3">

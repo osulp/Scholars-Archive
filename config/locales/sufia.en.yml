@@ -30,14 +30,10 @@ en:
     <b>Date Valid</b></br>
     The date or date range during which the
     dataset or resource  is accurate.</br>"
-    geo_coordinates_modal: "<b>Geographic Coordinates</b></br>
-    Description...</br>
-    <b>Point</b></br>
-    Description...</br>
-    <b>Bounding Box</b></br>
-    Description...</br>
-    <b>Geonames</b></br>
-    Description...</br>"
+    geo_coordinates_modal: "<b>Geographic Coordinates</b></br></br>
+      <b>Point</b></br> A label and coordinate pair (decimal latitude and longitude) for this geographic coordinate (e.g. 44.00013, -120.50139)</br>
+      <b>Bounding Box</b></br> A label and set of coordinate pairs (decimal latitude and longitude - e.g. 44.00013, -120.50139) representing the upper left and lower right corners of the bounding box.</br>
+      <b>Geographic Name</b></br> A geographic place name related to the digital object. Names should reference the GeoNames database (geonames.org) and be in the form of a URI (e.g.  http://sws.geonames.org/5710924/).</br>"
     deposit_agreement: "the OSU Libraries & Press Deposit Agreement"
     search:
       form:
@@ -61,7 +57,9 @@ en:
         valid_date: "Date Valid"
         creator: "Creator/Author"
         rights: "Rights Statement"
-        spatial: "Georeference"
+        spatial: "Geographic Name"
+        decimalLatitude: "Decimal Latitude"
+        decimalLongitude: "Decimal Longitude"
         bibliographicCitation: "Preferred Citation"
         relation: "Related Resources"
         doi: "Digital Object Identifier (DOI)"
