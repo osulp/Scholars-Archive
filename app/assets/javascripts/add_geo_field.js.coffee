@@ -6,5 +6,17 @@ jQuery ->
     type = $('#new_geo_type').val()
     $(".geo_"+type).show()
 
-  )
+    type_string = type_manipulation(type)
 
+    spatial = $(".form-group.generic_file_spatial")
+    html = html_manipulation(spatial.clone(), type, type_string)
+
+    html.find("ul.listing li:not(:last-child)").remove()
+
+    #append and managing fields
+    $('#geo_wrapper .warning-anchor').append(notice) if $('.generic_file_'+type).length > 0
+    $('#geo_wrapper .group-wrapper').append(html) if $('.generic_file_'+type).length == 0
+    $('.form-group.generic_file_'+type).manage_fields()
+
+    html.find('.input-group-btn:first').remove() if html.find('.input-group-btn').length == 2
+  )
