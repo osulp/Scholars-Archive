@@ -26,14 +26,15 @@
     <div id="date_select" class="col-sm-6">
       <select name="new_date_type" id="new_date_type" class="form-control">
         <option value="">Select a date type</option>
-        <option value="accepted">Accepted</option>
-        <option value="available">Available</option>
-        <option value="collected">Collected</option>
-        <option value="copyrighted">Copyrighted</option>
-        <option value="issued">Issued</option>
-        <option value="modified">Modified</option>
-        <option value="submitted">Submitted</option>
-        <option value="valid_date">Valid</option>
+        <option value="accepted" data-label="Date Accepted">Accepted</option>
+        <option value="available" data-label="Date Available">Available</option>
+        <option value="collected" data-label="Date Collected">Collected</option>
+        <option value="copyrighted" data-label="Date Copyrighted">Copyrighted</option>
+        <option value="issued" data-label="Date Issued">Issued</option>
+        <option value="modified" data-label="Date Modified">Modified</option>
+        <option value="date" data-label="Date Published">Published</option>
+        <option value="submitted" data-label="Date Submitted">Submitted</option>
+        <option value="valid_date" data-label="Date Valid">Valid</option>
       </select>
     </div>
     <div class="col-sm-3">
@@ -43,7 +44,6 @@
     </div>
   </div>
   <%= f.input :date_created, as: :multi_value, :label_html => {:class => "date-header-label"}%>
-  <%= f.input :date, as: :multi_value, :label_html => {:class => "date-header-label"}%>
   <% f.object.class.date_terms.each do |date_term| %>
     <% unless f.object.model.get_values(date_term).empty? %>
       <%= f.input date_term, as: :multi_value, :label_html => {:class => "date-header-label"} %>
