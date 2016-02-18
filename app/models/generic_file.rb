@@ -107,7 +107,7 @@ class GenericFile < ActiveFedora::Base
 
   def export_as_chicago_citation
     author_text = ""
-    authors = all_authors
+    authors = author_list
     unless authors.blank?
       if authors.length > 10
         authors.each_with_index do |author, index|
@@ -187,8 +187,8 @@ class GenericFile < ActiveFedora::Base
   end
 
   def author_list
-    creator.map do |author| 
-        clean_end_punctuation(CGI.escapeHTML(is_triple_powered?(author) ? author.preferred_label : author)) 
+    nested_authors.map do |author| 
+      clean_end_punctuation(CGI.escapeHTML(author[:name].first))
     end.uniq
   end
 
