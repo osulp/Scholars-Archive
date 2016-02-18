@@ -23,6 +23,7 @@ class FileEditForm < FilePresenter
 
   def initialize_fields
     model.nested_authors.build
+    model.nested_geo_points.build
     super
   end
 
@@ -46,6 +47,14 @@ class FileEditForm < FilePresenter
         :_destroy,
         :name,
         :orcid
+      ]
+    }
+    permitted << {
+      :nested_geo_points_attributes => [
+        :id,
+        :_destroy,
+        :decimalLatitude,
+        :decimalLongitude
       ]
     }
     permitted

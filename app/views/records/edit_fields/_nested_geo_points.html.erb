@@ -1,0 +1,16 @@
+<div class="author nested-field repeating-field">
+  <fieldset>
+    <ul class="listing">
+      <legend>Point</legend>
+      <%= f.simple_fields_for :nested_geo_points do |a| %>
+        <li class="field-wrapper">
+          <% unless a.object.new_record? %>
+            <%= a.input :id, :as => :hidden %>
+          <% end %>
+          <%= a.input :decimalLatitude, :wrapper_html => {:class => "col-xs-6"} %>
+          <%= a.input :decimalLongitude, :wrapper_html => {:class => "col-xs-6"} %>
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
+</div>

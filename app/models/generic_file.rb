@@ -15,13 +15,17 @@ class GenericFile < ActiveFedora::Base
     )
 
   property :nested_authors, :predicate => ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => NestedAuthor
+  property :nested_geo_points, :predicate => ::RDF::URI("http://id.loc.gov/vocabulary/geographicAreas/x"), :class_name => NestedGeoPoint
 
   accepts_nested_attributes_for :nested_authors, :allow_destroy => true, :reject_if => :all_blank
+  accepts_nested_attributes_for :nested_geo_points, :allow_destroy => true, :reject_if => :all_blank
 
   def to_solr(solr_doc = {})
     super.tap do |doc|
       doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_authors_label", :symbol)] = nested_authors.flat_map(&:name).select(&:present?)
       doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_authors_label", :stored_searchable)] = nested_authors.flat_map(&:name).select(&:present?)
+      doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_geo_points_label", :symbol)] = nested_geo_points.flat_map(&:name).select(&:present?)
+      doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_geo_points_label", :stored_searchable)] = nested_geo_points.flat_map(&:name).select(&:present?)
     end
   end
 end
