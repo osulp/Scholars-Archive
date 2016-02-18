@@ -27,7 +27,7 @@ jQuery ->
 
     html.find('.input-group-btn:first').remove() if html.find('.input-group-btn').length == 2
 
-    $('#new_date_type').find("option[value='" + type + "']").remove();
+    $('#new_date_type').find("option[value='" + type + "']").hide();
   )
 
   html_manipulation = (html, type, type_string) ->
