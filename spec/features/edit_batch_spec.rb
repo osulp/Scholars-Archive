@@ -12,8 +12,9 @@ describe "edit batch form and find proper date fields", type: :feature do
                        'Date Copyrighted' => '5',
                        'Date Issued' => '6',
                        'Date Modified' => '7',
-                       'Date Submitted' => '8',
-                       'Date Valid' => '9'}}
+                       'Date Published' => '8',
+                       'Date Submitted' => '9',
+                       'Date Valid' => '10'}}
   let(:file) do
     GenericFile.new(batch: batch) do |f|
       f.title = [file_title]
