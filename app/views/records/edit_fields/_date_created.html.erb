@@ -31,9 +31,7 @@
         <option value="collected" data-label="Date Collected">Collected</option>
         <option value="copyrighted" data-label="Date Copyrighted">Copyrighted</option>
         <option value="issued" data-label="Date Issued">Issued</option>
-        <option value="modified" data-label="Date Modified">Modified</option>
         <option value="date" data-label="Date Published">Published</option>
-        <option value="submitted" data-label="Date Submitted">Submitted</option>
         <option value="valid_date" data-label="Date Valid">Valid</option>
       </select>
     </div>
@@ -43,10 +41,10 @@
       </button>
     </div>
   </div>
-  <%= f.input :date_created, as: :multi_value, :label_html => {:class => "date-header-label"}%>
+  <%= f.input :date_created, as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"}%>
   <% f.object.class.date_terms.each do |date_term| %>
     <% unless f.object.model.get_values(date_term).empty? %>
-      <%= f.input date_term, as: :multi_value, :label_html => {:class => "date-header-label"} %>
+      <%= f.input date_term, as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"} %>
     <% end %>
   <% end %>
 </div>

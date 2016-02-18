@@ -1,5 +1,9 @@
 jQuery ->
-  $('#add_new_date_type').on("click", (event) ->
+  ###*
+  # Binding to the click event of the add_new_date_type button to dynamically
+  # add the appropriate field and html for handling this new type of date.
+  ###
+  $(document).on('click', '#add_new_date_type', (event) ->
     #empty the warning by default to reevaluate if there should be one on each
     #button click
     $(".warning-anchor").empty()
@@ -31,7 +35,39 @@ jQuery ->
     $('#new_date_type').find("option[value='" + type + "']").hide()
     first_option_val = $('#new_date_type').find("option").first().val()
     $('#new_date_type').val(first_option_val)
+    #bind_all_datepickers()
   )
+
+  ###*
+  # Binding to the click event of any input field, detecting if it is a field
+  # that should have datepicker enabled, rebind all datepickers, and show
+  # "this" one.
+  ###
+  $(document).on('click', 'input[type="text"]', (event) ->
+    if $(this).parents('.form-group').find('.date-picker-enabled').length > 0
+      bind_all_datepickers()
+      $(this).datepicker('show')
+      return
+  )
+
+  ###*
+  # Function to ensure all datepicker input fields are bound. This takes into
+  # account that date fields are dynamically added and need to have be cleansed
+  # of previous bindings, data, and to be assigned a unique ID.
+  ###
+  bind_all_datepickers = () ->
+    $('.date-picker-enabled')
+      .parents(".form-group")
+      .find("input[type=text]")
+      .each((i) ->
+        $(this).removeClass('hasDatepicker')
+          .removeData('datepicker')
+          .unbind()
+          .attr('id', 'datepicker_' + i)
+          .datepicker({dateFormat: 'yy-mm-dd'})
+      )
+    return
+
 
   html_manipulation = (html, type, type_label) ->
     html.removeClass('generic_file_date_created').addClass('generic_file_'+type)
