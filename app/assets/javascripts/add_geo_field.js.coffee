@@ -7,8 +7,8 @@ jQuery ->
 
     type_string = type_manipulation(type)
 
-    spatial = $(".form-group.generic_file_spatial")
-    html = html_manipulation(spatial.clone(), type, type_string)
+    tmp = $(".form-group.generic_file_decimalLatitude")
+    html = html_manipulation(tmp.clone(), type, type_string)
 
     html.find("ul.listing li:not(:last-child)").remove()
 
@@ -21,9 +21,9 @@ jQuery ->
   )
 
   html_manipulation = (html, type, type_string) ->
-    html.removeClass('generic_file_spatial').addClass('generic_file_'+type)
-    html.find('#generic_file_spatial_help').attr('id', 'generic_file_'+type+'_help')
-    html.find('input.generic_file_spatial').removeClass('generic_file_spatial').addClass('generic_file_'+type).attr('name', "generic_file["+type+"][]").attr("id", "generic_file_"+type).val('')
+    html.removeClass('generic_file_decimalLatitude').addClass('generic_file_'+type)
+    html.find('#generic_file_decimalLatitude_help').attr('id', 'generic_file_'+type+'_help')
+    html.find('input.generic_file_decimalLatitude').removeClass('generic_file_decimalLatitude').addClass('generic_file_'+type).attr('name', "generic_file["+type+"][]").attr("id", "generic_file_"+type).val('')
     html.find('.geo-header-label').text(type_string)
     html.find('.input-group-btn:last > .add').unbind()
     return html
