@@ -8,11 +8,11 @@ describe "edit batch form and find proper date fields", type: :feature do
   let(:batch) { Batch.create }
   let(:field_labels) {{'Date Accepted' => '2',
                        'Date Available' => '3',
-                       'Date Copyrighted' => '4',
-                       'Date Collected' => '5',
+                       'Date Collected' => '4',
+                       'Date Copyrighted' => '5',
                        'Date Issued' => '6',
-                       'Date Submitted' => '7',
-                       'Date Modified' => '8',
+                       'Date Modified' => '7',
+                       'Date Submitted' => '8',
                        'Date Valid' => '9'}}
   let(:file) do
     GenericFile.new(batch: batch) do |f|
