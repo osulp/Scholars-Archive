@@ -12,9 +12,11 @@ class FileEditForm < FilePresenter
     model.content.has_content?
   end
 
-  # prevents _default.html.erb field generator from rendering these fields
-  # with the intention of manually specifying these fields within other partials
-  # such as _date_created.html.erb including this :date field as well.
+  # @param [Array] fields which shouldn't be automatically rendered by the form
+  #   builder.
+  # @note The fields specified here would intentionally be rendered in a partial
+  #   that might be combined with other fields.. so make sure _default.html.erb
+  #   will not render these automatically.
   def self.hidden_fields
     [:date]
   end
@@ -53,7 +55,8 @@ class FileEditForm < FilePresenter
       :copyrighted,
       :collected,
       :issued,
-      :valid_date
+      :valid_date,
+      :date
     ]
   end
 end
