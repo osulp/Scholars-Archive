@@ -45,7 +45,13 @@ en:
     labels:
       generic_file:
         resource_type: "Resource Type"
-        date: "Year Published"
+        date: "Date Published"
+        available: "Date Available"
+        accepted: "Date Accepted"
+        collected: "Date Collected"
+        copyrighted: "Date Copyrighted"
+        issued: "Date Issued"
+        valid_date: "Date Valid"
         creator: "Creator/Author"
         rights: "Rights Statement"
         spatial: "Georeference"

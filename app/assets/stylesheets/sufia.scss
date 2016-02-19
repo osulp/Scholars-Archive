@@ -78,4 +78,14 @@
   font-size: 20px;
 }
 
+// Injest form Dates select style fix
+#date_wrapper > .row {
+  margin: 0;
+}
+#date_wrapper #date_select {
+  padding-left: 0;
+  padding-bottom: 15px;
+}
+
+
 

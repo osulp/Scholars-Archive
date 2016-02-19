@@ -34,4 +34,11 @@ RSpec.describe FileEditForm do
       expect(subject.has_content?).to eq true
     end
   end
+
+  describe ".hidden_fields" do
+    it "should return an array of 0-n field names" do
+      expect(described_class.hidden_fields).to be_an(Array)
+      expect(described_class.hidden_fields).to include(:date)
+    end
+  end
 end
