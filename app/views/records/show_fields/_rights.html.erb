@@ -1,0 +1,6 @@
+<% record.rights.each do |right| %>
+  <span itemprop="keyword" itemscope itemtype="http://id.loc.gov/authorities/subjects">
+    <%= link_to_field("Rights Statement", right) %>
+  </span>
+  <br />
+<% end %>

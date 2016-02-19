@@ -42,7 +42,7 @@ module ScholarsArchive
         return
       end
       gf.title = title[gf.id] if title[gf.id]
-      
+
       transform_uri_params 
 
       gf.attributes = file_attributes
@@ -52,7 +52,7 @@ module ScholarsArchive
       end
       save_tries = 0
       begin
-        gf.save
+        gf.save!
       rescue RSolr::Error::Http => error
         save_tries += 1
         ActiveFedora::Base.logger.warn "BatchUpdateJob caught RSOLR error on #{gf.id}: #{error.inspect}"
@@ -61,7 +61,7 @@ module ScholarsArchive
         sleep 0.01
         retry
       end #
-  
+
       Sufia.queue.push(ContentUpdateEventJob.new(gf.id, login))
       saved << gf
     end
@@ -69,16 +69,17 @@ module ScholarsArchive
     def transform_uri_params
       file_attributes.each_pair do |key, value|
         val_array = []
-        value.each do |val|
-          unless (key == "nested_authors_attributes" || key == "rights" || key == "related_url")
+        if (value.is_a? Hash || key == "rights")
+        else
+          value.each do |val|
             if MaybeURI.new(val).uri?
               val_array << TriplePoweredResource.new(RDF::URI(val))
             else
               val_array << val
             end
           end
+          file_attributes[key] = val_array
         end
-        file_attributes[key] = val_array
       end
     end
 
