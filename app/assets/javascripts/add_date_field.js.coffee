@@ -1,4 +1,6 @@
 jQuery ->
+  today = new Date()
+
   ###*
   # Binding to the click event of the add_new_date_type button to dynamically
   # add the appropriate field and html for handling this new type of date.
@@ -56,15 +58,24 @@ jQuery ->
   # of previous bindings, data, and to be assigned a unique ID.
   ###
   bind_all_datepickers = () ->
+    #TODO: this is catching the new input even though it shouldn't
+    datepicker_count = $('.date-picker-enabled')
+      .parents(".form-group")
+      .find("input[type=text].hasDatepicker")
+      .length
     $('.date-picker-enabled')
       .parents(".form-group")
       .find("input[type=text]")
-      .each((i) ->
-        $(this).removeClass('hasDatepicker')
-          .removeData('datepicker')
-          .unbind()
-          .attr('id', 'datepicker_' + i)
-          .datepicker({dateFormat: 'yy-mm-dd'})
+      .each(() ->
+        if $(this).data("datepicker") == undefined
+          datepicker_count += 1
+          $(this)
+            .removeClass('hasDatepicker')
+            .unbind()
+            .removeData()
+            .attr('id', 'datepicker_' + datepicker_count)
+            .datepicker({dateFormat: 'yy-mm-dd',  setDate: today })
+          return
       )
     return
 
