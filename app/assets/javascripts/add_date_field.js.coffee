@@ -58,7 +58,9 @@ jQuery ->
   # of previous bindings, data, and to be assigned a unique ID.
   ###
   bind_all_datepickers = () ->
-    #TODO: this is catching the new input even though it shouldn't
+    #determine how many existing datepickers are on the page, that way the
+    #counter can be incremented to ensure a unique id will be set if a new
+    #datepicker was dynamically added
     datepicker_count = $('.date-picker-enabled')
       .parents(".form-group")
       .find("input[type=text].hasDatepicker")
@@ -67,6 +69,8 @@ jQuery ->
       .parents(".form-group")
       .find("input[type=text]")
       .each(() ->
+        #a dynamically added date field will not have data('datepicker') yet, so
+        #if it is currently undefined, then set the field to be a datepicker
         if $(this).data("datepicker") == undefined
           datepicker_count += 1
           $(this)
