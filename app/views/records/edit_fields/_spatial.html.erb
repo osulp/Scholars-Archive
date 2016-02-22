@@ -38,19 +38,16 @@
           </button>
         </div>
       </div>
-      <div class="generic_file_point">
-        <div class="row">
-          <div class="col-sm-12">
-            <h4>Point</h4>
-          </div>
-          <div class="col-sm-6">
-            <%= f.input :decimalLatitude, as: :multi_value, :label_html => {:class => "geo-header-label"}%>
-          </div>
-          <div class="col-sm-6">
-            <%= f.input :decimalLongitude, as: :multi_value, :label_html => {:class => "geo-header-label"}%>
-          </div>
-        </div>
+
+      <div class="input-edit-field-partials">
+        <%# <%= render_edit_field_partial(:bbox, f: f) %>
       </div>
+      <div class="form-group generic_file_point">
+        <%= render_edit_field_partial(:nested_geo_points, f: f) %>
+      </div>
+
+      <h4>Geonames</h4>
+      <%= f.input :spatial, as: :multi_value, :label_html => {:class => "geo-header-label"} %>
 
       <% f.object.class.geo_terms.each do |geo_term| %>
         <% unless f.object.model.get_values(geo_term).empty? %>
