@@ -26,20 +26,6 @@ class FileEditForm < FilePresenter
     end
     permitted << { :keyword => [] }
     permitted << { :creator => [] }
-    permitted << { :rights => [] }
-    permitted << { :resource_type => [] }
-    permitted << { :contributor => [] }
-    permitted << { :description => [] }
-    permitted << { :date_created => [] }
-    permitted << { :identifier => [] }
-    permitted << { :based_near => [] }
-    permitted << { :related_url => [] }
-    permitted << { :language => [] } 
-    permitted << { :publisher => [] }
-    permitted << { :spatial => [] }
-    permitted << { :provenance => [] }
-    permitted << { :date => [] }
-    permitted << { :doi => [] }
     permitted << {
       :nested_authors_attributes => [
         :id,
