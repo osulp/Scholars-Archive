@@ -24,6 +24,8 @@ module SufiaHelper
     link_url = catalog_index_path(p)
     if fieldvalue["preflabel"]
       display = displayvalue.blank? ? fieldvalue["preflabel"] : displayvalue
+    elsif fieldvalue["id"]
+      display = displayvalue.blank? ? fieldvalue["id"] : displayvalue
     else
       display = displayvalue.blank? ? fieldvalue : displayvalue
     end
