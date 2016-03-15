@@ -73,6 +73,8 @@ gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails
 gem 'devise_cas_authenticatable'
 gem 'hydra-editor', :github => "jechols/hydra-editor", :branch => "feature/configurable-field-generator"
 gem 'attr_extras'
+# perform server-side Google Analytics events/views/etc
+gem 'staccato'
 
 group :development, :test do
   # gem 'jettywrapper'
