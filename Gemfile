@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'sufia', github: "osulp/sufia", branch: 'master'
+gem 'sufia', github: "osulp/sufia", branch: '6.x-stable-dev'
 gem 'kaminari', github: 'jcoyne/kaminari', branch: 'sufia'
 gem 'active-fedora', :github => 'projecthydra/active_fedora'
 
