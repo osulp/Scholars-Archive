@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Scholars Archive Embargo Lifting Status</h1>
+    <% if @error %>
+      <h1 style='color: red;'><%= @error %></h1>
+    <% end %>
+    <h3><%= @items.count %> embargo<%= @items.count != 1 ? "es" : "" %> <%= @items.count != 1 ? "were" : "was" %> lifted.</h3>
+    <% @items.each do |item| %>
+      <p style='width=100%;'>
+        <a href="<%= sufia.generic_file_url(item) %>"><%= item.label %></a> deposited by <%= item.depositor %> on <%= item.date_uploaded %>
+      </p>
+    <% end %>
+  </body>
+</html>

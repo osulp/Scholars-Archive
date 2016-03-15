@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module ScholarsArchive
   class Application < Rails::Application
     ::APPLICATION_CONFIG = YAML.load_file(Rails.root.join('config/config.yml'))|| {}
-    
+
     config.generators do |g|
       g.test_framework :rspec, :spec => true
     end
@@ -32,5 +32,7 @@ module ScholarsArchive
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.autoload_paths += %W(#{config.root}/lib)
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_mailer.default_url_options = { :host => APPLICATION_CONFIG["notifications"]["url_host"] }
   end
 end
