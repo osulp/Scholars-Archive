@@ -51,8 +51,8 @@
 
     <label>
       <input type="radio" id="visibility_embargo" name="visibility" value="<%=Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO %>" <% if !embargo_perm.blank? %> checked="true"<% end %>/>
-      <span class="label label-warning">Embargo</span> An embargo will temporarily restrict access to this item. Examples for why one might request an embargo include: need to publish on the content in a journal or other publishing venue or intellectual property issues (e.g. patentable information). 
-    </label> 
+      <span class="label label-warning">Embargo</span> An embargo will temporarily restrict access to this item. Examples for why one might request an embargo include: need to publish on the content in a journal or other publishing venue or intellectual property issues (e.g. patentable information).
+    </label>
   </div>
   <div class="form-group form-embargo row">
     <div id="embargo-options" class="form-inline">
@@ -150,7 +150,7 @@
         <div class="col-sm-8">
           <%= permission_fields.select :access, Sufia.config.permission_levels, {}, class: 'form-control select_perm' %>
         </div>
-        <button class="btn close remove_perm">X</button>
+        <button class="btn close remove_perm" data-index="<%= permission_fields.index %>">X</button>
       </td>
     </tr>
   <% end %>
