@@ -10,12 +10,12 @@ class DownloadsController < ApplicationController
       #
       #Staccato on Github: https://github.com/tpitale/staccato
       tracker = Staccato.tracker(Sufia.config.google_analytics_id)
-      tracker.event(category: 'downloads',
-                    action: 'direct-link',
-                    label: request.url,
+      tracker.event(category: 'Files',
+                    action: 'Downloaded',
+                    label: "sufia:#{params[:id]}",
                     #using linkid because it seemed generic enough yet allows
                     #for text values
-                    linkid: params[:id])
+                    linkid: request.url)
       # Setting the title to be the download id provides an easy way to group
       # and count on GA
       tracker.pageview(path: request.url,
