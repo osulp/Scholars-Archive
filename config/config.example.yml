@@ -2,3 +2,14 @@ rubycas:
   cas_base_url: https://cas.myorganization.com
   validate_url: https://cas.myorganization.com/cas/samlValidate
   cas_destination_logout_param_name: url
+
+# Configurations for types of notification, such as a daily cron to handle
+# lifting embargoes. Find this in lib/tasks/process_embargoes.rake
+notifications:
+  # ActionMailer needs to understand the server host in order to generate links
+  url_host: "<SERVER FQDN>"
+  # Configuration specific to the embargoes lifting functionality
+  embargoes_lifting:
+    from: 'noreply@oregonstate.edu'
+    to: ['<EMAIL_ADDRESS>', '<EMAIL_ADDRESS>']
+    subject: "[Scholars Archive] Daily Embargoes Lifting Status"
