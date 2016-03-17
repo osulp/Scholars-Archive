@@ -6,7 +6,7 @@ task :process_embargoes => :environment do |t|
     config = APPLICATION_CONFIG["notifications"]["embargoes_lifting"]
     subject = config["subject"]
     from = config["from"]
-    to = config["to"]
+    to = config["to"].split(',')
     error = nil
     if items.length > 0
       items.each do |item|
