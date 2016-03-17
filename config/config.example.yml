@@ -7,9 +7,10 @@ rubycas:
 # lifting embargoes. Find this in lib/tasks/process_embargoes.rake
 notifications:
   # ActionMailer needs to understand the server host in order to generate links
-  url_host: "<SERVER FQDN>"
+  url_host: <%= ENV['SCHOLARSARCHIVE_WWW_HOST'] || 'localhost' %>
+  support_email: <%= ENV['SCHOLARSARCHIVE_SUPPORT_EMAIL'] || 'libtech.support@oregonstate.edu' %>
   # Configuration specific to the embargoes lifting functionality
   embargoes_lifting:
     from: 'noreply@oregonstate.edu'
-    to: ['<EMAIL_ADDRESS>', '<EMAIL_ADDRESS>']
+    to: <%= ENV['SCHOLARSARCHIVE_EMBARGOES_LIFTING_EMAILS'] || 'noreply@oregonstate.edu' %>
     subject: "[Scholars Archive] Daily Embargoes Lifting Status"

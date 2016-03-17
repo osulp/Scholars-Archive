@@ -8,7 +8,7 @@ require_relative '../lib/scholars_archive'
 Bundler.require(*Rails.groups)
 module ScholarsArchive
   class Application < Rails::Application
-    ::APPLICATION_CONFIG = YAML.load_file(Rails.root.join('config/config.yml'))|| {}
+    ::APPLICATION_CONFIG = YAML.load(ERB.new(File.read(Rails.root.join('config/config.yml'))).result) || {}
 
     config.generators do |g|
       g.test_framework :rspec, :spec => true
