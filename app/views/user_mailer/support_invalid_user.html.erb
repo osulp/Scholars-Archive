@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      .error { color: red; font-weight: bold; }
+      p { width: 100%; margin: 0; padding: 0; }
+    </style>
+  </head>
+  <body>
+    <h1>Scholars Archive Invalid User Detected</h1>
+      <p>
+        <a href="<%= sufia.profiles_url() %>">View All Users</a>
+      </p>
+      <p>
+        <b>ID: </b><span><%= @user.id %></span>
+      </p>
+      <p>
+        <b>Username: </b><a href="<%= sufia.profile_url(@user) %>" class="<%= @user.username.empty? ? 'error' : '' %>"><%= @user.username.empty? ? 'Not Set' : @user.username %></a>
+      </p>
+      <p>
+        <b>Email: </b><span class="<%= @user.email.empty? ? 'error' : '' %>"><%= @user.email.empty? ? 'Not Set' : @user.email %></span>
+      </p>
+  </body>
+</html>
