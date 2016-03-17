@@ -7,8 +7,10 @@
           <% unless a.object.new_record? %>
             <%= a.input :id, :as => :hidden %>
           <% end %>
-          <%= a.input :decimalLatitude, :wrapper_html => {:class => "col-xs-6"} %>
-          <%= a.input :decimalLongitude, :wrapper_html => {:class => "col-xs-6"} %>
+
+          <%= a.input :label, :wrapper_html => {:class => "col-xs-12"} %>
+          <%= a.input :latitude, :wrapper_html => {:class => "col-xs-6"} %>
+          <%= a.input :longitude, :wrapper_html => {:class => "col-xs-6"} %>
         </li>
       <% end %>
     </ul>

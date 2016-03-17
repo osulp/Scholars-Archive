@@ -24,8 +24,8 @@ class GenericFile < ActiveFedora::Base
     super.tap do |doc|
       doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_authors_label", :symbol)] = nested_authors.flat_map(&:name).select(&:present?)
       doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_authors_label", :stored_searchable)] = nested_authors.flat_map(&:name).select(&:present?)
-      doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_geo_points_label", :symbol)] = nested_geo_points.flat_map(&:name).select(&:present?)
-      doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_geo_points_label", :stored_searchable)] = nested_geo_points.flat_map(&:name).select(&:present?)
+      doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_geo_points_label", :symbol)] = nested_geo_points.flat_map(&:label).select(&:present?)
+      doc[ActiveFedora::SolrQueryBuilder.solr_name("nested_geo_points_label", :stored_searchable)] = nested_geo_points.flat_map(&:label).select(&:present?)
     end
   end
 end

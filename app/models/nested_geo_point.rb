@@ -1,6 +1,7 @@
 class NestedGeoPoint < ActiveTriples::Resource
-  property :decimalLatitude, :predicate => RDF::URI("http://rs.tdwg.org/dwc/terms/decimalLatitude")
-  property :decimalLongitude, :predicate => RDF::URI("http://rs.tdwg.org/dwc/terms/decimalLongitude")
+  property :label, :predicate => RDF::DC.coverage
+  property :latitude, :predicate => RDF::URI("http://rs.tdwg.org/dwc/terms/decimalLatitude")
+  property :longitude, :predicate => RDF::URI("http://rs.tdwg.org/dwc/terms/decimalLongitude")
 
   def initialize(uri=RDF::Node.new, parent=nil)
     if uri.try(:node?)

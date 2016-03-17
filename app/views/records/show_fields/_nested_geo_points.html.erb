@@ -1,0 +1,8 @@
+<% record.nested_geo_points.each do |point| %>
+  <span itemprop="place" itemscope itemtype="http://schema.org/GeoCoordinates">
+    <% point["label"].each do |label| %>
+      <span itemprop="label"><%= link_to_field('nested_geo_points_label', label) %></span>
+    <% end %>
+  </span>
+  <br />
+<% end %>
