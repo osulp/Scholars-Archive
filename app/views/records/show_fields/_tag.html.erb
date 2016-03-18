@@ -1,5 +1,5 @@
 <% record.keyword.each do |keyword| %>
-  <span itemprop="keyword" itemscope itemtype="http://id.loc.gov/authorities/subjects">
+  <span itemprop="keyword" itemscope itemtype="https://schema.org/keywords">
     <%= link_to_facet(keyword, Solrizer.solr_name(:keyword, :facetable)) %>
   </span>
   <br />
