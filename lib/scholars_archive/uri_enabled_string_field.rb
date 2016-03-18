@@ -40,6 +40,11 @@ module ScholarsArchive
     end
 
     def label
+      if options[:value].respond_to?(:preferred_label)
+        return options[:value].preferred_label
+      else
+        return options[:value].rdf_label.first.to_s
+      end
       options[:value].rdf_label.first.to_s
     end
 

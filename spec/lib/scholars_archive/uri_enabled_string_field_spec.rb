@@ -40,6 +40,32 @@ RSpec.describe ScholarsArchive::URIEnabledStringField do
         subject.field
       end
     end
+    context "If the triple powered resource responds to preferred_label" do
+      let(:value) {instance_double(TriplePoweredResource)}
+      before do
+        allow(value).to receive(:rdf_label).and_return([""])
+        allow(value).to receive(:rdf_subject)
+      end
+
+      it "it should receive preferred label" do
+        allow(value).to receive(:preferred_label)
+        subject.field
+        expect(value).to have_received(:preferred_label)
+        expect(value).to_not have_received(:rdf_label)
+      end
+    end
+    context "If the triple powered resource does not respond to preferred_label" do
+      let(:value) {instance_double(TriplePoweredResource)}
+      before do
+        allow(value).to receive(:rdf_label).and_return([""])
+        allow(value).to receive(:rdf_subject)
+      end
+
+      it "it should receive rdf_label" do
+        subject.field
+        expect(value).to have_received(:rdf_label)
+      end
+    end
   end
 
   def build_builder

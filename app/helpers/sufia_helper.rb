@@ -5,7 +5,7 @@ module SufiaHelper
 
   def link_to_facet(field, field_string)
     if field['preflabel']
-      link_to(field['preflabel'].first, catalog_index_path(add_facet_params(field_string, field['id'])))
+      link_to(preffered_uri_label(field), catalog_index_path(add_facet_params(field_string, field['id'])))
     else
       link_to(field, add_facet_params(field_string, field).merge!(controller: "catalog", action: "index"))
     end
@@ -31,4 +31,9 @@ module SufiaHelper
     end
     link_to(display, link_url)
   end
+
+  def preffered_uri_label(field)
+    TriplePoweredResource.new(RDF::URI(field['id'])).preferred_label
+  end
 end
+
