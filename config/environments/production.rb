@@ -54,6 +54,11 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
+  # Rotate logs in a something a bit more sane and sensitive to disk fillage,
+  # the second argument is how many to keep in rotation, and the third argument
+  # is the size of the log before it is rotated
+  config.logger = Logger.new(Rails.root.join('log', "#{Rails.env}.log"), 10, 10.megabytes)
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
