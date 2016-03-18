@@ -43,17 +43,15 @@ class GenericFilesController < ApplicationController
   # after a file has been updated, determine if there are users to notify that
   # they have access shared to them
   def notify_if_shared
-
     if !flash[:error]
       unless params[:generic_file].nil?
         # updates to description or version will not include the permission
         # attributes, so no notification is relevant
         users = params[:generic_file][:permissions_attributes] || {}
         users.each_pair do |k,u|
-          binding.pry
           if u[:type] == "user"
             user = User.find_by_username(u[:name])
-            if user.email.empty?
+            if user.has_default_email?
               UserMailer.support_invalid_user(user).deliver_now
             else
               UserMailer.shared_access_to(user, @generic_file, u[:access]).deliver_now
@@ -63,6 +61,4 @@ class GenericFilesController < ApplicationController
       end
     end
   end
-
-
 end
