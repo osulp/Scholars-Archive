@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe "edit batch form and find proper date fields", type: :feature do
   let(:user) do
-    User.create(:username => "test", :group_list => "admin")
+    User.create(:username => "test", :email => "noreply@oregonstate.edu", :group_list => "admin")
   end
 
   let(:file_title) { 'test file' }

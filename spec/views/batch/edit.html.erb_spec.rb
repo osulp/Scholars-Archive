@@ -12,7 +12,7 @@ RSpec.describe "batch/edit.html.erb" do
   before do
     assign :batch, batch
     assign :form, form
-    allow(controller).to receive(:current_user).and_return(User.create(:username => "bla@bla.org"))
+    allow(controller).to receive(:current_user).and_return(User.create(:email => 'noreply@oregonstate.edu', :username => "bla@bla.org"))
     render :template => "batch/edit.html.erb"
   end
 

@@ -47,7 +47,7 @@ RSpec.describe "edit button for help" do
 
   context "as an authenticated user" do
     let(:user) do
-      User.create(:username => "test", :group_list => "admin")
+      User.create(:username => "test", :email => 'noreply@oregonstate.edu', :group_list => "admin")
     end
     context "visit help page" do
       before do
