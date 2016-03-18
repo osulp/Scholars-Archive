@@ -39,4 +39,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Rotate logs in a something a bit more sane and sensitive to disk fillage,
+  # the second argument is how many to keep in rotation, and the third argument
+  # is the size of the log before it is rotated
+  config.logger = Logger.new(Rails.root.join('log', "#{Rails.env}.log"), 10, 1.megabytes)
 end
