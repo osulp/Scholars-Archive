@@ -12,6 +12,10 @@
           <td><%= work.nested_geo_points.join(", ") %></td>
         </tr>
         <tr>
+          <th><span class="attribute-label h4">Geo Bbox:</span></th>
+          <td><%= work.nested_geo_bbox.join(", ") %></td>
+        </tr>
+        <tr>
           <th><span class="attribute-label h4">Description:</span></th>
           <td><%= iconify_auto_link(work.description) %></th>
         </tr>

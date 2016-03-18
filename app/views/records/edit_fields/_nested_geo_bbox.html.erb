@@ -1,0 +1,17 @@
+<div class="geo_bbox nested-field repeating-field">
+  <fieldset>
+    <ul class="listing">
+      <h4>Bounding box</h4>
+      <%= f.simple_fields_for :nested_geo_bbox do |a| %>
+        <li class="field-wrapper">
+          <% unless a.object.new_record? %>
+            <%= a.input :id, :as => :hidden %>
+          <% end %>
+
+          <%= a.input :label, :wrapper_html => {:class => "col-xs-12"} %>
+          <%= a.input :bbox, :wrapper_html => {:class => "col-xs-12"} %>
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
+</div>

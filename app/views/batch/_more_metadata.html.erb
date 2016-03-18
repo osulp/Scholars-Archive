@@ -1,6 +1,6 @@
 <div id="more_descriptions">
   <button id="hide_addl_descriptions" class="btn btn-default" aria-label="hide additional metadata description fields">Hide Additional Fields</button>
-  <% (f.object.terms - [:title, :creator, :rights, :resource_type, :nested_authors, :nested_geo_points]).each do |term| %>
+  <% (f.object.terms - [:title, :creator, :rights, :resource_type, :nested_authors, :nested_geo_points, :nested_geo_bbox]).each do |term| %>
     <%# <%= f.input term, as: :multi_value_with_help, input_html: { required: false} %>
     <%= render_edit_field_partial(term, { f: f, as: :multi_value_with_help } ) %>
   <% end %>

@@ -13,6 +13,5 @@ class ScholarsArchiveSchema < ActiveTriples::Schema
   property :collected, predicate: ::RDF::URI('http://rs.tdwg.org/dwc/terms/measurementDeterminedBy')
   property :issued, predicate: ::RDF::DC.issued
   property :valid_date, predicate: ::RDF::DC.valid
-  property :bbox, predicate: ::RDF::URI('http://opaquenamespace.org/ns/georss/box')
 
 end
