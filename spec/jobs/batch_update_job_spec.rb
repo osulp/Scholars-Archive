@@ -11,7 +11,7 @@ describe BatchUpdateJob do
   let(:public_value) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC }
   let(:embargo) { Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO }
 
-  let(:user) { User.create(:username => "banana") }
+  let(:user) { User.create(:username => "banana", :email => "noreply@oregonstate.edu") }
   let(:batch) { Batch.create }
 
   let!(:file) do
@@ -33,7 +33,7 @@ describe BatchUpdateJob do
   end
 
 
-  describe "embargo visibility" do 
+  describe "embargo visibility" do
 
     it 'should work' do
       expect {job.run}.not_to raise_error

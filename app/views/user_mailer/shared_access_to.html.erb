@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      .error { color: red; font-weight: bold; }
+      p { width: 100%; margin: 0; padding: 0; }
+    </style>
+  </head>
+  <body>
+    <h1>You've been granted <%= @access_level %> access to '<%= @generic_file[:title].first %>'</h1>
+      <p>
+        <a href="<%= sufia.generic_file_url(@generic_file) %>">Click here to access the archive.</a>
+      </p>
+  </body>
+</html>
