@@ -57,8 +57,8 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name("resource_type", :symbol), label: "Resource Type", limit: 5
     config.add_facet_field solr_name("nested_authors_label", :symbol), label: "Author", limit: 5
-    config.add_facet_field solr_name("nested_geo_points_label", :symbol), label: "Geo Point", limit: 5
-    config.add_facet_field solr_name("nested_geo_bbox_label", :symbol), label: "Geo Bbox", limit: 5
+    config.add_facet_field solr_name("nested_geo_points_label", :symbol), label: "Geographic Point", limit: 5
+    config.add_facet_field solr_name("nested_geo_bbox_label", :symbol), label: "Bounding Box", limit: 5
     config.add_facet_field solr_name("tag", :symbol), label: "Keyword", limit: 5
     config.add_facet_field solr_name("subject", :symbol), label: "Subject", limit: 5
     config.add_facet_field solr_name("language", :symbol), label: "Language", limit: 5
@@ -79,8 +79,8 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("subject", :stored_searchable), label: "Subject", itemprop: 'about'
     config.add_index_field solr_name("nested_authors_label", :stored_searchable), label: "Author", itemprop: 'author'
 
-    config.add_index_field solr_name("nested_geo_points_label", :stored_searchable), label: "Geo Point", itemprop: 'point'
-    config.add_index_field solr_name("nested_geo_bbox_label", :stored_searchable), label: "Geo Bbox", itemprop: 'point'
+    config.add_index_field solr_name("nested_geo_points_label", :stored_searchable), label: "Geographic Point", itemprop: 'point'
+    config.add_index_field solr_name("nested_geo_bbox_label", :stored_searchable), label: "Bounding Box", itemprop: 'bbox'
     config.add_index_field solr_name("contributor", :stored_searchable), label: "Contributor", itemprop: 'contributor'
     config.add_index_field solr_name("publisher", :stored_searchable), label: "Publisher", itemprop: 'publisher'
     config.add_index_field solr_name("based_near", :stored_searchable), label: "Location", itemprop: 'contentLocation'
@@ -100,8 +100,8 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("tag", :stored_searchable), label: "Keyword"
     config.add_show_field solr_name("subject", :stored_searchable), label: "Subject"
     config.add_show_field solr_name("nested_authors_label", :stored_searchable), label: "Author"
-    config.add_show_field solr_name("nested_geo_points_label", :stored_searchable), label: "Geo Point"
-    config.add_show_field solr_name("nested_geo_bbox_label", :stored_searchable), label: "Geo Bbox"
+    config.add_show_field solr_name("nested_geo_points_label", :stored_searchable), label: "Geographic Point"
+    config.add_show_field solr_name("nested_geo_bbox_label", :stored_searchable), label: "Bounding Box"
     config.add_show_field solr_name("contributor", :stored_searchable), label: "Contributor"
     config.add_show_field solr_name("publisher", :stored_searchable), label: "Publisher"
     config.add_show_field solr_name("based_near", :stored_searchable), label: "Location"
@@ -171,7 +171,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('nested_geo_points_label') do |field|
-      field.label = "Geo Point"
+      field.label = "Geographic Point"
       field.solr_parameters = { :"spellcheck.dictionary" => "nested_geo_points_label" }
       solr_name = solr_name("nested_geo_points_label", :stored_searchable)
       field.solr_local_parameters = {
@@ -181,7 +181,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('nested_geo_bbox_label') do |field|
-      field.label = "Geo Bbox"
+      field.label = "Bounding Box"
       field.solr_parameters = { :"spellcheck.dictionary" => "nested_geo_bbox_label" }
       solr_name = solr_name("nested_geo_bbox_label", :stored_searchable)
       field.solr_local_parameters = {
