@@ -19,6 +19,13 @@ GIT
       simple_form (~> 3.1.0)
 
 GIT
+  remote: git://github.com/osulp/geonames.git
+  revision: fefb5c14a01eadfe387d3ffddf1faa59f744b2a6
+  specs:
+    geonames-wrapper (1.3.5)
+      addressable (~> 2.3)
+
+GIT
   remote: git://github.com/osulp/rubycas-client-rails.git
   revision: 6eab4d18cfd47c34027158841268707fd50b050c
   specs:
@@ -744,6 +751,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.3)
   devise_cas_authenticatable
+  geonames-wrapper!
   hydra-editor!
   jbuilder (~> 2.0)
   jettywrapper!

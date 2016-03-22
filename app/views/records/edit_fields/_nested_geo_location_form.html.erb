@@ -1,3 +1,4 @@
+<<<<<<< 3b7a9acc27b772fa6943c564e8254fbac986c0c7
 <div id="generic-file-location-form" class="form-group">
   <div class="geo_point nested-field repeating-field">
     <fieldset>
@@ -40,4 +41,41 @@
       </ul>
     </fieldset>
   </div>
+=======
+<div class="geo_location nested-field repeating-field">
+  <fieldset>
+    <ul class="listing">
+      <legend>
+        <h4 style="float:left; margin-right: 6px;">Locations</h4>
+        <i class='help-icon' data-toggle="modal" data-target="#myGeolocationsModal"></i>
+      </legend>
+    <div class="modal fade" id="myGeolocationsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Geonames.org Links Summary</h4>
+          </div>
+          <div class="modal-body">
+            <%= raw t('sufia.geo_location_modal') %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%= f.simple_fields_for :nested_geo_location do |a| %>
+        <li class="field-wrapper">
+          <% if a.object.new_record? %>
+            <%= a.input :geonames_url, :input_html => { :type => "text"}, :wrapper_html => {:class => "col-xs-12"}, :label => "Geonames.org Link or ID" %>
+          <% else %>
+            <%= a.input :id, :as => :hidden %>
+            <a class="geonames_link" href="<%= a.object.geonames_url.first %>" target="_blank"><%= a.object.name.first %></a>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </fieldset>
+>>>>>>> geonames.org RDF integration; edit form UI updates and property handling
 </div>

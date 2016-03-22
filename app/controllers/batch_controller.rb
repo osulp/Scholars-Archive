@@ -4,10 +4,12 @@ class BatchController < ApplicationController
   self.edit_form_class = BatchEditForm
 
   def update
-    params["generic_file"]["nested_geo_bbox_attributes"].each do |box, value|
-      if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| f.empty? }
-        bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
-        value["bbox"] = bbox.to_s
+    unless params["generic_file"]['nested_geo_bbox_attributes'].nil?
+      params["generic_file"]["nested_geo_bbox_attributes"].each do |box, value|
+        if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| f.blank? }
+          bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
+          value["bbox"] = bbox.to_s
+        end
       end
     end
     super

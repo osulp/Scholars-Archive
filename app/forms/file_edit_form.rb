@@ -18,13 +18,14 @@ class FileEditForm < FilePresenter
   #   that might be combined with other fields.. so make sure _default.html.erb
   #   will not render these automatically.
   def self.hidden_fields
-    [:date]
+    [:date, :nested_geo_location]
   end
 
   def initialize_fields
     model.nested_authors.build
     model.nested_geo_points.build
     model.nested_geo_bbox.build
+    model.nested_geo_location.build
     super
   end
 
@@ -61,6 +62,14 @@ class FileEditForm < FilePresenter
         :_destroy,
         :label,
         :bbox,
+      ]
+    }
+    permitted << {
+      :nested_geo_location_attributes => [
+        :id,
+        :_destroy,
+        :name,
+        :geonames_url
       ]
     }
 
