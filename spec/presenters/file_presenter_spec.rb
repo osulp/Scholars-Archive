@@ -17,4 +17,17 @@ RSpec.describe FilePresenter do
       expect(subject).to respond_to :nested_authors_attributes=
     end
   end
+
+  describe "#nested_geo_bbox_attributes=" do
+    it "should delegate down to the object" do
+      allow(file).to receive(:nested_geo_bbox_attributes=)
+
+      subject.nested_geo_bbox_attributes = {}
+
+      expect(file).to have_received(:nested_geo_bbox_attributes=).with({})
+    end
+    it "should respond to it" do
+      expect(subject).to respond_to :nested_geo_bbox_attributes=
+    end
+  end
 end
