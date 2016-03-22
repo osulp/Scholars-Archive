@@ -111,6 +111,10 @@ table.table-analytics tr td:first-child {
   margin-bottom: 1em;
 }
 
+.bbox_field {
+  display:none
+}
+
 /*Mobile phone*/
 @media (max-width: 479px) {
   #masthead.container-fluid {

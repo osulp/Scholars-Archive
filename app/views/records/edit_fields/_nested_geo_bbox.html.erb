@@ -9,7 +9,13 @@
           <% end %>
 
           <%= a.input :label, :wrapper_html => {:class => "col-xs-12"} %>
-          <%= a.input :bbox, :wrapper_html => {:class => "col-xs-12"} %>
+          <%= a.input :bbox, :wrapper_html => {:class => "col-xs-12 bbox_field"} %>
+
+          <%= a.input :bbox_lat_north, :wrapper_html => {:class => "col-xs-12"} %>
+          <%= a.input :bbox_lon_west, :wrapper_html => {:class => "col-xs-12"} %>
+          <%= a.input :bbox_lat_south, :wrapper_html => {:class => "col-xs-12"} %>
+          <%= a.input :bbox_lon_east, :wrapper_html => {:class => "col-xs-12"} %>
+
         </li>
       <% end %>
     </ul>

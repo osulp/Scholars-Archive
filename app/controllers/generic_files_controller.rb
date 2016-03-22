@@ -12,6 +12,7 @@ class GenericFilesController < ApplicationController
     file_attributes = edit_form_class.model_attributes(params[:generic_file])
     updated_attributes = AttributeURIConverter.new(file_attributes).convert_attributes
     actor.update_metadata(updated_attributes, params[:visibility])
+    # binding.pry
   end
 
   # routed to /files/:id/daily_stats

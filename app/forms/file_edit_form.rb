@@ -6,7 +6,7 @@ class FileEditForm < FilePresenter
   include HydraEditor::Form::Permissions
   self.model_class = GenericFile
   self.required_fields = [:title, :rights]
-  self.terms -= [:accepted, :available, :copyrighted, :collected, :creator, :created, :issued, :submitted, :modified, :valid_date, :keyword, :bbox]
+  self.terms -= [:accepted, :available, :copyrighted, :collected, :creator, :created, :issued, :submitted, :modified, :valid_date, :keyword]
 
   def has_content?
     model.content.has_content?
@@ -60,7 +60,11 @@ class FileEditForm < FilePresenter
         :id,
         :_destroy,
         :label,
-        :bbox
+        :bbox,
+        :bbox_lat_north,
+        :bbox_lon_west,
+        :bbox_lat_south,
+        :bbox_lon_east
       ]
     }
 

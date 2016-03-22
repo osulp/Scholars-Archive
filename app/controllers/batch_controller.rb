@@ -3,6 +3,13 @@ class BatchController < ApplicationController
   include ScholarsArchive::BatchControllerBehavior
   self.edit_form_class = BatchEditForm
 
+  def update
+    params["generic_file"]["nested_geo_bbox_attributes"].each do |box, value|
+      value["bbox"] = value["bbox_lat_north"] + value["bbox_lon_west"] + value["bbox_lat_south"] + value["bbox_lon_east"]
+    end
+    super
+  end
+
   protected
 
   def edit_form
