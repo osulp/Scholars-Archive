@@ -30,7 +30,8 @@ module ScholarsArchive
     # config.i18n.default_locale = :de
     #
     # Web Console line for running tests
-    config.web_console.development_only = false
+    #config.web_console.development_only = false
+
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.autoload_paths += %W(#{config.root}/lib)
