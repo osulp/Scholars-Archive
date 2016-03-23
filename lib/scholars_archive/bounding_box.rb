@@ -26,8 +26,8 @@ module ScholarsArchive
       factory = ::RGeo::Cartesian.preferred_factory()
       bbox = ::RGeo::Cartesian::BoundingBox.new(factory)
 
-      bbox_.add(factory.point(west, north))
-      bbox_.add(factory.point(south, east))
+      bbox.add(factory.point(west, north))
+      bbox.add(factory.point(south, east))
 
       h = { :type => "Feature", :bbox => [[west, south, east, north]], :geometry => RGeo::GeoJSON.encode(bbox.to_geometry) }
       h.to_json
