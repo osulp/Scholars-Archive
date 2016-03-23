@@ -61,10 +61,6 @@ class FileEditForm < FilePresenter
         :_destroy,
         :label,
         :bbox,
-        :bbox_lat_north,
-        :bbox_lon_west,
-        :bbox_lat_south,
-        :bbox_lon_east
       ]
     }
 
