@@ -7,7 +7,7 @@ class DeleteFeaturedResearchersController < ApplicationController
       flash[:success] = "Sucessfully deleted."
     else
       flash[:error] = "Error in deleting entry."
-    end 
+    end
     redirect_to :back
   end
 
