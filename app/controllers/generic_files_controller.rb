@@ -12,7 +12,18 @@ class GenericFilesController < ApplicationController
     file_attributes = edit_form_class.model_attributes(params[:generic_file])
     updated_attributes = AttributeURIConverter.new(file_attributes).convert_attributes
     actor.update_metadata(updated_attributes, params[:visibility])
-    # binding.pry
+  end
+
+  # routed to /files/:id/edit
+  def edit
+    @generic_file.nested_geo_bbox.each do |box|
+      box_array = box.bbox.to_a.first.split(",").map { |s| s.tr('[]"','').to_s }
+      box.bbox_lat_north = box_array[0]
+      box.bbox_lon_west = box_array[1]
+      box.bbox_lat_south = box_array[2]
+      box.bbox_lon_east = box_array[3]
+    end
+    super
   end
 
   # routed to /files/:id/daily_stats

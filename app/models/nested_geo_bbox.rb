@@ -1,10 +1,10 @@
 class NestedGeoBbox < ActiveTriples::Resource
   property :label, :predicate => RDF::DC.coverage
   property :bbox, :predicate => RDF::URI("http://opaquenamespace.org/ns/georss/box")
-  property :bbox_lat_north, :predicate => RDF::Literal
-  property :bbox_lon_west, :predicate => RDF::Literal
-  property :bbox_lat_south, :predicate => RDF::Literal
-  property :bbox_lon_east, :predicate => RDF::Literal
+  attr_accessor :bbox_lat_north
+  attr_accessor :bbox_lon_west
+  attr_accessor :bbox_lat_south
+  attr_accessor :bbox_lon_east
 
   def initialize(uri=RDF::Node.new, parent=nil)
     if uri.try(:node?)
