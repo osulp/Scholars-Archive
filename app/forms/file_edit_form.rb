@@ -12,6 +12,15 @@ class FileEditForm < FilePresenter
     model.content.has_content?
   end
 
+  # @param [Array] fields which shouldn't be automatically rendered by the form
+  #   builder.
+  # @note The fields specified here would intentionally be rendered in a partial
+  #   that might be combined with other fields.. so make sure _default.html.erb
+  #   will not render these automatically.
+  def self.hidden_fields
+    [:date]
+  end
+
   def initialize_fields
     model.nested_authors.build
     super
@@ -46,7 +55,8 @@ class FileEditForm < FilePresenter
       :copyrighted,
       :collected,
       :issued,
-      :valid_date
+      :valid_date,
+      :date
     ]
   end
 end
