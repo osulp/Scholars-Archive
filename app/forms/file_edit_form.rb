@@ -18,7 +18,7 @@ class FileEditForm < FilePresenter
   #   that might be combined with other fields.. so make sure _default.html.erb
   #   will not render these automatically.
   def self.hidden_fields
-    [:date, :nested_geo_location]
+    [:date, :nested_geo_location, :nested_geo_bbox, :nested_geo_points]
   end
 
   def initialize_fields
