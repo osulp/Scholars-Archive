@@ -73,6 +73,7 @@ en:
         nested_authors: "Author"
         nested_geo_points: "Geographic Points"
         nested_geo_bbox: "Bounding Box"
+        nested_geo_location: "Geographic Location"
     metadata_help:
       generic_file:
         title: "Title of the digital object"

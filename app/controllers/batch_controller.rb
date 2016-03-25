@@ -1,6 +1,7 @@
 # app/controllers/batch_controller.rb
 class BatchController < ApplicationController
   include ScholarsArchive::BatchControllerBehavior
+  before_filter :update_nested_geo_location_attributes, :only => :update
   self.edit_form_class = BatchEditForm
 
   def update
@@ -29,6 +30,13 @@ class BatchController < ApplicationController
       "publisher" => [TriplePoweredResource.new(RDF::URI(I18n.t('form_defaults.publisher')))],
       "language" => [TriplePoweredResource.new(RDF::URI(I18n.t('form_defaults.language_uri')))]
     }
+  end
+
+  # after a file has been updated, determine if there are geo locations to set
+  def update_nested_geo_location_attributes
+    if !flash[:error]
+      self.params = NestedGeoLocation.set_nested_geo_locations(self.params)
+    end
   end
 
 end
