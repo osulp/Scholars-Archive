@@ -21,7 +21,6 @@ class NestedGeoLocation < ActiveTriples::Resource
 
   # after a file has been updated, determine if there are geo locations to set
   def self.set_nested_geo_locations(params)
-    binding.pry
     unless params[:generic_file][:nested_geo_location_attributes].nil?
       geo_locations = params[:generic_file][:nested_geo_location_attributes] || {}
       geo_locations.select{|k,v| v[:geonames_url].blank? == false && v[:id].nil? }.each_pair do |key, location|
@@ -45,5 +44,4 @@ class NestedGeoLocation < ActiveTriples::Resource
       params
     end
   end
-
 end
