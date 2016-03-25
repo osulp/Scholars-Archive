@@ -67,6 +67,7 @@ en:
         rid: "Researcher ID"
         nested_authors: "Author"
         nested_geo_points: "Geographic Points"
+        nested_geo_bbox: "Bounding Box"
     metadata_help:
       generic_file:
         title: "Title of the digital object"

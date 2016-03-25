@@ -30,10 +30,10 @@
 
             <%= a.input :label, :wrapper_html => {:class => "col-xs-12"} %>
             <%= a.input :bbox, :wrapper_html => {:class => "col-xs-12 bbox_field"} %>
-            <%= a.input :bbox_lat_north, :wrapper_html => {:class => "col-xs-6"} %>
-            <%= a.input :bbox_lon_west, :wrapper_html => {:class => "col-xs-6"} %>
-            <%= a.input :bbox_lat_south, :wrapper_html => {:class => "col-xs-6"} %>
-            <%= a.input :bbox_lon_east, :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lat_north, :label => "Latitude North", :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lon_west, :label => "Longitude West", :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lat_south, :label => "Latitude South", :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lon_east, :label => "Longitude East", :wrapper_html => {:class => "col-xs-6"} %>
 
           </li>
         <% end %>

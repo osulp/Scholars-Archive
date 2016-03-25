@@ -10,7 +10,7 @@ class GenericFilesController < ApplicationController
 
   def update_metadata
     params["generic_file"]["nested_geo_bbox_attributes"].each do |box, value|
-      if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| f.empty? }
+      if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| f.blank? }
         bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
         value["bbox"] = bbox.to_s
       end
@@ -23,7 +23,8 @@ class GenericFilesController < ApplicationController
   # routed to /files/:id/edit
   def edit
     @generic_file.nested_geo_bbox.each do |box|
-      box_array = box.bbox.to_a.first.split(",").map { |s| s.tr('[]" ','').to_s }
+      # bbox is stored as a string array of lat/long string arrays like: '["121.1", "121.2", "44.1", "44.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2","44.1","44.2"]
+      box_array = box.bbox.to_a.first.tr('[]" ','').split(',')
       box.bbox_lat_north = box_array[0]
       box.bbox_lon_west = box_array[1]
       box.bbox_lat_south = box_array[2]
