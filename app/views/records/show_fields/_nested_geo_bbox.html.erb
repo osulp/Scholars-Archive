@@ -1,0 +1,8 @@
+<% record.nested_geo_bbox.each do |box| %>
+  <span itemprop="place" itemscope itemtype="http://schema.org/box">
+    <% box["label"].each do |label| %>
+      <span itemprop="label"><%= link_to_field('nested_geo_bbox_label', label) %></span>
+    <% end %>
+  </span>
+  <br />
+<% end %>

@@ -26,8 +26,8 @@ jQuery ->
     html.find("ul.listing li:not(:last-child)").remove()
 
     #append and managing fields
-    $('.warning-anchor').append(notice) if $('.generic_file_'+type).length > 0
-    $('#date_wrapper').append(html) if $('.generic_file_'+type).length == 0
+    $('#date_wrapper .warning-anchor').append(notice) if $('.generic_file_'+type).length > 0 
+    $('#date_wrapper .group-wrapper').append(html) if $('.generic_file_'+type).length == 0
     $('.form-group.generic_file_'+type).manage_fields()
 
     html.find('.input-group-btn:first').remove() if html.find('.input-group-btn').length == 2

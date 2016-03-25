@@ -27,6 +27,14 @@ class SolrDocument
     self.[]("nested_authors_label_ssim") || []
   end
 
+  def nested_geo_points
+    self.[]("nested_geo_points_label_ssim") || []
+  end
+
+  def nested_geo_bbox
+    self.[]("nested_geo_bbox_label_ssim") || []
+  end
+
   def tag_list
     self.to_model.tag.to_a || []
   end

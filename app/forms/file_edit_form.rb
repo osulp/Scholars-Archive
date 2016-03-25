@@ -23,6 +23,8 @@ class FileEditForm < FilePresenter
 
   def initialize_fields
     model.nested_authors.build
+    model.nested_geo_points.build
+    model.nested_geo_bbox.build
     super
   end
 
@@ -33,6 +35,7 @@ class FileEditForm < FilePresenter
         date_term => []
       }
     end
+
     permitted << { :keyword => [] }
     permitted << { :creator => [] }
     permitted << {
@@ -43,6 +46,24 @@ class FileEditForm < FilePresenter
         :orcid
       ]
     }
+    permitted << {
+      :nested_geo_points_attributes => [
+        :id,
+        :_destroy,
+        :label,
+        :latitude,
+        :longitude
+      ]
+    }
+    permitted << {
+      :nested_geo_bbox_attributes => [
+        :id,
+        :_destroy,
+        :label,
+        :bbox,
+      ]
+    }
+
     permitted
   end
 
@@ -59,4 +80,5 @@ class FileEditForm < FilePresenter
       :date
     ]
   end
+
 end
