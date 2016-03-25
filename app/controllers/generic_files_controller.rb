@@ -4,6 +4,7 @@ class GenericFilesController < ApplicationController
   include ScholarsArchive::FilesControllerBehavior
 
   after_filter :notify_if_shared, :only => :update
+  before_filter :update_nested_geo_location_attributes, :only => :update
 
   self.presenter_class = FilePresenter
   self.edit_form_class = FileEditForm
@@ -78,6 +79,13 @@ class GenericFilesController < ApplicationController
           end
         end
       end
+    end
+  end
+
+  # after a file has been updated, determine if there are geo locations to set
+  def update_nested_geo_location_attributes
+    if !flash[:error]
+      self.params = NestedGeoLocation.set_nested_geo_locations(self.params)
     end
   end
 end

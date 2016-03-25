@@ -40,10 +40,25 @@ gem 'passenger'
 gem 'mysql2', '~> 0.3.18'
 
 gem 'linkeddata', '1.1.11'
-
 gem 'marmotta'
-
 gem 'config', github: 'railsconfig/config'
+gem 'rsolr', '~> 1.0.6'
+
+gem 'devise'
+gem 'devise-guests', '~> 0.3'
+gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
+gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
+gem 'devise_cas_authenticatable'
+
+gem 'hydra-editor', :github => "jechols/hydra-editor", :branch => "feature/configurable-field-generator"
+
+gem 'attr_extras'
+
+# perform server-side Google Analytics events/views/etc
+gem 'staccato'
+
+#geonames.org api
+gem 'geonames-wrapper', :github => "osulp/geonames", :require => 'geonames'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,22 +77,6 @@ group :development, :test do
   gem 'capybara'
   gem 'poltergeist'
   gem 'coveralls'
-end
-
-
-gem 'rsolr', '~> 1.0.6'
-gem 'devise'
-gem 'devise-guests', '~> 0.3'
-
-gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
-gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
-gem 'devise_cas_authenticatable'
-gem 'hydra-editor', :github => "jechols/hydra-editor", :branch => "feature/configurable-field-generator"
-gem 'attr_extras'
-# perform server-side Google Analytics events/views/etc
-gem 'staccato'
-
-group :development, :test do
   # gem 'jettywrapper'
   gem 'jettywrapper', :github => "projecthydra/jettywrapper"
 end

@@ -1,0 +1,8 @@
+<% record.nested_geo_location.each do |location| %>
+  <span itemprop="location" itemscope itemtype="http://schema.org/GeoCoordinates">
+
+    <a href="<%= location["geonames_url"].first %>" target="_blank"><%= location["name"].first %></a>
+
+  </span>
+  <br />
+<% end %>
