@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  mount Hydra::RoleManagement::Engine => '/'
+
   Hydra::BatchEdit.add_routes(self)
 
   mount CurationConcerns::Engine, at: '/'
