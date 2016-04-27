@@ -61,3 +61,8 @@ group :development, :test do
 end
 
 gem 'passenger'
+
+gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
+gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
+gem 'devise_cas_authenticatable'
+gem "hydra-role-management"
