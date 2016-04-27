@@ -10,8 +10,6 @@ dependencies:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
   post:
-    - fcrepo_wrapper --no-jms -p 9984:
-      background: true
-    - solr_wrapper -n hydra-test -p 9983:
-      background: true
+    - "fcrepo_wrapper --no-jms -p 9984"
+    - "solr_wrapper -n hydra-test -p 9983"
     - sleep 10
