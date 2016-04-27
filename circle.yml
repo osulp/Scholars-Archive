@@ -7,8 +7,8 @@ dependencies:
   cache_directories:
     - "tmp"
   post:
-    - fcrepo_wrapper --no-jms
+    - fcrepo_wrapper --no-jms:
         background: true
-    - solr_wrapper -n hydra-test
+    - solr_wrapper -n hydra-test:
         background: true
     - sleep 5
