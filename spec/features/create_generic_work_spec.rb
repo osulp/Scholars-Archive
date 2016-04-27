@@ -19,7 +19,7 @@ feature 'Create a GenericWork' do
     scenario do
       visit new_curation_concerns_generic_work_path
       fill_in 'Title', with: 'Test GenericWork'
-      click_button 'Create GenericWork'
+      click_button 'Save'
       expect(page).to have_content 'Test GenericWork'
     end
   end

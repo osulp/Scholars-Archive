@@ -7,10 +7,8 @@ dependencies:
   cache_directories:
     - "tmp"
   post:
-    - mv config/config.example.yml config/config.yml
-#database:
-#  post:
-#    - bundle exec rake jetty:clean
-#test:
-#  override:
-#    - bundle exec rake ci
+    - fcrepo_wrapper --no-jms
+        background: true
+    - solr_wrapper -n hydra-test
+        background: true
+    - sleep 5
