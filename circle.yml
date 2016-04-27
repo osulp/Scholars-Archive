@@ -7,6 +7,6 @@ dependencies:
   cache_directories:
     - "tmp"
   post:
-    - fcrepo_wrapper --no-jms -p 9984
-    - solr_wrapper -n hydra-test -p 9983
+    - "bundle exec fcrepo_wrapper --no-jms -p 9984"
+    - "bundle exec solr_wrapper -n hydra-test -p 9983"
     - sleep 10
