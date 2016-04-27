@@ -1,16 +1,18 @@
 machine:
   ruby:
     version: 2.2.2
-#  java:
-#    version: oraclejdk8
+  java:
+    version: oraclejdk8
 dependencies:
   cache_directories:
     - "tmp"
+  pre:
+    - gem install fcrepo_wrapper
+    - gem install solr_wrapper
   post:
     - mv config/config.example.yml config/config.yml
-#database:
-#  post:
-#    - bundle exec rake jetty:clean
-#test:
-#  override:
-#    - bundle exec rake ci
+    - fcrepo_wrapper -p 9984 --no-jms:
+        background: true
+    - solr_wrapper -p 9983 -n hydra-test:
+        background: true
+    - sleep 10
