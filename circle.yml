@@ -6,9 +6,12 @@ machine:
 dependencies:
   cache_directories:
     - "tmp"
+  pre:
+    - gem install fcrepo_wrapper
+    - gem install solr_wrapper
   post:
-    - bundle exec fcrepo_wrapper --no-jms -p 9984:
+    - fcrepo_wrapper --no-jms -p 9984:
       background: true
-    - bundle exec solr_wrapper -n hydra-test -p 9983:
+    - solr_wrapper -n hydra-test -p 9983:
       background: true
     - sleep 10
