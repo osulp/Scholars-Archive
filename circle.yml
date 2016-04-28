@@ -10,6 +10,9 @@ dependencies:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
   post:
-    - "fcrepo_wrapper --no-jms -p 9984"
-    - "solr_wrapper -n hydra-test -p 9983"
+    - bundle rake exec hydra:server:
+      environment:
+        SOLR_PORT: 9983
+        FCREPO__PORT: 9984
+      background: true
     - sleep 10
