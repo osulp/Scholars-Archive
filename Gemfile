@@ -31,13 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
-
 gem 'capistrano', '~> 2.0'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -48,21 +43,29 @@ end
 
 gem 'sufia', git: 'https://github.com/projecthydra/sufia.git', branch: 'master'
 
-group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
-end
-
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
-group :development, :test do
-  gem 'fcrepo_wrapper'
-  gem 'rspec-rails'
-end
-
 gem 'passenger'
 
 gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
 gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
 gem 'devise_cas_authenticatable'
-gem "hydra-role-management"
+gem 'hydra-role-management'
+
+group :development, :test do
+  gem 'fcrepo_wrapper'
+  gem 'solr_wrapper', '>= 0.3'
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+
+  # RSpec goodies
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'slop', '~> 3.4'
+  gem 'pry-byebug'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'coveralls'
+end
