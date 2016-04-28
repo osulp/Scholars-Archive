@@ -10,7 +10,7 @@ dependencies:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
   post:
-    - bundle rake exec hydra:server:
+    - bundle exec rake hydra:server:
       environment:
         SOLR_PORT: 9983
         FCREPO_PORT: 9984
