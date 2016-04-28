@@ -15,4 +15,4 @@ dependencies:
         SOLR_PORT: 9983
         FCREPO_PORT: 9984
       background: true
-    - sleep 10
+    - sleep 15
