@@ -4,8 +4,6 @@ machine:
   environment:
     SOLR_PORT: 9983
     FCREPO_PORT: 9984
-#  java:
-#    version: oraclejdk8
 dependencies:
   cache_directories:
     - "tmp"
