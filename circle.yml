@@ -13,6 +13,6 @@ dependencies:
     - bundle rake exec hydra:server:
       environment:
         SOLR_PORT: 9983
-        FCREPO__PORT: 9984
+        FCREPO_PORT: 9984
       background: true
     - sleep 10
