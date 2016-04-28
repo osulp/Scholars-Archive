@@ -1,6 +1,9 @@
 machine:
   ruby:
     version: 2.2.2
+  environment:
+    SOLR_PORT: 9983
+    FCREPO_PORT: 9984
 #  java:
 #    version: oraclejdk8
 dependencies:
@@ -11,8 +14,5 @@ dependencies:
     - gem install solr_wrapper
   post:
     - bundle exec rake hydra:server:
-      environment:
-        SOLR_PORT: 9983
-        FCREPO_PORT: 9984
       background: true
     - sleep 15
