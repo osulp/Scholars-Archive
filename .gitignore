@@ -36,6 +36,8 @@ config/environments/*.local.yml
 nohup.out
 
 /fcrepo4-data/*
+/fcrepo4-development-data/*
+!/fcrepo4-data/.keep
 /public/uploads/*
 /blazegraph/*
 /hydra-development/*

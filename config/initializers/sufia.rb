@@ -67,22 +67,22 @@ Sufia.config do |config|
   # Enable displaying usage statistics in the UI
   # Defaults to FALSE
   # Requires a Google Analytics id and OAuth2 keyfile.  See README for more info
-  config.analytics = false
+  config.analytics = true
 
   # Specify a Google Analytics tracking ID to gather usage statistics
-  # config.google_analytics_id = 'UA-99999999-1'
+  config.google_analytics_id = 'UA-1860356-2'
 
   # Specify a date you wish to start collecting Google Analytic statistics for.
-  # config.analytic_start_date = DateTime.new(2014,9,10)
+  config.analytic_start_date = DateTime.new(2015,5,6)
 
   # Enables a link to the citations page for a generic_file.
   # Default is false
   # config.citations = false
 
   # Enables a link to the citations page for a generic_file.
-# Default is false
-# config.citations = false
-# Where to store tempfiles, leave blank for the system temp directory (e.g. /tmp)
+  # Default is false
+  # config.citations = false
+  # Where to store tempfiles, leave blank for the system temp directory (e.g. /tmp)
   # config.temp_file_base = '/home/developer1'
 
   # Specify the form of hostpath to be used in Endnote exports
