@@ -1,9 +1,8 @@
 staging:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:9984/rest
+  url: <%= ENV['SCHOLARSARCHIVE_FEDORA_URL'] || "http://127.0.0.1:8080/fcrepo/rest" %>
   base_path: /staging
-
 development:
   user: fedoraAdmin
   password: fedoraAdmin
@@ -12,10 +11,10 @@ development:
 test:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8986 %>/rest
+  url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 9984 %>/rest
   base_path: /test
 production:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:9984/rest
+  url: <%= ENV['SCHOLARSARCHIVE_FEDORA_URL'] || "http://127.0.0.1:8080/fcrepo/rest" %>
   base_path: /prod

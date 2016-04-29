@@ -1,13 +1,13 @@
 staging:
   adapter: solr
-  url: "http://127.0.0.1:9983/solr/hydra-staging"
+  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-staging" %>
 development:
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:#{ENV.fetch('SOLR_DEVELOPMENT_PORT', 9983)}/solr/hydra-development" %>
 test: &test
   adapter: solr
-  url: http://localhost:<%= ENV['SOLR_TEST_PORT'] || 8985 %>/solr/hydra-test
+  url: http://localhost:<%= ENV['SOLR_TEST_PORT'] || 9983 %>/solr/hydra-test
 production:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-prod" %>
+  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-prod" %>
 
