@@ -8,14 +8,15 @@ namespace :scholars_archive do
     task :restart do
       # finds existing solr server processes and kills them in order to restart
       killer = spawn "ps aux | grep fcrepo | grep -v grep | awk '{print $2}' | xargs kill"
-      puts "Killing existing fedora processes"
+      puts "Killing existing fedora processes...."
       Process.wait killer
+      sleep 5
 
-      puts "Starting fcrepo_wrapper"
+      puts "Starting fcrepo_wrapper on port #{FEDORA_PORT}"
       #Run Fedora in the background, set the port, disable JMS, and redirect all
       #output to an appropriate log file
       pid = spawn "cd #{Rails.root} && nohup fcrepo_wrapper -p #{FEDORA_PORT} --no-jms > log/fcrepo_wrapper.log 2>&1&"
-      puts "Fedora started on PID #{pid}"
+      puts "Fedora started on PID #{pid}\n\n"
     end
   end
 end
