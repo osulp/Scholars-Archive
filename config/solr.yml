@@ -2,8 +2,8 @@
 staging:
   url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-staging" %>
 development:
-  url: http://127.0.0.1:<%= ENV['SOLR_TEST_PORT'] || 9983 %>/solr/hydra-development
+  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-development" %>
 test:
-  url: http://127.0.0.1:<%= ENV['SOLR_TEST_PORT'] || 9983 %>/solr/hydra-test
+  url: <%= ENV['SCHOLARSARCHIVE_TEST_SOLR_URL'] || "http://127.0.0.1:9981/solr/hydra-test" %>
 production:
   url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-prod" %>
