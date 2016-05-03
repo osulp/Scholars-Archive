@@ -32,4 +32,29 @@ class SolrDocument
   def accepted
     Array(self[Solrizer.solr_name('accepted')]).first
   end
+
+  def date
+    Array(self[Solrizer.solr_name('date')]).first
+  end
+
+  def available
+    Array(self[Solrizer.solr_name('available')]).first
+  end
+
+  def copyrighted
+    Array(self[Solrizer.solr_name('copyrighted')]).first
+  end
+
+  def collected
+    Array(self[Solrizer.solr_name('collected')]).first
+  end
+
+  def issued
+    Array(self[Solrizer.solr_name('issued')]).first
+  end
+
+  def valid_date
+    Array(self[Solrizer.solr_name('valid_date')]).first
+  end
+
 end
