@@ -109,7 +109,7 @@ Sufia.config do |config|
   # config.redis_namespace = "sufia"
 
   # Specify the path to the file characterization tool:
-  config.fits_path = "/usr/local/deploy-rails/fits-0.8.5/fits.sh"
+  # config.fits_path = "/usr/local/deploy-rails/fits-0.8.5/fits.sh"
 
   # Specify the path to the file derivatives creation tool:
   # config.libreoffice_path = "soffice"

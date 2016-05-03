@@ -4,7 +4,7 @@ module CurationConcerns
   class GenericWorkForm < Sufia::Forms::WorkForm
     self.model_class = ::GenericWork
     include HydraEditor::Form::Permissions
-    self.terms += [:resource_type]
+    self.terms += [:resource_type, :accepted]
 
   end
 end

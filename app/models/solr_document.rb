@@ -28,4 +28,8 @@ class SolrDocument
   # Do content negotiation for AF models. 
 
   use_extension( Hydra::ContentNegotiation )
+
+  def accepted
+    Array(self[Solrizer.solr_name('accepted')]).first
+  end
 end
