@@ -9,6 +9,7 @@
 
 # Ignore config.yml
 /config/config.yml
+/config/analytics.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
