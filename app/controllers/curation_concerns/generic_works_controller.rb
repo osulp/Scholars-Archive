@@ -7,4 +7,5 @@ class CurationConcerns::GenericWorksController < ApplicationController
   include Sufia::WorksControllerBehavior
 
   self.curation_concern_type = GenericWork
+
 end

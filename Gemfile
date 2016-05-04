@@ -34,6 +34,8 @@ gem 'mysql2', '~> 0.3.18'
 
 gem 'capistrano', '~> 2.0'
 
+gem 'jquery-ui-rails'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
