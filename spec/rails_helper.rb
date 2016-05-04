@@ -12,9 +12,11 @@ SimpleCov.start 'rails'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'capybara/poltergeist'
 
+require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+
+require 'scholars_archive/triple_store'
 
 include Warden::Test::Helpers
 Warden.test_mode!

@@ -1,24 +1,24 @@
 require 'net/http'
 
 rails_env = ENV['RAILS_ENV'] || 'test'
-BLAZEGRAPH_HOME = ENV['CVM_BLAZEGRAPH_HOME'] || File.expand_path('./blazegraph')
-BLAZEGRAPH_DOWNLOAD_URL = ENV['CVM_BLAZEGRAPH_DOWNLOAD'] || "http://iweb.dl.sourceforge.net/project/bigdata/bigdata/2.1.0/blazegraph.jar"
-BLAZEGRAPH_URL = ENV['CVM_BLAZEGRAPH_URL'] || 'http://localhost:9999/blazegraph'
+BLAZEGRAPH_HOME = ENV['SCHOLARSARCHIVE_BLAZEGRAPH_HOME'] || File.expand_path('./blazegraph')
+BLAZEGRAPH_DOWNLOAD_URL = ENV['SCHOLARSARCHIVE_BLAZEGRAPH_DOWNLOAD'] || "http://iweb.dl.sourceforge.net/project/bigdata/bigdata/2.1.0/blazegraph.jar"
+BLAZEGRAPH_URL = ENV['SCHOLARSARCHIVE_BLAZEGRAPH_URL'] || 'http://localhost:9999/blazegraph'
 BLAZEGRAPH_SPARQL = "#{BLAZEGRAPH_URL}/namespace/#{rails_env}/sparql"
-BLAZEGRAPH_CONFIG_LOG4J = ENV['CVM_BLAZEGRAPH_CONFIG_LOG4J'] || "./config/blazegraph/log4j.properties"
-BLAZEGRAPH_CONFIG_DEFAULT = ENV['CVM_BLAZEGRAPH_CONFIG_DEFAULT'] || "./config/blazegraph/blazegraph.properties"
-BLAZEGRAPH_CONFIG_PRODUCTION = ENV['CVM_BLAZEGRAPH_CONFIG_PRODUCTION'] || "./config/blazegraph/blazegraph.production.properties"
+BLAZEGRAPH_CONFIG_LOG4J = ENV['SCHOLARSARCHIVE_BLAZEGRAPH_CONFIG_LOG4J'] || "./config/blazegraph/log4j.properties"
+BLAZEGRAPH_CONFIG_DEFAULT = ENV['SCHOLARSARCHIVE_BLAZEGRAPH_CONFIG_DEFAULT'] || "./config/blazegraph/blazegraph.properties"
+BLAZEGRAPH_CONFIG_PRODUCTION = ENV['SCHOLARSARCHIVE_BLAZEGRAPH_CONFIG_PRODUCTION'] || "./config/blazegraph/blazegraph.production.properties"
 
 namespace :scholars_archive do
   namespace :blazegraph do
     desc "Delete journal, download, and restart Blazegraph"
     task :reset do
-      Rake::Task['blazegraph:clean'].invoke
-      Rake::Task['blazegraph:download'].invoke
-      Rake::Task['blazegraph:start'].invoke
+      Rake::Task['scholars_archive:blazegraph:clean'].invoke
+      Rake::Task['scholars_archive:blazegraph:download'].invoke
+      Rake::Task['scholars_archive:blazegraph:start'].invoke
       puts "Waiting for Blazegraph server to settle"
       sleep(5)
-      Rake::Task['blazegraph:build_namespace'].invoke
+      Rake::Task['scholars_archive:blazegraph:build_namespace'].invoke
       puts "\n\n\nBlazegraph should be ready to roll."
     end
 
@@ -50,7 +50,8 @@ namespace :scholars_archive do
       Process.wait killer
 
       puts "Starting Blazegraph server"
-      pid = spawn "java -server -Xmx4g -Dbigdata.propertyFile=#{File.expand_path(BLAZEGRAPH_CONFIG_DEFAULT)} -Dlog4j.configuration=file:#{File.expand_path(BLAZEGRAPH_CONFIG_LOG4J)} -jar #{BLAZEGRAPH_HOME}/blazegraph.jar&"
+      pid = spawn "nohup java -server -Xmx4g -Dbigdata.propertyFile=#{File.expand_path(BLAZEGRAPH_CONFIG_DEFAULT)} -Dlog4j.configuration=file:#{File.expand_path(BLAZEGRAPH_CONFIG_LOG4J)} -jar #{BLAZEGRAPH_HOME}/blazegraph.jar > log/blazegraph.log 2>&1&"
+      sleep(10)
       puts "Blazegraph started on PID #{pid}"
     end
 

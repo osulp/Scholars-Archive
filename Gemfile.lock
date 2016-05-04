@@ -526,6 +526,9 @@ GEM
       link_header (~> 0.0, >= 0.0.8)
     rdf-aggregate-repo (1.99.0)
       rdf (~> 1.99)
+    rdf-blazegraph (0.0.2)
+      rdf (~> 1.99)
+      sparql-client (~> 1.1)
     rdf-isomorphic (1.99.0)
       rdf (~> 1.99)
     rdf-json (1.99.0)
@@ -737,6 +740,8 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   rails (= 4.2.6)
+  rdf (~> 1.99)
+  rdf-blazegraph (= 0.0.2)
   rsolr (~> 1.0)
   rspec-rails
   rubycas-client!
@@ -753,4 +758,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.1

@@ -1,0 +1,3 @@
+blazegraph:
+  url: <%= ENV['SCHOLARSARCHIVE_BLAZEGRAPH_URL'] %>
+  sparql: <%= "#{ENV['SCHOLARSARCHIVE_BLAZEGRAPH_URL']}/namespace/production/sparql" %>
