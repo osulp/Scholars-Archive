@@ -35,15 +35,6 @@ gem 'mysql2', '~> 0.3.18'
 gem 'capistrano', '~> 2.0'
 
 gem 'jquery-ui-rails'
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-end
-
 gem 'sufia', git: 'https://github.com/projecthydra/sufia.git', branch: 'master'
 
 gem 'rsolr', '~> 1.0'
@@ -56,6 +47,16 @@ gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails
 gem 'devise_cas_authenticatable'
 gem 'hydra-role-management'
 
+gem 'rdf', '~> 1.99'
+gem 'rdf-blazegraph', '0.0.2'
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+end
 group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'solr_wrapper', '>= 0.3'

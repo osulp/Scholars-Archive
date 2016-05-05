@@ -13,8 +13,5 @@ dependencies:
     - mv config/config.example.yml config/config.yml
     - bundle exec rake scholars_archive:solr:restart
     - bundle exec rake scholars_archive:fedora:restart
-   #- fcrepo_wrapper -p 9984 --no-jms:
-   #    background: true
-   #- solr_wrapper -p 9983 -n hydra-test:
-   #    background: true
+    - bundle exec rake scholars_archive:blazegraph:reset
     - sleep 10
