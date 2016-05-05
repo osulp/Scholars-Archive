@@ -34,6 +34,9 @@ namespace :deploy do
     %w{settings.local.yml config.yml analytics.yml god.conf puma.rb}.each do |config_file|
       run "ln -nfs #{deploy_to}/shared/config/#{config_file} #{release_path}/config/#{config_file}"
     end
+    %w{sufia.rb}.each do |file|
+      run "ln -nfs #{deploy_to}/shared/config/initializers/#{file} #{release_path}/config/initializers/#{file}"
+    end
   end
   desc "Uploads local config files"
   task :upload_config, :roles => :app do
