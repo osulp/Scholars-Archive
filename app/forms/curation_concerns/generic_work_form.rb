@@ -6,5 +6,28 @@ module CurationConcerns
     include HydraEditor::Form::Permissions
     self.terms += [:resource_type]
 
+    def self.date_terms
+      [
+        :accepted,
+        :available,
+        :copyrighted,
+        :collected,
+        :issued,
+        :valid,
+      ]
+    end
+
+    def self.build_permitted_params
+      permitted = super
+
+      date_terms.each do |date_term|
+        permitted << {
+          date_term => []
+        }
+      end
+
+      permitted
+    end
+
   end
 end
