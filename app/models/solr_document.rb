@@ -33,10 +33,6 @@ class SolrDocument
     Array(self[Solrizer.solr_name('accepted')]).first
   end
 
-  def date
-    Array(self[Solrizer.solr_name('date')]).first
-  end
-
   def available
     Array(self[Solrizer.solr_name('available')]).first
   end

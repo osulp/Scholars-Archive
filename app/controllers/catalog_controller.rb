@@ -55,7 +55,6 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
     config.add_facet_field solr_name("tag", :facetable), label: "Keyword", limit: 5
     config.add_facet_field solr_name("accepted", :facetable), label: "Date Accepted", limit: 5
-    config.add_facet_field solr_name("date", :facetable), label: "Date Created", limit: 5
     config.add_facet_field solr_name("available", :facetable), label: "Date Available", limit: 5
     config.add_facet_field solr_name("copyrighted", :facetable), label: "Date Copyrighted", limit: 5
     config.add_facet_field solr_name("collected", :facetable), label: "Date Collected", limit: 5
@@ -78,7 +77,6 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("description", :stored_searchable), label: "Description", itemprop: 'description'
     config.add_index_field solr_name("tag", :stored_searchable), label: "Keyword", itemprop: 'keywords'
     config.add_index_field solr_name("accepted", :stored_searchable), label: "Date Accepted", itemprop: 'accepted'
-    config.add_index_field solr_name("date", :stored_searchable), label: "Date Created", itemprop: 'date'
     config.add_index_field solr_name("available", :stored_searchable), label: "Date Available", itemprop: 'available'
     config.add_index_field solr_name("copyrighted", :stored_searchable), label: "Date Copyrighted", itemprop: 'copyrighted'
     config.add_index_field solr_name("collected", :stored_searchable), label: "Date Collected", itemprop: 'collected'
@@ -102,7 +100,6 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable), label: "Title"
     config.add_show_field solr_name("accepted", :stored_searchable), label: "Date Accepted"
-    config.add_show_field solr_name("date", :stored_searchable), label: "Date Created"
     config.add_show_field solr_name("available", :stored_searchable), label: "Date Available"
     config.add_show_field solr_name("copyrighted", :stored_searchable), label: "Date Copyrighted"
     config.add_show_field solr_name("collected", :stored_searchable), label: "Date Collected"
