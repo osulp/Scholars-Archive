@@ -24,18 +24,22 @@ namespace :scholars_archive do
 
     desc "Download Blazegraph if necessary"
     task :download do
-      if File.exist?("./tmp/blazegraph.jar")
-        puts "tmp/blazegraph.jar exists, skipping download."
+      tmp_dir = File.expand_path('./tmp')
+      Dir.mkdir(tmp_dir) unless File.exists?(tmp_dir)
+
+      cached_jar = File.expand_path("#{tmp_dir}/blazegraph.jar")
+      if File.exist?(cached_jar)
+        puts "#{cached_jar} exists, skipping download."
       else
         uri = URI(BLAZEGRAPH_DOWNLOAD_URL)
         puts "Downloading Blazegraph from #{uri}, please wait."
         jar = Net::HTTP.get(uri)
-        File.open("./tmp/blazegraph.jar", "wb") do |f|
+        File.open(cached_jar, "wb") do |f|
           f.write(jar)
         end
       end
-      puts "Copying tmp/blazegraph.jar to #{BLAZEGRAPH_HOME}/blazegraph.jar."
-      cp = spawn "cp ./tmp/blazegraph.jar #{BLAZEGRAPH_HOME}/blazegraph.jar"
+      puts "Copying #{cached_jar} to #{BLAZEGRAPH_HOME}/blazegraph.jar."
+      cp = spawn "cp #{cached_jar} #{BLAZEGRAPH_HOME}/blazegraph.jar"
       Process.wait cp
     end
 
