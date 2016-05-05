@@ -13,8 +13,7 @@ module CurationConcerns
         :copyrighted,
         :collected,
         :issued,
-        :valid_date,
-        :date
+        :valid,
       ]
     end
 

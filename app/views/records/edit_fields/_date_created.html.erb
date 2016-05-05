@@ -40,10 +40,10 @@
       </button>
     </div>
   </div>
-  <%= f.input :date_created, as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"}%>
+  <%= f.input :date_created, :label => "Date Created", as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"}%>
   <% f.object.class.date_terms.each do |date_term| %>
     <% unless f.object.model.get_values(date_term).empty? %>
-      <%= f.input date_term, as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"} %>
+      <%= f.input date_term, :label => "Date " + date_term.to_s.capitalize, as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"} %>
     <% end %>
   <% end %>
 </div>

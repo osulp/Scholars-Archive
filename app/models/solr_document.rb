@@ -53,8 +53,8 @@ class SolrDocument
     Array(self[Solrizer.solr_name('issued')]).first
   end
 
-  def valid_date
-    Array(self[Solrizer.solr_name('valid_date')]).first
+  def valid
+    Array(self[Solrizer.solr_name('valid')]).first
   end
 
 end

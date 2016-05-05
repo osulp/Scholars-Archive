@@ -28,7 +28,7 @@ class GenericWork < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
  
-  property :valid_date, predicate: ::RDF::DC.valid do |index|
+  property :valid, predicate: ::RDF::DC.valid do |index|
     index.as :stored_searchable, :facetable
   end
 

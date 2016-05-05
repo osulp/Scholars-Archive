@@ -60,7 +60,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("copyrighted", :facetable), label: "Date Copyrighted", limit: 5
     config.add_facet_field solr_name("collected", :facetable), label: "Date Collected", limit: 5
     config.add_facet_field solr_name("issued", :facetable), label: "Date Issued", limit: 5
-    config.add_facet_field solr_name("valid_date", :facetable), label: "Valid On", limit: 5
+    config.add_facet_field solr_name("valid", :facetable), label: "Valid On", limit: 5
     config.add_facet_field solr_name("subject", :facetable), label: "Subject", limit: 5
     config.add_facet_field solr_name("language", :facetable), label: "Language", limit: 5
     config.add_facet_field solr_name("based_near", :facetable), label: "Location", limit: 5
@@ -83,7 +83,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("copyrighted", :stored_searchable), label: "Date Copyrighted", itemprop: 'copyrighted'
     config.add_index_field solr_name("collected", :stored_searchable), label: "Date Collected", itemprop: 'collected'
     config.add_index_field solr_name("issued", :stored_searchable), label: "Date Issued", itemprop: 'issued'
-    config.add_index_field solr_name("valid_date", :stored_searchable), label: "Valid On", itemprop: 'valid_date'
+    config.add_index_field solr_name("valid", :stored_searchable), label: "Valid On", itemprop: 'valid'
     config.add_index_field solr_name("subject", :stored_searchable), label: "Subject", itemprop: 'about'
     config.add_index_field solr_name("creator", :stored_searchable), label: "Creator", itemprop: 'creator'
     config.add_index_field solr_name("contributor", :stored_searchable), label: "Contributor", itemprop: 'contributor'
@@ -107,7 +107,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("copyrighted", :stored_searchable), label: "Date Copyrighted"
     config.add_show_field solr_name("collected", :stored_searchable), label: "Date Collected"
     config.add_show_field solr_name("issued", :stored_searchable), label: "Date Issued"
-    config.add_show_field solr_name("valid_date", :stored_searchable), label: "Valid On"
+    config.add_show_field solr_name("valid", :stored_searchable), label: "Valid On"
     config.add_show_field solr_name("description", :stored_searchable), label: "Description"
     config.add_show_field solr_name("tag", :stored_searchable), label: "Keyword"
     config.add_show_field solr_name("subject", :stored_searchable), label: "Subject"
