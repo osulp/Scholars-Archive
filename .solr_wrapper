@@ -1,5 +1,0 @@
-# Place any default configuration for solr_wrapper here
-port: 9983
-collection:
-  dir: solr/config/
-  name: hydra-development

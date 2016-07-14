@@ -1,9 +1,0 @@
-# This is a sample config file that points to a solr server for each environment
-staging:
-  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-staging" %>
-development:
-  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-development" %>
-test:
-  url: <%= ENV['SCHOLARSARCHIVE_TEST_SOLR_URL'] || "http://127.0.0.1:9981/solr/hydra-test" %>
-production:
-  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-prod" %>
