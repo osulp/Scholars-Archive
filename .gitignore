@@ -41,6 +41,7 @@ nohup.out
 /fcrepo4-development-data/*
 !/fcrepo4-data/.keep
 /public/uploads/*
+/public/assets*
 /blazegraph/*
 /hydra-development/*
 /hydra-test/*
