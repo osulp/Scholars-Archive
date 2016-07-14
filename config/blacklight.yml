@@ -1,0 +1,13 @@
+staging:
+  adapter: solr
+  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-staging" %>
+development:
+  adapter: solr
+  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-development" %>
+test: &test
+  adapter: solr
+  url: <%= ENV['SCHOLARSARCHIVE_TEST_SOLR_URL'] || "http://127.0.0.1:9981/solr/hydra-test" %>
+production:
+  adapter: solr
+  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:9983/solr/hydra-prod" %>
+
