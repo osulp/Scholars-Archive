@@ -45,11 +45,11 @@ gem 'passenger'
 
 gem 'capistrano', '~> 2.15'
 gem 'capistrano-rails'
+gem 'solr_wrapper', '0.13.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'solr_wrapper', '>= 0.3'
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
 end

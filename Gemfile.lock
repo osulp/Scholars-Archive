@@ -589,7 +589,7 @@ GEM
       httparty (>= 0.11.0)
       oauth2 (>= 0.9.2)
     slop (4.3.0)
-    solr_wrapper (0.14.2)
+    solr_wrapper (0.13.1)
       faraday
       ruby-progressbar
       rubyzip
@@ -679,7 +679,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  solr_wrapper (>= 0.3)
+  solr_wrapper (= 0.13.1)
   spring
   sqlite3
   sufia!
