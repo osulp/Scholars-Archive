@@ -38,14 +38,20 @@ gem 'mysql2', '~> 0.3.18'
 gem 'sufia', git: 'https://github.com/projecthydra/sufia', tag: 'v7.0.0.rc1'
 
 gem 'rsolr', '~> 1.0'
+
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
+gem 'devise_cas_authenticatable'
 gem 'hydra-role-management'
+gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
+gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
+
 gem 'passenger'
 
 gem 'capistrano', '~> 2.15'
 gem 'capistrano-rails'
 gem 'solr_wrapper', '0.13.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
