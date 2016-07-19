@@ -1,4 +1,19 @@
 GIT
+  remote: https://github.com/osulp/rubycas-client
+  revision: 41ebf8cad3dcd83ed7c35f335b6b281b5c1f84f5
+  specs:
+    rubycas-client (2.3.10.rc1)
+      activesupport
+
+GIT
+  remote: https://github.com/osulp/rubycas-client-rails
+  revision: 6eab4d18cfd47c34027158841268707fd50b050c
+  specs:
+    rubycas-client-rails (0.1.1)
+      rails (>= 3.0.0)
+      rubycas-client (~> 2.3.9.rc1)
+
+GIT
   remote: https://github.com/projecthydra/sufia
   revision: 4a354f5840c799cd48b53a139caca62fb008030a
   tag: v7.0.0.rc1
@@ -231,6 +246,9 @@ GEM
       warden (~> 1.2.3)
     devise-guests (0.5.0)
       devise
+    devise_cas_authenticatable (1.9.2)
+      devise (>= 1.2.0)
+      rubycas-client (>= 2.2.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dropbox-sdk (1.6.5)
@@ -713,6 +731,7 @@ DEPENDENCIES
   coveralls
   devise
   devise-guests (~> 0.3)
+  devise_cas_authenticatable
   fcrepo_wrapper
   hydra-role-management
   jbuilder (~> 2.0)
@@ -726,6 +745,8 @@ DEPENDENCIES
   rails (= 4.2.6)
   rsolr (~> 1.0)
   rspec-rails
+  rubycas-client!
+  rubycas-client-rails!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   slop
@@ -738,4 +759,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.1
