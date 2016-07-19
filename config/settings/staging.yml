@@ -1,0 +1,3 @@
+triplestore_adapter:
+  type: <%= "#{ENV['SCHOLARSARCHIVE_TRIPLESTORE_TYPE']}" %>
+  url: <%= "#{ENV['SCHOLARSARCHIVE_TRIPLESTORE_URL']}" %>

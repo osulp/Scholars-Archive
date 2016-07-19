@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #
+
+gem 'config'
+
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
 
@@ -50,6 +53,8 @@ gem 'passenger'
 
 gem 'capistrano', '~> 2.15'
 gem 'capistrano-rails'
+
+gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: '0.1.0'
 gem 'solr_wrapper', '0.13.1'
 
 
