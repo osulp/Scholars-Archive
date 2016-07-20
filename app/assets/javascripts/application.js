@@ -20,3 +20,5 @@
 //= require blacklight/blacklight
 //= require sufia
 //= require_tree .
+//= require_tree ../../../lib/assets/javascripts/triple_powered_properties/.
+//= require triple_powered_properties
