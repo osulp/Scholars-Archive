@@ -15,7 +15,11 @@ Setup
 2. Run `cp config/config.example.yml config/config.yml`
 3. Make appropriate configuration changes to config/config.yml for CAS
 3. Run `rake db:migrate`
-4. Run `rake scholars_archive:setup`
+4. To run a development environment, in another terminal run `rake scholars_archive:server`
+
+Testing
+-----------------
+The rake task, `scholars_archive:ci` will setup the test environment and run the test suite.
 
 All rails commands after that should work appropriately.
 

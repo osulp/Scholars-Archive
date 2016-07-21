@@ -1,7 +1,7 @@
 module Sufia
   class WorkShowPresenter < ::CurationConcerns::WorkShowPresenter
     # delegate fields from Sufia::Works::Metadata to solr_document
-    delegate :based_near, :related_url, :depositor, :identifier, :resource_type, :tags, :accepted, :available, :copyrighted, :collected, :issued, :valid, to: :solr_document
+    delegate :based_near, :related_url, :depositor, :identifier, :resource_type, :accepted, :available, :copyrighted, :collected, :issued, :valid, to: :solr_document
 
     def editor?
       current_ability.can?(:edit, solr_document)

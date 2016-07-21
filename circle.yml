@@ -11,7 +11,14 @@ dependencies:
     - gem install solr_wrapper
   post:
     - mv config/config.example.yml config/config.yml
-    - bundle exec rake scholars_archive:solr:restart
-    - bundle exec rake scholars_archive:fedora:restart
-    - bundle exec rake scholars_archive:blazegraph:reset
-    - sleep 10
+    - fcrepo_wrapper --no-jms:
+        background: true
+    - solr_wrapper -n hydra-test:
+        background: true
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:setup"
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:clean"
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:download"
+    - java -server -Xmx4g -Dbigdata.propertyFile=config/triplestore_adapter/blazegraph/blazegraph.properties -Dlog4j.configuration=file:config/triplestore_adapter/blazegraph/log4j.properties -jar blazegraph/blazegraph.jar:
+        background: true
+    - sleep 5
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:build_namespace"
