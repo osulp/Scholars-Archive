@@ -29,26 +29,50 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+#
+
+gem 'config'
+
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
 
-gem 'capistrano', '~> 2.0'
-
-gem 'jquery-ui-rails'
-gem 'sufia', git: 'https://github.com/projecthydra/sufia.git', branch: 'master'
+gem 'sufia', git: 'https://github.com/projecthydra/sufia', tag: 'v7.0.0.rc1'
 
 gem 'rsolr', '~> 1.0'
+
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
-gem 'passenger'
-
-gem 'rubycas-client', git: 'git://github.com/terrellt/rubycas-client.git', branch: 'master'
-gem 'rubycas-client-rails', :git => 'git://github.com/osulp/rubycas-client-rails.git'
 gem 'devise_cas_authenticatable'
 gem 'hydra-role-management'
+gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
+gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
 
-gem 'rdf', '~> 1.99'
-gem 'rdf-blazegraph', '0.0.2'
+gem 'passenger'
+
+gem 'capistrano', '~> 2.15'
+gem 'capistrano-rails'
+
+gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: '0.1.0'
+gem 'solr_wrapper', '0.13.1'
+
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+  gem 'fcrepo_wrapper'
+
+  # RSpec goodies
+  gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'slop'
+  gem 'pry-byebug'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'coveralls'
+end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -56,20 +80,4 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-group :development, :test do
-  gem 'fcrepo_wrapper'
-  gem 'solr_wrapper', '>= 0.3'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # RSpec goodies
-  gem 'rspec-rails'
-  gem 'pry-rails'
-  gem 'pry'
-  gem 'slop', '~> 3.4'
-  gem 'pry-byebug'
-  gem 'capybara'
-  gem 'poltergeist'
-  gem 'coveralls'
 end

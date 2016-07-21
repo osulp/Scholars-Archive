@@ -15,8 +15,6 @@
 //= require jquery-ui
 //= require turbolinks//
 //= require add_date_field
-//= require nested_fields
-//= require hydra-editor/manage_repeating_fields
 // Required by Blacklight
 //= require blacklight/blacklight
 

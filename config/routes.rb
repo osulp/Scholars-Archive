@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-
   Hydra::BatchEdit.add_routes(self)
+  mount Qa::Engine => '/authorities'
+
+
   mount Blacklight::Engine => '/'
 
-  concern :searchable, Blacklight::Routes::Searchable.new
+    concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
@@ -11,8 +13,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   mount Hydra::RoleManagement::Engine => '/'
-
-  Hydra::BatchEdit.add_routes(self)
 
   mount CurationConcerns::Engine, at: '/'
   resources :welcome, only: 'index'
@@ -89,6 +89,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  Hydra::BatchEdit.add_routes(self)
   # This must be the very last route in the file because it has a catch-all route for 404 errors.
   # This behavior seems to show up only in production mode.
   mount Sufia::Engine => '/'

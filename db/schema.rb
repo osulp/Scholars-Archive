@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427212320) do
+ActiveRecord::Schema.define(version: 20160718201439) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",       null: false
     t.string   "user_type"
     t.string   "document_id"
-    t.string   "title"
+    t.string   "document_type"
+    t.binary   "title"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "document_type"
   end
 
+  add_index "bookmarks", ["document_id"], name: "index_bookmarks_on_document_id"
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "checksum_audit_logs", force: :cascade do |t|
@@ -84,14 +85,14 @@ ActiveRecord::Schema.define(version: 20160427212320) do
   add_index "domain_terms_local_authorities", ["local_authority_id", "domain_term_id"], name: "dtla_by_ids1"
 
   create_table "featured_works", force: :cascade do |t|
-    t.integer  "order",           default: 5
-    t.string   "generic_work_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "order",      default: 5
+    t.string   "work_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "featured_works", ["generic_work_id"], name: "index_featured_works_on_generic_work_id"
   add_index "featured_works", ["order"], name: "index_featured_works_on_order"
+  add_index "featured_works", ["work_id"], name: "index_featured_works_on_work_id"
 
   create_table "file_download_stats", force: :cascade do |t|
     t.datetime "date"
@@ -197,7 +198,7 @@ ActiveRecord::Schema.define(version: 20160427212320) do
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
 
   create_table "proxy_deposit_requests", force: :cascade do |t|
-    t.string   "generic_work_id",                       null: false
+    t.string   "work_id",                               null: false
     t.integer  "sending_user_id",                       null: false
     t.integer  "receiving_user_id",                     null: false
     t.datetime "fulfillment_date"
@@ -221,6 +222,25 @@ ActiveRecord::Schema.define(version: 20160427212320) do
   add_index "proxy_deposit_rights", ["grantee_id"], name: "index_proxy_deposit_rights_on_grantee_id"
   add_index "proxy_deposit_rights", ["grantor_id"], name: "index_proxy_deposit_rights_on_grantor_id"
 
+  create_table "qa_local_authorities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "qa_local_authorities", ["name"], name: "index_qa_local_authorities_on_name", unique: true
+
+  create_table "qa_local_authority_entries", force: :cascade do |t|
+    t.integer  "local_authority_id"
+    t.string   "label"
+    t.string   "uri"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "qa_local_authority_entries", ["local_authority_id"], name: "index_qa_local_authority_entries_on_local_authority_id"
+  add_index "qa_local_authority_entries", ["uri"], name: "index_qa_local_authority_entries_on_uri", unique: true
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
   end
@@ -234,7 +254,7 @@ ActiveRecord::Schema.define(version: 20160427212320) do
   add_index "roles_users", ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id"
 
   create_table "searches", force: :cascade do |t|
-    t.text     "query_params"
+    t.binary   "query_params"
     t.integer  "user_id"
     t.string   "user_type"
     t.datetime "created_at",   null: false
@@ -268,9 +288,9 @@ ActiveRecord::Schema.define(version: 20160427212320) do
 
   create_table "trophies", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "generic_work_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "work_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "uploaded_files", force: :cascade do |t|
@@ -327,10 +347,12 @@ ActiveRecord::Schema.define(version: 20160427212320) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.text     "group_list"
-    t.datetime "groups_last_update"
     t.string   "linkedin_handle"
     t.string   "orcid"
+    t.string   "arkivo_token"
+    t.string   "arkivo_subscription"
+    t.binary   "zotero_token"
+    t.string   "zotero_userid"
     t.string   "username"
   end
 
