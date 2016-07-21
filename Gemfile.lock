@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/osulp/geonames.git
+  revision: fefb5c14a01eadfe387d3ffddf1faa59f744b2a6
+  specs:
+    geonames-wrapper (1.3.5)
+      addressable (~> 2.3)
+
+GIT
   remote: https://github.com/osulp/rubycas-client
   revision: 41ebf8cad3dcd83ed7c35f335b6b281b5c1f84f5
   specs:
@@ -762,6 +769,7 @@ DEPENDENCIES
   devise-guests (~> 0.3)
   devise_cas_authenticatable
   fcrepo_wrapper
+  geonames-wrapper!
   hydra-role-management
   jbuilder (~> 2.0)
   jquery-rails

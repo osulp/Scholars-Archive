@@ -1,0 +1,81 @@
+<div id="generic-work-location-form" class="form-group">
+  <div class="geo_point nested-field repeating-field">
+    <fieldset>
+      <ul class="listing">
+        <h4>Point</h4>
+        <%= f.simple_fields_for :nested_geo_points do |a| %>
+          <li class="field-wrapper">
+            <% unless a.object.new_record? %>
+              <%= a.input :id, :as => :hidden %>
+            <% end %>
+
+            <%= a.input :label, :wrapper_html => {:class => "col-xs-12"} %>
+            <%= a.input :latitude, :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :longitude, :wrapper_html => {:class => "col-xs-6"} %>
+          </li>
+        <% end %>
+      </ul>
+    </fieldset>
+  </div>
+
+  <div class="geo_bbox nested-field repeating-field">
+    <fieldset>
+      <ul class="listing">
+        <h4>Bounding box</h4>
+        <%= f.simple_fields_for :nested_geo_bbox do |a| %>
+          <li class="field-wrapper">
+            <% unless a.object.new_record? %>
+              <%= a.input :id, :as => :hidden %>
+            <% end %>
+
+            <%= a.input :label, :wrapper_html => {:class => "col-xs-12"} %>
+            <%= a.input :bbox, :as => :hidden %>
+            <%= a.input :bbox_lat_north, :label => "Latitude North", :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lon_west, :label => "Longitude West", :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lat_south, :label => "Latitude South", :wrapper_html => {:class => "col-xs-6"} %>
+            <%= a.input :bbox_lon_east, :label => "Longitude East", :wrapper_html => {:class => "col-xs-6"} %>
+
+          </li>
+        <% end %>
+      </ul>
+    </fieldset>
+  </div>
+
+  <div class="geo_location nested-field repeating-field">
+    <fieldset>
+      <ul class="listing">
+        <legend>
+          <h4 style="float:left; margin-right: 6px;">Locations</h4>
+          <i class='help-icon' data-toggle="modal" data-target="#myGeolocationsModal"></i>
+        </legend>
+        <div class="modal fade" id="myGeolocationsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Geonames.org Links Summary</h4>
+              </div>
+              <div class="modal-body">
+                <%= raw t('sufia.geo_location_modal') %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= f.simple_fields_for :nested_geo_location do |a| %>
+          <li class="field-wrapper">
+            <% if a.object.new_record? %>
+              <%= a.input :geonames_url, :input_html => { :type => "text"}, :wrapper_html => {:class => "col-xs-12"}, :label => "Geonames.org Link or ID" %>
+            <% else %>
+              <%= a.input :id, :as => :hidden %>
+              <a class="geonames_link" href="<%= a.object.geonames_url.first %>" target="_blank"><%= a.object.name.first %></a>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </fieldset>
+  </div>
+
+</div>

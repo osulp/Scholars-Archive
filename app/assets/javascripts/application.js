@@ -13,12 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
 //= require add_date_field/
-//= require turbolinks//
+//= require add_geo_field
 // Required by Blacklight
 //= require blacklight/blacklight
-
 //= require_tree .
 //= require sufia
-

@@ -30,7 +30,7 @@ RSpec.describe "Date Selector", :js => true do
       it "should allow you to select a new date type and add it to the form" do
         expect(page).to_not have_content("Date Accepted")
         select('Accepted', :from => 'new_date_type') 
-        click_button ""
+        click_button("add_new_date_type")
         expect(page).to have_content("Date Accepted")
       end
     end

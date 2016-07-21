@@ -13,3 +13,12 @@
 @import "blacklight_gallery/slideshow";
 @import "blacklight_gallery/osd_viewer";
 @import 'sufia/sufia';
+
+a.geonames_link {
+  line-height: 2em;
+  font-size: 1.25em;
+  margin-left: 5px;
+  color: #337ab7;
+  text-decoration: underline;
+  cursor: pointer;
+}
