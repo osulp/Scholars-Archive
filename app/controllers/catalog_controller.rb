@@ -61,6 +61,13 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("based_near", :facetable), label: "Location", limit: 5
     config.add_facet_field solr_name("publisher", :facetable), label: "Publisher", limit: 5
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
+    # Date values 
+    config.add_facet_field solr_name("accepted", :facetable), label: "Date Accepted", limit: 5
+    config.add_facet_field solr_name("available", :facetable), label: "Date Available", limit: 5
+    config.add_facet_field solr_name("copyrighted", :facetable), label: "Date Copyrighted", limit: 5
+    config.add_facet_field solr_name("collected", :facetable), label: "Date Collected", limit: 5
+    config.add_facet_field solr_name("issued", :facetable), label: "Date Issued", limit: 5
+    config.add_facet_field solr_name("valid", :facetable), label: "Valid On", limit: 5
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -88,6 +95,14 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("file_format", :stored_searchable), label: "File Format", link_to_search: solr_name("file_format", :facetable)
     config.add_index_field solr_name("identifier", :stored_searchable), label: "Identifier", helper_method: :index_field_link, field_name: 'identifier'
 
+    # date fields
+    config.add_index_field solr_name("accepted", :stored_searchable), label: "Date Accepted", itemprop: 'accepted'
+    config.add_index_field solr_name("available", :stored_searchable), label: "Date Available", itemprop: 'available'
+    config.add_index_field solr_name("copyrighted", :stored_searchable), label: "Date Copyrighted", itemprop: 'copyrighted'
+    config.add_index_field solr_name("collected", :stored_searchable), label: "Date Collected", itemprop: 'collected'
+    config.add_index_field solr_name("issued", :stored_searchable), label: "Date Issued", itemprop: 'issued'
+    config.add_index_field solr_name("valid", :stored_searchable), label: "Valid On", itemprop: 'valid'
+
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field solr_name("title", :stored_searchable), label: "Title"
@@ -106,6 +121,14 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable), label: "File Format"
     config.add_show_field solr_name("identifier", :stored_searchable), label: "Identifier"
+
+    #date fields
+    config.add_show_field solr_name("accepted", :stored_searchable), label: "Date Accepted"
+    config.add_show_field solr_name("available", :stored_searchable), label: "Date Available"
+    config.add_show_field solr_name("copyrighted", :stored_searchable), label: "Date Copyrighted"
+    config.add_show_field solr_name("collected", :stored_searchable), label: "Date Collected"
+    config.add_show_field solr_name("issued", :stored_searchable), label: "Date Issued"
+    config.add_show_field solr_name("valid", :stored_searchable), label: "Valid On"
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

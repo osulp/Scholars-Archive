@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks//
+//= require jquery-ui
+//= require turbolinks
+//= require add_date_field
 // Required by Blacklight
 //= require blacklight/blacklight
 

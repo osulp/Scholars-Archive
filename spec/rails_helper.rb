@@ -14,6 +14,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'triplestore_adapter'
 
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
 include Warden::Test::Helpers
 Warden.test_mode!
 
