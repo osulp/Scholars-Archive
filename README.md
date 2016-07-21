@@ -15,9 +15,11 @@ Setup
 2. Run `cp config/config.example.yml config/config.yml`
 3. Make appropriate configuration changes to config/config.yml for CAS
 3. Run `rake db:migrate`
-4. In another window, in the application directory, run `fcrepo_wrapper`
-5. In another window, in the application directory, run `solr_wrapper`
-6. In another window, in the application directory, run `rails server`
+4. To run a development environment, in another terminal run `rake scholars_archive:server`
+
+Testing
+-----------------
+The rake task, `scholars_archive:ci` will setup the test environment and run the test suite.
 
 All rails commands after that should work appropriately.
 
