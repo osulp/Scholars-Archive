@@ -12,10 +12,21 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'webmock/rspec'
+require 'capybara/rspec'
 require 'triplestore_adapter'
+
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
+
+Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {js_errors: false, timeout: 60,debug: true, phantomjs_logger: true, stdout: true, phantomjs_options: ['--ignore-ssl-errors=yes','--load-images=yes']})
+end
 
 include Warden::Test::Helpers
 Warden.test_mode!
+WebMock.allow_net_connect!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -48,6 +59,10 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.before(:suite) do
+    Capybara.current_driver = Capybara.javascript_driver
+  end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
