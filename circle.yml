@@ -9,11 +9,12 @@ dependencies:
   pre:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
+    - npm install phantomjs@1.9.8 
   post:
     - mv config/config.example.yml config/config.yml
-    - fcrepo_wrapper --no-jms:
+    - fcrepo_wrapper -p 8986:
         background: true
-    - solr_wrapper -n hydra-test:
+    - solr_wrapper -d solr/config/ -n hydra-test -p 8985:
         background: true
     - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:setup"
     - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:clean"

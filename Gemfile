@@ -57,7 +57,6 @@ gem 'capistrano-rails'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: '0.1.0'
 gem 'solr_wrapper', '0.13.1'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -70,8 +69,9 @@ group :development, :test do
   gem 'slop'
   gem 'pry-byebug'
   gem 'capybara'
-  gem 'poltergeist'
   gem 'coveralls'
+  gem 'poltergeist', '~> 1.9.0'
+  gem 'webmock'
 end
 
 group :development do
