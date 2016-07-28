@@ -4,13 +4,12 @@ namespace :scholars_archive do
   desc "Start a solr, fedora, blazegraph, and rails instance"
   task :server do
     with_server('development') do
-      ENV['RAILS_ENV'] = 'development'
-      Rake::Task['triplestore_adapter:blazegraph:setup'].invoke
-      Rake::Task['triplestore_adapter:blazegraph:download'].invoke
-      Rake::Task['triplestore_adapter:blazegraph:start'].invoke
+      system("rake triplestore_adapter:blazegraph:setup RAILS_ENV=development")
+      system("rake triplestore_adapter:blazegraph:download RAILS_ENV=development")
+      system("rake triplestore_adapter:blazegraph:start RAILS_ENV=development")
       puts "Waiting for Blazegraph server to settle"
       sleep(5)
-      Rake::Task['triplestore_adapter:blazegraph:build_namespace'].invoke
+      system("rake triplestore_adapter:blazegraph:build_namespace RAILS_ENV=development")
       puts "\n\n\nYay! Blazegraph should be ready to roll."
       IO.popen('rails server') do |io|
         begin
@@ -27,8 +26,7 @@ namespace :scholars_archive do
   desc "Start solr, fedora, and blazegraph instances for tests"
   task :test_server do
     with_server('test') do
-      ENV['RAILS_ENV'] = 'test'
-      Rake::Task['triplestore_adapter:blazegraph:reset'].invoke
+      system("rake triplestore_adapter:blazegraph:reset RAILS_ENV=test")
       begin
         sleep
       rescue Interrupt
@@ -40,9 +38,8 @@ namespace :scholars_archive do
   desc "Start solr, fedora, and blazegraph instances for tests, and run rspec"
   task :ci do
     with_server('test') do
-      ENV['RAILS_ENV'] = 'test'
-      Rake::Task['triplestore_adapter:blazegraph:reset'].invoke
-      Rake::Task['spec'].invoke
+      system("rake triplestore_adapter:blazegraph:reset RAILS_ENV=test")
+      system("rspec RAILS_ENV=test")
     end
   end
 end
