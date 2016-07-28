@@ -1,0 +1,29 @@
+<table class="table table table-bordered">
+  <thead>
+    <tr>
+      <th> X </th>
+      <% @stats.date_list_for_monthly_table.each do |month| %>
+        <th><%= month %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> Downloads </td>
+      <% @stats.date_list_for_monthly_table.each do |month| %>
+        <td>
+        <%= @stats.downloads_by_month[month] %>
+        </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td> Page Views </td>
+      <% @stats.date_list_for_monthly_table.each do |month| %>
+        <td>
+        <%= @stats.pageviews_by_month[month] %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "Daily Stats (CSV)", "/files/#{params[:id]}/daily_stats.csv" %>
