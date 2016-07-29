@@ -8,3 +8,4 @@ Rails.application.config.after_initialize do
      require 'sufia/download'
   end
 end
+
