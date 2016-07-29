@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-
   Hydra::BatchEdit.add_routes(self)
+  mount Qa::Engine => '/authorities'
+
+
   mount Blacklight::Engine => '/'
 
-  concern :searchable, Blacklight::Routes::Searchable.new
+    concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
@@ -11,8 +13,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   mount Hydra::RoleManagement::Engine => '/'
-
-  Hydra::BatchEdit.add_routes(self)
 
   mount CurationConcerns::Engine, at: '/'
   resources :welcome, only: 'index'
@@ -33,6 +33,41 @@ Rails.application.routes.draw do
       delete 'clear'
     end
   end
+
+  # File Set routes
+  namespace :curation_concerns, path: :concern do
+    resources :file_sets, only: [] do
+      resource :audit, only: [:create]
+      member do
+        get 'stats'
+        get 'daily_stats'
+        get 'monthly_stats'
+      end
+    end
+  end
+
+  resources :files, only: [] do
+    member do
+      get :citation, controller: :citations, action: :file, as: :citations
+      get :stats, controller: :stats, action: :file, as: :stats
+      get 'daily_stats', controller: :stats, action: :file, as: :daily_stats
+      get 'monthly_stats', controller: :stats, action: :file, as: :monthly_stats
+    end
+  end
+
+  # Generic work routes
+  resources :works, only: [] do
+    member do
+      resources :transfers, as: :work_transfers, only: [:new, :create]
+      resource :featured_work, only: [:create, :destroy]
+      get :citation, controller: :citations, action: :work, as: :citations
+      get :stats, controller: :stats, action: :work, as: :stats
+      get 'daily_stats', controller: :stats, action: :work, as: :daily_stats
+      get 'monthly_stats', controller: :stats, action: :work, as: :monthly_stats
+      post 'trophy' => 'sufia/trophies#toggle_trophy' # used by sufia/trophy.js
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -89,6 +124,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
+  Hydra::BatchEdit.add_routes(self)
   # This must be the very last route in the file because it has a catch-all route for 404 errors.
   # This behavior seems to show up only in production mode.
   mount Sufia::Engine => '/'

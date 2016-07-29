@@ -9,9 +9,17 @@ dependencies:
   pre:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
+    - npm install phantomjs@1.9.8 
   post:
     - mv config/config.example.yml config/config.yml
-    - bundle exec rake scholars_archive:solr:restart
-    - bundle exec rake scholars_archive:fedora:restart
-    - bundle exec rake scholars_archive:blazegraph:reset
-    - sleep 10
+    - fcrepo_wrapper -p 8986:
+        background: true
+    - solr_wrapper -d solr/config/ -n hydra-test -p 8985:
+        background: true
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:setup"
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:clean"
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:download"
+    - java -server -Xmx4g -Dbigdata.propertyFile=config/triplestore_adapter/blazegraph/blazegraph.properties -Dlog4j.configuration=file:config/triplestore_adapter/blazegraph/log4j.properties -jar blazegraph/blazegraph.jar:
+        background: true
+    - sleep 5
+    - "RAILS_ENV=test bundle exec rake triplestore_adapter:blazegraph:build_namespace"

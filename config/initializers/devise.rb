@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '29eb44be1c6757aa20c5e0d696070179f50b4be951d3d82c2d961e87d69993b6b72c0a6d0693c9c9342b9fe180383330f73a479862a1778f1f12d010dffafd36'
+  # config.secret_key = '62c852e3da10eeb8507d705b3e303862b18220cfb8a558726a5df59aeb12c619d699396ddef37cfacea2655ca4fe75b06a48090553db9ee95b33730b4e196d9a'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -102,7 +102,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '082e21eb702bccbbfc56ff956f791feb68e7899390520e6b5ea9d7976c45d3e5a52778345333642e84a98c8d0b26947390c882cc9e7466708d6e239a7b22cd92'
+  # config.pepper = 'd69d93ecf26805be7df715f73e493c557668f305d1b1c6b1e6e24a083332541617dd8f67593ed2edc4216591e5c2812b8dbf9d94a9f8ed254dafb7b79960bf67'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -153,7 +153,7 @@ Devise.setup do |config|
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
-  config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
@@ -265,7 +265,6 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-
   config.cas_base_url = APPLICATION_CONFIG["rubycas"]["cas_base_url"]
   config.cas_validate_url = APPLICATION_CONFIG["rubycas"]["validate_url"]
   config.cas_logout_url_param = 'follow'

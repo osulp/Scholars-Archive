@@ -1,14 +1,45 @@
-require 'net/http'
-require 'rake'
+require 'active_fedora/rake_support'
 
 namespace :scholars_archive do
-  desc "Setup Scholars Archive for Test and Development environments"
-  task :setup do
-    sh "RAILS_ENV=development bundle exec rake scholars_archive:fedora:restart"
-    sh "RAILS_ENV=development bundle exec rake scholars_archive:solr:restart"
-    sh "RAILS_ENV=development bundle exec rake scholars_archive:blazegraph:reset"
+  desc "Start a solr, fedora, blazegraph, and rails instance"
+  task :server do
+    with_server('development') do
+      system("rake triplestore_adapter:blazegraph:setup RAILS_ENV=development")
+      system("rake triplestore_adapter:blazegraph:download RAILS_ENV=development")
+      system("rake triplestore_adapter:blazegraph:start RAILS_ENV=development")
+      puts "Waiting for Blazegraph server to settle"
+      sleep(5)
+      system("rake triplestore_adapter:blazegraph:build_namespace RAILS_ENV=development")
+      puts "\n\n\nYay! Blazegraph should be ready to roll."
+      IO.popen('rails server') do |io|
+        begin
+          io.each do |line|
+            puts line
+          end
+        rescue Interrupt
+          puts "Stopping server"
+        end
+      end
+    end
+  end
 
-    sh "RAILS_ENV=test bundle exec rake scholars_archive:solr:restart"
-    sh "RAILS_ENV=test bundle exec rake scholars_archive:blazegraph:build_namespace"
+  desc "Start solr, fedora, and blazegraph instances for tests"
+  task :test_server do
+    with_server('test') do
+      system("rake triplestore_adapter:blazegraph:reset RAILS_ENV=test")
+      begin
+        sleep
+      rescue Interrupt
+        puts "Stopping server"
+      end
+    end
+  end
+
+  desc "Start solr, fedora, and blazegraph instances for tests, and run rspec"
+  task :ci do
+    with_server('test') do
+      system("rake triplestore_adapter:blazegraph:reset RAILS_ENV=test")
+      system("rspec RAILS_ENV=test")
+    end
   end
 end
