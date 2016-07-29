@@ -56,7 +56,6 @@ Rails.application.routes.draw do
   end
 
   # Generic work routes
-ller: :stats, action: :file, as: :stats
   resources :works, only: [] do
     member do
       resources :transfers, as: :work_transfers, only: [:new, :create]
