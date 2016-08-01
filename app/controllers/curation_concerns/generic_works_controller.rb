@@ -8,5 +8,11 @@ module CurationConcerns
   include Sufia::WorksControllerBehavior
 
     self.curation_concern_type = GenericWork
+
+    def new
+      curation_concern.publisher = ["Oregon State University"]
+      curation_concern.language = ["English"]
+      super
+    end
   end
 end
