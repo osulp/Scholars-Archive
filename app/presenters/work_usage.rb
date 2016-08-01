@@ -32,20 +32,19 @@ class WorkUsage
     ]
   end
 
-  private
 
-    # work.date_uploaded reflects the date the work was uploaded by the user
-    # and therefore (if available) the date that we want to use for the stats
-    # work.create_date reflects the date the work was added to Fedora. On data
-    # migrated from one repository to another the created_date can be later
-    # than the date the work was uploaded.
-    def date_for_analytics(work)
-      earliest = Sufia.config.analytic_start_date
-      date_uploaded = string_to_date work.date_uploaded
-      date_analytics = date_uploaded ? date_uploaded : work.create_date
-      return date_analytics if earliest.blank?
-      earliest > date_analytics ? earliest : date_analytics
-    end
+  # work.date_uploaded reflects the date the work was uploaded by the user
+  # and therefore (if available) the date that we want to use for the stats
+  # work.create_date reflects the date the work was added to Fedora. On data
+  # migrated from one repository to another the created_date can be later
+  # than the date the work was uploaded.
+  def date_for_analytics(work)
+    earliest = Sufia.config.analytic_start_date
+    date_uploaded = string_to_date work.date_uploaded
+    date_analytics = date_uploaded ? date_uploaded : work.create_date
+    return date_analytics if earliest.blank?
+    earliest > date_analytics ? earliest : date_analytics
+  end
 
   def date_list_for_monthly_table
     (0..11).reverse_each.map do |months_ago|
@@ -53,11 +52,11 @@ class WorkUsage
     end
   end
 
-    def string_to_date(date_str)
-      return Time.zone.parse(date_str)
-    rescue ArgumentError, TypeError
-      return nil
-    end
+  def string_to_date(date_str)
+    return Time.zone.parse(date_str)
+  rescue ArgumentError, TypeError
+    return nil
+  end
 
   def daily_stats()
     d = downloads.map { |i| Hash[*i] }
@@ -92,7 +91,6 @@ class WorkUsage
     end
   end
 
-  private
 
   def table_by_month(data)
     months = converted_data(data)
@@ -100,17 +98,17 @@ class WorkUsage
     Hash[default_date_hash].merge(months)
   end
 
-    def default_date_hash
-      date_list_for_monthly_table.map { |d| [d, 0] }
-    end
+  def default_date_hash
+    date_list_for_monthly_table.map { |d| [d, 0] }
+  end
 
-    def converted_data(data)
-      data.group_by { |t| Time.at(t.first / 1000).to_datetime.strftime("%B %Y") }
-    end
+  def converted_data(data)
+    data.group_by { |t| Time.at(t.first / 1000).to_datetime.strftime("%B %Y") }
+  end
 
-    def reduce_analytics_value(value)
-      value.reduce(0) { |total, result| total + result[1].to_i }
-    end
+  def reduce_analytics_value(value)
+    value.reduce(0) { |total, result| total + result[1].to_i }
+  end
 
 
 

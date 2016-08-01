@@ -95,8 +95,6 @@ class FileUsage
     ]
   end
 
-  private
-
   def table_by_month(data)
     months = converted_data(data)
     months.each_pair { |key, value| months[key] = reduce_analytics_value(value) }
