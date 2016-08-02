@@ -13,6 +13,7 @@
       <%= content_tag :strong, @stats.total_pageviews %> views and <%= content_tag :strong, @stats.total_downloads %> downloads since <%= @stats.created.strftime("%B %-d, %Y") %>
     </div>
 
+    <!-- file has pageview and download -->
     <%= render "page_view_download_table" %>
 
     <div class="stats-container">

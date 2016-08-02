@@ -15,8 +15,7 @@ module Sufia
 
       # prepend this hook so that it comes before load_and_authorize
       prepend_before_action :authenticate_user!, except: [:show, :citation, :stats]
-      before_action :build_breadcrumbs, only: [:show, :edit, :stats]
-      load_and_authorize_resource except: [:index, :audit, :show, :daily_stats, :monthly_stats]
+      before_action :build_breadcrumbs, only: [:show, :edit, :stats, :daily_stats, :monthly_stats]
 
       self.show_presenter = Sufia::FileSetPresenter
       self.form_class = Sufia::Forms::FileSetEditForm

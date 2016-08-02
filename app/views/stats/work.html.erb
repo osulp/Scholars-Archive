@@ -13,7 +13,8 @@
       <%= content_tag :strong, @stats.total_pageviews %> views since <%= @stats.created.strftime("%B %-d, %Y") %>
     </div>
 
-    <%= render "page_view_download_table" %>
+    <!-- Work has pageview but no download -->
+    <%= render "page_view_table" %>
 
     <div class="stats-container">
       <div id="usage-stats" class="stats-placeholder"></div>
