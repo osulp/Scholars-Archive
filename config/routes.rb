@@ -55,18 +55,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # Generic work routes
-  resources :works, only: [] do
-    member do
-      resources :transfers, as: :work_transfers, only: [:new, :create]
-      resource :featured_work, only: [:create, :destroy]
-      get :citation, controller: :citations, action: :work, as: :citations
-      get :stats, controller: :stats, action: :work, as: :stats
-      get 'daily_stats', controller: :stats, action: :work, as: :daily_stats
-      get 'monthly_stats', controller: :stats, action: :work, as: :monthly_stats
-      post 'trophy' => 'sufia/trophies#toggle_trophy' # used by sufia/trophy.js
-    end
-  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
