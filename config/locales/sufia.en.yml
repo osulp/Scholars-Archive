@@ -9,3 +9,17 @@ en:
       suffix:           "@example.org"
     footer:
       copyright_html: "<strong>Copyright &copy; 2016 Project Hydra</strong> Licensed under the Apache License, Version 2.0"
+    geo_coordinates_modal: "<b>Geographic Coordinates</b></br></br>
+      <b>Point</b></br> A label and coordinate pair (decimal latitude and longitude) for this geographic coordinate (e.g. 44.00013, -120.50139)</br>
+      <b>Bounding Box</b></br> A label and set of coordinate pairs (decimal latitude and longitude - e.g. 44.00013, -120.50139) representing the upper left and lower right corners of the bounding box.</br>
+      <b>Geographic Name</b></br> A geographic place name related to the digital object. Names should reference the GeoNames database (geonames.org) and be in the form of a URI (e.g.  http://sws.geonames.org/9166575/).</br>"
+    geo_location_modal: "Links can be in one of the following forms:
+      <br/><b>RDF URI:</b> <a href='http://sws.geonames.org/9166575/' target='_blank'>http://sws.geonames.org/9166575/</a>
+      <br/><b>WWW URI:</b> <a href='http://www.geonames.org/9166575/the-valley-library.html' target='_blank'>http://www.geonames.org/9166575/the-valley-library.html</a>
+      <br/><b>Geonames ID:</b> 9166575
+      <br/><br/>Use <a href='http://geonames.org' target='_blank'>geonames.org</a> to find locations."
+    search:
+      form:
+        nested_geo_points: "Geographic Points"
+        nested_geo_bbox: "Bounding Box"
+        nested_geo_location: "Geographic Location"

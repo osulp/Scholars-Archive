@@ -1,0 +1,45 @@
+<div id="geo_wrapper">
+    <legend>Geographic Coordinates
+      <i class='help-icon' data-toggle="modal" data-target="#myGeoCoordinatesModal"></i>
+    </legend>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myGeoCoordinatesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Geographic Coordinates Types Summary</h4>
+          </div>
+          <div class="modal-body">
+            <%= raw t('sufia.geo_coordinates_modal') %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-wrapper">
+      <div class="warning-anchor"></div>
+      <div class="row select-box">
+        <div class="col-sm-6">
+          <select name="new_geo_type" id="new_geo_type" class="form-control">
+            <option value="Select a geographic coordinate type">Select a geographic coordinate type</option>
+            <option value="location">Geographic Location</option>
+            <option value="point">Point</option>
+            <option value="bbox">Bounding Box</option>
+          </select>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn" id="add_new_geo_type">
+            <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;plus"></i></span>
+          </button>
+        </div>
+      </div>
+
+      <%= render :partial => 'records/edit_fields/nested_geo_location_form', :locals => { f: f } %>
+
+    </div>
+</div>
