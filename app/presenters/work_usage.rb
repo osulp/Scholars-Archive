@@ -28,8 +28,6 @@ class WorkUsage
     ]
   end
 
-
-
   def date_list_for_monthly_table
     (0..11).reverse_each.map do |months_ago|
       Date.today.months_ago(months_ago).strftime("%b %Y")

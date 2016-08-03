@@ -34,28 +34,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # File Set routes
-  namespace :curation_concerns, path: :concern do
-    resources :file_sets, only: [] do
-      resource :audit, only: [:create]
-      member do
-        get 'stats'
-        get 'daily_stats'
-        get 'monthly_stats'
-      end
-    end
-  end
-
-  resources :files, only: [] do
-    member do
-      get :citation, controller: :citations, action: :file, as: :citations
-      get :stats, controller: :stats, action: :file, as: :stats
-      get 'daily_stats', controller: :stats, action: :file, as: :daily_stats
-      get 'monthly_stats', controller: :stats, action: :file, as: :monthly_stats
-    end
-  end
-
-
+  get 'files/:id/daily_stats' => 'stats#daily_stats'
+  get 'files/:id/monthly_stats' => 'stats#monthly_stats'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

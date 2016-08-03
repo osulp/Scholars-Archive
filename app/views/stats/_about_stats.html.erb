@@ -1,0 +1,6 @@
+<%= tiny_mce_stuff if can? :update, ContentBlock%>
+<% if can?(:update, ContentBlock) || !about_block.value.blank? %>
+  <div id="about_stats_text" class="row">
+    <%= editable_content_block about_block %>
+  </div>
+<% end %>

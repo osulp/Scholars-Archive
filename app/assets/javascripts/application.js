@@ -17,5 +17,5 @@
 //= require add_geo_field
 // Required by Blacklight
 //= require blacklight/blacklight
-//= require_tree .
 //= require sufia
+//= require_tree .

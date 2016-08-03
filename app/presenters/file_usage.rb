@@ -1,9 +1,9 @@
-ass FileUsage
+class FileUsage
   attr_accessor :id, :created, :downloads, :pageviews
 
   def initialize(id)
     file = ::FileSet.find(id)
-    user = User.find_by(email: file.depositor)
+    user = User.find_by(username: file.depositor)
     user_id = user ? user.id : nil
 
     self.id = id
@@ -25,6 +25,12 @@ ass FileUsage
     earliest > date_analytics ? earliest : date_analytics
   end
 
+  def date_list_for_monthly_table
+    (0..11).reverse_each.map do |months_ago|
+      Date.today.months_ago(months_ago).strftime("%b %Y")
+    end
+  end
+
   def string_to_date(date_str)
     return Time.zone.parse(date_str)
   rescue ArgumentError, TypeError
@@ -32,27 +38,11 @@ ass FileUsage
   end
 
   def total_downloads
-    downloads.reduce(0) { |total, result| total + result[1].to_i }
+    reduce_analytics_value(downloads)
   end
 
   def total_pageviews
-    pageviews.reduce(0) { |total, result| total + result[1].to_i }
-  end
-
-  # Package data for visualization using JQuery Flot
-  def to_flot
-    [
-      { label: "Pageviews",  data: pageviews },
-      { label: "Downloads",  data: downloads }
-    ]
-  end
-
-
-
-  def date_list_for_monthly_table
-    (0..11).reverse_each.map do |months_ago|
-      Date.today.months_ago(months_ago).strftime("%b %Y")
-    end
+    reduce_analytics_value(pageviews)
   end
 
   def downloads_by_month
@@ -73,6 +63,24 @@ ass FileUsage
     sort_monthly_stats = monthly_stats.sort_by { |k, _v| k.to_date }.map { |m| { m.first => m.last.flatten.inject(:merge) } }
     to_csv(sort_monthly_stats, ["Year", "Month", "Pageviews", "Downloads"])
   end
+
+  # def total_downloads
+  #   downloads.reduce(0) { |total, result| total + result[1].to_i }
+  # end
+  #
+  # def total_pageviews
+  #   pageviews.reduce(0) { |total, result| total + result[1].to_i }
+  # end
+
+  # Package data for visualization using JQuery Flot
+  def to_flot
+    [
+      { label: "Pageviews",  data: pageviews },
+      { label: "Downloads",  data: downloads }
+    ]
+  end
+
+  private
 
     def to_csv(data, header)
       ::CSV.generate do |csv|
@@ -125,8 +133,8 @@ ass FileUsage
       data.group_by { |t| Time.at(t.first / 1000).to_datetime.strftime("%b %Y") }
     end
 
-
-
-
+    def reduce_analytics_value(value)
+      value.reduce(0) { |total, result| total + result[1].to_i }
+    end
 
 end
