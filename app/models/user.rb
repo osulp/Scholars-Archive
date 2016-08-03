@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 
   # Connects this user object to Role-management behaviors.
   include Hydra::RoleManagement::UserRoles
+
+
+  # Connects this user object to Role-management behaviors.
+  include Hydra::RoleManagement::UserRoles
   # Connects this user object to Curation Concerns behaviors.
   include CurationConcerns::User
   # Connects this user object to Sufia behaviors.
