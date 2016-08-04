@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # add new stats routes, not in the file_set or generic_work resources
   get 'files/:id/daily_stats' => 'stats#daily_stats'
   get 'files/:id/monthly_stats' => 'stats#monthly_stats'
 

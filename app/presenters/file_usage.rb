@@ -64,14 +64,6 @@ class FileUsage
     to_csv(sort_monthly_stats, ["Year", "Month", "Pageviews", "Downloads"])
   end
 
-  # def total_downloads
-  #   downloads.reduce(0) { |total, result| total + result[1].to_i }
-  # end
-  #
-  # def total_pageviews
-  #   pageviews.reduce(0) { |total, result| total + result[1].to_i }
-  # end
-
   # Package data for visualization using JQuery Flot
   def to_flot
     [
