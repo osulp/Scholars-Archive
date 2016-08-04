@@ -3,7 +3,7 @@ class FileUsage
 
   def initialize(id)
     file = ::FileSet.find(id)
-    user = User.find_by(username: file.depositor)
+    user = User.find_by(email: file.depositor)
     user_id = user ? user.id : nil
 
     self.id = id

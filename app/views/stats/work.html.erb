@@ -1,5 +1,6 @@
 <!-- Adapted from jquery-flot examples https://github.com/flot/flot/blob/master/examples/visitors/index.html -->
 <%= javascript_tag do %>
+  <!-- TODO: change stats to sufia_item_stats when updating to sufia 7RC2 -->
   var stats = <%= @stats.to_flot.to_json.html_safe %>;
 <% end %>
 
@@ -8,6 +9,11 @@
 <div class="row">
   <div class="col-sm-12">
     <%= content_tag :h2, "Work Analytics" %>
+
+    <div class="about-stats">
+      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_text} %>
+    </div>
+
     <div class="alert alert-info">
       <i class="glyphicon glyphicon-signal large-icon"></i>
       <%= content_tag :strong, @stats.total_pageviews %> views since <%= @stats.created.strftime("%B %-d, %Y") %>
@@ -16,11 +22,25 @@
     <!-- Work has pageview but no download -->
     <%= render "page_view_table" %>
 
+    <div class="about-stats-table-footer">
+      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_table_text} %>
+    </div>
+
     <div class="stats-container">
-      <div id="usage-stats" class="stats-placeholder"></div>
+        <div id="usage-stats" class="stats-placeholder"></div>
     </div>
+
+    <div class="about-stats-table-footer">
+      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_graph_text} %>
+    </div>
+
     <div class="stats-container" style="height:150px;">
-      <div id="overview" class="stats-placeholder"></div>
+        <div id="overview" class="stats-placeholder"></div>
     </div>
+
+    <div class="about-stats-table-footer">
+      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_overview_text} %>
+    </div>
+
   </div>
 </div>

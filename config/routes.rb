@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   # add new stats routes, not in the file_set or generic_work resources
   get 'files/:id/daily_stats' => 'stats#daily_stats'
   get 'files/:id/monthly_stats' => 'stats#monthly_stats'
+  get 'works/:id/work_daily_stats' => 'stats#work_daily_stats'
+  get 'works/:id/work_monthly_stats' => 'stats#work_monthly_stats'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -34,77 +34,18 @@ class WorkUsage
     end
   end
 
-  def downloads_by_month
-    table_by_month(downloads)
-  end
-
   def pageviews_by_month
     table_by_month(pageviews)
   end
 
   def daily_stats_csv
-    sort_daily_stats = daily_stats.sort_by { |k, _v| Time.at(k / 1000).to_datetime }
-    data = sort_daily_stats.map { |m| { Time.at(m.first / 1000) => m.last.flatten.inject(:merge) } }
-    to_csv(data, ["Year", "Month", "Day", "Pageviews", "Downloads"])
+    data = pageviews.map { |t, p| { Time.at(t / 1000) => p } }
+    to_csv(data, ["Year", "Month", "Day", "Pageviews"])
   end
 
   def monthly_stats_csv
-    sort_monthly_stats = monthly_stats.sort_by { |k, _v| k.to_date }.map { |m| { m.first => m.last.flatten.inject(:merge) } }
-    to_csv(sort_monthly_stats, ["Year", "Month", "Pageviews", "Downloads"])
+    to_csv(pageviews_by_month, ["Year", "Month", "Pageviews"])
   end
-
-    def to_csv(data, header)
-      ::CSV.generate do |csv|
-        csv << header
-        data.each do |item|
-          date = item.keys.first.to_datetime
-          if header.include? 'Day'
-            values = Array([date.year, date.month, date.day, item[item.first.first][:pageviews] || 0, item[item.first.first][:downloads] || 0])
-          else
-            values = Array([date.year, date.month, item[item.first.first][:pageviews] || 0, item[item.first.first][:downloads] || 0])
-          end
-          csv << values
-        end
-      end
-    end
-
-    def daily_stats
-      daily_download_stats = stats_hash(downloads).map { |h| h.map { |k, v| { k => { downloads: v } } } }.flatten
-      daily_pageview_stats = stats_hash(pageviews).map { |h| h.map { |k, v| { k => { pageviews: v } } } }.flatten
-      combine_stats(daily_download_stats, daily_pageview_stats)
-    end
-
-    def monthly_stats
-      monthly_download_stats = stats_hash(downloads_by_month.to_a).map { |h| h.map { |k, v| { k => { downloads: v } } } }.flatten
-      monthly_pageview_stats = stats_hash(pageviews_by_month.to_a).map { |h| h.map { |k, v| { k => { pageviews: v } } } }.flatten
-      combine_stats(monthly_download_stats, monthly_pageview_stats)
-    end
-
-    def combine_stats(a, b)
-      [a, b].flatten.each_with_object({}) do |v, h|
-        (h[v.keys.first] ||= []) << v.values
-      end
-    end
-
-    def stats_hash(data)
-      data.map { |i| Hash[*i] }
-    end
-
-    def table_by_month(data)
-      months = converted_data(data)
-      months.each_pair { |key, value| months[key] = reduce_analytics_value(value) }
-      Hash[default_date_hash].merge(months)
-    end
-
-    def default_date_hash
-      date_list_for_monthly_table.map { |d| [d, 0] }
-    end
-
-    def converted_data(data)
-      data.group_by { |t| Time.at(t.first / 1000).to_datetime.strftime("%b %Y") }
-    end
-
-
 
   private
 
@@ -126,4 +67,41 @@ class WorkUsage
     rescue ArgumentError, TypeError
       return nil
     end
+
+    # helper functions to create the monthly table
+
+    def to_csv(data, header)
+      ::CSV.generate do |csv|
+        csv << header
+        data.each do |item|
+          if header.include? 'Day'
+            date = item.keys.first.to_datetime
+            values = Array([date.year, date.month, date.day, item[item.first.first] || 0])
+          else
+            date = item.first.to_datetime
+            values = Array([date.year, date.month, item.second || 0])
+          end
+          csv << values
+        end
+      end
+    end
+
+    def table_by_month(data)
+      months = converted_data(data)
+      months.each_pair { |key, value| months[key] = reduce_analytics_value(value) }
+      Hash[default_date_hash].merge(months)
+    end
+
+    def converted_data(data)
+      data.group_by { |t| Time.at(t.first / 1000).to_datetime.strftime("%b %Y") }
+    end
+
+    def reduce_analytics_value(value)
+      value.reduce(0) { |total, result| total + result[1].to_i }
+    end
+
+    def default_date_hash
+      date_list_for_monthly_table.map { |d| [d, 0] }
+    end
+
 end
