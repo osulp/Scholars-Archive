@@ -11,7 +11,7 @@
     <%= content_tag :h2, "Work Analytics" %>
 
     <div class="about-stats">
-      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_text} %>
+      <%= render partial: 'about_stats', locals: {about_block: present_about_work_stats_block} %>
     </div>
 
     <div class="alert alert-info">
@@ -23,7 +23,7 @@
     <%= render "page_view_table" %>
 
     <div class="about-stats-table-footer">
-      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_table_text} %>
+      <%= render partial: 'about_stats', locals: {about_block: present_about_work_stats_table_block} %>
     </div>
 
     <div class="stats-container">
@@ -31,7 +31,7 @@
     </div>
 
     <div class="about-stats-table-footer">
-      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_graph_text} %>
+      <%= render partial: 'about_stats', locals: {about_block: present_about_work_stats_graph_block} %>
     </div>
 
     <div class="stats-container" style="height:150px;">
@@ -39,7 +39,7 @@
     </div>
 
     <div class="about-stats-table-footer">
-      <%= render partial: 'about_stats', locals: {about_block: @about_work_stats_overview_text} %>
+      <%= render partial: 'about_stats', locals: {about_block: present_about_work_stats_overview_block} %>
     </div>
 
   </div>

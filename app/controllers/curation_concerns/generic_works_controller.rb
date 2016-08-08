@@ -6,9 +6,11 @@ module CurationConcerns
     include CurationConcerns::CurationConcernController
     # Adds Sufia behaviors to the controller.
     include Sufia::WorksControllerBehavior
+    include ScholarsArchive::StatsControllerBehavior
     before_filter :update_nested_geo_location_attributes, :only => [:update, :new]
 
     self.curation_concern_type = GenericWork
+    self.show_presenter = ScholarsArchive::WorkShowPresenter
 
     def new
       curation_concern.publisher = ["Oregon State University"]
@@ -55,5 +57,13 @@ module CurationConcerns
         self.params = NestedGeoLocation.set_nested_geo_locations(self.params)
       end
     end
+
+    private
+
+    def resource_file_path 
+      ""
+      # Sufia::Engine.routes.url_helpers.generic_file_url(stats.id, :only_path => false, :host => request.host)
+    end
+
   end
 end

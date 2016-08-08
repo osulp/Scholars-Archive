@@ -54,4 +54,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  if Devise::VERSION >= '4.2'
+    # This is for an unreleased version of Devise (will either be 4.2 or 5.0)
+    config.include Devise::Test::ControllerHelpers, type: :controller
+  else
+    config.include Devise::TestHelpers, type: :controller
+  end
 end
