@@ -19,6 +19,26 @@ describe FileUsageStats, type: :model do
     dates.each { |date| ldate_strs << date.strftime("%Y%m%d") }
     ldate_strs
   }
+  let(:date_strs_csv) {
+    ldate_strs_csv = []
+    dates.each { |date| ldate_strs_csv << "#{date.year},#{date.month},#{date.day}" }
+    ldate_strs_csv
+  }
+  let(:months) {
+    lmonths = []
+    11.downto(0) { |idx| lmonths << (Time.zone.today - idx.month) }
+    lmonths
+  }
+  let(:month_strs) {
+    lmonth_strs = []
+    months.each { |date| lmonth_strs << months.strftime("%Y%m") }
+    lmonth_strs
+  }
+  let(:month_strs_csv) {
+    lmonth_strs_csv = []
+    months.each { |month| lmonth_strs_csv << "#{month.year},#{month.month}" }
+    lmonth_strs_csv
+  }
 
   # This is what the data looks like that's returned from Google Analytics (GA) via the Legato gem
   # Due to the nature of querying GA, testing this data in an automated fashion is problematc.
@@ -64,12 +84,11 @@ describe FileUsageStats, type: :model do
     end
 
     it "returns a daily download csv" do
-      expect(usage.daily_stats_csv).to eq("Year,Month,Day,Pageviews,Downloads\n2016,8,4,4,1\n2016,8,5,8,1\n2016,8,6,6,2\n2016,8,7,10,3\n2016,8,8,2,5\n")
+      expect(usage.daily_stats_csv).to eq("Year,Month,Day,Pageviews,Downloads\n#{date_strs_csv[0]},4,1\n#{date_strs_csv[1]},8,1\n#{date_strs_csv[2]},6,2\n#{date_strs_csv[3]},10,3\n#{date_strs_csv[4]},2,5\n")
     end
 
-    it "returns a monthly download csv" do
-      expect(usage.monthly_stats_csv).to eq("Year,Month,Pageviews,Downloads\n2015,9,0,0\n2015,10,0,0\n2015,11,0,0\n2015,12,0,0\n2016,1,0,0\n2016,2,0,0\n2016,3,0,0\n2016,4,0,0\n2016,5,0,0\n2016,6,0,0\n2016,7,0,0\n2016,8,30,12\n")
+    it "returns a monthly stats csv" do
+      expect(usage.monthly_stats_csv).to eq("Year,Month,Pageviews,Downloads\n#{month_strs_csv[0]},0,0\n#{month_strs_csv[1]},0,0\n#{month_strs_csv[2]},0,0\n#{month_strs_csv[3]},0,0\n#{month_strs_csv[4]},0,0\n#{month_strs_csv[5]},0,0\n#{month_strs_csv[6]},0,0\n#{month_strs_csv[7]},0,0\n#{month_strs_csv[8]},0,0\n#{month_strs_csv[9]},0,0\n#{month_strs_csv[10]},0,0\n#{month_strs_csv[11]},30,12\n")
     end
   end
-
 end
