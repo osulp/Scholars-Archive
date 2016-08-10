@@ -15,6 +15,7 @@
 //= require jquery-ui
 //= require add_date_field/
 //= require add_geo_field
+//= require sufia/flot_stats
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require sufia
