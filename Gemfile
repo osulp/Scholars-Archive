@@ -75,6 +75,7 @@ group :development, :test do
   gem 'coveralls'
   gem 'poltergeist', '~> 1.9.0'
   gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 group :development do

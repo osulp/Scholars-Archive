@@ -34,6 +34,11 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'files/:id/file_daily_stats' => 'curation_concerns/file_sets#file_daily_stats'
+  get 'files/:id/file_monthly_stats' => 'curation_concerns/file_sets#file_monthly_stats'
+  get 'works/:id/work_daily_stats' => 'curation_concerns/generic_works#work_daily_stats'
+  get 'works/:id/work_monthly_stats' => 'curation_concerns/generic_works#work_monthly_stats'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
