@@ -12,7 +12,7 @@ RSpec.describe DeleteFeaturedResearchersController do
       end
 
       before do
-        sign_in(user) if user
+        login_as(user) if user
       end
 
       it "should delete a featured_researcher" do
