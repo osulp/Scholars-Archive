@@ -39,6 +39,10 @@ Rails.application.routes.draw do
   get 'works/:id/work_daily_stats' => 'curation_concerns/generic_works#work_daily_stats'
   get 'works/:id/work_monthly_stats' => 'curation_concerns/generic_works#work_monthly_stats'
 
+  namespace :admin do
+    get 'stats' => 'stats#index', as: :stats
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
