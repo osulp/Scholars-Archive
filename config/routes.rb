@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
+  delete '/featured_researchers/:id/delete', :to => "delete_featured_researchers#destroy", :as => "delete_researcher"
+
   devise_for :users
   mount Hydra::RoleManagement::Engine => '/'
 
