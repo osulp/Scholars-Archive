@@ -6,7 +6,7 @@ RSpec.describe DeleteFeaturedResearchersController do
     context "as an admin" do
       let(:user) do 
         r = Role.create name: "admin"
-        u = User.create(:username => 'blah', :group_list => "admin")
+        u = User.create(:username => 'blah')
         r.users << u
         r.save
       end
