@@ -38,7 +38,7 @@ gem 'config'
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
 
-gem 'sufia', git: 'https://github.com/projecthydra/sufia', tag: 'v7.0.0.rc1'
+gem 'sufia', git: 'https://github.com/projecthydra/sufia', tag: 'v7.1.0'
 
 gem 'rsolr', '~> 1.0'
 
