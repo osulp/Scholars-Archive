@@ -7,7 +7,6 @@ module CurationConcerns
     # Adds Sufia behaviors to the controller.
     include Sufia::WorksControllerBehavior
     include ScholarsArchive::StatsControllerBehavior
-    include ScholarsArchive::WorksControllerBehavior
     before_filter :update_nested_geo_location_attributes, :only => [:update, :new]
 
     self.curation_concern_type = GenericWork
