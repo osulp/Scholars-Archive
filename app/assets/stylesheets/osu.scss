@@ -1,0 +1,21 @@
+@import 'osu_settings';
+
+/* bounding box styling */
+.bbox_field {
+  // display:none
+}
+
+.geo_bbox span.input-group-btn.field-controls,
+.geo_point span.input-group-btn.field-controls {
+  vertical-align: top;
+}
+.geo_bbox button.btn,
+.geo_point button.btn {
+  margin-top: 1.5em;
+}
+
+// Stats
+#about_stats_text {
+  margin: 1em 0;
+  padding-bottom: 1em;
+}

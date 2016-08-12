@@ -1,0 +1,16 @@
+<% unless presenter.nested_geo_location.empty? %>
+  <tr>
+    <th><%= raw t('sufia.search.form.nested_geo_location') %></th>
+    <td>
+      <ul class="tabular">
+        <% presenter.nested_geo_location.each do |location| %>
+          <li class="attribute">
+            <span itemprop="location" itemscope itemtype="http://schema.org/GeoCoordinates">
+              <span itemprop="label"><%= link_to_field('nested_geo_location_label', location) %></span>
+            </span>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+<% end %>
