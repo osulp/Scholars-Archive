@@ -1,7 +1,5 @@
-# Generated via
-#  `rails generate curation_concerns:work GenericWork`
 module CurationConcerns
-  class GenericWorkForm < Sufia::Forms::WorkForm
+  class GenericWorkForm < ScholarsArchive::TriplePoweredProperties::Forms::WorkForm
     self.model_class = ::GenericWork
     self.terms += [:resource_type, :spatial, :nested_geo_points, :nested_geo_bbox, :nested_geo_location]
 

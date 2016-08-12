@@ -4,6 +4,8 @@ class GenericWork < ActiveFedora::Base
   include ::CurationConcerns::WorkBehavior
   include ::CurationConcerns::BasicMetadata
   include Sufia::WorkBehavior
+  include ScholarsArchive::TriplePoweredProperties::WorkBehavior
+
   self.human_readable_type = 'Work'
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
@@ -16,6 +18,8 @@ class GenericWork < ActiveFedora::Base
   # end
 
   validates :title, presence: { message: 'Your work must have a title.' }
+
+  self.triple_powered_properties = [ :subject, :based_near, :creator ]
 
   def to_solr(solr_doc = {})
     super.tap do |doc|
