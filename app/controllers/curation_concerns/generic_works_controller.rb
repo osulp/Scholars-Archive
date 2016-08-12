@@ -21,7 +21,7 @@ module CurationConcerns
     def edit
       curation_concern.nested_geo_bbox.each do |box|
         # bbox is stored as a string array of lat/long string arrays like: "121.1,121.2,44.1,44.2", however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2","44.1","44.2"]
-        box_array = box.bbox.first.tr('[]" ','').split(',')
+        box_array = box.bbox.first.tr('[]" ', '').split(',')
         box.bbox_lat_north = box_array[0]
         box.bbox_lon_west = box_array[1]
         box.bbox_lat_south = box_array[2]
@@ -32,10 +32,12 @@ module CurationConcerns
 
     # routed to /files/:id (PUT)
     def update
-      params["generic_work"]["nested_geo_bbox_attributes"].each do |box, value|
-        if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| f.empty? }
-          bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
-          value["bbox"] = bbox.join(',')
+      if params["generic_work"]["nested_geo_bbox_attributes"]
+        params["generic_work"]["nested_geo_bbox_attributes"].each do |box, value|
+          if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| f.empty? }
+            bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
+            value["bbox"] = bbox.join(',')
+          end
         end
       end
       if actor.update(attributes_for_actor)
@@ -60,10 +62,11 @@ module CurationConcerns
 
     private
 
-    def resource_file_path 
+    def resource_file_path
       ""
       # Sufia::Engine.routes.url_helpers.generic_file_url(stats.id, :only_path => false, :host => request.host)
     end
 
   end
 end
+
