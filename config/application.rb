@@ -34,5 +34,7 @@ module ScholarsArchive
     ::APPLICATION_CONFIG = YAML.load_file(Rails.root.join('config/config.yml')) || {}
     config.rubycas.cas_base_url = APPLICATION_CONFIG["rubycas"]["cas_base_url"]
     config.geonames = APPLICATION_CONFIG["geonames"]
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

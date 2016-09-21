@@ -32,6 +32,9 @@ WebMock.allow_net_connect!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+# Don't depend on redis/sidekiq for activejob, makes debugging and testing easier
+Rails.application.config.active_job.queue_adapter = :inline
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

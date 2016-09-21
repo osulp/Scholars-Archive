@@ -57,6 +57,8 @@ gem 'capistrano-rails'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: '0.1.0'
 gem 'solr_wrapper', '0.13.1'
 
+gem 'sidekiq'
+
 #geonames.org api
 gem 'geonames-wrapper', :github => "osulp/geonames", :require => 'geonames'
 
