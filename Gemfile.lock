@@ -528,6 +528,8 @@ GEM
       nokogiri (~> 1.6.0)
       rails (>= 4.2.0, < 6.0)
     rack (1.6.4)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.6)
@@ -685,6 +687,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    sinatra (1.4.7)
+      rack (~> 1.5)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
     skydrive (1.2.0)
       activesupport
       httmultiparty
@@ -807,6 +813,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver
   sidekiq
+  sinatra
   slop
   solr_wrapper (= 0.13.1)
   spring

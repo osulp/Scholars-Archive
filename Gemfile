@@ -58,6 +58,8 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', 
 gem 'solr_wrapper', '0.13.1'
 
 gem 'sidekiq'
+# sinatra for sidekiq web ui
+gem 'sinatra', require: false
 
 #geonames.org api
 gem 'geonames-wrapper', :github => "osulp/geonames", :require => 'geonames'

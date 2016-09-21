@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  # If user is an admin, /sidekiq shows the queue web ui
+  authenticate :user, lambda { |u| u.admin? } do
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   Hydra::BatchEdit.add_routes(self)
   mount Qa::Engine => '/authorities'
 
