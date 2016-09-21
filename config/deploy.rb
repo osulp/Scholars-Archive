@@ -31,16 +31,19 @@ after 'deploy:restart', 'deploy:cleanup'
 namespace :deploy do
   desc "Symlinks required configuration files"
   task :symlink_config, :roles => :app do
-    %w{settings.local.yml config.yml analytics.yml god.conf puma.rb}.each do |config_file|
+    %w{settings.local.yml config.yml analytics.yml god.conf}.each do |config_file|
       run "ln -nfs #{deploy_to}/shared/config/#{config_file} #{release_path}/config/#{config_file}"
     end
     %w{sufia.rb}.each do |file|
       run "ln -nfs #{deploy_to}/shared/config/initializers/#{file} #{release_path}/config/initializers/#{file}"
     end
+    %w{Passengerfile.json}.each do |file|
+      run "ln -nfs #{deploy_to}/shared/#{file} #{release_path}/#{file}"
+    end
   end
   desc "Uploads local config files"
   task :upload_config, :roles => :app do
-    %w{settings.local.yml config.yml analytics.yml god.conf puma.rb}.each do |config_file|
+    %w{settings.local.yml config.yml analytics.yml god.conf}.each do |config_file|
       top.run "mkdir -p #{deploy_to}/shared/config"
       top.upload "config/#{config_file}", "#{deploy_to}/shared/config/#{config_file}", :via => :scp
     end
