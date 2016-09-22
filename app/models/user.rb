@@ -1,18 +1,14 @@
 class User < ActiveRecord::Base
   # Connects this user object to Hydra behaviors.
   include Hydra::User
+
   # Connects this user object to Role-management behaviors.
   include Hydra::RoleManagement::UserRoles
-
-
   # Connects this user object to Curation Concerns behaviors.
   include CurationConcerns::User
   # Connects this user object to Sufia behaviors.
   include Sufia::User
   include Sufia::UserUsageStats
-
-
-
 
   if Blacklight::Utils.needs_attr_accessible?
     attr_accessible :email, :password, :password_confirmation
@@ -34,10 +30,10 @@ class User < ActiveRecord::Base
   def cas_extra_attributes=(extra_attributes)
     extra_attributes.each do |name, value|
       case name.to_sym
-      when :fullname
-        self.display_name = value
-      when :email
-        self.email = value
+        when :fullname
+          self.display_name = value
+        when :email
+          self.email = value
       end
     end
   end

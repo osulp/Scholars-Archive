@@ -1,0 +1,45 @@
+<!-- Adapted from jquery-flot examples https://github.com/flot/flot/blob/master/examples/visitors/index.html -->
+<%= javascript_tag do %>
+  <!-- TODO: change stats to sufia_item_stats when updating to sufia 7RC2 -->
+  var sufia_item_stats = <%= @stats.to_flot.to_json.html_safe %>;
+<% end %>
+
+<%= content_tag :h1, @file_set, class: "lower" %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= content_tag :h2, "File Analytics" %>
+
+    <div class="about-stats">
+      <%= render partial: 'about_stats', locals: {about_block: present_about_stats_block } %>
+    </div>
+
+    <div class="alert alert-info">
+      <i class="glyphicon glyphicon-signal large-icon"></i>
+      <%= content_tag :strong, @stats.total_pageviews %> views and <%= content_tag :strong, @stats.total_downloads %> downloads since <%= @stats.created.strftime("%B %-d, %Y") %>
+    </div>
+
+    <!-- file has pageview and download -->
+    <%= render "page_view_download_table" %>
+
+    <div class="about-stats-table-footer">
+      <%= render partial: 'about_stats', locals: {about_block: present_about_stats_table_block } %>
+    </div>
+
+    <div class="stats-container">
+        <div id="usage-stats" class="stats-placeholder"></div>
+    </div>
+
+    <div class="about-stats-table-footer">
+      <%= render partial: 'about_stats', locals: {about_block: present_about_stats_graph_block } %>
+    </div>
+
+    <div class="stats-container" style="height:230px;padding-bottom:3em;">
+        <div id="overview" class="stats-placeholder"></div>
+    </div>
+
+    <div class="about-stats-table-footer">
+      <%= render partial: 'about_stats', locals: {about_block: present_about_stats_overview_block } %>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,20 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'triplestore_adapter'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module ScholarsReallyArchived
+module ScholarsArchive
   class Application < Rails::Application
-    
+
     config.generators do |g|
       g.test_framework :rspec, :spec => true
     end
 
+    config.autoload_paths << Rails.root.join('lib')
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -31,5 +33,8 @@ module ScholarsReallyArchived
 
     ::APPLICATION_CONFIG = YAML.load_file(Rails.root.join('config/config.yml')) || {}
     config.rubycas.cas_base_url = APPLICATION_CONFIG["rubycas"]["cas_base_url"]
+    config.geonames = APPLICATION_CONFIG["geonames"]
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

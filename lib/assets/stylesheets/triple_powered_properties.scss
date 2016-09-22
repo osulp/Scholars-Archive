@@ -1,0 +1,35 @@
+.triple_powered_property {
+  position: relative;
+  li.field-wrapper {
+    span.field-controls { vertical-align: top; }
+    div.message.has-warning { display: inline-block; margin-top: 5px; }
+  }
+  .triple_powered_labels {
+    display: inline-block;
+    padding: 0 5px;
+    width: 100%;
+    margin-top: 2px;
+    span[itemprop='label'] {
+      width: 100%;
+      float: left;
+    }
+    span.error { color: #d9534f; }
+    .toggle {
+      font-size: 10px;
+      cursor: pointer;
+      font-weight: normal;
+      background-color: #337ab7;
+    }
+    .toggle:hover{ background-color: #2e6da4; }
+    ul.list {
+      display: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      li {
+        float: left;
+        width: 100%;
+      }
+    }
+  }
+}

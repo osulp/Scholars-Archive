@@ -1,0 +1,35 @@
+<div class="stats-container" style="height:245px;">
+  <% present @stats do |file_stats| %>
+    <table class="table table table-bordered table-analytics">
+      <thead>
+        <tr>
+          <th></th>
+          <% file_stats.date_list_for_monthly_table.each do |month| %>
+            <th><%= month %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> Downloads </td>
+          <% file_stats.date_list_for_monthly_table.each do |month| %>
+            <td>
+              <%= file_stats.downloads_by_month[month] %>
+            </td>
+          <% end %>
+        </tr>
+        <tr>
+          <td> Page Views </td>
+          <% file_stats.date_list_for_monthly_table.each do |month| %>
+            <td>
+              <%= file_stats.pageviews_by_month[month] %>
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to "Daily Stats (CSV)", "/files/#{params[:id]}/file_daily_stats.csv" %> | 
+    <%= link_to "Monthly Stats (CSV)", "/files/#{params[:id]}/file_monthly_stats.csv" %>
+
+  <% end %>
+</div>
