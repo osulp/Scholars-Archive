@@ -9,7 +9,7 @@ dependencies:
   pre:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
-    - npm install phantomjs@1.9.8 
+    - npm install phantomjs@1.9.8
   post:
     - mv config/config.example.yml config/config.yml
     - fcrepo_wrapper -p 8986:
