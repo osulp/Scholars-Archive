@@ -48,9 +48,9 @@ Blacklight.onLoad(function() {
         data: {"_method":"delete"}, 
         success: function(data) {
           row = anchor.closest('li')
-            row.fadeOut(1000, function() {
-              row.remove();
-            });
+          row.fadeOut(1000, function() {
+            row.remove();
+          });
         }
       });
     }

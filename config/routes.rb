@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     end
   end
 
+  delete '/featured_researchers/:id/delete', :to => "delete_content_blocks#destroy", :as => "delete_researcher"
+
   get 'files/:id/file_daily_stats' => 'curation_concerns/file_sets#file_daily_stats'
   get 'files/:id/file_monthly_stats' => 'curation_concerns/file_sets#file_monthly_stats'
   get 'works/:id/work_daily_stats' => 'curation_concerns/generic_works#work_daily_stats'
