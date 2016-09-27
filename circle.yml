@@ -6,6 +6,7 @@ machine:
 dependencies:
   cache_directories:
     - "tmp"
+    - "/tmp/phantomjs/phantomjs-1.9.7-linux-x86_64.tar.bz2"
   pre:
     - gem install fcrepo_wrapper
     - gem install solr_wrapper
