@@ -19,7 +19,7 @@ class GenericWork < ActiveFedora::Base
 
   validates :title, presence: { message: 'Your work must have a title.' }
 
-  self.triple_powered_properties = [ :subject, :based_near, :creator ]
+  self.triple_powered_properties = [ :subject, :based_near ]
 
   def to_solr(solr_doc = {})
     super.tap do |doc|

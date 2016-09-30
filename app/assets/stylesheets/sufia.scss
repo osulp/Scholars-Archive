@@ -22,3 +22,12 @@ a.geonames_link {
   text-decoration: underline;
   cursor: pointer;
 }
+
+#home_header  {
+  background-image: image-url('sa-header.jpg') !important;
+  background-position: 50% 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-top: 8px solid #E1E1E1;
+  border-bottom: 8px solid #E1E1E1;
+}

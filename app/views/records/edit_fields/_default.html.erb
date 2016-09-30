@@ -1,4 +1,4 @@
-<% if f.object.has_triple_powered_property?(key) %>
+<% if f.object.respond_to?(:has_triple_powered_property?) && f.object.has_triple_powered_property?(key) %>
     <%= f.input key,
                 as: :triple_powered_property,
                 input_html: { class: 'form-control' },

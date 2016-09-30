@@ -9,7 +9,8 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
             <h4 class="modal-title" id="myModalLabel">Date Types Summary</h4>
           </div>
           <div class="modal-body">
@@ -40,10 +41,12 @@
       </button>
     </div>
   </div>
-  <%= f.input :date_created, :label => "Date Created", as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"}%>
-  <% f.object.class.date_terms.each do |date_term| %>
-    <% unless f.object.model.get_values(date_term).empty? %>
-      <%= f.input date_term, :label => "Date " + date_term.to_s.capitalize, as: :multi_value, :label_html => {:class => "date-header-label date-picker-enabled"} %>
-    <% end %>
+  <%= f.input :date_created, :label => "Date Created", as: :multi_value, :label_html => { :class => "date-header-label date-picker-enabled" } %>
+  <% if f.object.respond_to?(:date_terms) %>
+      <% f.object.class.date_terms.each do |date_term| %>
+          <% unless f.object.model.get_values(date_term).empty? %>
+              <%= f.input date_term, :label => "Date " + date_term.to_s.capitalize, as: :multi_value, :label_html => { :class => "date-header-label date-picker-enabled" } %>
+          <% end %>
+      <% end %>
   <% end %>
 </div>
