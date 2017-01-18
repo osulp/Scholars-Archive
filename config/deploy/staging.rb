@@ -32,6 +32,7 @@ server "#{config['host']}", user: "#{config['user']}", roles: %w{app db web}
 # Feel free to add new variables to customise your setup.
 
 set :deploy_to, config['deploy_to']
+set :branch, config['branch']
 
 # Custom SSH Options
 # ==================

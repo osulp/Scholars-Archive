@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'f55ad1d0439c85704a3d441f1fbe92c54712a2b38a1ecb2c319a893c4acfa71d085069d6c2b4c1b7af15f2ec960f88ab5b631fee22fd913ef152b5fc41e563a7'
+  config.secret_key = '<%= ENV["SCHOLARSARCHIVE_SECRET_KEY_BASE"] %>'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
