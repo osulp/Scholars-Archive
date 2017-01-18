@@ -1,0 +1,7 @@
+SCHOLARSARCHIVE_ADAPTER: youmustchangethis
+SCHOLARSARCHIVE_DB: youmustchangethis
+SCHOLARSARCHIVE_DB_HOST: youmustchangethis
+SCHOLARSARCHIVE_DB_PASSWORD: youmustchangethis
+SCHOLARSARCHIVE_DB_PORT: youmustchangethis
+SCHOLARSARCHIVE_DB_USERNAME: youmustchangethis
+SCHOLARSARCHIVE_SECRET_KEY_BASE: youmustchangethis
