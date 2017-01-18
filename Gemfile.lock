@@ -118,6 +118,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
+    airbrussh (1.1.1)
+      sshkit (>= 1.6.1, != 1.7.0)
     almond-rails (0.0.3)
       rails (>= 4.2, < 6)
     arel (7.1.4)
@@ -177,6 +179,24 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (1.15.0)
+    capistrano (3.6.1)
+      airbrussh (>= 1.0.0)
+      capistrano-harrow
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.1.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-harrow (0.5.3)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
+    capistrano-rails (1.1.7)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.0.4)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -397,8 +417,12 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mysql2 (0.3.21)
     nest (2.1.0)
       redic
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (4.0.0)
     nio4r (1.2.1)
     noid (0.9.0)
     nokogiri (1.7.0.1)
@@ -574,6 +598,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
+    sshkit (1.11.3)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     stomp (1.4.3)
     sxp (1.0.0)
       rdf (~> 2.0)
@@ -617,6 +644,10 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  capistrano (~> 3.6)
+  capistrano-passenger
+  capistrano-rails
+  capistrano-rbenv
   coffee-rails (~> 4.2)
   devise
   devise-guests (~> 0.5)
@@ -626,6 +657,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  mysql2 (~> 0.3.18)
   puma (~> 3.0)
   rails (~> 5.0.1)
   rsolr (~> 1.0)
