@@ -60,7 +60,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'hyrax', '0.0.1.alpha', github: 'projecthydra-labs/hyrax'
+gem 'hyrax', github: 'projecthydra-labs/hyrax', branch: '0.1-stable'
 gem 'flipflop', github: 'jcoyne/flipflop', branch: 'hydra'
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'

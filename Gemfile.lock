@@ -8,7 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/projecthydra-labs/hyrax.git
-  revision: 3c13dfd7dc110516aaa4a58db5166d7132e79bad
+  revision: d390626472d6b1cf9458220255db9376c1293767
+  branch: 0.1-stable
   specs:
     hyrax (0.0.1.alpha)
       active_attr (~> 0.9.0)
@@ -127,13 +128,13 @@ GEM
       execjs
     awesome_nested_set (3.1.1)
       activerecord (>= 4.0.0, < 5.1)
-    aws-sdk (2.6.47)
-      aws-sdk-resources (= 2.6.47)
-    aws-sdk-core (2.6.47)
+    aws-sdk (2.6.49)
+      aws-sdk-resources (= 2.6.49)
+    aws-sdk-core (2.6.49)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.47)
-      aws-sdk-core (= 2.6.47)
+    aws-sdk-resources (2.6.49)
+      aws-sdk-core (= 2.6.49)
     aws-sigv4 (1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -659,7 +660,7 @@ DEPENDENCIES
   fcrepo_wrapper
   flipflop!
   hydra-role-management
-  hyrax (= 0.0.1.alpha)!
+  hyrax!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
