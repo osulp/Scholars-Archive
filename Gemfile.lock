@@ -161,6 +161,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    bootstrap_form (2.4.0)
     breadcrumbs_on_rails (3.0.1)
     browse-everything (0.11.1)
       addressable (~> 2.5)
@@ -343,6 +344,10 @@ GEM
     hydra-pcdm (0.9.0)
       active-fedora (>= 10, < 12)
       mime-types (>= 1)
+    hydra-role-management (0.2.2)
+      blacklight
+      bootstrap_form
+      cancancan
     hydra-works (0.15.0)
       hydra-derivatives (~> 3.0)
       hydra-file_characterization (~> 0.3, >= 0.3.3)
@@ -653,6 +658,7 @@ DEPENDENCIES
   devise-guests (~> 0.5)
   fcrepo_wrapper
   flipflop!
+  hydra-role-management
   hyrax (= 0.0.1.alpha)!
   jbuilder (~> 2.5)
   jquery-rails
