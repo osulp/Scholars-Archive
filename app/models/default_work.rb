@@ -16,43 +16,63 @@ class DefaultWork < ActiveFedora::Base
     index.as :stored_searchable
   end
 
-  property :alternative_title, predicate: ::RDF::URI.new("http://purl.org/dc/terms/alternative"), multiple: false do |index|
+  property :alternative_title, predicate: ::RDF::URI.new("http://purl.org/dc/terms/alternative") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :date_issued, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued"), multiple: false do |index|
+  property :date_issued, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :date_embargo, predicate: ::RDF::URI.new("http://purl.org/dc/terms/date"), multiple: false do |index|
+  property :date_embargo, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
     index.as :stored_searchable
   end
 
-  property :peerreview, predicate: ::RDF::URI.new("http://peerreview"), multiple: false do |index|
+  property :date_updated, predicate: ::RDF::URI.new("http://purl.org/dc/terms/date") do |index|
+    index.as :stored_searchable
+  end
+
+  property :peerreview, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :peerreviewnotes, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description"), multiple: false do |index|
+  property :peerreviewnotes, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
     index.as :stored_searchable
   end
 
-  property :citation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/bibliographicCitation"), multiple: false do |index|
+  property :citation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/identifier") do |index|
     index.as :stored_searchable
   end
 
-  property :ispartofseries, predicate: ::RDF::URI.new("http://purl.org/dc/terms/isPartOf"), multiple: false do |index|
+  property :isbn, predicate: ::RDF::URI.new("http://purl.org/dc/terms/identifier") do |index|
     index.as :stored_searchable
   end
 
-  property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents"), multiple: false do |index|
+  property :uri, predicate: ::RDF::URI.new("http://purl.org/dc/terms/identifier") do |index|
     index.as :stored_searchable
   end
 
-  property :digitization, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description"), multiple: false do |index|
+  property :doi, predicate: ::RDF::URI.new("http://purl.org/dc/terms/identifier") do |index|
     index.as :stored_searchable
   end
 
-  property :description, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description"), multiple: false do |index|
+  property :ispartofseries, predicate: ::RDF::URI.new("http://purl.org/dc/terms/relation") do |index|
+    index.as :stored_searchable
+  end
+
+  property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+    index.as :stored_searchable
+  end
+
+  property :digitization, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+    index.as :stored_searchable
+  end
+
+  property :description, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+    index.as :stored_searchable
+  end
+
+  property :sponsorship, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
     index.as :stored_searchable
   end
 
