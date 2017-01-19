@@ -48,7 +48,7 @@ class DefaultWork < ActiveFedora::Base
     index.as :stored_searchable
   end
 
-  property :uri, predicate: ::RDF::URI.new("http://purl.org/dc/terms/identifier") do |index|
+  property :identifier_uri, predicate: ::RDF::URI.new("http://purl.org/dc/terms/identifier") do |index|
     index.as :stored_searchable
   end
 
