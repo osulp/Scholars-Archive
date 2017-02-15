@@ -2,8 +2,6 @@ Hyrax.config do |config|
   # Note: order of registration affects Zotero/Arkivo
   # Injected via `rails g hyrax:work DefaultWork`
   config.register_curation_concern :default_work
-  # Injected via `rails g hyrax:work Etd`
-  config.register_curation_concern :etd
   # Email recipient of messages sent via the contact form
   # config.contact_email = "repo-admin@example.org"
 
