@@ -12,11 +12,11 @@ class Etd < ActiveFedora::Base
   # Add SA@OSU metadata fields not covered by Defaultmetadata
   # TODO: find URI to represent degree properties
 
-  property :date_copyright, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued") do |index|
+  property :degree_name, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
     index.as :stored_searchable, :facetable
   end
-
-  property :degree_name, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+  
+  property :date_graduate, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
     index.as :stored_searchable, :facetable
   end
 
@@ -32,15 +32,15 @@ class Etd < ActiveFedora::Base
     index.as :stored_searchable, :facetable
   end
 
-  property :degree_grantor, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+  property :degree_grantor, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/dgg") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :contributor_advisor, predicate: ::RDF::URI.new("http://purl.org/dc/elements/1.1/contributor") do |index|
+  property :contributor_advisor, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/ths") do |index|
     index.as :stored_searchable, :facetable
   end 
 
-  property :contributor_committeemember, predicate: ::RDF::URI.new("http://purl.org/dc/elements/1.1/contributor") do |index|
+  property :contributor_committeemember, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/dgs") do |index|
     index.as :stored_searchable, :facetable
   end
 end
