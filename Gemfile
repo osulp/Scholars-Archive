@@ -73,3 +73,13 @@ group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
 end
+
+group :test do
+  gem 'coveralls'
+  gem 'rspec_junit_formatter'
+  gem 'rspec'
+  gem 'rspec-mocks'
+  gem 'simplecov'
+  gem 'webmock'
+end
+
