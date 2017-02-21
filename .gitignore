@@ -22,5 +22,9 @@
 
 /coverage/*
 /.idea/*
+/.vscode/*
+/blazegraph/*
+!/blazegraph/.keep
 /config/config.yml
 /config/local_env.yml
+
