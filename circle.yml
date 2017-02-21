@@ -1,0 +1,18 @@
+version: 2
+executorType: docker
+containerInfo:
+  - image: ruby:latest
+stages:
+  build:
+    workDir: /home/ubuntu/app
+    steps:
+      - type: checkout
+      - type: shell
+        name: Install System Dependencies
+        command: apt-get update -qq
+      - type: shell
+        name: Install Ruby Dependencies
+        command: bundle install
+      - type: shell
+        name: Run Tests
+        command: bundle exec rspec
