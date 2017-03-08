@@ -12,23 +12,19 @@ class Etd < ActiveFedora::Base
   # Add SA@OSU metadata fields not covered by Defaultmetadata
   # TODO: find URI to represent degree properties
 
-  property :degree_name, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
-    index.as :stored_searchable, :facetable
-  end
-  
-  property :date_graduate, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+  property :degree_level, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/degreeLevel") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :degree_field, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+  property :degree_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/ThesisDegree") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :degree_level, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+  property :degree_field, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#majorField") do |index|
     index.as :stored_searchable, :facetable
   end
 
-  property :degree_discipline, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+  property :degree_discipline, predicate: ::RDF::URI.new("http://dbpedia.org/ontology/academicDiscipline") do |index|
     index.as :stored_searchable, :facetable
   end
 
@@ -41,6 +37,18 @@ class Etd < ActiveFedora::Base
   end 
 
   property :contributor_committeemember, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/dgs") do |index|
+    index.as :stored_searchable, :facetable
+  end
+
+  property :graduation_term, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#AcademicTerm") do |index|
+    index.as :stored_searchable, :facetable
+  end
+
+  property :graduation_year, predicate: ::RDF::URI.new("http://rdvocab.info/Elements/yearDegreeGranted") do |index|
+    index.as :stored_searchable, :facetable
+  end
+
+  property :graduation_academic_year, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#AcademicYear") do |index|
     index.as :stored_searchable, :facetable
   end
 end
