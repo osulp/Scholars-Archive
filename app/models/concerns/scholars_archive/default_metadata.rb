@@ -4,6 +4,34 @@ module ScholarsArchive
 
     #reusable metadata fields for DSpace migration 
     included do
+      property :alt_title, predicate: ::RDF::URI.new("http://purl.org/dc/terms/alternative") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :peerreviewed, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/peerReviewed") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :digitization_spec, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/conversionSpecifications") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :file_extent, predicate: ::RDF::URI.new("http://purl.org/dc/terms/extent") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :file_format, predicate: ::RDF::URI.new("http://purl.org/dc/terms/FileFormat") do |index|
+        index.as :stored_searchable, :facetable
+      end     
+
       property :date_issued, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued") do |index|
         index.as :stored_searchable, :facetable
       end
