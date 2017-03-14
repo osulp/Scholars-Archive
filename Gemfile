@@ -42,10 +42,21 @@ gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
 
 gem 'hydra-role-management'
+gem 'hyrax', github: 'projecthydra-labs/hyrax'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'rsolr', '~> 1.0'
+gem 'devise'
+gem 'devise-guests', '~> 0.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'solr_wrapper', '>= 0.3'
+  gem 'fcrepo_wrapper'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -57,19 +68,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'hyrax', github: 'projecthydra-labs/hyrax', branch: '0.1-stable'
-gem 'flipflop', github: 'jcoyne/flipflop', branch: 'hydra'
-group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
+group :test do
+  gem 'coveralls'
+  gem 'rspec_junit_formatter'
+  gem 'rspec'
+  gem 'rspec-mocks'
+  gem 'simplecov'
+  gem 'webmock'
 end
 
-gem 'rsolr', '~> 1.0'
-gem 'devise'
-gem 'devise-guests', '~> 0.5'
-group :development, :test do
-  gem 'fcrepo_wrapper'
-  gem 'rspec-rails'
-end
