@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'mysql2', '~> 0.3.18'
 
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.6'
+gem 'capistrano', '~> 3.8.0'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
