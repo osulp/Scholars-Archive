@@ -1,7 +1,7 @@
 class CreateQaLocalAuthorityEntries < ActiveRecord::Migration[5.0]
   def change
     create_table :qa_local_authority_entries do |t|
-      t.references :local_authority, foreign_key: true
+      t.references :qa_local_authority, foreign_key: true
       t.string :label
       t.string :uri
 
