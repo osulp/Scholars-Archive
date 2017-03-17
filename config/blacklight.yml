@@ -7,4 +7,7 @@ test: &test
 production:
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+staging:
+  adapter: solr
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/hydra-staging" %>
 

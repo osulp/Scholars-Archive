@@ -11,5 +11,10 @@ test:
 production:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:8983/fedora/rest
+  url: <%= ENV['SCHOLARSARCHIVE_FEDORA_URL'] %>
   base_path: /prod
+staging:
+  user: fedoraAdmin
+  password: fedoraAdmin
+  url: <%= ENV['SCHOLARSARCHIVE_FEDORA_URL'] %>
+  base_path: /staging
