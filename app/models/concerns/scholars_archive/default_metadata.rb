@@ -24,10 +24,6 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :date_uploaded, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateSubmitted") do |index|
-        index.as :stored_searchable, :facetable
-      end
-
       property :digitization_spec, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/conversionSpecifications") do |index|
         index.as :stored_searchable, :facetable
       end
@@ -50,7 +46,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :funding_body, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/fnd.html") do |index|
+      property :funding_body, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/fnd") do |index|
         index.as :stored_searchable, :facetable
       end
 
