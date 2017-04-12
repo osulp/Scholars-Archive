@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -28,9 +27,27 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
+gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Sidekiq for background job processing with Redis
+gem 'sidekiq'
+
+# MySQL for staging/production servers
+gem 'mysql2', '~> 0.3.18'
+# Use Capistrano for deployment
+gem 'capistrano', '~> 3.8.0'
+gem 'capistrano-rails'
+gem 'capistrano-passenger'
+gem 'capistrano-rbenv'
+gem 'hydra-role-management'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'hyrax', github: 'projecthydra-labs/hyrax', branch: 'master'
+gem 'rsolr', '~> 1.0'
+gem 'devise'
+gem 'devise-guests', '~> 0.5'
 
 group :development do
   # Use Capistrano for deployment
@@ -43,23 +60,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# MySQL for staging/production servers
- gem 'mysql2', '~> 0.3.18'
-#
-# # Use Capistrano for deployment
- gem 'capistrano', '~> 3.8.0'
- gem 'capistrano-rails'
- gem 'capistrano-passenger'
- gem 'capistrano-rbenv'
- gem 'hydra-role-management'
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'hyrax', github: 'projecthydra-labs/hyrax', branch: 'master'
-gem 'rsolr', '~> 1.0'
-gem 'devise'
-gem 'devise-guests', '~> 0.5'
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
