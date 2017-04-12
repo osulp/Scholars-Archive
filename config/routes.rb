@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount Blacklight::Engine => '/'
 
   concern :searchable, Blacklight::Routes::Searchable.new
@@ -9,6 +8,13 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
+  # For Sidekiq administration UI
+  authenticate :user, ->(u) { u.admin? } do
+    require 'sidekiq/web'
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   mount Hydra::RoleManagement::Engine => '/'
 
   mount Qa::Engine => '/authorities'
