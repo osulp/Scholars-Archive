@@ -1,4 +1,23 @@
 es:
+  blacklight:
+    search:
+      fields:
+        show:
+          date_created: "Fecha de Creación"
+          date_available: "Fecha Disponible"
+          date_copyright: "Fecha con Copyright"
+          date_issued: "Fecha de Emisión"
+          date_accepted: "Fecha de Aceptación"
+          date_collected: "Fecha Recogida"
+          date_valid: "Fecha Válida"
+        facet:
+          date_created: "Fecha de Creación"
+          date_available: "Fecha Disponible"
+          date_copyright: "Fecha con Copyright"
+          date_issued: "Fecha de Emisión"
+          date_accepted: "Fecha de Aceptación"
+          date_collected: "Fecha Recogida"
+          date_valid: "Fecha Válida"
   hyrax:
     product_name:           "Hyrax"
     product_twitter_handle: "@HydraSphere"

@@ -1,0 +1,28 @@
+<div id="date_wrapper">
+  <div class="row"> 
+    <legend>Dates</legend>
+    <div class="warning-anchor"></div> 
+    <div class="col-sm-6">
+      <%= select_tag_dates(:new_date_type, f)  %>
+    </div>
+  </div>
+  <div id="date_fields">
+    <div class="col-sm-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Dates</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% f.object.date_terms.each do |term| %>
+            <% if f.object.send(term).present? %>
+              <%= render partial: 'scholars_archive/base/form_date_field', :locals => { term: term, f: f } %>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
