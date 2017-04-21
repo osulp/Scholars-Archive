@@ -4,23 +4,11 @@ module ScholarsArchive
 
     included do
       #basicmetadata import from hyrax
-      property :label, predicate: ActiveFedora::RDF::Fcrepo::Model.downloadFilename, multiple: false do |index|
+      property :based_near, predicate: ::RDF::Vocab::FOAF.based_near do |index|
         index.as :stored_searchable
       end
 
-      property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false do |index|
-        index.as :stored_searchable
-      end
-
-      property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false do |index|
-        index.as :stored_searchable
-      end
-
-      property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
-        index.as :stored_searchable
-      end
-
-      property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
+      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
         index.as :stored_searchable
       end
 
@@ -32,11 +20,27 @@ module ScholarsArchive
           index.as :stored_searchable
       end
 
+      property :date_created, predicate: ::RDF::Vocab::DC.created do |index|
+        index.as :stored_searchable
+      end
+
       property :description, predicate: ::RDF::Vocab::DC11.description do |index|
         index.as :stored_searchable
       end
 
+      property :identifier, predicate: ::RDF::Vocab::DC.identifier do |index|
+        index.as :stored_searchable
+      end
+
+      property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false do |index|
+        index.as :stored_searchable
+      end
+
       property :keyword, predicate: ::RDF::Vocab::DC11.relation do |index|
+        index.as :stored_searchable
+      end
+
+      property :label, predicate: ActiveFedora::RDF::Fcrepo::Model.downloadFilename, multiple: false do |index|
         index.as :stored_searchable
       end
 
@@ -45,8 +49,11 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      # This is for the rights statement
-      property :rights_statement, predicate: ::RDF::Vocab::EDM.rights do |index|
+      property :language, predicate: ::RDF::Vocab::DC11.language do |index|
+        index.as :stored_searchable
+      end
+
+      property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
         index.as :stored_searchable
       end
 
@@ -54,23 +61,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :date_created, predicate: ::RDF::Vocab::DC.created do |index|
-        index.as :stored_searchable
-      end
-
-      property :subject, predicate: ::RDF::Vocab::DC11.subject do |index|
-        index.as :stored_searchable
-      end
-
-      property :language, predicate: ::RDF::Vocab::DC11.language do |index|
-        index.as :stored_searchable
-      end
-
-      property :identifier, predicate: ::RDF::Vocab::DC.identifier do |index|
-        index.as :stored_searchable
-      end
-
-      property :based_near, predicate: ::RDF::Vocab::FOAF.based_near do |index|
+      property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
         index.as :stored_searchable
       end
 
@@ -78,10 +69,19 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
+      # This is for the rights statement
+      property :rights_statement, predicate: ::RDF::Vocab::EDM.rights do |index|
         index.as :stored_searchable
       end
 
+      property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false do |index|
+        index.as :stored_searchable
+      end
+
+      property :subject, predicate: ::RDF::Vocab::DC11.subject do |index|
+        index.as :stored_searchable
+      end
+      
       property :source, predicate: ::RDF::Vocab::DC.source do |index|
         index.as :stored_searchable
       end
