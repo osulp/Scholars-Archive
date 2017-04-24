@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/projecthydra-labs/hyrax.git
-  revision: 6679e814389330e0d69c958ac35c38a9f7729f5b
+  revision: 6834f39f76824c6baa70f263f6f3e889b7fe1530
   branch: master
   specs:
     hyrax (2.0.0.alpha)
@@ -75,7 +75,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active-fedora (11.1.5)
+    active-fedora (11.1.6)
       active-triples (~> 0.11.0)
       activemodel (>= 4.2, < 6)
       activesupport (>= 4.2.4, < 6)
@@ -122,13 +122,13 @@ GEM
       execjs
     awesome_nested_set (3.1.2)
       activerecord (>= 4.0.0, < 5.1)
-    aws-sdk (2.9.8)
-      aws-sdk-resources (= 2.9.8)
-    aws-sdk-core (2.9.8)
+    aws-sdk (2.9.11)
+      aws-sdk-resources (= 2.9.11)
+    aws-sdk-core (2.9.11)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.9.8)
-      aws-sdk-core (= 2.9.8)
+    aws-sdk-resources (2.9.11)
+      aws-sdk-core (= 2.9.11)
     aws-sigv4 (1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -157,7 +157,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap_form (2.6.0)
+    bootstrap_form (2.7.0)
     breadcrumbs_on_rails (3.0.1)
     browse-everything (0.12.0)
       addressable (~> 2.5)
@@ -176,7 +176,7 @@ GEM
     builder (3.2.3)
     byebug (9.0.6)
     cancancan (1.16.0)
-    capistrano (3.8.0)
+    capistrano (3.8.1)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
