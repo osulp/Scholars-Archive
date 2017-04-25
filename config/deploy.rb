@@ -27,7 +27,7 @@ set :rbenv_ruby, '2.2.5'
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/local_env.yml', 'config/config.yml', 'config/initializers/hyrax.rb'
+append :linked_files, 'config/local_env.yml', 'config/config.yml', 'config/initializers/hyrax.rb', 'config/analytics.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp', 'config/puma', 'public/assets'
