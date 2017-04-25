@@ -2,7 +2,7 @@ require 'yaml'
 config = YAML.load_file('config/config.yml')["deployment"] || {}
 
 # config valid only for current version of Capistrano
-lock '3.8.0'
+lock '3.8.1'
 
 set :application, 'ScholarsArchive'
 set :repo_url, config['repository']
@@ -12,9 +12,6 @@ set :repo_url, config['repository']
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, config['deploy_to']
-
-# Default value for :scm is :git
-set :scm, :git
 
 # The server must have rbenv installed and the version of ruby specified here.
 set :rbenv_ruby, '2.2.5'
