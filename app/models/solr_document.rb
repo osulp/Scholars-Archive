@@ -25,4 +25,8 @@ class SolrDocument
   # Do content negotiation for AF models. 
 
   use_extension( Hydra::ContentNegotiation )
+
+  def rights_statement
+    self[Solrizer.solr_name('rights_statement')]
+  end
 end
