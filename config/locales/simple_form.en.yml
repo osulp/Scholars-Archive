@@ -1,0 +1,37 @@
+en:
+  simple_form:
+    error_notification:
+      default_message: "Please review the problems below:"
+    "no": 'No'
+    required:
+      mark: '*'
+      text: 'required'
+    "yes": 'Yes'
+
+    hints:
+      admin_set:
+        date_created: "Date of creation or manufacture of intellectual content. Such as when the raw data is taken."
+        date_available: "Available to public in the repo, such as after an embargo lifts."
+        date_copyright: "Date of copyrighted, such as for a thesis."
+        date_issued: "[Published or distributed], such as when an article published in a journal."
+        date_accepted: "Date of acceptance of the resource. Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."
+        date_collected: "The date on which the MeasurementOrFact was made. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E)."
+        date_valid: "Date (often a range) of validity of a resource."
+      defaults:
+        date_created: "Date of creation or manufacture of intellectual content. Such as when the raw data is taken."
+        date_available: "Available to public in the repo, such as after an embargo lifts."
+        date_copyright: "Date of copyrighted, such as for a thesis."
+        date_issued: "[Published or distributed], such as when an article published in a journal."
+        date_accepted: "Date of acceptance of the resource. Examples of resources to which a Date Accepted may be relevant are a thesis (accepted by a university department) or an article (accepted by a journal)."
+        date_collected: "The date on which the MeasurementOrFact was made. Recommended best practice is to use an encoding scheme, such as ISO 8601:2004(E)."
+        date_valid: "Date (often a range) of validity of a resource."
+    labels:
+      defaults:
+        date_created: "Date Created"
+        date_available: "Date Available"
+        date_copyright: "Date Copyright"
+        date_issued: "Date Issued"
+        date_accepted: "Date Accepted"
+        date_collected: "Date Collected"
+        date_valid: "Date Valid"
+

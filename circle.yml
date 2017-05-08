@@ -2,6 +2,7 @@ version: 2
 executorType: docker
 containerInfo:
   - image: ruby:2.3.1
+  - image: openjdk:8
 stages:
   build:
     workDir: /home/ubuntu/app

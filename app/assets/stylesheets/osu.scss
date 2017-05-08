@@ -1,0 +1,38 @@
+@import 'osu_settings';
+
+div#date_wrapper {
+  padding-left: 1em;
+}
+
+#date_fields {
+  padding-top: 1em;
+}
+
+#date_fields .form-group {
+  margin-bottom: 0em;
+}
+
+#date_fields table.table tr td {
+  vertical-align: bottom;
+}
+
+#date_wrapper .date_range_input input {
+  max-width: 47em;
+  margin-bottom: 0.5em;
+}
+
+#date_fields tr.date_field button.remove_date_type.date-range {
+    margin-top: -12.5em;
+}
+
+#date_fields tr.date_field button.remove_date_type.date-default {
+    margin-top: -6em;
+}
+
+.date-range-label {
+  height: 1.5em;
+}
+
+.date-range-inputs {
+  margin-top: 0.5em;
+}

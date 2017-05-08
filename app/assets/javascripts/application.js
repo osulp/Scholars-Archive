@@ -12,12 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require add_date_field
+//= require jquery-datetimepicker/jquery.datetimepicker.full
 //= require turbolinks//
 // Required by Blacklight
 //= require blacklight/blacklight
-
 //= require_tree .
 //= require hyrax
 
