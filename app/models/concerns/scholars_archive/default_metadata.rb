@@ -3,89 +3,6 @@ module ScholarsArchive
     extend ActiveSupport::Concern
 
     included do
-      #basicmetadata import from hyrax
-      property :based_near, predicate: ::RDF::Vocab::FOAF.based_near do |index|
-        index.as :stored_searchable
-      end
-
-      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
-        index.as :stored_searchable
-      end
-
-      property :creator, predicate: ::RDF::Vocab::DC11.creator do |index|
-        index.as :stored_searchable
-      end
-
-      property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
-          index.as :stored_searchable
-      end
-
-      property :date_created, predicate: ::RDF::Vocab::DC.created do |index|
-        index.as :stored_searchable
-      end
-
-      property :description, predicate: ::RDF::Vocab::DC11.description do |index|
-        index.as :stored_searchable
-      end
-
-      property :identifier, predicate: ::RDF::Vocab::DC.identifier do |index|
-        index.as :stored_searchable
-      end
-
-      property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false do |index|
-        index.as :stored_searchable
-      end
-
-      property :keyword, predicate: ::RDF::Vocab::DC11.relation do |index|
-        index.as :stored_searchable
-      end
-
-      property :label, predicate: ActiveFedora::RDF::Fcrepo::Model.downloadFilename, multiple: false do |index|
-        index.as :stored_searchable
-      end
-
-      # Used for a license
-      property :license, predicate: ::RDF::Vocab::DC.rights do |index|
-        index.as :stored_searchable
-      end
-
-      property :language, predicate: ::RDF::Vocab::DC11.language do |index|
-        index.as :stored_searchable
-      end
-
-      property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
-        index.as :stored_searchable
-      end
-
-      property :publisher, predicate: ::RDF::Vocab::DC11.publisher do |index|
-        index.as :stored_searchable
-      end
-
-      property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
-        index.as :stored_searchable
-      end
-
-      property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
-        index.as :stored_searchable
-      end
-
-      # This is for the rights statement
-      property :rights_statement, predicate: ::RDF::Vocab::EDM.rights do |index|
-        index.as :stored_searchable
-      end
-
-      property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false do |index|
-        index.as :stored_searchable
-      end
-
-      property :subject, predicate: ::RDF::Vocab::DC11.subject do |index|
-        index.as :stored_searchable
-      end
-      
-      property :source, predicate: ::RDF::Vocab::DC.source do |index|
-        index.as :stored_searchable
-      end
-
       #reusable metadata fields for DSpace migration
       property :additional_information, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
         index.as :stored_searchable
@@ -95,15 +12,52 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :date_available, predicate: ::RDF::URI.new("http://purl.org/dc/terms/available") do |index|
+      #basicmetadata import from hyrax
+      property :based_near, predicate: ::RDF::Vocab::FOAF.based_near do |index|
         index.as :stored_searchable
       end
 
-      property :date_copyright, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateCopyrighted") do |index|
+      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
         index.as :stored_searchable
       end
 
-      property :date_issued, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued") do |index|
+      property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
+          index.as :stored_searchable
+      end
+
+      property :creator, predicate: ::RDF::Vocab::DC11.creator do |index|
+        index.as :stored_searchable
+      end
+
+      property :date_accepted, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateAccepted"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :date_available, predicate: ::RDF::URI.new("http://purl.org/dc/terms/available"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :date_collected, predicate: ::RDF::URI.new("http://rs.tdwg.org/dwc/terms/measurementDeterminedDate"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :date_copyright, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateCopyrighted"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :date_created, predicate: ::RDF::Vocab::DC.created, multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :date_issued, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :date_valid, predicate: ::RDF::URI.new("http://purl.org/dc/terms/valid"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :description, predicate: ::RDF::Vocab::DC11.description do |index|
         index.as :stored_searchable
       end
 
@@ -137,11 +91,15 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :identifier, predicate: ::RDF::Vocab::DC.identifier do |index|
+        index.as :stored_searchable
+      end
+
       property :identifier_uri, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/uri") do |index|
         index.as :stored_searchable
       end
 
-      property :isbn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/isbn") do |index|
+      property :import_url, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#importUrl'), multiple: false do |index|
         index.as :stored_searchable
       end
 
@@ -149,11 +107,65 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :isbn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/isbn") do |index|
+        index.as :stored_searchable
+      end
+
+      property :keyword, predicate: ::RDF::Vocab::DC11.relation do |index|
+        index.as :stored_searchable
+      end
+
+      property :label, predicate: ActiveFedora::RDF::Fcrepo::Model.downloadFilename, multiple: false do |index|
+        index.as :stored_searchable
+      end
+
+      property :language, predicate: ::RDF::Vocab::DC11.language do |index|
+        index.as :stored_searchable
+      end
+
+      # Used for a license
+      property :license, predicate: ::RDF::Vocab::DC.rights do |index|
+        index.as :stored_searchable
+      end
+
+      property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
+        index.as :stored_searchable
+      end
+
       property :peerreviewed, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/peerReviewed") do |index|
         index.as :stored_searchable
       end
 
+      property :publisher, predicate: ::RDF::Vocab::DC11.publisher do |index|
+        index.as :stored_searchable
+      end
+
       property :relation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/relation") do |index|
+        index.as :stored_searchable
+      end
+
+      property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
+        index.as :stored_searchable
+      end
+
+      property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false do |index|
+        index.as :stored_searchable
+      end
+
+      property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
+        index.as :stored_searchable
+      end
+
+      # This is for the rights statement
+      property :rights_statement, predicate: ::RDF::Vocab::EDM.rights do |index|
+        index.as :stored_searchable
+      end
+
+      property :source, predicate: ::RDF::Vocab::DC.source do |index|
+        index.as :stored_searchable
+      end
+
+      property :subject, predicate: ::RDF::Vocab::DC11.subject do |index|
         index.as :stored_searchable
       end
 

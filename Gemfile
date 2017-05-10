@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -32,6 +33,7 @@ gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq'
+gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
 
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
@@ -76,4 +78,7 @@ group :test do
   gem 'rspec-mocks'
   gem 'simplecov'
   gem 'webmock'
+  gem 'poltergeist'
+  gem 'capybara'
+  gem 'database_cleaner'
 end

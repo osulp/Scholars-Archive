@@ -5,7 +5,7 @@
   var hyrax_item_stats = <%= @stats.to_flot.to_json.html_safe %>;
 <% end %>
 
-<%= content_tag :h1, @file_set, class: "lower" %>
+<%= content_tag :h1, @stats.model.title.first, class: "lower" %>
 
 <div class="row">
   <div class="col-sm-12">

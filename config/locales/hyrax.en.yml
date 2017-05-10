@@ -1,4 +1,23 @@
 en:
+  blacklight:
+    search:
+      fields:
+        show:
+          date_created: "Date Created"
+          date_available: "Date Available"
+          date_copyright: "Date Copyright"
+          date_issued: "Date Issued"
+          date_accepted: "Date Accepted"
+          date_collected: "Date Collected"
+          date_valid: "Date Valid"
+        facet:
+          date_created: "Date Created"
+          date_available: "Date Available"
+          date_copyright: "Date Copyright"
+          date_issued: "Date Issued"
+          date_accepted: "Date Accepted"
+          date_collected: "Date Collected"
+          date_valid: "Date Valid"
   hyrax:
     product_name:           "Hyrax"
     product_twitter_handle: "@HydraSphere"
@@ -9,4 +28,4 @@ en:
       suffix:               "@example.org"
     footer:
       copyright_html: "<strong>Copyright &copy; 2017 Project Hydra</strong> Licensed under the Apache License, Version 2.0"
-      service_html: A service of <a href="http://projecthydra.org/" class="navbar-link" target="_blank">Project Hydra</a>.
+      service_html: A service of <a href="http://projecthydra.org/" class="navbar-link" target="_blank">Project Hydra</a>

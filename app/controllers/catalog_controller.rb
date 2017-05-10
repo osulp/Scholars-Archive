@@ -75,9 +75,9 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name("publisher", :stored_searchable), label: "Publisher", itemprop: 'publisher', link_to_search: solr_name("publisher", :facetable)
     config.add_index_field solr_name("based_near", :stored_searchable), label: "Location", itemprop: 'contentLocation', link_to_search: solr_name("based_near", :facetable)
     config.add_index_field solr_name("language", :stored_searchable), label: "Language", itemprop: 'inLanguage', link_to_search: solr_name("language", :facetable)
-    config.add_index_field solr_name("date_uploaded", :stored_sortable, type: :date), label: "Date Uploaded", itemprop: 'datePublished', helper_method: :human_readable_date
+    config.add_index_field solr_name("date_created", :stored_searchable), label: "Date Created", itemprop: 'dateCreated', helper_method: :human_readable_date_edtf, field_name: 'date_created'
     config.add_index_field solr_name("date_modified", :stored_sortable, type: :date), label: "Date Modified", itemprop: 'dateModified', helper_method: :human_readable_date
-    config.add_index_field solr_name("date_created", :stored_searchable), label: "Date Created", itemprop: 'dateCreated'
+    config.add_index_field solr_name("date_uploaded", :stored_sortable, type: :date), label: "Date Uploaded", itemprop: 'datePublished', helper_method: :human_readable_date
     config.add_index_field solr_name("rights", :stored_searchable), label: "Rights", helper_method: :license_links
     config.add_index_field solr_name("resource_type", :stored_searchable), label: "Resource Type", link_to_search: solr_name("resource_type", :facetable)
     config.add_index_field solr_name("file_format", :stored_searchable), label: "File Format", link_to_search: solr_name("file_format", :facetable)
@@ -96,9 +96,15 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("publisher", :stored_searchable), label: "Publisher"
     config.add_show_field solr_name("based_near", :stored_searchable), label: "Location"
     config.add_show_field solr_name("language", :stored_searchable), label: "Language"
-    config.add_show_field solr_name("date_uploaded", :stored_searchable), label: "Date Uploaded"
-    config.add_show_field solr_name("date_modified", :stored_searchable), label: "Date Modified"
+    config.add_show_field solr_name("date_accepted", :stored_searchable), label: "Date Accepted"
+    config.add_show_field solr_name("date_available", :stored_searchable), label: "Date Available"
+    config.add_show_field solr_name("date_collected", :stored_searchable), label: "Date Collected"
+    config.add_show_field solr_name("date_copyright", :stored_searchable), label: "Date Copyright"
     config.add_show_field solr_name("date_created", :stored_searchable), label: "Date Created"
+    config.add_show_field solr_name("date_issued", :stored_searchable), label: "Date Issued"
+    config.add_show_field solr_name("date_modified", :stored_searchable), label: "Date Modified"
+    config.add_show_field solr_name("date_uploaded", :stored_searchable), label: "Date Uploaded"
+    config.add_show_field solr_name("date_valid", :stored_searchable), label: "Date Valid"
     config.add_show_field solr_name("rights", :stored_searchable), label: "Rights"
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable), label: "File Format"
@@ -182,8 +188,56 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('date_accepted') do |field|
+      solr_name = solr_name("date_accepted", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('date_available') do |field|
+      solr_name = solr_name("date_available", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('date_collected') do |field|
+      solr_name = solr_name("date_collected", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('date_copyright') do |field|
+      solr_name = solr_name("date_copyright", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
     config.add_search_field('date_created') do |field|
       solr_name = solr_name("created", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('date_issued') do |field|
+      solr_name = solr_name("date_issued", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('date_valid') do |field|
+      solr_name = solr_name("date_valid", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

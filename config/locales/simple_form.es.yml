@@ -1,0 +1,35 @@
+es:
+  simple_form:
+    error_notification:
+      default_message: "Por favor revise los problemas abajo:"
+    "no": 'No'
+    required:
+      mark: '*'
+      text: 'requerido'
+    "yes": 'Si'
+    hints:
+      admin_set:
+        date_created: "Fecha de creación o fabricación del contenido intelectual. Tales como cuando se toman los datos en bruto."
+        date_available: "Fecha disponible al público, como cuando después de que se levante un embargo."
+        date_copyright: "Fecha del derecho de autor, como para una tesis."
+        date_issued: "[Publicado o distribuido], como cuando un artículo es publicado en una revista."
+        date_accepted: "Fecha de aceptación del recurso. Ejemplos de recursos a los cuales una fecha Aceptada puede ser relevante son una tesis (aceptada por un departamento universitario) o un artículo (aceptado por una revista)."
+        date_collected: "La fecha en que se realizó la medición o hecho. La mejor práctica recomendada es utilizar un esquema de codificación, como ISO 8601: 2004 (E)."
+        date_valid: "Fecha (a menudo un rango) de validez de un recurso."
+      defaults:
+        date_created: "Fecha de creación o fabricación del contenido intelectual. Tales como cuando se toman los datos en bruto."
+        date_available: "Fecha disponible al público, como cuando después de que se levante un embargo."
+        date_copyright: "Fecha del derecho de autor, como para una tesis."
+        date_issued: "[Publicado o distribuido], como cuando un artículo es publicado en una revista."
+        date_accepted: "Fecha de aceptación del recurso. Ejemplos de recursos a los cuales una fecha Aceptada puede ser relevante son una tesis (aceptada por un departamento universitario) o un artículo (aceptado por una revista)."
+        date_collected: "La fecha en que se realizó la medición o hecho. La mejor práctica recomendada es utilizar un esquema de codificación, como ISO 8601: 2004 (E)."
+        date_valid: "Fecha (a menudo un rango) de validez de un recurso."
+    labels:
+      defaults:
+        date_created: "Fecha de Creación"
+        date_available: "Fecha Disponible"
+        date_copyright: "Fecha con Copyright"
+        date_issued: "Fecha de Emisión"
+        date_accepted: "Fecha de Aceptación"
+        date_collected: "Fecha Recogida"
+        date_valid: "Fecha Válida"
