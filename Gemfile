@@ -56,6 +56,9 @@ gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
 gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
 gem 'devise_cas_authenticatable'
 
+# Used for integration of Blazegraph backend and required API
+gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'

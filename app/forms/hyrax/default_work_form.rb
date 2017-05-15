@@ -2,6 +2,7 @@
 #  `rails generate hyrax:work DefaultWork`
 module Hyrax
   class DefaultWorkForm < Hyrax::Forms::WorkForm
+    include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     self.model_class = ::DefaultWork
     self.terms += [:resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_accepted]
 
