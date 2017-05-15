@@ -28,4 +28,3 @@ fits.log
 !/blazegraph/.keep
 /config/config.yml
 /config/local_env.yml
-
