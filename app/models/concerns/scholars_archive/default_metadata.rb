@@ -172,6 +172,10 @@ module ScholarsArchive
       property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents") do |index|
         index.as :stored_searchable
       end
+
+      property :replaces, predicate: ::RDF::Vocab::DC.replaces do |index|
+        index.as :stored_searchable
+      end
     end
   end
 end
