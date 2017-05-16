@@ -23,11 +23,12 @@ GIT
 
 GIT
   remote: https://github.com/osulp/triplestore-adapter
-  revision: 7f19f7ff9df87e52434d44ef879aac2f5e40a28d
+  revision: f6344b8ebb5c0ddd6ed435baaefec7b6f91ba53a
   specs:
     triplestore-adapter (0.1.0)
       json-ld
       rdf
+      rdf-rdfxml
       rdf-vocab
       sparql-client
 

@@ -26,7 +26,8 @@ module ScholarsArchive::TriplePoweredProperties
        RDF::Vocab::DC.title,
        RDF::Vocab::RDFS.label,
        RDF::Vocab::SKOS.altLabel,
-       RDF::Vocab::SKOS.hiddenLabel]
+       RDF::Vocab::SKOS.hiddenLabel,
+       RDF::Vocab::GEONAMES.name]
     end
 
     ##
