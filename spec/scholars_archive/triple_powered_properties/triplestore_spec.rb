@@ -23,7 +23,8 @@ RSpec.describe ScholarsArchive::TriplePoweredProperties::Triplestore do
                                                       RDF::Vocab::DC.title,
                                                       RDF::Vocab::RDFS.label,
                                                       RDF::Vocab::SKOS.altLabel,
-                                                      RDF::Vocab::SKOS.hiddenLabel]
+                                                      RDF::Vocab::SKOS.hiddenLabel,
+                                                      RDF::Vocab::GEONAMES.name]
     end
   end
 
@@ -33,7 +34,8 @@ RSpec.describe ScholarsArchive::TriplePoweredProperties::Triplestore do
                                                                "http://www.w3.org/2000/01/rdf-schema#label" => ["Blah"],
                                                                "http://www.w3.org/2004/02/skos/core#altLabel" => [],
                                                                "http://www.w3.org/2004/02/skos/core#hiddenLabel" => [],
-                                                               "http://www.w3.org/2004/02/skos/core#prefLabel" => []})
+                                                               "http://www.w3.org/2004/02/skos/core#prefLabel" => [],
+                                                               "http://www.geonames.org/ontology#name"=>[]})
     end
   end
 end
