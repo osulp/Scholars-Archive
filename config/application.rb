@@ -35,6 +35,11 @@ module ScholarsArchive
       end if File.exists?(env_file)
     end
 
+    #Allows for the application to use classes in
+    #lib/scholars_archive/triple_powered_properties
+    config.enable_dependency_loading = true
+    config.autoload_paths << Rails.root.join('lib')
+
     config.rubycas.cas_base_url = ENV["SCHOLARSARCHIVE_CAS_BASE_URL"] || 'https://cas.myorganization.com'
   end
 end
