@@ -3,7 +3,7 @@
 module Hyrax
   class EtdForm < Hyrax::Forms::WorkForm
     self.model_class = ::Etd
-    self.terms += [:resource_type]
+    self.terms += [:resource_type, :replaces]
 
     def date_terms
       []
