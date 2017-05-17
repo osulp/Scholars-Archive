@@ -50,4 +50,8 @@ class SolrDocument
     self[Solrizer.solr_name('date_valid')]
   end
 
+  def replaces
+    self[Solrizer.solr_name('replaces')]
+  end
+
 end
