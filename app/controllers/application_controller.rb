@@ -9,6 +9,20 @@ class ApplicationController < ActionController::Base
   include Hyrax::ThemedLayoutController
   with_themed_layout '1_column'
 
-
   protect_from_forgery with: :exception
+
+  before_action :check_d2h_http_header_auth
+  def check_d2h_http_header_auth
+    if !user_signed_in? && request.headers.key?('HTTP_D2H_AUTHENTICATION')
+      email, token = request.headers['HTTP_D2H_AUTHENTICATION'].split('|')
+      if token === ENV['HTTP_D2H_AUTHENTICATION_TOKEN'] && email === ENV['HTTP_D2H_AUTHENTICATION_USERNAME']
+        u = User.where(email: email).first
+        sign_in :user, u
+        redirect_to root_path
+      else
+        warden.custom_failure!
+        render json: 'Unable to authenticate user.', status: 422
+      end
+    end
+  end
 end
