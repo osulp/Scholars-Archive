@@ -91,6 +91,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :hydrologic_unit_code, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/hydrologicUnitCode") do |index|
+        index.as :stored_searchable
+      end
+
       property :identifier, predicate: ::RDF::Vocab::DC.identifier do |index|
         index.as :stored_searchable
       end
@@ -152,6 +156,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :replaces, predicate: ::RDF::Vocab::DC.replaces do |index|
+        index.as :stored_searchable
+      end
+
       property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
         index.as :stored_searchable
       end
@@ -173,9 +181,6 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :replaces, predicate: ::RDF::Vocab::DC.replaces do |index|
-        index.as :stored_searchable
-      end
     end
   end
 end
