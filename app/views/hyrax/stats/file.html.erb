@@ -1,3 +1,5 @@
+<% provide :page_title, construct_page_title("File Analytics: #{@stats.model.title.first}") %>
+
 <!-- Adapted from jquery-flot examples https://github.com/flot/flot/blob/master/examples/visitors/index.html -->
 <%= javascript_tag do %>
   var hyrax_item_stats = <%= @stats.to_flot.to_json.html_safe %>;
