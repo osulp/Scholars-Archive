@@ -42,6 +42,7 @@ gem 'capistrano', '~> 3.8.0'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
+gem 'capistrano3-puma'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
