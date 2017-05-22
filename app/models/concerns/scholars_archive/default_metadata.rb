@@ -4,6 +4,10 @@ module ScholarsArchive
 
     included do
       #reusable metadata fields for DSpace migration
+      property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
+        index.as :stored_searchable
+      end
+
       property :additional_information, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
         index.as :stored_searchable
       end
@@ -164,7 +168,6 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      # This is for the rights statement
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights do |index|
         index.as :stored_searchable
       end
