@@ -13,12 +13,12 @@ module ScholarsArchive
       end
 
       property :alt_title, predicate: ::RDF::URI.new("http://purl.org/dc/terms/alternative") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       #basicmetadata import from hyrax
       property :based_near, predicate: ::RDF::Vocab::FOAF.based_near do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
@@ -26,11 +26,11 @@ module ScholarsArchive
       end
 
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
-          index.as :stored_searchable
+        index.as :stored_searchable
       end
 
       property :creator, predicate: ::RDF::Vocab::DC11.creator do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :date_accepted, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateAccepted"), multiple: false do |index|
@@ -84,11 +84,11 @@ module ScholarsArchive
       end
 
       property :file_format, predicate: ::RDF::URI.new("http://purl.org/dc/terms/FileFormat") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :funding_body, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/fnd") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :funding_statement, predicate: ::RDF::URI.new("http://datacite.org/schema/kernel-4/fundingReference") do |index|
@@ -112,7 +112,7 @@ module ScholarsArchive
       end
 
       property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :isbn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/isbn") do |index|
@@ -128,12 +128,12 @@ module ScholarsArchive
       end
 
       property :language, predicate: ::RDF::Vocab::DC11.language do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
@@ -141,11 +141,11 @@ module ScholarsArchive
       end
 
       property :peerreviewed, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/peerReviewed") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :publisher, predicate: ::RDF::Vocab::DC11.publisher do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :relation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/relation") do |index|
@@ -165,11 +165,11 @@ module ScholarsArchive
       end
 
       property :resource_type, predicate: ::RDF::Vocab::DC.type do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :rights_statement, predicate: ::RDF::Vocab::EDM.rights do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :source, predicate: ::RDF::Vocab::DC.source do |index|
@@ -177,7 +177,7 @@ module ScholarsArchive
       end
 
       property :subject, predicate: ::RDF::Vocab::DC11.subject do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents") do |index|

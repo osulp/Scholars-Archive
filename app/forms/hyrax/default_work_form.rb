@@ -5,17 +5,19 @@ module Hyrax
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     self.model_class = ::DefaultWork
     self.terms += [:doi, :alt_title , :license, :based_near, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_accepted, :replaces, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection]
+    self.required_fields += [:resource_type]
+    self.required_fields -= [:keyword]
 
     def self.build_permitted_params
       super + self.date_terms
     end
 
     def primary_terms
-      super + [:doi, :based_near, :alt_title, :license, :resource_type, :abstract]
+      super + [:doi, :based_near, :alt_title, :abstract, :keyword, :license]
     end
 
     def secondary_terms
-      super - self.date_terms - [:license, :resource_type, :description] + [:hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection]
+      super - self.date_terms - [:license, :resource_type, :description, :keyword] + [:hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection]
     end
 
     def self.date_terms
