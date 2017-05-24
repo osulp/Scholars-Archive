@@ -54,4 +54,99 @@ class SolrDocument
     self[Solrizer.solr_name('replaces')]
   end
 
+  def doi
+    self[Solrizer.solr_name('doi')]
+  end
+
+  def alt_title
+    self[Solrizer.solr_name('alt_title')]
+  end
+
+  def abstract
+    self[Solrizer.solr_name('abstract')]
+  end
+
+  def hydrologic_unit_code
+    self[Solrizer.solr_name('hydrologic_unit_code')]
+  end
+
+  def funding_body
+    self[Solrizer.solr_name('funding_body')]
+  end
+  
+  def funding_statement
+    self[Solrizer.solr_name('funding_statement')]
+  end
+
+  def in_series
+    self[Solrizer.solr_name('in_series')]
+  end
+
+  def tableofcontents
+    self[Solrizer.solr_name('tableofcontents')]
+  end
+
+  def bibliographic_citation
+    self[Solrizer.solr_name('bibliographic_citation')]
+  end
+
+  def peerreviewed
+    self[Solrizer.solr_name('peerreviewed')]
+  end
+
+  def additional_information
+    self[Solrizer.solr_name('additional_information')]
+  end
+
+  def digitization_spec
+    self[Solrizer.solr_name('digitization_spec')]
+  end 
+
+  def file_extent
+    self[Solrizer.solr_name('file_extent')]
+  end
+
+  def file_format
+    self[Solrizer.solr_name('file_format')]
+  end
+
+  def dspace_community
+    self[Solrizer.solr_name('dspace_community')]
+  end
+  
+  def dspace_collection
+    self[Solrizer.solr_name('dspace_collection')]
+  end
+
+  def contributor_advisor
+    self[Solrizer.solr_name('contributor_advisor')]
+  end
+
+  def contributor_committeemember
+    self[Solrizer.solr_name('contributor_committeemember')]
+  end
+
+  def degree_discipline
+    self[Solrizer.solr_name('degree_discipline')]
+  end
+
+  def degree_field
+    self[Solrizer.solr_name('degree_field')]
+  end
+
+  def degree_grantors
+    self[Solrizer.solr_name('degree_grantors')]
+  end
+  
+  def degree_level
+    self[Solrizer.solr_name('degree_level')]
+  end
+
+  def degree_name
+    self[Solrizer.solr_name('degree_name')]
+  end
+  
+  def graduation_year
+    self[Solrizer.solr_name('graduation_year')]
+  end
 end
