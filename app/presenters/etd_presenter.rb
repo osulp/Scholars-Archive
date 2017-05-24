@@ -1,3 +1,3 @@
-class EtdPresenter < Hyrax::WorkShowPresenter
-  delegate :date_accepted, :date_available, :date_collected, :date_copyright, :date_issued, :replaces, :date_valid, to: :solr_document
+class EtdPresenter < DefaultWorkPresenter
+  delegate :contributor_advisor, :contributor_committeemember, :degree_discipline, :degree_level, :degree_name, :degree_field, :degree_grantor, :graduation_year,to: :solr_document
 end
