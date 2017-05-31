@@ -1,0 +1,24 @@
+<fieldset>
+  <li class="field-wrapper input-group input-append">
+    <% if a.object %>
+        <% unless a.object.new_record? %>
+            <%= a.input :id, :as => :hidden %>
+        <% end %>
+    <% end %>
+
+    <%= a.input :label, label:false, aria: { label: "Label" }, placeholder: "Label", input_html: {value: a.object.label.first}, :wrapper_html => {:class => "col-xs-12"} %>
+    <%= a.input :point, as: :hidden, label:false, aria: { label: "Point" }, placeholder: "Point", input_html: {value: a.object.point.first}, :wrapper_html => {:class => "col-xs-12"} %>
+    <%= a.input :point_lat, label:false, aria: { label: "Latitude" }, placeholder: "Latitude", input_html: {value: a.object.point_lat}, :wrapper_html => {:class => "col-xs-6"} %>
+    <%= a.input :point_lon, label:false, aria: { label: "Longitude" }, placeholder: "Longitude", input_html: {value: a.object.point_lon}, :wrapper_html => {:class => "col-xs-6"} %>
+
+    <span class="input-group-btn field-controls">
+      <% unless a.object.new_record? %>
+        <%= a.hidden_field :_destroy %>
+      <% end %>
+      <button type="button" class="btn btn-link remove remove_entry" data-id="nested_geo_points">
+        <span class="glyphicon glyphicon-remove"></span><span class="controls-remove-text">Remove</span>
+        <span class="sr-only"> previous <span class="controls-field-name-text"> Title</span></span>
+      </button>
+    </span>
+  </li>
+</fieldset>

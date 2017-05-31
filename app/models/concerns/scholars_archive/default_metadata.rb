@@ -184,6 +184,9 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
+
+      accepts_nested_attributes_for :nested_geo, :allow_destroy => true, :reject_if => :all_blank
     end
   end
 end
