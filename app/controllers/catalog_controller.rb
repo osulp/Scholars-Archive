@@ -105,7 +105,6 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("date_modified", :stored_searchable), label: "Date Modified"
     config.add_show_field solr_name("date_uploaded", :stored_searchable), label: "Date Uploaded"
     config.add_show_field solr_name("date_valid", :stored_searchable), label: "Date Valid"
-    config.add_show_field solr_name("nested_geo_label", :stored_searchable), label: "Geographic Coordinates"
     config.add_show_field solr_name("rights", :stored_searchable), label: "Rights"
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable), label: "File Format"
@@ -263,16 +262,6 @@ class CatalogController < ApplicationController
 
     config.add_search_field('resource_type') do |field|
       solr_name = solr_name("resource_type", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('nested_geo_label') do |field|
-      field.label = "Geographic Coordinates"
-      field.solr_parameters = { :"spellcheck.dictionary" => "nested_geo_label" }
-      solr_name = solr_name("nested_geo_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
