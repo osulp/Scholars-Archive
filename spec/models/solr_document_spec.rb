@@ -4,7 +4,9 @@ RSpec.describe SolrDocument do
   describe "#nested_geo" do
     context "when there are no geo points" do
       it "should return an empty array" do
-        document = described_class.new({})
+        document = described_class.new({
+                                           "nested_geo_label_tesim" => []
+                                       })
         expect(document.nested_geo).to eq []
       end
     end
