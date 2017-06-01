@@ -17,25 +17,35 @@ terms:
     term: Image
   - id: Journal
     term: Journal
+  - id: Learning Object
+    term: Learning Object
   - id: Map or Cartographic Material
     term: Map or Cartographic Material
   - id: Masters Thesis
     term: Masters Thesis
+  - id: Musical Score
+    term: Musical Score
   - id: Part of Book
     term: Part of Book
+  - id: Plan or Blueprint
+    term: Plan or Blueprint
   - id: Poster
     term: Poster
+  - id: Preprint
+    term: Preprint
   - id: Presentation
     term: Presentation
-  - id: Project
-    term: Project
-  - id: Report
-    term: Report
   - id: Research Paper
     term: Research Paper
   - id: Software or Program Code
     term: Software or Program Code
+  - id: Technical Report
+    term: Technical Report
+  - id: Undergraduate Thesis
+    term: Undergraduate Thesis
   - id: Video
     term: Video
+  - id: Working Paper
+    term: Working Paper
   - id: Other
     term: Other
