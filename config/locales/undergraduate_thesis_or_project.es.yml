@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      undergraduate_thesis_or_project:     'fa fa-file-text-o'
+    select_type:
+      undergraduate_thesis_or_project:
+        # TODO: translate `human_name` into Spanish
+        name:               "Undergraduate Thesis Or Project"
+        # TODO: translate `human_name` into Spanish
+        description:        "Undergraduate thesis or project trabajos"

@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      technical_report:     'fa fa-file-text-o'
+    select_type:
+      technical_report:
+        # TODO: translate `human_name` into Spanish
+        name:               "Technical Report"
+        # TODO: translate `human_name` into Spanish
+        description:        "Technical report trabajos"

@@ -1,18 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe DefaultWorkPresenter do
+RSpec.describe DefaultPresenter do
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double "Ability" }
   let(:presenter) { described_class.new(solr_document, ability) }
   let(:attributes) { file.to_solr }
   let(:file) do
-    DefaultWork.new(
+    Default.new(
           id: '123abc',
           title: ["File title"],
           depositor: user.user_key,
           label: "filename.tif")
   end
   let(:user) { double(user_key: 'sarah')}
+
   let(:solr_properties) do
     ["doi", "abstract", "alt_title", "license", "based_near", "resource_type", "date_available", "date_copyright", "date_issued", "date_collected", "date_valid", "date_accepted", "replaces", "hydrologic_unit_code", "funding_body", "funding_statement", "in_series", "tableofcontents", "bibliographic_citation", "peerreviewed", "additional_information", "digitization_spec", "file_extent", "file_format", "dspace_community", "dspace_collection"]
   end

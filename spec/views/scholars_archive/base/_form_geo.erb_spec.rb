@@ -11,17 +11,18 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
       }
     end
     let(:work1) do
-      DefaultWork.new do |work|
-        work.attributes = {title: ["test"], nested_geo_attributes: [test_point]}
+      Default.new do |work|
+        work.attributes = {title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], nested_geo_attributes: [test_point]}
         work.save!
       end
     end
 
     let(:form1) do
-      Hyrax::DefaultWorkForm.new(work1, ability, controller)
+      Hyrax::DefaultForm.new(work1, ability, controller)
     end
 
     it "draws the page" do
+      form1.nested_geo.each { |geo| geo.point.present? ? geo.type = :point.to_s : '' }
       assign(:form, form1)
       view.simple_form_for [main_app, form1] do |f|
         render 'scholars_archive/base/form_geo', f: f
@@ -56,17 +57,18 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
     end
 
     let(:work2) do
-      DefaultWork.new do |work|
+      Default.new do |work|
         work.attributes = {title: ["test"], nested_geo_attributes: [test_box]}
         work.save!
       end
     end
 
     let(:form2) do
-      Hyrax::DefaultWorkForm.new(work2, ability, controller)
+      Hyrax::DefaultForm.new(work2, ability, controller)
     end
 
     it "draws the page" do
+      form2.nested_geo.each { |geo| geo.point.present? ? geo.type = :point.to_s : '' }
       assign(:form, form2)
       view.simple_form_for [main_app, form2] do |f|
         render 'scholars_archive/base/form_geo', f: f
@@ -94,10 +96,10 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
   end
 
   context "for a new object" do
-    let(:work) { DefaultWork.new }
+    let(:work) { Default.new }
 
     let(:form) do
-      Hyrax::DefaultWorkForm.new(work, ability, controller)
+      Hyrax::DefaultForm.new(work, ability, controller)
     end
 
     it "draws the page" do

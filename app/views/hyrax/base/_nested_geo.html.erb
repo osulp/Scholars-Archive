@@ -1,4 +1,4 @@
-<% unless presenter.nested_geo.empty? %>
+<% if presenter.nested_geo && presenter.nested_geo.present? %>
     <tr>
       <th><%= raw t('blacklight.search.form.nested_geo') %></th>
       <td>

@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      open_educational_resource:     'fa fa-file-text-o'
+    select_type:
+      open_educational_resource:
+        name:               "Open Educational Resource"
+        description:        "OERs from Open OSU and other sources"

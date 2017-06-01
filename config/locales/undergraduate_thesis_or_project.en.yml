@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      undergraduate_thesis_or_project:     'fa fa-file-text-o'
+    select_type:
+      undergraduate_thesis_or_project:
+        name:               "Undergraduate Thesis Or Project"
+        description:        "Thesis and non-thesis undergraduate projects, papers, and presentations"

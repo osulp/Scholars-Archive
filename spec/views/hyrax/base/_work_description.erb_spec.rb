@@ -4,7 +4,7 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   let(:url) { "http://example.com" }
   let(:rights_statement_uri) { 'http://rightsstatements.org/vocab/InC/1.0/' }
   let(:work) {
-    DefaultWork.new do |w|
+    Default.new do |w|
       w.title = ['test']
       w.related_url= [url]
       w.rights_statement = [rights_statement_uri]
@@ -16,7 +16,7 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   end
   let(:ability) { double }
   let(:presenter) do
-    DefaultWorkPresenter.new(solr_document, ability)
+    DefaultPresenter.new(solr_document, ability)
   end
   let(:workflow_presenter) do
     double('workflow_presenter', badge: 'Foobar')
@@ -30,7 +30,7 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
 
   it 'shows citeable url' do
     expect(page).to have_content 'Citeable URL'
-    expect(page).to have_content 'http://test.host/concern/default_works/'+presenter.id
+    expect(page).to have_content 'http://test.host/concern/defaults/'+presenter.id
   end
 
 end
