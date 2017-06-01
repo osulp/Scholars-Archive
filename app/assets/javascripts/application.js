@@ -16,6 +16,7 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require add_date_field
+//= require add_geo_field
 //= require jquery-datetimepicker/jquery.datetimepicker.full
 //= require turbolinks//
 // Required by Blacklight

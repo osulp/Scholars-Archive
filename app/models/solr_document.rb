@@ -149,4 +149,9 @@ class SolrDocument
   def graduation_year
     self[Solrizer.solr_name('graduation_year')]
   end
+
+  def nested_geo
+    self[Solrizer.solr_name('nested_geo_label')] || []
+  end
+
 end

@@ -1,0 +1,33 @@
+<div id="geo_wrapper">
+  <div class="row">
+    <legend>Geographic coordinates</legend>
+    <div class="warning-anchor"></div>
+    <div class="col-sm-6">
+      <%= select_tag_geo(:new_geo_type, f)  %>
+    </div>
+  </div>
+  <div id="geo_fields">
+    <div class="col-sm-9">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Coordinates</th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% coordinates = f.object.model.nested_geo.select { |t| t.present? } %>
+        <% coordinates.group_by {|c| c.type }.each do |type, coordinates_group| %>
+            <% if type == :bbox.to_s %>
+                <%= render partial: 'scholars_archive/base/nested_geo_bbox', :locals => { f: f, coordinates_group: coordinates_group } %>
+            <% end %>
+            <% if type == :point.to_s %>
+                <%= render partial: 'scholars_archive/base/nested_geo_points', :locals => { f: f, coordinates_group: coordinates_group } %>
+            <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

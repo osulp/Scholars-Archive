@@ -1,6 +1,6 @@
 @import 'osu_settings';
 
-div#date_wrapper {
+div#date_wrapper, div#geo_wrapper {
   padding-left: 1em;
 }
 
@@ -35,4 +35,17 @@ div#date_wrapper {
 
 .date-range-inputs {
   margin-top: 0.5em;
+}
+
+.geo-input input.form-control {
+  margin-bottom: -1.5em;
+}
+
+.geo-input ul.listing {
+  margin-left: -4em;
+}
+
+
+#geo_fields .btn.remove {
+  color: #d9534f;
 }
