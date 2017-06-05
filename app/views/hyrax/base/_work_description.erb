@@ -1,0 +1,6 @@
+<label><%= t('hyrax.work_url_label') %>:</label>
+<span><%= Rails.application.routes.url_helpers.url_for(:only_path => false, :action => 'show', :controller => 'hyrax/'+presenter.model_name.plural, :host=>request.host, id: presenter.id) %></span>
+
+<% presenter.description.each do |description| %>
+    <p class="work_description"><%= iconify_auto_link(description) %></p>
+<% end %>

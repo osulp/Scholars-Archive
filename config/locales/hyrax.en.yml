@@ -24,6 +24,7 @@ en:
     institution_name:       "Institution"
     institution_name_full:  "The Institution Name"
     account_name:           "My Institution Account Id"
+    work_url_label:         "Citeable URL"
     directory:
       suffix:               "@example.org"
     footer:
