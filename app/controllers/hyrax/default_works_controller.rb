@@ -4,9 +4,10 @@
 module Hyrax
   class DefaultWorksController < ApplicationController
     # Adds Hyrax behaviors to the controller.
-    include Hyrax::WorksControllerBehavior
     include Hyrax::BreadcrumbsForWorks
+    include ScholarsArchive::WorksControllerBehavior
     self.curation_concern_type = DefaultWork
     self.show_presenter = DefaultWorkPresenter
+
   end
 end
