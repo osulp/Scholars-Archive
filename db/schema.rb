@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502223454) do
+ActiveRecord::Schema.define(version: 20170606204140) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",       null: false
@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(version: 20170502223454) do
   create_table "checksum_audit_logs", force: :cascade do |t|
     t.string   "file_set_id"
     t.string   "file_id"
-    t.string   "version"
-    t.integer  "pass"
+    t.string   "checked_uri"
     t.string   "expected_result"
     t.string   "actual_result"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "passed"
+    t.index ["checked_uri"], name: "index_checksum_audit_logs_on_checked_uri"
     t.index ["file_set_id", "file_id"], name: "by_file_set_id_and_file_id"
   end
 
@@ -220,8 +221,8 @@ ActiveRecord::Schema.define(version: 20170502223454) do
     t.integer  "qa_local_authority_id"
     t.string   "label"
     t.string   "uri"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["qa_local_authority_id"], name: "index_qa_local_authority_entries_on_qa_local_authority_id"
     t.index ["uri"], name: "index_qa_local_authority_entries_on_uri", unique: true
   end
