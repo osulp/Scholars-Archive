@@ -15,7 +15,7 @@ module Hyrax
     end
 
     def secondary_terms
-      super - self.date_terms + [:degree_discipline]
+      super - self.date_terms
     end
 
     def date_terms

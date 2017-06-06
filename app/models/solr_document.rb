@@ -26,6 +26,10 @@ class SolrDocument
 
   use_extension( Hydra::ContentNegotiation )
 
+  def rights_statement
+    self[Solrizer.solr_name('rights_statement')]
+  end
+
   def date_accepted
     self[Solrizer.solr_name('date_accepted')]
   end
