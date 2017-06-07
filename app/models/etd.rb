@@ -6,7 +6,7 @@ class Etd < ActiveFedora::Base
   include ::ScholarsArchive::EtdMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
-  include SchoalrsArchive::ToSolrBehavior
+  include ScholarsArchive::ToSolrBehavior
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }

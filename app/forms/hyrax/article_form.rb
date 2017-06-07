@@ -2,13 +2,9 @@
 #  `rails generate hyrax:work Article`
 module Hyrax
   class ArticleForm < Hyrax::DefaultWorkForm
-    include ScholarsArchive::DateTermsBehavior
+    include DateTermsBehavior
     self.model_class = ::Article
     self.terms += [:resource_type, :editor, :has_volume, :has_number, :conference_location, :conference_name, :conference_section, :has_journal, :is_referenced_by, :isbn]
-
-    def date_terms
-      []
-    end
 
     def primary_terms
       super
@@ -16,10 +12,6 @@ module Hyrax
 
     def secondary_terms
       super - self.date_terms 
-    end
-
-    def date_terms
-      super
     end
   end
 end
