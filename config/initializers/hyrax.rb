@@ -3,6 +3,10 @@ Hyrax.config do |config|
   config.register_curation_concern :default_work
   # Injected via `rails g hyrax:work Etd`
   config.register_curation_concern :etd
+  # Injected via `rails g hyrax:work Oer`
+  config.register_curation_concern :oer
+  # Injected via `rails g hyrax:work Article`
+  config.register_curation_concern :article
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES
