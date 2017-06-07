@@ -1,4 +1,4 @@
-module Hyrax
+module ScholarsArchive
   module DateTermsBehavior
     extend ActiveSupport::Concern
 

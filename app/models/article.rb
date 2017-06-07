@@ -5,7 +5,7 @@ class Article < ActiveFedora::Base
   include ::ScholarsArchive::ArticleMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
-  include ScholarsArchive::ToSolrBehavior
+  include ScholarsArchive::HasSolrNestedGeoLabels
 
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
