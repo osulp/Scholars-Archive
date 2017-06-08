@@ -5,7 +5,7 @@ module ScholarsArchive
     included do
       #reusable metadata fields for DSpace migration
      property :conference_location, predicate: ::RDF::URI.new("http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :conference_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/presentedAt") do |index|
@@ -20,15 +20,15 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :has_journal, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasJournal") do |index|
+      property :has_journal, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasJournal"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :has_number, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasNumber") do |index|
-        index.as :stored_searchable, :facetable
+      property :has_number, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasNumber"), multiple: false do |index|
+        index.as :stored_searchable
       end
 
-      property :has_volume, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasVolume") do |index|
+      property :has_volume, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasVolume"), multiple: false do |index|
         index.as :stored_searchable
       end
 
