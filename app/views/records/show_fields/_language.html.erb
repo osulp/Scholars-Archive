@@ -1,0 +1,4 @@
+<% service = ScholarsArchive::LanguageService.new %>
+<% record.language.each do |l| %>
+  <%= link_to_field('language', l, service.label(l)) %> <%= iconify_auto_link(l, false) %><br />
+<% end %>

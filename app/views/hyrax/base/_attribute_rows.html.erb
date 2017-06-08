@@ -16,7 +16,7 @@
 <%= presenter.attribute_to_html(:date_valid, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:subject, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:publisher, render_as: :faceted) %>
-<%= presenter.attribute_to_html(:language, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:language, render_as: :language) %>
 <%= presenter.attribute_to_html(:identifier, render_as: :linked, search_field: 'identifier_tesim') %>
 <%= presenter.attribute_to_html(:replaces, render_as: :external_link) %>
 <%= presenter.attribute_to_html(:related_url, render_as: :external_link) %>
