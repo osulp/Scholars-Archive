@@ -836,6 +836,7 @@ DEPENDENCIES
   devise-guests (~> 0.5)
   devise_cas_authenticatable
   edtf!
+  equivalent-xml
   fcrepo_wrapper
   hydra-role-management
   hyrax!

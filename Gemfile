@@ -96,4 +96,5 @@ group :test do
   gem 'poltergeist'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'equivalent-xml'
 end
