@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://github.com/projecthydra-labs/hyrax.git
-  revision: 9d52b50cb88c5faee8faa07beb1bc97287925617
+  revision: 752022fba129863a23f943e634091b84d58b9c66
   branch: master
   specs:
     hyrax (2.0.0.alpha)
@@ -159,13 +159,13 @@ GEM
       execjs
     awesome_nested_set (3.1.3)
       activerecord (>= 4.0.0, < 5.2)
-    aws-sdk (2.9.31)
-      aws-sdk-resources (= 2.9.31)
-    aws-sdk-core (2.9.31)
+    aws-sdk (2.9.36)
+      aws-sdk-resources (= 2.9.36)
+    aws-sdk-core (2.9.36)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.9.31)
-      aws-sdk-core (= 2.9.31)
+    aws-sdk-resources (2.9.36)
+      aws-sdk-core (= 2.9.36)
     aws-sigv4 (1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -235,7 +235,7 @@ GEM
       capistrano (~> 3.7)
       capistrano-bundler
       puma (~> 3.4)
-    capybara (2.14.0)
+    capybara (2.14.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -340,15 +340,15 @@ GEM
     get_process_mem (0.2.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    google-api-client (0.11.3)
-      addressable (>= 2.5.1)
+    google-api-client (0.12.0)
+      addressable (~> 2.5, >= 2.5.1)
       googleauth (~> 0.5)
       httpclient (>= 2.8.1, < 3.0)
-      mime-types (>= 3.0)
+      mime-types (~> 3.0)
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
-    google_drive (2.1.4)
-      google-api-client (>= 0.11.0, < 0.12.0)
+    google_drive (2.1.5)
+      google-api-client (>= 0.11.0, < 0.13.0)
       googleauth (>= 0.5.0, < 1.0.0)
       nokogiri (>= 1.5.3, < 2.0.0)
     googleauth (0.5.1)
