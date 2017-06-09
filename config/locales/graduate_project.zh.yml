@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      graduate_project:     'fa fa-file-text-o'
+    select_type:
+      graduate_project:
+        # TODO: translate `human_name` into Chinese
+        name:               "Graduate Project"
+        # TODO: translate `human_name` into Chinese
+        description:        "Graduate project 作品"

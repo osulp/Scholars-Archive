@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      dataset:     'fa fa-file-text-o'
+    select_type:
+      dataset:
+        name:               "Dataset"
+        description:        "Research datasets"

@@ -2,13 +2,13 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
   let(:work) do
-    DefaultWork.new
+    Default.new
   end
 
   let(:ability) { double }
 
   let(:form) do
-    Hyrax::DefaultWorkForm.new(work, ability, controller)
+    Hyrax::DefaultForm.new(work, ability, controller)
   end
 
   before do
@@ -23,9 +23,9 @@ RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
   end
 
   context "for a new object" do
-    let(:work) { DefaultWork.new }
+    let(:work) { Default.new }
     it "draws the page" do
-      expect(page).to have_selector("form[action='/concern/default_works']")
+      expect(page).to have_selector("form[action='/concern/defaults']")
       expect(page).to have_selector("select#new_date_type option", count: 8)
     end
 
@@ -35,7 +35,7 @@ RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
     let(:date) { "2017-01-27" }
     let(:date_range) { "2017-05-24/2017-05-31" }
     let!(:work) do
-      DefaultWork.new do |work|
+      Default.new do |work|
         work.title = ["Jill's Research"]
         work.date_available = date_range
         work.date_copyright = date_range

@@ -18,7 +18,6 @@ RSpec.describe Hyrax::DefaultWorkForm do
       expect(form.model.nested_geo.length).to eq 1
     end
   end
-    
   let(:new_form) { described_class.new(DefaultWork.new, nil, double("Controller")) }
 
   it "responds to terms with the proper list of terms" do

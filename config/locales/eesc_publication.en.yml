@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      eesc_publication:     'fa fa-file-text-o'
+    select_type:
+      eesc_publication:
+        name:               "Eesc Publication"
+        description:        "EESC Publications and other EESC content"

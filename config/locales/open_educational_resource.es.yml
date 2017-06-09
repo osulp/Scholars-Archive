@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      open_educational_resource:     'fa fa-file-text-o'
+    select_type:
+      open_educational_resource:
+        # TODO: translate `human_name` into Spanish
+        name:               "Open Educational Resource"
+        # TODO: translate `human_name` into Spanish
+        description:        "Open educational resource trabajos"

@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      technical_report:     'fa fa-file-text-o'
+    select_type:
+      technical_report:
+        name:               "Technical Report"
+        description:        "Departmental, institute, and other technical reports"

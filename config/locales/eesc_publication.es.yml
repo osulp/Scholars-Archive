@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      eesc_publication:     'fa fa-file-text-o'
+    select_type:
+      eesc_publication:
+        # TODO: translate `human_name` into Spanish
+        name:               "Eesc Publication"
+        # TODO: translate `human_name` into Spanish
+        description:        "Eesc publication trabajos"

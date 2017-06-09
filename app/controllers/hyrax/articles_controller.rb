@@ -4,7 +4,7 @@
 module Hyrax
   class ArticlesController < ApplicationController
     # Adds Hyrax behaviors to the controller.
-    include Hyrax::WorksControllerBehavior
+    include ScholarsArchive::WorksControllerBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = Article
     self.show_presenter = ArticlePresenter

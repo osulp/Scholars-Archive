@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      default:     'fa fa-file-text-o'
+    select_type:
+      default:
+        # TODO: translate `human_name` into Spanish
+        name:               "Default"
+        # TODO: translate `human_name` into Spanish
+        description:        "Default trabajos"

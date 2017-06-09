@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      graduate_thesis_or_dissertation:     'fa fa-file-text-o'
+    select_type:
+      graduate_thesis_or_dissertation:
+        name:               "Graduate Thesis Or Dissertation"
+        description:        "Graduate thesis or dissertation"

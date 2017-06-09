@@ -1,10 +1,5 @@
-# Generated via
-#  `rails generate hyrax:work Oer`
-class OerIndexer < Hyrax::WorkIndexer
-  # This indexes the default metadata. You can remove it if you want to
-  # provide your own metadata and indexing.
-  include Hyrax::IndexesBasicMetadata
-
+class OerIndexer < DefaultWorkIndexer
+  self.stored_and_facetable_fields += %i[is_based_on_url interactivity_type learning_resource_type typical_age_range time_required]
   # Fetch remote labels for based_near. You can remove this if you don't want
   # this behavior
   include Hyrax::IndexesLinkedMetadata

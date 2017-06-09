@@ -28,7 +28,7 @@ module ApplicationHelper
     data_fields = [{ id: 'geo_fields_data' }]
 
     coordinates = f.object.model.nested_geo.to_a
-
+    
     if coordinates.none? { |h| h.type == :bbox.to_s }
       options << { t('simple_form.labels.defaults.nested_geo_bbox').pluralize => :nested_geo_bbox.to_s }
     end

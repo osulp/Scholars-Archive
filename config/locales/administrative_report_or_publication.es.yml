@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      administrative_report_or_publication:     'fa fa-file-text-o'
+    select_type:
+      administrative_report_or_publication:
+        # TODO: translate `human_name` into Spanish
+        name:               "Administrative Report Or Publication"
+        # TODO: translate `human_name` into Spanish
+        description:        "Administrative report or publication trabajos"
