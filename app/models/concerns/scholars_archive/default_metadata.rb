@@ -8,6 +8,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :academic_affiliation, predicate: ::RDF::URI("http://vivoweb.org/ontology/core#AcademicDepartment") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
       property :additional_information, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
         index.as :stored_searchable
       end
@@ -21,7 +25,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation do |index|
+      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation, multiple: false do |index|
         index.as :stored_searchable
       end
 
@@ -69,8 +73,8 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :doi, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/doi") do |index|
-        index.as :stored_searchable
+      property :doi, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/doi"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
       end
 
       property :dspace_collection, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCollection") do |index|
@@ -92,11 +96,11 @@ module ScholarsArchive
       end
 
       property :funding_statement, predicate: ::RDF::URI.new("http://datacite.org/schema/kernel-4/fundingReference") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :hydrologic_unit_code, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/hydrologicUnitCode") do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :identifier, predicate: ::RDF::Vocab::DC.identifier do |index|
@@ -111,7 +115,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series") do |index|
+      property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -136,11 +140,15 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      property :other_affiliation, predicate: ::RDF::URI("http://vivoweb.org/ontology/core#Department") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
       property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
         index.as :stored_searchable
       end
 
-      property :peerreviewed, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/peerReviewed") do |index|
+      property :peerreviewed, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/peerReviewed"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -148,19 +156,19 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :relation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/relation") do |index|
+      property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
         index.as :stored_searchable
       end
 
-      property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
-        index.as :stored_searchable
+      property :relation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/relation"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
       end
 
       property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false do |index|
         index.as :stored_searchable
       end
 
-      property :replaces, predicate: ::RDF::Vocab::DC.replaces do |index|
+      property :replaces, predicate: ::RDF::Vocab::DC.replaces, multiple: false do |index|
         index.as :stored_searchable
       end
 
@@ -180,7 +188,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents") do |index|
+      property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents"), multiple: false do |index|
         index.as :stored_searchable
       end
 

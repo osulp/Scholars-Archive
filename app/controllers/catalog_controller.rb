@@ -41,13 +41,18 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
+    config.add_facet_field solr_name("academic_affiliation", :facetable), label: "Academic Affiliation", limit: 5
     config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
+    config.add_facet_field solr_name("funding_body", :facetable), label: "Funding Body", limit: 5
+    config.add_facet_field solr_name("other_affiliation", :facetable), label: "Other Affiliation", limit: 5
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
     config.add_facet_field solr_name("contributor", :facetable), label: "Contributor", limit: 5
+    config.add_facet_field solr_name("in_series", :facetable), label: "Series", limit: 5
     config.add_facet_field solr_name("keyword", :facetable), label: "Keyword", limit: 5
     config.add_facet_field solr_name("subject", :facetable), label: "Subject", limit: 5
     config.add_facet_field solr_name("language", :facetable), label: "Language", limit: 5
+    config.add_facet_field solr_name("peerreviewed", :facetable), label: "Peer Reviewed", limit: 5
     config.add_facet_field solr_name("based_near", :facetable), label: "Location", limit: 5
     config.add_facet_field solr_name("publisher", :facetable), label: "Publisher", limit: 5
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
@@ -150,6 +155,22 @@ class CatalogController < ApplicationController
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       solr_name = solr_name("contributor", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('academic_affiliation') do |field|
+      solr_name = solr_name("academic_affiliation", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('other_affiliation') do |field|
+      solr_name = solr_name("other_affiliation", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -263,6 +284,14 @@ class CatalogController < ApplicationController
 
     config.add_search_field('resource_type') do |field|
       solr_name = solr_name("resource_type", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('hydrologic_unit_code') do |field|
+      solr_name = solr_name("hydrologic_unit_code", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
