@@ -2,8 +2,8 @@
 #  `rails generate hyrax:work GraduateThesisOrDissertation`
 class GraduateThesisOrDissertation < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-  include ::ScholarsArchive::DefaultMetadata
   include ::ScholarsArchive::EtdMetadata
+  include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrNestedGeoLabels
 
