@@ -6,7 +6,7 @@
 <%= presenter.attribute_to_html(:doi, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:alt_title, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:contributor, render_as: :faceted) %>
-<%= presenter.attribute_to_html(:abstract) %>
+<%= presenter.attribute_to_html(:abstract, label: t('simple_form.labels.defaults.abstract')) %>
 <%= presenter.attribute_to_html(:academic_affiliation, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:other_affiliation, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:date_accepted, render_as: :faceted) %>

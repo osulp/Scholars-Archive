@@ -52,6 +52,7 @@ en:
         graduation_year: "Relates a work to a calendar year in which a granting institution or faculty conferred an academic degree on a candidate."
     labels:
       defaults:
+        abstract: "Abstract or Summary"
         academic_affiliation: "Academic Affiliation"
         alt_title: "Alternative Title"
         date_created: "Date Created"
