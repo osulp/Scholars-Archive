@@ -48,6 +48,8 @@ en:
         hydrologic_unit_code: "A hydrological code or hydrologic unit code is a sequence of numbers or letters that identify a hydrological feature like a river, river reach, lake, or area like a drainage basin (also called watershed (in North America)) or catchment."
         other_affiliation: "Non-academic affiliations for the item (e.g. Bioenergy Minor Program, CGRB, Oregon Wine Research Institute)"
         peerreviewed: "The process by which articles are chosen to be included in a refereed journal. An editorial board consisting of experts in the same field as the author review the article and decide if it is authoritative enough for publication."
+        degree_grantors: "Institution Level"
+        graduation_year: "Relates a work to a calendar year in which a granting institution or faculty conferred an academic degree on a candidate."
     labels:
       defaults:
         academic_affiliation: "Academic Affiliation"
