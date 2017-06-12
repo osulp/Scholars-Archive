@@ -50,6 +50,7 @@ en:
         peerreviewed: "The process by which articles are chosen to be included in a refereed journal. An editorial board consisting of experts in the same field as the author review the article and decide if it is authoritative enough for publication."
     labels:
       defaults:
+        abstract: "Abstract or Summary"
         academic_affiliation: "Academic Affiliation"
         alt_title: "Alternative Title"
         date_created: "Date Created"
