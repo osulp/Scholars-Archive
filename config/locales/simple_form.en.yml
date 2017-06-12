@@ -49,7 +49,7 @@ en:
         other_affiliation: "Non-academic affiliations for the item (e.g. Bioenergy Minor Program, CGRB, Oregon Wine Research Institute)"
         peerreviewed: "The process by which articles are chosen to be included in a refereed journal. An editorial board consisting of experts in the same field as the author review the article and decide if it is authoritative enough for publication."
         degree_grantors: "Institution Level"
-        graduation_year: "Relates a work to a calendar year in which a granting institution or faculty conferred an academic degree on a candidate.
+        graduation_year: "Relates a work to a calendar year in which a granting institution or faculty conferred an academic degree on a candidate."
     labels:
       defaults:
         academic_affiliation: "Academic Affiliation"
