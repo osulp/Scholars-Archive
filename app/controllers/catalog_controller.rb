@@ -57,6 +57,15 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name("publisher", :facetable), label: "Publisher", limit: 5
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
     config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
+    config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
+    config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
+    config.add_facet_field solr_name('has_journal', :facetable), limit: 5, label: 'Journal Title'
+    config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
+    config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
+    config.add_facet_field solr_name('degree_field', :facetable), limit: 5, label: 'Degree Field'
+    config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
+    config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
+    config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year'
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
