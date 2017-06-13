@@ -5,7 +5,7 @@ class OpenEducationalResource < ActiveFedora::Base
   include ::ScholarsArchive::OerMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
-  include ScholarsArchive::HasSolrNestedGeoLabels
+  include ScholarsArchive::HasSolrLabels
 
   self.indexer = OerIndexer
   # Change this to restrict which works can be added as a child.

@@ -5,7 +5,7 @@ class Etd < ActiveFedora::Base
   include ::ScholarsArchive::EtdMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
-  include ScholarsArchive::HasSolrNestedGeoLabels
+  include ScholarsArchive::HasSolrLabels
 
   self.indexer = EtdIndexer
   # Change this to restrict which works can be added as a child.

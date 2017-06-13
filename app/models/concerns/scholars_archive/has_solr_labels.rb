@@ -1,5 +1,5 @@
 module ScholarsArchive
-  module HasSolrNestedGeoLabels
+  module HasSolrLabels
     extend ActiveSupport::Concern
 
     included do
