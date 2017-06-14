@@ -21,7 +21,7 @@ module ScholarsArchive
       end
 
       #basicmetadata import from hyrax
-      property :based_near, predicate: ::RDF::Vocab::FOAF.based_near do |index|
+      property :based_near, predicate: ::RDF::Vocab::DC.spatial, class_name: Hyrax::ControlledVocabularies::Location do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -192,11 +192,12 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      class_attribute :controlled_properties
-      self.controlled_properties = []
-
       property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
 
+      class_attribute :controlled_properties
+      self.controlled_properties = [:based_near]
+
+      accepts_nested_attributes_for :based_near, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? }
       accepts_nested_attributes_for :nested_geo, :allow_destroy => true, :reject_if => :all_blank
     end
   end

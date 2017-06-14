@@ -79,7 +79,6 @@ RSpec.describe DefaultWork do
 
     g.save!(:validate => false)
     g.reload
-
     expect(g.nested_geo.length).to eq 2
     expect(g.nested_geo.map{|x| x.label.first}).to contain_exactly("1","2")
   end
