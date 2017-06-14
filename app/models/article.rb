@@ -5,7 +5,7 @@ class Article < ActiveFedora::Base
   include ::ScholarsArchive::ArticleMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
-  include ScholarsArchive::HasSolrNestedGeoLabels
+  include ScholarsArchive::HasSolrLabels
 
   self.indexer = ArticleIndexer
   # Change this to restrict which works can be added as a child.

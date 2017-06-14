@@ -5,7 +5,8 @@ jQuery ->
       format:'Y-m-d',
       scrollMonth: false,
       scrollTime: false,
-      scrollInput: false
+      scrollInput: false,
+      validateOnBlur: false
     })
 
   date_default()
@@ -14,6 +15,7 @@ jQuery ->
     term_start_id = '#timepicker_start_'+term
     term_end_id = '#timepicker_end_'+term
     term_range_id = '#timepicker_range_'+term
+    work_type = $('#new_date_type').data('work-type')
     $(term_start_id).datetimepicker({
       format:'Y-m-d',
       onShow: ( ct ) ->
@@ -26,10 +28,12 @@ jQuery ->
       scrollMonth: false,
       scrollTime: false,
       scrollInput: false,
+      validateOnBlur: false,
       onChangeDateTime:(ct,$i) ->
         range = $i.val() + '/' + $(term_end_id).val()
+        work_type = $('#new_date_type').data('work-type')
         $(term_range_id).text(range)
-        $('#default_work_'+term).val(range)
+        $('#'+work_type+'_'+term).val(range)
     })
     $(term_end_id).datetimepicker({
       format:'Y-m-d',
@@ -43,13 +47,15 @@ jQuery ->
       scrollMonth: false,
       scrollTime: false,
       scrollInput: false,
+      validateOnBlur: false,
       onChangeDateTime:(ct,$i) ->
         range = $(term_start_id).val() + '/' + $i.val()
+        work_type = $('#new_date_type').data('work-type')
         $(term_range_id).text(range)
-        $('#default_work_'+term).val(range)
+        $('#'+work_type+'_'+term).val(range)
 
     })
-    $(term_range_id).text($('#default_work_'+term).val())
+    $(term_range_id).text($('#'+work_type+'_'+term).val())
 
   $('#date_fields tr.date-range').each (i, element) =>
     date_id = $(element).attr("data-id")

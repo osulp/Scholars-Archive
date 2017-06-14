@@ -13,6 +13,8 @@ module ApplicationHelper
       data_fields << { 'range_'+term.to_s => data_range_widget }
     end
 
+    data_fields << { 'work_type' => f.object.model_name.singular }
+
     default_option = {"Select a date type" => "default_option"}
     date_options = Hash[options.blank? ? [] : options.reduce(:merge).sort]
     date_options = default_option.merge(date_options)
@@ -76,7 +78,7 @@ module ApplicationHelper
   end
 
   def link_to_sa_field(field, query)
-    search_path = main_app.search_catalog_path(:f => {field => [query]})
+    search_path = Rails.application.class.routes.url_helpers.search_catalog_path(:f => {field => [query]})
     link_to(query, search_path)
   end
 end

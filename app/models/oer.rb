@@ -5,7 +5,7 @@ class Oer < ActiveFedora::Base
   include ::ScholarsArchive::OerMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
-  include ScholarsArchive::HasSolrNestedGeoLabels
+  include ScholarsArchive::HasSolrLabels
 
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
