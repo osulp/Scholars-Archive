@@ -1,14 +1,14 @@
 {
     "workflows": [
         {
-            "name": "gtd_workflow",
+            "name": "GTD_Workflow",
             "label": "Graduate Thesis and Dissertation Workflow",
             "description": "Workflow for Graduate Theses and Dissertations. Review includes the Graduate School and OSULP Cataloging.",
             "actions": [
                 {
                     "name": "deposit",
                     "from_states": [],
-                    "transition_to": "gs_review",
+                    "transition_to": "GradSchool_Review",
                     "notifications": [
                         {
                             "notification_type": "email",
@@ -20,9 +20,9 @@
                         "Hyrax::Workflow::DeactivateObject"
                     ]
                 }, {
-                    "name": "request_changes",
-                    "from_states": [{"names": ["deposited", "gs_review", "osulp_review"], "roles": ["approving"]}],
-                    "transition_to": "changes_required",
+                    "name": "Request_Changes",
+                    "from_states": [{"names": ["Deposited", "GradSchool_Review", "OSULP_Review"], "roles": ["approving"]}],
+                    "transition_to": "Changes_Required",
                     "notifications": [
                         {
                             "notification_type": "email",
@@ -34,9 +34,9 @@
                         "Hyrax::Workflow::DeactivateObject"
                     ]
                 }, {
-                    "name": "advance",
-                    "from_states": [{"names": ["gs_review"], "roles": ["approving"]}],
-                    "transition_to": "osulp_review",
+                    "name": "Advance",
+                    "from_states": [{"names": ["GradSchool_Review"], "roles": ["approving"]}],
+                    "transition_to": "OSULP_Review",
                     "notifications": [
                         {
                             "notification_type": "email",
@@ -48,9 +48,9 @@
                         "Hyrax::Workflow::ActivateObject"
                     ]
                 }, {
-                    "name": "approve",
-                    "from_states": [{"names": ["osulp_review"], "roles": ["approving"]}],
-                    "transition_to": "deposited",
+                    "name": "Approve",
+                    "from_states": [{"names": ["OSULP_Review"], "roles": ["approving"]}],
+                    "transition_to": "Deposited",
                     "notifications": [
                         {
                             "notification_type": "email",
@@ -62,9 +62,9 @@
                         "Hyrax::Workflow::ActivateObject"
                     ]
                 }, {
-                    "name": "request_review",
-                    "from_states": [{"names": ["changes_required"], "roles": ["depositing"]}],
-                    "transition_to": "pending_review",
+                    "name": "Request_Review",
+                    "from_states": [{"names": ["Changes_Required"], "roles": ["depositing"]}],
+                    "transition_to": "Pending_Review",
                     "notifications": [
                         {
                             "notification_type": "email",
@@ -73,10 +73,10 @@
                         }
                     ]
                 }, {
-                    "name": "comment_only",
+                    "name": "Comment_Only",
                     "from_states": [
-                        { "names": ["changes_required"], "roles": ["depositing"] },
-                        { "names": ["gs_review", "osulp_review", "deposited"], "roles": ["approving"]}
+                        { "names": ["Changes_Required"], "roles": ["depositing"] },
+                        { "names": ["GradSchool_Review", "OSULP_Review", "Deposited"], "roles": ["approving"]}
                     ]
                 }
             ]
