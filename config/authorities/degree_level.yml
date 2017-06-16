@@ -1,0 +1,19 @@
+terms:
+- id: "Bachelor's"
+  term: "Bachelor's"
+  active: true
+- id: "Certificate"
+  term: "Certificate"
+  active: true
+- id: "Doctoral"
+  term: "Doctoral"
+  active: true
+- id: "Master's"
+  term: "Master's"
+  active: true
+- id: "Other"
+  term: "Other"
+  active: true
+- id: "Post-Doctoral"
+  term: "Post-Doctoral"
+  active: true
