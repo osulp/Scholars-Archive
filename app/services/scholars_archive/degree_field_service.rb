@@ -1,6 +1,6 @@
 module ScholarsArchive
   # Provide select options for the degree_fields
-  class DegreeField < Hyrax::QaSelectService
+  class DegreeFieldService < Hyrax::QaSelectService
     def initialize
       super('degree_field')
     end
