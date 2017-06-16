@@ -16,7 +16,7 @@ module ScholarsArchive::TriplePoweredProperties
       before_save :fetch_graphs
 
       def triple_powered_properties
-        [:based_near]
+        []
       end
     end
 
