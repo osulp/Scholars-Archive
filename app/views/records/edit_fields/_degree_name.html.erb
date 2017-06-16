@@ -1,5 +1,0 @@
-<% degree_name_service = ScholarsArchive::DegreeNameService.new %>
-<%= f.input :degree_name,
-    collection: degree_name_service.select_active_options,
-    include_blank: true,
-    input_html: { class: "form-control" } %>
