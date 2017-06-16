@@ -2,7 +2,7 @@ require 'yaml'
 config = YAML.load_file('config/config.yml')["deployment"] || {}
 
 # config valid only for current version of Capistrano
-lock '3.8.1'
+lock '3.8.2'
 
 set :application, 'ScholarsArchive'
 set :repo_url, config['repository']
