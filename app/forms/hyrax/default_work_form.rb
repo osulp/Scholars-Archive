@@ -13,11 +13,11 @@ module Hyrax
     self.required_fields -= [:keyword]
 
     def primary_terms
-      super + [:other_affiliation, :academic_affiliation, :doi, :based_near, :alt_title, :abstract, :keyword, :license]
+      [:title, :alt_title, :creator, :contributor, :abstract, :license, :resource_type, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :keyword, :subject, :tableofcontents, :rights_statement] | super
     end
 
     def secondary_terms
-      super - self.date_terms - [:license, :resource_type, :description, :keyword, :nested_geo, :dspace_community, :dspace_collection]
+      super - self.date_terms + [:related_url, :hydrologic_unit_code, :based_near, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :relation, :additional_information, :source]
     end
 
     def self.date_terms
