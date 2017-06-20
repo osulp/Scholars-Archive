@@ -1,0 +1,73 @@
+{
+    "workflows": [{
+        "name": "One Step",
+        "label": "One Step Mediated Workflow (default)",
+        "description": "Default workflow for SA@OSU in which all deposits must be approved by a reviewer. Reviewer may also send deposits back to the depositor or leave comments",
+        "actions": [{
+            "name": "Deposit",
+            "from_states": [],
+            "transition_to": "Pending Review",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "Hyrax::Workflow::PendingReviewNotification",
+                "to": ["approving"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::DeactivateObject"
+            ]
+        }, {
+            "name": "Request Changes",
+            "from_states": [{
+                "names": ["Deposited", "Pending Review"],
+                "roles": ["approving"]
+            }],
+            "transition_to": "Changes Required",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "Hyrax::Workflow::ChangesRequiredNotification",
+                "to": ["approving"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::DeactivateObject"
+            ]
+        }, {
+            "name": "Approve",
+            "from_states": [{
+                "names": ["Pending Review"],
+                "roles": ["approving"]
+            }],
+            "transition_to": "Deposited",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "Hyrax::Workflow::DepositedNotification",
+                "to": ["approving"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::ActivateObject"
+            ]
+        }, {
+            "name": "Request Review",
+            "from_states": [{
+                "names": ["Changes Required"],
+                "roles": ["depositing"]
+            }],
+            "transition_to": "Pending Review",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "Hyrax::Workflow::PendingReviewNotification",
+                "to": ["approving"]
+            }]
+        }, {
+            "name": "Comment",
+            "from_states": [{
+                    "names": ["Pending Review", "Deposited"],
+                    "roles": ["approving"]
+                },
+                {
+                    "names": ["Changes Required"],
+                    "roles": ["depositing"]
+                }
+            ]
+        }]
+    }]
+}

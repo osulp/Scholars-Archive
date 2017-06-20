@@ -1,0 +1,16 @@
+{
+    "workflows": [{
+        "name": "Self Deposit",
+        "label": "No Review Workflow (Self-Deposit)",
+        "description": "A single submission step workflow that immediately deposits the item in the repository",
+        "actions": [{
+            "name": "Deposit",
+            "from_states": [],
+            "transition_to": "Deposited",
+            "methods": [
+                "Hyrax::Workflow::GrantEditToDepositor",
+                "Hyrax::Workflow::ActivateObject"
+            ]
+        }]
+    }]
+}
