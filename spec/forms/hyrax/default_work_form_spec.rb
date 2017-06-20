@@ -29,11 +29,11 @@ RSpec.describe Hyrax::DefaultWorkForm do
   end
 
   it "has the proper primary terms" do
-    expect(new_form.primary_terms).to include *[:doi, :based_near, :alt_title, :abstract, :keyword, :license]
+    expect(new_form.primary_terms).to include *[:doi, :alt_title, :abstract, :keyword, :license]
   end
 
   it "has the proper secondary terms" do
-    expect(new_form.secondary_terms).to_not include *[:license, :resource_type, :description, :keyword]
+    expect(new_form.secondary_terms).to_not include *[:license, :resource_type, :keyword]
   end
 
   it "responds to date_terms" do
