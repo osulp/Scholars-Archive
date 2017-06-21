@@ -34,6 +34,18 @@ class SolrDocument
     end
   end
 
+  def license_label
+    self['license_label_ssim']
+  end
+
+  def rights_statement_label
+    self['rights_statement_label_ssim']
+  end
+
+  def language_label
+    self['language_label_ssim']
+  end
+
   def nested_geo
     self[Solrizer.solr_name('nested_geo_label')]
   end
@@ -86,7 +98,7 @@ class SolrDocument
       'conference_name',
       'conference_section',
       'editor',
-      'isbn'
+      'isbn',
                    ]
 
 end

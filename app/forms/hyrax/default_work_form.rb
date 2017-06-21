@@ -17,7 +17,7 @@ module Hyrax
     end
 
     def secondary_terms
-      super - self.date_terms + [:related_url, :hydrologic_unit_code, :based_near, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :relation, :additional_information, :source]
+      [:related_url, :hydrologic_unit_code, :based_near, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :relation, :additional_information, :source]
     end
 
     def self.date_terms

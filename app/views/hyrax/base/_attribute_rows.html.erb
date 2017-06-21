@@ -16,6 +16,7 @@
 <%= presenter.attribute_to_html(:in_series, render_as: :faceted, label: t('simple_form.labels.defaults.in_series')) %>
 <%= presenter.attribute_to_html(:keyword, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:subject, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:license_label, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:tableofcontents, label: t('simple_form.labels.defaults.tableofcontents')) %>
 <%= presenter.attribute_to_html(:additional_information, label: t('simple_form.labels.defaults.additional_information')) %>
 <%= presenter.attribute_to_html(:academic_affiliation, render_as: :faceted, label: t('simple_form.labels.defaults.academic_affiliation')) %>
@@ -25,10 +26,10 @@
 <%= presenter.attribute_to_html(:based_near_label, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
 <%= presenter.attribute_to_html(:funding_statement, render_as: :faceted, label: t('simple_form.labels.defaults.funding_statement')) %>
-<%= presenter.attribute_to_html(:rights_statement, label: t('simple_form.labels.defaults.rights_statement')) %>
+<%= presenter.attribute_to_html(:rights_statement_label, render_as: :faceted, label: t('simple_form.labels.defaults.rights_statement')) %>
 <%= presenter.attribute_to_html(:publisher, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:peerreviewed, render_as: :faceted, label: t('simple_form.labels.defaults.peerreviewed')) %>
-<%= presenter.attribute_to_html(:language, render_as: :language) %>
+<%= presenter.attribute_to_html(:language_label, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:file_format, render_as: :faceted, label: t('simple_form.labels.defaults.file_format')) %>
 <%= presenter.attribute_to_html(:file_extent, label: t('simple_form.labels.defaults.file_extent')) %>
 <%= presenter.attribute_to_html(:digitization_spec, label: t('simple_form.labels.defaults.digitization_spec')) %>
