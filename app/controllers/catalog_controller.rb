@@ -1,4 +1,5 @@
 class CatalogController < ApplicationController
+  include BlacklightRangeLimit::ControllerOverride
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
 
@@ -21,7 +22,7 @@ class CatalogController < ApplicationController
 
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
-    config.search_builder_class = Hyrax::CatalogSearchBuilder
+    config.search_builder_class = ScholarsArchive::CatalogSearchBuilder
 
     # Show gallery view
     config.view.gallery.partials = [:index_header, :index]
@@ -68,6 +69,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
     config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year'
+    config.add_facet_field('date_decades_ssim', :label => 'Decade', :limit => 10, :sort => 'desc')
+    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile

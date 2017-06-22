@@ -9,7 +9,6 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -19,8 +18,7 @@
 //= require add_geo_field
 //= require jquery-datetimepicker/jquery.datetimepicker.full
 //= require turbolinks//
-// Required by Blacklight
 //= require blacklight/blacklight
+//= require 'blacklight_range_limit'
 //= require_tree .
 //= require hyrax
-

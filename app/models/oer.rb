@@ -6,6 +6,7 @@ class Oer < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrLabels
+  include ScholarsArchive::DateOperations
 
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []

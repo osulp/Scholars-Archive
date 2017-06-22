@@ -13,7 +13,8 @@
  *= require osu
  *= require jquery-ui
  *= require jquery-datetimepicker/jquery.datetimepicker.min
+ *= require 'blacklight_range_limit'
  *= require_tree .
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_self
- */
+*/
