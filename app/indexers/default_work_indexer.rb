@@ -13,13 +13,16 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   # Uncomment this block if you want to add custom indexing behavior:
   def generate_solr_document
    super.tap do |solr_doc|
-     solr_doc['rights_statement_label_ssim'] = ScholarsArchive::RightsStatementService.new.all_labels(object.rights_statement)
-     solr_doc['license_label_ssim'] = ScholarsArchive::LicenseService.new.all_labels(object.license)
-     solr_doc['language_label_ssim'] = ScholarsArchive::LanguageService.new.all_labels(object.language)
+     rights_statement_labels = ScholarsArchive::RightsStatementService.new.all_labels(object.rights_statement)
+     license_labels = ScholarsArchive::LicenseService.new.all_labels(object.license)
+     language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
 
-     solr_doc['rights_statement_label_tesim'] = ScholarsArchive::RightsStatementService.new.all_labels(object.rights_statement)
-     solr_doc['license_label_tesim'] = ScholarsArchive::LicenseService.new.all_labels(object.license)
-     solr_doc['language_label_tesim'] = ScholarsArchive::LanguageService.new.all_labels(object.language)
+     solr_doc['rights_statement_label_ssim'] = rights_statement_labels
+     solr_doc['rights_statement_label_tesim'] = rights_statement_labels
+     solr_doc['license_label_ssim'] = license_labels
+     solr_doc['license_label_tesim'] = license_labels
+     solr_doc['language_label_ssim'] = language_labels
+     solr_doc['language_label_tesim'] = language_labels
    end
   end
 end
