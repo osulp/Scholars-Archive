@@ -69,7 +69,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
     config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year'
-    config.add_facet_field('date_decades_ssim', :label => 'Decade', :limit => 10, :sort => 'desc')
+    config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, :sort => 'desc'
     config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
 
     # The generic_type isn't displayed on the facet list
