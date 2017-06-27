@@ -293,6 +293,30 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('language_label') do |field|
+      solr_name = solr_name("language_label", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('rights_statement_label') do |field|
+      solr_name = solr_name("rights_statement_label", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('license_label') do |field|
+      solr_name = solr_name("license_label", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
     config.add_search_field('resource_type') do |field|
       solr_name = solr_name("resource_type", :stored_searchable)
       field.solr_local_parameters = {
