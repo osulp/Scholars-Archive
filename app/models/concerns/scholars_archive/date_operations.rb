@@ -9,16 +9,34 @@ module ScholarsArchive
       solr_doc
     end
 
+    # date_facet_yearly is intended to be used for date_facet_yearly_ssim, which is used by the facet provided
+    # by the interactive Blacklight Range Limit widget
+    # date_facet_yearly is expected to return an array of yearly date values like [1910, 1911, 1912]
+    # If given date_value = invalid date, i.e. "typo_here2011-12-01", we will get nil
     def date_facet_yearly
       return nil if yearly_dates.empty?
       yearly_dates
-    rescue ArgumentError
+    rescue ArgumentError => e
+      Rails.logger.warn e.message
+      return nil
     end
 
+    # decades is intended to be used for date_decades_ssim, which is used by the decade facet
+    # decades is expected to return an array of year ranges like ["1910-1919", "1920-1929"]
+    # here are some examples:
+    #  a) given date_value = "2017-12-01", we will get ["2010-2019"]
+    #  b) given date_value = "2017-12", we will get ["2010-2019"]
+    #  c) given date_value = "2017", we will get ["2010-2019"]
+    #  d) given date_value = "2017-2018", we will get ["2010-2019"]
+    #  e) given date_value = "2010-2020", we will get ["2010-2019", "2020-2029"]
+    #  f) given date_value = "1900-1940", we will get nil
+    #  g) given date_value = invalid date, i.e. "typo_here2011-12-01", we will get nil
     def decades
       return nil if decade_dates.empty?
       decade_dates.map(&:decade)
-    rescue ArgumentError
+    rescue ArgumentError => e
+      Rails.logger.warn e.message
+      return nil
     end
 
     # Determine the date value to use for Decades facet and date facet yearly processing.
@@ -32,6 +50,14 @@ module ScholarsArchive
       end
     end
 
+    # yearly_dates returns an array of years given a valid date_value. Here are some examples:
+    #  a) given date_value = "2017-12-01", we will get [2017]
+    #  b) given date_value = "2017-12", we will get [2017]
+    #  c) given date_value = "2017", we will get [2017]
+    # it also works with ranges and special dates in the ISO 8601 format:
+    #  d) given date_value = "2017-12-01/2019-12-01", we will get [2017, 2018, 2019]
+    #  e) given date_value = "2017-12/2019-12", we will get [2017, 2018, 2019]
+    #  f) given date_value = "2017/2019", we will get [2017, 2018, 2019]
     def yearly_dates
       (date_value) ? clean_years : []
     end
@@ -43,13 +69,29 @@ module ScholarsArchive
       elsif date.instance_of? Date
         Array.wrap(date.year)
       else
-        Array.wrap(clean_datetime.year)
+        Array.wrap(parsed_year)
       end
     end
 
     def decade_dates
       dates = DateDecadeConverter.new(date_value).run
-      dates ||= Array.wrap(DecadeDecorator.new(clean_datetime.year))
+      dates ||= Array.wrap(DecadeDecorator.new(parsed_year))
+    end
+
+    def parsed_year
+      clean_datetime.year
+    end
+
+    def clean_datetime
+      if date_value =~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/ # YYYY-MM-DD
+        DateTime.strptime(date_value, "%Y-%m-%d")
+      elsif date_value  =~ /^[0-9]{4}-[0-9]{2}$/ # YYYY-MM
+        DateTime.strptime(date_value, "%Y-%m")
+      elsif date_value =~ /^[0-9]{4}/ # YYYY
+        DateTime.strptime(date_value.split("-").first, "%Y")
+      else
+        raise ArgumentError.new("Invalid date_value. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY.")
+      end
     end
 
     class DecadeDecorator
@@ -73,6 +115,8 @@ module ScholarsArchive
       end
     end
 
+    # Used for processing decades given a date and generates an array of decorated items using DecadeDecorator
+    # when calling run. Expected input dates: "2017-12-01", "2017-12", "2017", "2017-2018", "2010-2020", "1900-1940"
     class DateDecadeConverter
       attr_accessor :date
       def initialize(date)
@@ -105,30 +149,9 @@ module ScholarsArchive
       end
 
       def decades
-        if calculated_decades <= 3
-          calculated_decades
-        else
-          0
-        end
-      end
-
-      def calculated_decades
-        (dates.last-dates.first)/10 + 1
-      end
-
-    end
-
-    def clean_datetime
-      if date_value =~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/ # YYYY-MM-DD
-        DateTime.strptime(date_value, "%Y-%m-%d")
-      elsif date_value  =~ /^[0-9]{4}-[0-9]{2}$/ # YYYY-MM
-        DateTime.strptime(date_value, "%Y-%m")
-      elsif date_value =~ /^[0-9]{4}/ # YYYY
-        DateTime.strptime(date_value.split("-").first, "%Y")
-      else
-        raise ArgumentError
+        calculated_decades = (dates.last - dates.first)/10 + 1
+        calculated_decades <= 3 ? calculated_decades : 0
       end
     end
-
   end
 end
