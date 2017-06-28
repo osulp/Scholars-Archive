@@ -16,11 +16,24 @@ RSpec.describe DefaultWork do
     let(:date) { "2022-01-01" }
     let(:facet) { asset.to_solr["date_facet_yearly_ssim"] }
 
-    context "when given an invalid date" do
+    context "when given date is nil" do
       let(:asset) do
         g = described_class.new(title: ['test'], keyword: ['test'])
         g.attributes = {
             :date_created => nil
+        }
+        g.save!(:validate => false)
+        g
+      end
+      it "should be blank" do
+        expect(facet).to be_nil
+      end
+    end
+    context "when given an invalid date" do
+      let(:asset) do
+        g = described_class.new(title: ['test'], keyword: ['test'])
+        g.attributes = {
+            :date_created => "typo2011-01-01"
         }
         g.save!(:validate => false)
         g
