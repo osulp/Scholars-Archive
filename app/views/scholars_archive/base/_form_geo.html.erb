@@ -16,18 +16,28 @@
         </tr>
         </thead>
         <tbody>
-        <% coordinates = f.object.model.nested_geo.select { |t| t.present? } %>
-        <% coordinates.group_by {|c| c.type }.each do |type, coordinates_group| %>
-            <% if type == :bbox.to_s %>
-                <%= render partial: 'scholars_archive/base/nested_geo_bbox', :locals => { f: f, coordinates_group: coordinates_group } %>
-            <% end %>
-            <% if type == :point.to_s %>
-                <%= render partial: 'scholars_archive/base/nested_geo_points', :locals => { f: f, coordinates_group: coordinates_group } %>
-            <% end %>
-        <% end %>
+          <% coordinates = f.object.model.nested_geo.select { |t| t.present? } %>
+          <% coordinates.group_by {|c| c.type }.each do |type, coordinates_group| %>
+              <% if type == :bbox.to_s %>
+                  <%= render partial: 'scholars_archive/base/nested_geo_bbox', :locals => { f: f, coordinates_group: coordinates_group } %>
+              <% end %>
+              <% if type == :point.to_s %>
+                  <%= render partial: 'scholars_archive/base/nested_geo_points', :locals => { f: f, coordinates_group: coordinates_group } %>
+              <% end %>
+          <% end %>
+
+          <!-- Rendering the Location field (:based_near) here for now, so that it's in the same section with other  -->
+          <!-- geo related fields. TODO: Add this field (:based_near) to the select_tag_geo dropdown so that it is -->
+          <!-- part of the same form element in this section, see related issue #635 in GitHub -->
+          <tr data-id="based_near" class="geo_field based_near">
+            <td>
+              <%= render_edit_field_partial(:based_near, f: f) %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
+
 </div>
 
