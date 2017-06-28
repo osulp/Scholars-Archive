@@ -198,6 +198,10 @@ GEM
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
       rails
+    blacklight_range_limit (6.1.2)
+      blacklight (~> 6.0)
+      jquery-rails
+      rails (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -834,6 +838,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blacklight_range_limit
   byebug
   capistrano (~> 3.8.0)
   capistrano-passenger
@@ -885,4 +890,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.0
+   1.14.6

@@ -36,6 +36,7 @@ gem 'redis', '~> 3.0'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq'
 gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
+gem 'blacklight_range_limit'
 
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
