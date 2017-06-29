@@ -5,7 +5,7 @@ RSpec.describe SolrDocument do
     context "when there are no geo points" do
       it "should return an empty array" do
         document = described_class.new({
-                                           "nested_geo_label_tesim" => []
+                                           "nested_geo_label_ssim" => []
                                        })
         expect(document.nested_geo).to eq []
       end
@@ -13,7 +13,7 @@ RSpec.describe SolrDocument do
     context "when there are geo coordinates" do
       it "should return their labels" do
         document = described_class.new({
-                                           "nested_geo_label_tesim" => ["Test"]
+                                           "nested_geo_label_ssim" => ["Test"]
                                        })
         expect(document.nested_geo).to eq ["Test"]
       end
