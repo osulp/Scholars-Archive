@@ -47,7 +47,7 @@ class SolrDocument
   end
 
   def nested_geo
-    self[Solrizer.solr_name('nested_geo_label')]
+    self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
   end
 
   solrized_methods [
