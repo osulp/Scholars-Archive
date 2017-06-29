@@ -38,6 +38,14 @@ class SolrDocument
     self['license_label_ssim']
   end
 
+  def academic_affiliation_label
+    ScholarsArchive::LabelParserService.parse(self['academic_affiliation_label_ssim'])
+  end
+
+  def other_affiliation_label
+    ScholarsArchive::LabelParserService.parse(self['other_affiliation_label_ssim'])
+  end
+
   def rights_statement_label
     self['rights_statement_label_ssim']
   end

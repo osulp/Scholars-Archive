@@ -6,6 +6,7 @@ class ConferenceProceedingsOrJournal < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrLabels
+  include ScholarsArchive::TriplePoweredBehavior
 
   self.indexer = ArticleIndexer
 

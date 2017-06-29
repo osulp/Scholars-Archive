@@ -22,12 +22,9 @@ module ScholarsArchive::TriplePoweredProperties
     ##
     # Common predicates which represent labels in a graph
     def self.rdf_label_predicates
-      [RDF::Vocab::SKOS.prefLabel,
-       RDF::Vocab::DC.title,
-       RDF::Vocab::RDFS.label,
-       RDF::Vocab::SKOS.altLabel,
-       RDF::Vocab::SKOS.hiddenLabel,
-       RDF::Vocab::GEONAMES.name]
+      [
+       RDF::Vocab::RDFS.label
+       ]
     end
 
     ##

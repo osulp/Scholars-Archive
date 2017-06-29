@@ -4,9 +4,10 @@ class Etd < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::ScholarsArchive::EtdMetadata
   include ::ScholarsArchive::DefaultMetadata
-  include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
+  include ScholarsArchive::TriplePoweredBehavior
+
   self.indexer = EtdIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []

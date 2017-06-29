@@ -43,32 +43,30 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name("academic_affiliation", :facetable), label: "Academic Affiliation", limit: 5
-    config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
-    config.add_facet_field solr_name("funding_body", :facetable), label: "Funding Body", limit: 5
-    config.add_facet_field solr_name("other_affiliation", :facetable), label: "Other Affiliation", limit: 5
-    config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
-    config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
-    config.add_facet_field solr_name("contributor", :facetable), label: "Contributor", limit: 5
-    config.add_facet_field solr_name("in_series", :facetable), label: "Series", limit: 5
-    config.add_facet_field solr_name("keyword", :facetable), label: "Keyword", limit: 5
-    config.add_facet_field "license_label_ssim", label: "License", limit: 5
-    config.add_facet_field solr_name("subject", :facetable), label: "Subject", limit: 5
-    config.add_facet_field "language_label_ssim", label: "Language", limit: 5
-    config.add_facet_field solr_name("peerreviewed", :facetable), label: "Peer Reviewed", limit: 5
-    config.add_facet_field "rights_statement_label_ssim", label: "Rights Statement", limit: 5
-    config.add_facet_field solr_name("based_near_label", :facetable), label: "Location", limit: 5
-    config.add_facet_field solr_name("publisher", :facetable), label: "Publisher", limit: 5
-    config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
-    config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
-    config.add_facet_field solr_name('has_journal', :facetable), limit: 5, label: 'Journal Title'
     config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
     config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
+    config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
     config.add_facet_field solr_name('degree_field', :facetable), limit: 5, label: 'Degree Field'
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
+    config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
+    config.add_facet_field solr_name("funding_body", :facetable), label: "Funding Body", limit: 5
     config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year'
+    config.add_facet_field solr_name('has_journal', :facetable), limit: 5, label: 'Journal Title'
+    config.add_facet_field "language_label_ssim", label: "Language", limit: 5
+    config.add_facet_field "license_label_ssim", label: "License", limit: 5
+    config.add_facet_field solr_name("based_near_label", :facetable), label: "Location", limit: 5
+    config.add_facet_field solr_name("other_affiliation", :facetable), label: "Other Affiliation", limit: 5
+    config.add_facet_field solr_name("peerreviewed", :facetable), label: "Peer Reviewed", limit: 5
+    config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
+    config.add_facet_field "rights_statement_label_ssim", label: "Rights Statement", limit: 5
+    config.add_facet_field solr_name("subject", :facetable), label: "Subject", limit: 5
+
+    #config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
+    #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
+    
     config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, :sort => 'desc'
     config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
 
@@ -151,7 +149,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim",
+        qf: "#{all_names} file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim",
         pf: title_name.to_s
       }
     end
@@ -175,16 +173,16 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('academic_affiliation') do |field|
-      solr_name = solr_name("academic_affiliation", :stored_searchable)
+    config.add_search_field('academic_affiliation_label') do |field|
+      solr_name = solr_name("academic_affiliation_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
       }
     end
 
-    config.add_search_field('other_affiliation') do |field|
-      solr_name = solr_name("other_affiliation", :stored_searchable)
+    config.add_search_field('other_affiliation_label') do |field|
+      solr_name = solr_name("other_affiliation_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

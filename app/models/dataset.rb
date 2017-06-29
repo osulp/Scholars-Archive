@@ -5,6 +5,7 @@ class Dataset < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrLabels
+  include ScholarsArchive::TriplePoweredBehavior
 
   self.indexer = DefaultWorkIndexer
   # Change this to restrict which works can be added as a child.
