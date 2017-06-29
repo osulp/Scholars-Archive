@@ -7,7 +7,7 @@ module Hyrax
     include ScholarsArchive::NestedGeoBehavior
 
     self.model_class = ::DefaultWork
-    self.terms += [:relation, :doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_accepted, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection]
+    self.terms += [:doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_accepted, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection, :isbn, :issn]
 
     self.required_fields += [:resource_type]
     self.required_fields -= [:keyword]
@@ -17,7 +17,7 @@ module Hyrax
     end
 
     def secondary_terms
-      [:related_url, :hydrologic_unit_code, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :relation, :additional_information, :source]
+      [:related_url, :hydrologic_unit_code, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :source, :isbn, :issn]
     end
 
     def self.date_terms

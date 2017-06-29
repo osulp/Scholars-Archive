@@ -22,7 +22,7 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  # Do content negotiation for AF models. 
+  # Do content negotiation for AF models.
 
   use_extension( Hydra::ContentNegotiation )
 
@@ -32,6 +32,10 @@ class SolrDocument
         self[Solrizer.solr_name(property_name)]
       end
     end
+  end
+
+  def peerreviewed_label
+    self['peerreviewed_label_ssim']
   end
 
   def license_label
@@ -59,54 +63,52 @@ class SolrDocument
   end
 
   solrized_methods [
+      'abstract',
       'academic_affiliation',
-      'other_affiliation',
+      'additional_information',
+      'alt_title',
+      'bibliographic_citation',
+      'conference_location',
+      'conference_name',
+      'conference_section',
+      'contributor_advisor',
+      'contributor_committeemember',
       'date_accepted',
       'date_available',
       'date_collected',
       'date_copyright',
       'date_issued',
       'date_valid',
-      'replaces',
-      'doi',
-      'alt_title',
-      'abstract',
-      'hydrologic_unit_code',
-      'funding_body',
-      'funding_statement',
-      'in_series',
-      'tableofcontents',
-      'bibliographic_citation',
-      'peerreviewed',
-      'additional_information',
-      'digitization_spec',
-      'file_extent',
-      'file_format',
-      'dspace_community',
-      'dspace_collection',
-      'contributor_advisor',
-      'contributor_committeemember',
       'degree_discipline',
       'degree_field',
       'degree_grantors',
       'degree_level',
       'degree_name',
+      'digitization_spec',
+      'doi',
+      'dspace_community',
+      'dspace_collection',
+      'editor',
+      'file_extent',
+      'file_format',
+      'funding_body',
+      'funding_statement',
       'graduation_year',
-      'time_required',
-      'typical_age_range',
-      'learning_resource_type',
+      'has_journal',
+      'has_number',
+      'has_volume',
+      'hydrologic_unit_code',
+      'in_series',
       'interactivity_type',
       'is_based_on_url',
       'is_referenced_by',
-      'has_journal',
-      'has_volume',
-      'has_number',
-      'relation',
-      'conference_location',
-      'conference_name',
-      'conference_section',
-      'editor',
       'isbn',
-                   ]
-
+      'issn',
+      'learning_resource_type',
+      'other_affiliation',
+      'replaces',
+      'tableofcontents',
+      'time_required',
+      'typical_age_range'
+  ]
 end

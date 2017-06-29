@@ -1,3 +1,7 @@
 class OerPresenter < DefaultWorkPresenter
-  delegate :is_based_on_url, :interactivity_type, :learning_resource_type, :typical_age_range, :time_required, to: :solr_document
+  delegate :interactivity_type,
+           :is_based_on_url,
+           :learning_resource_type,
+           :time_required,
+           :typical_age_range,  to: :solr_document
 end
