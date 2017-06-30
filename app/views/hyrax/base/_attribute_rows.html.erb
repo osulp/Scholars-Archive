@@ -19,8 +19,8 @@
 <%= presenter.attribute_to_html(:license_label, render_as: :linked, search_field: 'license_label') %>
 <%= presenter.attribute_to_html(:tableofcontents, label: t('simple_form.labels.defaults.tableofcontents')) %>
 <%= presenter.attribute_to_html(:additional_information, label: t('simple_form.labels.defaults.additional_information')) %>
-<%= presenter.attribute_to_html(:academic_affiliation, render_as: :faceted, label: t('simple_form.labels.defaults.academic_affiliation')) %>
-<%= presenter.attribute_to_html(:other_affiliation, render_as: :faceted, label: t('simple_form.labels.defaults.other_affiliation')) %>
+<%= presenter.attribute_to_html(:academic_affiliation_label, render_as: :linked, label: t('simple_form.labels.defaults.academic_affiliation'), search_field: 'academic_affiliation_label') %>
+<%= presenter.attribute_to_html(:other_affiliation_label, render_as: :linked, label: t('simple_form.labels.defaults.other_affiliation'), search_field: 'other_affiliation_label') %>
 <%= presenter.attribute_to_html(:related_url, render_as: :external_link, label: t('simple_form.labels.defaults.related_url')) %>
 <%= presenter.attribute_to_html(:hydrologic_unit_code, render_as: :faceted, label: t('simple_form.labels.defaults.hydrologic_unit_code')) %>
 <%= presenter.attribute_to_html(:based_near_label, render_as: :faceted) %>

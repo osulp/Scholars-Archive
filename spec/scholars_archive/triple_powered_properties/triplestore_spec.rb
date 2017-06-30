@@ -19,23 +19,15 @@ RSpec.describe ScholarsArchive::TriplePoweredProperties::Triplestore do
   describe "#rdf_label_predicates" do
     it "should return an array of predicates" do
       expect(triplestore.rdf_label_predicates).to be_kind_of Array
-      expect(triplestore.rdf_label_predicates).to eq [RDF::Vocab::SKOS.prefLabel,
-                                                      RDF::Vocab::DC.title,
-                                                      RDF::Vocab::RDFS.label,
-                                                      RDF::Vocab::SKOS.altLabel,
-                                                      RDF::Vocab::SKOS.hiddenLabel,
-                                                      RDF::Vocab::GEONAMES.name]
+      expect(triplestore.rdf_label_predicates).to eq [
+                                                      RDF::Vocab::RDFS.label
+                                                     ]
     end
   end
 
   describe "#predicate_labels" do
     it "should return an hash of labels" do
-      expect(triplestore.predicate_labels(build_graph)).to eq({"http://purl.org/dc/terms/title" => [],
-                                                               "http://www.w3.org/2000/01/rdf-schema#label" => ["Blah"],
-                                                               "http://www.w3.org/2004/02/skos/core#altLabel" => [],
-                                                               "http://www.w3.org/2004/02/skos/core#hiddenLabel" => [],
-                                                               "http://www.w3.org/2004/02/skos/core#prefLabel" => [],
-                                                               "http://www.geonames.org/ontology#name"=>[]})
+      expect(triplestore.predicate_labels(build_graph)).to eq({"http://www.w3.org/2000/01/rdf-schema#label" => ["Blah"]})
     end
   end
 end

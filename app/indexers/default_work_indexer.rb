@@ -16,7 +16,11 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
      rights_statement_labels = ScholarsArchive::RightsStatementService.new.all_labels(object.rights_statement)
      license_labels = ScholarsArchive::LicenseService.new.all_labels(object.license)
      language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
-
+     object.triple_powered_properties.each do |field|
+       labels = ScholarsArchive::TriplePoweredService.new.fetch(object.send(field)) 
+       solr_doc[field.to_s + '_label_ssim'] = labels
+       solr_doc[field.to_s + '_label_tesim'] = labels
+     end
      solr_doc['rights_statement_label_ssim'] = rights_statement_labels
      solr_doc['rights_statement_label_tesim'] = rights_statement_labels
      solr_doc['license_label_ssim'] = license_labels
