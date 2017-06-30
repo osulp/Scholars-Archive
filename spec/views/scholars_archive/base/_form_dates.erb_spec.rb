@@ -26,7 +26,10 @@ RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
     let(:work) { Default.new }
     it "draws the page" do
       expect(page).to have_selector("form[action='/concern/defaults']")
-      expect(page).to have_selector("select#new_date_type option", count: 8)
+    end
+
+    it "draws the selector for single value fields" do
+      expect(page).to have_selector("select#new_date_type option", count: 7)
     end
 
   end
@@ -40,7 +43,7 @@ RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
         work.date_available = date_range
         work.date_copyright = date_range
         work.date_accepted = date_range
-        work.date_collected = date
+        work.date_collected = [date]
         work.date_created = date
         work.date_issued = date
         work.date_valid = date
@@ -52,7 +55,7 @@ RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
     it "draws the page" do
       expect(page).to have_selector("select#new_date_type option", count: 1)
       expect(page).to have_selector("div#date_fields tr.date-range", count: 3)
-      expect(page).to have_selector("div#date_fields tr.date-default", count: 4)
+      expect(page).to have_selector("div#date_fields tr.date-default", count: 3)
     end
 
     it "renders date created" do
