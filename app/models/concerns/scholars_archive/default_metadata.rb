@@ -45,7 +45,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :date_collected, predicate: ::RDF::URI.new("http://rs.tdwg.org/dwc/terms/measurementDeterminedDate"), multiple: false do |index|
+      property :date_collected, predicate: ::RDF::URI.new("http://rs.tdwg.org/dwc/terms/measurementDeterminedDate") do |index|
         index.as :stored_searchable, :facetable
       end
 
