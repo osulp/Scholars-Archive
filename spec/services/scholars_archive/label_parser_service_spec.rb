@@ -8,4 +8,11 @@ describe ScholarsArchive::LabelParserService do
       expect(described_class.parse(labels)).to eq ["label1", "label2"]
     end
   end
+
+  context "with no labels supplied" do
+    let(:labels) { nil }
+    it "returns an empty array of parsed labels" do
+      expect(described_class.parse(labels)).to eq []
+    end
+  end
 end

@@ -1,6 +1,7 @@
 module ScholarsArchive
   class LabelParserService
     def self.parse(labels)
+      labels ||= []
       parsed_labels = []
       labels.each do |label|
         parsed_labels << strip_uri(label)
