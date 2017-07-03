@@ -1,0 +1,7 @@
+terms:
+- id: "TRUE"
+  term: "Yes"
+  active: true
+- id: "FALSE"
+  term: "No"
+  active: true

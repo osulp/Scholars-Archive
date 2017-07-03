@@ -17,7 +17,7 @@ module ScholarsArchive
       end
 
       property :alt_title, predicate: ::RDF::URI.new("http://purl.org/dc/terms/alternative") do |index|
-        index.as :stored_searchable, :facetable
+        index.as :stored_searchable
       end
 
       #basicmetadata import from hyrax
@@ -25,9 +25,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation, multiple: false do |index|
-        index.as :stored_searchable
-      end
+      property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation
 
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
         index.as :stored_searchable
@@ -115,15 +113,19 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series"), multiple: false do |index|
-        index.as :stored_searchable, :facetable
+      property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series") do |index|
+        index.as :stored_searchable
       end
 
       property :isbn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/isbn") do |index|
         index.as :stored_searchable
       end
 
-      property :keyword, predicate: ::RDF::Vocab::DC11.relation do |index|
+      property :issn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/issn") do |index|
+        index.as :stored_searchable
+      end
+
+      property :keyword, predicate: ::RDF::Vocab::DC11.subject do |index|
         index.as :stored_searchable
       end
 
@@ -153,15 +155,11 @@ module ScholarsArchive
       end
 
       property :publisher, predicate: ::RDF::Vocab::DC11.publisher do |index|
-        index.as :stored_searchable, :facetable
+        index.as :stored_searchable
       end
 
       property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
         index.as :stored_searchable
-      end
-
-      property :relation, predicate: ::RDF::URI.new("http://purl.org/dc/terms/relation"), multiple: false do |index|
-        index.as :stored_searchable, :facetable
       end
 
       property :relative_path, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#relativePath'), multiple: false do |index|
@@ -184,11 +182,11 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :subject, predicate: ::RDF::Vocab::DC11.subject do |index|
+      property :subject, predicate: ::RDF::Vocab::DC.subject do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents"), multiple: false do |index|
+      property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents") do |index|
         index.as :stored_searchable
       end
 

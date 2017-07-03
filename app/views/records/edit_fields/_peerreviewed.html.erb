@@ -1,0 +1,5 @@
+<% service = ScholarsArchive::PeerreviewedService.new %>
+<%= f.input :peerreviewed,
+    collection: service.select_active_options,
+    include_blank: true,
+    input_html: { class: "form-control" } %>

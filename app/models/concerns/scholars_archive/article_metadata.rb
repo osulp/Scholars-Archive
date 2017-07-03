@@ -3,16 +3,19 @@ module ScholarsArchive
     extend ActiveSupport::Concern
 
     included do
-      #reusable metadata fields for DSpace migration
-     property :conference_location, predicate: ::RDF::URI.new("http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent") do |index|
+
+      # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
+      property :conference_location, predicate: ::RDF::URI.new("http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent"), multiple: false do |index|
         index.as :stored_searchable
       end
 
-      property :conference_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/presentedAt") do |index|
+      # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
+      property :conference_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/presentedAt"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :conference_section, predicate: ::RDF::URI.new("https://w3id.org/scholarlydata/ontology/conference-ontology.owl#Track") do |index|
+      # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
+      property :conference_section, predicate: ::RDF::URI.new("https://w3id.org/scholarlydata/ontology/conference-ontology.owl#Track"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -29,10 +32,6 @@ module ScholarsArchive
       end
 
       property :has_volume, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasVolume"), multiple: false do |index|
-        index.as :stored_searchable
-      end
-
-      property :isbn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/isbn") do |index|
         index.as :stored_searchable
       end
 

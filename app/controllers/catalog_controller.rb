@@ -59,14 +59,14 @@ class CatalogController < ApplicationController
     config.add_facet_field "license_label_ssim", label: "License", limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), label: "Location", limit: 5
     config.add_facet_field solr_name("other_affiliation", :facetable), label: "Other Affiliation", limit: 5
-    config.add_facet_field solr_name("peerreviewed", :facetable), label: "Peer Reviewed", limit: 5
+    config.add_facet_field "peerreviewed_label_ssim", label: "Peer Reviewed", limit: 2
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field "rights_statement_label_ssim", label: "Rights Statement", limit: 5
     config.add_facet_field solr_name("subject", :facetable), label: "Subject", limit: 5
 
     #config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
     #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
-    
+
     config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, :sort => 'desc'
     config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
 
@@ -312,6 +312,14 @@ class CatalogController < ApplicationController
 
     config.add_search_field('license_label') do |field|
       solr_name = solr_name("license_label", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('peerreviewed_label') do |field|
+      solr_name = solr_name("peerreviewed_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

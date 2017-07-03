@@ -1,3 +1,10 @@
 class ArticlePresenter < DefaultWorkPresenter
-  delegate :editor, :has_volume, :has_number, :conference_location, :conference_name, :conference_section, :has_journal, :is_referenced_by, :isbn, to: :solr_document
+  delegate :conference_location,
+           :conference_name,
+           :conference_section,
+           :editor,
+           :has_journal,
+           :has_number,
+           :has_volume,
+           :is_referenced_by,  to: :solr_document
 end
