@@ -1,4 +1,4 @@
 # Generated via
 #  `rails generate hyrax:work EescPublication`
-class EescPublicationPresenter < DefaultWorkPresenter
+class EescPublicationPresenter < DefaultPresenter
 end

@@ -1,9 +1,9 @@
 # Generated via
 #  `rails generate hyrax:work TechnicalReport`
 module Hyrax
-  class TechnicalReportForm < Hyrax::Forms::WorkForm
+  class TechnicalReportForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
-    include ScholarsArchive::DefaultWorkFormBehavior
+
     self.model_class = ::TechnicalReport
   end
 end

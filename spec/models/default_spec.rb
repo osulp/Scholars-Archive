@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'spec_helper'
 
-RSpec.describe DefaultWork do
+RSpec.describe Default do
   describe "date facet yearly" do
     let(:asset) {
       g = described_class.new(title: ['test'], keyword: ['test'])

@@ -1,4 +1,5 @@
 # Generated via
 #  `rails generate hyrax:work Default`
-class DefaultPresenter < DefaultWorkPresenter
+class DefaultPresenter < Hyrax::WorkShowPresenter
+  include ScholarsArchive::DefaultPresenterBehavior
 end

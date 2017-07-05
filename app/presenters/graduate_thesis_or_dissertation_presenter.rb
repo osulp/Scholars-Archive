@@ -1,4 +1,5 @@
 # Generated via
 #  `rails generate hyrax:work GraduateThesisOrDissertation`
-class GraduateThesisOrDissertationPresenter < EtdPresenter
+class GraduateThesisOrDissertationPresenter < DefaultPresenter
+  include ScholarsArchive::EtdPresenterBehavior
 end
