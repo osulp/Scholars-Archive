@@ -7,7 +7,7 @@ RSpec.describe SolrDocument do
                                         "academic_affiliation_label_ssim" => ["label1$www.blah.com"]
                                      })
       it "should return the label" do
-        expect(document.academic_affiliation_label).to eq ["label1"]
+        expect(document.academic_affiliation_label).to eq [{"label"=>"label1", "uri"=>"www.blah.com"}]
       end
     end
   end
@@ -18,7 +18,7 @@ RSpec.describe SolrDocument do
                                         "other_affiliation_label_ssim" => ["label1$www.blah.com"]
                                      })
       it "should return the label" do
-        expect(document.other_affiliation_label).to eq ["label1"]
+        expect(document.other_affiliation_label).to eq [{"label"=>"label1", "uri"=>"www.blah.com"}]
       end
     end
   end
