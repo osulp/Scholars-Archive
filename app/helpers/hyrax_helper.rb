@@ -24,4 +24,9 @@ module HyraxHelper
   def parsed_label_uri(value)
     value.split('$').first
   end
+
+  def truncated_summary(options)
+    value = options[:value].first
+    value.truncate_words(150)
+  end
 end
