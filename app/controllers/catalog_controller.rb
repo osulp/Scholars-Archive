@@ -42,7 +42,7 @@ class CatalogController < ApplicationController
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
-    config.add_facet_field solr_name("academic_affiliation", :facetable), label: "Academic Affiliation", limit: 5
+    config.add_facet_field "academic_affiliation_label_ssim", label: "Academic Affiliation", limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
     config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
@@ -58,7 +58,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "language_label_ssim", label: "Language", limit: 5
     config.add_facet_field "license_label_ssim", label: "License", limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), label: "Location", limit: 5
-    config.add_facet_field solr_name("other_affiliation", :facetable), label: "Other Affiliation", limit: 5
+    config.add_facet_field "other_affiliation_label_ssim", label: "Other Affiliation", limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field "peerreviewed_label_ssim", label: "Peer Reviewed", limit: 2
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field "rights_statement_label_ssim", label: "Rights Statement", limit: 5
