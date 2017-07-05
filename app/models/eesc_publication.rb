@@ -13,5 +13,5 @@ class EescPublication < ActiveFedora::Base
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
 
-  self.human_readable_type = 'Eesc Publication'
+  self.human_readable_type = 'EESC Publication'
 end
