@@ -5,7 +5,7 @@ RSpec.describe NestedGeo do
   subject { NestedGeo.new(uri, parent) }
 
   let(:uri) { RDF::Node.new }
-  let(:parent) { DefaultWork::GeneratedResourceSchema.new }
+  let(:parent) { Default::GeneratedResourceSchema.new }
 
   describe "instantiation" do
     context "with a string hash uri" do

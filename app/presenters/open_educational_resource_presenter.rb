@@ -1,4 +1,5 @@
 # Generated via
 #  `rails generate hyrax:work OpenEducationalResource`
-class OpenEducationalResourcePresenter < OerPresenter
+class OpenEducationalResourcePresenter < DefaultPresenter
+  include ScholarsArchive::OerPresenterBehavior
 end

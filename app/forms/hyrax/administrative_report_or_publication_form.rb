@@ -1,8 +1,8 @@
 # Generated via
 #  `rails generate hyrax:work AdministrativeReportOrPublication`
 module Hyrax
-  class AdministrativeReportOrPublicationForm < Hyrax::DefaultWorkForm
-    include ScholarsArchive::NestedGeoBehavior
+  class AdministrativeReportOrPublicationForm < DefaultForm
+    include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
 
     self.model_class = ::AdministrativeReportOrPublication
   end

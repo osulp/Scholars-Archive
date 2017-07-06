@@ -1,8 +1,10 @@
 # Generated via
 #  `rails generate hyrax:work Default`
 module Hyrax
-  class DefaultForm < Hyrax::DefaultWorkForm
-    include ScholarsArchive::NestedGeoBehavior
+  class DefaultForm < Hyrax::Forms::WorkForm
+    include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
+    include ScholarsArchive::DefaultWorkFormBehavior
+
     self.model_class = ::Default
   end
 end
