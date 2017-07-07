@@ -34,10 +34,10 @@ Hyrax.config do |config|
   # config.default_active_workflow_name = 'default'
 
   # Email recipient of messages sent via the contact form
-  # config.contact_email = "repo-admin@example.org"
+  config.contact_email = "scholarsarchive@oregonstate.edu"
 
   # Text prefacing the subject entered in the contact form
-  # config.subject_prefix = "Contact form:"
+  config.subject_prefix = "Scholars Archive Contact Form: "
 
   # How many notifications should be displayed on the dashboard
   # config.max_notifications_for_dashboard = 5
