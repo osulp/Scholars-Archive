@@ -2,13 +2,15 @@ module ScholarsArchive
   module EtdMetadata
     extend ActiveSupport::Concern
 
+    # Usage notes and expectations can be found in the Metadata Application Profile:
+    #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
+
     included do
-      #reusable metadata fields for DSpace migration
-      property :contributor_advisor, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/ths") do |index|
+      property :contributor_advisor, predicate: ::RDF::Vocab::MARCRelators.ths do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :contributor_committeemember, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/dgs") do |index|
+      property :contributor_committeemember, predicate: ::RDF::Vocab::MARCRelators.dgs do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -20,7 +22,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :degree_grantors, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/dgg"), multiple: false do |index|
+      property :degree_grantors, predicate: ::RDF::Vocab::MARCRelators.dgg, multiple: false do |index|
         index.as :stored_searchable
       end
 
