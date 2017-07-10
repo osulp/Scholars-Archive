@@ -13,6 +13,7 @@
                 "to": ["approving"]
             }],
             "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor",
                 "Hyrax::Workflow::DeactivateObject"
             ]
         }, {
@@ -28,6 +29,7 @@
                 "to": ["approving"]
             }],
             "methods": [
+                "Hyrax::Workflow::GrantEditToDepositor",
                 "Hyrax::Workflow::DeactivateObject"
             ]
         }, {
@@ -43,6 +45,7 @@
                 "to": ["approving"]
             }],
             "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor",
                 "Hyrax::Workflow::ActivateObject"
             ]
         }, {
@@ -58,6 +61,7 @@
                 "to": ["approving"]
             }],
             "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor",
                 "Hyrax::Workflow::ActivateObject"
             ]
         }, {
@@ -71,7 +75,10 @@
                 "notification_type": "email",
                 "name": "Hyrax::Workflow::PendingReviewNotification",
                 "to": ["approving"]
-            }]
+            }],
+            "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor"
+            ]
         }, {
             "name": "Comment",
             "from_states": [{
