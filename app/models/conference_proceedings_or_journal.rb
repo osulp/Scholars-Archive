@@ -4,9 +4,9 @@ class ConferenceProceedingsOrJournal < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::ScholarsArchive::ArticleMetadata
   include ::ScholarsArchive::DefaultMetadata
-  include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrLabels
-  include ScholarsArchive::TriplePoweredBehavior
+  include ScholarsArchive::DateOperations
+  include ScholarsArchive::HasTriplePoweredProperties
 
   self.indexer = ArticleIndexer
 

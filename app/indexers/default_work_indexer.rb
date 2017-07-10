@@ -19,7 +19,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
 
       object.triple_powered_properties.each do |field|
-        labels = ScholarsArchive::TriplePoweredService.new.fetch(object.send(field))
+        labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(object.send(field))
         solr_doc[field.to_s + '_label_ssim'] = labels
         solr_doc[field.to_s + '_label_tesim'] = labels
       end
