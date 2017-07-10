@@ -27,6 +27,11 @@ class User < ApplicationRecord
     email
   end
 
+  # method needed for messaging
+  def mailboxer_email(_obj = nil)
+    email
+  end
+
   def cas_extra_attributes=(extra_attributes)
     extra_attributes.each do |name, value|
       case name.to_sym
