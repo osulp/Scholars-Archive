@@ -5,7 +5,7 @@ class Default < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
-  include ScholarsArchive::TriplePoweredBehavior
+  include ScholarsArchive::HasTriplePoweredProperties
 
   self.indexer = DefaultWorkIndexer
 

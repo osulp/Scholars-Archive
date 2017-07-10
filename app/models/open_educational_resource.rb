@@ -4,10 +4,9 @@ class OpenEducationalResource < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::ScholarsArchive::OerMetadata
   include ::ScholarsArchive::DefaultMetadata
-  include ScholarsArchive::TriplePoweredProperties::WorkBehavior
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
-  include ScholarsArchive::TriplePoweredBehavior
+  include ScholarsArchive::HasTriplePoweredProperties
 
   self.indexer = OerIndexer
   # Change this to restrict which works can be added as a child.
