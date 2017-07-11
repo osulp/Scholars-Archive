@@ -9,10 +9,35 @@ module ScholarsArchive
 
     def edit
       parse_geo
+      get_other_option_values
+      super
+    end
+
+    def update
+      set_other_option_values
+      super
+    end
+
+    def create
+      set_other_option_values
       super
     end
 
     private
+
+    def set_other_option_values
+      # if the user selected the "Other" option in "degree_field" or "degree_level", and then provided a custom
+      # value in the input shown when selecting this option, these custom values would be assigned to the
+      # "degree_field_other" and "degree_level_other" attribute accessors so that they can be accessed by
+      # AddOtherFieldOptionActor. This actor will persist them in the database for reviewing later by an admin user
+      if params[hash_key_for_curation_concern]['degree_field'] == 'Other' && params[hash_key_for_curation_concern]['degree_field_other'].present?
+        curation_concern.degree_field_other = params[hash_key_for_curation_concern]['degree_field_other']
+      end
+
+      if params[hash_key_for_curation_concern]['degree_level'] == 'Other' && params[hash_key_for_curation_concern]['degree_level_other'].present?
+        curation_concern.degree_level_other = params[hash_key_for_curation_concern]['degree_level_other']
+      end
+    end
 
     def set_geo
       if params[hash_key_for_curation_concern]['nested_geo_attributes']
@@ -26,6 +51,17 @@ module ScholarsArchive
             value["point"] = point.join(',')
           end
         end
+      end
+    end
+
+    def get_other_option_values
+      degree_field_other_option = get_other_options('degree_field')
+      if degree_field_other_option.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
+          curation_concern.degree_field_other = degree_field_other_option.name
+      end
+      degree_level_other_option = get_other_options('degree_level')
+      if degree_level_other_option.present? && curation_concern.degree_level.present? && curation_concern.degree_level == 'Other'
+        curation_concern.degree_level_other = degree_level_other_option.name
       end
     end
 
@@ -49,5 +85,12 @@ module ScholarsArchive
         end
       end
     end
+
+    private
+
+    def get_other_options(property)
+      OtherOption.find_by(work_id: curation_concern.id, property_name: property)
+    end
+
   end
 end

@@ -968,3 +968,6 @@ terms:
 - id: "Zoology"	
   term: "Zoology"	
   active: true
+- id: "Other"
+  term: "Other"
+  active: true
