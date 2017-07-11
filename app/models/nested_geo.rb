@@ -1,4 +1,7 @@
 class NestedGeo < ActiveTriples::Resource
+  # Usage notes and expectations can be found in the Metadata Application Profile:
+  #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
+
   property :label, predicate: ::RDF::Vocab::DC.title
   property :point, predicate: ::RDF::URI("https://purl.org/geojson/vocab#coordinates")
   property :bbox, predicate: ::RDF::URI("https://purl.org/geojson/vocab#bbox")

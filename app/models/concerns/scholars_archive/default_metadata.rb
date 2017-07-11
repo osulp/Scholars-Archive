@@ -2,8 +2,10 @@ module ScholarsArchive
   module DefaultMetadata
     extend ActiveSupport::Concern
 
+    # Usage notes and expectations can be found in the Metadata Application Profile:
+    #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
+
     included do
-      #reusable metadata fields for DSpace migration
       property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
         index.as :stored_searchable
       end
@@ -12,15 +14,14 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :additional_information, predicate: ::RDF::URI.new("http://purl.org/dc/terms/description") do |index|
+      property :additional_information, predicate: ::RDF::Vocab::DC.description do |index|
         index.as :stored_searchable
       end
 
-      property :alt_title, predicate: ::RDF::URI.new("http://purl.org/dc/terms/alternative") do |index|
+      property :alt_title, predicate: ::RDF::Vocab::DC.alternative do |index|
         index.as :stored_searchable
       end
 
-      #basicmetadata import from hyrax
       property :based_near, predicate: ::RDF::Vocab::DC.spatial, class_name: Hyrax::ControlledVocabularies::Location do |index|
         index.as :stored_searchable, :facetable
       end
@@ -35,19 +36,19 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :date_accepted, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateAccepted"), multiple: false do |index|
+      property :date_accepted, predicate: ::RDF::Vocab::DC.dateAccepted, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :date_available, predicate: ::RDF::URI.new("http://purl.org/dc/terms/available"), multiple: false do |index|
+      property :date_available, predicate: ::RDF::Vocab::DC.available, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :date_collected, predicate: ::RDF::URI.new("http://rs.tdwg.org/dwc/terms/measurementDeterminedDate") do |index|
+      property :date_collected, predicate: ::RDF::Vocab::DWC.measurementDeterminedDate do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :date_copyright, predicate: ::RDF::URI.new("http://purl.org/dc/terms/dateCopyrighted"), multiple: false do |index|
+      property :date_copyright, predicate: ::RDF::Vocab::DC.dateCopyrighted, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -55,11 +56,11 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :date_issued, predicate: ::RDF::URI.new("http://purl.org/dc/terms/issued"), multiple: false do |index|
+      property :date_issued, predicate: ::RDF::Vocab::DC.issued, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :date_valid, predicate: ::RDF::URI.new("http://purl.org/dc/terms/valid"), multiple: false do |index|
+      property :date_valid, predicate: ::RDF::Vocab::DC.valid, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -71,7 +72,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :doi, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/doi"), multiple: false do |index|
+      property :doi, predicate: ::RDF::Vocab::Identifiers.doi, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -81,15 +82,15 @@ module ScholarsArchive
       property :dspace_community, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCommunity") do |index|
       end
 
-      property :file_extent, predicate: ::RDF::URI.new("http://purl.org/dc/terms/extent") do |index|
+      property :file_extent, predicate: ::RDF::Vocab::DC.extent do |index|
         index.as :stored_searchable
       end
 
-      property :file_format, predicate: ::RDF::URI.new("http://purl.org/dc/terms/FileFormat") do |index|
+      property :file_format, predicate: ::RDF::Vocab::DC.FileFormat do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :funding_body, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/fnd") do |index|
+      property :funding_body, predicate: ::RDF::Vocab::MARCRelators.fnd do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -105,7 +106,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :identifier_uri, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/uri") do |index|
+      property :identifier_uri, predicate: ::RDF::Vocab::Identifiers.uri do |index|
         index.as :stored_searchable
       end
 
@@ -117,11 +118,11 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :isbn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/isbn") do |index|
+      property :isbn, predicate: ::RDF::Vocab::Identifiers.isbn do |index|
         index.as :stored_searchable
       end
 
-      property :issn, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/identifiers/issn") do |index|
+      property :issn, predicate: ::RDF::Vocab::Identifiers.issn do |index|
         index.as :stored_searchable
       end
 
@@ -137,7 +138,6 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      # Used for a license
       property :license, predicate: ::RDF::Vocab::DC.rights do |index|
         index.as :stored_searchable, :facetable
       end
@@ -150,7 +150,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :peerreviewed, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/peerReviewed"), multiple: false do |index|
+      property :peerreviewed, predicate: ::RDF::URI("http://purl.org/ontology/bibo/peerReviewed"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -186,7 +186,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :tableofcontents, predicate: ::RDF::URI.new("http://purl.org/dc/terms/tableOfContents") do |index|
+      property :tableofcontents, predicate: ::RDF::Vocab::DC.tableOfContents do |index|
         index.as :stored_searchable
       end
 
