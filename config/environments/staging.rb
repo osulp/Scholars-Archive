@@ -1,3 +1,4 @@
+config_variables = YAML.load_file('config/config.yml')["deployment"]["staging"] || {}
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -59,6 +60,8 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "Scholars-Archive-Hyrax_#{Rails.env}"
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_url_options = { :host => config_variables['host'] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
