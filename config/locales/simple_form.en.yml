@@ -105,6 +105,7 @@ en:
         graduation_year: "Commencement Year"
         time_required: "Time Required"
         typical_age_range: "Typical Age Range"
+        duration: "Duration of the Resource"
         learning_resource_type: "Type of Learning Resource"
         interactivity_type: "Level of Interactivity"
         is_based_on_url: "This Resource is Based On"
