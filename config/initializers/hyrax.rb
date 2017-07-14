@@ -21,6 +21,8 @@ Hyrax.config do |config|
   config.register_curation_concern :conference_proceedings_or_journal
   # Injected via `rails g hyrax:work Default`
   config.register_curation_concern :default
+  # Injected via `rails g hyrax:work HonorsCollegeThesis`
+  config.register_curation_concern :honors_college_thesis
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES
