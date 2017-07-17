@@ -1,0 +1,8 @@
+en:
+  hyrax:
+    icons:
+      honors_college_thesis:     'fa fa-file-text-o'
+    select_type:
+      honors_college_thesis:
+        name:               "Honors College Thesis"
+        description:        "Honors college thesis works"
