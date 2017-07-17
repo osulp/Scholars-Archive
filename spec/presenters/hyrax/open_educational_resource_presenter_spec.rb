@@ -15,7 +15,7 @@ RSpec.describe OpenEducationalResourcePresenter do
   let(:user) { double(user_key: 'sarah')}
 
   let(:solr_properties) do
-    ["is_based_on_url", "interactivity_type", "learning_resource_type", "typical_age_range", "time_required"]
+    ["is_based_on_url", "interactivity_type", "learning_resource_type", "typical_age_range", "time_required", "duration"]
   end
   subject { presenter }
   it "delegates to the solr_document" do
@@ -30,4 +30,5 @@ RSpec.describe OpenEducationalResourcePresenter do
   it { is_expected.to delegate_method(:learning_resource_type).to(:solr_document) }
   it { is_expected.to delegate_method(:interactivity_type).to(:solr_document) }
   it { is_expected.to delegate_method(:is_based_on_url).to(:solr_document) }
+  it { is_expected.to delegate_method(:duration).to(:solr_document) }
 end

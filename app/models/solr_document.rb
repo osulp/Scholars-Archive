@@ -109,6 +109,7 @@ class SolrDocument
       'replaces',
       'tableofcontents',
       'time_required',
-      'typical_age_range'
+      'typical_age_range',
+      'duration'
   ]
 end

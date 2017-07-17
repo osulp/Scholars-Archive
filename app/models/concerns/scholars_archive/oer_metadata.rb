@@ -25,6 +25,10 @@ module ScholarsArchive
       property :typical_age_range, predicate: ::RDF::Vocab::LRMI.typicalAgeRange do |index|
         index.as :stored_searchable
       end
+
+      property :duration, predicate: ::RDF::Vocab::MA.duration do |index|
+        index.as :stored_searchable
+      end
     end
   end
 end
