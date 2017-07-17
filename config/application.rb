@@ -42,5 +42,9 @@ module ScholarsArchive
     config.autoload_paths << Rails.root.join('lib')
 
     config.rubycas.cas_base_url = ENV["SCHOLARSARCHIVE_CAS_BASE_URL"] || 'https://cas.myorganization.com'
+    config.to_prepare  do
+      Hyrax::CurationConcern.actor_factory = ScholarsArchive::DefaultMiddlewareStack.build_sa_stack
+    end
+
   end
 end

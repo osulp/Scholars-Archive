@@ -2,4 +2,9 @@
 <%= f.input :degree_field,
     collection: degree_field_service.select_active_options,
     include_blank: true,
-    input_html: { class: "form-control" } %>
+    input_html: { class: "form-control degree-field-selector"} %>
+<% if f.object.model.degree_field.present? && f.object.model.degree_field == 'Other' && f.object.model.degree_field_other.present? %>
+    <%= f.input :degree_field_other, label: false, aria: { label: 'Degree Field' }, :placeholder => 'Degree Field', :input_html => {value: f.object.model.degree_field_other, :class => "form-control"}, :wrapper_html => {:class => "degree-field-other" } %>
+<% else %>
+    <%= f.input :degree_field_other, as: :hidden, label: false, aria: { label: 'Degree Field' }, :placeholder => 'Degree Field', :input_html => {:class => "form-control"}, :wrapper_html => {:class => "degree-field-other" } %>
+<% end %>
