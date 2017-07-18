@@ -9,8 +9,12 @@
             "transition_to": "Pending Review",
             "notifications": [{
                 "notification_type": "email",
-                "name": "Hyrax::Workflow::PendingReviewNotification",
+                "name": "ScholarsArchive::Workflow::PendingReviewNotification",
                 "to": ["approving"]
+            }, {
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::DepositReceivedNotification",
+                "to": ["depositing"]
             }],
             "methods": [
                 "Hyrax::Workflow::RevokeEditFromDepositor",
@@ -25,7 +29,7 @@
             "transition_to": "Changes Required",
             "notifications": [{
                 "notification_type": "email",
-                "name": "Hyrax::Workflow::ChangesRequiredNotification",
+                "name": "ScholarsArchive::Workflow::ChangesRequiredNotification",
                 "to": ["approving"]
             }],
             "methods": [
@@ -41,7 +45,7 @@
             "transition_to": "Deposited",
             "notifications": [{
                 "notification_type": "email",
-                "name": "Hyrax::Workflow::DepositedNotification",
+                "name": "ScholarsArchive::Workflow::DepositedNotification",
                 "to": ["approving"]
             }],
             "methods": [
@@ -57,7 +61,7 @@
             "transition_to": "Pending Review",
             "notifications": [{
                 "notification_type": "email",
-                "name": "Hyrax::Workflow::PendingReviewNotification",
+                "name": "ScholarsArchive::Workflow::PendingReviewNotification",
                 "to": ["approving"]
             }],
             "methods": [
