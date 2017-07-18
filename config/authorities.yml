@@ -1,1 +1,5 @@
 :local_path: "config/authorities"
+academic_units:
+  uri: 'http://opaquenamespace.org/ns/osuAcademicUnits.jsonld'
+  cache_expires_in: 1.day
+  parser: Parsers::AcademicUnitsParser
