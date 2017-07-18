@@ -26,6 +26,7 @@ module ScholarsArchive
         if env.curation_concern.degree_level_other.present?
           OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
         end
+        return true
       end
 
       def update_custom_option(env)

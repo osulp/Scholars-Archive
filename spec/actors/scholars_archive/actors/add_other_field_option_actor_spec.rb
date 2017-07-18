@@ -25,20 +25,20 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   describe '#create' do
     context 'with other values selected for degree_field and degree_level' do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
+      let(:test_degree_level_other) { "test1 degree level other" }
+      let(:test_degree_field_other) { "test1 degree field other" }
 
       before do
         allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
         curation_concern.apply_depositor_metadata(user.user_key)
-        curation_concern.degree_field_other = "test degree field other"
-        curation_concern.degree_level_other = "test degree level other"
+        curation_concern.degree_field_other = test_degree_field_other
+        curation_concern.degree_level_other = test_degree_level_other
         curation_concern.save!
       end
       it "persists other values if they don't exist" do
         expect(subject.create(env)).to be true
-        degree_field_other = OtherOption.find_by(name: "test degree field other", property_name: "degree_field", work_id: curation_concern.id)
-        degree_level_other = OtherOption.find_by(name: "test degree level other", property_name: "degree_level", work_id: curation_concern.id)
-        expect(other_options).to include(degree_field_other)
-        expect(other_options).to include(degree_level_other)
+        expect(other_options.first.name).to be_in [test_degree_field_other, test_degree_level_other]
+        expect(other_options.second.name).to be_in [test_degree_field_other, test_degree_level_other]
       end
     end
   end
@@ -46,19 +46,20 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   describe '#update' do
     context 'with other values selected for degree_field and degree_level' do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
+      let(:test_degree_level_other) { "test2 degree level other" }
+      let(:test_degree_field_other) { "test2 degree field other" }
+
       before do
         allow(terminator).to receive(:update).with(Hyrax::Actors::Environment).and_return(true)
         curation_concern.apply_depositor_metadata(user.user_key)
-        curation_concern.degree_field_other = "test degree field other"
-        curation_concern.degree_level_other = "test degree level other"
+        curation_concern.degree_field_other = test_degree_field_other
+        curation_concern.degree_level_other = test_degree_level_other
         curation_concern.save!
       end
       it "persists other values if they don't exist" do
         expect(subject.update(env)).to be true
-        degree_field_other = OtherOption.find_by(name: "test degree field other", property_name: "degree_field", work_id: curation_concern.id)
-        degree_level_other = OtherOption.find_by(name: "test degree level other", property_name: "degree_level", work_id: curation_concern.id)
-        expect(other_options).to include(degree_field_other)
-        expect(other_options).to include(degree_level_other)
+        expect(other_options.first.name).to be_in [test_degree_field_other, test_degree_level_other]
+        expect(other_options.second.name).to be_in [test_degree_field_other, test_degree_level_other]
       end
     end
   end
