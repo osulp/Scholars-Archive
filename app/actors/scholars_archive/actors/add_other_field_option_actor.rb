@@ -20,6 +20,7 @@ module ScholarsArchive
       private
 
       def save_custom_option(env)
+        return true unless (env.attributes['degree_field'].present? && env.attributes['degree_level'].present?)
         if env.curation_concern.degree_field_other.present?
           OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
         end
@@ -30,6 +31,7 @@ module ScholarsArchive
       end
 
       def update_custom_option(env)
+        return true unless (env.attributes['degree_field'].present? && env.attributes['degree_level'].present?)
         if env.curation_concern.degree_field_other.present?
           degree_field_other_option = get_other_option(env, :degree_field)
           if degree_field_other_option.present?
