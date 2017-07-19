@@ -30,7 +30,7 @@
             "notifications": [{
                 "notification_type": "email",
                 "name": "ScholarsArchive::Workflow::ChangesRequiredNotification",
-                "to": ["approving"]
+                "to": ["depositing"]
             }],
             "methods": [
                 "Hyrax::Workflow::GrantEditToDepositor",

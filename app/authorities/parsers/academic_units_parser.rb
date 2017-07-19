@@ -13,5 +13,10 @@ module Parsers
         # return only terms that have id and label
         terms.delete_if { |term| term[:id].nil? || term[:term].nil? }
       end
+
+      def self.labels_with_dates(g)
+        return if g.dig("rdfs:label", "@value").nil?
+        g.dig("rdfs:label", "@value") + g.dig("dc:date")
+      end
   end
 end
