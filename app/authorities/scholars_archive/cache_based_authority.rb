@@ -5,7 +5,7 @@ module ScholarsArchive
       def terms
         authority_yaml = YAML.load(File.read(subauthority_filename))
         uri = authority_yaml.with_indifferent_access.dig(@subauthority, :uri)
-        expiration = authority_yaml.with_indifferent_access.dig(@subauthority, :cache_expires_in)
+        expiration = authority_yaml.with_indifferent_access.dig(@subauthority, :cache_expires_in_hours)
         raise "#{@subauthority} uri configuration not found. " unless uri
         raise "#cache_expires_in configuration not found. " unless expiration
         result = ScholarsArchive::CachingService.fetch_or_store_in_cache(uri, expiration)
