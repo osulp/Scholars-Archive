@@ -6,8 +6,8 @@ RSpec.describe ScholarsArchive::CacheBasedAuthority  do
 
   describe "#terms" do
     before do
-      allow(YAML).to receive(:load).with(":local_path: \"config/authorities\"\nacademic_units:\n  uri: 'http://opaquenamespace.org/ns/osuAcademicUnits.jsonld'\n  cache_expires_in: 1.day\n  parser: Parsers::AcademicUnitsParser\n").and_return({academic_units: { uri: "blah", cache_expires_in: 10.minutes, parser: "Parsers::AcademicUnitsParser" }})
-      allow(ScholarsArchive::CachingService).to receive(:fetch_or_store_in_cache).with("blah", 10.minutes).and_return("Some Valid Json")
+      allow(YAML).to receive(:load).with(":local_path: \"config/authorities\"\nacademic_units:\n  uri: 'http://opaquenamespace.org/ns/osuAcademicUnits.jsonld'\n  cache_expires_in_hours: 24\n  parser: Parsers::AcademicUnitsParser\n").and_return({academic_units: { uri: "blah", cache_expires_in_hours: 24, parser: "Parsers::AcademicUnitsParser" }})
+      allow(ScholarsArchive::CachingService).to receive(:fetch_or_store_in_cache).with("blah", 24).and_return("Some Valid Json")
       allow(parser).to receive(:parse).with("Some Valid Json").and_return([{id: "http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm", term: "Forestry", active: true}])
     end
     context "When terms is called" do
