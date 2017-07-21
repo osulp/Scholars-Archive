@@ -104,6 +104,20 @@ ActiveRecord::Schema.define(version: 20170714202009) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "job_io_wrappers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "uploaded_file_id"
+    t.string   "file_set_id"
+    t.string   "mime_type"
+    t.string   "original_name"
+    t.string   "path"
+    t.string   "relation"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["uploaded_file_id"], name: "index_job_io_wrappers_on_uploaded_file_id"
+    t.index ["user_id"], name: "index_job_io_wrappers_on_user_id"
+  end
+
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string  "unsubscriber_type"
     t.integer "unsubscriber_id"
