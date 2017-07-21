@@ -13,7 +13,7 @@ module ScholarsArchive
 
       def users_to_notify
         user_key = document.depositor
-        super << ::User.find_by(email: user_key)
+        [::User.find_by(username: user_key)]
       end
     end
   end
