@@ -46,7 +46,7 @@
             "notifications": [{
                 "notification_type": "email",
                 "name": "ScholarsArchive::Workflow::DepositedNotification",
-                "to": ["approving"]
+                "to": ["depositing"]
             }],
             "methods": [
                 "Hyrax::Workflow::RevokeEditFromDepositor",
@@ -62,7 +62,7 @@
             "notifications": [{
                 "notification_type": "email",
                 "name": "ScholarsArchive::Workflow::DepositedNotification",
-                "to": ["approving"]
+                "to": ["depositing"]
             }],
             "methods": [
                 "Hyrax::Workflow::RevokeEditFromDepositor",
