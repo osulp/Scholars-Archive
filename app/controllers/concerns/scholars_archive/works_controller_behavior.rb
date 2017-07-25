@@ -7,6 +7,13 @@ module ScholarsArchive
       before_action :set_geo, only: [:create, :update]
     end
 
+    def new
+      curation_concern.publisher = ["Oregon State University"]
+      curation_concern.rights_statement = ["http://rightsstatements.org/vocab/InC/1.0/"]
+      curation_concern.degree_grantors = "http://id.loc.gov/authorities/names/n80017721" if curation_concern.respond_to?(:degree_grantors)
+      super
+    end
+
     def edit
       parse_geo
       get_other_option_values
