@@ -101,7 +101,7 @@ RSpec.describe Parsers::AcademicUnitsParser do
     end
     context "When givin JSONLD without a graph" do
       it "should raise the proper error" do
-        expect(described_class.parse(jsonld)).to eq [{id: "http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm", term: "Forestry", active: true}]
+        expect(described_class.parse(jsonld)).to eq [{id: "http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm", term: "Forestry - 1904/1905, 1907/1919", active: true}]
       end
     end
   end
