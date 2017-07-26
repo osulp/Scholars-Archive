@@ -1,0 +1,5 @@
+<% if f.object.class.multiple? key %>
+    <%= f.input key, as: :multi_value_label_url, input_html: { class: 'form-control nested-field' }, :wrapper_html => {:class => "nested-field"}, required: f.object.required?(key) %>
+<% else %>
+    <%= f.input key, required: f.object.required?(key) %>
+<% end %>

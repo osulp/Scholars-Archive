@@ -20,6 +20,7 @@
 //= require degree_other
 //= require add_geo_field
 //= require add_date_field
+//= require nested_field
 //= require 'blacklight_range_limit'
 //= require_tree .
 //= require hyrax

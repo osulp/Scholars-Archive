@@ -2,7 +2,7 @@ class OerIndexer < DefaultWorkIndexer
   self.stored_and_facetable_fields += %i[is_based_on_url interactivity_type learning_resource_type typical_age_range time_required duration]
   # Fetch remote labels for based_near. You can remove this if you don't want
   # this behavior
-  include Hyrax::IndexesLinkedMetadata
+  include ScholarsArchive::IndexesLinkedMetadata
 
 
   # Uncomment this block if you want to add custom indexing behavior:
