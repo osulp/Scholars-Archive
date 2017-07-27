@@ -2,7 +2,7 @@
 // overriding this entire file to change the top line to use Blacklight.onLoad
 // Not using blacklight onload is causing a timing issue where the graphics are empty until you refresh the page
 Blacklight.onLoad(function() {
-  if (typeof sufia_item_stats === "undefined") {
+  if (typeof hyrax_item_stats === "undefined") {
     return;
   }
 
@@ -58,7 +58,7 @@ Blacklight.onLoad(function() {
     }
   };
 
-  var plot = $.plot("#usage-stats", sufia_item_stats, options);
+  var plot = $.plot("#usage-stats", hyrax_item_stats, options);
 
   $("<div id='tooltip'></div>").css({
     position: "absolute",
@@ -82,7 +82,7 @@ Blacklight.onLoad(function() {
     }
   });
 
-  var overview = $.plot("#overview", sufia_item_stats, {
+  var overview = $.plot("#overview", hyrax_item_stats, {
     series: {
       lines: {
         show: true,
@@ -109,7 +109,7 @@ Blacklight.onLoad(function() {
   });
 
   $("#usage-stats").bind("plotselected", function(event, ranges) {
-    plot = $.plot("#usage-stats", sufia_item_stats, $.extend(true, {}, options, {
+    plot = $.plot("#usage-stats", hyrax_item_stats, $.extend(true, {}, options, {
       xaxis: {
         min: ranges.xaxis.from,
         max: ranges.xaxis.to
