@@ -7,6 +7,7 @@ class UndergraduateThesisOrProject < ActiveFedora::Base
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
+  include ScholarsArchive::ExcludedEtdLicenses
 
   self.indexer = EtdIndexer
 

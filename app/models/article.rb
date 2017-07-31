@@ -7,6 +7,7 @@ class Article < ActiveFedora::Base
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
+  include ScholarsArchive::ExcludedArticleLicenses
 
   self.indexer = ArticleIndexer
 

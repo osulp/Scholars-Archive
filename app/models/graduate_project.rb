@@ -7,6 +7,7 @@ class GraduateProject < ActiveFedora::Base
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
+  include ScholarsArchive::ExcludedEtdLicenses
 
   self.indexer = EtdIndexer
   # Change this to restrict which works can be added as a child.
