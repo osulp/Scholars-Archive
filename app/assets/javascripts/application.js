@@ -14,12 +14,12 @@
 //= require jquery-ui
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require add_date_field
-//= require add_geo_field
-//= require degree_other
 //= require jquery-datetimepicker/jquery.datetimepicker.full
 //= require turbolinks//
 //= require blacklight/blacklight
+//= require degree_other
+//= require add_geo_field
+//= require add_date_field
 //= require 'blacklight_range_limit'
 //= require_tree .
 //= require hyrax
