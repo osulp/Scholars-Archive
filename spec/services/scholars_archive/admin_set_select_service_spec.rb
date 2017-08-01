@@ -21,7 +21,7 @@ describe ScholarsArchive::AdminSetSelectService do
         allow(ENV).to receive(:[]).with("SCHOLARSARCHIVE_DEFAULT_ADMIN_SET").and_return("Default Admin Set")
       end
       it "returns the right one" do
-        expect(service.select("Article", [["Blah", "Blah-ID"], ["Blahblah", "Blahblah-ID"]])).to eq ["Default Admin Set"]
+        expect(service.select("Article", [["Blah", "Blah-ID"], ["Blahblah", "Blahblah-ID"], ["Default Admin Set", "Default0ID"]])).to eq ["Default Admin Set", "Default0ID"]
       end
     end
   end
