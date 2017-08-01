@@ -94,3 +94,21 @@ div#date_wrapper, div#geo_wrapper {
 .select2-container .select2-choice .select2-arrow {
   margin-top: 5px !important;
 }
+
+div .modal-dialog {
+  width: 65%;
+}
+
+div .select-worktype {
+  border-bottom: solid 1px #D3D3D3;
+  border-left: solid 1px #D3D3D3;
+}
+
+.row.match-my-cols {
+    overflow: hidden; 
+}
+
+.row.match-my-cols [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
