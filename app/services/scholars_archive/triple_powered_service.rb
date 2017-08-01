@@ -48,7 +48,7 @@ module ScholarsArchive
         begin
           @triplestore ||= TriplestoreAdapter::Triplestore.new(TriplestoreAdapter::Client.new(ENV["SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE"] || "blazegraph",
                                                                                               ENV["SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL"] || 'http://localhost:9999/blazegraph/namespace/development/sparql'))
-          @triplestore.fetch(uri, from_remote: false)
+          @triplestore.fetch(uri, from_remote: true)
         rescue TriplestoreAdapter::TriplestoreException => e
           raise e
         end
