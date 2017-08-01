@@ -6,6 +6,7 @@ class EescPublication < ActiveFedora::Base
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
+  include ScholarsArchive::ExcludedDefaultLicenses
 
   self.indexer = DefaultWorkIndexer
   # Change this to restrict which works can be added as a child.

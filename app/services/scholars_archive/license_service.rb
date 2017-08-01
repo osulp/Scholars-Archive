@@ -10,11 +10,11 @@ module ScholarsArchive
     end
 
     def select_active_options_from_model(f)
-      if f.object.model.class == GraduateThesisOrDissertation || f.object.model.class == UndergraduateThesisOrProject
-        select_active_options.select { |license| license.first != "CC0 1.0 Universal" }
-      else
-        select_active_options
+      active_options = select_active_options
+      f.object.model.excluded_licenses.each do |option|
+        active_options.delete_if { |license| license.first == option }
       end
+      active_options
     end
 
     def include_current_value(value, _index, render_options, html_options)
