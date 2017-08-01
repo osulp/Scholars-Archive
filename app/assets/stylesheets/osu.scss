@@ -53,3 +53,44 @@ div#date_wrapper, div#geo_wrapper {
 .controlled_vocabulary .listing {
   max-width: 46.5em !important;
 }
+
+.multi_value .listing, .controlled_vocabulary .listing {
+  max-width: 53em !important;
+}
+
+.input-group-addon, .input-group-btn {
+  width: 0% !important;
+}
+
+.select2-container {
+  width: 125% !important;
+  border: none !important;
+}
+
+.form-group .controlled_vocabulary {
+  width: 100% !important;
+}
+
+.select2-default {
+ background-color: none !important;
+}
+
+.select2-container .select2-choice .select2-arrow {
+  background: #fff !important;
+  border-left: 0px !important;
+  background-image: none !important;
+}
+
+.select2-container .select2-choice {
+  height: 36px !important;
+  background-image: none !important;
+}
+
+.select2-container .select2-choice > .select2-chosen {
+  margin-top: 5px !important;
+  color: #444 !important;
+}
+
+.select2-container .select2-choice .select2-arrow {
+  margin-top: 5px !important;
+}
