@@ -1,5 +1,5 @@
 <% license_service = ScholarsArchive::LicenseService.new %>
-<%= f.input :license, as: :multi_value_select,
+<%= f.input :license, as: :select,
     collection: license_service.select_active_options_from_model(f),
     include_blank: true,
     item_helper: license_service.method(:include_current_value),
