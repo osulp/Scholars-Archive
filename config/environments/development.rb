@@ -22,10 +22,9 @@ Rails.application.configure do
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
-  else
-
-    config.cache_store = :file_store, "/caching/"
   end
+
+  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
