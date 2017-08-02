@@ -6,5 +6,6 @@ module Hyrax
     include ScholarsArchive::DefaultWorkFormBehavior
 
     self.model_class = ::Default
+    self.field_metadata_service = ScholarsArchive::FormMetadataService
   end
 end
