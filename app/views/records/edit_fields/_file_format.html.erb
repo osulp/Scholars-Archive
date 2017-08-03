@@ -1,0 +1,3 @@
+<div class=<%= current_user.admin? ? "" : "hidden" %>>
+  <%= render partial: "records/edit_fields/default", locals: {f: f, key: key} %>
+</div>
