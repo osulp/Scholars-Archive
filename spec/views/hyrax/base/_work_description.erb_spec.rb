@@ -6,7 +6,6 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   let(:work) {
     Default.new do |w|
       w.title = ['test']
-      w.related_url= [url]
       w.rights_statement = [rights_statement_uri]
       w.save!
     end

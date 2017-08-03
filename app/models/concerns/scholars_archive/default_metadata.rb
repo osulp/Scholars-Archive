@@ -158,7 +158,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
+      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => NestedRelatedItems do |index|
         index.as :stored_searchable
       end
 
@@ -197,6 +197,7 @@ module ScholarsArchive
 
       accepts_nested_attributes_for :based_near, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? }
       accepts_nested_attributes_for :nested_geo, :allow_destroy => true, :reject_if => :all_blank
+      accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
     end
   end
 end
