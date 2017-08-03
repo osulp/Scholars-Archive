@@ -78,6 +78,7 @@ en:
         date_collected: "Date Collected"
         date_valid: "Date Valid"
         doi: "DOI"
+        license_label: "License"
         file_extent: "File Extent"
         funding_body: "Funding Body"
         funding_statement: "Funding Statement"
