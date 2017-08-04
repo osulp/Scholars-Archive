@@ -1,5 +1,10 @@
-:local_path: "config/authorities"
+:local_path: 'config/authorities'
 academic_units:
   uri: 'http://opaquenamespace.org/ns/osuAcademicUnits.jsonld'
   cache_expires_in_hours: 24
   parser: Parsers::AcademicUnitsParser
+degree_fields:
+  uri: 'http://opaquenamespace.org/ns/osuDegreeFields.jsonld'
+  cache_expires_in_hours: 24
+  parser: Parsers::DegreeFieldsParser
+
