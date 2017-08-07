@@ -28,8 +28,8 @@ RSpec.describe 'scholars_archive/base/_form_dates.html.erb', type: :view do
       expect(page).to have_selector("form[action='/concern/defaults']")
     end
 
-    it "draws the selector for single value fields" do
-      expect(page).to have_selector("select#new_date_type option", count: 7)
+    it "draws the selector for single and multiple value fields" do
+      expect(page).to have_selector("select#new_date_type option", count: 8)
     end
 
   end

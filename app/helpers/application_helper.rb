@@ -4,11 +4,17 @@ module ApplicationHelper
     data_fields = [{ id: 'dates_fields_data' }]
 
     f.object.date_terms.each do |term|
-      if f.object.send(term).blank?
-        options << { term.to_s.titleize => term.to_s }
+
+      if f.object.multiple? term
+        options << { term.to_s.titleize => term.to_s } if f.object.send(term).first.blank?
+        data_field = render_edit_field_partial(term, f: f)
+      else
+        options << { term.to_s.titleize => term.to_s } if f.object.send(term).blank?
+        data_field = render partial: 'scholars_archive/base/form_date_field', :locals => { term: term, f: f }
       end
-      data_field = render partial: 'scholars_archive/base/form_date_field', :locals => { term: term, f: f }
+
       data_range_widget = render partial: 'scholars_archive/base/form_date_range_widget', :locals => { term: term }
+
       data_fields << { term => data_field }
       data_fields << { 'range_'+term.to_s => data_range_widget }
     end
