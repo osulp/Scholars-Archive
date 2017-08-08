@@ -5,4 +5,4 @@ en:
     select_type:
       dataset:
         name:               "Dataset"
-        description:        "Research datasets"
+        description:        "Research datasets, including but not limited to: tabular data, text data, media, images, software, databases, geospatial data"
