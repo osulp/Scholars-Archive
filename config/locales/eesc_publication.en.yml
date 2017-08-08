@@ -4,5 +4,5 @@ en:
       eesc_publication:     'fa fa-file-text-o'
     select_type:
       eesc_publication:
-        name:               "Eesc Publication"
-        description:        "EESC Publications and other EESC content"
+        name:               "EESC Publication"
+        description:        "Extension Experiment Station Communications Publications and other EESC content"
