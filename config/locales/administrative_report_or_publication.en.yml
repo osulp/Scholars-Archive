@@ -5,4 +5,4 @@ en:
     select_type:
       administrative_report_or_publication:
         name:               "Administrative Report Or Publication"
-        description:        "Reports and publications produced by OSU or affiliated administrative units"
+        description:        "Non-Academic reports and publications produced by OSU or affiliated administrative units"
