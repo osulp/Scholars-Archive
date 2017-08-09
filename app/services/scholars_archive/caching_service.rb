@@ -4,52 +4,68 @@ module ScholarsArchive
   class CachingService
 
     def self.fetch_or_store_in_cache(uri, expires_in)
-      check_cached_etag(uri, expires_in)
+      fetch_or_cache_json_from_etag(uri, expires_in)
     end
 
     private
-      def self.check_cached_etag(uri, expires_in)
+      def self.fetch_or_cache_json_from_etag(uri, expires_in)
         etag = fetch_etag(uri)
-        data = Rails.cache.read(uri+"_etag")
+        data = read_etag_from_cache(uri)
         json = nil
         if data.nil? || data != etag
           cache_etag(uri, etag, expires_in)
           json = fetch_json(uri)
           cache_json(uri, json, expires_in)
+          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT FETCHED FROM CACHE !!!!!!!!!!!!!!!!!!!!!!!!!!"
         else
+          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FETCHED FROM CACHE !!!!!!!!!!!!!!!!!!!!!!!!!!"
           json = fetch_json_from_cache(uri)
         end
         json
       end
 
       def self.fetch_etag(uri)
-        url = URI.parse(uri.to_s)
-        req = Net::HTTP::Head.new(url.to_s)
-        res = Net::HTTP.start(url.host, url.port) do |http|
-          http.request(req)
-        end
-        res["etag"]
-      end
-
-      def self.fetch_json_from_cache(uri)
-        Rails.cache.read(uri)
-      end
-
-      def self.cache_etag(uri, etag, expires_in)
-        Rails.cache.write(uri+"_etag", etag, expires_in: expires_in.to_i.hours, race_condition_ttl: 15.seconds)
-      end
-
-      def self.cache_json(uri, json, expires_in)
-        Rails.cache.write(uri, json, expires_in: expires_in.to_i.hours, race_condition_ttl: 15.seconds)
+        fetch(uri+"_etag", Net::HTTP::Head, "etag")
       end
 
       def self.fetch_json(uri)
+        fetch(uri, Net::HTTP::Get, "body")
+      end
+
+      def self.read_etag_from_cache(uri)
+        read(uri+"_etag")
+      end
+
+      def self.read_json_from_cache(uri)
+        read(uri)
+      end
+
+      def self.cache_etag(uri, payload, expires_in)
+        cache(uri+"_etag", payload, expires_in)
+      end
+
+      def self.cache_json(uri, payload, expires_in)
+        cache(uri, payload, expires_in)
+      end
+
+      def self.fetch(uri, request_protocol, payload_type)
+        payload = nil
         url = URI.parse(uri.to_s)
         req = Net::HTTP::Get.new(url.to_s)
         res = Net::HTTP.start(url.host, url.port) do |http|
-          http.request(req)
+          http.head(req)
         end
-        res.body
+        payload = res["etag"] if payload_type == "etag"
+        payload = res.body if payload_type == "body"
+        payload
+      end
+
+      def self.read(uri)
+        Rails.cache.read(uri)
+      end
+
+      def self.cache(uri, payload, expires_in)
+        Rails.cache.write(uri, payload, expires_in: expires_in.to_i.hours, race_condition_ttl: 15.seconds)
       end
   end
 end
