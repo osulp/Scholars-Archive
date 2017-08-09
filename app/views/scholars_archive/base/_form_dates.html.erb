@@ -19,15 +19,13 @@
           </tr>
         </thead>
         <tbody>
-          <% f.object.date_terms.each do |term| %>
-            <% if f.object.send(term).present? %>
-                <% if f.object.multiple? term %>
-                    <%= render_edit_field_partial(term, f: f) %>
-                <% else %>
-                    <%= render partial: 'scholars_archive/base/form_date_field', :locals => { term: term, f: f } %>
-                <% end %>
+        <% f.object.date_terms.each do |term| %>
+            <% if f.object.multiple? term %>
+                <%= render_edit_field_partial(term, f: f) if f.object.send(term).first.present? %>
+            <% else %>
+                <%= render partial: 'scholars_archive/base/form_date_field', :locals => { term: term, f: f } if f.object.send(term).present? %>
             <% end %>
-          <% end %>
+        <% end %>
         </tbody>
       </table>
     </div>
