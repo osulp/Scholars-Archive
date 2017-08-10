@@ -4,5 +4,9 @@ module ScholarsArchive
     def initialize
       super('degree_level')
     end
+
+    def select_sorted_all_options
+      select_all_options.sort
+    end
   end
 end
