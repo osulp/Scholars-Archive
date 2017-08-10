@@ -7,11 +7,11 @@ class CatalogController < ApplicationController
   before_action :enforce_show_permissions, only: :show
 
   def self.uploaded_field
-    solr_name('system_create', :stored_sortable, type: :date)
+    solr_name('date_uploaded', :stored_sortable, type: :date)
   end
 
   def self.modified_field
-    solr_name('system_modified', :stored_sortable, type: :date)
+    solr_name('date_created', :stored_sortable, type: :date)
   end
 
   configure_blacklight do |config|
