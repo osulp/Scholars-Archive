@@ -16,16 +16,14 @@ module ScholarsArchive
           cache_etag(uri, etag, expires_in)
           json = fetch_json(uri)
           cache_json(uri, json, expires_in)
-          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOT FETCHED FROM CACHE !!!!!!!!!!!!!!!!!!!!!!!!!!"
         else
-          puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FETCHED FROM CACHE !!!!!!!!!!!!!!!!!!!!!!!!!!"
-          json = fetch_json_from_cache(uri)
+          json = read_json_from_cache(uri)
         end
         json
       end
 
       def self.fetch_etag(uri)
-        fetch(uri+"_etag", Net::HTTP::Head, "etag")
+        fetch(uri, Net::HTTP::Head, "etag")
       end
 
       def self.fetch_json(uri)
@@ -51,9 +49,9 @@ module ScholarsArchive
       def self.fetch(uri, request_protocol, payload_type)
         payload = nil
         url = URI.parse(uri.to_s)
-        req = Net::HTTP::Get.new(url.to_s)
+        req = request_protocol.new(url.to_s)
         res = Net::HTTP.start(url.host, url.port) do |http|
-          http.head(req)
+          http.request(req)
         end
         payload = res["etag"] if payload_type == "etag"
         payload = res.body if payload_type == "body"
