@@ -13,9 +13,11 @@ module ScholarsArchive
         data = read_etag_from_cache(uri)
         json = nil
         if data.nil? || data != etag
-          cache_etag(uri, etag, expires_in)
-          json = fetch_json(uri)
+          json_response = fetch_json_and_etag(uri)
+          json = json_response.body
+          etag = json_response["etag"]
           cache_json(uri, json, expires_in)
+          cache_etag(uri, etag, expires_in)
         else
           json = read_json_from_cache(uri)
         end
@@ -26,8 +28,8 @@ module ScholarsArchive
         fetch(uri, Net::HTTP::Head, "etag")
       end
 
-      def self.fetch_json(uri)
-        fetch(uri, Net::HTTP::Get, "body")
+      def self.fetch_json_and_etag(uri)
+        fetch(uri, Net::HTTP::Get, "full response")
       end
 
       def self.read_etag_from_cache(uri)
@@ -54,7 +56,7 @@ module ScholarsArchive
           http.request(req)
         end
         payload = res["etag"] if payload_type == "etag"
-        payload = res.body if payload_type == "body"
+        payload = res if payload_type == "full response"
         payload
       end
 
