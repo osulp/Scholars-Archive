@@ -24,5 +24,9 @@ module ScholarsArchive
       end
       [render_options, html_options]
     end
+
+    def select_sorted_all_options
+      select_all_options.sort
+    end
   end
 end

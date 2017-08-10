@@ -1,6 +1,6 @@
 <% degree_level_service = ScholarsArchive::DegreeLevelService.new %>
 <%= f.input :degree_level,
-    collection: degree_level_service.select_active_options,
+    collection: current_user.admin? ? degree_level_service.select_sorted_all_options : degree_level_service.select_active_options,
     include_blank: true,
     input_html: { class: "form-control degree-level-selector" } %>
 <% if f.object.model.degree_level.present? && f.object.model.degree_level == 'Other' && f.object.model.degree_level_other.present? %>

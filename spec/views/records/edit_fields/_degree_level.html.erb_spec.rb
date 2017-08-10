@@ -1,7 +1,9 @@
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
-  let(:ability) { double }
+  let(:ability) { double(current_user: current_user) }
+  let(:current_user) { User.new(email: 'test@example.com',guest: false) }
+
   let(:work) {
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
@@ -17,6 +19,12 @@ RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
         <%= render "records/edit_fields/degree_level", f: f, key: 'degree_level' %>
       <% end %>
     )
+  end
+
+  before do
+    allow(view).to receive(:signed_in?).and_return(true)
+    allow(view).to receive(:current_user).and_return(current_user)
+    allow(view).to receive(:can?).and_return(true)
   end
 
   context "for a work with degree level where 'Other' was selected and there is an OtherOption record for that work" do

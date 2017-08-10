@@ -8,5 +8,9 @@ module ScholarsArchive
       values ||= []
       @authority.all.select { |r| values.include?(r[:id]) }.map { |hash| hash['label'] }
     end
+
+    def select_sorted_all_options
+      select_all_options.sort
+    end
   end
 end
