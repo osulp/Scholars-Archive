@@ -4,5 +4,5 @@ en:
       default:     'fa fa-file-text-o'
     select_type:
       default:
-        name:               "Default"
+        name:               "Other Content"
         description:        "Digital content that does not fit into any of these other categories"

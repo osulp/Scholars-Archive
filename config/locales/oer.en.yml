@@ -4,5 +4,5 @@ en:
       oer:     'fa fa-file-text-o'
     select_type:
       oer:
-        name:               "Oer"
-        description:        "Oer works"
+        name:               "OER"
+        description:        "Open Educational Resources including curricula and learning objects"
