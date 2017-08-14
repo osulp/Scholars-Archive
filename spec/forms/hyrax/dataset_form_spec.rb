@@ -13,7 +13,7 @@ RSpec.describe Hyrax::DatasetForm do
   end
 
   it "has the proper primary terms" do
-    expect(new_form.primary_terms).to include *[:doi, :alt_title, :abstract, :keyword, :license]
+    expect(new_form.primary_terms).to include *[:title, :alt_title, :creator, :academic_affiliation, :other_affiliation, :contributor, :abstract, :license, :resource_type, :doi, :bibliographic_citation, :in_series, :subject, :rights_statement]
   end
 
   it "has the proper secondary terms" do
