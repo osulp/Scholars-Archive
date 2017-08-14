@@ -23,7 +23,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
 
   describe '#create' do
-    context 'with other values selected for degree_field and degree_level' do
+    context 'with other values selected for degree_field and degree_level', skip: true do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
       let(:test_degree_level_other) { "test1 degree level other" }
       let(:test_degree_field_other) { "test1 degree field other" }
@@ -46,7 +46,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
         expect(other_options.second.name).to be_in [test_degree_field_other, test_degree_level_other]
       end
     end
-    context 'with invalid other values selected for degree_field and degree_level' do
+    context 'with invalid other values selected for degree_field and degree_level', skip: true do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
       let(:test_degree_level_other) { "Certificate" }
       let(:test_degree_field_other) { "Zoology" }
@@ -95,7 +95,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
 
   describe '#update' do
-    context 'with other values selected for degree_field and degree_level' do
+    context 'with other values selected for degree_field and degree_level', skip: true do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
       let(:test_degree_level_other) { "test2 degree level other" }
       let(:test_degree_field_other) { "test2 degree field other" }

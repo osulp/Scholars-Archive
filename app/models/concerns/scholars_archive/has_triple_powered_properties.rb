@@ -9,7 +9,7 @@ module ScholarsArchive
       class_attribute :triple_powered_properties
 
       def triple_powered_properties
-        [:academic_affiliation, :other_affiliation]
+        [{field: :academic_affiliation, has_date: true}, {field: :other_affiliation, has_date: true}]
       end
     end
   end

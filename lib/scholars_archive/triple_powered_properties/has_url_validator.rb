@@ -11,13 +11,13 @@ module ScholarsArchive::TriplePoweredProperties
       return if record.triple_powered_properties.empty?
 
       record.triple_powered_properties.each do |prop|
-        record[prop].each do |value|
+        record[prop[:field]].each do |value|
           begin
             uri = URI.parse(value)
           rescue
-            record.errors[prop] << "#{value} is not a URL"
+            record.errors[prop[:field]] << "#{value} is not a URL"
           else
-            record.errors[prop] << "#{value} is invalid" unless uri.kind_of?(URI::HTTP)
+            record.errors[prop[:field]] << "#{value} is invalid" unless uri.kind_of?(URI::HTTP)
           end
         end
       end
