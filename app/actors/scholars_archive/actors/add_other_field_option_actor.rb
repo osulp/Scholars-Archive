@@ -26,7 +26,7 @@ module ScholarsArchive
         degree_level_other = env.curation_concern.degree_level_other
         if degree_level_other.present?
           degree_level_service = ScholarsArchive::DegreeLevelService.new
-          collection = degree_level_service.select_active_options
+          collection = degree_level_options(degree_level_service, env.user)
           if !collection.select {|option| option.include? degree_level_other}.empty?
             env.curation_concern.errors.add(:degree_level_other, 'This degree level already exists, please select from the list above.')
             error_counter += 1
@@ -42,7 +42,7 @@ module ScholarsArchive
         degree_field_other = env.curation_concern.degree_field_other
         if degree_field_other.present?
           degree_field_service = ScholarsArchive::DegreeFieldService.new
-          collection = degree_field_service.select_active_options
+          collection = degree_field_options(degree_field_service, env.user)
           if !collection.select {|option| option.include? degree_field_other}.empty?
             env.curation_concern.errors.add(:degree_field_other, 'This degree field already exists, please select from the list above.')
             error_counter += 1
@@ -55,6 +55,14 @@ module ScholarsArchive
         end
 
         (error_counter > 0) ? false : true
+      end
+
+      def degree_field_options(service, env_user)
+        env_user.admin? ? service.select_sorted_all_options : service.select_sorted_current_options
+      end
+
+      def degree_level_options(service, env_user)
+        env_user.admin? ? service.select_sorted_all_options : service.select_active_options
       end
 
       def degree_present? (env)
