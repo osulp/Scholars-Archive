@@ -82,6 +82,10 @@ module ScholarsArchive
       property :dspace_community, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCommunity") do |index|
       end
 
+      property :embargo_reason, predicate: ::RDF::Vocab::DC.accessRights, multiple: false do |index|
+        index.as :stored_searchable
+      end
+
       property :file_extent, predicate: ::RDF::Vocab::DC.extent do |index|
         index.as :stored_searchable
       end

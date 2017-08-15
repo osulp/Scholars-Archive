@@ -33,6 +33,8 @@
 <%= presenter.attribute_to_html(:digitization_spec, label: t('simple_form.labels.defaults.digitization_spec')) %>
 <%= presenter.attribute_to_html(:replaces, render_as: :external_link) %>
 <%= presenter.attribute_to_html(:source) %>
+<%= presenter.attribute_to_html(:embargo_reason) %>
+
 
 <%= presenter.attribute_to_html(:contributor_advisor, render_as: :faceted, label: t('simple_form.labels.defaults.contributor_advisor')) %>
 <%= presenter.attribute_to_html(:contributor_committeemember, render_as: :faceted, label: t('simple_form.labels.defaults.contributor_committeemember')) %>

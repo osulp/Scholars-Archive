@@ -89,6 +89,7 @@ class SolrDocument
       'dspace_community',
       'dspace_collection',
       'editor',
+      'embargo_reason',
       'file_extent',
       'file_format',
       'funding_body',
