@@ -14,11 +14,15 @@ module ScholarsArchive
     end
 
     def select_sorted_all_options
-      select_all_options.sort
+      select_all_options.sort << other_option
+    end
+
+    def other_option
+      ['Other', 'Other']
     end
 
     def select_sorted_current_options
-      select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_last_five_years?(active_option) }
+      select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_last_five_years?(active_option) } << other_option
     end
 
   end

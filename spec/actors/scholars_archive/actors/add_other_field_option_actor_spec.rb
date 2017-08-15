@@ -7,10 +7,10 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
         work.save!
       end
   end
-  let(:ability) { double }
   let(:user) do
     User.new(email: 'test@example.com',guest: false) { |u| u.save!(validate: false)}
   end
+  let(:ability) { double(current_user: user) }
   let(:env) { Hyrax::Actors::Environment.new(curation_concern, ability, attributes) }
   let(:terminator) { Hyrax::Actors::Terminator.new }
   let(:other_options) { OtherOption.all.to_a }
@@ -23,17 +23,15 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
 
   describe '#create' do
-    context 'with other values selected for degree_field and degree_level', skip: true do
+    context 'with other values selected for degree_field and degree_level' do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
       let(:test_degree_level_other) { "test1 degree level other" }
       let(:test_degree_field_other) { "test1 degree field other" }
 
       before do
-        stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").
-         with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-         to_return(status: 200, body: "", headers: {})
-        allow(Parsers::DegreeFieldsParser).to receive(:parse).with(nil).and_return([{id: "http://opaquenamespace.org/ns/osuDegreeFields/0Ct5bACm", term: "Forestry", active: true}])
-
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+        allow(user).to receive(:admin?).and_return(true)
         allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
         curation_concern.apply_depositor_metadata(user.user_key)
         curation_concern.degree_field_other = test_degree_field_other
@@ -46,16 +44,15 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
         expect(other_options.second.name).to be_in [test_degree_field_other, test_degree_level_other]
       end
     end
-    context 'with invalid other values selected for degree_field and degree_level', skip: true do
+    context 'with invalid other values selected for degree_field and degree_level' do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
       let(:test_degree_level_other) { "Certificate" }
       let(:test_degree_field_other) { "Zoology" }
 
       before do
-        stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").
-          with(headers: {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Ruby'}).
-          to_return(status: 200, body: "", headers: {})
-        allow(Parsers::DegreeFieldsParser).to receive(:parse).with(nil).and_return([{id: "http://opaquenamespace.org/ns/osuDegreeFields/0Ct5bACm", term: "Forestry", active: true}])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'], ['Zoology','Zoology']])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other'], ['Zoology','Zoology']])
+        allow(user).to receive(:admin?).and_return(true)
         allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
         curation_concern.apply_depositor_metadata(user.user_key)
         curation_concern.degree_field_other = test_degree_field_other
@@ -77,7 +74,10 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_field_other) { "" }
 
       before do
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
         allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
+        allow(user).to receive(:admin?).and_return(true)
         curation_concern.apply_depositor_metadata(user.user_key)
         curation_concern.degree_field_other = test_degree_field_other
         curation_concern.degree_level_other = test_degree_level_other
@@ -95,13 +95,15 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
 
   describe '#update' do
-    context 'with other values selected for degree_field and degree_level', skip: true do
+    context 'with other values selected for degree_field and degree_level' do
       let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other", degree_level: "Other" } }
       let(:test_degree_level_other) { "test2 degree level other" }
       let(:test_degree_field_other) { "test2 degree field other" }
 
       before do
-        allow(Parsers::DegreeFieldsParser).to receive(:parse).with(nil).and_return([{id: "http://opaquenamespace.org/ns/osuDegreeFields/0Ct5bACm", term: "Forestry", active: true}])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+        allow(user).to receive(:admin?).and_return(true)
         allow(terminator).to receive(:update).with(Hyrax::Actors::Environment).and_return(true)
         curation_concern.apply_depositor_metadata(user.user_key)
         curation_concern.degree_field_other = test_degree_field_other
