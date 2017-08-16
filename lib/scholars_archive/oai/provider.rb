@@ -1,0 +1,23 @@
+class ScholarsArchive::OAI::Provider < ::OAI::Provider::Base
+  repository_name APP_CONFIG['oai']['repository_name']
+  repository_url APP_CONFIG['oai']['repository_url']
+  record_prefix APP_CONFIG['oai']['record_prefix']
+  admin_email APP_CONFIG['oai']['admin_email']
+  sample_id APP_CONFIG['oai']['sample_id']
+  source_model ::ScholarsArchive::OAI::Model::ActiveFedoraWrapper.new(::ActiveFedora::Base, :limit => 50)
+  Base.register_format(ScholarsArchive::OAI::DublinCore.instance)
+  Base.register_format(ScholarsArchive::OAI::QualifiedDublinCore.instance)
+
+  OAI::Provider::Response::RecordResponse.class_eval do
+    def identifier_for(record)
+      begin
+        setid = record.primarySet.split("/").last.gsub("ScholarsArchive:","")
+      rescue
+        setid = record.sets.first.spec.gsub("ScholarsArchive:","")
+      ensure
+        return "#{APP_CONFIG['oai']['record_prefix']}:#{setid}/#{record.id.gsub('ScholarsArchive:','')}"
+      end
+    end
+  end
+
+end
