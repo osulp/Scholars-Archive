@@ -67,7 +67,7 @@ class CatalogController < ApplicationController
     #config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
     #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
 
-    config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, sort: 'index'
+    config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, sort: 'index', partial: 'date_decades_facet'
     config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
 
     # The generic_type isn't displayed on the facet list
