@@ -87,4 +87,9 @@ module ApplicationHelper
     search_path = Rails.application.class.routes.url_helpers.search_catalog_path(:f => {field => [query]})
     link_to(query, search_path)
   end
+
+  def facet_desc_sort!(items=[])
+    items.sort! { |a,b| b.value.downcase <=> a.value.downcase }
+    items
+  end
 end
