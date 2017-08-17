@@ -4,6 +4,7 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
   let(:ability) { double }
 
   context "for a persisted object nested geo points" do
+
     let(:test_point) do
       {
           label: 'point1',
@@ -22,6 +23,7 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
     end
 
     it "draws the page" do
+      assign(:curation_concern, work1)
       form1.nested_geo.each { |geo| geo.point.present? ? geo.type = :point.to_s : '' }
       assign(:form, form1)
       view.simple_form_for [main_app, form1] do |f|
@@ -68,6 +70,7 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
     end
 
     it "draws the page" do
+      assign(:curation_concern, work2)
       form2.nested_geo.each { |geo| geo.point.present? ? geo.type = :point.to_s : '' }
       assign(:form, form2)
       view.simple_form_for [main_app, form2] do |f|
@@ -103,6 +106,7 @@ RSpec.describe 'scholars_archive/base/_form_geo.html.erb', type: :view do
     end
 
     it "draws the page" do
+      assign(:curation_concern, work)
       assign(:form, form)
       view.simple_form_for [main_app, form] do |f|
         render 'scholars_archive/base/form_geo', f: f
