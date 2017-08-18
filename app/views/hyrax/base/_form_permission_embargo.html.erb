@@ -1,0 +1,8 @@
+<div class="form-inline">
+  <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO) %>
+  <%= f.input :visibility_during_embargo, wrapper: :inline, collection: visibility_options(:restrict), include_blank: false %>
+  <%= f.date_field :embargo_release_date, wrapper: :inline, value: f.object.embargo_release_date.to_s.split("T").first || Date.tomorrow, class: 'datepicker form-control' %>
+  <%= f.input :visibility_after_embargo, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
+  <%= f.input :embargo_reason, wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement", "Other..."], selected: f.object.embargo_reason %>
+</div>
+

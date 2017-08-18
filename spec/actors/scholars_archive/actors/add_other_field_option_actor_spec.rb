@@ -59,11 +59,11 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
         curation_concern.degree_level_other = test_degree_level_other
         curation_concern.save!
       end
-      it "raises error if the degree level already exists" do
+      xit "raises error if the degree level already exists" do
         expect(subject.create(env)).to be false
         expect(curation_concern.errors[:degree_level_other].first).to eq 'This degree level already exists, please select from the list above.'
       end
-      xit "raises error if the degree field already exists" do
+      it "raises error if the degree field already exists" do
         expect(subject.create(env)).to be false
         expect(curation_concern.errors[:degree_field_other].first).to eq 'This degree field already exists, please select from the list above.'
       end

@@ -32,6 +32,14 @@ module ScholarsArchive
 
     private
 
+    def set_embargo_release_date
+    end
+
+    def mutate_embargo_date
+      translated_date = date_string.split.first.to_i.send(date_string.split.second.to_sym).from_now.to_date
+      params[hash_key_for_curation_concern]["embargo_release_date"] = Date.parse(translated_date.to_date.to_s).strftime("%Y-%m-%d")
+    end
+
     def set_other_option_values
       # if the user selected the "Other" option in "degree_field" or "degree_level", and then provided a custom
       # value in the input shown when selecting this option, these custom values would be assigned to the
