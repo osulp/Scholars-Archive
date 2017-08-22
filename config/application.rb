@@ -43,8 +43,7 @@ module ScholarsArchive
 
     config.rubycas.cas_base_url = ENV["SCHOLARSARCHIVE_CAS_BASE_URL"] || 'https://cas.myorganization.com'
     config.to_prepare  do
-      Hyrax::CurationConcern.actor_factory = ScholarsArchive::DefaultMiddlewareStack.build_sa_stack
+      Hyrax::CurationConcern.actor_factory.insert_after Hyrax::Actors::InitializeWorkflowActor, ScholarsArchive::Actors::AddOtherFieldOptionActor
     end
-
   end
 end
