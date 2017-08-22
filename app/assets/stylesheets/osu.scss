@@ -1,5 +1,9 @@
 @import 'osu_settings';
 
+.image-masthead .background-container {
+  background-image: image-url('SA-Mast-Head.png') !important;
+}
+
 div#date_wrapper, div#geo_wrapper {
   padding-left: 1em;
 }
@@ -109,7 +113,7 @@ div .select-worktype {
 }
 
 .row.match-my-cols {
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .row.match-my-cols [class*="col-"]{
