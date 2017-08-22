@@ -35,7 +35,8 @@
                 <%= f.input :embargo_release_date, label_html: { class: 'hidden'}, class: 'form-control', input_html: { class: 'datepicker hidden' } %>
                 <%= "from now" %>
                 <%= f.input :visibility_after_embargo, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
-                <%= f.input :embargo_reason, wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement"] %>
+                <%= f.input :embargo_reason, wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement", "Other..."], input_html: { id: 'embargo_reason_select' } %>
+                <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'hidden'}, input_html: { class: 'hidden other_field'} %>
               </div>
             </div>
           </label>
