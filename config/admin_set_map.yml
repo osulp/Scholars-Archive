@@ -2,6 +2,7 @@
 #If changes are being made to this file, please follow this order
 
 Article: "Article"
+BatchUploadItem: "Batch Upload Item"
 GraduateThesisOrDissertation: "Graduate Thesis Or Dissertation"
 GraduateProject: "Graduate Project"
 UndergraduateThesisOrProject: "Undergraduate Thesis Or Project"
