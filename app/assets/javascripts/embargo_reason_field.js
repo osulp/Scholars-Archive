@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function() {
   $('#embargo_reason_select').change(function() {
     var val = $("#embargo_reason_select option:selected").val();
     if (val == 'Other...') {

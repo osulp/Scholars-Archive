@@ -1,8 +1,11 @@
 <div class="form-inline">
   <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO) %>
   <%= f.input :visibility_during_embargo, wrapper: :inline, collection: visibility_options(:restrict), include_blank: false %>
-  <%= f.date_field :embargo_release_date, wrapper: :inline, value: f.object.embargo_release_date.to_s.split("T").first || Date.tomorrow, class: 'datepicker form-control' %>
+  <%= f.input :embargo_release_date, label_html: { class: 'hidden'}, collection: [["6 Months",6.months.from_now], ["1 year",1.year.from_now],["2 Years",2.years.from_now], ["Other...", "other"]], include_blank: true, input_html: { id: "embargo_date_select" }%>
+  <%= f.input :embargo_release_date, label_html: { class: 'hidden'}, class: 'form-control', input_html: { class: 'datepicker hidden' } %>
+  <%= "from now" %>
   <%= f.input :visibility_after_embargo, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
-  <%= f.input :embargo_reason, wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement", "Other..."], selected: f.object.embargo_reason %>
+  <%= f.input :embargo_reason, wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement", "Other..."], input_html: { id: 'embargo_reason_select' } %>
+  <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'hidden'}, input_html: { class: 'hidden other_field'} %>
 </div>
 
