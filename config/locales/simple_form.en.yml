@@ -118,4 +118,4 @@ en:
         learning_resource_type: "Type of Learning Resource"
         interactivity_type: "Level of Interactivity"
         is_based_on_url: "This Resource is Based On"
-
+        visibility_after_embargo: "Then set it to"
