@@ -3,12 +3,7 @@
     <legend>Geographic coordinates</legend>
     <div class="warning-anchor"></div>
     <div class="col-sm-6">
-      <%= select_tag_geo(:new_geo_type, f) if @curation_concern.instance_of?(BatchUploadItem) == false  %>
-      <!-- Disabling the Geo related fields (:nested_geo, :nested_bbox) here for now since they don't work well with -->
-      <!-- Batch uploads (nested geo fields need some special processing/parsing that currently happen in -->
-      <!-- ScholarsArchive::WorksControllerBehavior. BatchUploadItem is managed in a separate controller.  -->
-      <!-- TODO: Move the special nested geo processing work to a new actor so that BatchUploadItem is able to save -->
-      <!-- these fields properly. Once that's done, we can enable select_tag_geo in this vew again for BatchUploadItem. -->
+      <%= select_tag_geo(:new_geo_type, f)  %>
     </div>
   </div>
   <div id="geo_fields">

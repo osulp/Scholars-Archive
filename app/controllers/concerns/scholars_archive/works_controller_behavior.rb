@@ -3,10 +3,6 @@ module ScholarsArchive
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior
 
-    included do
-      before_action :set_geo, only: [:create, :update]
-    end
-
     def new
       curation_concern.publisher = ["Oregon State University"]
       curation_concern.rights_statement = ["http://rightsstatements.org/vocab/InC/1.0/"]
@@ -54,21 +50,6 @@ module ScholarsArchive
       end
     end
 
-    def set_geo
-      if params[hash_key_for_curation_concern]['nested_geo_attributes']
-        params[hash_key_for_curation_concern]['nested_geo_attributes'].each do |box, value|
-          if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| !f.present? }
-            bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
-            value["bbox"] = bbox.join(',')
-          end
-          if [value["label"], value["point_lat"], value["point_lon"]].none? { |f| !f.present? }
-            point = [value["point_lat"], value["point_lon"]]
-            value["point"] = point.join(',')
-          end
-        end
-      end
-    end
-
     def get_other_option_values
       degree_field_other_option = get_other_options('degree_field')
       if degree_field_other_option.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
@@ -100,8 +81,6 @@ module ScholarsArchive
         end
       end
     end
-
-    private
 
     def get_other_options(property)
       OtherOption.find_by(work_id: curation_concern.id, property_name: property)
