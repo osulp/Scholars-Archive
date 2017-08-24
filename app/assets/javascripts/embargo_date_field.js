@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function() {
   $('[id$=embargo_release_date].datepicker').datepicker({dateFormat:"yy-mm-dd"});
   $('#embargo_date_select').change(function() {
     var val = $("#embargo_date_select option:selected").val();
