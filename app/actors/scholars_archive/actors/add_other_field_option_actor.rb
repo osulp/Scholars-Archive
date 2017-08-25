@@ -22,51 +22,58 @@ module ScholarsArchive
       def validate(env)
         return true unless degree_present? (env)
         error_counter = 0
-        # check if degree_level_other is already in the list
-        degree_level_other = env.curation_concern.degree_level_other
-        if degree_level_other.present?
-          degree_level_service = ScholarsArchive::DegreeLevelService.new
-          collection = degree_level_options(degree_level_service, env.user)
-          if !collection.select {|option| option.include? degree_level_other}.empty?
-            env.curation_concern.errors.add(:degree_level_other, 'This degree level already exists, please select from the list above.')
-            error_counter += 1
-          end
-        else
-          if env.attributes['degree_level'] == 'Other'
-            env.curation_concern.errors.add(:degree_level_other, "Please provide a value for 'Other' degree level.")
-            error_counter += 1
-          end
-        end
 
-        # check if degree_field_other is already in the list
-        degree_field_other = env.curation_concern.degree_field_other
-        if degree_field_other.present?
-          degree_field_service = ScholarsArchive::DegreeFieldService.new
-          collection = degree_field_options(degree_field_service, env.user)
-          if !collection.select {|option| option.include? degree_field_other}.empty?
-            env.curation_concern.errors.add(:degree_field_other, 'This degree field already exists, please select from the list above.')
-            error_counter += 1
-          end
-        else
-          if env.attributes['degree_field'] == 'Other'
-            env.curation_concern.errors.add(:degree_field_other, "Please provide a value for 'Other' degree field.")
-            error_counter += 1
-          end
-        end
+        # check if degree_level_other is already in the list or is missing
+        error_counter += validate_other_value? env, field: :degree_level, collection: degree_level_options(env.user)
+
+        # check if degree_field_other is already in the list or is missing
+        error_counter += validate_other_value? env, field: :degree_field, collection: degree_field_options(env.user)
+
+        # check if degree_name_other is already in the list or is missing
+        error_counter += validate_other_value? env, field: :degree_name, collection: degree_name_options(env.user)
 
         (error_counter > 0) ? false : true
       end
 
-      def degree_field_options(service, env_user)
+      def validate_other_value? (env, field: nil, collection: [])
+        other_field = "#{field}_other".to_sym
+        other_value = env.curation_concern.send(other_field)
+        error_counter = 0
+        if other_value.present?
+          if other_value_in_collection? other_value: other_value, collection: collection
+            env.curation_concern.errors.add(other_field, I18n.t('simple_form.actor_validation.other_value_exists'))
+            error_counter += 1
+          end
+        else
+          if env.attributes[field.to_s] == 'Other'
+            env.curation_concern.errors.add(other_field, I18n.t('simple_form.actor_validation.other_value_missing'))
+            error_counter += 1
+          end
+        end
+        return error_counter
+      end
+
+      def other_value_in_collection? (other_value: nil, collection: [])
+        !collection.select {|option| option.include? other_value}.empty? ? true : false
+      end
+
+      def degree_field_options(env_user)
+        service = ScholarsArchive::DegreeFieldService.new
         env_user.admin? ? service.select_sorted_all_options : service.select_sorted_current_options
       end
 
-      def degree_level_options(service, env_user)
+      def degree_level_options(env_user)
+        service = ScholarsArchive::DegreeLevelService.new
+        env_user.admin? ? service.select_sorted_all_options : service.select_active_options
+      end
+
+      def degree_name_options(env_user)
+        service = ScholarsArchive::DegreeNameService.new
         env_user.admin? ? service.select_sorted_all_options : service.select_active_options
       end
 
       def degree_present? (env)
-        env.attributes['degree_field'].present? && env.attributes['degree_level'].present?
+        env.attributes['degree_field'].present? && env.attributes['degree_level'].present? && env.attributes['degree_name'].present?
       end
 
       def save_custom_option(env)
@@ -76,6 +83,9 @@ module ScholarsArchive
         end
         if env.curation_concern.degree_level_other.present?
           OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
+        end
+        if env.curation_concern.degree_name_other.present?
+          OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
         end
         return true
       end
@@ -97,6 +107,15 @@ module ScholarsArchive
             OtherOption.update(degree_level_other_option.id, name: env.curation_concern.degree_level_other.to_s)
           else
             OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
+          end
+        end
+
+        if env.curation_concern.degree_name_other.present?
+          degree_name_other_option = get_other_option(env, :degree_name)
+          if degree_name_other_option.present?
+            OtherOption.update(degree_name_other_option.id, name: env.curation_concern.degree_name_other.to_s)
+          else
+            OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
           end
         end
         return true

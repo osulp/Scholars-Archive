@@ -1,0 +1,10 @@
+<% degree_name_service = ScholarsArchive::DegreeNameService.new %>
+<%= f.input :degree_name,
+    collection: current_user.admin? ? degree_name_service.select_sorted_all_options : degree_name_service.select_active_options,
+    include_blank: true,
+    input_html: { class: "form-control degree-name-selector" } %>
+<% if f.object.model.degree_name.present? && f.object.model.degree_name == 'Other' && f.object.model.degree_name_other.present? %>
+    <%= f.input :degree_name_other, label: false, aria: { label: 'Degree Name' }, :placeholder => 'Degree Name', :input_html => {value: f.object.model.degree_name_other, :class => "form-control"}, :wrapper_html => {:class => "degree-name-other" } %>
+<% else %>
+    <%= f.input :degree_name_other, as: :hidden, label: false, aria: { label: 'Degree Name' }, :placeholder => 'Degree Name', :input_html => {:class => "form-control"}, :wrapper_html => {:class => "degree-name-other" } %>
+<% end %>

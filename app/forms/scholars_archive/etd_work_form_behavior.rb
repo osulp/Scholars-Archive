@@ -5,6 +5,8 @@ module ScholarsArchive
       include ScholarsArchive::DefaultWorkFormBehavior
       attr_accessor :degree_level_other
       attr_accessor :degree_field_other
+      attr_accessor :degree_name_other
+
       self.terms += [:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]
       self.required_fields += [:degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year]
 

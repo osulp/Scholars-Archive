@@ -7,6 +7,11 @@ es:
       mark: '*'
       text: 'requerido'
     "yes": 'Si'
+
+    actor_validation:
+      other_value_exists: "Este valor ya existe, por favor seleccione de la lista de arriba."
+      other_value_missing: "Proporcione un valor para 'Otro'"
+
     hints:
       admin_set:
         date_created: "Fecha de creación o fabricación del contenido intelectual. Tales como cuando se toman los datos en bruto."

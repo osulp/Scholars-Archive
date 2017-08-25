@@ -8,6 +8,10 @@ en:
       text: 'required'
     "yes": 'Yes'
 
+    actor_validation:
+      other_value_exists: "This value already exists, please select from the list above."
+      other_value_missing: "Please provide a value for 'Other'"
+
     hints:
       admin_set:
         academic_affiliation: "Academic Department or College at Oregon Steate University."
@@ -114,3 +118,4 @@ en:
         learning_resource_type: "Type of Learning Resource"
         interactivity_type: "Level of Interactivity"
         is_based_on_url: "This Resource is Based On"
+

@@ -40,6 +40,9 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
+      attr_accessor :degree_name_other
+
       property :graduation_year, predicate: ::RDF::URI.new("http://www.rdaregistry.info/Elements/w/#P10215"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
