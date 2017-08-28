@@ -80,12 +80,15 @@ module ScholarsArchive
         return true unless degree_present? (env)
         if env.curation_concern.degree_field_other.present?
           OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
+          notify_admin(env, :degree_field)
         end
         if env.curation_concern.degree_level_other.present?
           OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
+          notify_admin(env, :degree_level)
         end
         if env.curation_concern.degree_name_other.present?
           OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
+          notify_admin(env, :degree_name)
         end
         return true
       end
@@ -98,6 +101,7 @@ module ScholarsArchive
             OtherOption.update(degree_field_other_option.id, name: env.curation_concern.degree_field_other.to_s)
           else
             OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
+            notify_admin(env, :degree_field)
           end
         end
 
@@ -107,6 +111,7 @@ module ScholarsArchive
             OtherOption.update(degree_level_other_option.id, name: env.curation_concern.degree_level_other.to_s)
           else
             OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
+            notify_admin(env, :degree_level)
           end
         end
 
@@ -116,9 +121,14 @@ module ScholarsArchive
             OtherOption.update(degree_name_other_option.id, name: env.curation_concern.degree_name_other.to_s)
           else
             OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
+            notify_admin(env, :degree_name)
           end
         end
         return true
+      end
+
+      def notify_admin(env, field)
+        ScholarsArchive::OtherOptionCreateSuccessService.new(env.curation_concern, field: field).call
       end
 
       def get_other_option(env, field)
