@@ -7,7 +7,6 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   let(:work) {
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
-      work.save!
     end
   }
   let(:form) do

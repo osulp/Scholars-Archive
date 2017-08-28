@@ -48,6 +48,10 @@ module ScholarsArchive
       if params[hash_key_for_curation_concern]['degree_level'] == 'Other' && params[hash_key_for_curation_concern]['degree_level_other'].present?
         curation_concern.degree_level_other = params[hash_key_for_curation_concern]['degree_level_other']
       end
+
+      if params[hash_key_for_curation_concern]['degree_name'] == 'Other' && params[hash_key_for_curation_concern]['degree_name_other'].present?
+        curation_concern.degree_name_other = params[hash_key_for_curation_concern]['degree_name_other']
+      end
     end
 
     def get_other_option_values
@@ -58,6 +62,10 @@ module ScholarsArchive
       degree_level_other_option = get_other_options('degree_level')
       if degree_level_other_option.present? && curation_concern.degree_level.present? && curation_concern.degree_level == 'Other'
         curation_concern.degree_level_other = degree_level_other_option.name
+      end
+      degree_name_other_option = get_other_options('degree_name')
+      if degree_name_other_option.present? && curation_concern.degree_name.present? && curation_concern.degree_name == 'Other'
+        curation_concern.degree_name_other = degree_name_other_option.name
       end
     end
 

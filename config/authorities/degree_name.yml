@@ -1,0 +1,52 @@
+terms:
+- id: "Bachelor of Science (B.S.)"	
+  term: "Bachelor of Science (B.S.)"	
+  active: true
+- id: "Doctor of Education (Ed.D.)"	
+  term: "Doctor of Education (Ed.D.)"	
+  active: true
+- id: "Doctor of Philosophy (Ph.D.)"	
+  term: "Doctor of Philosophy (Ph.D.)"	
+  active: true
+- id: "Electrical Engineering (E.E.)"	
+  term: "Electrical Engineering (E.E.)"	
+  active: true
+- id: "Master of Agriculture (M.Ag.)"	
+  term: "Master of Agriculture (M.Ag.)"	
+  active: true
+- id: "Master of Arts (M.A.)"	
+  term: "Master of Arts (M.A.)"	
+  active: true
+- id: "Master of Arts in Interdisciplinary Studies (M.A.I.S.)"	
+  term: "Master of Arts in Interdisciplinary Studies (M.A.I.S.)"	
+  active: true
+- id: "Master of Business Administration (M.B.A.)"	
+  term: "Master of Business Administration (M.B.A.)"	
+  active: true
+- id: "Master of Education (Ed.M.)"	
+  term: "Master of Education (Ed.M.)"	
+  active: true
+- id: "Master of Fine Arts (M.F.A.)"	
+  term: "Master of Fine Arts (M.F.A.)"	
+  active: true
+- id: "Master of Ocean Engineering (M.Oc.E. )"	
+  term: "Master of Ocean Engineering (M.Oc.E. )"	
+  active: true
+- id: "Master of Public Health (M.P.H.)"	
+  term: "Master of Public Health (M.P.H.)"	
+  active: true
+- id: "Master of Science (M.S.)"	
+  term: "Master of Science (M.S.)"	
+  active: true
+- id: "Bachelor of Arts (B.A.)"	
+  term: "Bachelor of Arts (B.A.)"	
+  active: true
+- id: "Honors Bachelor of Arts (H.B.A.)"	
+  term: "Honors Bachelor of Arts (H.B.A.)"	
+  active: true
+- id: "Honors Bachelor of Science (H.B.S.)"	
+  term: "Honors Bachelor of Science (H.B.S.)"	
+  active: true
+- id: "Other"
+  term: "Other"
+  active: true

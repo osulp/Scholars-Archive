@@ -23,6 +23,13 @@
       else
         hide_field('.degree-level-other')
 
+      default_degree_name = $('select.degree-name-selector :selected').val()
+      if default_degree_name == "Other"
+        show_field('.degree-name-other')
+      else
+        hide_field('.degree-name-other')
+
+
     load_default_values()
 
     $('select.degree-field-selector').change ->
@@ -38,5 +45,12 @@
         show_field('.degree-level-other')
       else
         hide_field('.degree-level-other')
+
+    $('select.degree-name-selector').change ->
+      selected = $('select.degree-name-selector :selected').val()
+      if selected == "Other"
+        show_field('.degree-name-other')
+      else
+        hide_field('.degree-name-other')
 ) jQuery
 
