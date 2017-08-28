@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+
   mount Hydra::RoleManagement::Engine => '/'
 
   mount Qa::Engine => '/authorities'
@@ -25,6 +26,11 @@ Rails.application.routes.draw do
   root 'hyrax/homepage#index'
   curation_concerns_basic_routes
   concern :exportable, Blacklight::Routes::Exportable.new
+
+  get '/xmlui/handle/:handle_id/:id', to: 'scholars_archive/handles#handle_show', as: 'handle_show'
+  get '/xmlui/bitstream/handle/:handle_id/:id/:file', to: 'scholars_archive/handles#handle_download', as: 'handle_download'
+  get '/404/file_not_found/:handle_id/:id/:file', to: 'scholars_archive/handles#handle_file_404', as: 'handle_file_404'
+  get '/404/work_not_found', to: 'scholars_archive/handles#handle_work_404', as: 'handle_work_404'
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
