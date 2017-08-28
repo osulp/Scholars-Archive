@@ -5,7 +5,7 @@ describe ScholarsArchive::DegreeLevelService do
 
   describe "#select_active_options" do
     it "returns active terms" do
-      expect(service.select_active_options).to include(["Bachelor's", "Bachelor's"], ["Certificate", "Certificate"], ["Doctoral", "Doctoral"], ["Master's", "Master's"], ["Other", "Other"], ["Post-Doctoral", "Post-Doctoral"])
+      expect(service.select_active_options).to include(["Bachelor's", "Bachelor's"], ["Certificate", "Certificate"], ["Doctoral", "Doctoral"], ["Master's", "Master's"], ["Other", "Other"])
     end
   end
 end
