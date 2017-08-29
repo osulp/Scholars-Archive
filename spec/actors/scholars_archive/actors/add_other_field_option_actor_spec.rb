@@ -14,8 +14,8 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
         degree_name: "Other"
     }
   }
-  let(:user) do
-    User.new(email: 'test@example.com',guest: false)
+  let!(:user) do
+    User.new(username:'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
   let(:ability) { double(current_user: user) }
   let(:env) { Hyrax::Actors::Environment.new(curation_concern, ability, attributes) }
@@ -35,7 +35,6 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
     allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['Master of Arts (M.A.)','Master of Arts (M.A.)']])
     allow(user).to receive(:admin?).and_return(true)
     allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
-    curation_concern.apply_depositor_metadata(user.user_key)
     curation_concern.degree_field_other = test_degree_field_other
     curation_concern.degree_level_other = test_degree_level_other
     curation_concern.degree_name_other = test_degree_name_other

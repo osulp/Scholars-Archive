@@ -59,7 +59,6 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
         allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
         allow(user).to receive(:admin?).and_return(true)
         allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
-        curation_concern.apply_depositor_metadata(user.user_key)
         env.attributes['nested_geo_attributes'] = nested_geo_attributes
       end
       it 'sets the point from user input' do
