@@ -69,12 +69,12 @@
                 "Hyrax::Workflow::ActivateObject"
             ]
         }, {
-            "name": "Request Review",
+            "name": "Restart Review Process",
             "from_states": [{
                 "names": ["Changes Required"],
                 "roles": ["depositing"]
             }],
-            "transition_to": "Pending Review",
+            "transition_to": "Graduate School Review",
             "notifications": [{
                 "notification_type": "email",
                 "name": "ScholarsArchive::Workflow::PendingReviewNotification",
