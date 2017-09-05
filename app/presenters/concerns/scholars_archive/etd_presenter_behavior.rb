@@ -6,6 +6,7 @@ module ScholarsArchive
                :contributor_committeemember,
                :degree_discipline,
                :degree_field,
+               :degree_field_label,
                :degree_grantors,
                :degree_level,
                :degree_name,

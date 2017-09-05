@@ -19,7 +19,12 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
 
       object.triple_powered_properties.each do |o|
-        labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(object.send(o[:field]), parse_date: o[:has_date])
+        if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
+          uris = object.send(o[:field])
+        else
+          uris = Array(object.send(o[:field]))
+        end
+        labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
         solr_doc[o[:field].to_s + '_label_ssim'] = labels
         solr_doc[o[:field].to_s + '_label_tesim'] = labels
       end

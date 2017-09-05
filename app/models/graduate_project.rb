@@ -6,7 +6,7 @@ class GraduateProject < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
-  include ScholarsArchive::HasTriplePoweredProperties
+  include ScholarsArchive::HasEtdTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
 
   self.indexer = EtdIndexer
