@@ -48,7 +48,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
     config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
     config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
-    config.add_facet_field solr_name('degree_field', :facetable), limit: 5, label: 'Degree Field'
+    config.add_facet_field "degree_field_label_ssim", label: "Degree Field", limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
@@ -154,7 +154,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim",
+        qf: "#{all_names} degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim",
         pf: title_name.to_s
       }
     end
@@ -201,6 +201,15 @@ class CatalogController < ApplicationController
         pf: solr_name
       }
     end
+
+    config.add_search_field('degree_field_label') do |field|
+      solr_name = solr_name("degree_field_label", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
 
     config.add_search_field('title') do |field|
       solr_name = solr_name("title", :stored_searchable)

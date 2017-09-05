@@ -11,7 +11,13 @@ module ScholarsArchive::TriplePoweredProperties
       return if record.triple_powered_properties.empty?
 
       record.triple_powered_properties.each do |prop|
-        record[prop[:field]].each do |value|
+        if ScholarsArchive::FormMetadataService.multiple? record.to_model.class, prop[:field]
+          values = record[prop[:field]]
+        else
+          values = Array(record[prop[:field]])
+        end
+
+        values.each do |value|
           begin
             uri = URI.parse(value)
           rescue
