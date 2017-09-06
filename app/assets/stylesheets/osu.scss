@@ -120,3 +120,36 @@ div .select-worktype {
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
+
+footer.site-footer {
+  color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 20px 0 20px 20px;
+  background: $osu-black;
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #39393a), color-stop(100%, #252525));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #39393a 0%, #252525 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #39393a 0%, #252525 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #39393a 0%, #252525 100%);
+  /* IE10+ */
+  background: linear-gradient(top, #39393a 0%, #252525 100%);
+  /* W3C */
+  min-height: 148px;
+  border-top: 4px solid $osu-orange;
+}
+
+footer.site-footer a.navbar-link {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer.site-footer a.navbar-link:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+
