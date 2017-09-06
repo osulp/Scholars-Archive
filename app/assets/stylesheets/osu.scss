@@ -152,4 +152,30 @@ footer.site-footer a.navbar-link:hover {
   text-decoration: none;
 }
 
+div[class$=embargo_release_date]{
+  width: 100%;
+}
 
+#embargo_date_select {
+  width: 99%;
+}
+
+.small-padding.col-md-2 {
+  padding-left: 2px;
+}
+
+.fill_embargo_column {
+  width: 92%;
+}
+
+input.fill_column {
+  width: 100% !important;
+}
+
+.hasDatepicker {
+  width: 16.5% !important;
+}
+
+.date_picker_wrapper {
+  padding-left: 85px;
+}
