@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ScholarsArchive::HandlesController, type: :controller do
-  let(:work) { Default.new(:title => ["blah"], :handle_localname => 'asdfasdf')}
-  let(:fileset) { FileSet.new(:title => ["cat.jpg"], :handle_localname => 'qwerqwer') }
+  let(:work) { Default.new(:title => ["blah"], :id => 'asdfasdf')}
+  let(:fileset) { FileSet.new(:title => ["cat.jpg"], :id => 'qwerqwer') }
 
   context "#get handle_show" do
     context "when a work exists with the proper handle" do
@@ -20,7 +20,7 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
       end
       it "Should reroute the user to work not found error page" do
         get :handle_show, params: {:handle_prefix => "1957", :handle_localname => "12345"}
-        expect(response).to redirect_to '/404/work_not_found'
+        expect(response.status).to eq 404
       end
     end
   end
@@ -41,7 +41,7 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
       end 
       it "Should reroute the user to the work not found page" do
         get :handle_download, params: {:handle_prefix => "1957", :handle_localname => "12345", :file => "cat.jpg"}
-        expect(response).to redirect_to '/404/work_not_found'
+        expect(response.status).to eq 404
       end
     end
     context "when a work exists but it doesnt have the right file" do
@@ -51,7 +51,7 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
       end 
       it "Should reroute the user to 404 file not found page" do
         get :handle_download, params: {:handle_prefix => "1957", :handle_localname => "12345", :file => "catasdf"}
-        expect(response).to redirect_to '/404/file_not_found/1957/12345/catasdf'
+        expect(response.status).to eq 404
       end
     end
     context "when a work exists and returns too many file matches" do
