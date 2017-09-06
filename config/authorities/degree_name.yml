@@ -44,6 +44,9 @@ terms:
 - id: "Honors Bachelor of Arts (H.B.A.)"	
   term: "Honors Bachelor of Arts (H.B.A.)"	
   active: true
+- id: "Honors Bachelor of Fine Arts (H.B.F.A.)"	
+  term: "Honors Bachelor of Fine Arts (H.B.F.A.)"	
+  active: true  
 - id: "Honors Bachelor of Science (H.B.S.)"	
   term: "Honors Bachelor of Science (H.B.S.)"	
   active: true
