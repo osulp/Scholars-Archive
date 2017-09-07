@@ -19,7 +19,4 @@
           <% f.object.secondary_terms.each do |term| %>
             <%= render_edit_field_partial(term, f: f) %>
           <% end %>
-
-          <%= render partial: 'scholars_archive/base/form_dates', locals: { f: f } %>
-          <%= render partial: 'scholars_archive/base/form_geo', locals: { f: f } %>
         </div>

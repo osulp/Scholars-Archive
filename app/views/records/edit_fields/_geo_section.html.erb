@@ -1,6 +1,6 @@
 <div id="geo_wrapper">
   <div class="row">
-    <legend>Geographic coordinates</legend>
+    <legend class="legend-edit-work">Geographic coordinates</legend>
     <div class="warning-anchor"></div>
     <div class="col-sm-6">
       <%= select_tag_geo(:new_geo_type, f)  %>
@@ -32,11 +32,6 @@
           <tr data-id="based_near" class="geo_field based_near">
             <td>
               <%= render_edit_field_partial(:based_near, f: f) %>
-            </td>
-          </tr>
-          <tr data-id="hydrologic_unit_code" class="geo_field hydrologic_unit_code">
-            <td>
-              <%= render_edit_field_partial(:hydrologic_unit_code, f: f) %>
             </td>
           </tr>
         </tbody>
