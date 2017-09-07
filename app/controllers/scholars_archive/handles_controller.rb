@@ -79,8 +79,8 @@ module ScholarsArchive
         query_fedora_for_work(solr_doc.first[:id], solr_doc.first[:human_readable_type_tesim].first.constantize) unless solr_doc.empty?
       end
 
-      def construct_handle_url(handle_prefix, handle_code)
-        RSolr.solr_escape("http://hdl.handle.net/#{handle_prefix}/#{handle_code}")
+      def construct_handle_url(handle_prefix, handle_localname)
+        RSolr.solr_escape("http://hdl.handle.net/#{handle_prefix}/#{handle_localname}")
       end
 
       def query_fedora_for_work(id, work_type)
