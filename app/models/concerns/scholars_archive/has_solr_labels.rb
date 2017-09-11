@@ -20,6 +20,8 @@ module ScholarsArchive
           labels = nested_geo.flat_map(&:point).select(&:present?).flatten.map {|i| i[0]}+nested_geo.flat_map(&:bbox).select(&:present?).flatten.map {|i| i[0]}
           doc[ActiveFedora.index_field_mapper.solr_name("nested_geo_label", :symbol)] = labels
           doc[ActiveFedora.index_field_mapper.solr_name("nested_geo_label", :stored_searchable)] = labels
+          doc[ActiveFedora.index_field_mapper.solr_name("nested_related_items_label", :symbol)] = nested_related_items.map{|i| "#{i.label.first}$#{i.related_url.first}" }.select(&:present?)
+          doc[ActiveFedora.index_field_mapper.solr_name("nested_related_items_label", :stored_searchable)] = nested_related_items.map{|i| "#{i.label.first}$#{i.related_url.first}" }.select(&:present?)
           doc[ActiveFedora.index_field_mapper.solr_name("rights_statement", :facetable)] = rights_statement.first
           doc[ActiveFedora.index_field_mapper.solr_name("license", :facetable)] = license.first
         end

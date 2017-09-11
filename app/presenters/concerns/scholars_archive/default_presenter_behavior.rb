@@ -32,6 +32,7 @@ module ScholarsArchive
                :license,
                :license_label,
                :nested_geo,
+               :nested_related_items,
                :other_affiliation_label,
                :peerreviewed_label,
                :replaces,
