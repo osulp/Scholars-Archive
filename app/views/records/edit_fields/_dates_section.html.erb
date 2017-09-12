@@ -1,22 +1,22 @@
-<div id="date_wrapper">
-  <div class="row"> 
-    <legend>Dates</legend>
+<div id="date_wrapper" class="form-group">
+  <div class="row">
+    <legend class="legend-edit-work">Dates</legend>
     <div class="date_hint">
       <%= t('simple_form.hints.admin_set.date') %>
     </div>
-    <div class="warning-anchor"></div> 
-    <div class="col-sm-6">
+    <div class="warning-anchor"></div>
+    <div class="col-sm-12">
       <%= select_tag_dates(:new_date_type, f)  %>
     </div>
   </div>
   <div id="date_fields">
-    <div class="col-sm-9">
+    <div class="col-sm-12">
       <table class="table">
         <thead>
-          <tr>
-            <th>Dates</th>
-            <th>Remove</th>
-          </tr>
+        <tr>
+          <th>Dates</th>
+          <th>Remove</th>
+        </tr>
         </thead>
         <tbody>
         <% f.object.date_terms.each do |term| %>

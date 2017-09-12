@@ -36,6 +36,9 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      # accessor attribute used only to group the date fields and allow proper ordering in the forms
+      attr_accessor :dates_section
+
       property :date_accepted, predicate: ::RDF::Vocab::DC.dateAccepted, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
@@ -195,6 +198,9 @@ module ScholarsArchive
       end
 
       property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
+
+      # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
+      attr_accessor :geo_section
 
       class_attribute :controlled_properties
       self.controlled_properties = [:based_near]

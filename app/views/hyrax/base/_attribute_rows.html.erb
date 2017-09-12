@@ -2,6 +2,7 @@
 <%= presenter.attribute_to_html(:creator, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:contributor, render_as: :faceted) %>
 <%= presenter.attribute_to_html(:abstract, label: t('simple_form.labels.defaults.abstract')) %>
+<%= presenter.attribute_to_html(:license_label, render_as: :linked, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label')) %>
 <%= presenter.attribute_to_html(:resource_type, render_as: :faceted, label: t('simple_form.labels.defaults.resource_type')) %>
 <%= presenter.attribute_to_html(:doi, render_as: :linked, label: t('simple_form.labels.defaults.doi')) %>
 <%= presenter.attribute_to_html(:identifier, render_as: :linked, search_field: 'identifier_tesim') %>
@@ -13,18 +14,25 @@
 <%= presenter.attribute_to_html(:date_issued, render_as: :edtf, search_field: 'date_issued_sim') %>
 <%= presenter.attribute_to_html(:date_valid, render_as: :edtf, search_field: 'date_valid_sim') %>
 <%= presenter.attribute_to_html(:bibliographic_citation, label: t('simple_form.labels.defaults.bibliographic_citation')) %>
+<%= presenter.attribute_to_html(:is_referenced_by, label: t('simple_form.labels.defaults.is_referenced_by')) %>
+<%= presenter.attribute_to_html(:has_journal, render_as: :faceted, label: t('simple_form.labels.defaults.has_journal')) %>
+<%= presenter.attribute_to_html(:has_volume, label: t('simple_form.labels.defaults.has_volume')) %>
+<%= presenter.attribute_to_html(:has_number, label: t('simple_form.labels.defaults.has_number')) %>
+<%= presenter.attribute_to_html(:conference_location, label: t('simple_form.labels.defaults.conference_location')) %>
+<%= presenter.attribute_to_html(:conference_name, render_as: :faceted, label: t('simple_form.labels.defaults.conference_name')) %>
+<%= presenter.attribute_to_html(:conference_section, render_as: :faceted, label: t('simple_form.labels.defaults.conference_section')) %>
+<%= presenter.attribute_to_html(:editor, label: t('simple_form.labels.defaults.editor')) %>
+<%= presenter.attribute_to_html(:academic_affiliation_label, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.academic_affiliation'), search_field: 'academic_affiliation_label') %>
+<%= presenter.attribute_to_html(:other_affiliation_label, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.other_affiliation'), search_field: 'other_affiliation_label') %>
 <%= presenter.attribute_to_html(:in_series, render_as: :linked, label: t('simple_form.labels.defaults.in_series')) %>
 <%= presenter.attribute_to_html(:keyword, render_as: :linked) %>
 <%= presenter.attribute_to_html(:subject, render_as: :faceted) %>
-<%= presenter.attribute_to_html(:license_label, render_as: :linked, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label')) %>
 <%= presenter.attribute_to_html(:tableofcontents, label: t('simple_form.labels.defaults.tableofcontents')) %>
-<%= presenter.attribute_to_html(:additional_information, label: t('simple_form.labels.defaults.additional_information')) %>
-<%= presenter.attribute_to_html(:academic_affiliation_label, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.academic_affiliation'), search_field: 'academic_affiliation_label') %>
-<%= presenter.attribute_to_html(:other_affiliation_label, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.other_affiliation'), search_field: 'other_affiliation_label') %>
-<%= presenter.attribute_to_html(:based_near_label, render_as: :faceted) %>
-<%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
-<%= presenter.attribute_to_html(:funding_statement, render_as: :linked, label: t('simple_form.labels.defaults.funding_statement')) %>
 <%= presenter.attribute_to_html(:rights_statement_label, render_as: :linked, search_field: 'rights_statement_label', label: t('simple_form.labels.defaults.rights_statement')) %>
+<!-- TODO: expose Related URL field here when available (create new attribute renderer for :nested_related_items) -->
+<%= presenter.attribute_to_html(:hydrologic_unit_code, label: t('simple_form.labels.defaults.hydrologic_unit_code')) %>
+<!-- TODO: expose nested_geo fields here when available (create new attribute renderer for :nested_geo) -->
+<%= presenter.attribute_to_html(:funding_statement, render_as: :linked, label: t('simple_form.labels.defaults.funding_statement')) %>
 <%= presenter.attribute_to_html(:publisher, render_as: :linked) %>
 <%= presenter.attribute_to_html(:peerreviewed_label, render_as: :linked, search_field: 'peerreviewed_label', label: t('simple_form.labels.defaults.peerreviewed')) %>
 <%= presenter.attribute_to_html(:language_label, render_as: :linked, search_field: 'language_label', label: t('simple_form.labels.defaults.language')) %>
@@ -32,10 +40,11 @@
 <%= presenter.attribute_to_html(:file_extent, label: t('simple_form.labels.defaults.file_extent')) %>
 <%= presenter.attribute_to_html(:digitization_spec, label: t('simple_form.labels.defaults.digitization_spec')) %>
 <%= presenter.attribute_to_html(:replaces, render_as: :external_link) %>
+<%= presenter.attribute_to_html(:additional_information, label: t('simple_form.labels.defaults.additional_information')) %>
+<%= presenter.attribute_to_html(:based_near_label, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
 <%= presenter.attribute_to_html(:source) %>
 <%= presenter.attribute_to_html(:embargo_reason) %>
-
-
 <%= presenter.attribute_to_html(:contributor_advisor, render_as: :faceted, label: t('simple_form.labels.defaults.contributor_advisor')) %>
 <%= presenter.attribute_to_html(:contributor_committeemember, render_as: :faceted, label: t('simple_form.labels.defaults.contributor_committeemember')) %>
 <%= presenter.attribute_to_html(:degree_discipline, label: t('simple_form.labels.defaults.degree_discipline')) %>
@@ -50,13 +59,5 @@
 <%= presenter.attribute_to_html(:typical_age_range, label: t('simple_form.labels.defaults.typical_age_range')) %>
 <%= presenter.attribute_to_html(:duration, label: t('simple_form.labels.defaults.duration')) %>
 <%= presenter.attribute_to_html(:time_required, label: t('simple_form.labels.defaults.time_required')) %>
-<%= presenter.attribute_to_html(:editor, label: t('simple_form.labels.defaults.editor')) %>
-<%= presenter.attribute_to_html(:has_volume, label: t('simple_form.labels.defaults.has_volume')) %>
-<%= presenter.attribute_to_html(:has_number, label: t('simple_form.labels.defaults.has_number')) %>
-<%= presenter.attribute_to_html(:conference_location, label: t('simple_form.labels.defaults.conference_location')) %>
-<%= presenter.attribute_to_html(:conference_name, render_as: :faceted, label: t('simple_form.labels.defaults.conference_name')) %>
-<%= presenter.attribute_to_html(:conference_section, render_as: :faceted, label: t('simple_form.labels.defaults.conference_section')) %>
-<%= presenter.attribute_to_html(:has_journal, render_as: :faceted, label: t('simple_form.labels.defaults.has_journal')) %>
-<%= presenter.attribute_to_html(:is_referenced_by, label: t('simple_form.labels.defaults.is_referenced_by')) %>
 <%= presenter.attribute_to_html(:isbn, label: t('simple_form.labels.defaults.isbn')) %>
 <%= presenter.attribute_to_html(:issn, label: t('simple_form.labels.defaults.issn')) %>

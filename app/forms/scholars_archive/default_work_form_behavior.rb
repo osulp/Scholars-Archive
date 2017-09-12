@@ -5,17 +5,21 @@ module ScholarsArchive
       include ScholarsArchive::DateTermsBehavior
       include ScholarsArchive::NestedBehavior
 
+      # accessor attributes only used to group dates and geo fields and allow proper ordering in this form
+      attr_accessor :dates_section
+      attr_accessor :geo_section
+
       self.terms += [:nested_related_items, :date_uploaded, :date_modified, :doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_accepted, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection, :isbn, :issn, :embargo_reason]
 
       self.required_fields += [:resource_type]
       self.required_fields -= [:keyword]
 
       def primary_terms
-        [:title, :alt_title, :creator, :contributor, :abstract, :license, :resource_type, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :keyword, :subject, :tableofcontents, :rights_statement] | super
+        [:title, :alt_title, :creator, :contributor, :abstract, :license, :resource_type, :doi, :identifier, :dates_section, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :keyword, :subject, :tableofcontents, :rights_statement] | super
       end
 
       def secondary_terms
-        [:nested_related_items, :hydrologic_unit_code, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :source, :isbn, :issn]
+        [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :source, :isbn, :issn]
       end
 
       def self.date_terms
