@@ -66,7 +66,7 @@ class SolrDocument
     self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
   end
 
-  def nested_related_items
+  def nested_related_items_label
     ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
   end
 
