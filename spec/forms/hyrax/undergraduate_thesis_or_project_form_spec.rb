@@ -13,7 +13,7 @@ RSpec.describe Hyrax::UndergraduateThesisOrProjectForm do
   end
 
   it "has the proper secondary terms" do
-    expect(new_form.secondary_terms).to include *[:degree_discipline]
+    expect(new_form.secondary_terms).to include *[:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :source, :isbn, :issn]
   end
 
   it "responds to date_terms" do
