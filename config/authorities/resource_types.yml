@@ -13,6 +13,8 @@ terms:
     term: Dataset
   - id: Dissertation
     term: Dissertation
+  - id: Honors College Thesis
+    term: Honors College Thesis
   - id: Image
     term: Image
   - id: Journal
