@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :check_d2h_http_header_auth
+
   def check_d2h_http_header_auth
     if !user_signed_in? && request.headers.key?('HTTP_D2H_AUTHENTICATION')
       email, token = request.headers['HTTP_D2H_AUTHENTICATION'].split('|')
