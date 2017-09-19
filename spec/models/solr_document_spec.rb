@@ -23,6 +23,16 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#degree_grantors_label" do
+    context "when degree_grantors_label is indexed" do
+      document = described_class.new({
+                                        "degree_grantors_label_ssim" => ["label1$www.blah.com"]
+                                     })
+      it "should return the label" do
+        expect(document.degree_grantors_label).to eq [{"label"=>"label1", "uri"=>"www.blah.com"}]
+      end
+    end
+  end
 
   describe "#nested_geo" do
     context "when there are no geo points" do

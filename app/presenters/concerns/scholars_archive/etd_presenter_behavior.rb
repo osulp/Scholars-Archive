@@ -8,6 +8,7 @@ module ScholarsArchive
                :degree_field,
                :degree_field_label,
                :degree_grantors,
+               :degree_grantors_label,
                :degree_level,
                :degree_name,
                :graduation_year, to: :solr_document
