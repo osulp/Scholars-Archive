@@ -39,3 +39,7 @@ en:
         q:
           label:          "Search %{application_name}"
           placeholder:    "Enter search terms or select 'Go' to browse"
+    visibility:
+      embargo:
+        note_html: "Temporarily restrict access to your work."
+        text: "Embargo"

@@ -27,6 +27,7 @@
           <label>
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO, data: { 'target': '#collapseEmbargo' } %>
             <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO) %>
+            <%= t('hyrax.visibility.embargo.note_html') %>
             <div class="collapse" id="collapseEmbargo">
               <div class="form-inline">
                 <div class="container">
@@ -66,6 +67,7 @@
           <label>
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_LEASE, data: { 'target': '#collapseLease' } %>
             <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_LEASE) %>
+            <%= t('hyrax.visibility.lease.note_html') %>
             <div class="collapse" id="collapseLease">
               <div class="form-inline">
                 <%= f.input :visibility_during_lease, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
