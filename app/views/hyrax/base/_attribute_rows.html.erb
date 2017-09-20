@@ -21,7 +21,7 @@
 <%= presenter.attribute_to_html(:degree_level, render_as: :faceted, label: t('simple_form.labels.defaults.degree_level')) %>
 <%= presenter.attribute_to_html(:degree_name, render_as: :faceted, label: t('simple_form.labels.defaults.degree_name')) %>
 <%= presenter.attribute_to_html(:degree_field_label, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.degree_field'), search_field: 'degree_field_label') %>
-<%= presenter.attribute_to_html(:degree_grantors, label: t('simple_form.labels.defaults.degree_grantors')) %>
+<%= presenter.attribute_to_html(:degree_grantors_label, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.degree_grantors'), search_field: 'degree_grantors_label') %>
 <%= presenter.attribute_to_html(:graduation_year, render_as: :faceted, label: t('simple_form.labels.defaults.graduation_year')) %>
 <%= presenter.attribute_to_html(:contributor_advisor, render_as: :faceted, label: t('simple_form.labels.defaults.contributor_advisor')) %>
 <%= presenter.attribute_to_html(:contributor_committeemember, render_as: :faceted, label: t('simple_form.labels.defaults.contributor_committeemember')) %>
