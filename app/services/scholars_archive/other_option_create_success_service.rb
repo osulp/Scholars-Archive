@@ -1,5 +1,5 @@
 module ScholarsArchive
-  class OtherOptionCreateSuccessService < Hyrax::MessageUserService
+  class OtherOptionCreateSuccessService < Hyrax::AbstractMessageService
     include ActionView::Helpers::UrlHelper
     attr_reader :depositor, :curation_concern, :metadata_element, :entry_text, :work_id, :work_title
 
