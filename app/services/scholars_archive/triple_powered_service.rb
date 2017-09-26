@@ -92,7 +92,7 @@ module ScholarsArchive
                                                                                               ENV["SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL"] || 'http://localhost:9999/blazegraph/namespace/development/sparql'))
           @triplestore.fetch(uri, from_remote: true)
         rescue TriplestoreAdapter::TriplestoreException => e
-          raise e
+          Rails.logger.warn e.message
         end
       end
     end
