@@ -60,3 +60,12 @@ set :branch, config['branch']
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+namespace :deploy do
+  # tell monit to restart all defined processes (i.e. puma, sidekiq)
+  after 'deploy:published', :restart_monit do
+    on roles(:app) do
+      execute "sudo /usr/bin/monit restart all"
+    end
+  end
+end
