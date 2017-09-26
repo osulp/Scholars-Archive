@@ -63,6 +63,12 @@ gem 'devise_cas_authenticatable'
 # Used for integration of Blazegraph backend and required API
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
+# OAI
+gem 'oai', :github => "code4lib/ruby-oai", :branch => :master
+
+# Draper for OAI SOLR decoration
+gem 'draper'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
