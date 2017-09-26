@@ -1,5 +1,4 @@
-<div class=<%= current_user.admin? ? "" : "hidden" %>>
-  <% if Flipflop.assign_admin_set? %>
+<% if Flipflop.assign_admin_set? %>
     <%# TODO: consider `Hyrax::AdminSetOptionsPresenter.select_options_for(controller: controller)` instead %>
     <%= f.input :admin_set_id, as: :select,
                 selected: ScholarsArchive::AdminSetSelectService.select(f.object.model.class.to_s, Hyrax::AdminSetOptionsPresenter.new(Hyrax::AdminSetService.new(controller)).select_options),
@@ -15,4 +14,3 @@
   <h3><%= t("hyrax.works.form.in_this_work") %></h3>
   <%= render 'form_child_work_relationships', f: f  %>
 <% end %>
-</div>
