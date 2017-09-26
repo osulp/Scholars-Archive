@@ -22,6 +22,10 @@ en:
         nested_geo_points: "Geographic Points"
         nested_geo_bbox: "Bounding Box"
         nested_geo: "Geographic Coordinates"
+  mailboxer:
+    message_mailer:
+      subject_new: "ScholarsArchive@OSU Message: %{subject}"
+      subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
     product_name:           "ScholarsArchive@OSU"
     product_twitter_handle: ""
