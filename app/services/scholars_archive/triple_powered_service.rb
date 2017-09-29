@@ -93,6 +93,7 @@ module ScholarsArchive
           @triplestore.fetch(uri, from_remote: true)
         rescue TriplestoreAdapter::TriplestoreException => e
           Rails.logger.warn e.message
+          return nil
         end
       end
     end
