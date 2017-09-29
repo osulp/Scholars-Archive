@@ -61,11 +61,4 @@ set :branch, config['branch']
 #     # password: 'please use keys'
 #   }
 
-namespace :deploy do
-  # tell monit to restart all defined processes (i.e. puma, sidekiq)
-  after 'deploy:published', :restart_monit do
-    on roles(:app) do
-      run "sudo /usr/bin/monit restart all"
-    end
-  end
-end
+
