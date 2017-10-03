@@ -69,17 +69,19 @@ module ScholarsArchive
       elsif date.instance_of? Date
         Array.wrap(date.year)
       else
-        Array.wrap(parsed_year)
+        parsed_year ? Array.wrap(parsed_year) : []
       end
     end
 
     def decade_dates
+      return [] unless date_value
       dates = DateDecadeConverter.new(date_value).run
-      dates ||= Array.wrap(DecadeDecorator.new(parsed_year))
+      dates ||= Array.wrap(DecadeDecorator.new(parsed_year)) if parsed_year
+      dates ? dates : []
     end
 
     def parsed_year
-      clean_datetime.year
+      clean_datetime.year if clean_datetime
     end
 
     def clean_datetime
@@ -90,7 +92,8 @@ module ScholarsArchive
       elsif date_value =~ /^[0-9]{4}/ # YYYY
         DateTime.strptime(date_value.split("-").first, "%Y")
       else
-        raise ArgumentError.new("Invalid date_value. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY.")
+        Rails.logger.warn "Invalid date_value: #{date_value}. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY."
+        return nil
       end
     end
 
