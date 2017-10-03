@@ -63,6 +63,9 @@ gem 'devise_cas_authenticatable'
 # Used for integration of Blazegraph backend and required API
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
+# To push contents to OSF
+gem 'share_notify', '~> 0.2'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
