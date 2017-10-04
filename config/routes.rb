@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  get '/downloads/:id(.:format)', to: 'scholars_archive/downloads#show', as: 'download'
   mount Blacklight::Engine => '/'
 
   concern :searchable, Blacklight::Routes::Searchable.new

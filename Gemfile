@@ -63,6 +63,8 @@ gem 'devise_cas_authenticatable'
 # Used for integration of Blazegraph backend and required API
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
+gem 'staccato'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
@@ -75,10 +77,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :test do
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-end
-
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'fcrepo_wrapper'
@@ -88,6 +86,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'coveralls'
   gem 'rspec_junit_formatter'
   gem 'rspec'
