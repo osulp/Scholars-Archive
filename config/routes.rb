@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-        mount BrowseEverything::Engine => '/browse'
+  mount BrowseEverything::Engine => '/browse'
+  concern :oai_provider, BlacklightOaiProvider::Routes::Provider.new
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   get '/downloads/:id(.:format)', to: 'scholars_archive/downloads#show', as: 'download'
   get '/single_use_link/download/:id(.:format)', to: 'scholars_archive/single_use_links_viewer#download', as: 'download_single_use_link'
@@ -8,6 +9,8 @@ Rails.application.routes.draw do
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+    concerns :oai_provider
+
     concerns :searchable
     concerns :range_searchable
   end

@@ -3,6 +3,8 @@ class CatalogController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
 
+  include BlacklightOaiProvider::CatalogControllerBehavior
+
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
 
@@ -447,6 +449,22 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
+
+    config.oai = {
+      provider: {
+        repository_name: 'ScholarsArchive@OSU',
+        repository_url: 'http://ir.library.oregonstate.edu',
+        record_prefix: 'ir.library.oregonstate.edu',
+        admin_email: 'scholarsarchive@oregonstate.edu'
+      },
+      document: {
+        limit: 50,
+        timestamp_field: 'system_create_dtsi',
+        timestamp_method: 'system_created',
+        set_fields: 'has_model_ssim',
+        set_class: '::OaiSet'
+      }
+    }
   end
 
   # disable the bookmark control from displaying in gallery view

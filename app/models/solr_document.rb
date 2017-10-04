@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class SolrDocument
   include Blacklight::Solr::Document
+  include BlacklightOaiProvider::SolrDocumentBehavior
+
   include Blacklight::Gallery::OpenseadragonSolrDocument
 
   # Adds Hyrax behaviors to the SolrDocument.
@@ -21,6 +23,8 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  use_extension(ScholarsArchive::Document::QualifiedDublinCore)
 
   # Do content negotiation for AF models.
 
@@ -74,6 +78,10 @@ class SolrDocument
     ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
   end
 
+  def system_created
+    Time.parse self['system_create_dtsi']
+  end
+
   solrized_methods [
       'abstract',
       'academic_affiliation',
@@ -125,4 +133,59 @@ class SolrDocument
       'typical_age_range',
       'duration'
   ]
+
+  field_semantics.merge!(
+    contributor:  ['contributor_tesim', 'editor_tesim', 'contributor_advisor_tesim', 'contributor_committeemember_tesim', 'oai_academic_affiliation_label'],
+    coverage:     ['based_near_label_tesim', 'conferenceLocation_tesim'],
+    creator:      'creator_tesim',
+    date:         'date_created_tesim',
+    description:  ['description_tesim', 'abstract_tesim'],
+    format:       ['file_extent_tesim', 'file_format_tesim'],
+    identifier:   'oai_identifier',
+    language:     'language_label_tesim',
+    publisher:    'publisher_tesim',
+    relation:     'oai_nested_related_items_label',
+    rights:       'oai_rights',
+    source:       ['source_tesim', 'isBasedOnUrl_tesim'],
+    subject:      ['subject_tesim', 'keyword_tesim'],
+    title:        'title_tesim',
+    type:         'resource_type_tesim'
+  )
+
+
+  # Override SolrDocument hash access for certain virtual fields
+  def [](key)
+    return send(key) if ['oai_academic_affiliation_label', 'oai_rights', 'oai_identifier', 'oai_nested_related_items_label'].include?(key)
+    super
+  end
+
+  def sets
+    fetch('has_model', []).map { |m| BlacklightOaiProvider::Set.new("has_model_ssim:#{m}") }
+  end
+
+  def oai_nested_related_items_label
+    related_items = []
+    nested_related_items_label.each do |r|
+      related_items << r["label"] + ': ' + r["uri"]
+    end
+    related_items
+  end
+
+  def oai_academic_affiliation_label
+    aa_labels = []
+    academic_affiliation_label.each do |a|
+      aa_labels << a["label"]
+    end
+    aa_labels
+  end
+
+  # Only return License if present, otherwise Rights
+  def oai_rights
+    license_label ? license_label : rights_statement_label
+  end
+
+  def oai_identifier
+    Rails.application.routes.url_helpers.url_for(:only_path => false, :action => 'show', :host => CatalogController.blacklight_config.oai[:provider][:repository_url], :controller => 'hyrax/' + self["has_model_ssim"].first.to_s.gsub(' ', '_').downcase.pluralize, id: self.id)
+  end
+
 end
