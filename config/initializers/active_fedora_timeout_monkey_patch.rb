@@ -1,9 +1,11 @@
 class ActiveFedora::Fedora
+  def request_options
+    @config[:request]
+  end
+
   def authorized_connection
     options = {}
-    if @config[:timeout]
-      options[:request] = { timeout: @config[:timeout].to_i }
-    end
+    options[:request] = request_options if request_options
     connection = Faraday.new(host, options)
     connection.basic_auth(user, password)
     connection
