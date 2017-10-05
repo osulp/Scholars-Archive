@@ -13,6 +13,7 @@ production:
   password: fedoraAdmin
   url: <%= ENV['SCHOLARSARCHIVE_FEDORA_URL'] %>
   base_path: /prod
+  request: { timeout: 600, open_timeout: 60}
 staging:
   user: fedoraAdmin
   password: fedoraAdmin
