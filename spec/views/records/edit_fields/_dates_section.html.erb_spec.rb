@@ -79,7 +79,7 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
     end
 
     it "renders date copyright" do
-      expect(rendered).to have_content("Date Copyright")
+      expect(rendered).to have_content("Date of Copyright")
     end
 
     it "renders date issued" do
