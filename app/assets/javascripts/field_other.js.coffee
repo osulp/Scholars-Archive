@@ -2,13 +2,13 @@
   Blacklight.onLoad ->
     hide_field = (class_selector) ->
       $(class_selector).addClass("hidden")
-      $(class_selector+' input').attr("type", "hidden")
-      $(class_selector+' input').addClass("hidden")
+      $(class_selector).find('input').attr("type", "hidden")
+      $(class_selector).find('input').addClass("hidden")
 
     show_field = (class_selector) ->
       $(class_selector).removeClass("hidden")
-      $(class_selector+' input').attr("type", "text")
-      $(class_selector+' input').removeClass("hidden")
+      $(class_selector).find('input').attr("type", "text")
+      $(class_selector).find('input').removeClass("hidden")
 
     load_default_values = () ->
       default_degree_field = $('select.degree-field-selector :selected').val()
@@ -29,6 +29,8 @@
       else
         hide_field('.degree-name-other')
 
+      default_other_affiliation = $('select.other-affiliation-selector').closest('li').find('.other_affiliation_other')
+      hide_field(default_other_affiliation)
 
     load_default_values()
 
@@ -52,5 +54,14 @@
         show_field('.degree-name-other')
       else
         hide_field('.degree-name-other')
+
+    $(document).on('change', 'select.other-affiliation-selector', (event) ->
+      selected = $(this).find(':selected')
+      selected_li = $(this).closest('li').find('.other_affiliation_other')
+      if selected.val() == "Other"
+        show_field(selected_li)
+      else
+        hide_field(selected_li)
+    )
 ) jQuery
 

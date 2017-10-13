@@ -67,6 +67,7 @@ module ScholarsArchive
       if degree_name_other_option.present? && curation_concern.degree_name.present? && curation_concern.degree_name == 'Other'
         curation_concern.degree_name_other = degree_name_other_option.name
       end
+      @other_affiliation_other_options = get_all_other_options('other_affiliation')
     end
 
     def parse_geo
@@ -94,5 +95,8 @@ module ScholarsArchive
       OtherOption.find_by(work_id: curation_concern.id, property_name: property)
     end
 
+    def get_all_other_options(property)
+      OtherOption.where(work_id: curation_concern.id, property_name: property.to_s)
+    end
   end
 end

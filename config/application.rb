@@ -45,7 +45,7 @@ module ScholarsArchive
     config.to_prepare  do
       sa_actor_factory = Hyrax::CurationConcern.actor_factory
       # insert AddOtherFieldOptionActor at the end of the hyrax stack
-      sa_actor_factory.insert_after Hyrax::Actors::InitializeWorkflowActor, ScholarsArchive::Actors::AddOtherFieldOptionActor
+      sa_actor_factory.insert_after Hyrax::Actors::ModelActor, ScholarsArchive::Actors::AddOtherFieldOptionActor
       # insert NestedFieldsOperationsActor before any of the base actors gets processed so that we can get a chance to apply our geo related processing in the nested attributes
       sa_actor_factory.insert_after Hyrax::Actors::InterpretVisibilityActor, ScholarsArchive::Actors::NestedFieldsOperationsActor
       # prepare our custom Scholars Archive stack

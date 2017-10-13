@@ -1,0 +1,106 @@
+terms:
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityBioenergyMinorProgram"
+  term: "Bioenergy Minor Program"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityBioresourceResearch"
+  term: "Bioresource Research"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityCelebrationOfUndergraduateExcellence"
+  term: "Celebration of Undergraduate Excellence"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityCenterForGenomeResearchAndBiocomputing"
+  term: "Center for Genome Research and Biocomputing"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n82166978"
+  term: "Engineering Experiment Station"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityExtendedCampus"
+  term: "Extended Campus"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n79115395"
+  term: "Extension Service"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n80126175"
+  term: "Extension Service and Agricultural Experiment Station"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityFacultySenateLibraryCommittee"
+  term: "Faculty Senate Library Committee"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n84147452"
+  term: "Graduate School"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n84131837"
+  term: "Hatfield Marine Science Center"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege"
+  term: "Honors College"
+  active: true
+- id: "http://id.loc.gov/authorities/names/no2006063387"
+  term: "Institute for Natural Resources"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityLibraryUndergraduateResearchAwards"
+  term: "Library Undergraduate Research Awards"
+  active: true
+- id: "http://www.wikidata.org/entity/Q3151762"
+  term: "Linus Pauling Institute"
+  active: true
+- id: "http://www.wikidata.org/entity/Q7060130"
+  term: "Northwest National Marine Renewable Energy Center (NNMREC) Publications"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n81053266"
+  term: "Oregon Department of Fish and Wildlife"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonExplorer"
+  term: "Oregon Explorer"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonMarineRenewableEnergyEnvSciConference"
+  term: "Oregon Marine Renewable Energy Environmental Science Conference Proceedings"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateArthropodCollection"
+  term: "Oregon State Arthropod Collection"
+  active: true
+- id: "http://id.loc.gov/authorities/names/no2011009181"
+  term: "Oregon Wave Energy Trust"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonWineResearchInstitute"
+  term: "Oregon Wine Research Institute"
+  active: true
+- id: "http://www.wikidata.org/entity/Q7101371"
+  term: "OSU Cascades"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n82039655"
+  term: "OSU Press"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityPresidentsOffice"
+  term: "President's Office"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityRegistrarsOffice"
+  term: "Registrar's Office"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityRuralStudiesProgram"
+  term: "Rural Studies Program"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityDivisionOfStudentAffairs"
+  term: "Student Affairs"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityURSA"
+  term: "Undergraduate Research, Scholarship, and the Arts (URSA)"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityHousingDiningServices"
+  term: "University Housing & Dining Services"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityInformationTechnologyCommittee"
+  term: "University Information Technology Committee"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n00020491"
+  term: "University Libraries"
+  active: true
+- id: "http://id.loc.gov/authorities/names/no2011149633"
+  term: "Urban League of Portland"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityWomensCenter"
+  term: "Women's Center"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityWritingIntensiveCurriculum"
+  term: "Writing Intensive Curriculum"
+  active: true

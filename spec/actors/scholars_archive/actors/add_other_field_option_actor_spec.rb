@@ -11,7 +11,8 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
         title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"],
         degree_field: "Other",
         degree_level: "Other",
-        degree_name: "Other"
+        degree_name: "Other",
+        other_affiliation: ["Other"]
     }
   }
   let!(:user) do
@@ -33,17 +34,20 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
     allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other'],['Zoology','Zoology']])
     allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['Zoology','Zoology']])
     allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['Master of Arts (M.A.)','Master of Arts (M.A.)']])
+    allow_any_instance_of(ScholarsArchive::OtherAffiliationService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['http://opaquenamespace.org/ns/subject/OregonStateUniversityBioenergyMinorProgram', 'Bioenergy Minor Program']])
     allow(user).to receive(:admin?).and_return(true)
     allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
     curation_concern.degree_field_other = test_degree_field_other
     curation_concern.degree_level_other = test_degree_level_other
     curation_concern.degree_name_other = test_degree_name_other
+    curation_concern.other_affiliation_other = test_other_affiliation_other
   end
 
   describe '#create' do
     let(:test_degree_field_other) { "test1 degree field other" }
     let(:test_degree_level_other) { "test1 degree level other" }
     let(:test_degree_name_other) { "test1 degree name other" }
+    let(:test_other_affiliation_other) { [ "test entry one", "test entry two"] }
 
     context 'with other values selected for degree_field, degree_field, and degree_name' do
       before do
@@ -57,27 +61,33 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_level_other) { "Certificate" }
       let(:test_degree_field_other) { "Zoology" }
       let(:test_degree_name_other) { "Master of Arts (M.A.)" }
+      let(:test_other_affiliation_other) { [ "Bioenergy Minor Program"] }
 
       before do
         curation_concern.id = "test2"
       end
       it "raises error if the degree level already exists" do
         expect(subject.create(env)).to be false
-        expect(curation_concern.errors[:degree_level_other].first).to eq 'This value already exists, please select from the list above.'
+        expect(curation_concern.errors[:degree_level_other].first).to eq "This 'Other' value: \"Certificate\" already exists, please select from the list."
       end
       it "raises error if the degree field already exists" do
         expect(subject.create(env)).to be false
-        expect(curation_concern.errors[:degree_field_other].first).to eq 'This value already exists, please select from the list above.'
+        expect(curation_concern.errors[:degree_field_other].first).to eq "This 'Other' value: \"Zoology\" already exists, please select from the list."
       end
       it "raises error if the degree name already exists" do
         expect(subject.create(env)).to be false
-        expect(curation_concern.errors[:degree_name_other].first).to eq 'This value already exists, please select from the list above.'
+        expect(curation_concern.errors[:degree_name_other].first).to eq "This 'Other' value: \"Master of Arts (M.A.)\" already exists, please select from the list."
+      end
+      it "raises error if the other_affiliation entry already exists" do
+        expect(subject.create(env)).to be false
+        expect(curation_concern.errors[:other_affiliation].first).to eq "This 'Other' value: \"Bioenergy Minor Program\" already exists, please select from the list."
       end
     end
     context 'with blank "other" values selected for degree_level and degree_field and degree_name' do
       let(:test_degree_level_other) { "" }
       let(:test_degree_field_other) { "" }
       let(:test_degree_name_other) { "" }
+      let(:test_other_affiliation_other) { [] }
 
       before do
         curation_concern.id = "test3"
@@ -102,6 +112,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_level_other) { "test2 degree level other" }
       let(:test_degree_field_other) { "test2 degree field other" }
       let(:test_degree_name_other) { "test2 degree name other" }
+      let(:test_other_affiliation_other) { ["test2 other affiliation other"] }
 
       before do
         curation_concern.id = "test4"

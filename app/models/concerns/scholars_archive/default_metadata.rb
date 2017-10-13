@@ -153,6 +153,9 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
+      attr_accessor :other_affiliation_other
+
       property :part_of, predicate: ::RDF::Vocab::DC.isPartOf do |index|
         index.as :stored_searchable
       end

@@ -1,0 +1,40 @@
+<% other_affiliation_service = ScholarsArchive::OtherAffiliationService.new(values: f.object.send(:other_affiliation)) %>
+<%= f.input :other_affiliation, as: :multi_value_select_other,
+            collection: other_affiliation_service.select_sorted_all_options,
+            include_blank: true,
+            input_html: { class: "form-control other-affiliation-selector #{f.object.new_record? ? 'new-record' : ''}" },
+            :wrapper_html => {:class => "other-affiliation-field"}
+%>
+<div class="other_options" id="other_options">
+  <% if @other_affiliation_other_options && @other_affiliation_other_options.count > 0 %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Other Entries Found for <%= I18n.t("simple_form.labels.defaults.other_affiliation")  %></th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @other_affiliation_other_options.each do |entry| %>
+            <tr class="edit_other_option" id="edit_other_option_<%= entry.id.to_s %>">
+              <td>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label><%= entry.name.to_s %></label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <a class="btn btn-danger" data-confirm="Are you sure? This action cannot be undone." data-remote="true" rel="nofollow" data-method="delete" href="/other_options/<%= entry.id.to_s %>">
+                  <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
+                </a>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>
+
+
+
