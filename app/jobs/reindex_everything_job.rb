@@ -1,4 +1,4 @@
-class ReindexEverythingJob < Hyrax::ApplicationJob
+class ReindexEverythingJob < ScholarsArchive::ApplicationJob
   queue_as :default
 
   def perform

@@ -25,7 +25,7 @@ module ScholarsArchive
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Pacific Time (US & Canada)'
-    config.active_job.queue_adapter = :inline
+    config.active_job.queue_adapter = :sidekiq
     config.autoload_paths += %W(#{config.root}/lib)
 
     # load and inject local_env.yml key/values into ENV
