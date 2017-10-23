@@ -65,6 +65,8 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
 gem 'staccato'
 
+gem 'browse-everything'
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'

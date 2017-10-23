@@ -23,5 +23,6 @@
 //= require nested_field
 //= require embargo_date_field
 //= require 'blacklight_range_limit'
+//= require browse_everything
 //= require_tree .
 //= require hyrax
