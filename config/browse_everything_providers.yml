@@ -4,7 +4,7 @@
 #
 ---
 file_system:
-  :home: "/tmp/browse-everything"
+  :home: <%= ENV['BROWSEEVERYTHING_FILESYSTEM_PATH'] || '/tmp' %>
 # dropbox:
 #   :app_key: YOUR_DROPBOX_APP_KEY
 #   :app_secret: YOUR_DROPBOX_APP_SECRET
