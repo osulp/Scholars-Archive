@@ -1,18 +1,36 @@
-SCHOLARSARCHIVE_ADAPTER: youmustchangethis
-SCHOLARSARCHIVE_DB: youmustchangethis
-SCHOLARSARCHIVE_DB_HOST: youmustchangethis
-SCHOLARSARCHIVE_DB_PASSWORD: youmustchangethis
-SCHOLARSARCHIVE_DB_PORT: youmustchangethis
-SCHOLARSARCHIVE_DB_USERNAME: youmustchangethis
-SCHOLARSARCHIVE_REDIS_HOST: youmustchangethis
-SCHOLARSARCHIVE_REDIS_PORT: youmustchangethis
-SCHOLARSARCHIVE_SECRET_KEY_BASE: youmustchangethis
-SCHOLARSARCHIVE_CAS_BASE_URL: youmustchangethis
-SCHOLARSARCHIVE_CAS_VALIDATE_URL: youmustchangethis
-SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: youmustchangethis
-SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URI: youmustchangethis
-SCHOLARSARCHIVE_DEFAULT_ADMIN_SET: youmustchangethis
-HTTP_D2H_AUTHENTICATION_TOKEN: youmustchangethis
-HTTP_D2H_AUTHENTICATION_USERNAME: youmustchangethis
-SCHOLARSARCHIVE_ADMIN_EMAIL: youmustchangethis
-BROWSEEVERYTHING_FILESYSTEM_PATH: youmustchangethis
+# Database 
+SCHOLARSARCHIVE_ADAPTER: mysql2
+SCHOLARSARCHIVE_DB: development
+SCHOLARSARCHIVE_DB_HOST: localhost
+SCHOLARSARCHIVE_DB_PASSWORD: '12341234'
+SCHOLARSARCHIVE_DB_PORT: '3300'
+SCHOLARSARCHIVE_DB_USERNAME: root
+
+# Redis for background jobs and notifications
+SCHOLARSARCHIVE_REDIS_HOST: localhost
+SCHOLARSARCHIVE_REDIS_PORT: '6379'
+
+# Secret key for Devise and Rails security
+SCHOLARSARCHIVE_SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
+
+# CAS authentication 
+SCHOLARSARCHIVE_CAS_BASE_URL: 'https://FQDN/cas'
+SCHOLARSARCHIVE_CAS_VALIDATE_URL: 'https://FQDN/cas/samlValidate'
+
+# Triplestore adapter cache
+SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: blazegraph
+SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URI: 'http://127.0.0.1:8080/blazegraph/namespace/development/sparql'
+
+# Default selected Admin Set on work form
+SCHOLARSARCHIVE_DEFAULT_ADMIN_SET: 'Default Admin Set'
+
+# DSpace2Hydra Migration User for API access, bypasses CAS authentication. 'USERNAME' requires a matching entry
+# in the users table
+HTTP_D2H_AUTHENTICATION_TOKEN: '12345678901234567890'
+HTTP_D2H_AUTHENTICATION_USERNAME: 'bobross@FQDN'
+
+# Adminstrators email address for notifications
+SCHOLARSARCHIVE_ADMIN_EMAIL: 'noreply@FQDN'
+
+# The full path to the directory that BrowseEverything uses for uploads, the webserver user must have access to this directory
+BROWSEEVERYTHING_FILESYSTEM_PATH: '/tmp/browse-everything'
