@@ -1,4 +1,4 @@
-<% other_affiliation_service = ScholarsArchive::OtherAffiliationService.new(values: f.object.send(:other_affiliation)) %>
+<% other_affiliation_service = ScholarsArchive::OtherAffiliationService.new %>
 <%= f.input :other_affiliation, as: :multi_value_select_other,
             collection: other_affiliation_service.select_sorted_all_options,
             include_blank: true,

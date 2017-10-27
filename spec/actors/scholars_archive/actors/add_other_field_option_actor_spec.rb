@@ -80,7 +80,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       end
       it "raises error if the other_affiliation entry already exists" do
         expect(subject.create(env)).to be false
-        expect(curation_concern.errors[:other_affiliation].first).to eq "This 'Other' value: \"Bioenergy Minor Program\" already exists, please select from the list."
+        expect(curation_concern.errors[:other_affiliation_other].first).to eq "This 'Other' value: \"Bioenergy Minor Program\" already exists, please select from the list."
       end
     end
     context 'with blank "other" values selected for degree_level and degree_field and degree_name' do

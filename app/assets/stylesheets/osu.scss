@@ -251,3 +251,13 @@ input.fill_column {
   font-size: 1.15em;
   margin-bottom: 0.5em;
 }
+
+.other_affiliation_other.multi-value-select-other.has-error {
+  background-color: white;
+  margin-bottom: 3.5em;
+}
+
+.other_affiliation_other.multi-value-select-other.has-error .help-block {
+  padding-top: 3em;
+}
+

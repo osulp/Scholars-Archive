@@ -29,13 +29,18 @@
       else
         hide_field('.degree-name-other')
 
-      default_other_affiliation = $('select.other-affiliation-selector').closest('li').find('.other_affiliation_other')
-      hide_field(default_other_affiliation)
+      $('select.other-affiliation-selector').each (i, element) =>
+        default_other_affiliation = $(element.closest('li')).find('.other_affiliation_other')
+        if $(element).val() == "Other"
+          show_field(default_other_affiliation)
+        else
+          hide_field(default_other_affiliation)
 
     load_default_values()
 
     $('select.degree-field-selector').change ->
       selected = $('select.degree-field-selector :selected').val()
+      $('.degree-field-other').find('input').val("")
       if selected == "Other"
         show_field('.degree-field-other')
       else
@@ -43,6 +48,7 @@
 
     $('select.degree-level-selector').change ->
       selected = $('select.degree-level-selector :selected').val()
+      $('.degree-level-other').find('input').val("")
       if selected == "Other"
         show_field('.degree-level-other')
       else
@@ -50,6 +56,7 @@
 
     $('select.degree-name-selector').change ->
       selected = $('select.degree-name-selector :selected').val()
+      $('.degree-name-other').find('input').val("")
       if selected == "Other"
         show_field('.degree-name-other')
       else
@@ -58,6 +65,7 @@
     $(document).on('change', 'select.other-affiliation-selector', (event) ->
       selected = $(this).find(':selected')
       selected_li = $(this).closest('li').find('.other_affiliation_other')
+      $(selected_li).find('input').val("")
       if selected.val() == "Other"
         show_field(selected_li)
       else

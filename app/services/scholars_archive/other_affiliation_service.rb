@@ -1,8 +1,7 @@
 module ScholarsArchive
   # Provide select options for other_affiliation field
   class OtherAffiliationService < Hyrax::QaSelectService
-    def initialize(values: nil)
-      @values = values
+    def initialize
       super('other_affiliation')
     end
 

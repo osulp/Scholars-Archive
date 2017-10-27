@@ -33,7 +33,7 @@ module ScholarsArchive
           error_counter += validate_other_value? env, field: :degree_name, collection: degree_name_options(env.user)
         end
 
-        if other_affiliation_present? (env)
+        if other_affiliation_other_present? (env)
           # check if other_affiliation_other is already in the list or is missing
           error_counter += validate_other_value_multiple? env, field: :other_affiliation, collection: other_affiliation_options(env.user)
         end
@@ -67,12 +67,23 @@ module ScholarsArchive
         other_value = env.curation_concern.send(other_field)
         error_counter = 0
 
+        valid_values = []
         if other_value.present?
           other_value.each do |entry|
             if other_value_in_collection? other_value: entry, collection: collection
-              env.curation_concern.errors.add(field, I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s))
+              err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
+              env.curation_concern.errors.add(other_field, I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s))
+              env.curation_concern.other_affiliation << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
               error_counter += 1
+            else
+              valid_values << entry.to_s
             end
+          end
+        end
+
+        if error_counter > 0
+          valid_values.each do |entry|
+            env.curation_concern.other_affiliation << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
           end
         end
         return error_counter
@@ -106,8 +117,8 @@ module ScholarsArchive
         env.attributes['degree_field'].present? && env.attributes['degree_level'].present? && env.attributes['degree_name'].present?
       end
 
-      def other_affiliation_present? (env)
-        env.attributes['other_affiliation'].present?
+      def other_affiliation_other_present? (env)
+        env.curation_concern.other_affiliation_other.present?
       end
 
       def save_custom_option(env)
@@ -126,11 +137,9 @@ module ScholarsArchive
           end
         end
 
-        if other_affiliation_present? (env)
-          if env.curation_concern.other_affiliation_other.present?
-            all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
-            notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
-          end
+        if other_affiliation_other_present? (env)
+          all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
+          notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
         end
 
         return true
@@ -181,11 +190,9 @@ module ScholarsArchive
           end
         end
 
-        if other_affiliation_present? (env)
-          if env.curation_concern.other_affiliation_other.present?
-            all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
-            notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
-          end
+        if other_affiliation_other_present? (env)
+          all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
+          notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
         end
 
         return true
