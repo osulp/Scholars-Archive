@@ -50,7 +50,7 @@ gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'hyrax', github: 'projecthydra-labs/hyrax', tag: 'v2.0.0.rc1'
+gem 'hyrax', github: 'projecthydra-labs/hyrax', tag: 'v2.0.0.rc2'
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
