@@ -17,16 +17,20 @@ module ScholarsArchive
       select_all_options.sort
     end
 
+    def select_sorted_all_options_truncated
+      truncate_date(select_sorted_all_options)
+    end
+
     def select_sorted_current_options
       select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_last_five_years?(active_option) }
     end
 
-    def select_sorted_current_options_truncated
-      truncate_date(select_sorted_current_options)
+    def select_sorted_current_open_options
+      select_open(select_sorted_current_options)
     end
 
-    def select_sorted_all_options_truncated
-      truncate_date(select_sorted_all_options)
+    def select_sorted_current_open_options_truncated
+      truncate_date(select_sorted_current_open_options)
     end
 
     private
@@ -35,8 +39,8 @@ module ScholarsArchive
       options.map {|option| [option.first.split(" - ").first, option.second]}
     end
 
-    def select_sorted_open_options
-      select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_open_dates?(active_option) }
+    def select_open(options)
+      options.select { |active_option| EdtfDateCompareService.includes_open_dates?(active_option) }
     end
   end
 end
