@@ -34,5 +34,9 @@ module ScholarsArchive
     def truncate_date(options)
       options.map {|option| [option.first.split(" - ").first, option.second]}
     end
+
+    def select_sorted_open_options
+      select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_open_dates?(active_option) }
+    end
   end
 end
