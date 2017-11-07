@@ -22,8 +22,11 @@ module ScholarsArchive
     end
 
     def select_sorted_current_options
-      select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_last_five_years?(active_option) } << other_option
+      select_sorted_active_options.select { |active_option| EdtfDateCompareService.includes_last_five_years?(active_option) }
     end
 
+    def select_sorted_current_options_truncated
+      select_sorted_current_options.map {|option| [option.first.split(" - ").first, option.second]} << other_option
+    end
   end
 end
