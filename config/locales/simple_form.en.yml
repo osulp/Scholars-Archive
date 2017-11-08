@@ -77,6 +77,8 @@ en:
         tableofcontents: "Table of Contents for the item."
         time_required: "Time (in minutes) to complete the activity"
         typical_age_range: ""
+      honors_college_thesis:
+        contributor_advisor: "The name of the Academic Mentor on this project."
     labels:
       defaults:
         abstract: "Abstract or Summary"
@@ -145,3 +147,5 @@ en:
         time_required: "Time Required"
         typical_age_range: "Typical Age Range"
         visibility_after_embargo: "Then set it to"
+      honors_college_thesis:
+        contributor_advisor: "Mentor"
