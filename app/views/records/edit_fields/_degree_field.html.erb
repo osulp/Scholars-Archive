@@ -1,6 +1,6 @@
 <% degree_field_service = ScholarsArchive::DegreeFieldService.new %>
 <%= f.input :degree_field,
-    collection: current_user.admin? ? degree_field_service.select_sorted_all_options : degree_field_service.select_sorted_current_options_truncated,
+    collection: current_user.admin? ? degree_field_service.select_sorted_all_options_truncated : degree_field_service.select_sorted_current_options_truncated,
     include_blank: true,
     input_html: { class: "form-control degree-field-selector"} %>
 <% if f.object.model.degree_field.present? && f.object.model.degree_field == 'Other' && f.object.model.degree_field_other.present? %>

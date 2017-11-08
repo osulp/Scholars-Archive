@@ -22,7 +22,17 @@ module ScholarsArchive
     end
 
     def select_sorted_current_options_truncated
-      select_sorted_current_options.map {|option| [option.first.split(" - ").first, option.second]}
+      truncate_date(select_sorted_current_options)
+    end
+
+    def select_sorted_all_options_truncated
+      truncate_date(select_sorted_all_options)
+    end
+
+    private
+
+    def truncate_date(options)
+      options.map {|option| [option.first.split(" - ").first, option.second]}
     end
   end
 end
