@@ -134,7 +134,7 @@ en:
         nested_geo_points: "Geographic Point"
         nested_related_items: "Related Items"
         on_behalf_of: "Proxy Depositors - Select the user on whose behalf you are depositing"
-        other_affiliation: "Other Affiliation"
+        other_affiliation: "Non-Academic Affiliation"
         peerreviewed: "Peer Reviewed"
         publisher: "Publisher"
         replaces: "This resource replaces"
