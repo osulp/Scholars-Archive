@@ -45,10 +45,16 @@ RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view
     ]
   end
 
-  let(:test_sorted_current_options_truncated_values) do
+  let(:test_sorted_current_open_options) do
+    [
+        ["Accounting - 1979/1992, 2009/open", "http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG"],
+        ["Animal and Rangeland Sciences - 2013/open", "http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7"],
+    ]
+  end
+
+  let(:test_sorted_current_open_options_truncated_values) do
     [
         "Accounting",
-        "Animal Sciences",
         "Animal and Rangeland Sciences"
     ]
   end
@@ -85,7 +91,7 @@ RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view
     end
 
     it 'has the a select box with all available options' do
-      expect(rendered).to have_select('graduate_thesis_or_dissertation_academic_affiliation', with_options: test_sorted_current_options_truncated_values)
+      expect(rendered).to have_select('graduate_thesis_or_dissertation_academic_affiliation', with_options: test_sorted_current_open_options_truncated_values)
     end
   end
 end
