@@ -1,0 +1,114 @@
+# Handle Redirects to Oregon Digital for Communities and Collections
+handles_od_communities_collections:
+
+  # Special Collections & Archives Research Center
+  "1891": "http://oregondigital.org/sets/osu-scarc"
+
+  # Athletics
+  "3924": "http://oregondigital.org/sets/osu-athletics"
+
+  # Athletics: Baseball
+  "3925": "http://oregondigital.org/sets/osu-sports-media-guides"
+
+  # Athletics: Baseball: Media Guides (Baseball)
+  "3926": "http://oregondigital.org/sets/osu-sports-media-guides"
+
+  # Registrar's Office: General Catalog
+  "7553": "http://oregondigital.org/sets/general-catalogs"
+
+  # Serials: Annual Cruise
+  "10778": "http://oregondigital.org/sets/annual-cruise"
+
+  # Serials: Daily Barometer
+  "11410": "http://oregondigital.org/sets/daily-barometer"
+
+  # Urban League of Portland: Reports
+#  12161:    
+
+  # Athletics: Track and Field
+  "20816": "http://oregondigital.org/sets/osu-sports-media-guides"
+
+  # Athletics: Track and Field: Media Guides (Track and Field)
+  "20817": "http://oregondigital.org/sets/osu-sports-media-guides"
+
+  # Chinese Disinterment Documents
+  "21890": "http://oregondigital.org/sets/or-chinese-disinterment"
+
+  # Chinese Disinterment: Applications, Permits, Correspondence and Notes
+#  21955:
+
+  # Urban League of Portland
+#  22017: oma?   
+  # Urban League of Portland: Constitution, Memos, Etc.
+#  22018:    
+  # Urban League of Portland: Meeting Minutes
+#  22019:    
+
+  # Chinese Disinterment: Legal Documents
+#  22264:    
+
+  # Fact Books (Institutional Research)
+  "26926": "http://oregondigital.org/sets/osu-fact-book"
+
+  # OSU Cultural Resource Centers
+#  27565: oma?   
+
+  # The Scab Sheet
+  "27912": "http://oregondigital.org/sets/osu-student-protest-underground-pubs"
+
+  # MSS Ferguson, Ed Oregon Anti-Apartheid Scrapbook, 1980-1982
+#  28106:     
+
+  # Chinese Disinterment: Shipping Documents
+#  28681:     
+
+  # Chinese Disinterment: 1928 Disinterment
+#  28784:     
+
+  # Minorities in the Barometer
+#  29755:    
+
+  # OSU's WWII Era Japanese American Students
+#  36408: oma?   
+
+  # A. President's Office Records (RG 13), 1941-1942
+#  36409:     
+  # B. OSU Daily Barometer Articles, 1942
+#  36410:     
+  # D. Honorary Degrees, 2007-2008
+#  36411:     
+  # C. Oregon Stater Article, 1995
+#  36492:     
+
+  # OSU Cultural Resource Centers: Native American Longhouse
+#  37459:    
+
+  # Urban League of Portland: Newsletters
+#  41359:    
+
+  # MSS Thomas Kraemer
+#  43449:    
+
+  # Oregon Multicultural Archives Oral History Collection (OH 18)
+#  "46450"     
+
+  # OSU Cultural Resource Centers: Asian & Pacific Cultural Center
+#  "48655"     
+
+  # Oregon Hops and Brewing Archives
+  "49145": "http://oregondigital.org/sets/ohba"
+
+  # Oregon Hops and Brewing Archives: Hops Research Reports
+  "49146": "http://oregondigital.org/sets/ohba/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=hops+research+reports"
+
+  # Oregon Hops and Brewing Archives: Hop press
+  "50989": "http://oregondigital.org/sets/ohba/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=hops+press"
+
+  # OSU Cultural Resource Centers: Black Cultural Center
+#  54942:    
+
+  # OSU Cultural Resource Centers: Women's Center
+#  55778:     
+
+  # IRCO Asian Family Center Oral History Collection
+#  56025: ""   
