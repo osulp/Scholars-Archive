@@ -4,6 +4,11 @@ module ScholarsArchive
       last_five_years_include?(active_option)
     end
 
+    def self.includes_open_dates?(active_option)
+      # For this method we are checking that the date is included in the last five years AND that it is marked as "open"
+      last_five_years_include?(active_option) ? parse_date(active_option).include?("open") : false
+    end
+
     private
 
       #This method normalizes the active_option sent into this method. If the
@@ -12,10 +17,14 @@ module ScholarsArchive
       #the form ["Label - date", "uri"] it will then check if the dates are
       #coming in as date1/date2 and or {date1..date2} and parse accordingly
       def self.last_five_years_include?(active_option)
-        academic_date = active_option.first.split(" - ").last
+        academic_date = parse_date(active_option)
         normalized_date = "{" + academic_date + "}" unless academic_date.include?("{")
         return parse_academic_affiliation(normalized_date) unless normalized_date.nil? || !normalized_date.include?("/")
         date_in_past_five_years?(normalized_date, academic_date) if !academic_date.include?("/")
+      end
+
+      def self.parse_date(active_option)
+        active_option.first.split(" - ").last
       end
 
       def self.parse_academic_affiliation(normalized_date)

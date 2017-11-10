@@ -3,6 +3,8 @@ class CatalogController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
 
+  include BlacklightOaiProvider::CatalogControllerBehavior
+
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
 
@@ -58,7 +60,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "language_label_ssim", label: "Language", limit: 5
     config.add_facet_field "license_label_ssim", label: "License", limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), label: "Location", limit: 5
-    config.add_facet_field "other_affiliation_label_ssim", label: "Other Affiliation", limit: 5, helper_method: :parsed_label_uri
+    config.add_facet_field "other_affiliation_label_ssim", label: "Non-Academic Affiliation", limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field "peerreviewed_label_ssim", label: "Peer Reviewed", limit: 2
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field "rights_statement_label_ssim", label: "Rights Statement", limit: 5
@@ -447,6 +449,22 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
+
+    config.oai = {
+      provider: {
+        repository_name: 'ScholarsArchive@OSU',
+        repository_url: 'http://ir.library.oregonstate.edu',
+        record_prefix: 'ir.library.oregonstate.edu',
+        admin_email: 'scholarsarchive@oregonstate.edu'
+      },
+      document: {
+        limit: 50,
+        timestamp_field: 'system_create_dtsi',
+        timestamp_method: 'system_created',
+        set_fields: 'has_model_ssim',
+        set_class: '::OaiSet'
+      }
+    }
   end
 
   # disable the bookmark control from displaying in gallery view

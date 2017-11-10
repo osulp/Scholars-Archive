@@ -1,5 +1,5 @@
 <% academic_units_service = ScholarsArchive::AcademicUnitsService.new %>
 <%= f.input :academic_affiliation, as: :multi_value_select,
-  collection: current_user.admin? ? academic_units_service.select_sorted_all_options : academic_units_service.select_sorted_current_options,
+  collection: current_user.admin? ? academic_units_service.select_sorted_all_options_truncated : academic_units_service.select_sorted_current_open_options_truncated,
   include_blank: true,
   input_html: { class: "form-control language-default-select #{f.object.new_record? ? 'new-record' : ''}" } %>
