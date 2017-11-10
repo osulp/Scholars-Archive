@@ -1,24 +1,24 @@
 module ScholarsArchive
   class OtherOptionCreateSuccessService < Hyrax::AbstractMessageService
     include ActionView::Helpers::UrlHelper
-    attr_reader :depositor, :curation_concern, :metadata_element, :entry_text, :work_id, :work_title
+    attr_reader :depositor, :curation_concern, :metadata_field, :new_entries, :work_id, :work_title
 
-    def initialize(curation_concern, field:)
+    def initialize(curation_concern, field:, new_entries:)
       @curation_concern = curation_concern
       @work_id = curation_concern.id
       @work_title = curation_concern.title.first.to_s
       @depositor = curation_concern.depositor
-      @metadata_element = I18n.t("simple_form.labels.defaults.#{field}")
-      @entry_text = curation_concern.send("#{field}_other".to_sym)
+      @metadata_field = field
+      @new_entries = new_entries
       super(curation_concern, user_to_notify)
     end
 
     def message
-      "#{depositor} has entered a #{metadata_element} 'Other' entry: #{entry_text}. This entry should be reviewed and added to the controlled vocabulary or rejected/corrected.\n\n Work: #{work_title} (#{link_to work_id, work_path})"
+      "#{depositor} has entered one or more #{metadata_element} 'Other' entries: #{entries_text}. These entries should be reviewed and added to the controlled vocabulary or rejected/corrected.\n\n Work: #{work_title} (#{link_to work_id, work_path})"
     end
 
     def subject
-      'Degree "Other" entry notification'
+      "#{metadata_element} \"Other\" entry notification"
     end
 
     def user_to_notify
@@ -27,10 +27,21 @@ module ScholarsArchive
 
     private
 
+    def metadata_element
+      I18n.t("simple_form.labels.defaults.#{metadata_field}")
+    end
+
+    def entries_text
+      if ScholarsArchive::FormMetadataService.multiple? curation_concern.to_model.class,metadata_field.to_sym
+        new_entries.to_a.join(', ')
+      else
+        new_entries.to_s
+      end
+    end
+
     def work_path
       key = curation_concern.model_name.singular_route_key
       Rails.application.routes.url_helpers.send(key + "_path", curation_concern.id)
     end
-
   end
 end

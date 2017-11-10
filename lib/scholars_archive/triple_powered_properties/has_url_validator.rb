@@ -17,6 +17,8 @@ module ScholarsArchive::TriplePoweredProperties
           values = Array(record[prop[:field]])
         end
 
+        return if values.include? 'Other'
+
         values.each do |value|
           begin
             uri = URI.parse(value)

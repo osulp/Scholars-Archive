@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount BrowseEverything::Engine => '/browse'
+
+  resources :other_options, only: [:destroy]
+
   concern :oai_provider, BlacklightOaiProvider::Routes::Provider.new
+
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   get '/downloads/:id(.:format)', to: 'scholars_archive/downloads#show', as: 'download'
   get '/single_use_link/download/:id(.:format)', to: 'scholars_archive/single_use_links_viewer#download', as: 'download_single_use_link'

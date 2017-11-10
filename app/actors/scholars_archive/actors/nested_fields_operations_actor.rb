@@ -46,15 +46,27 @@ module ScholarsArchive
       end
 
       def save_nested_elements(env)
+        clean_up_fields(env)
         return true unless nested_geo_present? (env)
         set_geo_coordinates(env)
         return true
       end
 
       def update_nested_elements(env)
+        clean_up_fields(env)
         return true unless nested_geo_present? (env)
         set_geo_coordinates(env)
         return true
+      end
+
+      def clean_up_fields (env)
+        # Note: since we aren't storing "Other" values in fedora for other_affiliation, here we can skip them
+        # for the model and only keep valid uri values. add_other_field_option_actor is responsible for persisting the
+        # text values provided by the user for these "Other" entries. Here we are just removing/cleaning up the
+        # selection before getting to the ModelActor, which is where the attributes appears to be persisted in fedora
+        if env.attributes['other_affiliation']
+          env.attributes['other_affiliation'].delete_if { |x| x == 'Other'}
+        end
       end
 
       def clean_up_nested_attributes (env)

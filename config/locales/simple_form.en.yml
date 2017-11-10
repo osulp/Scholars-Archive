@@ -9,7 +9,7 @@ en:
     "yes": 'Yes'
 
     actor_validation:
-      other_value_exists: "This value already exists, please select from the list above."
+      other_value_exists: "This 'Other' value: \"%{other_entry}\" already exists, please select from the list."
       other_value_missing: "Please provide a value for 'Other'"
 
     hints:
