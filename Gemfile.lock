@@ -43,12 +43,12 @@ GIT
       sparql-client
 
 GIT
-  remote: https://github.com/projecthydra-labs/hyrax.git
-  revision: 9bd41af0dd47774adf2f9c19a5ac34002f123d67
-  tag: v2.0.0.rc2
+  remote: https://github.com/samvera/hyrax.git
+  revision: 14d181db73efaa3ff68255832dc7f4b0c03eecfb
+  tag: v2.0.0
   specs:
-    hyrax (2.0.0.rc2)
-      active-fedora (>= 11.3.1)
+    hyrax (2.0.0)
+      active-fedora (~> 11.5, >= 11.5.2)
       active_fedora-noid (~> 2.0, >= 2.0.2)
       almond-rails (~> 0.1)
       awesome_nested_set (~> 3.1)
@@ -125,8 +125,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active-fedora (11.5.0)
-      active-triples (~> 0.11.0)
+    active-fedora (11.5.2)
+      active-triples (>= 0.11.0, < 2.0.0)
       activemodel (>= 4.2, < 6)
       activesupport (>= 4.2.4, < 6)
       deprecation
@@ -136,11 +136,11 @@ GEM
       rsolr (>= 1.1.2, < 3)
       ruby-progressbar (~> 1.0)
       solrizer (>= 3.4, < 5)
-    active-triples (0.11.0)
+    active-triples (1.0.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       rdf (~> 2.0, >= 2.0.2)
-      rdf-vocab
+      rdf-vocab (~> 2.0)
     active_encode (0.1.1)
       activesupport
     active_fedora-noid (2.2.0)
@@ -174,15 +174,15 @@ GEM
       execjs
     awesome_nested_set (3.1.3)
       activerecord (>= 4.0.0, < 5.2)
-    aws-partitions (1.29.0)
-    aws-sdk-core (3.6.0)
+    aws-partitions (1.34.0)
+    aws-sdk-core (3.7.0)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.2.0)
+    aws-sdk-kms (1.3.0)
       aws-sdk-core (~> 3)
       aws-sigv4 (~> 1.0)
-    aws-sdk-s3 (1.5.0)
+    aws-sdk-s3 (1.6.0)
       aws-sdk-core (~> 3)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.0)
@@ -252,7 +252,7 @@ GEM
     capistrano-rails (1.3.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rbenv (2.1.2)
+    capistrano-rbenv (2.1.3)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
     capistrano3-puma (3.1.1)
@@ -316,20 +316,19 @@ GEM
     dry-container (0.6.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.4.0)
+    dry-core (0.4.1)
       concurrent-ruby (~> 1.0)
     dry-equalizer (0.2.0)
     dry-logic (0.4.2)
       dry-container (~> 0.2, >= 0.2.6)
       dry-core (~> 0.2)
       dry-equalizer (~> 0.2)
-    dry-struct (0.3.1)
-      dry-configurable (~> 0.1)
-      dry-core (~> 0.3)
+    dry-struct (0.4.0)
+      dry-core (~> 0.4, >= 0.4.1)
       dry-equalizer (~> 0.2)
-      dry-types (~> 0.9, >= 0.9.0)
+      dry-types (~> 0.12, >= 0.12.2)
       ice_nine (~> 0.11)
-    dry-types (0.12.1)
+    dry-types (0.12.2)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
       dry-container (~> 0.3)
@@ -380,7 +379,7 @@ GEM
       google-api-client (>= 0.11.0, < 0.14.0)
       googleauth (>= 0.5.0, < 1.0.0)
       nokogiri (>= 1.5.3, < 2.0.0)
-    googleauth (0.6.1)
+    googleauth (0.6.2)
       faraday (~> 0.12)
       jwt (>= 1.4, < 3.0)
       logging (~> 2.0)
@@ -434,7 +433,7 @@ GEM
     hydra-pcdm (0.10.0)
       active-fedora (>= 10, < 12)
       mime-types (>= 1)
-    hydra-role-management (0.2.2)
+    hydra-role-management (1.0.0)
       blacklight
       bootstrap_form
       cancancan
@@ -443,7 +442,7 @@ GEM
       hydra-file_characterization (~> 0.3, >= 0.3.3)
       hydra-pcdm (>= 0.9)
       om (~> 3.1)
-    i18n (0.9.0)
+    i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
@@ -551,7 +550,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_magick (4.8.0)
-    mini_mime (0.1.4)
+    mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
@@ -594,7 +593,7 @@ GEM
       websocket-driver (>= 0.2.0)
     posix-spawn (0.3.13)
     power_converter (0.1.2)
-    public_suffix (3.0.0)
+    public_suffix (3.0.1)
     puma (3.10.0)
     puma_worker_killer (0.1.0)
       get_process_mem (~> 0.2)
@@ -640,7 +639,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rdf (2.2.11)
+    rdf (2.2.12)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
     rdf-aggregate-repo (2.2.0)
@@ -696,8 +695,8 @@ GEM
     redic (1.5.0)
       hiredis
     redis (3.3.5)
-    redis-namespace (1.5.3)
-      redis (~> 3.0, >= 3.0.4)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
     redlock (0.2.0)
       redis (~> 3, >= 3.0.0)
     representable (3.0.4)
@@ -820,7 +819,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
-    sshkit (1.14.0)
+    sshkit (1.15.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     staccato (0.5.1)
@@ -833,8 +832,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    tins (1.15.0)
-    tinymce-rails (4.7.1)
+    tins (1.15.1)
+    tinymce-rails (4.7.2)
       railties (>= 3.1.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
@@ -861,7 +860,7 @@ GEM
       hashdiff
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.2)
+    websocket-extensions (0.1.3)
     xml-simple (1.1.5)
     xpath (2.1.0)
       nokogiri (~> 1.3)
@@ -925,4 +924,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.4
+   1.15.3
