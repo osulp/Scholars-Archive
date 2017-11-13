@@ -135,7 +135,7 @@ class SolrDocument
   ]
 
   field_semantics.merge!(
-    contributor:  ['contributor_tesim', 'editor_tesim', 'contributor_advisor_tesim', 'contributor_committeemember_tesim', 'oai_academic_affiliation_label'],
+    contributor:  ['contributor_tesim', 'editor_tesim', 'contributor_advisor_tesim', 'contributor_committeemember_tesim', 'oai_academic_affiliation_label', 'oai_other_affiliation_label'],
     coverage:     ['based_near_label_tesim', 'conferenceLocation_tesim'],
     creator:      'creator_tesim',
     date:         'date_created_tesim',
@@ -155,7 +155,7 @@ class SolrDocument
 
   # Override SolrDocument hash access for certain virtual fields
   def [](key)
-    return send(key) if ['oai_academic_affiliation_label', 'oai_rights', 'oai_identifier', 'oai_nested_related_items_label'].include?(key)
+    return send(key) if ['oai_academic_affiliation_label', 'oai_other_affiliation_label', 'oai_rights', 'oai_identifier', 'oai_nested_related_items_label'].include?(key)
     super
   end
 
@@ -177,6 +177,14 @@ class SolrDocument
       aa_labels << a["label"]
     end
     aa_labels
+  end
+
+  def oai_other_affiliation_label
+    oa_labels = []
+    other_affiliation_label.each do |o|
+      oa_labels << o["label"]
+    end
+    oa_labels
   end
 
   # Only return License if present, otherwise Rights
