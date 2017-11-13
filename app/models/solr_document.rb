@@ -160,7 +160,7 @@ class SolrDocument
   end
 
   def sets
-    fetch('has_model', []).map { |m| BlacklightOaiProvider::Set.new("has_model_ssim:#{m}") }
+    fetch('isPartOf', []).map { |m| BlacklightOaiProvider::Set.new("isPartOf_ssim:#{m}") }
   end
 
   def oai_nested_related_items_label
