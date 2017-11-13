@@ -1,6 +1,7 @@
 module ScholarsArchive
   class HandlesController < ApplicationController
     before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
+    before_action :handle_redirects, only: [:handle_show, :handle_download]
     skip_before_action :check_d2h_http_header_auth
 
     def handle_file_404
@@ -40,6 +41,27 @@ module ScholarsArchive
     end
 
     private
+
+      def handle_redirects
+        new_od_path = od_redirects["handles_od_communities_collections"][params[:handle_localname]]
+        if new_od_path
+          redirect_to new_od_path and return
+        end
+
+        new_ir_collections_path = ir_collections_redirects["handles_ir_collections"][params[:handle_localname]]
+        if new_ir_collections_path
+          redirect_to new_ir_collections_path and return
+        end
+      end
+
+      def od_redirects
+        YAML.load(File.read("config/handles_od_communities_collections.yml"))
+      end
+
+      def ir_collections_redirects
+        YAML.load(File.read("config/handles_ir_collections.yml"))
+      end
+
       def verify_handle_prefix
         if params[:handle_prefix] != "1957"
           ScholarsArchive::HandleErrorLoggingService.log_incorrect_handle_prefix_error(params)

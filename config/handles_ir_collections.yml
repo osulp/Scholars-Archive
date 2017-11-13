@@ -1,0 +1,867 @@
+handles_ir_collections:				
+# A. Personal/Political/Official Records	
+  "14384": "http://ir.library.oregonstate.edu/"
+# B. Legislative Records	
+  "14385": "http://ir.library.oregonstate.edu/"
+# C. Constituent Service Records	
+  "14386": "http://ir.library.oregonstate.edu/"
+# D. Press Relations/Media Activities Records	
+  "14387": "http://ir.library.oregonstate.edu/"
+# E. Office Administration Records	
+  "14388": "http://ir.library.oregonstate.edu/"
+# BB 350 -- Elementary Biochemistry	
+  "28714": "http://ir.library.oregonstate.edu/"
+# BB 450/550 - General Biochemistry I	
+  "28716": "http://ir.library.oregonstate.edu/"
+# BB 451/551 - General Biochemistry II	
+  "28717": "http://ir.library.oregonstate.edu/"
+# Final Reports  (Professional Science Master's Programs)	
+  "29547": "http://ir.library.oregonstate.edu/"
+# Master of Art in Interdisciplinary Studies Theses and Student Research Papers (MAIS)	
+  "7145": "http://ir.library.oregonstate.edu/"
+# Master of Public Policy Student Research Papers	
+  "4129": "http://ir.library.oregonstate.edu/"
+# Master's Theses (Mathematics)	
+  "16491": "http://ir.library.oregonstate.edu/"
+# MS Non-Thesis Papers (Environmental Science Program)	
+  "18402": "http://ir.library.oregonstate.edu/"
+# MS non-thesis Research Papers (Civil and Construction Engineering)	
+  "26311": "http://ir.library.oregonstate.edu/"
+# MS non-thesis Research Papers (EECS)	
+  "10238": "http://ir.library.oregonstate.edu/"
+# Non-Thesis Reports (Professional Science Master in Applied Systematics in Botany)	
+  "13790": "http://ir.library.oregonstate.edu/"
+# Ph.D. Theses (Mathematics)	
+  "15739": "http://ir.library.oregonstate.edu/"
+# Student Research Papers (Mathematics)	
+  "17264": "http://ir.library.oregonstate.edu/"
+# Theses (Cascades)	
+  "3002": "http://ir.library.oregonstate.edu/"
+# Theses (Electrical Engineering and Computer Science)	
+  "8163": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Agricultural Education and Agricultural Sciences)	
+  "18499": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Animal and Rangeland Science)	
+  "18828": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Biochemistry and Biophysics)	
+  "19991": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Botany and Plant Pathology)	
+  "17954": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Environmental Science Program)	
+  "15881": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Exercise and Sport Science)	
+  "21155": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Nuclear Engineering and Radiation Health Physics)	
+  "18497": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Nutrition)	
+  "25874": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Public Health)	
+  "19679": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (School of Chemical, Biological and Environmental Engineering)	
+  "18466": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Statistics)	
+  "18468": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Toxicology)	
+  "18863": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Veterinary Medicine)	
+  "19531": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Applied Economics)	
+  "17667": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Biological and Ecological Engineering)	
+  "496": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Chemistry)	
+  "17747": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (College of Earth, Ocean and Atmospheric Sciences)	
+  "1339": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (College of Forestry, 1984/85 to Present)	
+  "7864": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Crop & Soil Science)	
+  "18369": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Design and Human Environment)	
+  "17698": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (English)	
+  "18072": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Fisheries and Wildlife)	
+  "17093": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Food Science and Technology)	
+  "17882": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Forest Ecosystems and Society & Forest Science)	
+  "10901": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Geography)	
+  "1723": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Geology)	
+  "7890": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Hatfield Marine Science Center)	
+  "13727": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Horticulture)	
+  "19297": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Human Development and Family Sciences)	
+  "18473": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Mechanical, Industrial & Manufacturing Engineering)	
+  "16561": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Microbiology)	
+  "18388": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Pharmacy)	
+  "17744": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Physics)	
+  "18070": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Rangeland Ecology and Management & Rangeland Resources)	
+  "7888": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (School of Forestry, pre - 1984)	
+  "12309": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Science and Mathematics Education)	
+  "21289": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Speech Communication)	
+  "11960": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Sustainable Forest Management, Forest Engineering, & Forest Management)	
+  "10902": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Wood Science)	
+  "7820": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Zoology)	
+  "17891": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations, Portfolios and Student Research Papers (Education)	
+  "18090": "http://ir.library.oregonstate.edu/"
+# Water Resources Graduate Program Theses and Dissertations	
+  "12251": "http://ir.library.oregonstate.edu/"
+# Water Resources Master's Project Papers (Non-Thesis)	
+  "18386": "http://ir.library.oregonstate.edu/"
+# Research Bulletin (Forest Research Laboratory)	
+  "7547": "http://ir.library.oregonstate.edu/"
+# Research Contribution (Forest Research Laboratory)	
+  "7548": "http://ir.library.oregonstate.edu/"
+# Research Note (Forest Research Laboratory)	
+  "7544": "http://ir.library.oregonstate.edu/"
+# Research Paper (Forest Research Laboratory)	
+  "7545": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station -- Station Circulars	
+  "6760": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station -- Technical Bulletins	
+  "8330": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station and Extension Service -- Special Reports	
+  "3905": "http://ir.library.oregonstate.edu/"
+# Conference Proceedings (Rural Studies Program)	
+  "8654": "http://ir.library.oregonstate.edu/"
+# Extension Service -- Bulletins / Extension Bulletins	
+  "6758": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Rural Studies Program)	
+  "8738": "http://ir.library.oregonstate.edu/"
+# Gerald W. Williams Collection	
+  "9112": "http://ir.library.oregonstate.edu/"
+# Historical Documents (Rural Studies Program)	
+  "8742": "http://ir.library.oregonstate.edu/"
+# Journal of Oregon Ornithology	
+  "7951": "http://ir.library.oregonstate.edu/"
+# Newsletters (Rural Studies Program)	
+  "8740": "http://ir.library.oregonstate.edu/"
+# Oregon Department of Fish and Wildlife Annual/Biennial Reports	
+  "2079": "http://ir.library.oregonstate.edu/"
+# Oregon Explorer	
+  "29": "http://ir.library.oregonstate.edu/"
+# Oregon Explorer Stories	
+  "8975": "http://ir.library.oregonstate.edu/"
+# Presentations and Posters (Rural Studies Program)	
+  "8739": "http://ir.library.oregonstate.edu/"
+# Publications and Reports (INR)	
+  "12": "http://ir.library.oregonstate.edu/"
+# Publications and Reports (ORBIC)	
+  "28": "http://ir.library.oregonstate.edu/"
+# Stories (Rural Studies Program)	
+  "8741": "http://ir.library.oregonstate.edu/"
+# Studies in Oregon Ornithology/Yaquina Studies in Natural History	
+  "8288": "http://ir.library.oregonstate.edu/"
+# The Ore Bin	
+  "2239": "http://ir.library.oregonstate.edu/"
+# Water and Watersheds Initiative (1960-2005)	
+  "31": "http://ir.library.oregonstate.edu/"
+# White Papers (Rural Studies Program)	
+  "8737": "http://ir.library.oregonstate.edu/"
+# U.S. Forest Service Research Legacy	
+  "93": "http://ir.library.oregonstate.edu/"
+# Purchased EResources	
+  "33962": "http://ir.library.oregonstate.edu/"
+# Bioresource Research Theses	
+  "456": "http://ir.library.oregonstate.edu/"
+# Faculty-Student Research Publications (Bioresource Research)	
+  "6763": "http://ir.library.oregonstate.edu/"
+# Honors College Theses	
+  "8": "http://ir.library.oregonstate.edu/"
+# Honors Theses (EECS)	
+  "11786": "http://ir.library.oregonstate.edu/"
+# International Degree Theses	
+  "3013": "http://ir.library.oregonstate.edu/"
+# Library Undergraduate Research Awards	
+  "4505": "http://ir.library.oregonstate.edu/"
+# Undergraduate Research	
+  "32832": "http://ir.library.oregonstate.edu/"
+# Undergraduate Research, Scholarship and the Arts (URSA)	
+  "18339": "http://ir.library.oregonstate.edu/"
+# WIC Culture of Writing Awards	
+  "15953": "http://ir.library.oregonstate.edu/"
+# 1928 Disinterment	
+  "28784": "http://ir.library.oregonstate.edu/"
+# 2008: Toward One Oregon	
+  "10432": "http://ir.library.oregonstate.edu/"
+# 4-H	
+  "11814": "http://ir.library.oregonstate.edu/"
+# A. President's Office Records (RG 13), 1941-1942	
+  "36409": "http://ir.library.oregonstate.edu/"
+# Academic Standing Reports	
+  "2050": "http://ir.library.oregonstate.edu/"
+# Addresses and Speeches (President's Office)	
+  "12969": "http://ir.library.oregonstate.edu/"
+# Administrative Documents (Hatfield Marine Science Center)	
+  "22850": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station -- Bulletins / Station Bulletins	
+  "12080": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station -- Circulars of Information	
+  "11961": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station and Extension Service -- Brief Series, Books and Pamphlets	
+  "17022": "http://ir.library.oregonstate.edu/"
+# Agricultural Experiment Station Reports and Annual Reports	
+  "21591": "http://ir.library.oregonstate.edu/"
+# All Commodity Summaries	
+  "49484": "http://ir.library.oregonstate.edu/"
+# Alsea Basin Resources	
+  "21995": "http://ir.library.oregonstate.edu/"
+# Annual / Biennial Report (Oregon State University. Forest Research Laboratory)	
+  "31836": "http://ir.library.oregonstate.edu/"
+# Annual Cruise (includes OAC Forestry Club Annual)	
+  "10778": "http://ir.library.oregonstate.edu/"
+# Annual report of the Oregon Agricultural College and Experiment Station	
+  "23675": "http://ir.library.oregonstate.edu/"
+# Annual Reports	
+  "38414": "http://ir.library.oregonstate.edu/"
+# Annual Reports. Utility Pole Research Cooperative	
+  "9255": "http://ir.library.oregonstate.edu/"
+# Applications, Permits, Correspondence and Notes	
+  "21955": "http://ir.library.oregonstate.edu/"
+# Aquaculture (IIFET 2000)	
+  "30469": "http://ir.library.oregonstate.edu/"
+# Aquaculture (IIFET 2006)	
+  "43176": "http://ir.library.oregonstate.edu/"
+# Aquaculture (IIFET 2008)	
+  "36192": "http://ir.library.oregonstate.edu/"
+# Asian & Pacific Cultural Center	
+  "48655": "http://ir.library.oregonstate.edu/"
+# Assessment (Student Affairs Research and Evaluation)	
+  "1478": "http://ir.library.oregonstate.edu/"
+# Assessment Council (Student Affairs Research and Evaluation)	
+  "37879": "http://ir.library.oregonstate.edu/"
+# B. OSU Daily Barometer Articles, 1942	
+  "36410": "http://ir.library.oregonstate.edu/"
+# Beetles of the Pacific Northwest	
+  "13789": "http://ir.library.oregonstate.edu/"
+# Beginning College Survey of Student Engagement (Student Affairs Research and Evaluation)	
+  "38020": "http://ir.library.oregonstate.edu/"
+# Berries	
+  "48179": "http://ir.library.oregonstate.edu/"
+# Bibliographic Series (Forest Research Laboratory) 	
+  "10767": "http://ir.library.oregonstate.edu/"
+# Biennial Conference on University Education in Natural Resources. (7th : 2008, Corvallis, OR)	
+  "7138": "http://ir.library.oregonstate.edu/"
+# Bioenergy Minor Program	
+  "55786": "http://ir.library.oregonstate.edu/"
+# Black Cultural Center	
+  "54942": "http://ir.library.oregonstate.edu/"
+# Brief Series, Books and Pamphlets	
+  "83": "http://ir.library.oregonstate.edu/"
+# Bulletin (Forest Research Laboratory)	
+  "9954": "http://ir.library.oregonstate.edu/"
+# C. Oregon Stater Article, 1995	
+  "36492": "http://ir.library.oregonstate.edu/"
+# Cascades Poster Session	
+  "2872": "http://ir.library.oregonstate.edu/"
+# Case Studies (Forest Research Laboratory)	
+  "12199": "http://ir.library.oregonstate.edu/"
+# Case Study Briefs (Forest Research Laboratory)	
+  "55772": "http://ir.library.oregonstate.edu/"
+# Celebration of Undergraduate Excellence (CUE) Research Posters	
+  "21372": "http://ir.library.oregonstate.edu/"
+# CEOAS Reports	
+  "1316": "http://ir.library.oregonstate.edu/"
+# Chronicle	
+  "15192": "http://ir.library.oregonstate.edu/"
+# code4lib Conference 2006	
+  "2933": "http://ir.library.oregonstate.edu/"
+# Common Data Set	
+  "28861": "http://ir.library.oregonstate.edu/"
+# Community Studies (Rural Studies Program)	
+  "11173": "http://ir.library.oregonstate.edu/"
+# Compendium of Computer Science Doctoral Qualifying Exams	
+  "15731": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 1996)	
+  "56896": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 2000)	
+  "30462": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 2002)	
+  "56902": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 2004)	
+  "56551": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 2006)	
+  "43174": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 2008)	
+  "36186": "http://ir.library.oregonstate.edu/"
+# Conference Materials (IIFET 2014)	
+  "52888": "http://ir.library.oregonstate.edu/"
+# Conference Materials (NAAFE Forum 2015)	
+  "56427": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 1996)	
+  "56897": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 2000)	
+  "30214": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 2002)	
+  "56903": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 2004)	
+  "56550": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 2010)	
+  "38400": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 2012)	
+  "32231": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (IIFET 2014)	
+  "52605": "http://ir.library.oregonstate.edu/"
+# Conference Papers and Presentations (NAAFE Forum 2015)	
+  "56428": "http://ir.library.oregonstate.edu/"
+# Coniferous Forest Biome (International Biological Program)	
+  "7483": "http://ir.library.oregonstate.edu/"
+# Constitution, Memos, Etc.	
+  "22018": "http://ir.library.oregonstate.edu/"
+# Contributions in Education and Outreach (Forest Research Laboratory)	
+  "12219": "http://ir.library.oregonstate.edu/"
+# Cooperative Institutional Research Program Reports	
+  "1345": "http://ir.library.oregonstate.edu/"
+# Course Materials (Geography)	
+  "1725": "http://ir.library.oregonstate.edu/"
+# Crop Science Report / Agronomic Crop Science Report	
+  "41000": "http://ir.library.oregonstate.edu/"
+# D. Honorary Degrees, 2007-2008	
+  "36411": "http://ir.library.oregonstate.edu/"
+# Daily Barometer	
+  "11410": "http://ir.library.oregonstate.edu/"
+# Data Report Series (College of Earth, Ocean, and Atmospheric Sciences)	
+  "6526": "http://ir.library.oregonstate.edu/"
+# Datasets	
+  "40397": "http://ir.library.oregonstate.edu/"
+# Departmental Publication Reviews (Faculty Senate Library Committee)	
+  "1749": "http://ir.library.oregonstate.edu/"
+# Distinguished Graduates (Fisheries and Wildlife)	
+  "17094": "http://ir.library.oregonstate.edu/"
+# Electronic Theses and Dissertations	
+  "89": "http://ir.library.oregonstate.edu/"
+# Employment Reports (Institutional Research)	
+  "1918": "http://ir.library.oregonstate.edu/"
+# Engineering Experiment Station -- Bulletins / Bulletin Series	
+  "30413": "http://ir.library.oregonstate.edu/"
+# Engineering Experiment Station -- Circular / Circular Series	
+  "30842": "http://ir.library.oregonstate.edu/"
+# Enrollment Reports (Institutional Research)	
+  "1906": "http://ir.library.oregonstate.edu/"
+# Entering Student Survey Reports	
+  "8671": "http://ir.library.oregonstate.edu/"
+# Experience of a Lifetime -- Student Blogs	
+  "13697": "http://ir.library.oregonstate.edu/"
+# Extension Service -- Circulars / Extension Circulars	
+  "11938": "http://ir.library.oregonstate.edu/"
+# Extension Service -- Fact Sheets	
+  "15742": "http://ir.library.oregonstate.edu/"
+# Extension Service -- Fertilizer Guides	
+  "20533": "http://ir.library.oregonstate.edu/"
+# Extension Service -- Miscellaneous / Educational Materials	
+  "12079": "http://ir.library.oregonstate.edu/"
+# Extension Service -- Pacific Northwest Extension Publishing	
+  "11962": "http://ir.library.oregonstate.edu/"
+# Fact Books (Institutional Research)	
+  "26926": "http://ir.library.oregonstate.edu/"
+# Fact Sheets (Rural Studies Program)	
+  "11172": "http://ir.library.oregonstate.edu/"
+# Faculty and HMSC Affilliated Research Publications (Hatfield Marine Science Center)	
+  "1320": "http://ir.library.oregonstate.edu/"
+# Faculty Posters and Presentations (Science and Mathematics Education)	
+  "28268": "http://ir.library.oregonstate.edu/"
+# Faculty Presentations (Botany and Plant Pathology)	
+  "1933": "http://ir.library.oregonstate.edu/"
+# Faculty Reports	
+  "28860": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Animal and Rangeland Science)	
+  "30112": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Anthropology)	
+  "13088": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Applied Economics)	
+  "14948": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Art)	
+  "21992": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Biochemistry and Biophysics)	
+  "22171": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Biological and Ecological Engineering)	
+  "29655": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Biomedical Sciences)	
+  "30117": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Botany and Plant Pathology)	
+  "1934": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Cascades)	
+  "3005": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Center for Genome Research & Biocomputing)	
+  "42306": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Chemistry)	
+  "20456": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Civil and Construction Engineering)	
+  "28193": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Agricultural Sciences)	
+  "13589": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Business)	
+  "14600": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Earth, Ocean, and Atmospheric Sciences)	
+  "23252": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Forestry & Oregon Forest Research Laboratory)	
+  "12727": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Pharmacy)	
+  "31640": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Public Health and Human Sciences)	
+  "28635": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (College of Veterinary Medicine)	
+  "26623": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Crop and Soil Science)	
+  "18801": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Design and Human Environment)	
+  "14778": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Economics)	
+  "14946": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Education)	
+  "21414": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Electrical Engineering and Computer Science)	
+  "7303": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (English)	
+  "21415": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Environmental & Molecular Toxicology)	
+  "25640": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Environmental Science Program)	
+  "19065": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Ethnic Studies)	
+  "21413": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Exercise and Sport Science)	
+  "19835": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Fisheries and Wildlife)	
+  "12626": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Food Science and Technology)	
+  "18479": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Foreign Languages and Literatures)	
+  "24917": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Forest Ecosystems and Society)	
+  "15211": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Forest Engineering, Resources and Management)	
+  "21686": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (History)	
+  "12725": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Horticulture)	
+  "19101": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Human Development and Family Sciences)	
+  "19055": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Integrative Biology)	
+  "52700": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Libraries)	
+  "4": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Linus Pauling Institute)	
+  "36901": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Mathematics)	
+  "13818": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Mechanical, Industrial & Manufacturing Engineering)	
+  "14320": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Microbiology)	
+  "9973": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Music)	
+  "31706": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Nuclear Science and Engineering)	
+  "57714": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Nutrition)	
+  "31643": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Oregon Sea Grant)	
+  "42617": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Philosophy)	
+  "21417": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Physics)	
+  "13832": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Psychology/Psychological Science)	
+  "36303": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Public Health)	
+  "36851": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Public Policy)	
+  "37003": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Rangeland Ecology and Management)	
+  "29210": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (School of Chemical, Biological and Environmental Engineering)	
+  "16184": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Science and Mathematics Education)	
+  "27258": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Sociology)	
+  "28892": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Speech Communication)	
+  "35539": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Statistics)	
+  "29656": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Water Research)	
+  "14204": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Women, Gender and Sexuality)	
+  "18603": "http://ir.library.oregonstate.edu/"
+# Faculty Research Publications (Wood Science & Engineering)	
+  "22029": "http://ir.library.oregonstate.edu/"
+# Faculty Survey of Student Engagement Reports	
+  "1346": "http://ir.library.oregonstate.edu/"
+# Field School Papers (ANTH 499/599)	
+  "9248": "http://ir.library.oregonstate.edu/"
+# FIR Report	
+  "47557": "http://ir.library.oregonstate.edu/"
+# Fish and Aquaculture Sectors' Development (IIFET 2000)	
+  "30464": "http://ir.library.oregonstate.edu/"
+# Fish and Aquaculture Sectors' Development (IIFET 2006)	
+  "43179": "http://ir.library.oregonstate.edu/"
+# Fish and Aquaculture Sectors' Development (IIFET 2008)	
+  "36195": "http://ir.library.oregonstate.edu/"
+# Fishery Management (IIFET 2000)	
+  "30466": "http://ir.library.oregonstate.edu/"
+# Fishery Management (IIFET 2006)	
+  "43180": "http://ir.library.oregonstate.edu/"
+# Fishery Management (IIFET 2008)	
+  "36187": "http://ir.library.oregonstate.edu/"
+# Fishing Sector Behavior and Activities (IIFET 2000)	
+  "30470": "http://ir.library.oregonstate.edu/"
+# Focus on Forestry	
+  "13521": "http://ir.library.oregonstate.edu/"
+# Focus on Forestry Articles	
+  "29407": "http://ir.library.oregonstate.edu/"
+# Free Choice Learning	
+  "8308": "http://ir.library.oregonstate.edu/"
+# General Catalog	
+  "7553": "http://ir.library.oregonstate.edu/"
+# Graduation Reports (Institutional Research)	
+  "1917": "http://ir.library.oregonstate.edu/"
+# Grains, Hay & Grass Seeds	
+  "48350": "http://ir.library.oregonstate.edu/"
+# Habitat Improvement Project	
+  "43062": "http://ir.library.oregonstate.edu/"
+# Highlights Report Data Requirements	
+  "38365": "http://ir.library.oregonstate.edu/"
+# Hill Family Foundation Series	
+  "10070": "http://ir.library.oregonstate.edu/"
+# Historical Records (Music)	
+  "10688": "http://ir.library.oregonstate.edu/"
+# Historical Records (Student Affairs)	
+  "10261": "http://ir.library.oregonstate.edu/"
+# HMSC Admistrative Reports, Plans and Documents	
+  "13845": "http://ir.library.oregonstate.edu/"
+# HMSC Facilities and Physical Planning	
+  "1318": "http://ir.library.oregonstate.edu/"
+# Honors Link	
+  "15191": "http://ir.library.oregonstate.edu/"
+# Hop press	
+  "50989": "http://ir.library.oregonstate.edu/"
+# Hops Research Reports	
+  "49146": "http://ir.library.oregonstate.edu/"
+# Imprint, Oregon	
+  "11610": "http://ir.library.oregonstate.edu/"
+# Index of Selected Journal Articles Pertaining to the Forest Products Industries	
+  "11277": "http://ir.library.oregonstate.edu/"
+# Information Circular (Forest Research Laboratory)	
+  "10069": "http://ir.library.oregonstate.edu/"
+# Institute for Water and Watersheds (2005-present)	
+  "12253": "http://ir.library.oregonstate.edu/"
+# IRCO Asian Family Center Oral History Collection	
+  "56025": "http://ir.library.oregonstate.edu/"
+# Lane County Historian	
+  "10694": "http://ir.library.oregonstate.edu/"
+# Learning Objects (Difference, Power and Discrimination)	
+  "46898": "http://ir.library.oregonstate.edu/"
+# Legal Documents	
+  "22264": "http://ir.library.oregonstate.edu/"
+# Livestock & Livestock Products	
+  "48544": "http://ir.library.oregonstate.edu/"
+# Marine Economics Data Sheets	
+  "13169": "http://ir.library.oregonstate.edu/"
+# Marine Resource Management	
+  "1315": "http://ir.library.oregonstate.edu/"
+# Markets and Trade (IIFET 2000)	
+  "30467": "http://ir.library.oregonstate.edu/"
+# Markets and Trade (IIFET 2006)	
+  "43177": "http://ir.library.oregonstate.edu/"
+# Markets and Trade (IIFET 2008)	
+  "36191": "http://ir.library.oregonstate.edu/"
+# Maud Wilson Papers, 1926-1951	
+  "51981": "http://ir.library.oregonstate.edu/"
+# Media Guides (Baseball)	
+  "3926": "http://ir.library.oregonstate.edu/"
+# Media Guides (Track and Field)	
+  "20817": "http://ir.library.oregonstate.edu/"
+# Media Projects (ANTH 499/599)	
+  "6368": "http://ir.library.oregonstate.edu/"
+# Media Services	
+  "1894": "http://ir.library.oregonstate.edu/"
+# Medical Physics (Theses and Dissertations)	
+  "19606": "http://ir.library.oregonstate.edu/"
+# Meeting Minutes	
+  "22019": "http://ir.library.oregonstate.edu/"
+# Migration Reports (Institutional Research)	
+  "1916": "http://ir.library.oregonstate.edu/"
+# Minorities in the Barometer	
+  "29755": "http://ir.library.oregonstate.edu/"
+# Modeling and Economic Theory (IIFET 2000)	
+  "30468": "http://ir.library.oregonstate.edu/"
+# Modeling and Economic Theory (IIFET 2006)	
+  "43178": "http://ir.library.oregonstate.edu/"
+# Modeling and Economic Theory (IIFET 2008)	
+  "36193": "http://ir.library.oregonstate.edu/"
+# MSS Ferguson, Ed Oregon Anti-Apartheid Scrapbook, 1980-1982	
+  "28106": "http://ir.library.oregonstate.edu/"
+# MSS Thomas Kraemer	
+  "43449": "http://ir.library.oregonstate.edu/"
+# Multi-Institutional Leadership Survey (MLS)	
+  "4570": "http://ir.library.oregonstate.edu/"
+# National Survey of Student Engagement Reports	
+  "1347": "http://ir.library.oregonstate.edu/"
+# Native American Longhouse	
+  "37459": "http://ir.library.oregonstate.edu/"
+# Netarts Bay Resources	
+  "21996": "http://ir.library.oregonstate.edu/"
+# News and Views (Fisheries and Wildlife)	
+  "43691": "http://ir.library.oregonstate.edu/"
+# Newsletters	
+  "41359": "http://ir.library.oregonstate.edu/"
+# Northwest National Marine Renewable Energy Center (NNMREC) Publications	
+  "12131": "http://ir.library.oregonstate.edu/"
+# Notable Notes: Research Briefs for K-12	
+  "57294": "http://ir.library.oregonstate.edu/"
+# Office of Government Relations	
+  "12945": "http://ir.library.oregonstate.edu/"
+# Open Access Articles (OSU Faculty)	
+  "43909": "http://ir.library.oregonstate.edu/"
+# Open Access Books (OSU Press)	
+  "18857": "http://ir.library.oregonstate.edu/"
+# Open Access Textbook Initiative	
+  "49074": "http://ir.library.oregonstate.edu/"
+# Open Educational Resources	
+  "57915": "http://ir.library.oregonstate.edu/"
+# Oregon Counties Long-Range Planning Conference Reports	
+  "13273": "http://ir.library.oregonstate.edu/"
+# Oregon County Resource Atlas	
+  "9586": "http://ir.library.oregonstate.edu/"
+# Oregon Department of Fish and Wildlife Project Reports	
+  "19575": "http://ir.library.oregonstate.edu/"
+# Oregon Estuaries General Resources	
+  "35394": "http://ir.library.oregonstate.edu/"
+# Oregon Fish Commission Contributions	
+  "16918": "http://ir.library.oregonstate.edu/"
+# Oregon Fish Commission Miscellaneous Documents	
+  "19550": "http://ir.library.oregonstate.edu/"
+# Oregon Fish Commission Research Briefs	
+  "16920": "http://ir.library.oregonstate.edu/"
+# Oregon Fish Commission Research Reports	
+  "17158": "http://ir.library.oregonstate.edu/"
+# Oregon Game Commission Bulletin	
+  "43061": "http://ir.library.oregonstate.edu/"
+# Oregon Marine Renewable Energy Environmental Science Conference Proceedings	
+  "36597": "http://ir.library.oregonstate.edu/"
+# Oregon Motorist	
+  "11608": "http://ir.library.oregonstate.edu/"
+# Oregon Multicultural Archives Oral History Collection (OH 18)	
+  "46450": "http://ir.library.oregonstate.edu/"
+# Oregon Native Son	
+  "11609": "http://ir.library.oregonstate.edu/"
+# Oregon Oddities and Items of Interest	
+  "12015": "http://ir.library.oregonstate.edu/"
+# Oregon Processed Vegetable Commission Reports	
+  "16375": "http://ir.library.oregonstate.edu/"
+# Oregon State Agricultural College -- Report / Director's Report	
+  "31759": "http://ir.library.oregonstate.edu/"
+# Oregon State Forester	
+  "57475": "http://ir.library.oregonstate.edu/"
+# Oregon Tribal Archives Institute 2012	
+  "35377": "http://ir.library.oregonstate.edu/"
+# Oregon Vegetable Digest	
+  "11557": "http://ir.library.oregonstate.edu/"
+# Oregon Wave Energy Trust	
+  "15497": "http://ir.library.oregonstate.edu/"
+# Oregon Wildlife	
+  "48830": "http://ir.library.oregonstate.edu/"
+# Oregon Wine Research Institute	
+  "58156": "http://ir.library.oregonstate.edu/"
+# Oregon's Agricultural Progress	
+  "24290": "http://ir.library.oregonstate.edu/"
+# Organizational Charts	
+  "28862": "http://ir.library.oregonstate.edu/"
+# OSU College Forests	
+  "19960": "http://ir.library.oregonstate.edu/"
+# OSU Perspective	
+  "1349": "http://ir.library.oregonstate.edu/"
+# Papers (Rural-Urban Connections)	
+  "10572": "http://ir.library.oregonstate.edu/"
+# Papers in Forest Policy	
+  "12222": "http://ir.library.oregonstate.edu/"
+# Peer Institutions	
+  "28863": "http://ir.library.oregonstate.edu/"
+# Plans and Reports (Facilities Services)	
+  "16346": "http://ir.library.oregonstate.edu/"
+# Policy Day (IIFET 2006)	
+  "44859": "http://ir.library.oregonstate.edu/"
+# Posters (IIFET 2000)	
+  "35500": "http://ir.library.oregonstate.edu/"
+# Posters (IIFET 2008)	
+  "36196": "http://ir.library.oregonstate.edu/"
+# Presentations and Posters (Cascades)	
+  "3006": "http://ir.library.oregonstate.edu/"
+# Presentations and Posters (College of Forestry/Oregon Forest Research Laboratory)	
+  "38303": "http://ir.library.oregonstate.edu/"
+# Presentations and Posters (Libraries)	
+  "22": "http://ir.library.oregonstate.edu/"
+# Presentations and Posters (Psychology/Psychological Science)	
+  "48140": "http://ir.library.oregonstate.edu/"
+# Progress Reports (College of Earth, Ocean, and Atmospheric Sciences)	
+  "8653": "http://ir.library.oregonstate.edu/"
+# Range Plant Leaflet	
+  "24034": "http://ir.library.oregonstate.edu/"
+# Reference Series (College of Earth, Ocean, and Atmospheric Sciences)	
+  "7482": "http://ir.library.oregonstate.edu/"
+# Registration Information Handbook	
+  "11120": "http://ir.library.oregonstate.edu/"
+# Report C	
+  "10064": "http://ir.library.oregonstate.edu/"
+# Report D	
+  "10067": "http://ir.library.oregonstate.edu/"
+# Report G	
+  "10068": "http://ir.library.oregonstate.edu/"
+# Report of the President of the Oregon State Agricultural College -- Annual / Biennial	
+  "31150": "http://ir.library.oregonstate.edu/"
+# Reports	
+  "9136": "http://ir.library.oregonstate.edu/"
+# Reports	
+  "12161": "http://ir.library.oregonstate.edu/"
+# Reports (Independent Multidisciplinary Science Team)	
+  "11271": "http://ir.library.oregonstate.edu/"
+# Reports (Information Services)	
+  "58588": "http://ir.library.oregonstate.edu/"
+# Reports and Initiatives	
+  "4840": "http://ir.library.oregonstate.edu/"
+# Reports and White Papers (Libraries)	
+  "23": "http://ir.library.oregonstate.edu/"
+# Reports, Articles and Presentations (Faculty Senate Library Committee)	
+  "1748": "http://ir.library.oregonstate.edu/"
+# Research Contribution Summaries (Forest Research Laboratory)	
+  "55771": "http://ir.library.oregonstate.edu/"
+# Retention Reports (Institutional Research)	
+  "1913": "http://ir.library.oregonstate.edu/"
+# Robert Lundeen Library Faculty Development Award	
+  "11415": "http://ir.library.oregonstate.edu/"
+# Salmon River / Cascade Head Resources	
+  "21998": "http://ir.library.oregonstate.edu/"
+# Schedule of Classes  (Eastern Oregon University Campus)	
+  "57291": "http://ir.library.oregonstate.edu/"
+# Schedule of Classes (Cascades Campus)	
+  "10546": "http://ir.library.oregonstate.edu/"
+# Schedule of Classes (Corvallis Campus)	
+  "9931": "http://ir.library.oregonstate.edu/"
+# Schedule of Classes (Extended Campus)	
+  "10547": "http://ir.library.oregonstate.edu/"
+# Schedule of Classes (Hatfield Marine Science Center Campus)	
+  "42295": "http://ir.library.oregonstate.edu/"
+# Sea Grant/Marine Advisory Program	
+  "24213": "http://ir.library.oregonstate.edu/"
+# Seed Production Research at Oregon State University, USDA-ARS Cooperating	
+  "14729": "http://ir.library.oregonstate.edu/"
+# Shipping Documents	
+  "28681": "http://ir.library.oregonstate.edu/"
+# Small Farms	
+  "42320": "http://ir.library.oregonstate.edu/"
+# Special Publication	
+  "31834": "http://ir.library.oregonstate.edu/"
+# Special Topics	
+  "30471": "http://ir.library.oregonstate.edu/"
+# Special Topics (IIFET 2006)	
+  "43181": "http://ir.library.oregonstate.edu/"
+# Special Topics (IIFET 2008)	
+  "36194": "http://ir.library.oregonstate.edu/"
+# Specialty Horticulture and Field Crops	
+  "49528": "http://ir.library.oregonstate.edu/"
+# Starker Lecture Series	
+  "22500": "http://ir.library.oregonstate.edu/"
+# Strategic Indicators	
+  "28856": "http://ir.library.oregonstate.edu/"
+# Student Affairs Division Strategic Planning	
+  "38364": "http://ir.library.oregonstate.edu/"
+# Student Affairs Unit Review Guide (2012 update)	
+  "38356": "http://ir.library.oregonstate.edu/"
+# Student Credit Hour Reports	
+  "28859": "http://ir.library.oregonstate.edu/"
+# Student Work (Special Collections & Archives Research Center)	
+  "35393": "http://ir.library.oregonstate.edu/"
+# Studies of Oregon's climate for the forest industry. Climatological note	
+  "57293": "http://ir.library.oregonstate.edu/"
+# Supplementary Material (OSU Press)	
+  "19542": "http://ir.library.oregonstate.edu/"
+# Teaching With Writing: The WIC Newsletter	
+  "47064": "http://ir.library.oregonstate.edu/"
+# Technical Reports (Crop and Soil Science)	
+  "18802": "http://ir.library.oregonstate.edu/"
+# Technical Reports (Electrical Engineering and Computer Science)	
+  "8305": "http://ir.library.oregonstate.edu/"
+# Technical Reports (Hatfield Marine Science Center)	
+  "22851": "http://ir.library.oregonstate.edu/"
+# Technical Reports (Mathematics)	
+  "13738": "http://ir.library.oregonstate.edu/"
+# Terra: A world of research and creativity at Oregon State University	
+  "1423": "http://ir.library.oregonstate.edu/"
+# The Bobbie Nunn and Robert G. Ford Collection Documents	
+  "38987": "http://ir.library.oregonstate.edu/"
+# The Messenger	
+  "257": "http://ir.library.oregonstate.edu/"
+# The Oregon Water Conference 2011: Evaluating and Managing Water Resources in a Climate of Uncertainty	
+  "22232": "http://ir.library.oregonstate.edu/"
+# The Scab Sheet	
+  "27912": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Civil and Construction Engineering)	
+  "22531": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Economics)	
+  "20472": "http://ir.library.oregonstate.edu/"
+# Theses and Dissertations (Nuclear Science and Engineering)	
+  "57732": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Anthropology)	
+  "52418": "http://ir.library.oregonstate.edu/"
+# Theses, Dissertations and Student Research Papers (Foreign Languages and Literature)	
+  "48899": "http://ir.library.oregonstate.edu/"
+# Tillamook Bay Resources	
+  "35395": "http://ir.library.oregonstate.edu/"
+# Timber Lines	
+  "12130": "http://ir.library.oregonstate.edu/"
+# Transactions of the Annual Re-union of the Oregon Pioneer Association	
+  "10780": "http://ir.library.oregonstate.edu/"
+# Transboundary Freshwater Dispute Database Publications	
+  "11273": "http://ir.library.oregonstate.edu/"
+# Transcripts (ANTH 499/599)	
+  "6369": "http://ir.library.oregonstate.edu/"
+# Tree Fruits & Nuts	
+  "49529": "http://ir.library.oregonstate.edu/"
+# Umpqua Basin Resources	
+  "21999": "http://ir.library.oregonstate.edu/"
+# Undergraduate Research Brown-Bag Symposium	
+  "58422": "http://ir.library.oregonstate.edu/"
+# Vegetables	
+  "49531": "http://ir.library.oregonstate.edu/"
+# Vegetation Management Research Cooperative (formerly CRAFTS) Reports	
+  "48176": "http://ir.library.oregonstate.edu/"
+# Vet Gazette e-newsletter	
+  "12907": "http://ir.library.oregonstate.edu/"
+# Volcanic Ash Information	
+  "23718": "http://ir.library.oregonstate.edu/"
+# W.I.R.E.'d Zine	
+  "11244": "http://ir.library.oregonstate.edu/"
+# Western Dry Kiln Association Proceedings	
+  "4574": "http://ir.library.oregonstate.edu/"
+# Western Regional Agricultural Engineering Service	
+  "23686": "http://ir.library.oregonstate.edu/"
+# Western Regional Extension Publication	
+  "23720": "http://ir.library.oregonstate.edu/"
+# Wild Cascades	
+  "11611": "http://ir.library.oregonstate.edu/"
+# Women's Center	
+  "55778": "http://ir.library.oregonstate.edu/"
+# Yaquina Bay Environmental Sampling Workshop	
+  "13747": "http://ir.library.oregonstate.edu/"
+# Yaquina Bay Resources	
+  "1319": "http://ir.library.oregonstate.edu/"
+# Your First College Year Reports	
+  "1348": "http://ir.library.oregonstate.edu/"
