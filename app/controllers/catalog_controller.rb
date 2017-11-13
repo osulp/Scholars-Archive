@@ -461,7 +461,7 @@ class CatalogController < ApplicationController
         limit: 50,
         timestamp_field: 'system_create_dtsi',
         timestamp_method: 'system_created',
-        set_fields: 'has_model_ssim',
+        set_fields: 'isPartOf_ssim',
         set_class: '::OaiSet'
       }
     }
