@@ -214,15 +214,11 @@ RSpec.describe Default do
       g = described_class.new(title: ['test'], keyword: ['test'])
       g.nested_geo_attributes = attributes
       g.save!(:validate => false)
-      g.nested_geo_attributes = [
-          {
-              :id => g.nested_geo.first.id,
-              :label => "Banana"
-          }
-      ]
-      g.save!(:validate => false)
-      g.reload
+      expect(g.nested_geo.length).to eq 1
+      expect(g.nested_geo.first.label).to eq ["Salem"]
 
+      g.nested_geo.first.label = ["Banana"]
+      g.nested_geo.first.persist!
       expect(g.nested_geo.length).to eq 1
       expect(g.nested_geo.first.label).to eq ["Banana"]
     end
