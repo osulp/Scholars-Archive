@@ -185,7 +185,11 @@ class SolrDocument
   end
 
   def oai_identifier
-    Rails.application.routes.url_helpers.url_for(:only_path => false, :action => 'show', :host => CatalogController.blacklight_config.oai[:provider][:repository_url], :controller => 'hyrax/' + self["has_model_ssim"].first.to_s.underscore.pluralize, id: self.id)
+    if self["has_model_ssim"].first.to_s == "Collection"
+      Hyrax::Engine.routes.url_helpers.url_for(:only_path => false, :action => 'show', :host => CatalogController.blacklight_config.oai[:provider][:repository_url], :controller => 'hyrax/collections', id: self.id)
+    else
+      Rails.application.routes.url_helpers.url_for(:only_path => false, :action => 'show', :host => CatalogController.blacklight_config.oai[:provider][:repository_url], :controller => 'hyrax/' + self["has_model_ssim"].first.to_s.underscore.pluralize, id: self.id)
+    end
   end
 
 end
