@@ -1,6 +1,6 @@
 module ScholarsArchive
   class HandlesController < ApplicationController
-    before_filter :verify_handle_prefix, only: [:handle_show, :handle_download]
+    before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
     skip_before_action :check_d2h_http_header_auth
 
     def handle_file_404
@@ -15,7 +15,7 @@ module ScholarsArchive
         ScholarsArchive::HandleErrorLoggingService.log_no_work_found_error(params)
         render "/scholars_archive/handles/handle_work_404.html.erb", status: 404
       else
-        redirect_to "/concern/#{work.class.to_s.downcase.pluralize}/#{work.id}"
+        redirect_to [main_app, work]
       end
     end
 
@@ -30,10 +30,10 @@ module ScholarsArchive
         render "/scholars_archive/handles/handle_file_404.html.erb", status: 404, locals: { handle_uri: "#{params[:handle_prefix]}/#{params[:handle_localname]}",
                                                                                             file: "#{params[:file]}.#{params[:format]}",
                                                                                             work_title: work.title,
-                                                                                            work_path: "/concern/#{work.class.to_s.downcase.pluralize}/#{work.id}" }
+                                                                                            work_path: "/concern/#{work.class.to_s.pluralize.underscore}/#{work.id}" }
       elsif filesets.length > 1
         ScholarsArchive::HandleErrorLoggingService.log_too_many_files_found_error(params, work, construct_handle_url(params[:handle_prefix], params[:handle_localname]))
-        redirect_to "/concern/#{work.class.to_s.downcase.pluralize}/#{work.id}"
+        redirect_to [main_app, work]
       else
         redirect_to "/downloads/#{filesets.first.id}"
       end
@@ -76,7 +76,7 @@ module ScholarsArchive
 
       def find_work
         solr_doc = query_solr_for_work(construct_handle_url(params[:handle_prefix], params[:handle_localname]))
-        query_fedora_for_work(solr_doc.first[:id], solr_doc.first[:human_readable_type_tesim].first.constantize) unless solr_doc.empty?
+        query_fedora_for_work(solr_doc.first[:id], solr_doc.first[:human_readable_type_tesim].first.gsub!(' ','').constantize) unless solr_doc.empty?
       end
 
       def construct_handle_url(handle_prefix, handle_localname)

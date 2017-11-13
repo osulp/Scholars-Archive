@@ -8,10 +8,10 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
     context "when a work exists with the proper handle" do
       before do
         allow(controller).to receive(:find_work).and_return(work)
-      end 
+      end
       it "Should reroute the user to the show page" do
         get :handle_show, params: {:handle_prefix => "1957", :handle_localname => "12345"}
-        expect(response).to redirect_to '/concern/' + work.class.to_s.downcase.pluralize + '/' + work.id
+        expect(response.status).to eq 302
       end
     end
     context "when a work doesnt exist with the proper handle" do
@@ -29,7 +29,7 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
       before do
         allow(controller).to receive(:find_work).and_return(work)
         allow(controller).to receive(:filesets_for_work).and_return([fileset])
-      end 
+      end
       it "Should reroute the user to the download link" do
         get :handle_download, params: {:handle_prefix => "1957", :handle_localname => "12345", :file => "cat.jpg"}
         expect(response).to redirect_to '/downloads/' + fileset.id
@@ -38,7 +38,7 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
     context "when a work does not exist with the proper handle" do
       before do
         allow(controller).to receive(:find_work).and_return(nil)
-      end 
+      end
       it "Should reroute the user to the work not found page" do
         get :handle_download, params: {:handle_prefix => "1957", :handle_localname => "12345", :file => "cat.jpg"}
         expect(response.status).to eq 404
@@ -48,7 +48,7 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
       before do
         allow(controller).to receive(:find_work).and_return(work)
         allow(controller).to receive(:filesets_for_work).and_return([])
-      end 
+      end
       it "Should reroute the user to 404 file not found page" do
         get :handle_download, params: {:handle_prefix => "1957", :handle_localname => "12345", :file => "catasdf"}
         expect(response.status).to eq 404
@@ -58,10 +58,10 @@ RSpec.describe ScholarsArchive::HandlesController, type: :controller do
       before do
         allow(controller).to receive(:find_work).and_return(work)
         allow(controller).to receive(:filesets_for_work).and_return([fileset, fileset])
-      end 
+      end
       it "Should reroute the user to the show page" do
         get :handle_download, params: {:handle_prefix => "1957", :handle_localname => "12345", :file => "cat.jpg"}
-        expect(response).to redirect_to '/concern/' + work.class.to_s.downcase.pluralize + '/' + work.id
+        expect(response.status).to eq 302
       end
     end
   end
