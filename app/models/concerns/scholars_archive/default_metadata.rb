@@ -149,6 +149,12 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
+
+      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => NestedRelatedItems do |index|
+        index.as :stored_searchable
+      end
+
       property :other_affiliation, predicate: ::RDF::URI("http://vivoweb.org/ontology/core#Department") do |index|
         index.as :stored_searchable, :facetable
       end
@@ -168,7 +174,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => NestedRelatedItems do |index|
+      property :related_url, predicate: ::RDF::RDFS.seeAlso do |index|
         index.as :stored_searchable
       end
 
@@ -199,8 +205,6 @@ module ScholarsArchive
       property :tableofcontents, predicate: ::RDF::Vocab::DC.tableOfContents do |index|
         index.as :stored_searchable
       end
-
-      property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
 
       # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
       attr_accessor :geo_section

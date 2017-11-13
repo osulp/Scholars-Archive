@@ -21,7 +21,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :source, :isbn, :issn]
+        [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
       end
 
       def self.date_terms
