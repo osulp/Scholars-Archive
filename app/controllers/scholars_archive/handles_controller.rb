@@ -15,12 +15,10 @@ module ScholarsArchive
       if work.nil?
         ScholarsArchive::HandleErrorLoggingService.log_no_work_found_error(params)
         render "/scholars_archive/handles/handle_work_404.html.erb", status: 404
-        return
       else
         redirect_to [main_app, work]
       end
     end
-
 
     def handle_download
       work = find_work
@@ -28,7 +26,6 @@ module ScholarsArchive
       if work.nil?
         ScholarsArchive::HandleErrorLoggingService.log_no_work_found_error(params)
         render "/scholars_archive/handles/handle_work_404.html.erb", status: 404
-        return
       elsif filesets.empty?
         ScholarsArchive::HandleErrorLoggingService.log_no_files_found_error(params, work, construct_handle_url(params[:handle_prefix], params[:handle_localname]))
         render "/scholars_archive/handles/handle_file_404.html.erb", status: 404, locals: { handle_uri: "#{params[:handle_prefix]}/#{params[:handle_localname]}",
@@ -46,11 +43,23 @@ module ScholarsArchive
     private
 
       def handle_redirects
-        od_redirects = YAML.load(File.read("config/handles_od_communities_collections.yml"))
-        new_path = od_redirects["handles_od_communities_collections"][params[:handle_localname]]
-        if new_path
-          redirect_to new_path and return
+        new_od_path = od_redirects["handles_od_communities_collections"][params[:handle_localname]]
+        if new_od_path
+          redirect_to new_od_path and return
         end
+
+        new_ir_collections_path = ir_collections_redirects["handles_ir_collections"][params[:handle_localname]]
+        if new_ir_collections_path
+          redirect_to new_ir_collections_path and return
+        end
+      end
+
+      def od_redirects
+        YAML.load(File.read("config/handles_od_communities_collections.yml"))
+      end
+
+      def ir_collections_redirects
+        YAML.load(File.read("config/handles_ir_collections.yml"))
       end
 
       def verify_handle_prefix
