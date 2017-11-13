@@ -112,6 +112,25 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#oai_other_affiliation_label" do
+    context "when there are no related items" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "other_affiliation_label_ssim" => []
+                                       })
+        expect(document.oai_other_affiliation_label).to eq []
+      end
+    end
+    context "when there are other (non-academic) affiliations" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "other_affiliation_label_ssim" => ["OSU Press$http://id.loc.gov/authorities/names/n82039655", "Honors College$http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege"]
+                                       })
+        expect(document.oai_other_affiliation_label).to eq ["OSU Press", "Honors College"]
+      end
+    end
+  end
+
   describe "#oai_rights" do
     context "when there is only a Rights Statement" do
       it "should return the Rights Statement label" do
@@ -129,7 +148,7 @@ RSpec.describe SolrDocument do
         expect(document.oai_rights).to eq ["CC0 1.0 Universal"]
       end
     end
-    context "when there is both a Rights Statemnet and a License" do
+    context "when there is both a Rights Statement and a License" do
       it "should return only the License label" do
         document = described_class.new({
                                            "rights_statement_label_ssim" => ["In Copyright - Educational Use Permitted"],
