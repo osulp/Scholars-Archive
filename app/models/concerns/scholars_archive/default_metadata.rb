@@ -80,9 +80,11 @@ module ScholarsArchive
       end
 
       property :dspace_collection, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCollection") do |index|
+        index.as :stored_searchable
       end
 
       property :dspace_community, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCommunity") do |index|
+        index.as :stored_searchable
       end
 
       property :embargo_reason, predicate: ::RDF::Vocab::DC.accessRights, multiple: false do |index|
