@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :oai_provider
-
     concerns :searchable
     concerns :range_searchable
   end
@@ -29,7 +28,6 @@ Rails.application.routes.draw do
 
 
   mount Hydra::RoleManagement::Engine => '/'
-
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
   resources :welcome, only: 'index'
@@ -38,7 +36,9 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
 
   get '/xmlui/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show'
+  get '/dspace/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_dspace'
   get '/xmlui/bitstream/handle/:handle_prefix/:handle_localname/:file', to: 'scholars_archive/handles#handle_download', as: 'handle_download'
+  get '/dspace/bitstream/handle/:handle_prefix/:handle_localname/:sequence_id/:file', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace'
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
@@ -46,7 +46,6 @@ Rails.application.routes.draw do
 
   resources :bookmarks do
     concerns :exportable
-
     collection do
       delete 'clear'
     end
