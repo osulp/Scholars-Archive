@@ -67,7 +67,7 @@ gem 'staccato'
 
 gem 'browse-everything'
 
-gem 'blacklight_oai_provider', git: 'https://github.com/osulibraries/blacklight_oai_provider.git', branch: 'master'
+gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
 
 group :development do
   # Use Capistrano for deployment
