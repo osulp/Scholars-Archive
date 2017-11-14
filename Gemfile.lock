@@ -1,20 +1,20 @@
 GIT
-  remote: https://github.com/inukshuk/edtf-ruby.git
-  revision: 2b25fc4562ada130db5d70e9b3926667d29ca82c
-  branch: master
-  specs:
-    edtf (3.0.4)
-      activesupport (>= 3.0, < 6.0)
-
-GIT
-  remote: https://github.com/osulibraries/blacklight_oai_provider.git
-  revision: a6a0b9359e179445b633e16856f00c0604c89f57
+  remote: https://github.com/UNC-Libraries/blacklight_oai_provider.git
+  revision: a6c1704c47268a7d892d549704b296df404f866a
   branch: master
   specs:
     blacklight_oai_provider (1.4.1)
       blacklight (>= 6.1)
       oai (~> 0.4.0)
       rails (>= 4.2)
+
+GIT
+  remote: https://github.com/inukshuk/edtf-ruby.git
+  revision: 2b25fc4562ada130db5d70e9b3926667d29ca82c
+  branch: master
+  specs:
+    edtf (3.0.4)
+      activesupport (>= 3.0, < 6.0)
 
 GIT
   remote: https://github.com/osulp/rubycas-client
@@ -924,4 +924,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.3
+   1.16.0
