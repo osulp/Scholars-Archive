@@ -98,7 +98,7 @@ module ScholarsArchive
 
       def find_work
         solr_doc = query_solr_for_work(construct_handle_url(params[:handle_prefix], params[:handle_localname]))
-        query_fedora_for_work(solr_doc.first[:id], solr_doc.first[:human_readable_type_tesim].first.gsub!(' ','').constantize) unless solr_doc.empty?
+        query_fedora_for_work(solr_doc.first[:id], solr_doc.first[:has_model_ssim].first.constantize) unless solr_doc.empty?
       end
 
       def construct_handle_url(handle_prefix, handle_localname)
