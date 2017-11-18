@@ -4,5 +4,5 @@ en:
       default:     'fa fa-file-text-o'
     select_type:
       default:
-        name:               "Other Content"
-        description:        "Digital content that does not fit into any of these other categories"
+        name:               "Other Scholarly Content"
+        description:        "Scholarly content that does not fit one of the other categories presented. This may include such content as book chapters, presentations, posters, slide decks, or videos."
