@@ -23,9 +23,10 @@
                   <thead>
                   <tr>
                     <th width="40%">Work</th>
-                    <th width="20%">Depositor</th>
-                    <th width="20%">Submission Date</th>
-                    <th width="20%">Status</th>
+                    <th width="15%">Depositor</th>
+                    <th width="15%">Creator</th>
+                    <th width="15%">Submission Date</th>
+                    <th width="15%">Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -36,6 +37,9 @@
                         </td>
                         <td>
                           <%= document.depositor %>
+                        </td>
+                        <td>
+                          <%= safe_join(document.creator, tag(:br)) %>
                         </td>
                         <td>
                           <%= document.date_modified %>
@@ -59,9 +63,10 @@
                   <thead>
                   <tr>
                     <th width="40%">Work</th>
-                    <th width="20%">Depositor</th>
-                    <th width="20%">Submission Date</th>
-                    <th width="20%">Status</th>
+                    <th width="15%">Depositor</th>
+                    <th width="15%">Creator</th>
+                    <th width="15%">Submission Date</th>
+                    <th width="15%">Status</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -69,6 +74,9 @@
                       <tr>
                         <td>
                           <%= link_to document, [main_app, document] %>
+                        </td>
+                        <td>
+                          <%= document.depositor %>
                         </td>
                         <td>
                           <%= safe_join(document.creator, tag(:br)) %>

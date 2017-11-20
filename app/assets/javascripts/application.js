@@ -22,6 +22,7 @@
 //= require add_date_field
 //= require nested_field
 //= require embargo_date_field
+//= require default_datatable_order
 //= require 'blacklight_range_limit'
 //= require browse_everything
 //= require_tree .
