@@ -23,7 +23,7 @@ handles_od_communities_collections:
   "11410": "https://oregondigital.org/sets/daily-barometer"
 
   # Urban League of Portland: Reports
-#  12161:    
+  "12161": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Reports"
 
   # Athletics: Track and Field
   "20816": "https://oregondigital.org/sets/osu-sports-media-guides"
@@ -38,11 +38,11 @@ handles_od_communities_collections:
   "21955": "https://oregondigital.org/sets/or-chinese-disinterment/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Applications,+Permits,+Correspondence,+and+Notes"
 
   # Urban League of Portland
-#  22017: oma?   
+  "22017": "https://oregondigital.org/sets/oregon-multicultural-archives?f%5Bdesc_metadata__localCollectionName_label_sim%5D%5B%5D=Urban+League+of+Portland+Records%2C+1945-2008+%28MSS+UrbanLeague%29%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FlocalCollectionName%2Fmss_urbanleague"
   # Urban League of Portland: Constitution, Memos, Etc.
-#  22018:    
+  "22018": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Constitution,+Memos,+Etc."
   # Urban League of Portland: Meeting Minutes
-#  22019:    
+  "22019": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Meeting+Minutes"
 
   # Chinese Disinterment: Legal Documents
   "22264": "https://oregondigital.org/sets/or-chinese-disinterment/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Legal+Documents"
@@ -84,7 +84,7 @@ handles_od_communities_collections:
 #  37459:    
 
   # Urban League of Portland: Newsletters
-#  41359:    
+  "41359": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Newsletters"
 
   # MSS Thomas Kraemer
   "43449": "https://oregondigital.org/catalog/oregondigital:df71gf50g"
