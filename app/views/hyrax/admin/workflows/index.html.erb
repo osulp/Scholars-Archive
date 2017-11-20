@@ -1,5 +1,5 @@
 <% provide :page_header do %>
-  <h1><span class="glyphicon glyphicon-ok-circle"></span> <%= t('.header') %></h1>
+    <h1><span class="glyphicon glyphicon-ok-circle"></span> <%= t('.header') %></h1>
 <% end %>
 
 
@@ -21,35 +21,30 @@
               <div class="table-responsive">
                 <table class="table table-condensed table-striped datatable">
                   <thead>
-                    <tr>
-                      <th width="40%">Work</th>
-                      <th width="20%">Depositor</th>
-                      <th width="20%">Submission Date</th>
-                      <th width="20%">Status</th>
-                    </tr>
+                  <tr>
+                    <th width="40%">Work</th>
+                    <th width="20%">Depositor</th>
+                    <th width="20%">Submission Date</th>
+                    <th width="20%">Status</th>
+                  </tr>
                   </thead>
                   <tbody>
-                    <% @status_list.each do |document| %>
-                      <!-- Filtering for deposited or not deposited happens here. The hyrax ticket that will solve this is
-                        ticket number 1395 in hyrax. 1395#Solr Error when visiting Review Submissions tab-->
-
-                      <% unless document.workflow_state == "Deposited" %>
-                        <tr>
-                          <td>
-                            <%= link_to document, [main_app, document] %>
-                          </td>
-                          <td>
-                            <%= document.depositor %>
-                          </td>
-                          <td>
-                            <%= document.date_modified %>
-                          </td>
-                          <td>
-                            <span class="state state-pending"><%= document.workflow_state %></span>
-                          </td>
-                        </tr>
-                      <% end %>
-                    <% end %>
+                  <% @status_list.each do |document| %>
+                      <tr>
+                        <td>
+                          <%= link_to document, [main_app, document] %>
+                        </td>
+                        <td>
+                          <%= document.depositor %>
+                        </td>
+                        <td>
+                          <%= document.date_modified %>
+                        </td>
+                        <td>
+                          <span class="state state-pending"><%= document.workflow_state %></span>
+                        </td>
+                      </tr>
+                  <% end %>
                   </tbody>
                 </table>
               </div>
@@ -62,34 +57,30 @@
               <div class="table-responsive">
                 <table class="table table-condensed table-striped datatable">
                   <thead>
-                    <tr>
-                      <th width="40%">Work</th>
-                      <th width="20%">Depositor</th>
-                      <th width="20%">Submission Date</th>
-                      <th width="20%">Status</th>
-                    </tr>
+                  <tr>
+                    <th width="40%">Work</th>
+                    <th width="20%">Depositor</th>
+                    <th width="20%">Submission Date</th>
+                    <th width="20%">Status</th>
+                  </tr>
                   </thead>
                   <tbody>
-                    <% @published_list.each do |document| %>
-                      <!-- Filtering for deposited or not deposited happens here. The hyrax ticket that will solve this is
-                        ticket number 1395 in hyrax. 1395#Solr Error when visiting Review Submissions tab-->
-                      <% if document.workflow_state == "Deposited" %>
-                        <tr>
-                          <td>
-                            <%= link_to document, [main_app, document] %>
-                          </td>
-                          <td>
-                            <%= safe_join(document.creator, tag(:br)) %>
-                          </td>
-                          <td>
-                            <%= document.date_modified %>
-                          </td>
-                          <td>
-                            <span class="state state-pending"><%= document.workflow_state %></span>
-                          </td>
-                        </tr>
-                      <% end %>
-                    <% end %>
+                  <% @published_list.each do |document| %>
+                      <tr>
+                        <td>
+                          <%= link_to document, [main_app, document] %>
+                        </td>
+                        <td>
+                          <%= safe_join(document.creator, tag(:br)) %>
+                        </td>
+                        <td>
+                          <%= document.date_modified %>
+                        </td>
+                        <td>
+                          <span class="state state-pending"><%= document.workflow_state %></span>
+                        </td>
+                      </tr>
+                  <% end %>
                   </tbody>
                 </table>
               </div>
