@@ -92,4 +92,13 @@ module ApplicationHelper
     items.sort! { |a,b| b.value.downcase <=> a.value.downcase }
     items
   end
+
+  def fixed_work_type_order(items=[])
+    model_list = []
+    items.each {|item| model_list.push(item) }
+    fixed_ordered_list = [Article, EescPublication, GraduateThesisOrDissertation, TechnicalReport, GraduateProject, AdministrativeReportOrPublication, HonorsCollegeThesis, ConferenceProceedingsOrJournal, UndergraduateThesisOrProject, OpenEducationalResource, Dataset, Default]
+    lookup = {}
+    model_list.each { |item| lookup[item.concern] = item }
+    fixed_ordered_list.each.map { |item| lookup[item] }
+  end
 end
