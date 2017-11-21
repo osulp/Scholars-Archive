@@ -18,6 +18,7 @@ en:
           date_accepted: "Date Accepted"
           date_collected: "Date Collected"
           date_valid: "Date Valid"
+          resource_type_sim: "Resource Type"
       form:
         nested_geo_points: "Geographic Points"
         nested_geo_bbox: "Bounding Box"
