@@ -7,17 +7,16 @@
       </div>
       <form class="new-work-select">
         <div class="modal-body">
-          <div class="container">
-            <% model_list_fixed = fixed_work_type_order(create_work_presenter) %>
-            <div class="row match-my-cols">
-              <div class="col-md-12">
-                <% model_list_fixed.each_slice(2) do |row_presenter| %>
+          <% model_list_fixed = fixed_work_type_order(create_work_presenter) %>
+          <div class="row match-my-cols">
+            <div class="col-md-12">
+              <% model_list_fixed.each_slice(2) do |row_presenter| %>
                   <div class="row">
                     <div class="col-md-6 select-worktype">
                       <label>
                         <input type="radio" name="payload_concern" value="<%= row_presenter[0].concern %>"
-                                                                   data-single="<%= new_polymorphic_path([main_app, row_presenter[0].concern]) %>"
-                                                                   data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter[0].concern) %>">
+                               data-single="<%= new_polymorphic_path([main_app, row_presenter[0].concern]) %>"
+                               data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter[0].concern) %>">
                         <div class="select-work-icon">
                           <span class="<%= row_presenter[0].icon_class %>"></span>
                         </div>
@@ -30,8 +29,8 @@
                     <div class="col-md-6 select-worktype">
                       <label>
                         <input type="radio" name="payload_concern" value="<%= row_presenter[1].concern %>"
-                                                                   data-single="<%= new_polymorphic_path([main_app, row_presenter[1].concern]) %>"
-                                                                   data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter[1].concern) %>">
+                               data-single="<%= new_polymorphic_path([main_app, row_presenter[1].concern]) %>"
+                               data-batch="<%= hyrax.new_batch_upload_path(payload_concern: row_presenter[1].concern) %>">
                         <div class="select-work-icon">
                           <span class="<%= row_presenter[1].icon_class %>"></span>
                         </div>
@@ -42,8 +41,7 @@
                       </label>
                     </div>
                   </div>
-                <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>

@@ -180,7 +180,8 @@ div .select-worktype {
 }
 
 .row.match-my-cols {
-    overflow: hidden;
+  overflow: hidden;
+  padding: 0 15px 0 15px;
 }
 
 .row.match-my-cols [class*="col-"]{
