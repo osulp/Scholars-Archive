@@ -48,7 +48,7 @@ module ScholarsArchive
           redirect_to new_od_path and return
         end
 
-        new_ir_collections_path = ir_collections_redirects["handles_ir_collections"][params[:handle_localname]]
+        new_ir_collections_path = ir_collections_redirects["handles_ir_communities_collections"][params[:handle_localname]]
         if new_ir_collections_path
           redirect_to new_ir_collections_path and return
         end
@@ -59,7 +59,7 @@ module ScholarsArchive
       end
 
       def ir_collections_redirects
-        YAML.load(File.read("config/handles_ir_collections.yml"))
+        YAML.load(File.read("config/handles_ir_communities_collections.yml"))
       end
 
       def verify_handle_prefix

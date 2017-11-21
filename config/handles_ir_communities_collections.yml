@@ -1,0 +1,1145 @@
+handles_ir_communities_collections:
+# 10th IIFET Conference, July 10-14, 2000, Corvallis, Oregon, U.S.A.  
+  "30554": "https://ir.library.oregonstate.edu/catalog?q=10th%20IIFET%20Conference%2C%20July%2010-14%2C%202000%2C%20Corvallis%2C%20Oregon%2C%20U.S.A.&search_field=dspace_community"
+# 11th IIFET Conference, August 19-22, 2002, Wellington, New Zealand  
+  "56900": "https://ir.library.oregonstate.edu/catalog?q=11th%20IIFET%20Conference%2C%20August%2019-22%2C%202002%2C%20Wellington%2C%20New%20Zealand&search_field=dspace_community"
+# 12th IIFET Conference, July 20-30, 2004, Tokyo, Japan  
+  "56398": "https://ir.library.oregonstate.edu/catalog?q=12th%20IIFET%20Conference%2C%20July%2020-30%2C%202004%2C%20Tokyo%2C%20Japan&search_field=dspace_community"
+# 13th IIFET Conference, July 11-14, 2006, Portsmouth, UK  
+  "43173": "https://ir.library.oregonstate.edu/catalog?q=13th%20IIFET%20Conference%2C%20July%2011-14%2C%202006%2C%20Portsmouth%2C%20UK&search_field=dspace_community"
+# 14th IIFET Conference, July 22-25, 2008, Nha Trang, Vietnam  
+  "36185": "https://ir.library.oregonstate.edu/catalog?q=14th%20IIFET%20Conference%2C%20July%2022-25%2C%202008%2C%20Nha%20Trang%2C%20Vietnam&search_field=dspace_community"
+# 15th IIFET Conference, July 13-16, 2010, Montpellier, France  
+  "38399": "https://ir.library.oregonstate.edu/catalog?q=15th%20IIFET%20Conference%2C%20July%2013-16%2C%202010%2C%20Montpellier%2C%20France&search_field=dspace_community"
+# 16th IIFET Conference, July 16-20, 2012, Dar es Salaam, Tanzania  
+  "32180": "https://ir.library.oregonstate.edu/catalog?q=16th%20IIFET%20Conference%2C%20July%2016-20%2C%202012%2C%20Dar%20es%20Salaam%2C%20Tanzania&search_field=dspace_community"
+# 17th IIFET Conference, July 7-11, 2014, Brisbane, Australia  
+  "52603": "https://ir.library.oregonstate.edu/catalog?q=17th%20IIFET%20Conference%2C%20July%207-11%2C%202014%2C%20Brisbane%2C%20Australia&search_field=dspace_community"
+# 18th IIFET Conference, July 11-15, 2016, Aberdeen, Scotland, UK  
+  "59918": "https://ir.library.oregonstate.edu/catalog?q=18th%20IIFET%20Conference%2C%20July%2011-15%2C%202016%2C%20Aberdeen%2C%20Scotland%2C%20UK&search_field=dspace_community"
+# 8th IIFET Conference, July 1-4, 1996, Marrakech, Morocco  
+  "56895": "https://ir.library.oregonstate.edu/catalog?q=8th%20IIFET%20Conference%2C%20July%201-4%2C%201996%2C%20Marrakech%2C%20Morocco&search_field=dspace_community"
+# College of Earth, Ocean, and Atmospheric Sciences  
+  "1309": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Earth%2C%20Ocean%2C%20and%20Atmospheric%20Sciences&search_field=dspace_community"
+# Department of Forest Engineering, Resources and Management  
+  "10900": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Forest%20Engineering%2C%20Resources%20and%20Management&search_field=dspace_community"
+# Department of Women, Gender and Sexuality  
+  "18602": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Women%2C%20Gender%20and%20Sexuality&search_field=dspace_community"
+# Difference, Power and Discrimination  
+  "46366": "https://ir.library.oregonstate.edu/catalog?q=Difference%2C%20Power%20and%20Discrimination&search_field=dspace_community"
+# Office of Student Affairs Research, Evaluation, and Planning  
+  "1344": "https://ir.library.oregonstate.edu/catalog?q=Office%20of%20Student%20Affairs%20Research%2C%20Evaluation%2C%20and%20Planning&search_field=dspace_community"
+# School of Chemical, Biological and Environmental Engineering  
+  "16183": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Chemical%2C%20Biological%20and%20Environmental%20Engineering&search_field=dspace_community"
+# School of Mechanical, Industrial & Manufacturing Engineering  
+  "14319": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Mechanical%2C%20Industrial%20%26%20Manufacturing%20Engineering&search_field=dspace_community"
+# Student Affairs, Division of  
+  "955": "https://ir.library.oregonstate.edu/catalog?q=Student%20Affairs%2C%20Division%20of&search_field=dspace_community"
+# Baseball  
+  "3925": "https://ir.library.oregonstate.edu/catalog?q=Baseball&search_field=dspace_community"
+# Center for Genome Research & Biocomputing  
+  "42305": "https://ir.library.oregonstate.edu/catalog?q=Center%20for%20Genome%20Research%20%26%20Biocomputing&search_field=dspace_community"
+# Chinese Disinterment Documents  
+  "21890": "https://ir.library.oregonstate.edu/catalog?q=Chinese%20Disinterment%20Documents&search_field=dspace_community"
+# College of Agricultural Sciences  
+  "13588": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Agricultural%20Sciences&search_field=dspace_community"
+# College of Business  
+  "8148": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Business&search_field=dspace_community"
+# College of Education  
+  "18087": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Education&search_field=dspace_community"
+# College of Forestry/Oregon Forest Research Laboratory (FRL)  
+  "7530": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Forestry%2FOregon%20Forest%20Research%20Laboratory%20(FRL)&search_field=dspace_community"
+# College of Pharmacy  
+  "17743": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Pharmacy&search_field=dspace_community"
+# College of Public Health and Human Sciences  
+  "28634": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Public%20Health%20and%20Human%20Sciences&search_field=dspace_community"
+# College of Veterinary Medicine  
+  "12904": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Veterinary%20Medicine&search_field=dspace_community"
+# Commodity Data Sheets  
+  "48174": "https://ir.library.oregonstate.edu/catalog?q=Commodity%20Data%20Sheets&search_field=dspace_community"
+# Conferences (Rural-Urban Connections)  
+  "10431": "https://ir.library.oregonstate.edu/catalog?q=Conferences%20(Rural-Urban%20Connections)&search_field=dspace_community"
+# Darlene Hooley Papers  
+  "14383": "https://ir.library.oregonstate.edu/catalog?q=Darlene%20Hooley%20Papers&search_field=dspace_community"
+# Datasets  
+  "40396": "https://ir.library.oregonstate.edu/catalog?q=Datasets&search_field=dspace_community"
+# Department of Agricultural Education and Agricultural Sciences  
+  "18498": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Agricultural%20Education%20and%20Agricultural%20Sciences&search_field=dspace_community"
+# Department of Animal and Rangeland Science  
+  "18827": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Animal%20and%20Rangeland%20Science&search_field=dspace_community"
+# Department of Anthropology  
+  "6366": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Anthropology&search_field=dspace_community"
+# Department of Applied Economics  
+  "14947": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Applied%20Economics&search_field=dspace_community"
+# Department of Art  
+  "21991": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Art&search_field=dspace_community"
+# Department of Biochemistry and Biophysics  
+  "19990": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Biochemistry%20and%20Biophysics&search_field=dspace_community"
+# Department of Biological and Ecological Engineering  
+  "494": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Biological%20and%20Ecological%20Engineering&search_field=dspace_community"
+# Department of Biomedical Sciences  
+  "30116": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Biomedical%20Sciences&search_field=dspace_community"
+# Department of Bioresource Research  
+  "6762": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Bioresource%20Research&search_field=dspace_community"
+# Department of Botany and Plant Pathology  
+  "1932": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Botany%20and%20Plant%20Pathology&search_field=dspace_community"
+# Department of Chemistry  
+  "17746": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Chemistry&search_field=dspace_community"
+# Department of Crop & Soil Science  
+  "14728": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Crop%20%26%20Soil%20Science&search_field=dspace_community"
+# Department of Design and Human Environment  
+  "14777": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Design%20and%20Human%20Environment&search_field=dspace_community"
+# Department of Economics  
+  "14945": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Economics&search_field=dspace_community"
+# Department of English  
+  "18071": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20English&search_field=dspace_community"
+# Department of Environmental & Molecular Toxicology  
+  "25639": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Environmental%20%26%20Molecular%20Toxicology&search_field=dspace_community"
+# Department of Ethnic Studies  
+  "21412": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Ethnic%20Studies&search_field=dspace_community"
+# Department of Exercise and Sport Science  
+  "19834": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Exercise%20and%20Sport%20Science&search_field=dspace_community"
+# Department of Fisheries and Wildlife  
+  "12558": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Fisheries%20and%20Wildlife&search_field=dspace_community"
+# Department of Food Science and Technology  
+  "17881": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Food%20Science%20and%20Technology&search_field=dspace_community"
+# Department of Foreign Languages and Literatures  
+  "24915": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Foreign%20Languages%20and%20Literatures&search_field=dspace_community"
+# Department of Forest Ecosystems and Society  
+  "10899": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Forest%20Ecosystems%20and%20Society&search_field=dspace_community"
+# Department of History  
+  "12720": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20History&search_field=dspace_community"
+# Department of Horticulture  
+  "16374": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Horticulture&search_field=dspace_community"
+# Department of Human Development and Family Sciences  
+  "18472": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Human%20Development%20and%20Family%20Sciences&search_field=dspace_community"
+# Department of Integrative Biology  
+  "52699": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Integrative%20Biology&search_field=dspace_community"
+# Department of Mathematics  
+  "13737": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Mathematics&search_field=dspace_community"
+# Department of Medical Physics  
+  "19605": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Medical%20Physics&search_field=dspace_community"
+# Department of Microbiology  
+  "9972": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Microbiology&search_field=dspace_community"
+# Department of Music  
+  "10687": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Music&search_field=dspace_community"
+# Department of Nuclear Engineering and Radiation Health Physics  
+  "18496": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Nuclear%20Engineering%20and%20Radiation%20Health%20Physics&search_field=dspace_community"
+# Department of Nutrition  
+  "25873": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Nutrition&search_field=dspace_community"
+# Department of Philosophy  
+  "21416": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Philosophy&search_field=dspace_community"
+# Department of Physics  
+  "13831": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Physics&search_field=dspace_community"
+# Department of Public Health  
+  "11402": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Public%20Health&search_field=dspace_community"
+# Department of Rangeland Ecology and Management  
+  "7887": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Rangeland%20Ecology%20and%20Management&search_field=dspace_community"
+# Department of Science and Mathematics Education  
+  "8307": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Science%20and%20Mathematics%20Education&search_field=dspace_community"
+# Department of Sociology  
+  "28891": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Sociology&search_field=dspace_community"
+# Department of Speech Communication  
+  "11957": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Speech%20Communication&search_field=dspace_community"
+# Department of Statistics  
+  "18467": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Statistics&search_field=dspace_community"
+# Department of Toxicology  
+  "18862": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Toxicology&search_field=dspace_community"
+# Department of Wood Science & Engineering  
+  "4573": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Wood%20Science%20%26%20Engineering&search_field=dspace_community"
+# Department of Zoology  
+  "12721": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Zoology&search_field=dspace_community"
+# Electronic Theses and Dissertations  
+  "88": "https://ir.library.oregonstate.edu/catalog?q=Electronic%20Theses%20and%20Dissertations&search_field=dspace_community"
+# Engineering Experiment Station  
+  "30412": "https://ir.library.oregonstate.edu/catalog?q=Engineering%20Experiment%20Station&search_field=dspace_community"
+# Environmental Science Program  
+  "15880": "https://ir.library.oregonstate.edu/catalog?q=Environmental%20Science%20Program&search_field=dspace_community"
+# Ethnographic Field School (ANTH 499/599)  
+  "6367": "https://ir.library.oregonstate.edu/catalog?q=Ethnographic%20Field%20School%20(ANTH%20499%2F599)&search_field=dspace_community"
+# Extended Campus (Ecampus)  
+  "59941": "https://ir.library.oregonstate.edu/catalog?q=Extended%20Campus%20(Ecampus)&search_field=dspace_community"
+# Extension Service and Agricultural Experiment Station  
+  "3904": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20and%20Agricultural%20Experiment%20Station&search_field=dspace_community"
+# Facilities Services  
+  "16345": "https://ir.library.oregonstate.edu/catalog?q=Facilities%20Services&search_field=dspace_community"
+# Faculty Research  
+  "3004": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research&search_field=dspace_community"
+# Faculty Research  
+  "59893": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research&search_field=dspace_community"
+# Forest Research Laboratory  
+  "7543": "https://ir.library.oregonstate.edu/catalog?q=Forest%20Research%20Laboratory&search_field=dspace_community"
+# Geography  
+  "1721": "https://ir.library.oregonstate.edu/catalog?q=Geography&search_field=dspace_community"
+# Geology  
+  "7889": "https://ir.library.oregonstate.edu/catalog?q=Geology&search_field=dspace_community"
+# HMSC Administrative Work  
+  "13844": "https://ir.library.oregonstate.edu/catalog?q=HMSC%20Administrative%20Work&search_field=dspace_community"
+# Hatfield Marine Science Center  
+  "1317": "https://ir.library.oregonstate.edu/catalog?q=Hatfield%20Marine%20Science%20Center&search_field=dspace_community"
+# Honors College Publications  
+  "15190": "https://ir.library.oregonstate.edu/catalog?q=Honors%20College%20Publications&search_field=dspace_community"
+# Independent Multidisciplinary Science Team (IMST)  
+  "11269": "https://ir.library.oregonstate.edu/catalog?q=Independent%20Multidisciplinary%20Science%20Team%20(IMST)&search_field=dspace_community"
+# Information Services  
+  "58587": "https://ir.library.oregonstate.edu/catalog?q=Information%20Services&search_field=dspace_community"
+# Institute for Natural Resources (INR)  
+  "11": "https://ir.library.oregonstate.edu/catalog?q=Institute%20for%20Natural%20Resources%20(INR)&search_field=dspace_community"
+# Interdisciplinary Studies  
+  "7144": "https://ir.library.oregonstate.edu/catalog?q=Interdisciplinary%20Studies&search_field=dspace_community"
+# Library Committee  
+  "1747": "https://ir.library.oregonstate.edu/catalog?q=Library%20Committee&search_field=dspace_community"
+# Linus Pauling Institute  
+  "36900": "https://ir.library.oregonstate.edu/catalog?q=Linus%20Pauling%20Institute&search_field=dspace_community"
+# Marine Renewable Energy  
+  "13496": "https://ir.library.oregonstate.edu/catalog?q=Marine%20Renewable%20Energy&search_field=dspace_community"
+# NAAFE Forum 2015  
+  "56425": "https://ir.library.oregonstate.edu/catalog?q=NAAFE%20Forum%202015&search_field=dspace_community"
+# Natural Resources  
+  "5": "https://ir.library.oregonstate.edu/catalog?q=Natural%20Resources&search_field=dspace_community"
+# OSU Cultural Resource Centers  
+  "27565": "https://ir.library.oregonstate.edu/catalog?q=OSU%20Cultural%20Resource%20Centers&search_field=dspace_community"
+# OSU Press  
+  "18856": "https://ir.library.oregonstate.edu/catalog?q=OSU%20Press&search_field=dspace_community"
+# OSU's WWII Era Japanese American Students  
+  "36408": "https://ir.library.oregonstate.edu/catalog?q=OSU's%20WWII%20Era%20Japanese%20American%20Students&search_field=dspace_community"
+# Office of Institutional Research  
+  "1905": "https://ir.library.oregonstate.edu/catalog?q=Office%20of%20Institutional%20Research&search_field=dspace_community"
+# Open Access Articles  
+  "43908": "https://ir.library.oregonstate.edu/catalog?q=Open%20Access%20Articles&search_field=dspace_community"
+# Open Educational Resources  
+  "57911": "https://ir.library.oregonstate.edu/catalog?q=Open%20Educational%20Resources&search_field=dspace_community"
+# Oregon Biodiversity Information Center (ORBIC)  
+  "27": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Biodiversity%20Information%20Center%20(ORBIC)&search_field=dspace_community"
+# Oregon Department of Fish and Wildlife  
+  "16917": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Department%20of%20Fish%20and%20Wildlife&search_field=dspace_community"
+# Oregon Estuaries  
+  "21994": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Estuaries&search_field=dspace_community"
+# Oregon Game Commission Publications  
+  "43060": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Game%20Commission%20Publications&search_field=dspace_community"
+# Oregon Hops and Brewing Archives  
+  "49145": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Hops%20and%20Brewing%20Archives&search_field=dspace_community"
+# Oregon Sea Grant  
+  "42614": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Sea%20Grant&search_field=dspace_community"
+# Oregon State Arthropod Collection  
+  "13788": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20State%20Arthropod%20Collection&search_field=dspace_community"
+# Oregon Wine Research Institiute  
+  "58155": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Wine%20Research%20Institiute&search_field=dspace_community"
+# President's Office  
+  "4839": "https://ir.library.oregonstate.edu/catalog?q=President's%20Office&search_field=dspace_community"
+# Professional Science Master's Program  
+  "29546": "https://ir.library.oregonstate.edu/catalog?q=Professional%20Science%20Master's%20Program&search_field=dspace_community"
+# Program in Water Conflict Management and Transformation  
+  "11272": "https://ir.library.oregonstate.edu/catalog?q=Program%20in%20Water%20Conflict%20Management%20and%20Transformation&search_field=dspace_community"
+# Registrar's Office  
+  "2049": "https://ir.library.oregonstate.edu/catalog?q=Registrar's%20Office&search_field=dspace_community"
+# Research Communications  
+  "1422": "https://ir.library.oregonstate.edu/catalog?q=Research%20Communications&search_field=dspace_community"
+# Rural Studies Program  
+  "8335": "https://ir.library.oregonstate.edu/catalog?q=Rural%20Studies%20Program&search_field=dspace_community"
+# Rural-Urban Connections  
+  "9951": "https://ir.library.oregonstate.edu/catalog?q=Rural-Urban%20Connections&search_field=dspace_community"
+# School of Civil and Construction Engineering  
+  "22529": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Civil%20and%20Construction%20Engineering&search_field=dspace_community"
+# School of Electrical Engineering and Computer Science  
+  "7302": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Electrical%20Engineering%20and%20Computer%20Science&search_field=dspace_community"
+# School of Nuclear Science and Engineering  
+  "57713": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Nuclear%20Science%20and%20Engineering&search_field=dspace_community"
+# School of Psychological Science (Psychology)  
+  "36300": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Psychological%20Science%20(Psychology)&search_field=dspace_community"
+# School of Public Policy  
+  "4128": "https://ir.library.oregonstate.edu/catalog?q=School%20of%20Public%20Policy&search_field=dspace_community"
+# Serials  
+  "10092": "https://ir.library.oregonstate.edu/catalog?q=Serials&search_field=dspace_community"
+# Special Collections & Archives Research Center  
+  "1891": "https://ir.library.oregonstate.edu/catalog?q=Special%20Collections%20%26%20Archives%20Research%20Center&search_field=dspace_community"
+# Student Research  
+  "2871": "https://ir.library.oregonstate.edu/catalog?q=Student%20Research&search_field=dspace_community"
+# Track and Field  
+  "20816": "https://ir.library.oregonstate.edu/catalog?q=Track%20and%20Field&search_field=dspace_community"
+# Undergraduate Theses and Research  
+  "7": "https://ir.library.oregonstate.edu/catalog?q=Undergraduate%20Theses%20and%20Research&search_field=dspace_community"
+# University Housing & Dining Services  
+  "13696": "https://ir.library.oregonstate.edu/catalog?q=University%20Housing%20%26%20Dining%20Services&search_field=dspace_community"
+# University Information Technology Committee  
+  "9135": "https://ir.library.oregonstate.edu/catalog?q=University%20Information%20Technology%20Committee&search_field=dspace_community"
+# University Libraries  
+  "3": "https://ir.library.oregonstate.edu/catalog?q=University%20Libraries&search_field=dspace_community"
+# Urban League of Portland  
+  "22017": "https://ir.library.oregonstate.edu/catalog?q=Urban%20League%20of%20Portland&search_field=dspace_community"
+# Water Research  
+  "12250": "https://ir.library.oregonstate.edu/catalog?q=Water%20Research&search_field=dspace_community"
+# Water Resources Graduate Program  
+  "30755": "https://ir.library.oregonstate.edu/catalog?q=Water%20Resources%20Graduate%20Program&search_field=dspace_community"
+# Water Resources Graduate Program  
+  "30755": "https://ir.library.oregonstate.edu/catalog?q=Water%20Resources%20Graduate%20Program&search_field=dspace_community"
+# Women's Center  
+  "11243": "https://ir.library.oregonstate.edu/catalog?q=Women's%20Center&search_field=dspace_community"
+# Writing Intensive Curriculum  
+  "15952": "https://ir.library.oregonstate.edu/catalog?q=Writing%20Intensive%20Curriculum&search_field=dspace_community"
+ # A. Personal/Political/Official Records 
+  "14384": "https://ir.library.oregonstate.edu/catalog?q=A.%20Personal%2FPolitical%2FOfficial%20Records&search_field=dspace_collection"
+# B. Legislative Records 
+  "14385": "https://ir.library.oregonstate.edu/catalog?q=B.%20Legislative%20Records&search_field=dspace_collection"
+# C. Constituent Service Records 
+  "14386": "https://ir.library.oregonstate.edu/catalog?q=C.%20Constituent%20Service%20Records&search_field=dspace_collection"
+# D. Press Relations/Media Activities Records 
+  "14387": "https://ir.library.oregonstate.edu/catalog?q=D.%20Press%20Relations%2FMedia%20Activities%20Records&search_field=dspace_collection"
+# E. Office Administration Records 
+  "14388": "https://ir.library.oregonstate.edu/catalog?q=E.%20Office%20Administration%20Records&search_field=dspace_collection"
+# BB 350 -- Elementary Biochemistry 
+  "28714": "https://ir.library.oregonstate.edu/catalog?q=BB%20350%20--%20Elementary%20Biochemistry&search_field=dspace_collection"
+# BB 450/550 - General Biochemistry I 
+  "28716": "https://ir.library.oregonstate.edu/catalog?q=BB%20450%2F550%20-%20General%20Biochemistry%20I&search_field=dspace_collection"
+# BB 451/551 - General Biochemistry II 
+  "28717": "https://ir.library.oregonstate.edu/catalog?q=BB%20451%2F551%20-%20General%20Biochemistry%20II&search_field=dspace_collection"
+# Final Reports  (Professional Science Master's Programs) 
+  "29547": "https://ir.library.oregonstate.edu/catalog?q=Final%20Reports%20%20(Professional%20Science%20Master's%20Programs)&search_field=dspace_collection"
+# Master of Art in Interdisciplinary Studies Theses and Student Research Papers (MAIS) 
+  "7145": "https://ir.library.oregonstate.edu/catalog?q=Master%20of%20Art%20in%20Interdisciplinary%20Studies%20Theses%20and%20Student%20Research%20Papers%20(MAIS)&search_field=dspace_collection"
+# Master of Public Policy Student Research Papers 
+  "4129": "https://ir.library.oregonstate.edu/catalog?q=Master%20of%20Public%20Policy%20Student%20Research%20Papers&search_field=dspace_collection"
+# Master's Theses (Mathematics) 
+  "16491": "https://ir.library.oregonstate.edu/catalog?q=Master's%20Theses%20(Mathematics)&search_field=dspace_collection"
+# MS Non-Thesis Papers (Environmental Science Program) 
+  "18402": "https://ir.library.oregonstate.edu/catalog?q=MS%20Non-Thesis%20Papers%20(Environmental%20Science%20Program)&search_field=dspace_collection"
+# MS non-thesis Research Papers (Civil and Construction Engineering) 
+  "26311": "https://ir.library.oregonstate.edu/catalog?q=MS%20non-thesis%20Research%20Papers%20(Civil%20and%20Construction%20Engineering)&search_field=dspace_collection"
+# MS non-thesis Research Papers (EECS) 
+  "10238": "https://ir.library.oregonstate.edu/catalog?q=MS%20non-thesis%20Research%20Papers%20(EECS)&search_field=dspace_collection"
+# Non-Thesis Reports (Professional Science Master in Applied Systematics in Botany) 
+  "13790": "https://ir.library.oregonstate.edu/catalog?q=Non-Thesis%20Reports%20(Professional%20Science%20Master%20in%20Applied%20Systematics%20in%20Botany)&search_field=dspace_collection"
+# Ph.D. Theses (Mathematics) 
+  "15739": "https://ir.library.oregonstate.edu/catalog?q=Ph.D.%20Theses%20(Mathematics)&search_field=dspace_collection"
+# Student Research Papers (Mathematics) 
+  "17264": "https://ir.library.oregonstate.edu/catalog?q=Student%20Research%20Papers%20(Mathematics)&search_field=dspace_collection"
+# Theses (Cascades) 
+  "3002": "https://ir.library.oregonstate.edu/catalog?q=Theses%20(Cascades)&search_field=dspace_collection"
+# Theses (Electrical Engineering and Computer Science) 
+  "8163": "https://ir.library.oregonstate.edu/catalog?q=Theses%20(Electrical%20Engineering%20and%20Computer%20Science)&search_field=dspace_collection"
+# Theses and Dissertations (Agricultural Education and Agricultural Sciences) 
+  "18499": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Agricultural%20Education%20and%20Agricultural%20Sciences)&search_field=dspace_collection"
+# Theses and Dissertations (Animal and Rangeland Science) 
+  "18828": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Animal%20and%20Rangeland%20Science)&search_field=dspace_collection"
+# Theses and Dissertations (Biochemistry and Biophysics) 
+  "19991": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Biochemistry%20and%20Biophysics)&search_field=dspace_collection"
+# Theses and Dissertations (Botany and Plant Pathology) 
+  "17954": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Botany%20and%20Plant%20Pathology)&search_field=dspace_collection"
+# Theses and Dissertations (Environmental Science Program) 
+  "15881": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Environmental%20Science%20Program)&search_field=dspace_collection"
+# Theses and Dissertations (Exercise and Sport Science) 
+  "21155": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Exercise%20and%20Sport%20Science)&search_field=dspace_collection"
+# Theses and Dissertations (Nuclear Engineering and Radiation Health Physics) 
+  "18497": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Nuclear%20Engineering%20and%20Radiation%20Health%20Physics)&search_field=dspace_collection"
+# Theses and Dissertations (Nutrition) 
+  "25874": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Nutrition)&search_field=dspace_collection"
+# Theses and Dissertations (Public Health) 
+  "19679": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Public%20Health)&search_field=dspace_collection"
+# Theses and Dissertations (School of Chemical, Biological and Environmental Engineering) 
+  "18466": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(School%20of%20Chemical%2C%20Biological%20and%20Environmental%20Engineering)&search_field=dspace_collection"
+# Theses and Dissertations (Statistics) 
+  "18468": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Statistics)&search_field=dspace_collection"
+# Theses and Dissertations (Toxicology) 
+  "18863": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Toxicology)&search_field=dspace_collection"
+# Theses and Dissertations (Veterinary Medicine) 
+  "19531": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Veterinary%20Medicine)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Applied Economics) 
+  "17667": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Applied%20Economics)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Biological and Ecological Engineering) 
+  "496": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Biological%20and%20Ecological%20Engineering)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Chemistry) 
+  "17747": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Chemistry)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (College of Earth, Ocean and Atmospheric Sciences) 
+  "1339": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(College%20of%20Earth%2C%20Ocean%20and%20Atmospheric%20Sciences)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (College of Forestry, 1984/85 to Present) 
+  "7864": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(College%20of%20Forestry%2C%201984%2F85%20to%20Present)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Crop & Soil Science) 
+  "18369": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Crop%20%26%20Soil%20Science)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Design and Human Environment) 
+  "17698": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Design%20and%20Human%20Environment)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (English) 
+  "18072": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(English)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Fisheries and Wildlife) 
+  "17093": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Fisheries%20and%20Wildlife)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Food Science and Technology) 
+  "17882": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Food%20Science%20and%20Technology)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Forest Ecosystems and Society & Forest Science) 
+  "10901": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Forest%20Ecosystems%20and%20Society%20%26%20Forest%20Science)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Geography) 
+  "1723": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Geography)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Geology) 
+  "7890": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Geology)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Hatfield Marine Science Center) 
+  "13727": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Hatfield%20Marine%20Science%20Center)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Horticulture) 
+  "19297": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Horticulture)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Human Development and Family Sciences) 
+  "18473": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Human%20Development%20and%20Family%20Sciences)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Mechanical, Industrial & Manufacturing Engineering) 
+  "16561": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Mechanical%2C%20Industrial%20%26%20Manufacturing%20Engineering)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Microbiology) 
+  "18388": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Microbiology)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Pharmacy) 
+  "17744": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Pharmacy)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Physics) 
+  "18070": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Physics)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Rangeland Ecology and Management & Rangeland Resources) 
+  "7888": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Rangeland%20Ecology%20and%20Management%20%26%20Rangeland%20Resources)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (School of Forestry, pre - 1984) 
+  "12309": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(School%20of%20Forestry%2C%20pre%20-%201984)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Science and Mathematics Education) 
+  "21289": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Science%20and%20Mathematics%20Education)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Speech Communication) 
+  "11960": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Speech%20Communication)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Sustainable Forest Management, Forest Engineering, & Forest Management) 
+  "10902": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Sustainable%20Forest%20Management%2C%20Forest%20Engineering%2C%20%26%20Forest%20Management)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Wood Science) 
+  "7820": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Wood%20Science)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Zoology) 
+  "17891": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Zoology)&search_field=dspace_collection"
+# Theses, Dissertations, Portfolios and Student Research Papers (Education) 
+  "18090": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%2C%20Portfolios%20and%20Student%20Research%20Papers%20(Education)&search_field=dspace_collection"
+# Water Resources Graduate Program Theses and Dissertations 
+  "12251": "https://ir.library.oregonstate.edu/catalog?q=Water%20Resources%20Graduate%20Program%20Theses%20and%20Dissertations&search_field=dspace_collection"
+# Water Resources Master's Project Papers (Non-Thesis) 
+  "18386": "https://ir.library.oregonstate.edu/catalog?q=Water%20Resources%20Master's%20Project%20Papers%20(Non-Thesis)&search_field=dspace_collection"
+# Research Bulletin (Forest Research Laboratory) 
+  "7547": "https://ir.library.oregonstate.edu/catalog?q=Research%20Bulletin%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Research Contribution (Forest Research Laboratory) 
+  "7548": "https://ir.library.oregonstate.edu/catalog?q=Research%20Contribution%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Research Note (Forest Research Laboratory) 
+  "7544": "https://ir.library.oregonstate.edu/catalog?q=Research%20Note%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Research Paper (Forest Research Laboratory) 
+  "7545": "https://ir.library.oregonstate.edu/catalog?q=Research%20Paper%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Agricultural Experiment Station -- Station Circulars 
+  "6760": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20--%20Station%20Circulars&search_field=dspace_collection"
+# Agricultural Experiment Station -- Technical Bulletins 
+  "8330": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20--%20Technical%20Bulletins&search_field=dspace_collection"
+# Agricultural Experiment Station and Extension Service -- Special Reports 
+  "3905": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20and%20Extension%20Service%20--%20Special%20Reports&search_field=dspace_collection"
+# Conference Proceedings (Rural Studies Program) 
+  "8654": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Proceedings%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Extension Service -- Bulletins / Extension Bulletins 
+  "6758": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20--%20Bulletins%20%2F%20Extension%20Bulletins&search_field=dspace_collection"
+# Faculty Research Publications (Rural Studies Program) 
+  "8738": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Gerald W. Williams Collection 
+  "9112": "https://ir.library.oregonstate.edu/catalog?q=Gerald%20W.%20Williams%20Collection&search_field=dspace_collection"
+# Historical Documents (Rural Studies Program) 
+  "8742": "https://ir.library.oregonstate.edu/catalog?q=Historical%20Documents%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Journal of Oregon Ornithology 
+  "7951": "https://ir.library.oregonstate.edu/catalog?q=Journal%20of%20Oregon%20Ornithology&search_field=dspace_collection"
+# Newsletters (Rural Studies Program) 
+  "8740": "https://ir.library.oregonstate.edu/catalog?q=Newsletters%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Oregon Department of Fish and Wildlife Annual/Biennial Reports 
+  "2079": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Department%20of%20Fish%20and%20Wildlife%20Annual%2FBiennial%20Reports&search_field=dspace_collection"
+# Oregon Explorer 
+  "29": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Explorer&search_field=dspace_collection"
+# Oregon Explorer Stories 
+  "8975": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Explorer%20Stories&search_field=dspace_collection"
+# Presentations and Posters (Rural Studies Program) 
+  "8739": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Publications and Reports (INR) 
+  "12": "https://ir.library.oregonstate.edu/catalog?q=Publications%20and%20Reports%20(INR)&search_field=dspace_collection"
+# Publications and Reports (ORBIC) 
+  "28": "https://ir.library.oregonstate.edu/catalog?q=Publications%20and%20Reports%20(ORBIC)&search_field=dspace_collection"
+# Stories (Rural Studies Program) 
+  "8741": "https://ir.library.oregonstate.edu/catalog?q=Stories%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Studies in Oregon Ornithology/Yaquina Studies in Natural History 
+  "8288": "https://ir.library.oregonstate.edu/catalog?q=Studies%20in%20Oregon%20Ornithology%2FYaquina%20Studies%20in%20Natural%20History&search_field=dspace_collection"
+# The Ore Bin 
+  "2239": "https://ir.library.oregonstate.edu/catalog?q=The%20Ore%20Bin&search_field=dspace_collection"
+# Water and Watersheds Initiative (1960-2005) 
+  "31": "https://ir.library.oregonstate.edu/catalog?q=Water%20and%20Watersheds%20Initiative%20(1960-2005)&search_field=dspace_collection"
+# White Papers (Rural Studies Program) 
+  "8737": "https://ir.library.oregonstate.edu/catalog?q=White%20Papers%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# U.S. Forest Service Research Legacy 
+  "93": "https://ir.library.oregonstate.edu/catalog?q=U.S.%20Forest%20Service%20Research%20Legacy&search_field=dspace_collection"
+# Purchased EResources 
+  "33962": "https://ir.library.oregonstate.edu/catalog?q=Purchased%20EResources&search_field=dspace_collection"
+# Bioresource Research Theses 
+  "456": "https://ir.library.oregonstate.edu/catalog?q=Bioresource%20Research%20Theses&search_field=dspace_collection"
+# Faculty-Student Research Publications (Bioresource Research) 
+  "6763": "https://ir.library.oregonstate.edu/catalog?q=Faculty-Student%20Research%20Publications%20(Bioresource%20Research)&search_field=dspace_collection"
+# Honors College Theses 
+  "8": "https://ir.library.oregonstate.edu/catalog?q=Honors%20College%20Theses&search_field=dspace_collection"
+# Honors Theses (EECS) 
+  "11786": "https://ir.library.oregonstate.edu/catalog?q=Honors%20Theses%20(EECS)&search_field=dspace_collection"
+# International Degree Theses 
+  "3013": "https://ir.library.oregonstate.edu/catalog?q=International%20Degree%20Theses&search_field=dspace_collection"
+# Library Undergraduate Research Awards 
+  "4505": "https://ir.library.oregonstate.edu/catalog?q=Library%20Undergraduate%20Research%20Awards&search_field=dspace_collection"
+# Undergraduate Research 
+  "32832": "https://ir.library.oregonstate.edu/catalog?q=Undergraduate%20Research&search_field=dspace_collection"
+# Undergraduate Research, Scholarship and the Arts (URSA) 
+  "18339": "https://ir.library.oregonstate.edu/catalog?q=Undergraduate%20Research%2C%20Scholarship%20and%20the%20Arts%20(URSA)&search_field=dspace_collection"
+# WIC Culture of Writing Awards 
+  "15953": "https://ir.library.oregonstate.edu/catalog?q=WIC%20Culture%20of%20Writing%20Awards&search_field=dspace_collection"
+# 1928 Disinterment 
+  "28784": "https://ir.library.oregonstate.edu/catalog?q=1928%20Disinterment&search_field=dspace_collection"
+# 2008: Toward One Oregon 
+  "10432": "https://ir.library.oregonstate.edu/catalog?q=2008%3A%20Toward%20One%20Oregon&search_field=dspace_collection"
+# 4-H 
+  "11814": "https://ir.library.oregonstate.edu/catalog?q=4-H&search_field=dspace_collection"
+# A. President's Office Records (RG 13), 1941-1942 
+  "36409": "https://ir.library.oregonstate.edu/catalog?q=A.%20President's%20Office%20Records%20(RG%2013)%2C%201941-1942&search_field=dspace_collection"
+# Academic Standing Reports 
+  "2050": "https://ir.library.oregonstate.edu/catalog?q=Academic%20Standing%20Reports&search_field=dspace_collection"
+# Addresses and Speeches (President's Office) 
+  "12969": "https://ir.library.oregonstate.edu/catalog?q=Addresses%20and%20Speeches%20(President's%20Office)&search_field=dspace_collection"
+# Administrative Documents (Hatfield Marine Science Center) 
+  "22850": "https://ir.library.oregonstate.edu/catalog?q=Administrative%20Documents%20(Hatfield%20Marine%20Science%20Center)&search_field=dspace_collection"
+# Agricultural Experiment Station -- Bulletins / Station Bulletins 
+  "12080": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20--%20Bulletins%20%2F%20Station%20Bulletins&search_field=dspace_collection"
+# Agricultural Experiment Station -- Circulars of Information 
+  "11961": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20--%20Circulars%20of%20Information&search_field=dspace_collection"
+# Agricultural Experiment Station and Extension Service -- Brief Series, Books and Pamphlets 
+  "17022": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20and%20Extension%20Service%20--%20Brief%20Series%2C%20Books%20and%20Pamphlets&search_field=dspace_collection"
+# Agricultural Experiment Station Reports and Annual Reports 
+  "21591": "https://ir.library.oregonstate.edu/catalog?q=Agricultural%20Experiment%20Station%20Reports%20and%20Annual%20Reports&search_field=dspace_collection"
+# All Commodity Summaries 
+  "49484": "https://ir.library.oregonstate.edu/catalog?q=All%20Commodity%20Summaries&search_field=dspace_collection"
+# Alsea Basin Resources 
+  "21995": "https://ir.library.oregonstate.edu/catalog?q=Alsea%20Basin%20Resources&search_field=dspace_collection"
+# Annual / Biennial Report (Oregon State University. Forest Research Laboratory) 
+  "31836": "https://ir.library.oregonstate.edu/catalog?q=Annual%20%2F%20Biennial%20Report%20(Oregon%20State%20University.%20Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Annual Cruise (includes OAC Forestry Club Annual) 
+  "10778": "https://ir.library.oregonstate.edu/catalog?q=Annual%20Cruise%20(includes%20OAC%20Forestry%20Club%20Annual)&search_field=dspace_collection"
+# Annual report of the Oregon Agricultural College and Experiment Station 
+  "23675": "https://ir.library.oregonstate.edu/catalog?q=Annual%20report%20of%20the%20Oregon%20Agricultural%20College%20and%20Experiment%20Station&search_field=dspace_collection"
+# Annual Reports 
+  "38414": "https://ir.library.oregonstate.edu/catalog?q=Annual%20Reports&search_field=dspace_collection"
+# Annual Reports. Utility Pole Research Cooperative 
+  "9255": "https://ir.library.oregonstate.edu/catalog?q=Annual%20Reports.%20Utility%20Pole%20Research%20Cooperative&search_field=dspace_collection"
+# Applications, Permits, Correspondence and Notes 
+  "21955": "https://ir.library.oregonstate.edu/catalog?q=Applications%2C%20Permits%2C%20Correspondence%20and%20Notes&search_field=dspace_collection"
+# Aquaculture (IIFET 2000) 
+  "30469": "https://ir.library.oregonstate.edu/catalog?q=Aquaculture%20(IIFET%202000)&search_field=dspace_collection"
+# Aquaculture (IIFET 2006) 
+  "43176": "https://ir.library.oregonstate.edu/catalog?q=Aquaculture%20(IIFET%202006)&search_field=dspace_collection"
+# Aquaculture (IIFET 2008) 
+  "36192": "https://ir.library.oregonstate.edu/catalog?q=Aquaculture%20(IIFET%202008)&search_field=dspace_collection"
+# Asian & Pacific Cultural Center 
+  "48655": "https://ir.library.oregonstate.edu/catalog?q=Asian%20%26%20Pacific%20Cultural%20Center&search_field=dspace_collection"
+# Assessment (Student Affairs Research and Evaluation) 
+  "1478": "https://ir.library.oregonstate.edu/catalog?q=Assessment%20(Student%20Affairs%20Research%20and%20Evaluation)&search_field=dspace_collection"
+# Assessment Council (Student Affairs Research and Evaluation) 
+  "37879": "https://ir.library.oregonstate.edu/catalog?q=Assessment%20Council%20(Student%20Affairs%20Research%20and%20Evaluation)&search_field=dspace_collection"
+# B. OSU Daily Barometer Articles, 1942 
+  "36410": "https://ir.library.oregonstate.edu/catalog?q=B.%20OSU%20Daily%20Barometer%20Articles%2C%201942&search_field=dspace_collection"
+# Beetles of the Pacific Northwest 
+  "13789": "https://ir.library.oregonstate.edu/catalog?q=Beetles%20of%20the%20Pacific%20Northwest&search_field=dspace_collection"
+# Beginning College Survey of Student Engagement (Student Affairs Research and Evaluation) 
+  "38020": "https://ir.library.oregonstate.edu/catalog?q=Beginning%20College%20Survey%20of%20Student%20Engagement%20(Student%20Affairs%20Research%20and%20Evaluation)&search_field=dspace_collection"
+# Berries 
+  "48179": "https://ir.library.oregonstate.edu/catalog?q=Berries&search_field=dspace_collection"
+# Bibliographic Series (Forest Research Laboratory) 
+  "10767": "https://ir.library.oregonstate.edu/catalog?q=Bibliographic%20Series%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Biennial Conference on University Education in Natural Resources. (7th : 2008, Corvallis, OR) 
+  "7138": "https://ir.library.oregonstate.edu/catalog?q=Biennial%20Conference%20on%20University%20Education%20in%20Natural%20Resources.%20(7th%20%3A%202008%2C%20Corvallis%2C%20OR)&search_field=dspace_collection"
+# Bioenergy Minor Program 
+  "55786": "https://ir.library.oregonstate.edu/catalog?q=Bioenergy%20Minor%20Program&search_field=dspace_collection"
+# Black Cultural Center 
+  "54942": "https://ir.library.oregonstate.edu/catalog?q=Black%20Cultural%20Center&search_field=dspace_collection"
+# Brief Series, Books and Pamphlets 
+  "83": "https://ir.library.oregonstate.edu/catalog?q=Brief%20Series%2C%20Books%20and%20Pamphlets&search_field=dspace_collection"
+# Bulletin (Forest Research Laboratory) 
+  "9954": "https://ir.library.oregonstate.edu/catalog?q=Bulletin%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# C. Oregon Stater Article, 1995 
+  "36492": "https://ir.library.oregonstate.edu/catalog?q=C.%20Oregon%20Stater%20Article%2C%201995&search_field=dspace_collection"
+# Cascades Poster Session 
+  "2872": "https://ir.library.oregonstate.edu/catalog?q=Cascades%20Poster%20Session&search_field=dspace_collection"
+# Case Studies (Forest Research Laboratory) 
+  "12199": "https://ir.library.oregonstate.edu/catalog?q=Case%20Studies%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Case Study Briefs (Forest Research Laboratory) 
+  "55772": "https://ir.library.oregonstate.edu/catalog?q=Case%20Study%20Briefs%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Celebration of Undergraduate Excellence (CUE) Research Posters 
+  "21372": "https://ir.library.oregonstate.edu/catalog?q=Celebration%20of%20Undergraduate%20Excellence%20(CUE)%20Research%20Posters&search_field=dspace_collection"
+# CEOAS Reports 
+  "1316": "https://ir.library.oregonstate.edu/catalog?q=CEOAS%20Reports&search_field=dspace_collection"
+# Chronicle 
+  "15192": "https://ir.library.oregonstate.edu/catalog?q=Chronicle&search_field=dspace_collection"
+# code4lib Conference 2006 
+  "2933": "https://ir.library.oregonstate.edu/catalog?q=code4lib%20Conference%202006&search_field=dspace_collection"
+# Common Data Set 
+  "28861": "https://ir.library.oregonstate.edu/catalog?q=Common%20Data%20Set&search_field=dspace_collection"
+# Community Studies (Rural Studies Program) 
+  "11173": "https://ir.library.oregonstate.edu/catalog?q=Community%20Studies%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Compendium of Computer Science Doctoral Qualifying Exams 
+  "15731": "https://ir.library.oregonstate.edu/catalog?q=Compendium%20of%20Computer%20Science%20Doctoral%20Qualifying%20Exams&search_field=dspace_collection"
+# Conference Materials (IIFET 1996) 
+  "56896": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%201996)&search_field=dspace_collection"
+# Conference Materials (IIFET 2000) 
+  "30462": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202000)&search_field=dspace_collection"
+# Conference Materials (IIFET 2002) 
+  "56902": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202002)&search_field=dspace_collection"
+# Conference Materials (IIFET 2004) 
+  "56551": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202004)&search_field=dspace_collection"
+# Conference Materials (IIFET 2006) 
+  "43174": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202006)&search_field=dspace_collection"
+# Conference Materials (IIFET 2008) 
+  "36186": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202008)&search_field=dspace_collection"
+# Conference Materials (IIFET 2014) 
+  "52888": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202014)&search_field=dspace_collection"
+# Conference Materials (NAAFE Forum 2015) 
+  "56427": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(NAAFE%20Forum%202015)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 1996) 
+  "56897": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%201996)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2000) 
+  "30214": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202000)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2002) 
+  "56903": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202002)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2004) 
+  "56550": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202004)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2010) 
+  "38400": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202010)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2012) 
+  "32231": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202012)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2014) 
+  "52605": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202014)&search_field=dspace_collection"
+# Conference Papers and Presentations (NAAFE Forum 2015) 
+  "56428": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(NAAFE%20Forum%202015)&search_field=dspace_collection"
+# Coniferous Forest Biome (International Biological Program) 
+  "7483": "https://ir.library.oregonstate.edu/catalog?q=Coniferous%20Forest%20Biome%20(International%20Biological%20Program)&search_field=dspace_collection"
+# Constitution, Memos, Etc. 
+  "22018": "https://ir.library.oregonstate.edu/catalog?q=Constitution%2C%20Memos%2C%20Etc.&search_field=dspace_collection"
+# Contributions in Education and Outreach (Forest Research Laboratory) 
+  "12219": "https://ir.library.oregonstate.edu/catalog?q=Contributions%20in%20Education%20and%20Outreach%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Cooperative Institutional Research Program Reports 
+  "1345": "https://ir.library.oregonstate.edu/catalog?q=Cooperative%20Institutional%20Research%20Program%20Reports&search_field=dspace_collection"
+# Course Materials (Geography) 
+  "1725": "https://ir.library.oregonstate.edu/catalog?q=Course%20Materials%20(Geography)&search_field=dspace_collection"
+# Crop Science Report / Agronomic Crop Science Report 
+  "41000": "https://ir.library.oregonstate.edu/catalog?q=Crop%20Science%20Report%20%2F%20Agronomic%20Crop%20Science%20Report&search_field=dspace_collection"
+# D. Honorary Degrees, 2007-2008 
+  "36411": "https://ir.library.oregonstate.edu/catalog?q=D.%20Honorary%20Degrees%2C%202007-2008&search_field=dspace_collection"
+# Daily Barometer 
+  "11410": "https://ir.library.oregonstate.edu/catalog?q=Daily%20Barometer&search_field=dspace_collection"
+# Data Report Series (College of Earth, Ocean, and Atmospheric Sciences) 
+  "6526": "https://ir.library.oregonstate.edu/catalog?q=Data%20Report%20Series%20(College%20of%20Earth%2C%20Ocean%2C%20and%20Atmospheric%20Sciences)&search_field=dspace_collection"
+# Datasets 
+  "40397": "https://ir.library.oregonstate.edu/catalog?q=Datasets&search_field=dspace_collection"
+# Departmental Publication Reviews (Faculty Senate Library Committee) 
+  "1749": "https://ir.library.oregonstate.edu/catalog?q=Departmental%20Publication%20Reviews%20(Faculty%20Senate%20Library%20Committee)&search_field=dspace_collection"
+# Distinguished Graduates (Fisheries and Wildlife) 
+  "17094": "https://ir.library.oregonstate.edu/catalog?q=Distinguished%20Graduates%20(Fisheries%20and%20Wildlife)&search_field=dspace_collection"
+# Electronic Theses and Dissertations 
+  "89": "https://ir.library.oregonstate.edu/catalog?q=Electronic%20Theses%20and%20Dissertations&search_field=dspace_collection"
+# Employment Reports (Institutional Research) 
+  "1918": "https://ir.library.oregonstate.edu/catalog?q=Employment%20Reports%20(Institutional%20Research)&search_field=dspace_collection"
+# Engineering Experiment Station -- Bulletins / Bulletin Series 
+  "30413": "https://ir.library.oregonstate.edu/catalog?q=Engineering%20Experiment%20Station%20--%20Bulletins%20%2F%20Bulletin%20Series&search_field=dspace_collection"
+# Engineering Experiment Station -- Circular / Circular Series 
+  "30842": "https://ir.library.oregonstate.edu/catalog?q=Engineering%20Experiment%20Station%20--%20Circular%20%2F%20Circular%20Series&search_field=dspace_collection"
+# Enrollment Reports (Institutional Research) 
+  "1906": "https://ir.library.oregonstate.edu/catalog?q=Enrollment%20Reports%20(Institutional%20Research)&search_field=dspace_collection"
+# Entering Student Survey Reports 
+  "8671": "https://ir.library.oregonstate.edu/catalog?q=Entering%20Student%20Survey%20Reports&search_field=dspace_collection"
+# Experience of a Lifetime -- Student Blogs 
+  "13697": "https://ir.library.oregonstate.edu/catalog?q=Experience%20of%20a%20Lifetime%20--%20Student%20Blogs&search_field=dspace_collection"
+# Extension Service -- Circulars / Extension Circulars 
+  "11938": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20--%20Circulars%20%2F%20Extension%20Circulars&search_field=dspace_collection"
+# Extension Service -- Fact Sheets 
+  "15742": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20--%20Fact%20Sheets&search_field=dspace_collection"
+# Extension Service -- Fertilizer Guides 
+  "20533": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20--%20Fertilizer%20Guides&search_field=dspace_collection"
+# Extension Service -- Miscellaneous / Educational Materials 
+  "12079": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20--%20Miscellaneous%20%2F%20Educational%20Materials&search_field=dspace_collection"
+# Extension Service -- Pacific Northwest Extension Publishing 
+  "11962": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20--%20Pacific%20Northwest%20Extension%20Publishing&search_field=dspace_collection"
+# Fact Books (Institutional Research) 
+  "26926": "https://ir.library.oregonstate.edu/catalog?q=Fact%20Books%20(Institutional%20Research)&search_field=dspace_collection"
+# Fact Sheets (Rural Studies Program) 
+  "11172": "https://ir.library.oregonstate.edu/catalog?q=Fact%20Sheets%20(Rural%20Studies%20Program)&search_field=dspace_collection"
+# Faculty and HMSC Affilliated Research Publications (Hatfield Marine Science Center) 
+  "1320": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20and%20HMSC%20Affilliated%20Research%20Publications%20(Hatfield%20Marine%20Science%20Center)&search_field=dspace_collection"
+# Faculty Posters and Presentations (Science and Mathematics Education) 
+  "28268": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Posters%20and%20Presentations%20(Science%20and%20Mathematics%20Education)&search_field=dspace_collection"
+# Faculty Presentations (Botany and Plant Pathology) 
+  "1933": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Presentations%20(Botany%20and%20Plant%20Pathology)&search_field=dspace_collection"
+# Faculty Reports 
+  "28860": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Reports&search_field=dspace_collection"
+# Faculty Research Publications (Animal and Rangeland Science) 
+  "30112": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Animal%20and%20Rangeland%20Science)&search_field=dspace_collection"
+# Faculty Research Publications (Anthropology) 
+  "13088": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Anthropology)&search_field=dspace_collection"
+# Faculty Research Publications (Applied Economics) 
+  "14948": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Applied%20Economics)&search_field=dspace_collection"
+# Faculty Research Publications (Art) 
+  "21992": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Art)&search_field=dspace_collection"
+# Faculty Research Publications (Biochemistry and Biophysics) 
+  "22171": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Biochemistry%20and%20Biophysics)&search_field=dspace_collection"
+# Faculty Research Publications (Biological and Ecological Engineering) 
+  "29655": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Biological%20and%20Ecological%20Engineering)&search_field=dspace_collection"
+# Faculty Research Publications (Biomedical Sciences) 
+  "30117": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Biomedical%20Sciences)&search_field=dspace_collection"
+# Faculty Research Publications (Botany and Plant Pathology) 
+  "1934": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Botany%20and%20Plant%20Pathology)&search_field=dspace_collection"
+# Faculty Research Publications (Cascades) 
+  "3005": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Cascades)&search_field=dspace_collection"
+# Faculty Research Publications (Center for Genome Research & Biocomputing) 
+  "42306": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Center%20for%20Genome%20Research%20%26%20Biocomputing)&search_field=dspace_collection"
+# Faculty Research Publications (Chemistry) 
+  "20456": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Chemistry)&search_field=dspace_collection"
+# Faculty Research Publications (Civil and Construction Engineering) 
+  "28193": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Civil%20and%20Construction%20Engineering)&search_field=dspace_collection"
+# Faculty Research Publications (College of Agricultural Sciences) 
+  "13589": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Agricultural%20Sciences)&search_field=dspace_collection"
+# Faculty Research Publications (College of Business) 
+  "14600": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Business)&search_field=dspace_collection"
+# Faculty Research Publications (College of Earth, Ocean, and Atmospheric Sciences) 
+  "23252": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Earth%2C%20Ocean%2C%20and%20Atmospheric%20Sciences)&search_field=dspace_collection"
+# Faculty Research Publications (College of Forestry & Oregon Forest Research Laboratory) 
+  "12727": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Forestry%20%26%20Oregon%20Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Faculty Research Publications (College of Pharmacy) 
+  "31640": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Pharmacy)&search_field=dspace_collection"
+# Faculty Research Publications (College of Public Health and Human Sciences) 
+  "28635": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Public%20Health%20and%20Human%20Sciences)&search_field=dspace_collection"
+# Faculty Research Publications (College of Veterinary Medicine) 
+  "26623": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(College%20of%20Veterinary%20Medicine)&search_field=dspace_collection"
+# Faculty Research Publications (Crop and Soil Science) 
+  "18801": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Crop%20and%20Soil%20Science)&search_field=dspace_collection"
+# Faculty Research Publications (Design and Human Environment) 
+  "14778": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Design%20and%20Human%20Environment)&search_field=dspace_collection"
+# Faculty Research Publications (Economics) 
+  "14946": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Economics)&search_field=dspace_collection"
+# Faculty Research Publications (Education) 
+  "21414": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Education)&search_field=dspace_collection"
+# Faculty Research Publications (Electrical Engineering and Computer Science) 
+  "7303": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Electrical%20Engineering%20and%20Computer%20Science)&search_field=dspace_collection"
+# Faculty Research Publications (English) 
+  "21415": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(English)&search_field=dspace_collection"
+# Faculty Research Publications (Environmental & Molecular Toxicology) 
+  "25640": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Environmental%20%26%20Molecular%20Toxicology)&search_field=dspace_collection"
+# Faculty Research Publications (Environmental Science Program) 
+  "19065": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Environmental%20Science%20Program)&search_field=dspace_collection"
+# Faculty Research Publications (Ethnic Studies) 
+  "21413": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Ethnic%20Studies)&search_field=dspace_collection"
+# Faculty Research Publications (Exercise and Sport Science) 
+  "19835": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Exercise%20and%20Sport%20Science)&search_field=dspace_collection"
+# Faculty Research Publications (Fisheries and Wildlife) 
+  "12626": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Fisheries%20and%20Wildlife)&search_field=dspace_collection"
+# Faculty Research Publications (Food Science and Technology) 
+  "18479": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Food%20Science%20and%20Technology)&search_field=dspace_collection"
+# Faculty Research Publications (Foreign Languages and Literatures) 
+  "24917": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Foreign%20Languages%20and%20Literatures)&search_field=dspace_collection"
+# Faculty Research Publications (Forest Ecosystems and Society) 
+  "15211": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Forest%20Ecosystems%20and%20Society)&search_field=dspace_collection"
+# Faculty Research Publications (Forest Engineering, Resources and Management) 
+  "21686": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Forest%20Engineering%2C%20Resources%20and%20Management)&search_field=dspace_collection"
+# Faculty Research Publications (History) 
+  "12725": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(History)&search_field=dspace_collection"
+# Faculty Research Publications (Horticulture) 
+  "19101": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Horticulture)&search_field=dspace_collection"
+# Faculty Research Publications (Human Development and Family Sciences) 
+  "19055": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Human%20Development%20and%20Family%20Sciences)&search_field=dspace_collection"
+# Faculty Research Publications (Integrative Biology) 
+  "52700": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Integrative%20Biology)&search_field=dspace_collection"
+# Faculty Research Publications (Libraries) 
+  "4": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Libraries)&search_field=dspace_collection"
+# Faculty Research Publications (Linus Pauling Institute) 
+  "36901": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Linus%20Pauling%20Institute)&search_field=dspace_collection"
+# Faculty Research Publications (Mathematics) 
+  "13818": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Mathematics)&search_field=dspace_collection"
+# Faculty Research Publications (Mechanical, Industrial & Manufacturing Engineering) 
+  "14320": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Mechanical%2C%20Industrial%20%26%20Manufacturing%20Engineering)&search_field=dspace_collection"
+# Faculty Research Publications (Microbiology) 
+  "9973": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Microbiology)&search_field=dspace_collection"
+# Faculty Research Publications (Music) 
+  "31706": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Music)&search_field=dspace_collection"
+# Faculty Research Publications (Nuclear Science and Engineering) 
+  "57714": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Nuclear%20Science%20and%20Engineering)&search_field=dspace_collection"
+# Faculty Research Publications (Nutrition) 
+  "31643": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Nutrition)&search_field=dspace_collection"
+# Faculty Research Publications (Oregon Sea Grant) 
+  "42617": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Oregon%20Sea%20Grant)&search_field=dspace_collection"
+# Faculty Research Publications (Philosophy) 
+  "21417": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Philosophy)&search_field=dspace_collection"
+# Faculty Research Publications (Physics) 
+  "13832": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Physics)&search_field=dspace_collection"
+# Faculty Research Publications (Psychology/Psychological Science) 
+  "36303": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Psychology%2FPsychological%20Science)&search_field=dspace_collection"
+# Faculty Research Publications (Public Health) 
+  "36851": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Public%20Health)&search_field=dspace_collection"
+# Faculty Research Publications (Public Policy) 
+  "37003": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Public%20Policy)&search_field=dspace_collection"
+# Faculty Research Publications (Rangeland Ecology and Management) 
+  "29210": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Rangeland%20Ecology%20and%20Management)&search_field=dspace_collection"
+# Faculty Research Publications (School of Chemical, Biological and Environmental Engineering) 
+  "16184": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(School%20of%20Chemical%2C%20Biological%20and%20Environmental%20Engineering)&search_field=dspace_collection"
+# Faculty Research Publications (Science and Mathematics Education) 
+  "27258": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Science%20and%20Mathematics%20Education)&search_field=dspace_collection"
+# Faculty Research Publications (Sociology) 
+  "28892": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Sociology)&search_field=dspace_collection"
+# Faculty Research Publications (Speech Communication) 
+  "35539": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Speech%20Communication)&search_field=dspace_collection"
+# Faculty Research Publications (Statistics) 
+  "29656": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Statistics)&search_field=dspace_collection"
+# Faculty Research Publications (Water Research) 
+  "14204": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Water%20Research)&search_field=dspace_collection"
+# Faculty Research Publications (Women, Gender and Sexuality) 
+  "18603": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Women%2C%20Gender%20and%20Sexuality)&search_field=dspace_collection"
+# Faculty Research Publications (Wood Science & Engineering) 
+  "22029": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Wood%20Science%20%26%20Engineering)&search_field=dspace_collection"
+# Faculty Survey of Student Engagement Reports 
+  "1346": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Survey%20of%20Student%20Engagement%20Reports&search_field=dspace_collection"
+# Field School Papers (ANTH 499/599) 
+  "9248": "https://ir.library.oregonstate.edu/catalog?q=Field%20School%20Papers%20(ANTH%20499%2F599)&search_field=dspace_collection"
+# FIR Report 
+  "47557": "https://ir.library.oregonstate.edu/catalog?q=FIR%20Report&search_field=dspace_collection"
+# Fish and Aquaculture Sectors' Development (IIFET 2000) 
+  "30464": "https://ir.library.oregonstate.edu/catalog?q=Fish%20and%20Aquaculture%20Sectors'%20Development%20(IIFET%202000)&search_field=dspace_collection"
+# Fish and Aquaculture Sectors' Development (IIFET 2006) 
+  "43179": "https://ir.library.oregonstate.edu/catalog?q=Fish%20and%20Aquaculture%20Sectors'%20Development%20(IIFET%202006)&search_field=dspace_collection"
+# Fish and Aquaculture Sectors' Development (IIFET 2008) 
+  "36195": "https://ir.library.oregonstate.edu/catalog?q=Fish%20and%20Aquaculture%20Sectors'%20Development%20(IIFET%202008)&search_field=dspace_collection"
+# Fishery Management (IIFET 2000) 
+  "30466": "https://ir.library.oregonstate.edu/catalog?q=Fishery%20Management%20(IIFET%202000)&search_field=dspace_collection"
+# Fishery Management (IIFET 2006) 
+  "43180": "https://ir.library.oregonstate.edu/catalog?q=Fishery%20Management%20(IIFET%202006)&search_field=dspace_collection"
+# Fishery Management (IIFET 2008) 
+  "36187": "https://ir.library.oregonstate.edu/catalog?q=Fishery%20Management%20(IIFET%202008)&search_field=dspace_collection"
+# Fishing Sector Behavior and Activities (IIFET 2000) 
+  "30470": "https://ir.library.oregonstate.edu/catalog?q=Fishing%20Sector%20Behavior%20and%20Activities%20(IIFET%202000)&search_field=dspace_collection"
+# Focus on Forestry 
+  "13521": "https://ir.library.oregonstate.edu/catalog?q=Focus%20on%20Forestry&search_field=dspace_collection"
+# Focus on Forestry Articles 
+  "29407": "https://ir.library.oregonstate.edu/catalog?q=Focus%20on%20Forestry%20Articles&search_field=dspace_collection"
+# Free Choice Learning 
+  "8308": "https://ir.library.oregonstate.edu/catalog?q=Free%20Choice%20Learning&search_field=dspace_collection"
+# General Catalog 
+  "7553": "https://ir.library.oregonstate.edu/catalog?q=General%20Catalog&search_field=dspace_collection"
+# Graduation Reports (Institutional Research) 
+  "1917": "https://ir.library.oregonstate.edu/catalog?q=Graduation%20Reports%20(Institutional%20Research)&search_field=dspace_collection"
+# Grains, Hay & Grass Seeds 
+  "48350": "https://ir.library.oregonstate.edu/catalog?q=Grains%2C%20Hay%20%26%20Grass%20Seeds&search_field=dspace_collection"
+# Habitat Improvement Project 
+  "43062": "https://ir.library.oregonstate.edu/catalog?q=Habitat%20Improvement%20Project&search_field=dspace_collection"
+# Highlights Report Data Requirements 
+  "38365": "https://ir.library.oregonstate.edu/catalog?q=Highlights%20Report%20Data%20Requirements&search_field=dspace_collection"
+# Hill Family Foundation Series 
+  "10070": "https://ir.library.oregonstate.edu/catalog?q=Hill%20Family%20Foundation%20Series&search_field=dspace_collection"
+# Historical Records (Music) 
+  "10688": "https://ir.library.oregonstate.edu/catalog?q=Historical%20Records%20(Music)&search_field=dspace_collection"
+# Historical Records (Student Affairs) 
+  "10261": "https://ir.library.oregonstate.edu/catalog?q=Historical%20Records%20(Student%20Affairs)&search_field=dspace_collection"
+# HMSC Admistrative Reports, Plans and Documents 
+  "13845": "https://ir.library.oregonstate.edu/catalog?q=HMSC%20Admistrative%20Reports%2C%20Plans%20and%20Documents&search_field=dspace_collection"
+# HMSC Facilities and Physical Planning 
+  "1318": "https://ir.library.oregonstate.edu/catalog?q=HMSC%20Facilities%20and%20Physical%20Planning&search_field=dspace_collection"
+# Honors Link 
+  "15191": "https://ir.library.oregonstate.edu/catalog?q=Honors%20Link&search_field=dspace_collection"
+# Hop press 
+  "50989": "https://ir.library.oregonstate.edu/catalog?q=Hop%20press&search_field=dspace_collection"
+# Hops Research Reports 
+  "49146": "https://ir.library.oregonstate.edu/catalog?q=Hops%20Research%20Reports&search_field=dspace_collection"
+# Imprint, Oregon 
+  "11610": "https://ir.library.oregonstate.edu/catalog?q=Imprint%2C%20Oregon&search_field=dspace_collection"
+# Index of Selected Journal Articles Pertaining to the Forest Products Industries 
+  "11277": "https://ir.library.oregonstate.edu/catalog?q=Index%20of%20Selected%20Journal%20Articles%20Pertaining%20to%20the%20Forest%20Products%20Industries&search_field=dspace_collection"
+# Information Circular (Forest Research Laboratory) 
+  "10069": "https://ir.library.oregonstate.edu/catalog?q=Information%20Circular%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Institute for Water and Watersheds (2005-present) 
+  "12253": "https://ir.library.oregonstate.edu/catalog?q=Institute%20for%20Water%20and%20Watersheds%20(2005-present)&search_field=dspace_collection"
+# IRCO Asian Family Center Oral History Collection 
+  "56025": "https://ir.library.oregonstate.edu/catalog?q=IRCO%20Asian%20Family%20Center%20Oral%20History%20Collection&search_field=dspace_collection"
+# Lane County Historian 
+  "10694": "https://ir.library.oregonstate.edu/catalog?q=Lane%20County%20Historian&search_field=dspace_collection"
+# Learning Objects (Difference, Power and Discrimination) 
+  "46898": "https://ir.library.oregonstate.edu/catalog?q=Learning%20Objects%20(Difference%2C%20Power%20and%20Discrimination)&search_field=dspace_collection"
+# Legal Documents 
+  "22264": "https://ir.library.oregonstate.edu/catalog?q=Legal%20Documents&search_field=dspace_collection"
+# Livestock & Livestock Products 
+  "48544": "https://ir.library.oregonstate.edu/catalog?q=Livestock%20%26%20Livestock%20Products&search_field=dspace_collection"
+# Marine Economics Data Sheets 
+  "13169": "https://ir.library.oregonstate.edu/catalog?q=Marine%20Economics%20Data%20Sheets&search_field=dspace_collection"
+# Marine Resource Management 
+  "1315": "https://ir.library.oregonstate.edu/catalog?q=Marine%20Resource%20Management&search_field=dspace_collection"
+# Markets and Trade (IIFET 2000) 
+  "30467": "https://ir.library.oregonstate.edu/catalog?q=Markets%20and%20Trade%20(IIFET%202000)&search_field=dspace_collection"
+# Markets and Trade (IIFET 2006) 
+  "43177": "https://ir.library.oregonstate.edu/catalog?q=Markets%20and%20Trade%20(IIFET%202006)&search_field=dspace_collection"
+# Markets and Trade (IIFET 2008) 
+  "36191": "https://ir.library.oregonstate.edu/catalog?q=Markets%20and%20Trade%20(IIFET%202008)&search_field=dspace_collection"
+# Maud Wilson Papers, 1926-1951 
+  "51981": "https://ir.library.oregonstate.edu/catalog?q=Maud%20Wilson%20Papers%2C%201926-1951&search_field=dspace_collection"
+# Media Guides (Baseball) 
+  "3926": "https://ir.library.oregonstate.edu/catalog?q=Media%20Guides%20(Baseball)&search_field=dspace_collection"
+# Media Guides (Track and Field) 
+  "20817": "https://ir.library.oregonstate.edu/catalog?q=Media%20Guides%20(Track%20and%20Field)&search_field=dspace_collection"
+# Media Projects (ANTH 499/599) 
+  "6368": "https://ir.library.oregonstate.edu/catalog?q=Media%20Projects%20(ANTH%20499%2F599)&search_field=dspace_collection"
+# Media Services 
+  "1894": "https://ir.library.oregonstate.edu/catalog?q=Media%20Services&search_field=dspace_collection"
+# Medical Physics (Theses and Dissertations) 
+  "19606": "https://ir.library.oregonstate.edu/catalog?q=Medical%20Physics%20(Theses%20and%20Dissertations)&search_field=dspace_collection"
+# Meeting Minutes 
+  "22019": "https://ir.library.oregonstate.edu/catalog?q=Meeting%20Minutes&search_field=dspace_collection"
+# Migration Reports (Institutional Research) 
+  "1916": "https://ir.library.oregonstate.edu/catalog?q=Migration%20Reports%20(Institutional%20Research)&search_field=dspace_collection"
+# Minorities in the Barometer 
+  "29755": "https://ir.library.oregonstate.edu/catalog?q=Minorities%20in%20the%20Barometer&search_field=dspace_collection"
+# Modeling and Economic Theory (IIFET 2000) 
+  "30468": "https://ir.library.oregonstate.edu/catalog?q=Modeling%20and%20Economic%20Theory%20(IIFET%202000)&search_field=dspace_collection"
+# Modeling and Economic Theory (IIFET 2006) 
+  "43178": "https://ir.library.oregonstate.edu/catalog?q=Modeling%20and%20Economic%20Theory%20(IIFET%202006)&search_field=dspace_collection"
+# Modeling and Economic Theory (IIFET 2008) 
+  "36193": "https://ir.library.oregonstate.edu/catalog?q=Modeling%20and%20Economic%20Theory%20(IIFET%202008)&search_field=dspace_collection"
+# MSS Ferguson, Ed Oregon Anti-Apartheid Scrapbook, 1980-1982 
+  "28106": "https://ir.library.oregonstate.edu/catalog?q=MSS%20Ferguson%2C%20Ed%20Oregon%20Anti-Apartheid%20Scrapbook%2C%201980-1982&search_field=dspace_collection"
+# MSS Thomas Kraemer 
+  "43449": "https://ir.library.oregonstate.edu/catalog?q=MSS%20Thomas%20Kraemer&search_field=dspace_collection"
+# Multi-Institutional Leadership Survey (MLS) 
+  "4570": "https://ir.library.oregonstate.edu/catalog?q=Multi-Institutional%20Leadership%20Survey%20(MLS)&search_field=dspace_collection"
+# National Survey of Student Engagement Reports 
+  "1347": "https://ir.library.oregonstate.edu/catalog?q=National%20Survey%20of%20Student%20Engagement%20Reports&search_field=dspace_collection"
+# Native American Longhouse 
+  "37459": "https://ir.library.oregonstate.edu/catalog?q=Native%20American%20Longhouse&search_field=dspace_collection"
+# Netarts Bay Resources 
+  "21996": "https://ir.library.oregonstate.edu/catalog?q=Netarts%20Bay%20Resources&search_field=dspace_collection"
+# News and Views (Fisheries and Wildlife) 
+  "43691": "https://ir.library.oregonstate.edu/catalog?q=News%20and%20Views%20(Fisheries%20and%20Wildlife)&search_field=dspace_collection"
+# Newsletters 
+  "41359": "https://ir.library.oregonstate.edu/catalog?q=Newsletters&search_field=dspace_collection"
+# Northwest National Marine Renewable Energy Center (NNMREC) Publications 
+  "12131": "https://ir.library.oregonstate.edu/catalog?q=Northwest%20National%20Marine%20Renewable%20Energy%20Center%20(NNMREC)%20Publications&search_field=dspace_collection"
+# Notable Notes: Research Briefs for K-12 
+  "57294": "https://ir.library.oregonstate.edu/catalog?q=Notable%20Notes%3A%20Research%20Briefs%20for%20K-12&search_field=dspace_collection"
+# Office of Government Relations 
+  "12945": "https://ir.library.oregonstate.edu/catalog?q=Office%20of%20Government%20Relations&search_field=dspace_collection"
+# Open Access Articles (OSU Faculty) 
+  "43909": "https://ir.library.oregonstate.edu/catalog?q=Open%20Access%20Articles%20(OSU%20Faculty)&search_field=dspace_collection"
+# Open Access Books (OSU Press) 
+  "18857": "https://ir.library.oregonstate.edu/catalog?q=Open%20Access%20Books%20(OSU%20Press)&search_field=dspace_collection"
+# Open Access Textbook Initiative 
+  "49074": "https://ir.library.oregonstate.edu/catalog?q=Open%20Access%20Textbook%20Initiative&search_field=dspace_collection"
+# Open Educational Resources 
+  "57915": "https://ir.library.oregonstate.edu/catalog?q=Open%20Educational%20Resources&search_field=dspace_collection"
+# Oregon Counties Long-Range Planning Conference Reports 
+  "13273": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Counties%20Long-Range%20Planning%20Conference%20Reports&search_field=dspace_collection"
+# Oregon County Resource Atlas 
+  "9586": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20County%20Resource%20Atlas&search_field=dspace_collection"
+# Oregon Department of Fish and Wildlife Project Reports 
+  "19575": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Department%20of%20Fish%20and%20Wildlife%20Project%20Reports&search_field=dspace_collection"
+# Oregon Estuaries General Resources 
+  "35394": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Estuaries%20General%20Resources&search_field=dspace_collection"
+# Oregon Fish Commission Contributions 
+  "16918": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Fish%20Commission%20Contributions&search_field=dspace_collection"
+# Oregon Fish Commission Miscellaneous Documents 
+  "19550": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Fish%20Commission%20Miscellaneous%20Documents&search_field=dspace_collection"
+# Oregon Fish Commission Research Briefs 
+  "16920": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Fish%20Commission%20Research%20Briefs&search_field=dspace_collection"
+# Oregon Fish Commission Research Reports 
+  "17158": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Fish%20Commission%20Research%20Reports&search_field=dspace_collection"
+# Oregon Game Commission Bulletin 
+  "43061": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Game%20Commission%20Bulletin&search_field=dspace_collection"
+# Oregon Marine Renewable Energy Environmental Science Conference Proceedings 
+  "36597": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Marine%20Renewable%20Energy%20Environmental%20Science%20Conference%20Proceedings&search_field=dspace_collection"
+# Oregon Motorist 
+  "11608": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Motorist&search_field=dspace_collection"
+# Oregon Multicultural Archives Oral History Collection (OH 18) 
+  "46450": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Multicultural%20Archives%20Oral%20History%20Collection%20(OH%2018)&search_field=dspace_collection"
+# Oregon Native Son 
+  "11609": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Native%20Son&search_field=dspace_collection"
+# Oregon Oddities and Items of Interest 
+  "12015": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Oddities%20and%20Items%20of%20Interest&search_field=dspace_collection"
+# Oregon Processed Vegetable Commission Reports 
+  "16375": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Processed%20Vegetable%20Commission%20Reports&search_field=dspace_collection"
+# Oregon State Agricultural College -- Report / Director's Report 
+  "31759": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20State%20Agricultural%20College%20--%20Report%20%2F%20Director's%20Report&search_field=dspace_collection"
+# Oregon State Forester 
+  "57475": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20State%20Forester&search_field=dspace_collection"
+# Oregon Tribal Archives Institute 2012 
+  "35377": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Tribal%20Archives%20Institute%202012&search_field=dspace_collection"
+# Oregon Vegetable Digest 
+  "11557": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Vegetable%20Digest&search_field=dspace_collection"
+# Oregon Wave Energy Trust 
+  "15497": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Wave%20Energy%20Trust&search_field=dspace_collection"
+# Oregon Wildlife 
+  "48830": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Wildlife&search_field=dspace_collection"
+# Oregon Wine Research Institute 
+  "58156": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Wine%20Research%20Institute&search_field=dspace_collection"
+# Oregon's Agricultural Progress 
+  "24290": "https://ir.library.oregonstate.edu/catalog?q=Oregon's%20Agricultural%20Progress&search_field=dspace_collection"
+# Organizational Charts 
+  "28862": "https://ir.library.oregonstate.edu/catalog?q=Organizational%20Charts&search_field=dspace_collection"
+# OSU College Forests 
+  "19960": "https://ir.library.oregonstate.edu/catalog?q=OSU%20College%20Forests&search_field=dspace_collection"
+# OSU Perspective 
+  "1349": "https://ir.library.oregonstate.edu/catalog?q=OSU%20Perspective&search_field=dspace_collection"
+# Papers (Rural-Urban Connections) 
+  "10572": "https://ir.library.oregonstate.edu/catalog?q=Papers%20(Rural-Urban%20Connections)&search_field=dspace_collection"
+# Papers in Forest Policy 
+  "12222": "https://ir.library.oregonstate.edu/catalog?q=Papers%20in%20Forest%20Policy&search_field=dspace_collection"
+# Peer Institutions 
+  "28863": "https://ir.library.oregonstate.edu/catalog?q=Peer%20Institutions&search_field=dspace_collection"
+# Plans and Reports (Facilities Services) 
+  "16346": "https://ir.library.oregonstate.edu/catalog?q=Plans%20and%20Reports%20(Facilities%20Services)&search_field=dspace_collection"
+# Policy Day (IIFET 2006) 
+  "44859": "https://ir.library.oregonstate.edu/catalog?q=Policy%20Day%20(IIFET%202006)&search_field=dspace_collection"
+# Posters (IIFET 2000) 
+  "35500": "https://ir.library.oregonstate.edu/catalog?q=Posters%20(IIFET%202000)&search_field=dspace_collection"
+# Posters (IIFET 2008) 
+  "36196": "https://ir.library.oregonstate.edu/catalog?q=Posters%20(IIFET%202008)&search_field=dspace_collection"
+# Presentations and Posters (Cascades) 
+  "3006": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(Cascades)&search_field=dspace_collection"
+# Presentations and Posters (College of Forestry/Oregon Forest Research Laboratory) 
+  "38303": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(College%20of%20Forestry%2FOregon%20Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Presentations and Posters (Libraries) 
+  "22": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(Libraries)&search_field=dspace_collection"
+# Presentations and Posters (Psychology/Psychological Science) 
+  "48140": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(Psychology%2FPsychological%20Science)&search_field=dspace_collection"
+# Progress Reports (College of Earth, Ocean, and Atmospheric Sciences) 
+  "8653": "https://ir.library.oregonstate.edu/catalog?q=Progress%20Reports%20(College%20of%20Earth%2C%20Ocean%2C%20and%20Atmospheric%20Sciences)&search_field=dspace_collection"
+# Range Plant Leaflet 
+  "24034": "https://ir.library.oregonstate.edu/catalog?q=Range%20Plant%20Leaflet&search_field=dspace_collection"
+# Reference Series (College of Earth, Ocean, and Atmospheric Sciences) 
+  "7482": "https://ir.library.oregonstate.edu/catalog?q=Reference%20Series%20(College%20of%20Earth%2C%20Ocean%2C%20and%20Atmospheric%20Sciences)&search_field=dspace_collection"
+# Registration Information Handbook 
+  "11120": "https://ir.library.oregonstate.edu/catalog?q=Registration%20Information%20Handbook&search_field=dspace_collection"
+# Report C 
+  "10064": "https://ir.library.oregonstate.edu/catalog?q=Report%20C&search_field=dspace_collection"
+# Report D 
+  "10067": "https://ir.library.oregonstate.edu/catalog?q=Report%20D&search_field=dspace_collection"
+# Report G 
+  "10068": "https://ir.library.oregonstate.edu/catalog?q=Report%20G&search_field=dspace_collection"
+# Report of the President of the Oregon State Agricultural College -- Annual / Biennial 
+  "31150": "https://ir.library.oregonstate.edu/catalog?q=Report%20of%20the%20President%20of%20the%20Oregon%20State%20Agricultural%20College%20--%20Annual%20%2F%20Biennial&search_field=dspace_collection"
+# Reports 
+  "9136": "https://ir.library.oregonstate.edu/catalog?q=Reports&search_field=dspace_collection"
+# Reports 
+  "12161": "https://ir.library.oregonstate.edu/catalog?q=Reports&search_field=dspace_collection"
+# Reports (Independent Multidisciplinary Science Team) 
+  "11271": "https://ir.library.oregonstate.edu/catalog?q=Reports%20(Independent%20Multidisciplinary%20Science%20Team)&search_field=dspace_collection"
+# Reports (Information Services) 
+  "58588": "https://ir.library.oregonstate.edu/catalog?q=Reports%20(Information%20Services)&search_field=dspace_collection"
+# Reports and Initiatives 
+  "4840": "https://ir.library.oregonstate.edu/catalog?q=Reports%20and%20Initiatives&search_field=dspace_collection"
+# Reports and White Papers (Libraries) 
+  "23": "https://ir.library.oregonstate.edu/catalog?q=Reports%20and%20White%20Papers%20(Libraries)&search_field=dspace_collection"
+# Reports, Articles and Presentations (Faculty Senate Library Committee) 
+  "1748": "https://ir.library.oregonstate.edu/catalog?q=Reports%2C%20Articles%20and%20Presentations%20(Faculty%20Senate%20Library%20Committee)&search_field=dspace_collection"
+# Research Contribution Summaries (Forest Research Laboratory) 
+  "55771": "https://ir.library.oregonstate.edu/catalog?q=Research%20Contribution%20Summaries%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
+# Retention Reports (Institutional Research) 
+  "1913": "https://ir.library.oregonstate.edu/catalog?q=Retention%20Reports%20(Institutional%20Research)&search_field=dspace_collection"
+# Robert Lundeen Library Faculty Development Award 
+  "11415": "https://ir.library.oregonstate.edu/catalog?q=Robert%20Lundeen%20Library%20Faculty%20Development%20Award&search_field=dspace_collection"
+# Salmon River / Cascade Head Resources 
+  "21998": "https://ir.library.oregonstate.edu/catalog?q=Salmon%20River%20%2F%20Cascade%20Head%20Resources&search_field=dspace_collection"
+# Schedule of Classes  (Eastern Oregon University Campus) 
+  "57291": "https://ir.library.oregonstate.edu/catalog?q=Schedule%20of%20Classes%20%20(Eastern%20Oregon%20University%20Campus)&search_field=dspace_collection"
+# Schedule of Classes (Cascades Campus) 
+  "10546": "https://ir.library.oregonstate.edu/catalog?q=Schedule%20of%20Classes%20(Cascades%20Campus)&search_field=dspace_collection"
+# Schedule of Classes (Corvallis Campus) 
+  "9931": "https://ir.library.oregonstate.edu/catalog?q=Schedule%20of%20Classes%20(Corvallis%20Campus)&search_field=dspace_collection"
+# Schedule of Classes (Extended Campus) 
+  "10547": "https://ir.library.oregonstate.edu/catalog?q=Schedule%20of%20Classes%20(Extended%20Campus)&search_field=dspace_collection"
+# Schedule of Classes (Hatfield Marine Science Center Campus) 
+  "42295": "https://ir.library.oregonstate.edu/catalog?q=Schedule%20of%20Classes%20(Hatfield%20Marine%20Science%20Center%20Campus)&search_field=dspace_collection"
+# Sea Grant/Marine Advisory Program 
+  "24213": "https://ir.library.oregonstate.edu/catalog?q=Sea%20Grant%2FMarine%20Advisory%20Program&search_field=dspace_collection"
+# Seed Production Research at Oregon State University, USDA-ARS Cooperating 
+  "14729": "https://ir.library.oregonstate.edu/catalog?q=Seed%20Production%20Research%20at%20Oregon%20State%20University%2C%20USDA-ARS%20Cooperating&search_field=dspace_collection"
+# Shipping Documents 
+  "28681": "https://ir.library.oregonstate.edu/catalog?q=Shipping%20Documents&search_field=dspace_collection"
+# Small Farms 
+  "42320": "https://ir.library.oregonstate.edu/catalog?q=Small%20Farms&search_field=dspace_collection"
+# Special Publication 
+  "31834": "https://ir.library.oregonstate.edu/catalog?q=Special%20Publication&search_field=dspace_collection"
+# Special Topics 
+  "30471": "https://ir.library.oregonstate.edu/catalog?q=Special%20Topics&search_field=dspace_collection"
+# Special Topics (IIFET 2006) 
+  "43181": "https://ir.library.oregonstate.edu/catalog?q=Special%20Topics%20(IIFET%202006)&search_field=dspace_collection"
+# Special Topics (IIFET 2008) 
+  "36194": "https://ir.library.oregonstate.edu/catalog?q=Special%20Topics%20(IIFET%202008)&search_field=dspace_collection"
+# Specialty Horticulture and Field Crops 
+  "49528": "https://ir.library.oregonstate.edu/catalog?q=Specialty%20Horticulture%20and%20Field%20Crops&search_field=dspace_collection"
+# Starker Lecture Series 
+  "22500": "https://ir.library.oregonstate.edu/catalog?q=Starker%20Lecture%20Series&search_field=dspace_collection"
+# Strategic Indicators 
+  "28856": "https://ir.library.oregonstate.edu/catalog?q=Strategic%20Indicators&search_field=dspace_collection"
+# Student Affairs Division Strategic Planning 
+  "38364": "https://ir.library.oregonstate.edu/catalog?q=Student%20Affairs%20Division%20Strategic%20Planning&search_field=dspace_collection"
+# Student Affairs Unit Review Guide (2012 update) 
+  "38356": "https://ir.library.oregonstate.edu/catalog?q=Student%20Affairs%20Unit%20Review%20Guide%20(2012%20update)&search_field=dspace_collection"
+# Student Credit Hour Reports 
+  "28859": "https://ir.library.oregonstate.edu/catalog?q=Student%20Credit%20Hour%20Reports&search_field=dspace_collection"
+# Student Work (Special Collections & Archives Research Center) 
+  "35393": "https://ir.library.oregonstate.edu/catalog?q=Student%20Work%20(Special%20Collections%20%26%20Archives%20Research%20Center)&search_field=dspace_collection"
+# Studies of Oregon's climate for the forest industry. Climatological note 
+  "57293": "https://ir.library.oregonstate.edu/catalog?q=Studies%20of%20Oregon's%20climate%20for%20the%20forest%20industry.%20Climatological%20note&search_field=dspace_collection"
+# Supplementary Material (OSU Press) 
+  "19542": "https://ir.library.oregonstate.edu/catalog?q=Supplementary%20Material%20(OSU%20Press)&search_field=dspace_collection"
+# Teaching With Writing: The WIC Newsletter 
+  "47064": "https://ir.library.oregonstate.edu/catalog?q=Teaching%20With%20Writing%3A%20The%20WIC%20Newsletter&search_field=dspace_collection"
+# Technical Reports (Crop and Soil Science) 
+  "18802": "https://ir.library.oregonstate.edu/catalog?q=Technical%20Reports%20(Crop%20and%20Soil%20Science)&search_field=dspace_collection"
+# Technical Reports (Electrical Engineering and Computer Science) 
+  "8305": "https://ir.library.oregonstate.edu/catalog?q=Technical%20Reports%20(Electrical%20Engineering%20and%20Computer%20Science)&search_field=dspace_collection"
+# Technical Reports (Hatfield Marine Science Center) 
+  "22851": "https://ir.library.oregonstate.edu/catalog?q=Technical%20Reports%20(Hatfield%20Marine%20Science%20Center)&search_field=dspace_collection"
+# Technical Reports (Mathematics) 
+  "13738": "https://ir.library.oregonstate.edu/catalog?q=Technical%20Reports%20(Mathematics)&search_field=dspace_collection"
+# Terra: A world of research and creativity at Oregon State University 
+  "1423": "https://ir.library.oregonstate.edu/catalog?q=Terra%3A%20A%20world%20of%20research%20and%20creativity%20at%20Oregon%20State%20University&search_field=dspace_collection"
+# The Bobbie Nunn and Robert G. Ford Collection Documents 
+  "38987": "https://ir.library.oregonstate.edu/catalog?q=The%20Bobbie%20Nunn%20and%20Robert%20G.%20Ford%20Collection%20Documents&search_field=dspace_collection"
+# The Messenger 
+  "257": "https://ir.library.oregonstate.edu/catalog?q=The%20Messenger&search_field=dspace_collection"
+# The Oregon Water Conference 2011: Evaluating and Managing Water Resources in a Climate of Uncertainty 
+  "22232": "https://ir.library.oregonstate.edu/catalog?q=The%20Oregon%20Water%20Conference%202011%3A%20Evaluating%20and%20Managing%20Water%20Resources%20in%20a%20Climate%20of%20Uncertainty&search_field=dspace_collection"
+# The Scab Sheet 
+  "27912": "https://ir.library.oregonstate.edu/catalog?q=The%20Scab%20Sheet&search_field=dspace_collection"
+# Theses and Dissertations (Civil and Construction Engineering) 
+  "22531": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Civil%20and%20Construction%20Engineering)&search_field=dspace_collection"
+# Theses and Dissertations (Economics) 
+  "20472": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Economics)&search_field=dspace_collection"
+# Theses and Dissertations (Nuclear Science and Engineering) 
+  "57732": "https://ir.library.oregonstate.edu/catalog?q=Theses%20and%20Dissertations%20(Nuclear%20Science%20and%20Engineering)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Anthropology) 
+  "52418": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Anthropology)&search_field=dspace_collection"
+# Theses, Dissertations and Student Research Papers (Foreign Languages and Literature) 
+  "48899": "https://ir.library.oregonstate.edu/catalog?q=Theses%2C%20Dissertations%20and%20Student%20Research%20Papers%20(Foreign%20Languages%20and%20Literature)&search_field=dspace_collection"
+# Tillamook Bay Resources 
+  "35395": "https://ir.library.oregonstate.edu/catalog?q=Tillamook%20Bay%20Resources&search_field=dspace_collection"
+# Timber Lines 
+  "12130": "https://ir.library.oregonstate.edu/catalog?q=Timber%20Lines&search_field=dspace_collection"
+# Transactions of the Annual Re-union of the Oregon Pioneer Association 
+  "10780": "https://ir.library.oregonstate.edu/catalog?q=Transactions%20of%20the%20Annual%20Re-union%20of%20the%20Oregon%20Pioneer%20Association&search_field=dspace_collection"
+# Transboundary Freshwater Dispute Database Publications 
+  "11273": "https://ir.library.oregonstate.edu/catalog?q=Transboundary%20Freshwater%20Dispute%20Database%20Publications&search_field=dspace_collection"
+# Transcripts (ANTH 499/599) 
+  "6369": "https://ir.library.oregonstate.edu/catalog?q=Transcripts%20(ANTH%20499%2F599)&search_field=dspace_collection"
+# Tree Fruits & Nuts 
+  "49529": "https://ir.library.oregonstate.edu/catalog?q=Tree%20Fruits%20%26%20Nuts&search_field=dspace_collection"
+# Umpqua Basin Resources 
+  "21999": "https://ir.library.oregonstate.edu/catalog?q=Umpqua%20Basin%20Resources&search_field=dspace_collection"
+# Undergraduate Research Brown-Bag Symposium 
+  "58422": "https://ir.library.oregonstate.edu/catalog?q=Undergraduate%20Research%20Brown-Bag%20Symposium&search_field=dspace_collection"
+# Vegetables 
+  "49531": "https://ir.library.oregonstate.edu/catalog?q=Vegetables&search_field=dspace_collection"
+# Vegetation Management Research Cooperative (formerly CRAFTS) Reports 
+  "48176": "https://ir.library.oregonstate.edu/catalog?q=Vegetation%20Management%20Research%20Cooperative%20(formerly%20CRAFTS)%20Reports&search_field=dspace_collection"
+# Vet Gazette e-newsletter 
+  "12907": "https://ir.library.oregonstate.edu/catalog?q=Vet%20Gazette%20e-newsletter&search_field=dspace_collection"
+# Volcanic Ash Information 
+  "23718": "https://ir.library.oregonstate.edu/catalog?q=Volcanic%20Ash%20Information&search_field=dspace_collection"
+# W.I.R.E.'d Zine 
+  "11244": "https://ir.library.oregonstate.edu/catalog?q=W.I.R.E.'d%20Zine&search_field=dspace_collection"
+# Western Dry Kiln Association Proceedings 
+  "4574": "https://ir.library.oregonstate.edu/catalog?q=Western%20Dry%20Kiln%20Association%20Proceedings&search_field=dspace_collection"
+# Western Regional Agricultural Engineering Service 
+  "23686": "https://ir.library.oregonstate.edu/catalog?q=Western%20Regional%20Agricultural%20Engineering%20Service&search_field=dspace_collection"
+# Western Regional Extension Publication 
+  "23720": "https://ir.library.oregonstate.edu/catalog?q=Western%20Regional%20Extension%20Publication&search_field=dspace_collection"
+# Wild Cascades 
+  "11611": "https://ir.library.oregonstate.edu/catalog?q=Wild%20Cascades&search_field=dspace_collection"
+# Women's Center 
+  "55778": "https://ir.library.oregonstate.edu/catalog?q=Women's%20Center&search_field=dspace_collection"
+# Yaquina Bay Environmental Sampling Workshop 
+  "13747": "https://ir.library.oregonstate.edu/catalog?q=Yaquina%20Bay%20Environmental%20Sampling%20Workshop&search_field=dspace_collection"
+# Yaquina Bay Resources 
+  "1319": "https://ir.library.oregonstate.edu/catalog?q=Yaquina%20Bay%20Resources&search_field=dspace_collection"
+# Your First College Year Reports 
+  "1348": "https://ir.library.oregonstate.edu/catalog?q=Your%20First%20College%20Year%20Reports&search_field=dspace_collection"

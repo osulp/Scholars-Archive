@@ -8,6 +8,6 @@ describe "external redirection" do
   end
   it "redirects to ir collections" do
     get "/xmlui/handle/1957/14384"
-    response.should redirect_to("http://ir.library.oregonstate.edu/")
+    response.should redirect_to("https://ir.library.oregonstate.edu/catalog?q=A.%20Personal%2FPolitical%2FOfficial%20Records&search_field=dspace_collection")
   end
 end
