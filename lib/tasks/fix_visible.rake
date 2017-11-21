@@ -1,7 +1,7 @@
 namespace :scholars_archive do
   desc "Fix visibility during embargo"
   task fix_visible: :environment do
-    fix_visibility
+    fix_embargo
   end
 
   def fix_embargo
@@ -26,6 +26,21 @@ namespace :scholars_archive do
             logger.info "\tSuccessfully fixed embargo in work #{work["id"]}: updated visibility_during_embargo from restricted to authenticated"
           else
             logger.info "\tUnable to fix embargo visibility in work #{work["id"]}: visibility_during_embargo is set to #{w.visibility_during_embargo}"
+          end
+          w.ordered_members.to_a.each do |f|
+            if f.embargo && f.visibility_during_embargo && f.visibility_during_embargo == "restricted"
+              logger.info "\tfixing visibility_during_embargo for child work #{f.id} (parent work #{id})"
+              f.visibility_during_embargo = "authenticated"
+              f.embargo.save
+              if f.save
+                logger.info "\tsuccessfully changed visibility_during_embargo from restricted to #{f.visibility_during_embargo} for child work #{f.id} (parent work #{id})"
+                counter += 1
+              else
+                logger.info "\tunable to change visibility_during_embargo for child work #{f.id} (parent work #{id})"
+              end
+            else
+              logger.info "\t child work #{f.id} does not have visibility_during_embargo set, current visibility = #{f.visibility_during_embargo} (parent work #{id})"
+            end
           end
         else
           logger.info "\tUnable to fix embargo visibility in work #{work["id"]}: embargo and/or visibility_during_embargo not defined"
