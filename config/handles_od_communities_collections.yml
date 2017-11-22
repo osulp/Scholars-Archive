@@ -51,7 +51,7 @@ handles_od_communities_collections:
   "26926": "https://oregondigital.org/sets/osu-fact-book"
 
   # OSU Cultural Resource Centers
-#  27565: oma?   
+  "27565": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Cultural+Resource+Centers"
 
   # The Scab Sheet
   "27912": "https://oregondigital.org/sets/osu-student-protest-underground-pubs"
@@ -69,19 +69,19 @@ handles_od_communities_collections:
   "29755": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Minorities+in+the+Barometer"
 
   # OSU's WWII Era Japanese American Students
-#  36408: oma?   
+  "36408": "https://oregondigital.org/sets/osu-wwii-japanese-american-students"
 
   # A. President's Office Records (RG 13), 1941-1942
-#  36409:     
+  "36409": "https://oregondigital.org/sets/osu-wwii-japanese-american-students/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=President%27s+Office+Records+(RG+13),+1941-1942"
   # B. OSU Daily Barometer Articles, 1942
-#  36410:     
+  "36410": "https://oregondigital.org/sets/osu-wwii-japanese-american-students/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=OSU+Daily+Barometer+Articles,+1942"
   # D. Honorary Degrees, 2007-2008
-#  36411:     
+  "36411": "https://oregondigital.org/sets/osu-wwii-japanese-american-students/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Honorary+Degrees,+2007-2008"
   # C. Oregon Stater Article, 1995
-#  36492:     
+  "36492": "https://oregondigital.org/sets/osu-wwii-japanese-american-students/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Oregon+Stater+Article,+1995"
 
   # OSU Cultural Resource Centers: Native American Longhouse
-#  37459:    
+  "37459": "https://oregondigital.org/sets/oregon-multicultural-archives?commit=Search&f%5Bdesc_metadata__lcsubject_label_sim%5D%5B%5D=Native+American+Longhouse%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FosuBuildings%2FNativeAmericanLonghouse&isPartOf=Cultural+Resource+Centers&op=AND&search_field=advanced&sort=score+desc"
 
   # Urban League of Portland: Newsletters
   "41359": "https://oregondigital.org/sets/oregon-multicultural-archives/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Newsletters"
@@ -90,10 +90,10 @@ handles_od_communities_collections:
   "43449": "https://oregondigital.org/catalog/oregondigital:df71gf50g"
 
   # Oregon Multicultural Archives Oral History Collection (OH 18)
-#  "46450"     
+  "46450": "https://oregondigital.org/sets/oregon-multicultural-archives?f%5Bdesc_metadata__localCollectionName_label_sim%5D%5B%5D=Oregon+Multicultural+Archives+Oral+History+Collection+%28OH+18%29%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FlocalCollectionName%2Foh_18"
 
   # OSU Cultural Resource Centers: Asian & Pacific Cultural Center
-#  "48655"     
+  "48655": "https://oregondigital.org/sets/oregon-multicultural-archives?commit=Search&f%5Bdesc_metadata__lcsubject_label_sim%5D%5B%5D=Asian+%26+Pacific+Cultural+Center%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FosuBuildings%2FAsianPacificCulturalCenter&isPartOf=Cultural+Resource+Centers&op=AND&search_field=advanced&sort=score+desc"
 
   # Oregon Hops and Brewing Archives
   "49145": "https://oregondigital.org/sets/ohba"
@@ -105,10 +105,10 @@ handles_od_communities_collections:
   "50989": "https://oregondigital.org/sets/ohba/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=hops+press"
 
   # OSU Cultural Resource Centers: Black Cultural Center
-#  54942:    
+  "54942": "https://oregondigital.org/sets/oregon-multicultural-archives?commit=Search&f%5Bdesc_metadata__lcsubject_label_sim%5D%5B%5D=Lonnie+B.+Harris+Black+Cultural+Center%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FosuBuildings%2FLonnieBHarrisBlackCulturalCenter&isPartOf=Cultural+Resource+Centers&op=AND&search_field=advanced&sort=score+desc"
 
   # OSU Cultural Resource Centers: Women's Center
-#  55778:     
+  "55778": "https://oregondigital.org/sets/oregon-multicultural-archives?commit=Search&f%5Bdesc_metadata__lcsubject_label_sim%5D%5B%5D=Women%27s+Center%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FosuBuildings%2FWomensCenter&isPartOf=Cultural+Resource+Centers&op=AND&search_field=advanced&sort=score+desc"
 
   # IRCO Asian Family Center Oral History Collection
   "56025": "https://oregondigital.org/sets/oregon-multicultural-archives?_=1510962107035&f%5Bdesc_metadata__localCollectionName_label_sim%5D%5B%5D=Asian+Family+Center+Oral+History+Collection%2C+2014-2016+%28OH+30%29%24http%3A%2F%2Fopaquenamespace.org%2Fns%2FlocalCollectionName%2Foh_30"
