@@ -180,7 +180,8 @@ div .select-worktype {
 }
 
 .row.match-my-cols {
-    overflow: hidden;
+  overflow: hidden;
+  padding: 0 15px 0 15px;
 }
 
 .row.match-my-cols [class*="col-"]{
@@ -259,5 +260,9 @@ input.fill_column {
 
 .other_affiliation_other.multi-value-select-other.has-error .help-block {
   padding-top: 3em;
+}
+
+.match-my-cols .select-worktype:first-child {
+  border-top: 1px solid #ddd;
 }
 
