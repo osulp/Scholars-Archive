@@ -17,7 +17,7 @@ RSpec.describe Hyrax::DatasetForm do
   end
 
   it "has the proper secondary terms" do
-    expect(new_form.secondary_terms).to_not include *[:license, :resource_type, :keyword]
+    expect(new_form.secondary_terms).to_not include *[:license, :resource_type]
   end
 
   it "responds to date_terms" do

@@ -25,7 +25,7 @@ module Hyrax
 
       # On the batch upload, title is set per-file.
       def primary_terms
-        [:alt_title, :creator, :contributor, :abstract, :license, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :keyword, :subject, :tableofcontents, :rights_statement] | super - [:title, :resource_type]
+        [:alt_title, :creator, :contributor, :abstract, :license, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super - [:title, :resource_type]
       end
 
       # # On the batch upload, title is set per-file.
