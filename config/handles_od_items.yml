@@ -1,0 +1,1082 @@
+# Handle Redirects to Oregon Digital for Items
+handles_od_items:
+
+  # The Daily Barometer Index Part II, Personal Name Index, Students, Faculty and Staff: A-L
+  "3744": "https://oregondigital.org/catalog/oregondigital:fx71ch36j"
+
+  # The Daily Barometer Index Part II, Personal Name Index, Students, Faculty and Staff: M-Z
+  "3745": "https://oregondigital.org/catalog/oregondigital:fx71ch37t"
+
+  # The Daily Barometer Index Part I, Subject Index (3 items)
+  "3746": "https://oregondigital.org/sets/daily-barometer/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Daily+Barometer+Index+Part+I,+Subjects"
+
+  # The State of Black Oregon
+  "12301": "https://oregondigital.org/catalog/oregondigital:df724521s"
+
+  # Report on the Negro in Portland: a progress report, 1945-1957
+  "12312": "https://oregondigital.org/catalog/oregondigital:df7245222"
+
+  # Portland's silent epidemic: lead poisoned African American & Latino children
+  "12442": "https://oregondigital.org/catalog/oregondigital:df724523b"
+
+  # Nonwhite neighbors and property prices in Portland, Oregon, and residential attitudes toward Negroes as neighbors...
+  "13302": "https://oregondigital.org/catalog/oregondigital:df724524m"
+
+  # The state of our children: the state of African American children in Multnomah and Washington counties: a preliminary report
+  "13303": "https://oregondigital.org/catalog/oregondigital:df724525w"
+
+  # The Urban League of Portland 1992 annual report: building bridges for a better Portland
+  "13304": "https://oregondigital.org/catalog/oregondigital:df7245265"
+
+  # Affirmative action: pursuit of a meritocracy
+  "13305": "https://oregondigital.org/catalog/oregondigital:df724527f"
+
+  # Urban League of Portland past presidents
+  "14701": "https://oregondigital.org/catalog/oregondigital:df724528q"
+
+  # Urban League of Portland Constitution, 1958
+  "14702": "https://oregondigital.org/catalog/oregondigital:df7245290"
+
+  # The Portland Urban League 1945-1965: two decades of change in the Pacific Northwest
+  "14703": "https://oregondigital.org/catalog/oregondigital:df724530r"
+
+  # Urban League of Greater Portland Affirmative Action Plan
+  "14704": "https://oregondigital.org/catalog/oregondigital:df7245311"
+
+  # Urban League of Portland Constitution, 1983
+  "14706": "https://oregondigital.org/catalog/oregondigital:df7245329"
+
+  # Urban League of Portland memorandum, 1977
+  "14707": "https://oregondigital.org/catalog/oregondigital:df724533k"
+
+  # Urban League of Portland Constitution, 1972
+  "14708": "https://oregondigital.org/catalog/oregondigital:df724534v"
+
+  # A study of white, middle-class attitudes toward negroes
+  "14709": "https://oregondigital.org/catalog/oregondigital:df7245354"
+
+  # The Urban League of Portland: on the road to equality, a 50 year retrospective
+  "14876": "https://oregondigital.org/catalog/oregondigital:df724536d"
+
+  # Riverside Cemetery, Albany, Oregon
+  "22050": "https://oregondigital.org/catalog/oregondigital:df71gk32c"
+
+  # Mountain View Cemetery, Ashland, Oregon
+  "22051": "https://oregondigital.org/catalog/oregondigital:df71gk224"
+
+  # Old Ashland Cemetery, Ashland, Oregon
+  "22052": "https://oregondigital.org/catalog/oregondigital:df71gk25z"
+
+  # Greenwood Cemetery, Astoria, Oregon
+  "22053": "https://oregondigital.org/catalog/oregondigital:df71gk12w"
+
+  # Notes regarding various Astoria cemeteries
+  "22054": "https://oregondigital.org/catalog/oregondigital:df71gk23d"
+
+  # Oceanview Cemetery, Astoria, Oregon
+  "22055": "https://oregondigital.org/catalog/oregondigital:df71gk24p"
+
+  # Riverview (Lewis and Clark) Cemetery, Astoria, Oregon
+  "22056": "https://oregondigital.org/catalog/oregondigital:df71gk33n"
+
+  # Chinese Cemetery, Baker City, Oregon
+  "22057": "https://oregondigital.org/catalog/oregondigital:df71gk003"
+
+  # Canyon City Chinese Cemetery, Canyon City, Oregon
+  "22058": "https://oregondigital.org/catalog/oregondigital:df71gk01c"
+
+  # I.O.O.F. Cemetery, Coos Bay, Oregon
+  "22059": "https://oregondigital.org/catalog/oregondigital:df71gk15q"
+
+  # Sunset Cemetery, Coos Bay, Oregon
+  "22060": "https://oregondigital.org/catalog/oregondigital:df71gk37r"
+
+  # Crystal Lake Cemetery, Corvallis, Oregon
+  "22061": "https://oregondigital.org/catalog/oregondigital:df71gk071"
+
+  # I.O.O.F. Cemetery, The Dalles, Oregon
+  "22062": "https://oregondigital.org/catalog/oregondigital:df71gk14f"
+
+  # John Day Chinese Cemetery, John Day, Oregon
+  "22063": "https://oregondigital.org/catalog/oregondigital:df71gk19t"
+
+  # Linkville Cemetery, Klamath Falls, Oregon
+  "22064": "https://oregondigital.org/catalog/oregondigital:df71gk20k"
+
+  # Contact information for various cemeteries
+  "22065": "https://oregondigital.org/catalog/oregondigital:df71gk06r"
+
+  # I.O.O.F. Cemetery, La Grande, Oregon
+  "22066": "https://oregondigital.org/catalog/oregondigital:df71gk160"
+
+  # I.O.O.F. Cemetery, Lakeview, Oregon
+  "22067": "https://oregondigital.org/catalog/oregondigital:df71gk178"
+
+  # Sunset Park, Lakeview, Oregon
+  "22068": "https://oregondigital.org/catalog/oregondigital:df71gk381"
+
+  # Evergreen Cemetery, Ontario, Oregon
+  "22069": "https://oregondigital.org/catalog/oregondigital:df71gk11m"
+
+  # Pendleton Cemetery, Pendleton, Oregon
+  "22070": "https://oregondigital.org/catalog/oregondigital:df71gk28s"
+
+  # Prairie City Cemetery, Prairie City, Oregon
+  "22071": "https://oregondigital.org/catalog/oregondigital:df71gk292"
+
+  # Masonic Cemetery, Roseburg, Oregon
+  "22072": "https://oregondigital.org/catalog/oregondigital:df71gk21v"
+
+  # I.O.O.F. Cemetery, Salem, Oregon
+  "22073": "https://oregondigital.org/catalog/oregondigital:df71gk18j"
+
+  # Private property near Keizer School House, Salem, Oregon
+  "22074": "https://oregondigital.org/catalog/oregondigital:df71gk30t"
+
+  # "Release" regarding the wrongful disinterment of Law Way Ting
+  "22265": "https://oregondigital.org/catalog/oregondigital:df71gk313"
+
+  # "Affidavit" to the Oregon State Board of Health
+  "22266": "https://oregondigital.org/catalog/oregondigital:df71gj99j"
+
+  # Urban League of Portland Meeting Minutes, 1945
+  "22547": "https://oregondigital.org/catalog/oregondigital:df724537p"
+
+  # Urban League of Portland Meeting Minutes, 1946
+  "22674": "https://oregondigital.org/catalog/oregondigital:df724538z"
+
+  # Urban League of Portland Meeting Minutes, 1947
+  "22675": "https://oregondigital.org/catalog/oregondigital:df7245397"
+
+  # Urban League of Portland Meeting Minutes, 1948
+  "22676": "https://oregondigital.org/catalog/oregondigital:df7245400"
+
+  # Urban League of Portland Meeting Minutes, 1949
+  "22677": "https://oregondigital.org/catalog/oregondigital:df7245418"
+
+  # Urban League of Portland Meeting Minutes, 1964
+  "22678": "https://oregondigital.org/catalog/oregondigital:df724542j"
+
+  # Urban League of Portland Meeting Minutes, 1965
+  "22679": "https://oregondigital.org/catalog/oregondigital:df724543t"
+
+  # Urban League of Portland Meeting Minutes, 1966
+  "22680": "https://oregondigital.org/catalog/oregondigital:df7245443"
+
+  # Urban League of Portland Meeting Minutes, 1967
+  "22681": "https://oregondigital.org/catalog/oregondigital:df724545c"
+
+  # Urban League of Portland Meeting Minutes, 1968
+  "22682": "https://oregondigital.org/catalog/oregondigital:df724546n"
+
+  # Urban League of Portland Meeting Minutes, 1969
+  "22683": "https://oregondigital.org/catalog/oregondigital:df724547x"
+
+  # Riverview Cemetery, Portland, Oregon
+  "22797": "https://oregondigital.org/catalog/oregondigital:df71gk34x"
+
+  # Urban League of Portland Meeting Minutes, 1970
+  "24299": "https://oregondigital.org/catalog/oregondigital:df7245486"
+
+  # Urban League of Portland Meeting Minutes, 1971
+  "24300": "https://oregondigital.org/catalog/oregondigital:df724549g"
+
+  # Urban League of Portland Meeting Minutes, 1972
+  "24386": "https://oregondigital.org/catalog/oregondigital:df7245507"
+
+  # Urban League of Portland Meeting Minutes, 1973
+  "24388": "https://oregondigital.org/catalog/oregondigital:df724551h"
+
+  # Urban League of Portland Meeting Minutes, 1974
+  "24389": "https://oregondigital.org/catalog/oregondigital:df724552s"
+
+  # 2000 Fact Book
+  "26591": "https://oregondigital.org/catalog/oregondigital:fx71bn918"
+
+  # 1993 Fact Book
+  "26597": "https://oregondigital.org/catalog/oregondigital:fx71bn84v"
+
+  # 1990 Fact Book
+  "26599": "https://oregondigital.org/catalog/oregondigital:fx71bn811"
+
+  # 1992 Fact Book
+  "26600": "https://oregondigital.org/catalog/oregondigital:fx71bn83k"
+
+  # 1991 Fact Book
+  "26601": "https://oregondigital.org/catalog/oregondigital:fx71bn829"
+
+  # 1988-89 Fact Book
+  "26662": "https://oregondigital.org/catalog/oregondigital:fx71bn790"
+
+  # 1999 Fact Book
+  "26668": "https://oregondigital.org/catalog/oregondigital:fx71bn900"
+
+  # 1998 Fact Book
+  "26839": "https://oregondigital.org/catalog/oregondigital:fx71bn897"
+
+  # 1996 Fact Book
+  "26876": "https://oregondigital.org/catalog/oregondigital:fx71bn87p"
+
+  # 1997 Fact Book
+  "26877": "https://oregondigital.org/catalog/oregondigital:fx71bn88z"
+
+  # 2001 Fact Book
+  "26905": "https://oregondigital.org/catalog/oregondigital:fx71bn92j"
+
+  # 1995 Fact Book
+  "26907": "https://oregondigital.org/catalog/oregondigital:fx71bn86d"
+
+  # 1994 Fact Book
+  "26908": "https://oregondigital.org/catalog/oregondigital:fx71bn854"
+
+  # Urban League of Portland Meeting Minutes, 1975
+  "27302": "https://oregondigital.org/catalog/oregondigital:df7245532"
+
+  # Urban League of Portland Meeting Minutes, 1976
+  "27303": "https://oregondigital.org/catalog/oregondigital:df724554b"
+
+  # Urban League of Portland Meeting Minutes, 1977 (1)
+  "27346": "https://oregondigital.org/catalog/oregondigital:df724555m"
+
+  # Urban League of Portland Meeting Minutes, 1977 (2)
+  "27347": "https://oregondigital.org/catalog/oregondigital:df724556w"
+
+  # Urban League of Portland Meeting Minutes, 1978
+  "27398": "https://oregondigital.org/catalog/oregondigital:df7245575"
+
+  # Urban League of Portland Meeting Minutes, 1979
+  "27399": "https://oregondigital.org/catalog/oregondigital:df724558f"
+
+  # Urban League of Portland Meeting Minutes, 1980
+  "27400": "https://oregondigital.org/catalog/oregondigital:df724559q"
+
+  # Urban League of Portland Meeting Minutes, 1981
+  "27401": "https://oregondigital.org/catalog/oregondigital:df724560g"
+
+  # Urban League of Portland Meeting Minutes, 1982
+  "27402": "https://oregondigital.org/catalog/oregondigital:df724561r"
+
+  # Urban League of Portland Meeting Minutes, 1983 (1)
+  "27403": "https://oregondigital.org/catalog/oregondigital:df7245621"
+
+  # Urban League of Portland Meeting Minutes, 1983 (2)
+  "27404": "https://oregondigital.org/catalog/oregondigital:df7245639"
+
+  # Urban League of Portland Meeting Minutes, 1984
+  "27572": "https://oregondigital.org/catalog/oregondigital:df724564k"
+
+  # Urban League of Portland Meeting Minutes, 1985
+  "27573": "https://oregondigital.org/catalog/oregondigital:df724565v"
+
+  # Urban League of Portland Meeting Minutes, 1986 (1)
+  "27574": "https://oregondigital.org/catalog/oregondigital:df7245664"
+
+  # Urban League of Portland Meeting Minutes, 1986 (2)
+  "27575": "https://oregondigital.org/catalog/oregondigital:df724567d"
+
+  # Urban League of Portland Meeting Minutes, 1986 (3)
+  "27576": "https://oregondigital.org/catalog/oregondigital:df724568p"
+
+  # The Scab Sheet, March 4, 1969
+  "27913": "https://oregondigital.org/catalog/oregondigital:df71gf36n"
+
+  # The Scab Sheet, March 5, 1969
+  "27914": "https://oregondigital.org/catalog/oregondigital:df71gf37x"
+
+  # The Scab Sheet, March 6, 1969
+  "27915": "https://oregondigital.org/catalog/oregondigital:df71gf386"
+
+  # The Scab Sheet, March 7, 1969
+  "27916": "https://oregondigital.org/catalog/oregondigital:df71gf39g"
+
+  # The Scab Sheet, March 11, 1969
+  "27917": "https://oregondigital.org/catalog/oregondigital:df71gf407"
+
+  # The Scab Sheet, April 9, 1969
+  "27918": "https://oregondigital.org/catalog/oregondigital:df71gf41h"
+
+  # The Scab Sheet, April 19, 1969
+  "27919": "https://oregondigital.org/catalog/oregondigital:df71gf42s"
+
+  # The Scab Sheet, April 22, 1969
+  "27920": "https://oregondigital.org/catalog/oregondigital:df71gf432"
+
+  # The Scab Sheet, May 5, 1969
+  "27921": "https://oregondigital.org/catalog/oregondigital:df71gf45m"
+
+  # The Scab Sheet, May 1969
+  "27922": "https://oregondigital.org/catalog/oregondigital:df71gf46w"
+
+  # The Scab Sheet, 1970
+  "27923": "https://oregondigital.org/catalog/oregondigital:df71gf475"
+
+  # The Scab Sheet, 1970
+  "27924": "https://oregondigital.org/catalog/oregondigital:df71gf49q"
+
+  # The Scab Sheet, 1970
+  "27925": "https://oregondigital.org/catalog/oregondigital:df71gf48f"
+
+  # The Scab Sheet, May 3, 1969
+  "27941": "https://oregondigital.org/catalog/oregondigital:df71gf44b"
+
+  # Urban League of Portland Meeting Minutes, 1987 (1)
+  "27997": "https://oregondigital.org/catalog/oregondigital:df724569z"
+
+  # Urban League of Portland Meeting Minutes, 1987 (2)
+  "27998": "https://oregondigital.org/catalog/oregondigital:df724570q"
+
+  # Urban League of Portland Meeting Minutes, 1987 (3)
+  "27999": "https://oregondigital.org/catalog/oregondigital:df7245710"
+
+  # Urban League of Portland Meeting Minutes, 1987 (4)
+  "28000": "https://oregondigital.org/catalog/oregondigital:df7245728"
+
+  # Urban League of Portland Meeting Minutes, 1987 (5)
+  "28002": "https://oregondigital.org/catalog/oregondigital:df724573j"
+
+  # Urban League of Portland Meeting Minutes, 1987 (6)
+  "28003": "https://oregondigital.org/catalog/oregondigital:df724574t"
+
+  # Urban League of Portland Meeting Minutes, 1988 (1)
+  "28004": "https://oregondigital.org/catalog/oregondigital:df7245753"
+
+  # Urban League of Portland Meeting Minutes, 1988 (2)
+  "28005": "https://oregondigital.org/catalog/oregondigital:df724576c"
+
+  # Urban League of Portland Meeting Minutes, 1988 (3)
+  "28006": "https://oregondigital.org/catalog/oregondigital:df724577n"
+
+  # Urban League of Portland Meeting Minutes, 1989 (1)
+  "28007": "https://oregondigital.org/catalog/oregondigital:df724578x"
+
+  # Urban League of Portland Meeting Minutes, 1989 (2)
+  "28008": "https://oregondigital.org/catalog/oregondigital:df7245796"
+
+  # Urban League of Portland Meeting Minutes, 1989 (3)
+  "28009": "https://oregondigital.org/catalog/oregondigital:df724580z"
+
+  # Urban League of Portland Meeting Minutes, 1990 (1)
+  "28010": "https://oregondigital.org/catalog/oregondigital:df7245817"
+
+  # Urban League of Portland Meeting Minutes, 1990 (2)
+  "28011": "https://oregondigital.org/catalog/oregondigital:df724582h"
+
+  # Urban League of Portland Meeting Minutes, 1991
+  "28012": "https://oregondigital.org/catalog/oregondigital:df724583s"
+
+  # Oregon Anti-Apartheid Scrapbook
+  "28107": "https://oregondigital.org/catalog/oregondigital:df71gf51r"
+
+  # Urban League of Portland Meeting Minutes, 1992 (1)
+  "28127": "https://oregondigital.org/catalog/oregondigital:df7245842"
+
+  # Urban League of Portland Meeting Minutes, 1992 (2)
+  "28128": "https://oregondigital.org/catalog/oregondigital:df724585b"
+
+  # Urban League of Portland Meeting Minutes, 1992 (3)
+  "28129": "https://oregondigital.org/catalog/oregondigital:df724586m"
+
+  # Urban League of Portland Meeting Minutes, 1993 (1)
+  "28478": "https://oregondigital.org/catalog/oregondigital:df724587w"
+
+  # Urban League of Portland Meeting Minutes, 1993 (2)
+  "28479": "https://oregondigital.org/catalog/oregondigital:df7245885"
+
+  # Urban League of Portland Meeting Minutes, 1994 (1)
+  "28480": "https://oregondigital.org/catalog/oregondigital:df724589f"
+
+  # Urban League of Portland Meeting Minutes, 1994 (2)
+  "28481": "https://oregondigital.org/catalog/oregondigital:df7245906"
+
+  # Urban League of Portland Meeting Minutes, 1994 (3)
+  "28482": "https://oregondigital.org/catalog/oregondigital:df724591g"
+
+  # Urban League of Portland Meeting Minutes, 1995 (1)
+  "28487": "https://oregondigital.org/catalog/oregondigital:df724592r"
+
+  # Urban League of Portland Meeting Minutes, 1995 (2)
+  "28488": "https://oregondigital.org/catalog/oregondigital:df7245931"
+
+  # Urban League of Portland Meeting Minutes, 1995 (3)
+  "28489": "https://oregondigital.org/catalog/oregondigital:df7245949"
+
+  # Urban League of Portland Meeting Minutes, 1998
+  "28490": "https://oregondigital.org/catalog/oregondigital:df724595k"
+
+  # Urban League of Portland Meeting Minutes, 2000 (1)
+  "28492": "https://oregondigital.org/catalog/oregondigital:df724596v"
+
+  # Urban League of Portland Meeting Minutes, 2000 (2)
+  "28493": "https://oregondigital.org/catalog/oregondigital:df7245974"
+
+  # Discharge and release
+  "28682": "https://oregondigital.org/catalog/oregondigital:df71gk089"
+
+  # Coastwise Line, Agents invoice
+  "28683": "https://oregondigital.org/catalog/oregondigital:df71gk03x"
+
+  # Coastwise Line, Agents letter
+  "28684": "https://oregondigital.org/catalog/oregondigital:df71gk046"
+
+  # Tung Wah hospital letter
+  "28685": "https://oregondigital.org/catalog/oregondigital:df71gk399"
+
+  # Chinese Consolidated Benevolent Association letter
+  "28686": "https://oregondigital.org/catalog/oregondigital:df71gk02n"
+
+  # Pacific Far East Line, Inc. Bill of Lading
+  "28687": "https://oregondigital.org/catalog/oregondigital:df71gk267"
+
+  # EADS Transfer & Storage Co. invoice
+  "28688": "https://oregondigital.org/catalog/oregondigital:df71gk09k"
+
+  # Pacific Westbound Conference letter
+  "28689": "https://oregondigital.org/catalog/oregondigital:df71gk27h"
+
+  # Shipping insurance agreement
+  "28690": "https://oregondigital.org/catalog/oregondigital:df71gk36g"
+
+  # EADS Transfer & Storage Co. letter
+  "28691": "https://oregondigital.org/catalog/oregondigital:df71gk10b"
+
+  # Coastwise Line, Agents shipment booking receipt
+  "28692": "https://oregondigital.org/catalog/oregondigital:df71gk05g"
+
+  # United Sheet Metal Works invoice
+  "28693": "https://oregondigital.org/catalog/oregondigital:df71gk402"
+
+  # Hanset Sheet Metal invoice
+  "28694": "https://oregondigital.org/catalog/oregondigital:df71gk135"
+
+  # Roster of 1928 shipment of remains
+  "28959": "https://oregondigital.org/catalog/oregondigital:df71gk356"
+
+  # Minorities in the Barometer, 1970
+  "29915": "https://oregondigital.org/catalog/oregondigital:df71wz41p"
+
+  # Minorities in the Barometer, 1971
+  "29940": "https://oregondigital.org/catalog/oregondigital:df71wz42z"
+
+  # Minorities in the Barometer, 1972
+  "29942": "https://oregondigital.org/catalog/oregondigital:df71wz437"
+
+  # Minorities in the Barometer, 1973
+  "29943": "https://oregondigital.org/catalog/oregondigital:df71wz44h"
+
+  # Minorities in the Barometer, 1974
+  "29944": "https://oregondigital.org/catalog/oregondigital:df71wz45s"
+
+  # Minorities in the Barometer, 1975
+  "29945": "https://oregondigital.org/catalog/oregondigital:df71wz462"
+
+  # Minorities in the Barometer, 1976
+  "29981": "https://oregondigital.org/catalog/oregondigital:df71wz47b"
+
+  # Minorities in the Barometer, 1977
+  "29982": "https://oregondigital.org/catalog/oregondigital:df71wz48m"
+
+  # Minorities in the Barometer, 1978
+  "29983": "https://oregondigital.org/catalog/oregondigital:df71wz49w"
+
+  # Minorities in the Barometer, 1979
+  "29984": "https://oregondigital.org/catalog/oregondigital:df71wz50n"
+
+  # Japanese Are Ordered from 11 Counties
+  "36412": "https://oregondigital.org/catalog/oregondigital:df724k72r"
+
+  # Japanese Students
+  "36413": "https://oregondigital.org/catalog/oregondigital:df724k71g"
+
+  # War and the Roses for Oregon State
+  "36414": "https://oregondigital.org/catalog/oregondigital:df724k731"
+
+  # Former Students Get Degrees At Last
+  "36415": "https://oregondigital.org/catalog/oregondigital:df724k749"
+
+  # Historical Bill Honors Internees
+  "36416": "https://oregondigital.org/catalog/oregondigital:df724k75k"
+
+  # Two OSU Students Play Key Roll [sic] in Honorary Degree Bill
+  "36417": "https://oregondigital.org/catalog/oregondigital:df724k76v"
+
+  # Japanese Americans' Degrees Win OK
+  "36418": "https://oregondigital.org/catalog/oregondigital:df724k774"
+
+  # Evacuees List of Items
+  "36419": "https://oregondigital.org/catalog/oregondigital:df724k78d"
+
+  # Proposal for the Continued Collegiate Training of Citizens of Japanese Ancestry Forced by Evacuation Orders to Interrupt Studies
+  "36420": "https://oregondigital.org/catalog/oregondigital:df724k79p"
+
+  # Letter Regarding Student Transfer
+  "36421": "https://oregondigital.org/catalog/oregondigital:df724k80f"
+
+  # Telegram Regarding Student Transfer
+  "36422": "https://oregondigital.org/catalog/oregondigital:df724k81q"
+
+  # Letter to the Japanese American Citizens League
+  "36423": "https://oregondigital.org/catalog/oregondigital:df724k820"
+
+  # Letter Regarding the Northwest College Personnel Association Student Relocation Committee
+  "36424": "https://oregondigital.org/catalog/oregondigital:df724k838"
+
+  # Letter Regarding Japanese American Citizens League Letter
+  "36425": "https://oregondigital.org/catalog/oregondigital:df724k84j"
+
+  # Letter Regarding Student Travel to Hawaii
+  "36426": "https://oregondigital.org/catalog/oregondigital:df724k85t"
+
+  # Letter from the Japanese American Citizens League
+  "36427": "https://oregondigital.org/catalog/oregondigital:df724k863"
+
+  # Letter Regarding Travel Authority for Raymond Hashitani
+  "36428": "https://oregondigital.org/catalog/oregondigital:df724k87c"
+
+  # Letter to the Oregon State System of Higher Education
+  "36429": "https://oregondigital.org/catalog/oregondigital:df724k88n"
+
+  # Letter Regarding Student Travel to Hawaii
+  "36430": "https://oregondigital.org/catalog/oregondigital:df724k89x"
+
+  # Letter from the Oregon State System of Higher Education
+  "36431": "https://oregondigital.org/catalog/oregondigital:df724k90p"
+
+  # Letter Regarding Raymond Hashitani
+  "36432": "https://oregondigital.org/catalog/oregondigital:df724k91z"
+
+  # Travel Document for Masso Tamiyasu
+  "36433": "https://oregondigital.org/catalog/oregondigital:df724k927"
+
+  # Telegram Regarding Harry Iwatsuki
+  "36434": "https://oregondigital.org/catalog/oregondigital:df724k93h"
+
+  # Letter Regarding a Letter Sent to the Japanese American Students
+  "36435": "https://oregondigital.org/catalog/oregondigital:df724k94s"
+
+  # Letter to the "Investigating National Defense Migration" Federal Committee
+  "36436": "https://oregondigital.org/catalog/oregondigital:df724k952"
+
+  # Travel Document for Tom Arai
+  "36437": "https://oregondigital.org/catalog/oregondigital:df724k96b"
+
+  # Travel Document for Harry Iwatsuki
+  "36438": "https://oregondigital.org/catalog/oregondigital:df724k97m"
+
+  # Official Letter to All Japanese American Students
+  "36439": "https://oregondigital.org/catalog/oregondigital:df724k98w"
+
+  # Travel Document for Virginia and Sumi Ogura
+  "36440": "https://oregondigital.org/catalog/oregondigital:df724k995"
+
+  # Letter from the U. S. Army Regarding Federal Proclamations
+  "36441": "https://oregondigital.org/catalog/oregondigital:df724m00q"
+
+  # Letter to the U. S. Army Regarding Federal Proclamation 3
+  "36442": "https://oregondigital.org/catalog/oregondigital:df724m010"
+
+  # Travel Document for Tony Toshio Takashima
+  "36443": "https://oregondigital.org/catalog/oregondigital:df724m028"
+
+  # Travel Document for Raymond Hashitan
+  "36444": "https://oregondigital.org/catalog/oregondigital:df724m03j"
+
+  # Travel Document for Jack Chiaki Yoshiara
+  "36445": "https://oregondigital.org/catalog/oregondigital:df724m04t"
+
+  # List of Japanese Students - Winter Term 1942
+  "36446": "https://oregondigital.org/catalog/oregondigital:df724m053"
+
+  # List of Japanese Students - Fall Term 1941
+  "36447": "https://oregondigital.org/catalog/oregondigital:df724m06c"
+
+  # American-Japanese Student Association Information Card
+  "36448": "https://oregondigital.org/catalog/oregondigital:df724m07n"
+
+  # Letter to the Japanese American Students (response to December 11, 1941 Letter)
+  "36449": "https://oregondigital.org/catalog/oregondigital:df724m08x"
+
+  # Travel Document Template
+  "36450": "https://oregondigital.org/catalog/oregondigital:df724m096"
+
+  # Letter Regarding Registered Japanese American Students
+  "36451": "https://oregondigital.org/catalog/oregondigital:df724m10z"
+
+  # Letter to the President from Japanese American Students
+  "36452": "https://oregondigital.org/catalog/oregondigital:df724m117"
+
+  # Draft of the article "Freedom Lost: The Experiences of OSU Students of Japanese Ancestry during World War II"
+  "36495": "https://oregondigital.org/catalog/oregondigital:df724m12h"
+
+  # Freedom Lost: The Experiences of OSU Students of Japanese Ancestry during World War II
+  "36496": "https://oregondigital.org/catalog/oregondigital:df724m13s"
+
+  # Building Proposal: The Philip Lane Sr. Native American Longhouse of The Oregon State University Memorial Union
+  "37460": "https://oregondigital.org/catalog/oregondigital:df724k49z"
+
+  # Minorities in the Barometer, 1969
+  "38158": "https://oregondigital.org/catalog/oregondigital:df71wz40d"
+
+  # Minorities in the Barometer, 1968
+  "38159": "https://oregondigital.org/catalog/oregondigital:df71wz39n"
+
+  # Minorities in the Barometer, 1967
+  "38160": "https://oregondigital.org/catalog/oregondigital:df71wz38c"
+
+  # Minorities in the Barometer, 1966
+  "38161": "https://oregondigital.org/catalog/oregondigital:df71wz373"
+
+  # Minorities in the Barometer, 1965
+  "38162": "https://oregondigital.org/catalog/oregondigital:df71wz36t"
+
+  # Minorities in the Barometer, 1964
+  "38163": "https://oregondigital.org/catalog/oregondigital:df71wz35j"
+
+  # Minorities in the Barometer, 1963
+  "38164": "https://oregondigital.org/catalog/oregondigital:df71wz330"
+
+  # Minorities in the Barometer, 1962
+  "38165": "https://oregondigital.org/catalog/oregondigital:df71wz348"
+
+  # Minorities in the Barometer, 1961
+  "38166": "https://oregondigital.org/catalog/oregondigital:df71wz31f"
+
+  # Minorities in the Barometer, 1960
+  "38167": "https://oregondigital.org/catalog/oregondigital:df71wz32q"
+
+  # Nadia Alradhi Oral History Interview
+  "38749": "https://oregondigital.org/catalog/oregondigital:df724k50q"
+
+  # Daniel Cárdenas Oral History Interview
+  "38800": "https://oregondigital.org/catalog/oregondigital:df724k510"
+
+  # Carmen López Oral History Interview
+  "38842": "https://oregondigital.org/catalog/oregondigital:df724k528"
+
+  # Matt Williams Oral History Interview
+  "39022": "https://oregondigital.org/catalog/oregondigital:df724k53j"
+
+  # Hali’a Parish Oral History Interview
+  "39480": "https://oregondigital.org/catalog/oregondigital:df724k54t"
+
+  # Mariah Huhndorf Oral History Interview
+  "39481": "https://oregondigital.org/catalog/oregondigital:df724k553"
+
+  # Tyler Hogan Oral History Interview
+  "39482": "https://oregondigital.org/catalog/oregondigital:df724k56c"
+
+  # Urban League Newsletter, 1980
+  "41913": "https://oregondigital.org/catalog/oregondigital:df724598d"
+
+  # The Drum, Fall 1986
+  "41914": "https://oregondigital.org/catalog/oregondigital:df724599p"
+
+  # Update, 1991
+  "41915": "https://oregondigital.org/catalog/oregondigital:df7246007"
+
+  # Update, July 1991
+  "41916": "https://oregondigital.org/catalog/oregondigital:df724602s"
+
+  # Update, December 1991
+  "41917": "https://oregondigital.org/catalog/oregondigital:df7246032"
+
+  # Update, May 1992
+  "41918": "https://oregondigital.org/catalog/oregondigital:df724604b"
+
+  # Update, February 1992
+  "41919": "https://oregondigital.org/catalog/oregondigital:df724605m"
+
+  # Update, July 1992
+  "41920": "https://oregondigital.org/catalog/oregondigital:df724606w"
+
+  # Update, February 1993
+  "41921": "https://oregondigital.org/catalog/oregondigital:df7246075"
+
+  # Update, July 1993
+  "41922": "https://oregondigital.org/catalog/oregondigital:df724608f"
+
+  # Update, February 1994
+  "41923": "https://oregondigital.org/catalog/oregondigital:df724609q"
+
+  # Update, July 1994
+  "41924": "https://oregondigital.org/catalog/oregondigital:df724610g"
+
+  # Update, 1996
+  "41925": "https://oregondigital.org/catalog/oregondigital:df724611r"
+
+  # View, Summer 1992
+  "41926": "https://oregondigital.org/catalog/oregondigital:df7246121"
+
+  # View, Winter 1992
+  "41927": "https://oregondigital.org/catalog/oregondigital:df7246139"
+
+  # View, Spring 1993
+  "41928": "https://oregondigital.org/catalog/oregondigital:df724614k"
+
+  # View, Summer/Fall 1993
+  "41929": "https://oregondigital.org/catalog/oregondigital:df724615v"
+
+  # View, Spring 1995
+  "41930": "https://oregondigital.org/catalog/oregondigital:df7246164"
+
+  # View, Summer 1995
+  "41931": "https://oregondigital.org/catalog/oregondigital:df724617d"
+
+  # View, Spring 1996
+  "41932": "https://oregondigital.org/catalog/oregondigital:df724618p"
+
+  # View, Winter 1996
+  "41933": "https://oregondigital.org/catalog/oregondigital:df724619z"
+
+  # Our Children - Our Destiny, Fall 1996
+  "41934": "https://oregondigital.org/catalog/oregondigital:df724620q"
+
+  # Our Children - Our Destiny, Spring 1997
+  "41935": "https://oregondigital.org/catalog/oregondigital:df7246210"
+
+  # Our Children - Our Destiny, Fall 1997
+  "41936": "https://oregondigital.org/catalog/oregondigital:df7246228"
+
+  # Our Children - Our Destiny, Winter 1997
+  "41937": "https://oregondigital.org/catalog/oregondigital:df724623j"
+
+  # Our Children - Our Destiny, Summer 1998
+  "41938": "https://oregondigital.org/catalog/oregondigital:df724624t"
+
+  # Our Children - Our Destiny, Fall 1998
+  "41939": "https://oregondigital.org/catalog/oregondigital:df7246253"
+
+  # Our Children - Our Destiny, Winter 1998
+  "41940": "https://oregondigital.org/catalog/oregondigital:df724626c"
+
+  # The Multicultural Senior Center, June 1999
+  "41941": "https://oregondigital.org/catalog/oregondigital:df724627n"
+
+  # The Multicultural Senior Center, July 2000
+  "41942": "https://oregondigital.org/catalog/oregondigital:df724628x"
+
+  # Multicultural Senior Service Center, December 2001
+  "41943": "https://oregondigital.org/catalog/oregondigital:df7246296"
+
+  # Multicultural Senior Service Center, January 2002
+  "41944": "https://oregondigital.org/catalog/oregondigital:df724630z"
+
+  # Multicultural Senior Service Center, February 2002
+  "41945": "https://oregondigital.org/catalog/oregondigital:df7246317"
+
+  # Multicultural Senior Service Center, March 2002
+  "41946": "https://oregondigital.org/catalog/oregondigital:df724632h"
+
+  # The Urban Express, Spring 2004
+  "41947": "https://oregondigital.org/catalog/oregondigital:df724633s"
+
+  # The Urban Express, Fall 2004
+  "41948": "https://oregondigital.org/catalog/oregondigital:df7246342"
+
+  # The Urban Express, Fall 2005
+  "41949": "https://oregondigital.org/catalog/oregondigital:df724635b"
+
+  # The Urban Senior, April 2008
+  "41950": "https://oregondigital.org/catalog/oregondigital:df724636m"
+
+  # Urban Voice, Spring 1999
+  "41951": "https://oregondigital.org/catalog/oregondigital:df724637w"
+
+  # Urban Voice, January 2008
+  "41952": "https://oregondigital.org/catalog/oregondigital:df7246385"
+
+  # Corvallis, Oregon State University gay activism 1969-2004
+  "43450": "https://oregondigital.org/catalog/oregondigital:df71gf50g"
+
+  # Earnel Durden Oral History Interview
+  "46451": "https://oregondigital.org/catalog/oregondigital:df724k642"
+
+  # Hali’a Parish Oral History Interview
+  "48656": "https://oregondigital.org/catalog/oregondigital:df724k57n"
+
+  # Ji-Hae Kang Oral History Interview
+  "48657": "https://oregondigital.org/catalog/oregondigital:df724k58x"
+
+  # Maiyee Yuan Oral History Interview
+  "48658": "https://oregondigital.org/catalog/oregondigital:df724k596"
+
+  # Mandi Suzuki Oral History Interview
+  "48659": "https://oregondigital.org/catalog/oregondigital:df724k60z"
+
+  # Mohamed Shaker Oral History Interview
+  "48660": "https://oregondigital.org/catalog/oregondigital:df724k617"
+
+  # Report of Hop Breeding Project
+  "49816": "https://oregondigital.org/catalog/oregondigital:df71x026z"
+
+  # Notes on preliminary work in hop breeding in Oregon
+  "49820": "https://oregondigital.org/catalog/oregondigital:df71x028h"
+
+  # Report of Hop Breeding Project
+  "49821": "https://oregondigital.org/catalog/oregondigital:df71x0277"
+
+  # Second progress report of hop disease investigations, with particular reference to downy mildew
+  "49822": "https://oregondigital.org/catalog/oregondigital:df71x029s"
+
+  # Report of Cooperative Hop Breeding Project
+  "49823": "https://oregondigital.org/catalog/oregondigital:df71x030j"
+
+  # Report of Cooperative Hop Breeding Project
+  "49824": "https://oregondigital.org/catalog/oregondigital:df71x031t"
+
+  # Report of Cooperative Hop Breeding Project
+  "49825": "https://oregondigital.org/catalog/oregondigital:df71x0323"
+
+  # Comparison of Spray Nozzles for Effective Spraying of Hops for Downy Mildew
+  "49826": "https://oregondigital.org/catalog/oregondigital:df71x033c"
+
+  # Report Hop Analysis
+  "49829": "https://oregondigital.org/catalog/oregondigital:df71x034n"
+
+  # Report Hop Analysis
+  "49830": "https://oregondigital.org/catalog/oregondigital:df71x035x"
+
+  # Agronomic Studies with Hops: Progress Report
+  "49831": "https://oregondigital.org/catalog/oregondigital:df71x0366"
+
+  # Hop Agronomic Experiments
+  "49832": "https://oregondigital.org/catalog/oregondigital:df71x037g"
+
+  # Hop Grade Studies: 1949 Crop
+  "49834": "https://oregondigital.org/catalog/oregondigital:df71x038r"
+
+  # Hop Quality Studies: 1950 Crop
+  "49835": "https://oregondigital.org/catalog/oregondigital:df71x0391"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station
+  "49836": "https://oregondigital.org/catalog/oregondigital:df71x040s"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station
+  "49837": "https://oregondigital.org/catalog/oregondigital:df71x0412"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station
+  "49838": "https://oregondigital.org/catalog/oregondigital:df71x042b"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station
+  "49839": "https://oregondigital.org/catalog/oregondigital:df71x043m"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station
+  "49840": "https://oregondigital.org/catalog/oregondigital:df71x044w"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49841": "https://oregondigital.org/catalog/oregondigital:df71x0455"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49843": "https://oregondigital.org/catalog/oregondigital:df71x046f"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49844": "https://oregondigital.org/catalog/oregondigital:df71x047q"
+
+  # Hop Pests and Their Control
+  "49846": "https://oregondigital.org/catalog/oregondigital:df71x0480"
+
+  # Hop Pests and Their Control for the biennium 1937-1938
+  "49847": "https://oregondigital.org/catalog/oregondigital:df71x0498"
+
+  # Investigations on the Control of Hop Pests during the year 1939
+  "49848": "https://oregondigital.org/catalog/oregondigital:df71x0501"
+
+  # Hop Pests and Their Control
+  "49849": "https://oregondigital.org/catalog/oregondigital:df71x0519"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49850": "https://oregondigital.org/catalog/oregondigital:df71x052k"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49851": "https://oregondigital.org/catalog/oregondigital:df71x053v"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49852": "https://oregondigital.org/catalog/oregondigital:df71x0544"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49853": "https://oregondigital.org/catalog/oregondigital:df71x055d"
+
+  # Annual Report of Hop Investigations, Oregon Agricultural Experiment Station...
+  "49854": "https://oregondigital.org/catalog/oregondigital:df71x056p"
+
+  # Annual Report of Hop and Mint Investigations, Oregon Agricultural Experiment Station...
+  "49855": "https://oregondigital.org/catalog/oregondigital:df71x057z"
+
+  # Annual Report of Hop and Mint Investigations, Oregon Agricultural Experiment Station...
+  "49856": "https://oregondigital.org/catalog/oregondigital:df71x0587"
+
+  # Annual Report of Hop and Mint Investigations, Oregon Agricultural Experiment Station...
+  "49857": "https://oregondigital.org/catalog/oregondigital:df71x059h"
+
+  # Hop Pests and Their Control: A Report of the Control of the Hop Red Spider...
+  "49859": "https://oregondigital.org/catalog/oregondigital:df71x0608"
+
+  # Hop press: a memorandum of what's brewin' compiled for the convenience of county agents
+  "50990": "https://oregondigital.org/catalog/oregondigital:df71x061j"
+
+  # Juan "Tony" Trujillo Oral History Interview
+  "54439": "https://oregondigital.org/catalog/oregondigital:df724k65b"
+
+  # Janet Nishihara Oral History Interview
+  "54458": "https://oregondigital.org/catalog/oregondigital:df724k66m"
+
+  # Urmila Mali Oral History Interview
+  "54508": "https://oregondigital.org/catalog/oregondigital:df724k67w"
+
+  # Marilyn Stewart Oral History Interview
+  "54510": "https://oregondigital.org/catalog/oregondigital:df724k685"
+
+  # Antonio Torres Oral History Interview
+  "54511": "https://oregondigital.org/catalog/oregondigital:df724k69f"
+
+  # OSU Black Cultural Center Historical Records, 1974-1984
+  "54943": "https://oregondigital.org/catalog/oregondigital:df724k62h"
+
+  # Minorities in the Barometer, 1989
+  "55012": "https://oregondigital.org/catalog/oregondigital:df71wz60w"
+
+  # Minorities in the Barometer, 1988
+  "55013": "https://oregondigital.org/catalog/oregondigital:df71wz594"
+
+  # Minorities in the Barometer, 1987
+  "55014": "https://oregondigital.org/catalog/oregondigital:df71wz58v"
+
+  # Minorities in the Barometer, 1986
+  "55015": "https://oregondigital.org/catalog/oregondigital:df71wz57k"
+
+  # Minorities in the Barometer, 1985
+  "55016": "https://oregondigital.org/catalog/oregondigital:df71wz569"
+
+  # Minorities in the Barometer, 1984
+  "55017": "https://oregondigital.org/catalog/oregondigital:df71wz551"
+
+  # Minorities in the Barometer, 1983
+  "55018": "https://oregondigital.org/catalog/oregondigital:df71wz54r"
+
+  # Minorities in the Barometer, 1982
+  "55019": "https://oregondigital.org/catalog/oregondigital:df71wz53g"
+
+  # Minorities in the Barometer, 1981
+  "55020": "https://oregondigital.org/catalog/oregondigital:df71wz526"
+
+  # Minorities in the Barometer, 1980
+  "55021": "https://oregondigital.org/catalog/oregondigital:df71wz51x"
+
+  # OSU Women's Center Group Oral History Interview
+  "55779": "https://oregondigital.org/catalog/oregondigital:df724k63s"
+
+  # Arts & Social Justice Living-Learning Community Oral History Interview
+  "55929": "https://oregondigital.org/catalog/oregondigital:df724k706"
+
+  # Hongsa Chanthavong Oral History Interview
+  "56026": "https://oregondigital.org/catalog/oregondigital:df71gk43w"
+
+  # Sophorn Cheang Oral History Interview
+  "56027": "https://oregondigital.org/catalog/oregondigital:df71gk488"
+
+  # Danita Huynh Oral History Interview
+  "56028": "https://oregondigital.org/catalog/oregondigital:df71gk42m"
+
+  # Lee Po Cha Oral History Interview
+  "56029": "https://oregondigital.org/catalog/oregondigital:df71gk445"
+
+  # Lyn Tan Oral History Interview
+  "56030": "https://oregondigital.org/catalog/oregondigital:df71gk45f"
+
+  # Sivai Bennett Oral History Interview
+  "56031": "https://oregondigital.org/catalog/oregondigital:df71gk470"
+
+  # Ronault "Polo" Catalani Oral History Interview
+  "56032": "https://oregondigital.org/catalog/oregondigital:df71gk46q"
+
+  # Connie Kim Yen Nguyen-Truong Oral History Interview
+  "56033": "https://oregondigital.org/catalog/oregondigital:df71gk41b"
+
+  # 1971 Annual Report of Hop and Mint Investigations: Breeding, Genetics, Chemistry, Pathology and Culture of Hops and Mint...
+  "58507": "https://oregondigital.org/catalog/oregondigital:df71x0633"
+
+  # E. B. C. Hops Workshop
+  "58508": "https://oregondigital.org/catalog/oregondigital:df71x064c"
+
+  # Annual Research Report: Autochthonous Hop in Yugoslavia...
+  "58509": "https://oregondigital.org/catalog/oregondigital:df71x065n"
+
+  # 1975 Annual Report: Hop Breeding, Genetics, Chemistry, and Pathology
+  "58510": "https://oregondigital.org/catalog/oregondigital:df71x066x"
+
+  # USDA-SEA Hop Research 1977 Annual Report: Hop Breeding, Genetics, Chemistry, and Pathology
+  "58511": "https://oregondigital.org/catalog/oregondigital:df71x0676"
+
+  # USDA-SEA Hop Research 1978 Annual Report: Hop Breeding, Genetics, Chemistry, and Pathology
+  "58512": "https://oregondigital.org/catalog/oregondigital:df71x068g"
+
+  # On the Analysis of Hops Bitter Acids
+  "58513": "https://oregondigital.org/catalog/oregondigital:df71x069r"
+
+  # 1956 Annual Report of Hop Investigations (OAES 36, FC-e6)
+  "58527": "https://oregondigital.org/catalog/oregondigital:df71x070h"
+
+  # Australian Hop Marketers Pty. Ltd.: Hops Research 1979/80
+  "58528": "https://oregondigital.org/catalog/oregondigital:df71x071s"
+
+  # USDA-ARS Hop Research 1980 Annual Report: Hop Breeding, Genetics, Pathology, and Chemistry
+  "58529": "https://oregondigital.org/catalog/oregondigital:df71x0722"
+
+  # Annual Report to the U. S. Hop Research Council: 1981 Hop Research
+  "58530": "https://oregondigital.org/catalog/oregondigital:df71x073b"
+
+  # USDA-ARS Hop Research: 1983 Annual Report Hop Breeding, Genetics, and Chemistry
+  "58531": "https://oregondigital.org/catalog/oregondigital:df71x074m"
+
+  # 1984 USDA-ARS Hop Research
+  "58532": "https://oregondigital.org/catalog/oregondigital:df71x075w"
+
+  # USDA-ARS 1985 Hop Research
+  "58533": "https://oregondigital.org/catalog/oregondigital:df71x0765"
+
+  # 1986 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58534": "https://oregondigital.org/catalog/oregondigital:df71x077f"
+
+  # 1987 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58535": "https://oregondigital.org/catalog/oregondigital:df71x078q"
+
+  # 1988 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58539": "https://oregondigital.org/catalog/oregondigital:df71x0790"
+
+  # 1989 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58540": "https://oregondigital.org/catalog/oregondigital:df71x080r"
+
+  # 1990 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58541": "https://oregondigital.org/catalog/oregondigital:df71x0811"
+
+  # 1992 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58542": "https://oregondigital.org/catalog/oregondigital:df71x0829"
+
+  # 1993 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58543": "https://oregondigital.org/catalog/oregondigital:df71x083k"
+
+  # 1994 Annual Research Data Summary: Hop Breeding, Genetics, Chemistry
+  "58544": "https://oregondigital.org/catalog/oregondigital:df71x084v"
+
+  # 1995 Annual Research Summary: Hop Breeding, Genetics, Chemistry
+  "58545": "https://oregondigital.org/catalog/oregondigital:df71x0854"
+
+  # Washington Hop Commission: 1994 Reports and 1995 Proposals
+  "58546": "https://oregondigital.org/catalog/oregondigital:df71x086d"
+
+  # USDA-ARS Hop Research 1982 Annual Report: Hop Breeding, Genetics, Pathology and Chemistry
+  "58584": "https://oregondigital.org/catalog/oregondigital:df71x087p"
+
+  # 1969 Progress Reports on Hops Research and Budget Proposals for 1970 to United States Brewers Association
+  "58595": "https://oregondigital.org/catalog/oregondigital:df71x088z"
+
+  # 1970 Annual Report on Hop and Mint Investigations: Breeding, Genetics, Pathology and Culture of Hops and Mint...
+  "58596": "https://oregondigital.org/catalog/oregondigital:df71x0897"
+
+  # 1970 Annual Report of Hop and Mint Investigations (CRIS Work Unit 0650-05-02)
+  "58597": "https://oregondigital.org/catalog/oregondigital:df71x0900"
+
+  # 1976 Annual Report: Hop Breeding, Genetics, Chemistry, and Pathology
+  "58598": "https://oregondigital.org/catalog/oregondigital:df71x0918"
+
+  # USDA-SEA-AR Hop Research 1979 Annual Report: Hop Breeding, Genetics, Chemistry and Pathology
+  "58601": "https://oregondigital.org/catalog/oregondigital:df71x092j"

@@ -48,6 +48,11 @@ module ScholarsArchive
           redirect_to new_od_path and return
         end
 
+        new_od_items_path = od_items_redirects["handles_od_items"][params[:handle_localname]]
+        if new_od_items_path
+          redirect_to new_od_items_path and return
+        end
+
         new_ir_collections_path = ir_collections_redirects["handles_ir_communities_collections"][params[:handle_localname]]
         if new_ir_collections_path
           redirect_to new_ir_collections_path and return
@@ -56,6 +61,10 @@ module ScholarsArchive
 
       def od_redirects
         YAML.load(File.read("config/handles_od_communities_collections.yml"))
+      end
+
+      def od_items_redirects
+        YAML.load(File.read("config/handles_od_items.yml"))
       end
 
       def ir_collections_redirects
