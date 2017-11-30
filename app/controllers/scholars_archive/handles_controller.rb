@@ -80,7 +80,9 @@ module ScholarsArchive
 
       def filesets_for_work(work)
         filesets = extract_all_filesets(work)
-        filesets.select { |member| member.title.include?(params[:file] + "." + params[:format]) }
+        solr_filesets = query_solr_for_filesets(construct_fileset_querystring(params[:file], params[:format]))
+        solr_fileset_ids = solr_filesets.map { |f| f['id'] }
+        filesets.select { |member| solr_fileset_ids.include?(member.id) }
       end
 
       #Recursive Method. This method will recursively call itself until all
@@ -114,6 +116,13 @@ module ScholarsArchive
         RSolr.solr_escape("http://hdl.handle.net/#{handle_prefix}/#{handle_localname}")
       end
 
+      # Addressing the variety of incoming HTTP requests with url encoded spaces in filenames
+      # Some of the files were uploaded to SA with underscores replacing where there were originally spaces as well.
+      # This method aims to make spaces, %20, +, and _ into wildcards to aid in SOLR queries for the FileSets
+      def construct_fileset_querystring(file, format)
+        "#{file.gsub(' ','*').gsub('%20','*').gsub('_','*').gsub('+','*')}.#{format}"
+      end
+
       def query_fedora_for_work(id, work_type)
         work_type.find(id)
       end
@@ -121,6 +130,10 @@ module ScholarsArchive
       def query_solr_for_work(handle)
         #Query solr
         ActiveFedora::SolrService.query("replaces_ssim:#{handle}", :rows => 1000000)
+      end
+
+      def query_solr_for_filesets(label)
+        ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", :rows => 10000)
       end
   end
 end
