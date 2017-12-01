@@ -10,7 +10,7 @@
               input_html: { id: "embargo_date_select" },
               selected: default_option
   %>
-  <%= f.input :embargo_release_date, label_html: { class: 'hidden'}, class: 'form-control', input_html: { class: "datepicker #{ 'hidden' unless default_option == 'other' }", value: "#{ curation_concern.embargo_release_date.strftime('%Y-%m-%d') }" }, placeholder: "yyyy-mm-dd" %>
+  <%= f.input :embargo_release_date, label_html: { class: 'hidden'}, class: 'form-control', input_html: { class: "datepicker #{ 'hidden' unless default_option == 'other' }" }, placeholder: "yyyy-mm-dd" %>
   <%= f.input :visibility_after_embargo, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
   <%= f.input :embargo_reason, label: "Reason For Embargo", wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement", "Other..."], input_html: { id: 'embargo_reason_select' } %>
   <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'hidden'}, input_html: { class: 'hidden other_field fill_column'}, wrapper_html: {class: 'fill_embargo_column'}, placeholder: "Please input the embargo reason" %>
