@@ -128,7 +128,8 @@ module ScholarsArchive
       # Some of the files were uploaded to SA with underscores replacing where there were originally spaces as well.
       # This method aims to make spaces, %20, +, and _ into wildcards to aid in SOLR queries for the FileSets
       def construct_fileset_querystring(file, format)
-        "#{file.gsub(' ','*').gsub('%20','*').gsub('_','*').gsub('+','*')}.#{format}"
+        escaped = RSolr.solr_escape(file)
+        "#{escaped.gsub(' ','*').gsub('%20','*').gsub('_','*').gsub('+','*')}.#{format}"
       end
 
       def query_fedora_for_work(id, work_type)
