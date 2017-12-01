@@ -37,8 +37,8 @@ Rails.application.routes.draw do
 
   get '/xmlui/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show'
   get '/dspace/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_dspace'
-  get '/xmlui/bitstream/handle/:handle_prefix/:handle_localname/:file', to: 'scholars_archive/handles#handle_download', as: 'handle_download'
-  get '/dspace/bitstream/handle/:handle_prefix/:handle_localname/:sequence_id/:file', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace'
+  get '/xmlui/bitstream/handle/:handle_prefix/:handle_localname/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download', file: /.*?/, format: /[^.]+/
+  get '/dspace/bitstream/handle/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace', file: /.*?/, format: /[^.]+/
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
