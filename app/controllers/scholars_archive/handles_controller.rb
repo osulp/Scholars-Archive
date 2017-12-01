@@ -16,7 +16,15 @@ module ScholarsArchive
         ScholarsArchive::HandleErrorLoggingService.log_no_work_found_error(params)
         render "/scholars_archive/handles/handle_work_404.html.erb", status: 404
       else
-        redirect_to [main_app, work]
+        case params[:action]
+        when "discover"
+        when "browse"
+          redirect_to [main_app, work]
+        when "stats"
+          redirect_to app.hyrax.stats_work_path(work.id)
+        else
+          redirect_to [main_app, work]
+        end
       end
     end
 
