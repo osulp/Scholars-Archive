@@ -101,4 +101,15 @@ module ApplicationHelper
     model_list.each { |item| lookup[item.concern] = item }
     fixed_ordered_list.each.map { |item| lookup[item] }
   end
+
+  def embargo_select_options
+    [["6 Months",6.months.from_now], ["1 year",1.year.from_now],["2 Years",2.years.from_now], ["Other...", "other"]]
+  end
+
+  def selected_embargo(release_date, options)
+    options_hash = options.map { |option| option.second.instance_of?(ActiveSupport::TimeWithZone) ? [option.first, option.second.strftime('%Y-%m-%d')] : option }.to_h
+    key = options_hash.key(release_date.strftime('%Y-%m-%d'))
+    value = options.to_h[key]
+    value ? value : 'other'
+  end
 end
