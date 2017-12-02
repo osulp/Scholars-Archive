@@ -29,6 +29,12 @@
       else
         hide_field('.degree-name-other')
 
+      default_degree_grantors = $('select.degree-grantors-selector :selected').val()
+      if default_degree_grantors == "Other"
+        show_field('.degree-grantors-other')
+      else
+        hide_field('.degree-grantors-other')
+
       $('select.other-affiliation-selector').each (i, element) =>
         default_other_affiliation = $(element.closest('li')).find('.other_affiliation_other')
         if $(element).val() == "Other"
@@ -61,6 +67,14 @@
         show_field('.degree-name-other')
       else
         hide_field('.degree-name-other')
+
+    $('select.degree-grantors-selector').change ->
+      selected = $('select.degree-grantors-selector :selected').val()
+      $('.degree-grantors-other').find('input').val("")
+      if selected == "Other"
+        show_field('.degree-grantors-other')
+      else
+        hide_field('.degree-grantors-other')
 
     $(document).on('change', 'select.other-affiliation-selector', (event) ->
       selected = $(this).find(':selected')

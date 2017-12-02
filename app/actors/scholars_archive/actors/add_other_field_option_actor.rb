@@ -31,6 +31,9 @@ module ScholarsArchive
 
           # check if degree_name_other is already in the list or is missing
           error_counter += validate_other_value? env, field: :degree_name, collection: degree_name_options(env.user)
+
+          # check if degree_grantors_other is already in the list or is missing
+          error_counter += validate_other_value? env, field: :degree_grantors, collection: degree_grantors_options(env.user)
         end
 
         if other_affiliation_other_present? (env)
@@ -108,6 +111,11 @@ module ScholarsArchive
         env_user.admin? ? service.select_sorted_all_options : service.select_active_options
       end
 
+      def degree_grantors_options(env_user)
+        service = ScholarsArchive::DegreeGrantorsService.new
+        env_user.admin? ? service.select_sorted_all_options : service.select_active_options
+      end
+
       def other_affiliation_options(env_user)
         service = ScholarsArchive::OtherAffiliationService.new
         env_user.admin? ? service.select_sorted_all_options : service.select_active_options
@@ -134,6 +142,10 @@ module ScholarsArchive
           if env.curation_concern.degree_name_other.present?
             OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
             notify_admin(env, field: :degree_name, new_entries: env.curation_concern.degree_name_other)
+          end
+          if env.curation_concern.degree_grantors_other.present?
+            OtherOption.find_or_create_by(name: env.curation_concern.degree_grantors_other.to_s, work_id: env.curation_concern.id, property_name: :degree_grantors.to_s)
+            notify_admin(env, field: :degree_grantors, new_entries: env.curation_concern.degree_grantors_other)
           end
         end
 
@@ -186,6 +198,16 @@ module ScholarsArchive
             else
               OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
               notify_admin(env, field: :degree_name, new_entries: env.curation_concern.degree_name_other)
+            end
+          end
+
+          if env.curation_concern.degree_grantors_other.present?
+            degree_grantors_other_option = get_other_option(env, :degree_grantors)
+            if degree_grantors_other_option.present?
+              OtherOption.update(degree_grantors_other_option.id, name: env.curation_concern.degree_grantors_other.to_s)
+            else
+              OtherOption.find_or_create_by(name: env.curation_concern.degree_grantors_other.to_s, work_id: env.curation_concern.id, property_name: :degree_grantors.to_s)
+              notify_admin(env, field: :degree_grantors, new_entries: env.curation_concern.degree_grantors_other)
             end
           end
         end
