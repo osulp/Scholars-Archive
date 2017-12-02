@@ -40,8 +40,7 @@ module ScholarsArchive
     end
 
     def work_path
-      key = curation_concern.model_name.singular_route_key
-      Rails.application.routes.url_helpers.send(key + "_path", curation_concern.id)
+      Rails.application.routes.url_helpers.url_for(:only_path => false, :action => 'show', :controller => 'hyrax/'+curation_concern.model_name.plural, :host=> Rails.application.config.action_mailer.default_url_options[:host], protocol: "https", id: work_id)
     end
   end
 end
