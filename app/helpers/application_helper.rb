@@ -107,9 +107,11 @@ module ApplicationHelper
   end
 
   def selected_embargo(release_date, options)
-    options_hash = options.map { |option| option.second.instance_of?(ActiveSupport::TimeWithZone) ? [option.first, option.second.strftime('%Y-%m-%d')] : option }.to_h
-    key = options_hash.key(release_date.strftime('%Y-%m-%d'))
-    value = options.to_h[key]
-    value ? value : 'other'
+    if release_date
+      options_hash = options.map { |option| option.second.instance_of?(ActiveSupport::TimeWithZone) ? [option.first, option.second ? option.second.strftime('%Y-%m-%d') : option.second] : option }.to_h
+      key = options_hash.key(release_date.strftime('%Y-%m-%d'))
+      value = options.to_h[key]
+      value ? value : 'other'
+    end
   end
 end
