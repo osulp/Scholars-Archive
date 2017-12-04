@@ -10,6 +10,7 @@ es:
           date_accepted: "Fecha de Aceptación"
           date_collected: "Fecha Recogida"
           date_valid: "Fecha Válida"
+          date_reviewed: "Fecha Revisada"
         facet:
           date_created: "Fecha de Creación"
           date_available: "Fecha Disponible"

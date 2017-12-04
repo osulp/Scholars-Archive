@@ -126,6 +126,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("date_created", :stored_searchable), label: "Date Created"
     config.add_show_field solr_name("date_issued", :stored_searchable), label: "Date Issued"
     config.add_show_field solr_name("date_modified", :stored_searchable), label: "Date Modified"
+    config.add_show_field solr_name("date_reviewed", :stored_searchable), label: "Date Reviewed"
     config.add_show_field solr_name("date_uploaded", :stored_searchable), label: "Date Uploaded"
     config.add_show_field solr_name("date_valid", :stored_searchable), label: "Date Valid"
     config.add_show_field solr_name("nested_geo_label", :stored_searchable), label: "Geographic Coordinates"
@@ -311,6 +312,14 @@ class CatalogController < ApplicationController
 
     config.add_search_field('date_issued') do |field|
       solr_name = solr_name("date_issued", :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
+    config.add_search_field('date_reviewed') do |field|
+      solr_name = solr_name("date_reviewed", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

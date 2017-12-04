@@ -99,6 +99,7 @@ class SolrDocument
       'date_copyright',
       'date_issued',
       'date_valid',
+      'date_reviewed',
       'degree_discipline',
       'degree_field',
       'degree_grantors',

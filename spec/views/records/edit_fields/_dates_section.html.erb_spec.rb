@@ -39,7 +39,7 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
     end
 
     it "draws the selector for single and multiple value fields" do
-      expect(rendered).to have_selector("select#new_date_type option", count: 8)
+      expect(rendered).to have_selector("select#new_date_type option", count: 9)
     end
   end
 
@@ -57,6 +57,7 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
           date_copyright: date_range,
           date_accepted: date_range,
           date_collected: [date],
+          date_reviewed: [date],
           date_created: date,
           date_issued: date,
           date_valid: date
@@ -100,6 +101,10 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
 
     it "renders date collected" do
       expect(rendered).to have_content("Date Collected")
+    end
+
+    it "renders date reviewed" do
+      expect(rendered).to have_content("Date Reviewed")
     end
   end
 end

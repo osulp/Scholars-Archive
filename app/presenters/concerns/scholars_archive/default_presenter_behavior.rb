@@ -14,6 +14,7 @@ module ScholarsArchive
                :date_copyright,
                :date_issued,
                :date_valid,
+               :date_reviewed,
                :digitization_spec,
                :doi,
                :dspace_collection,
