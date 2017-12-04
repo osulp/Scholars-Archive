@@ -29,6 +29,9 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
+      attr_accessor :degree_grantors_other
+
       property :degree_level, predicate: ::RDF::URI.new("http://purl.org/NET/UNTL/vocabularies/degree-information/#level"), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end

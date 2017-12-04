@@ -1,6 +1,6 @@
 module ScholarsArchive
   module Workflow
-    class PendingReviewNotification < Hyrax::Workflow::AbstractNotification
+    class PendingReviewNotification < ScholarsArchive::Workflow::AbstractNotification
       private
 
       def subject
@@ -8,7 +8,7 @@ module ScholarsArchive
       end
 
       def message
-        "The item: #{title} (#{link_to work_id, document_path}) was deposited by #{user.user_key} and is awaiting review. #{comment}"
+        "The item: #{title} (#{link_to work_id, citeable_url}) was deposited by #{user.user_key} and is awaiting review. #{comment}"
       end
 
       def users_to_notify
