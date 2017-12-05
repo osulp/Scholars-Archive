@@ -10,6 +10,7 @@ en:
           date_accepted: "Date Accepted"
           date_collected: "Date Collected"
           date_valid: "Date Valid"
+          date_reviewed: "Date Reviewed"
         facet:
           date_created: "Date Created"
           date_available: "Date Available"

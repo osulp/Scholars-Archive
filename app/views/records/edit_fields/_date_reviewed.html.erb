@@ -1,0 +1,14 @@
+<% if f.object.class.multiple? key %>
+    <tr data-id="<%= key.to_s %>" class="date_field <%= key.to_s %> date-multiple">
+      <td>
+        <%= f.input key, as: :multi_value_date, input_html: { class: 'form-control' }, :wrapper_html => {:class => 'multi_value_date'}, required: f.object.required?(key) %>
+      </td>
+      <td>
+        <button class="btn btn-danger remove_date_type" data-id="<%= key.to_s %>">
+          <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
+        </button>
+      </td>
+    </tr>
+<% else %>
+    <%= f.input key, required: f.object.required?(key) %>
+<% end %>

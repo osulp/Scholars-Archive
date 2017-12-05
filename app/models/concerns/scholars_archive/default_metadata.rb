@@ -63,6 +63,10 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      property :date_reviewed, predicate: ::RDF::URI.new("http://schema.org/lastReviewed") do |index|
+        index.as :stored_searchable
+      end
+
       property :date_valid, predicate: ::RDF::Vocab::DC.valid, multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
