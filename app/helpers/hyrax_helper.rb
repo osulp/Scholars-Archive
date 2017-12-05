@@ -27,6 +27,6 @@ module HyraxHelper
 
   def truncated_summary(options)
     value = options[:value].first
-    value.truncate_words(150)
+    value.truncate_words(50)
   end
 end
