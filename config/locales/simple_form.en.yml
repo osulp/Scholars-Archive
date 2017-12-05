@@ -23,9 +23,9 @@ en:
         conference_location: "The location of the conference at which the item was presented."
         conference_name: "The name of the conference at which the item was presented."
         conference_section: "The section, session, or track at the conference in which the item was presented."
-        contributor: "A person or group you want to recognize for playing a role in the creation of the work, but not the primary role."
-        contributor_advisor: "The name of the Academic Advisor on this project."
-        contributor_committeemember: "The name(s) of Academic Committee Member(s) on this project."
+        contributor: "A person or group you want to recognize for playing a role in the creation of the work, but not the primary role. Names should be entered with the last name first, e.g. \"Smith, Joan Q.\"."
+        contributor_advisor: "The name of the Academic Advisor on this project. The name should be entered with the last name first, e.g. \"Smith, John Q.\"."
+        contributor_committeemember: "The name(s) of Academic Committee Member(s) on this project. Names should be entered with the last name first, e.g. \"Smith, Joan Q.\"."
         creator: "The person or group responsible for the work. Usually this is the author of the content. Personal names should be entered with the last name first, e.g. \"Smith, John Q.\"."
         date_accepted: "The date of acceptance of the resource. Examples of resources to which a Date Accepted may be relevant are an article (accepted by a journal) or a conference proceedings (accepted to the conference)."
         date_available: "The date the item is available to public in the repository, such as after an embargo lifts."
@@ -43,7 +43,7 @@ en:
         digitization_spec: "Details of the digitization process for the resource. Should only be used if the item was digitized (not born digital)."
         doi: "Digital Object Identifier for the resource."
         duration: "The actual duration of the resource in seconds."
-        editor: "Name(s) of editor(s) of the proceedings."
+        editor: "Name(s) of editor(s) of the proceedings. Names should be entered with the last name first, e.g. \"Smith, Joan Q.\"."
         embargo_reason: ""
         file_extent: "The length or runtime of the object (e.g. 45 minutes, 30 pages)."
         file_format: ""
@@ -79,7 +79,7 @@ en:
         time_required: "Time (in minutes) to complete the activity."
         typical_age_range: ""
       honors_college_thesis:
-        contributor_advisor: "The name of the Academic Mentor on this project."
+        contributor_advisor: "The name of the Academic Mentor on this project. The name should be entered with the last name first, e.g. \"Smith, John Q.\"."
     labels:
       defaults:
         abstract: "Abstract or Summary"
