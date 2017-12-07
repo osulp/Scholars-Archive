@@ -41,8 +41,12 @@ Rails.application.routes.draw do
   get '/xmlui/bitstream/handle/:handle_prefix/:handle_localname/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_handle', file: /.*?/, format: /[^.]+/
   get '/xmlui/bitstream/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download', file: /.*?/, format: /[^.]+/
   get '/xmlui/*path', to: 'hyrax/homepage#index'
+  
+  get '/jspui', to: 'hyrax/homepage#index'  
   get '/jspui/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_jspui'
   get '/jspui/*path', to: 'hyrax/homepage#index'
+
+  get '/dspace', to: 'hyrax/homepage#index'  
   get '/dspace/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_dspace'
   get '/dspace/bitstream/handle/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace_handle', file: /.*?/, format: /[^.]+/
   get '/dspace/bitstream/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace', file: /.*?/, format: /[^.]+/
