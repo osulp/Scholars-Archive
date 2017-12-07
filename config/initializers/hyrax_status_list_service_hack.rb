@@ -1,4 +1,4 @@
-Hyrax::Workflow::StatusListService.class_eval do 
+Hyrax::Workflow::StatusListService.class_eval do
   def search_solr
     # Filtering for deposited or not deposited now happens here, we are using the @filter_condition variable available at
     # https://github.com/samvera/hyrax/blob/v2.0.0/app/services/hyrax/workflow/status_list_service.rb#L9
@@ -16,18 +16,10 @@ Hyrax::Workflow::StatusListService.class_eval do
         admin_set_id = r.workflow_role.workflow.permission_template.admin_set_id
         role_name = r.workflow_role.role.name
         workflow_name = r.workflow_role.workflow.name
-        responsibilities << "#{admin_set_id}-#{workflow_name}-#{role_name}"
+        responsibilities << URI.encode("#{admin_set_id}-#{workflow_name}-#{role_name}")
       end
-      role_filter = []
-      actionable_roles.each do |role|
-        unless responsibilities.include? role
-          role_filter << "-actionable_workflow_roles_ssim:\"#{role}\""
-        end
-      end
-      if role_filter
-        role_filter_str = role_filter.join(" AND ")
-        @filter_condition = "#{@filter_condition} AND #{role_filter_str}"
-      end
+      logger.debug("Workflow responsibilities for #{user.user_key} are #{responsibilities}")
+      actionable_roles = responsibilities
     else
       @filter_condition = "workflow_state_name_ssim:Deposited OR workflow_state_name_ssim:deposited"
       return [] if actionable_roles.empty?
