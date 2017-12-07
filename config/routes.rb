@@ -43,7 +43,10 @@ Rails.application.routes.draw do
   get '/xmlui/*path', to: 'hyrax/homepage#index'
   
   get '/jspui', to: 'hyrax/homepage#index'  
+  get '/jspui/handle/:handle_prefix/:handle_localname/:action', to: 'scholars_archive/handles#handle_show', as: 'handle_show_action_jspui'  
   get '/jspui/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_jspui'
+  get '/jspui/bitstream/handle/:handle_prefix/:handle_localname/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_handle_jspui', file: /.*?/, format: /[^.]+/
+  get '/jspui/bitstream/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_jspui', file: /.*?/, format: /[^.]+/
   get '/jspui/*path', to: 'hyrax/homepage#index'
 
   get '/dspace', to: 'hyrax/homepage#index'  
