@@ -35,15 +35,19 @@ Rails.application.routes.draw do
   curation_concerns_basic_routes
   concern :exportable, Blacklight::Routes::Exportable.new
 
+  get '/xmlui', to: 'hyrax/homepage#index'
   get '/xmlui/handle/:handle_prefix/:handle_localname/:action', to: 'scholars_archive/handles#handle_show', as: 'handle_show_action'
   get '/xmlui/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show'
   get '/xmlui/bitstream/handle/:handle_prefix/:handle_localname/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_handle', file: /.*?/, format: /[^.]+/
   get '/xmlui/bitstream/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download', file: /.*?/, format: /[^.]+/
+  get '/xmlui/*path', to: 'hyrax/homepage#index'
   get '/jspui/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_jspui'
+  get '/jspui/*path', to: 'hyrax/homepage#index'
   get '/dspace/handle/:handle_prefix/:handle_localname', to: 'scholars_archive/handles#handle_show', as: 'handle_show_dspace'
   get '/dspace/bitstream/handle/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace_handle', file: /.*?/, format: /[^.]+/
   get '/dspace/bitstream/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace', file: /.*?/, format: /[^.]+/
-
+  get '/dspace/*path', to: 'hyrax/homepage#index'
+  
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
   end
