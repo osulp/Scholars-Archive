@@ -1,0 +1,52 @@
+
+<% content_for(:twitter_meta) do %>
+  <meta name="twitter:card" content="product">
+  <meta name="twitter:site" content="<%= t('hyrax.product_twitter_handle') %>"/>
+  <meta name="twitter:creator" content="<%= @presenter.tweeter %>"/>
+  <meta property="og:site_name" content="<%= application_name %>"/>
+  <meta property="og:type" content="object"/>
+  <meta property="og:title" content="<%= @presenter.title.first %>"/>
+  <meta property="og:description" content="<%= @presenter.description.first.truncate(200) rescue @presenter.title.first %>"/>
+  <meta property="og:image" content="<%= @presenter.download_url %>"/>
+  <meta property="og:url" content="<%= polymorphic_url([main_app, @presenter]) %>"/>
+  <meta name="twitter:data1" content="<%= @presenter.keyword.join(', ') %>"/>
+  <meta name="twitter:label1" content="Keywords"/>
+  <meta name="twitter:data2" content="<%= @presenter.rights_statement.first %>"/>
+  <meta name="twitter:label2" content="Rights Statement"/>
+<% end %>
+
+<% content_for(:gscholar_meta) do %>
+  <meta name="citation_title" content="<%= @presenter.title.first %>"/>
+  <% @presenter.creator.each do |creator| %>
+    <meta name="citation_author" content="<%= creator %>"/>
+  <% end %>
+
+  <% if @presenter.date_created %>
+    <meta name="citation_publication_date" content="<%= @presenter.date_created.first %>"/>
+  <% elsif @presenter.date_issued %>
+    <meta name="citation_publication_date" content="<%= @presenter.date_issued.first %>"/>
+  <% elsif @presenter.date_accepted %>
+    <meta name="citation_publication_date" content="<%= @presenter.date_accepted.first %>"/>
+  <% else %>
+    <meta name="citation_publication_date" content="<%= @presenter.date_uploaded %>"/>
+  <% end %>
+
+  <% if @presenter.representative_id %>
+    <meta name="citation_pdf_url" content="<%= @presenter.download_url %>"/>
+  <% else %>
+    <% @presenter.member_presenters.each_with_index do |member, index| %>
+      <% if index == 0 %>
+        <meta name="citation_pdf_url" content="<%= member.download_url %>"/>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if ['ConferenceProceedingsOrJournal', 'Article'].include? @presenter.model_name.name %>
+    <meta name="citation_journal_title" content="<%= @presenter.has_journal.first %>"/>
+    <meta name="citation_volume" content="<%= @presenter.has_volume.first %>"/>
+    <meta name="citation_issue" content="<%= @presenter.has_number.first %>"/>
+    <!-- Hyrax does not yet support these metadata -->
+    <meta name="citation_firstpage" content=""/>
+    <meta name="citation_lastpage" content=""/>
+  <% end %>
+<% end %>
