@@ -21,11 +21,11 @@
     <meta name="citation_author" content="<%= creator %>"/>
   <% end %>
 
-  <% if @presenter.date_created %>
+  <% if @presenter.date_created.present? %>
     <meta name="citation_publication_date" content="<%= @presenter.date_created.first %>"/>
-  <% elsif @presenter.date_issued %>
+  <% elsif @presenter.date_issued.present? %>
     <meta name="citation_publication_date" content="<%= @presenter.date_issued.first %>"/>
-  <% elsif @presenter.date_accepted %>
+  <% elsif @presenter.date_accepted.present? %>
     <meta name="citation_publication_date" content="<%= @presenter.date_accepted.first %>"/>
   <% else %>
     <meta name="citation_publication_date" content="<%= @presenter.date_uploaded %>"/>
@@ -42,11 +42,16 @@
   <% end %>
 
   <% if ['ConferenceProceedingsOrJournal', 'Article'].include? @presenter.model_name.name %>
-    <meta name="citation_journal_title" content="<%= @presenter.has_journal.first %>"/>
-    <meta name="citation_volume" content="<%= @presenter.has_volume.first %>"/>
-    <meta name="citation_issue" content="<%= @presenter.has_number.first %>"/>
-    <!-- Hyrax does not yet support these metadata -->
-    <meta name="citation_firstpage" content=""/>
-    <meta name="citation_lastpage" content=""/>
+    <meta name="citation_journal_title" content="<%= @presenter.has_journal.first if @presenter.has_journal.present? %>"/>
+    <meta name="citation_volume" content="<%= @presenter.has_volume.first if @presenter.has_volume.present? %>"/>
+    <meta name="citation_issue" content="<%= @presenter.has_number.first if @presenter.has_number.present? %>"/>
+  <% else %>
+    <meta name="citation_journal_title" content=""/>
+    <meta name="citation_volume" content=""/>
+    <meta name="citation_issue" content=""/>
   <% end %>
+
+  <!-- Hyrax does not yet support these metadata -->
+  <meta name="citation_firstpage" content=""/>
+  <meta name="citation_lastpage" content=""/>
 <% end %>
