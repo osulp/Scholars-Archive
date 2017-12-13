@@ -36,7 +36,11 @@
   <% else %>
     <% @presenter.member_presenters.each_with_index do |member, index| %>
       <% if index == 0 %>
-        <meta name="citation_pdf_url" content="<%= member.download_url %>"/>
+        <% if member.respond_to?(:download_url) %>
+          <meta name="citation_pdf_url" content="<%= member.download_url %>"/>
+        <% else %>
+          <meta name="citation_pdf_url" content="<%= Hyrax::Engine.routes.url_helpers.download_url(member, host: request.host) if member.model_name.name == 'FileSet' %>"/>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
