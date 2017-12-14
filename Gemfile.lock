@@ -779,6 +779,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    sitemap_generator (6.0.0)
+      builder (~> 3.0)
     slop (4.6.0)
     solr_wrapper (1.1.0)
       faraday
@@ -911,6 +913,7 @@ DEPENDENCIES
   shoulda-matchers!
   sidekiq
   simplecov
+  sitemap_generator
   solr_wrapper (>= 0.3)
   spring
   spring-watcher-listen (~> 2.0.0)

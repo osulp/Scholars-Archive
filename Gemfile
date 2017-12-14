@@ -59,6 +59,7 @@ gem 'devise-guests', '~> 0.5'
 gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
 gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
 gem 'devise_cas_authenticatable'
+gem 'sitemap_generator'
 
 # Used for integration of Blazegraph backend and required API
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
