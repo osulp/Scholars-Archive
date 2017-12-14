@@ -32,5 +32,4 @@ fits.log
 !/config/puma/.keep
 
 # Ignore sitemap files
-/public/sitemap.xml.gz
-/public/sitemap1.xml.gz
+/public/sitemap/*
