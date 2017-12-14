@@ -1,6 +1,7 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://ir.library.oregonstate.edu"
-
+SitemapGenerator::Sitemap.create_index = true
+SitemapGenerator::Sitemap.sitemaps_path = 'shared/'
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
   #

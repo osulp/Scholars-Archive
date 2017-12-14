@@ -30,3 +30,7 @@ fits.log
 /config/local_env.yml
 /config/puma/*
 !/config/puma/.keep
+
+# Ignore sitemap files
+/public/sitemap.xml.gz
+/public/sitemap1.xml.gz
