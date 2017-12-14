@@ -16,10 +16,12 @@ Hyrax::Workflow::StatusListService.class_eval do
         admin_set_id = r.workflow_role.workflow.permission_template.admin_set_id
         role_name = r.workflow_role.role.name
         workflow_name = r.workflow_role.workflow.name
-        responsibilities << URI.encode("#{admin_set_id}-#{workflow_name}-#{role_name}")
+        responsibilities << "#{admin_set_id}-#{workflow_name}-#{role_name}"
       end
       logger.debug("Workflow responsibilities for #{user.user_key} are #{responsibilities}")
-      actionable_roles = responsibilities
+      solr_query_str = "{!terms f=actionable_workflow_roles_ssim}#{responsibilities.join(',')}"
+      response = ActiveFedora::SolrService.get(solr_query_str, 'fl' => '', 'fq' => @filter_condition, 'rows' => 1000, 'sort' => 'id asc')
+      return response['response']['docs']
     else
       @filter_condition = "workflow_state_name_ssim:Deposited OR workflow_state_name_ssim:deposited"
       return [] if actionable_roles.empty?
