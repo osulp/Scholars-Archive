@@ -20,8 +20,7 @@ Hyrax::Workflow::StatusListService.class_eval do
       end
       logger.debug("Workflow responsibilities for #{user.user_key} are #{responsibilities}")
       solr_query_str = "{!terms f=actionable_workflow_roles_ssim}#{responsibilities.join(',')}"
-      response = ActiveFedora::SolrService.get(solr_query_str, 'fl' => '', 'fq' => @filter_condition, 'rows' => 1000, 'sort' => 'id asc')
-      return response['response']['docs']
+      return ActiveFedora::SolrService.query(solr_query_str, {:fl => '', :fq => @filter_condition, :rows => 1000, :sort => 'id asc', :method => :post})
     else
       @filter_condition = "workflow_state_name_ssim:Deposited OR workflow_state_name_ssim:deposited"
       return [] if actionable_roles.empty?
