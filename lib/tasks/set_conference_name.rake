@@ -78,7 +78,7 @@ namespace :scholars_archive do
 
     # perform updates
     collection_conf_name_mapping.each do |collection, conf_name|
-      solr_query_str = "dspace_collection_tesim:\"#{conf_name}\""
+      solr_query_str = "dspace_collection_tesim:\"#{collection}\""
       docs = ActiveFedora::SolrService.query(solr_query_str, {:rows => 100000})
       logger.info "work count to update for collection: \"#{collection}\": #{docs.count}"
 
