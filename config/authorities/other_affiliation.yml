@@ -83,6 +83,9 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityDivisionOfStudentAffairs"
   term: "Student Affairs"
   active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversitySuperfundResearchProgram"
+  term: "OSU Superfund Research Program"
+  active: true
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityURSA"
   term: "Undergraduate Research, Scholarship, and the Arts (URSA)"
   active: true
