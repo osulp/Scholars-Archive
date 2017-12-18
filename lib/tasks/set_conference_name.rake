@@ -1,78 +1,79 @@
 namespace :scholars_archive do
   desc "Set conference name field on known dspace collections"
   task :set_conference_name => :environment do
-    se_conf_values
+    set_conf_values
   end
 
   def collection_conf_name_mapping
     {
-        "Report C" => "Biennial Conference on University Education in Natural Resources",
-        "Report D" => "Code4Lib",
-        "Report G" => "International Institute of Fisheries Economics & Trade",
-        "Information Circular (Forest Research Laboratory)" => "International Institute of Fisheries Economics & Trade",
-        "Hill Family Foundation Series" => "International Institute of Fisheries Economics & Trade",
-        "MS non-thesis Research Papers (EECS)" => "International Institute of Fisheries Economics & Trade",
-        "Historical Records (Student Affairs)" => "International Institute of Fisheries Economics & Trade",
-        "2008: Toward One Oregon" => "International Institute of Fisheries Economics & Trade",
-        "Schedule of Classes (Cascades Campus)" => "International Institute of Fisheries Economics & Trade",
-        "Schedule of Classes (Extended Campus)" => "International Institute of Fisheries Economics & Trade",
-        "Papers (Rural-Urban Connections)" => "International Institute of Fisheries Economics & Trade",
-        "Historical Records (Music)" => "International Institute of Fisheries Economics & Trade",
-        "Lane County Historian" => "International Institute of Fisheries Economics & Trade",
-        "Bibliographic Series (Forest Research Laboratory)" => "International Institute of Fisheries Economics & Trade",
-        "Annual Cruise (includes OAC Forestry Club Annual)" => "International Institute of Fisheries Economics & Trade",
-        "Transactions of the Annual Re-union of the Oregon Pioneer Association" => "International Institute of Fisheries Economics & Trade",
-        "Theses, Dissertations and Student Research Papers (Forest Ecosystems and Society & Forest Science)" => "International Institute of Fisheries Economics & Trade",
-        "Theses, Dissertations and Student Research Papers (Sustainable Forest Management, Forest Engineering, & Forest Management)" => "International Institute of Fisheries Economics & Trade",
-        "Registration Information Handbook" => "International Institute of Fisheries Economics & Trade",
-        "Fact Sheets (Rural Studies Program)" => "International Institute of Fisheries Economics & Trade",
-        "Community Studies (Rural Studies Program)" => "International Institute of Fisheries Economics & Trade",
-        "W.I.R.E.'d Zine" => "International Institute of Fisheries Economics & Trade",
-        "Reports (Independent Multidisciplinary Science Team)" => "International Institute of Fisheries Economics & Trade",
-        "Transboundary Freshwater Dispute Database Publications" => "International Institute of Fisheries Economics & Trade",
-        "Index of Selected Journal Articles Pertaining to the Forest Products Industries" => "International Institute of Fisheries Economics & Trade",
-        "Daily Barometer" => "International Institute of Fisheries Economics & Trade",
-        "Robert Lundeen Library Faculty Development Award" => "International Institute of Fisheries Economics & Trade",
-        "Oregon Vegetable Digest" => "International Institute of Fisheries Economics & Trade",
-        "Oregon Motorist" => "International Institute of Fisheries Economics & Trade",
-        "Oregon Native Son" => "International Institute of Fisheries Economics & Trade",
-        "Imprint, Oregon" => "International Institute of Fisheries Economics & Trade",
-        "Wild Cascades" => "International Institute of Fisheries Economics & Trade",
-        "Honors Theses (EECS)" => "International Institute of Fisheries Economics & Trade",
-        "4-H" => "International Institute of Fisheries Economics & Trade",
-        "Extension Service -- Circulars / Extension Circulars" => "International Institute of Fisheries Economics & Trade",
-        "Theses, Dissertations and Student Research Papers (Speech Communication)" => "International Institute of Fisheries Economics & Trade",
-        "Agricultural Experiment Station -- Circulars of Information" => "International Institute of Fisheries Economics & Trade",
-        "Extension Service -- Pacific Northwest Extension Publishing" => "International Institute of Fisheries Economics & Trade",
-        "Publications and Reports (INR)" => "International Institute of Fisheries Economics & Trade",
-        "Oregon Oddities and Items of Interest" => "North American Association of Fisheries Economists",
-        "Extension Service -- Miscellaneous / Educational Materials" => "North American Association of Fisheries Economists",
-        "Agricultural Experiment Station -- Bulletins / Station Bulletins" => "North American Association of Fisheries Economists",
-        "Timber Lines" => "North American Association of Fisheries Economists",
-        "Northwest National Marine Renewable Energy Center (NNMREC) Publications" => "Oregon Marine Renewable Energy Environmental Science",
-        "Case Studies (Forest Research Laboratory)" => "Oregon Water Conference",
-        "Contributions in Education and Outreach (Forest Research Laboratory)" => "Pacific Northwest Insect Management Conference",
-        "Papers in Forest Policy" => "Pacific Northwest Insect Management Conference",
-        "Water Resources Graduate Program Theses and Dissertations" => "Pacific Northwest Insect Management Conference",
-        "Institute for Water and Watersheds (2005-present)" => "Pacific Northwest Insect Management Conference",
-        "Theses, Dissertations and Student Research Papers (School of Forestry, pre - 1984)" => "Pacific Northwest Insect Management Conference",
-        "Faculty Research Publications (Fisheries and Wildlife)" => "Pacific Northwest Insect Management Conference",
-        "Faculty Research Publications (History)" => "Pacific Northwest Insect Management Conference",
-        "Faculty Research Publications (College of Forestry & Oregon Forest Research Laboratory)" => "Pacific Northwest Insect Management Conference",
-        "Vet Gazette e-newsletter" => "Pacific Northwest Insect Management Conference",
-        "Office of Government Relations" => "Pacific Northwest Insect Management Conference",
-        "Addresses and Speeches (President's Office)" => "Pacific Northwest Insect Management Conference",
-        "Faculty Research Publications (Anthropology)" => "Pacific Northwest Insect Management Conference",
-        "Marine Resource Management" => "Pacific Northwest Insect Management Conference",
-        "CEOAS Reports" => "Toward One Oregon",
-        "Marine Economics Data Sheets" => "Western Dry Kiln Association"
+        "Biennial Conference on University Education in Natural Resources. (7th : 2008, Corvallis, OR)" => "Biennial Conference on University Education in Natural Resources",
+        "code4lib Conference 2006" => "Code4Lib",
+        "Conference Materials (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Fish and Aquaculture Sectors' Development (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Fishery Management (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Markets and Trade (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Modeling and Economic Theory (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Aquaculture (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Fishing Sector Behavior and Activities (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 2012)" => "International Institute of Fisheries Economics & Trade",
+        "Posters (IIFET 2000)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Fishery Management (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Markets and Trade (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Aquaculture (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Modeling and Economic Theory (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Special Topics (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Fish and Aquaculture Sectors' Development (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Posters (IIFET 2008)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 2010)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Aquaculture (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Markets and Trade (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Modeling and Economic Theory (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Fish and Aquaculture Sectors' Development (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Fishery Management (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Special Topics (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Policy Day (IIFET 2006)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 2014)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2014)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 2004)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2004)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 1996)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 1996)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2002)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 2002)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Papers and Presentations (IIFET 2016)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2016)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (IIFET 2012)" => "International Institute of Fisheries Economics & Trade",
+        "Conference Materials (NAAFE Forum 2015)" => "North American Association of Fisheries Economists",
+        "Conference Papers and Presentations (NAAFE Forum 2015)" => "North American Association of Fisheries Economists",
+        "Conference Materials (NAAFE Forum 2017)" => "North American Association of Fisheries Economists",
+        "Conference Papers and Presentations (NAAFE Forum 2017)" => "North American Association of Fisheries Economists",
+        "Oregon Marine Renewable Energy Environmental Science Conference Proceedings" => "Oregon Marine Renewable Energy Environmental Science",
+        "Oregon Tribal Archives Institute 2012" => "Oregon Tribal Archives Institute",
+        "The Oregon Water Conference 2011: Evaluating and Managing Water Resources in a Climate of Uncertainty" => "Oregon Water Conference",
+        "64th Annual Pacific Northwest Insect Management Conference (2005)" => "Pacific Northwest Insect Management Conference",
+        "65th Annual Pacific Northwest Insect Management Conference (2006)" => "Pacific Northwest Insect Management Conference",
+        "66th Annual Pacific Northwest Insect Management Conference (2007)" => "Pacific Northwest Insect Management Conference",
+        "67th Annual Pacific Northwest Insect Management Conference (2008)" => "Pacific Northwest Insect Management Conference",
+        "68th Annual Pacific Northwest Insect Management Conference (2009)" => "Pacific Northwest Insect Management Conference",
+        "69th Annual Pacific Northwest Insect Management Conference (2010)" => "Pacific Northwest Insect Management Conference",
+        "70th Annual Pacific Northwest Insect Management Conference (2011)" => "Pacific Northwest Insect Management Conference",
+        "71st Annual Pacific Northwest Insect Management Conference (2012)" => "Pacific Northwest Insect Management Conference",
+        "72nd Annual Pacific Northwest Insect Management Conference (2013)" => "Pacific Northwest Insect Management Conference",
+        "73rd Annual Pacific Northwest Insect Management Conference (2014)" => "Pacific Northwest Insect Management Conference",
+        "74th Annual Pacific Northwest Insect Management Conference (2015)" => "Pacific Northwest Insect Management Conference",
+        "75th Annual Pacific Northwest Insect Management Conference (2016)" => "Pacific Northwest Insect Management Conference",
+        "76th Annual Pacific Northwest Insect Management Conference (2017)" => "Pacific Northwest Insect Management Conference",
+        "2008: Toward One Oregon" => "Toward One Oregon",
+        "Western Dry Kiln Association Proceedings" => "Western Dry Kiln Association"
     }
   end
 
   def set_conf_values
     # Create logger
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-cleanup-#{model_class.to_s}-#{datetime_today}.log")
+    logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-cleanup-set-conf-name-#{datetime_today}.log")
     logger.info "Setting conference names for known dspace collections"
     counter = 0
 
@@ -83,33 +84,48 @@ namespace :scholars_archive do
       logger.info "work count to update for collection: \"#{collection}\": #{docs.count}"
 
       docs.each do |doc|
-        logger.info "\t cleaning up work #{doc["id"]}"
+        logger.info "\t ready to update conference_name to \"#{conf_name}\" for work #{doc["id"]} in collection \"#{collection}\""
 
-        if doc["has_model_ssim"] && doc["has_model_ssim"].select(&:present?).count.positive?
-          work_model = doc["has_model_ssim"].first
+        if doc["has_model_ssim"] && doc["has_model_ssim"].select(&:present?).count.positive? && ['Article', 'ConferenceProceedingsOrJournal'].include?(doc["has_model_ssim"].first)
+          work_model = doc["has_model_ssim"].first.constantize
 
           begin
             work = work_model.find(doc["id"])
 
-            # commit changes needed
-            work.conference_name = conf_name
+            # double check collection name
+            if work.dspace_collection.first == collection
+              # commit changes needed
+              work.conference_name = conf_name
+              # skip embargo validation on expired embargoes
+              if work.embargo && work.embargo.embargo_release_date < DateTime.now
+                validate_embargo = false
+                work.embargo.save(validate: validate_embargo)
+                logger.info "\t\t expired embargo for #{doc["id"]}"
+              else
+                validate_embargo = true
+              end
 
-            if work.save!(validate: true)
-              logger.info "\t update for work id #{doc["id"]} completed successfully"
-              counter += 1
+              if work.save!(validate: validate_embargo)
+                logger.info "\t\t update for work id #{doc["id"]} completed successfully"
+                counter += 1
+              else
+                logger.info "\t\t failed to update conference_name to \"#{conf_name}\" on work id #{doc["id"]} (#{collection}) on save"
+              end
             else
-              logger.info "\t failed to update work id #{doc["id"]} with #{new_attributes} on save"
+              logger.info "\t\t unable to update work id #{doc["id"]} has_model_ssim: #{doc["has_model_ssim"]} dspace_collection \"#{ work.dspace_collection }\" doesn't match with \"#{collection}\""
             end
 
           rescue => e
-            logger.info "\t failed to update work id #{doc["id"]} with #{new_attributes}, error found:"
-            logger.info "\t #{e.message}"
+            logger.info "\t\t failed to update work id #{doc["id"]}, error found:"
+            logger.info "\t\t #{e.message}"
           end
+        else
+          logger.info "\t\t unable to update work id #{doc["id"]} has_model_ssim: #{doc["has_model_ssim"]}"
         end
       end
     end
 
-    logger.info "Total items successfully cleaned up: #{counter}"
+    logger.info "Total items successfully updated: #{counter}"
     logger.info "Done"
   end
 end
