@@ -1,0 +1,14 @@
+<%= f.full_error(:related_items) %>
+<%= f.full_error(:degree_name_other) %>
+<%= f.full_error(:degree_level_other) %>
+<%= f.full_error(:degree_grantors_other) %>
+<% f.object.errors.full_messages_for(:degree_field_other).each do |msg| %>
+  <%= help_block_wrapper do %>
+   <% msg %>
+  <% end %>
+<% end %>
+<% f.object.errors.full_messages_for(:other_affiliation_other).each do |msg| %>
+  <%= help_block_wrapper do %>
+   <% msg %>
+  <% end %>
+<% end %>

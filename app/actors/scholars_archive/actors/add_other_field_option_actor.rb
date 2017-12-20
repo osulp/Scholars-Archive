@@ -41,7 +41,63 @@ module ScholarsArchive
           error_counter += validate_other_value_multiple? env, field: :other_affiliation, collection: other_affiliation_options(env.user)
         end
 
+        if nested_related_items_present? (env)
+          error_counter += validate_nested_fields env, error_counter
+        end
+
         (error_counter > 0) ? false : true
+      end
+
+      def validate_nested_fields(env, error_counter = 0)
+        # TODO: add appropriate validation rules here to check for lat/lon coordinates and then close Milestone 3 issue: https://github.com/osulp/Scholars-Archive/issues/397
+
+        env.attributes['nested_related_items_attributes'].each do |item|
+          error_counter += validate_related_item(item, env)
+        end
+
+        if error_counter > 0
+          env.attributes['nested_related_items_attributes'].each do |item|
+            if item.second[:id].present? && item.second[:_destroy].present?
+              deleted_item = NestedRelatedItems.new(item.second[:id], Default::GeneratedResourceSchema.new)
+              deleted_item.related_url << item.second[:related_url]
+              deleted_item.label << item.second[:label]
+              deleted_item.destroy_item = true
+              env.curation_concern.nested_related_items << deleted_item
+            end
+          end
+        end
+
+        return error_counter
+      end
+
+      def nested_related_items_present? (env)
+        env.attributes['nested_related_items_attributes'].present?
+      end
+
+      def validate_related_item(item, env)
+        error_counter = 0
+        unless item.second[:label].empty? && item.second[:related_url].empty?
+          # check if label is present
+          if item.second[:label].empty? && item.second[:_destroy].blank?
+            env.curation_concern.errors.add(:related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
+            error_counter += 1
+          end
+          # check if related_url is present
+          if item.second[:related_url].empty? && item.second[:_destroy].blank?
+            env.curation_concern.errors.add(:related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
+            error_counter += 1
+          end
+
+          # process item before returning so that they can be updated in the form
+          if error_counter > 0 && item.second[:_destroy].blank?
+            related_item = env.curation_concern.nested_related_items.to_a.find { |i| i.label.first == item.second[:label] && i.related_url.first == item.second[:related_url] }
+            if related_item.present?
+              related_item.validation_msg = I18n.translate(:"simple_form.actor_validation.nested_related_item_value_missing")
+            end
+          end
+        end
+
+        return error_counter
       end
 
       def validate_other_value? (env, field: nil, collection: [])
@@ -75,14 +131,14 @@ module ScholarsArchive
             if other_value_in_collection? other_value: entry, collection: collection
               err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
               env.curation_concern.errors.add(other_field, I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s))
-              env.curation_concern.send(other_field) << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
+              env.curation_concern.send(field) << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
               error_counter += 1
             else
               valid_values << entry.to_s
             end
           end
         else
-          if env.attributes[field.to_s] == ['Other']
+          if env.attributes[field.to_s].include?('Other')
             env.curation_concern.errors.add(other_field, I18n.t("simple_form.actor_validation.other_value_missing"))
             error_counter += 1
           end
@@ -90,7 +146,7 @@ module ScholarsArchive
 
         if error_counter > 0
           valid_values.each do |entry|
-            env.curation_concern.send(other_field) << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
+            env.curation_concern.send(field) << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
           end
         end
         return error_counter
@@ -102,7 +158,7 @@ module ScholarsArchive
 
       def degree_field_options(env_user)
         service = ScholarsArchive::DegreeFieldService.new
-        env_user.admin? ? service.select_sorted_all_options : service.select_sorted_current_options
+        env_user.admin? ? service.select_sorted_all_options_truncated : service.select_sorted_current_options_truncated
       end
 
       def degree_level_options(env_user)
@@ -126,7 +182,7 @@ module ScholarsArchive
       end
 
       def degree_present? (env)
-        env.attributes['degree_field'].present? && env.attributes['degree_level'].present? && env.attributes['degree_name'].present?
+        env.curation_concern.respond_to?(:degree_field) && env.curation_concern.respond_to?(:degree_level) && env.curation_concern.respond_to?(:degree_name)
       end
 
       def other_affiliation_other_present? (env)

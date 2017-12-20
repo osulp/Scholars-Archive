@@ -11,7 +11,8 @@ en:
     actor_validation:
       other_value_exists: "This 'Other' value: \"%{other_entry}\" already exists, please select from the list."
       other_value_missing: "Please provide a value for 'Other'"
-
+      nested_related_item_value_missing: "Please provide both label and url values for this item. To update this entry, please remove, then add again with proper values to continue."
+      nested_related_items_value_missing: "One or more items are missing label/related url values. Please provide both label and url values for each related item entered."
     hints:
       defaults:
         abstract: "A brief description or summary of the item."

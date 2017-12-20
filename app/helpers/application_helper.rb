@@ -114,4 +114,8 @@ module ApplicationHelper
       value ? value : 'other'
     end
   end
+
+  def help_block_wrapper
+    "<span class=\"help-block\">#{yield}</span>".html_safe
+  end
 end
