@@ -10,6 +10,408 @@ handles_od_items:
   # The Daily Barometer Index Part I, Subject Index (3 items)
   "3746": "https://oregondigital.org/sets/daily-barometer/?op=AND&sort=score+desc&search_field=advanced&commit=Search&isPartOf=Daily+Barometer+Index+Part+I,+Subjects"
 
+  # General Catalog, 1990-1991
+  "8442": "https://oregondigital.org/catalog/oregondigital:fx719t81w"
+
+  # General Catalog, 1993-1994
+  "8549": "https://oregondigital.org/catalog/oregondigital:fx719t79v"
+
+  # General Catalog, 1994-1995
+  "8550": "https://oregondigital.org/catalog/oregondigital:fx719t80m"
+
+  # General Catalog, 1995-1996
+  "8563": "https://oregondigital.org/catalog/oregondigital:fx719t84q"
+
+  # General Catalog, 1997-1998
+  "8564": "https://oregondigital.org/catalog/oregondigital:fx719t868"
+
+  # General Catalog, 1998-1999
+  "8565": "https://oregondigital.org/catalog/oregondigital:fx719t87j"
+
+  # General Catalog, 2000-2001
+  "8566": "https://oregondigital.org/catalog/oregondigital:fx719v503"
+
+  # General Catalog, 2001-2002
+  "8567": "https://oregondigital.org/catalog/oregondigital:fx719v49b"
+
+  # General Catalog, 1996-1997
+  "8570": "https://oregondigital.org/catalog/oregondigital:fx719t850"
+
+  # General Catalog, 2002-2003
+  "8624": "https://oregondigital.org/catalog/oregondigital:fx719v482"
+
+  # General Catalog, 1987-1988
+  "8625": "https://oregondigital.org/catalog/oregondigital:fx719t96h"
+
+  # General Catalog, 1984-1985
+  "8626": "https://oregondigital.org/catalog/oregondigital:fx719t93p"
+
+  # General Catalog, 1982-1983
+  "8627": "https://oregondigital.org/catalog/oregondigital:fx719t914"
+
+  # General Catalog, 1983-1984
+  "8628": "https://oregondigital.org/catalog/oregondigital:fx719t92d"
+
+  # General Catalog, 1967-1968
+  "8638": "https://oregondigital.org/catalog/oregondigital:fx719v635"
+
+  # General Catalog, 1980-1981
+  "8639": "https://oregondigital.org/catalog/oregondigital:fx719t893"
+
+  # General Catalog, 1968-1969
+  "8640": "https://oregondigital.org/catalog/oregondigital:fx719v62w"
+
+  # General Catalog, 1981-1982
+  "8641": "https://oregondigital.org/catalog/oregondigital:fx719t90v"
+
+  # General Catalog, 1979-1980
+  "8642": "https://oregondigital.org/catalog/oregondigital:fx719v51c"
+
+  # General Catalog, 1977-1978
+  "8643": "https://oregondigital.org/catalog/oregondigital:fx719v53x"
+
+  # General Catalog, 1985-1986
+  "8644": "https://oregondigital.org/catalog/oregondigital:fx719t94z"
+
+  # General Catalog, 1969-1970
+  "8645": "https://oregondigital.org/catalog/oregondigital:fx719v61m"
+
+  # General Catalog, 1986-1987
+  "8865": "https://oregondigital.org/catalog/oregondigital:fx719t957"
+
+  # General Catalog, 1972-1973
+  "8868": "https://oregondigital.org/catalog/oregondigital:fx719v589"
+
+  # General Catalog, 1973-1974
+  "8869": "https://oregondigital.org/catalog/oregondigital:fx719v571"
+
+  # General Catalog, 1966-1967
+  "8870": "https://oregondigital.org/catalog/oregondigital:fx719v64f"
+
+  # General Catalog, 1965-1966
+  "8871": "https://oregondigital.org/catalog/oregondigital:fx719v65q"
+
+  # General Catalog, 1976-1977
+  "8872": "https://oregondigital.org/catalog/oregondigital:fx719v546"
+
+  # General Catalog, 1975-1976
+  "8873": "https://oregondigital.org/catalog/oregondigital:fx719v55g"
+
+  # General Catalog, 1974-1975
+  "8874": "https://oregondigital.org/catalog/oregondigital:fx719v56r"
+
+  # General Catalog, 1988-1990
+  "8875": "https://oregondigital.org/catalog/oregondigital:fx719t97s"
+
+  # General Catalog, 1978-1979
+  "8876": "https://oregondigital.org/catalog/oregondigital:fx719v52n"
+
+  # General Catalog, 1971-1972
+  "8877": "https://oregondigital.org/catalog/oregondigital:fx719v59k"
+
+  # General Catalog, 1970-1971
+  "8878": "https://oregondigital.org/catalog/oregondigital:fx719v60b"
+
+  # General Catalog, 1999-2000
+  "8892": "https://oregondigital.org/catalog/oregondigital:fx719t88t"
+
+  # General Catalog, 1992-1993
+  "8893": "https://oregondigital.org/catalog/oregondigital:fx719t83f"
+
+  # General Catalog, 1991-1992
+  "8894": "https://oregondigital.org/catalog/oregondigital:fx719t825"
+
+  # General Catalog, 1900-1901
+  "9007": "https://oregondigital.org/catalog/oregondigital:fx719v00w"
+
+  # General Catalog, 1901-1902
+  "9008": "https://oregondigital.org/catalog/oregondigital:fx719v015"
+
+  # General Catalog, 1902-1903
+  "9009": "https://oregondigital.org/catalog/oregondigital:fx719t57t"
+
+  # General Catalog, 1904-1905
+  "9010": "https://oregondigital.org/catalog/oregondigital:fx719t59c"
+
+  # General Catalog, 1923-1924
+  "9077": "https://oregondigital.org/catalog/oregondigital:fx719v083"
+
+  # General Catalog, 1933-1934
+  "9078": "https://oregondigital.org/catalog/oregondigital:fx719v31w"
+
+  # General Catalog, 1908-1909
+  "9079": "https://oregondigital.org/catalog/oregondigital:fx719t62p"
+
+  # General Catalog, 1903-1904
+  "9080": "https://oregondigital.org/catalog/oregondigital:fx719t583"
+
+  # General Catalog, 1905-1906
+  "9081": "https://oregondigital.org/catalog/oregondigital:fx719t604"
+
+  # General Catalog, 1927-1928
+  "9085": "https://oregondigital.org/catalog/oregondigital:fx719v25r"
+
+  # General Catalog, 1947-1948
+  "9086": "https://oregondigital.org/catalog/oregondigital:fx719v84x"
+
+  # General Catalog, 1919-1920
+  "9087": "https://oregondigital.org/catalog/oregondigital:fx719v22x"
+
+  # General Catalog, 1918-1919
+  "9122": "https://oregondigital.org/catalog/oregondigital:fx719v058"
+
+  # General Catalog, 1906-1907
+  "9123": "https://oregondigital.org/catalog/oregondigital:fx719t61d"
+
+  # General Catalog, 1936-1937
+  "9126": "https://oregondigital.org/catalog/oregondigital:fx719v34q"
+
+  # General Catalog, 1925-1926
+  "9137": "https://oregondigital.org/catalog/oregondigital:fx719v104"
+
+  # General Catalog, 2005-2006
+  "9142": "https://oregondigital.org/catalog/oregondigital:fx719v457"
+
+  # General Catalog, 2006-2007
+  "9143": "https://oregondigital.org/catalog/oregondigital:fx719v44z"
+
+  # General Catalog, 2007-2008
+  "9144": "https://oregondigital.org/catalog/oregondigital:fx719v43p"
+
+  # General Catalog, 2004-2005
+  "9145": "https://oregondigital.org/catalog/oregondigital:fx719v46h"
+
+  # General Catalog, 2008-2009
+  "9146": "https://oregondigital.org/catalog/oregondigital:fx719v42d"
+
+  # General Catalog, 2003-2004
+  "9148": "https://oregondigital.org/catalog/oregondigital:fx719v47s"
+
+  # General Catalog, 1926-1927
+  "9177": "https://oregondigital.org/catalog/oregondigital:fx719v24g"
+
+  # General Catalog, 1928-1929
+  "9178": "https://oregondigital.org/catalog/oregondigital:fx719v261"
+
+  # General Catalog, 1929-1930
+  "9179": "https://oregondigital.org/catalog/oregondigital:fx719v279"
+
+  # General Catalog, 1930-1931
+  "9180": "https://oregondigital.org/catalog/oregondigital:fx719v28k"
+
+  # General Catalog, 1934-1935
+  "9181": "https://oregondigital.org/catalog/oregondigital:fx719v325"
+
+  # General Catalog, 1937-1938
+  "9182": "https://oregondigital.org/catalog/oregondigital:fx719v350"
+
+  # General Catalog, 1942-1943
+  "9183": "https://oregondigital.org/catalog/oregondigital:fx719v92m"
+
+  # General Catalog, 1944-1945
+  "9184": "https://oregondigital.org/catalog/oregondigital:fx719v945"
+
+  # General Catalog, 1939-1940
+  "9185": "https://oregondigital.org/catalog/oregondigital:fx719v899"
+
+  # General Catalog, 1938-1939
+  "9186": "https://oregondigital.org/catalog/oregondigital:fx719v86g"
+
+  # General Catalog, 1931-1932
+  "9187": "https://oregondigital.org/catalog/oregondigital:fx719v29v"
+
+  # General Catalog, 1932-1933
+  "9190": "https://oregondigital.org/catalog/oregondigital:fx719v30m"
+
+  # General Catalog, 1941-1942
+  "9191": "https://oregondigital.org/catalog/oregondigital:fx719v91b"
+
+  # General Catalog, 1943-1944
+  "9192": "https://oregondigital.org/catalog/oregondigital:fx719v93w"
+
+  # General Catalog, 1946-1947
+  "9193": "https://oregondigital.org/catalog/oregondigital:fx719v856"
+
+  # General Catalog, 1940-1941
+  "9194": "https://oregondigital.org/catalog/oregondigital:fx719v902"
+
+  # General Catalog, 1945-1946
+  "9195": "https://oregondigital.org/catalog/oregondigital:fx719v87r"
+
+  # General Catalog, 1950-1951
+  "9196": "https://oregondigital.org/catalog/oregondigital:fx719v80t"
+
+  # General Catalog, 1951-1952
+  "9197": "https://oregondigital.org/catalog/oregondigital:fx719v792"
+
+  # General Catalog, 1952-1953
+  "9198": "https://oregondigital.org/catalog/oregondigital:fx719v78s"
+
+  # General Catalog, 1953-1954
+  "9199": "https://oregondigital.org/catalog/oregondigital:fx719v77h"
+
+  # General Catalog, 1954-1955
+  "9207": "https://oregondigital.org/catalog/oregondigital:fx719v767"
+
+  # General Catalog, 1955-1956
+  "9208": "https://oregondigital.org/catalog/oregondigital:fx719v75z"
+
+  # General Catalog, 1956-1957
+  "9209": "https://oregondigital.org/catalog/oregondigital:fx719v74p"
+
+  # General Catalog, 1957-1958
+  "9210": "https://oregondigital.org/catalog/oregondigital:fx719v73d"
+
+  # General Catalog, 1958-1959
+  "9211": "https://oregondigital.org/catalog/oregondigital:fx719v724"
+
+  # General Catalog, 1959-1960
+  "9212": "https://oregondigital.org/catalog/oregondigital:fx719v71v"
+
+  # General Catalog, 1960-1961
+  "9213": "https://oregondigital.org/catalog/oregondigital:fx719v70k"
+
+  # General Catalog, 1961-1962
+  "9214": "https://oregondigital.org/catalog/oregondigital:fx719v69t"
+
+  # General Catalog, 1916-1917
+  "9231": "https://oregondigital.org/catalog/oregondigital:fx719t63z"
+
+  # General Catalog, 1964-1965
+  "9232": "https://oregondigital.org/catalog/oregondigital:fx719v660"
+
+  # General Catalog, 1962-1963
+  "9233": "https://oregondigital.org/catalog/oregondigital:fx719v68j"
+
+  # General Catalog, 1920-1921
+  "9238": "https://oregondigital.org/catalog/oregondigital:fx719v236"
+
+  # General Catalog, 1922-1923
+  "9239": "https://oregondigital.org/catalog/oregondigital:fx719v07t"
+
+  # General Catalog, 1914-1915
+  "9311": "https://oregondigital.org/catalog/oregondigital:fx719t53q"
+
+  # General Catalog, 1913-1914
+  "9312": "https://oregondigital.org/catalog/oregondigital:fx719t52f"
+
+  # General Catalog, 1912-1913
+  "9313": "https://oregondigital.org/catalog/oregondigital:fx719t56j"
+
+  # General Catalog, 1911-1912
+  "9314": "https://oregondigital.org/catalog/oregondigital:fx719v03q"
+
+  # General Catalog, 1909-1910
+  "9315": "https://oregondigital.org/catalog/oregondigital:fx719v02f"
+
+  # General Catalog, 1915-1916
+  "9316": "https://oregondigital.org/catalog/oregondigital:fx719t540"
+
+  # General Catalog, 1917-1918
+  "9358": "https://oregondigital.org/catalog/oregondigital:fx719v040"
+
+  # General Catalog, 1921-1922
+  "9359": "https://oregondigital.org/catalog/oregondigital:fx719v06j"
+
+  # General Catalog, 1924-1925
+  "9360": "https://oregondigital.org/catalog/oregondigital:fx719v09c"
+
+  # General Catalog, 1949-1950
+  "9361": "https://oregondigital.org/catalog/oregondigital:fx719v813"
+
+  # General Catalog, 1963-1964
+  "9403": "https://oregondigital.org/catalog/oregondigital:fx719v678"
+
+  # General Catalog, 1935-1936
+  "9404": "https://oregondigital.org/catalog/oregondigital:fx719v33f"
+
+  # General Catalog, 1910-1911
+  "9942": "https://oregondigital.org/catalog/oregondigital:fx719t558"
+
+  # General Catalog, 1948-1949
+  "9945": "https://oregondigital.org/catalog/oregondigital:fx719v82c"
+
+  # General Catalog, 1889-1890
+  "9982": "https://oregondigital.org/catalog/oregondigital:fx719v12p"
+
+  # General Catalog, 1891-1892
+  "9983": "https://oregondigital.org/catalog/oregondigital:fx719t71n"
+
+  # General Catalog, 1890-1891
+  "9985": "https://oregondigital.org/catalog/oregondigital:fx719v83n"
+
+  # General Catalog, 1894-1895
+  "10205": "https://oregondigital.org/catalog/oregondigital:fx719v13z"
+
+  # General Catalog, 1899-1900
+  "10206": "https://oregondigital.org/catalog/oregondigital:fx719t78k"
+
+  # General Catalog, 1895-1896
+  "10207": "https://oregondigital.org/catalog/oregondigital:fx719t74g"
+
+  # General Catalog, 1898-1899
+  "10208": "https://oregondigital.org/catalog/oregondigital:fx719t779"
+
+  # General Catalog, 1897-1898
+  "10523": "https://oregondigital.org/catalog/oregondigital:fx719t761"
+
+  # General Catalog, 1893-1894
+  "10524": "https://oregondigital.org/catalog/oregondigital:fx719t736"
+
+  # General Catalog, 1892-1893
+  "10539": "https://oregondigital.org/catalog/oregondigital:fx719t72x"
+
+  # General Catalog, 1896-1897
+  "10699": "https://oregondigital.org/catalog/oregondigital:fx719t75r"
+
+  # General Catalog, 1866-1867
+  "11886": "https://oregondigital.org/catalog/oregondigital:fx719t647"
+
+  # General Catalog, 1867-1868
+  "11887": "https://oregondigital.org/catalog/oregondigital:fx719t65h"
+
+  # General Catalog, 1868-1869
+  "11888": "https://oregondigital.org/catalog/oregondigital:fx719t66s"
+
+  # General Catalog, 1869-1870
+  "11889": "https://oregondigital.org/catalog/oregondigital:fx719t672"
+
+  # General Catalog, 1870-1871
+  "11890": "https://oregondigital.org/catalog/oregondigital:fx719t68b"
+
+  # General Catalog, 1871-1872
+  "11891": "https://oregondigital.org/catalog/oregondigital:fx719t69m"
+
+  # General Catalog, 1872-1873
+  "11892": "https://oregondigital.org/catalog/oregondigital:fx719t70c"
+
+  # General Catalog, 1873-1874
+  "11893": "https://oregondigital.org/catalog/oregondigital:fx719v147"
+
+  # General Catalog, 1874-1875
+  "11894": "https://oregondigital.org/catalog/oregondigital:fx719v15h"
+
+  # General Catalog, 1875-1876
+  "11895": "https://oregondigital.org/catalog/oregondigital:fx719v16s"
+
+  # General Catalog, 1876-1877
+  "11896": "https://oregondigital.org/catalog/oregondigital:fx719v172"
+
+  # General Catalog, 1879-1880
+  "11897": "https://oregondigital.org/catalog/oregondigital:fx719v18b"
+
+  # General Catalog, 1881-1882
+  "11898": "https://oregondigital.org/catalog/oregondigital:fx719v19m"
+
+  # General Catalog, 1882-1883
+  "11899": "https://oregondigital.org/catalog/oregondigital:fx719v20c"
+
+  # General Catalog, 1885-1886
+  "11900": "https://oregondigital.org/catalog/oregondigital:fx719t99b"
+
+  # General Catalog, 1888-1889
+  "11901": "https://oregondigital.org/catalog/oregondigital:fx719t982"
+
   # The State of Black Oregon
   "12301": "https://oregondigital.org/catalog/oregondigital:df724521s"
 
@@ -18,6 +420,9 @@ handles_od_items:
 
   # Portland's silent epidemic: lead poisoned African American & Latino children
   "12442": "https://oregondigital.org/catalog/oregondigital:df724523b"
+
+  # General Catalog, 2009-2010
+  "13080": "https://oregondigital.org/catalog/oregondigital:fx719v414"
 
   # Nonwhite neighbors and property prices in Portland, Oregon, and residential attitudes toward Negroes as neighbors...
   "13302": "https://oregondigital.org/catalog/oregondigital:df724524m"
@@ -57,6 +462,12 @@ handles_od_items:
 
   # The Urban League of Portland: on the road to equality, a 50 year retrospective
   "14876": "https://oregondigital.org/catalog/oregondigital:df724536d"
+
+  # General Catalog, 2010-2011
+  "15743": "https://oregondigital.org/catalog/oregondigital:fx719v40v"
+
+  # General Catalog, 2011-2012
+  "21685": "https://oregondigital.org/catalog/oregondigital:fx719v393"
 
   # Riverside Cemetery, Albany, Oregon
   "22050": "https://oregondigital.org/catalog/oregondigital:df71gk32c"
@@ -451,6 +862,9 @@ handles_od_items:
   # Roster of 1928 shipment of remains
   "28959": "https://oregondigital.org/catalog/oregondigital:df71gk356"
 
+  # General Catalog, 2012-2013
+  "28961": "https://oregondigital.org/catalog/oregondigital:fx719v38t"
+
   # Minorities in the Barometer, 1970
   "29915": "https://oregondigital.org/catalog/oregondigital:df71wz41p"
 
@@ -643,6 +1057,9 @@ handles_od_items:
   # Minorities in the Barometer, 1960
   "38167": "https://oregondigital.org/catalog/oregondigital:df71wz32q"
 
+  # General Catalog, 2013-2014
+  "38367": "https://oregondigital.org/catalog/oregondigital:fx719v37j"
+
   # Nadia Alradhi Oral History Interview
   "38749": "https://oregondigital.org/catalog/oregondigital:df724k50q"
 
@@ -789,6 +1206,9 @@ handles_od_items:
 
   # Earnel Durden Oral History Interview
   "46451": "https://oregondigital.org/catalog/oregondigital:df724k642"
+
+  # General Catalog, 2014-2015
+  "47355": "https://oregondigital.org/catalog/oregondigital:fx719v368"
 
   # Hali’a Parish Oral History Interview
   "48656": "https://oregondigital.org/catalog/oregondigital:df724k57n"
@@ -964,6 +1384,9 @@ handles_od_items:
   # OSU Women's Center Group Oral History Interview
   "55779": "https://oregondigital.org/catalog/oregondigital:df724k63s"
 
+  # General Catalog, 2015-2016
+  "55859": "https://oregondigital.org/catalog/oregondigital:fx71b928f"
+
   # Arts & Social Justice Living-Learning Community Oral History Interview
   "55929": "https://oregondigital.org/catalog/oregondigital:df724k706"
 
@@ -1080,3 +1503,9 @@ handles_od_items:
 
   # USDA-SEA-AR Hop Research 1979 Annual Report: Hop Breeding, Genetics, Chemistry and Pathology
   "58601": "https://oregondigital.org/catalog/oregondigital:df71x092j"
+
+  # General Catalog, 2016-2017
+  "61754": "https://oregondigital.org/catalog/oregondigital:fx71ch90b"
+
+  # General Catalog, 2017-2018
+  "61756": "https://oregondigital.org/catalog/oregondigital:fx71ch91m"
