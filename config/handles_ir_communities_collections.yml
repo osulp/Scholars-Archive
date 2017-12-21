@@ -191,6 +191,8 @@ handles_ir_communities_collections:
   "13496": "https://ir.library.oregonstate.edu/catalog?q=Marine%20Renewable%20Energy&search_field=dspace_community"
 # NAAFE Forum 2015  
   "56425": "https://ir.library.oregonstate.edu/catalog?q=NAAFE%20Forum%202015&search_field=dspace_community"
+# NAAFE Forum 2017
+  "60680": "https://ir.library.oregonstate.edu/catalog?q=NAAFE%20Forum%202017&search_field=dspace_community""
 # Natural Resources  
   "5": "https://ir.library.oregonstate.edu/catalog?q=Natural%20Resources&search_field=dspace_community"
 # OSU Press  
@@ -465,6 +467,32 @@ handles_ir_communities_collections:
   "10432": "https://ir.library.oregonstate.edu/catalog?q=2008%3A%20Toward%20One%20Oregon&search_field=dspace_collection"
 # 4-H 
   "11814": "https://ir.library.oregonstate.edu/catalog?q=4-H&search_field=dspace_collection"
+# 64th Annual Pacific Northwest Insect Management Conference (2005)
+  "61446": "https://ir.library.oregonstate.edu/catalog?q=64th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2005)&search_field=dspace_collection"
+# 65th Annual Pacific Northwest Insect Management Conference (2006)
+  "61256": "https://ir.library.oregonstate.edu/catalog?q=65th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2006)&search_field=dspace_collection"
+# 66th Annual Pacific Northwest Insect Management Conference (2007)
+  "61217": "https://ir.library.oregonstate.edu/catalog?q=66th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2007)&search_field=dspace_collection"
+# 67th Annual Pacific Northwest Insect Management Conference (2008)
+  "61412": "https://ir.library.oregonstate.edu/catalog?q=67th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2008)&search_field=dspace_collection"
+# 68th Annual Pacific Northwest Insect Management Conference (2009)
+  "61183": "https://ir.library.oregonstate.edu/catalog?q=68th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2009)&search_field=dspace_collection"
+# 69th Annual Pacific Northwest Insect Management Conference (2010)
+  "61112": "https://ir.library.oregonstate.edu/catalog?q=69th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2010)&search_field=dspace_collection"
+# 70th Annual Pacific Northwest Insect Management Conference (2011)
+  "61087": "https://ir.library.oregonstate.edu/catalog?q=70th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2011)&search_field=dspace_collection"
+# 71st Annual Pacific Northwest Insect Management Conference (2012)
+  "61050": "https://ir.library.oregonstate.edu/catalog?q=71st%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2012)&search_field=dspace_collection"
+# 72nd Annual Pacific Northwest Insect Management Conference (2013)
+  "60994": "https://ir.library.oregonstate.edu/catalog?q=72nd%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2013)&search_field=dspace_collection"
+# 73rd Annual Pacific Northwest Insect Management Conference (2014)
+  "60946": "https://ir.library.oregonstate.edu/catalog?q=73rd%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2014)&search_field=dspace_collection"
+# 74th Annual Pacific Northwest Insect Management Conference (2015)
+  "60903": "https://ir.library.oregonstate.edu/catalog?q=74th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2015)&search_field=dspace_collection"
+# 75th Annual Pacific Northwest Insect Management Conference (2016)
+  "60868": "https://ir.library.oregonstate.edu/catalog?q=75th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2016)&search_field=dspace_collection"
+# 76th Annual Pacific Northwest Insect Management Conference (2017)
+  "60843": "https://ir.library.oregonstate.edu/catalog?q=76th%20Annual%20Pacific%20Northwest%20Insect%20Management%20Conference%20(2017)&search_field=dspace_collection"
 # Academic Standing Reports 
   "2050": "https://ir.library.oregonstate.edu/catalog?q=Academic%20Standing%20Reports&search_field=dspace_collection"
 # Addresses and Speeches (President's Office) 
@@ -553,6 +581,8 @@ handles_ir_communities_collections:
   "52888": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202014)&search_field=dspace_collection"
 # Conference Materials (NAAFE Forum 2015) 
   "56427": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(NAAFE%20Forum%202015)&search_field=dspace_collection"
+# Conference Materials (NAAFE Forum 2017)
+  "60681": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(NAAFE%20Forum%202017)&search_field=dspace_collection"
 # Conference Papers and Presentations (IIFET 1996) 
   "56897": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%201996)&search_field=dspace_collection"
 # Conference Papers and Presentations (IIFET 2000) 
@@ -569,6 +599,8 @@ handles_ir_communities_collections:
   "52605": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202014)&search_field=dspace_collection"
 # Conference Papers and Presentations (NAAFE Forum 2015) 
   "56428": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(NAAFE%20Forum%202015)&search_field=dspace_collection"
+# Conference Papers and Presentations (NAAFE Forum 2017)
+  "60682": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(NAAFE%20Forum%202017)&search_field=dspace_collection"
 # Coniferous Forest Biome (International Biological Program) 
   "7483": "https://ir.library.oregonstate.edu/catalog?q=Coniferous%20Forest%20Biome%20(International%20Biological%20Program)&search_field=dspace_collection"
 # Contributions in Education and Outreach (Forest Research Laboratory) 
