@@ -215,6 +215,8 @@ handles_ir_communities_collections:
   "13788": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20State%20Arthropod%20Collection&search_field=dspace_community"
 # Oregon Wine Research Institiute  
   "58155": "https://ir.library.oregonstate.edu/catalog?q=Oregon%20Wine%20Research%20Institiute&search_field=dspace_community"
+# Pacific Northwest Insect Management Conference
+  "60613": "https://ir.library.oregonstate.edu/catalog?q=Pacific%20Northwest%20Insect%20Management%20Conference&search_field=dspace_community"
 # President's Office  
   "4839": "https://ir.library.oregonstate.edu/catalog?q=President's%20Office&search_field=dspace_community"
 # Professional Science Master's Program  
