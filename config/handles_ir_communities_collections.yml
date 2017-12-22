@@ -49,6 +49,8 @@ handles_ir_communities_collections:
   "17743": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Pharmacy&search_field=dspace_community"
 # College of Public Health and Human Sciences  
   "28634": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Public%20Health%20and%20Human%20Sciences&search_field=dspace_community"
+# College of Science
+  "59892": "https://ir.library.oregonstate.edu/catalog?q=%22Presentations%20and%20Posters%20(College%20of%20Science)%22&search_field=dspace_collection"
 # College of Veterinary Medicine  
   "12904": "https://ir.library.oregonstate.edu/catalog?q=College%20of%20Veterinary%20Medicine&search_field=dspace_community"
 # Commodity Data Sheets  
@@ -155,14 +157,20 @@ handles_ir_communities_collections:
   "6367": "https://ir.library.oregonstate.edu/catalog?q=Ethnographic%20Field%20School%20(ANTH%20499%2F599)&search_field=dspace_community"
 # Extended Campus (Ecampus)  
   "59941": "https://ir.library.oregonstate.edu/catalog?q=Extended%20Campus%20(Ecampus)&search_field=dspace_community"
+# Extension & Experiment Station Communications 
+  "3903": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20and%20Agricultural%20Experiment%20Station&search_field=dspace_community"
 # Extension Service and Agricultural Experiment Station  
   "3904": "https://ir.library.oregonstate.edu/catalog?q=Extension%20Service%20and%20Agricultural%20Experiment%20Station&search_field=dspace_community"
+# Extension Service
+  "48173": "https://ir.library.oregonstate.edu/catalog?q=Commodity%20Data%20Sheets&search_field=dspace_community"
 # Facilities Services  
   "16345": "https://ir.library.oregonstate.edu/catalog?q=Facilities%20Services&search_field=dspace_community"
 # Faculty Research  
   "3004": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research&search_field=dspace_community"
-# Faculty Research  
-  "59893": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research&search_field=dspace_community"
+# Faculty Research [College of Science]
+  "59893": "https://ir.library.oregonstate.edu/catalog?q=%22Presentations%20and%20Posters%20(College%20of%20Science)%22&search_field=dspace_collection"
+# Faculty Senate
+  "1746": "https://ir.library.oregonstate.edu/catalog?q=Commodity%20Data%20Sheets&search_field=dspace_community"
 # Forest Research Laboratory  
   "7543": "https://ir.library.oregonstate.edu/catalog?q=Forest%20Research%20Laboratory&search_field=dspace_community"
 # Geography  
@@ -829,6 +837,8 @@ handles_ir_communities_collections:
   "10069": "https://ir.library.oregonstate.edu/catalog?q=Information%20Circular%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
 # Institute for Water and Watersheds (2005-present) 
   "12253": "https://ir.library.oregonstate.edu/catalog?q=Institute%20for%20Water%20and%20Watersheds%20(2005-present)&search_field=dspace_collection"
+# International Institute of Fisheries Economics and Trade (IIFET)
+  "22391": "https://ir.library.oregonstate.edu/catalog?q=IIFET%20Conference&search_field=dspace_community"
 # Lane County Historian 
   "10694": "https://ir.library.oregonstate.edu/catalog?q=Lane%20County%20Historian&search_field=dspace_collection"
 # Learning Objects (Difference, Power and Discrimination) 
@@ -873,6 +883,8 @@ handles_ir_communities_collections:
   "12131": "https://ir.library.oregonstate.edu/catalog?q=Northwest%20National%20Marine%20Renewable%20Energy%20Center%20(NNMREC)%20Publications&search_field=dspace_collection"
 # Notable Notes: Research Briefs for K-12 
   "57294": "https://ir.library.oregonstate.edu/catalog?q=Notable%20Notes%3A%20Research%20Briefs%20for%20K-12&search_field=dspace_collection"
+# North American Association of Fisheries Economists
+  "56424": "https://ir.library.oregonstate.edu/catalog?q=NAAFE%20Forum&search_field=dspace_community"
 # Office of Government Relations 
   "12945": "https://ir.library.oregonstate.edu/catalog?q=Office%20of%20Government%20Relations&search_field=dspace_collection"
 # Open Access Articles (OSU Faculty) 
@@ -955,6 +967,8 @@ handles_ir_communities_collections:
   "22": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(Libraries)&search_field=dspace_collection"
 # Presentations and Posters (Psychology/Psychological Science) 
   "48140": "https://ir.library.oregonstate.edu/catalog?q=Presentations%20and%20Posters%20(Psychology%2FPsychological%20Science)&search_field=dspace_collection"
+# Presentations and Posters (College of Science)
+  "59894": "https://ir.library.oregonstate.edu/catalog?q=%22Presentations%20and%20Posters%20(College%20of%20Science)%22&search_field=dspace_collection"
 # Progress Reports (College of Earth, Ocean, and Atmospheric Sciences) 
   "8653": "https://ir.library.oregonstate.edu/catalog?q=Progress%20Reports%20(College%20of%20Earth%2C%20Ocean%2C%20and%20Atmospheric%20Sciences)&search_field=dspace_collection"
 # Range Plant Leaflet 
