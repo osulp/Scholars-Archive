@@ -18,7 +18,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :degree_field, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#majorField"), multiple: false do |index|
+      property :degree_field, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#majorField") do |index|
         index.as :stored_searchable, :facetable
       end
 
