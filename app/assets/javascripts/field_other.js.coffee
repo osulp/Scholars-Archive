@@ -11,11 +11,6 @@
       $(class_selector).find('input').removeClass("hidden")
 
     load_default_values = () ->
-      default_degree_field = $('select.degree-field-selector :selected').val()
-      if default_degree_field == "Other"
-        show_field('.degree-field-other')
-      else
-        hide_field('.degree-field-other')
 
       default_degree_level = $('select.degree-level-selector :selected').val()
       if default_degree_level == "Other"
@@ -35,6 +30,13 @@
       else
         hide_field('.degree-grantors-other')
 
+      $('select.degree-field-selector').each (i, element) =>
+        default_degree_field = $(element.closest('li')).find('.degree_field_other')
+        if $(element).val() == "Other"
+          show_field(default_degree_field)
+        else
+          hide_field(default_degree_field)
+
       $('select.other-affiliation-selector').each (i, element) =>
         default_other_affiliation = $(element.closest('li')).find('.other_affiliation_other')
         if $(element).val() == "Other"
@@ -43,14 +45,6 @@
           hide_field(default_other_affiliation)
 
     load_default_values()
-
-    $('select.degree-field-selector').change ->
-      selected = $('select.degree-field-selector :selected').val()
-      $('.degree-field-other').find('input').val("")
-      if selected == "Other"
-        show_field('.degree-field-other')
-      else
-        hide_field('.degree-field-other')
 
     $('select.degree-level-selector').change ->
       selected = $('select.degree-level-selector :selected').val()
@@ -76,6 +70,16 @@
       else
         hide_field('.degree-grantors-other')
 
+    $(document).on('change', 'select.degree-field-selector', (event) ->
+      selected = $(this).find(':selected')
+      selected_li = $(this).closest('li').find('.degree_field_other')
+      $(selected_li).find('input').val("")
+      if selected.val() == "Other"
+        show_field(selected_li)
+      else
+        hide_field(selected_li)
+    )
+
     $(document).on('change', 'select.other-affiliation-selector', (event) ->
       selected = $(this).find(':selected')
       selected_li = $(this).closest('li').find('.other_affiliation_other')
@@ -86,4 +90,3 @@
         hide_field(selected_li)
     )
 ) jQuery
-

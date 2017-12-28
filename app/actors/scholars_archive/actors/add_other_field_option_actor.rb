@@ -27,7 +27,7 @@ module ScholarsArchive
           error_counter += validate_other_value? env, field: :degree_level, collection: degree_level_options(env.user)
 
           # check if degree_field_other is already in the list or is missing
-          error_counter += validate_other_value? env, field: :degree_field, collection: degree_field_options(env.user)
+          error_counter += validate_other_value_multiple? env, field: :degree_field, collection: degree_field_options(env.user)
 
           # check if degree_name_other is already in the list or is missing
           error_counter += validate_other_value? env, field: :degree_name, collection: degree_name_options(env.user)
@@ -62,9 +62,8 @@ module ScholarsArchive
         return error_counter
       end
 
-      # this can be used for optional fields (i.e other_affiliation) only since it validates if the value exists
-      # for an optional fields, we don't have to check for empty entries (other_value not present) since they are
-      # being ignored in the attributes
+      # This will now check if there is value passed in, since this can be used for optional fields (i.e. other_affiliation)
+      # as well as required ones with multiples allowed (i.e. degree_field)
       def validate_other_value_multiple? (env, field: nil, collection: [])
         other_field = "#{field}_other".to_sym
         other_value = env.curation_concern.send(other_field)
@@ -76,17 +75,22 @@ module ScholarsArchive
             if other_value_in_collection? other_value: entry, collection: collection
               err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
               env.curation_concern.errors.add(other_field, I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s))
-              env.curation_concern.other_affiliation << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
+              env.curation_concern.send(other_field) << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
               error_counter += 1
             else
               valid_values << entry.to_s
             end
           end
+        else
+          if env.attributes[field.to_s] == ['Other']
+            env.curation_concern.errors.add(other_field, I18n.t("simple_form.actor_validation.other_value_missing"))
+            error_counter += 1
+          end
         end
 
         if error_counter > 0
           valid_values.each do |entry|
-            env.curation_concern.other_affiliation << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
+            env.curation_concern.send(other_field) << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
           end
         end
         return error_counter
@@ -132,8 +136,8 @@ module ScholarsArchive
       def save_custom_option(env)
         if degree_present? (env)
           if env.curation_concern.degree_field_other.present?
-            OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
-            notify_admin(env, field: :degree_field, new_entries: env.curation_concern.degree_field_other)
+            all_new_entries = persist_multiple_other_entries(env, :degree_field)
+            notify_admin(env, field: :degree_field, new_entries: all_new_entries)
           end
           if env.curation_concern.degree_level_other.present?
             OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
@@ -172,14 +176,18 @@ module ScholarsArchive
       def update_custom_option(env)
         if degree_present? (env)
           if env.curation_concern.degree_field_other.present?
-            degree_field_other_option = get_other_option(env, :degree_field)
-            if degree_field_other_option.present?
-              OtherOption.update(degree_field_other_option.id, name: env.curation_concern.degree_field_other.to_s)
-            else
-              OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
-              notify_admin(env, field: :degree_field, new_entries: env.curation_concern.degree_field_other)
-            end
+
+            all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
+            notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
           end
+#            degree_field_other_option = get_other_option(env, :degree_field)
+#            if degree_field_other_option.present?
+#              OtherOption.update(degree_field_other_option.id, name: env.curation_concern.degree_field_other.to_s)
+#            else
+#              OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
+#              notify_admin(env, field: :degree_field, new_entries: env.curation_concern.degree_field_other)
+#            end
+#          end
 
           if env.curation_concern.degree_level_other.present?
             degree_level_other_option = get_other_option(env, :degree_level)
