@@ -134,8 +134,10 @@ module ScholarsArchive
       end
 
       def save_custom_option(env)
+        puts "save custom option"
         if degree_present? (env)
           if env.curation_concern.degree_field_other.present?
+            puts "degree field other"
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
             notify_admin(env, field: :degree_field, new_entries: all_new_entries)
           end
@@ -162,9 +164,11 @@ module ScholarsArchive
       end
 
       def persist_multiple_other_entries(env, field)
+        puts "persist multiple other entries"
         all_current_entries = get_all_other_options(env, field).map(&:name)
         all_new_entries = []
         env.curation_concern.send("#{field.to_s}_other").each do |entry|
+          puts "entry check"
           unless all_current_entries.include? entry
             OtherOption.find_or_create_by(name: entry.to_s, work_id: env.curation_concern.id, property_name: field.to_s)
             all_new_entries << entry.to_s
@@ -177,8 +181,8 @@ module ScholarsArchive
         if degree_present? (env)
           if env.curation_concern.degree_field_other.present?
 
-            all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
-            notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
+            all_new_entries = persist_multiple_other_entries(env, :degree_field)
+            notify_admin(env, field: :degree_field, new_entries: all_new_entries)
           end
 #            degree_field_other_option = get_other_option(env, :degree_field)
 #            if degree_field_other_option.present?
