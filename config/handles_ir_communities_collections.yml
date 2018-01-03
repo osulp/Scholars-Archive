@@ -170,7 +170,7 @@ handles_ir_communities_collections:
 # Faculty Research [College of Science]
   "59893": "https://ir.library.oregonstate.edu/catalog?q=%22Presentations%20and%20Posters%20(College%20of%20Science)%22&search_field=dspace_collection"
 # Faculty Senate
-  "1746": "https://ir.library.oregonstate.edu/catalog?q=Commodity%20Data%20Sheets&search_field=dspace_community"
+  "1746": "https://ir.library.oregonstate.edu/catalog?q=Library%20Committee&search_field=dspace_community"
 # Forest Research Laboratory  
   "7543": "https://ir.library.oregonstate.edu/catalog?q=Forest%20Research%20Laboratory&search_field=dspace_community"
 # Geography  
