@@ -37,6 +37,9 @@ handles_od_items:
   # General Catalog, 1996-1997
   "8570": "https://oregondigital.org/catalog/oregondigital:fx719t850"
 
+  # 2005 Oregon State University Baseball Media Guide
+  "8573": "https://oregondigital.org/catalog/oregondigital:fx71bh96t"
+
   # General Catalog, 2002-2003
   "8624": "https://oregondigital.org/catalog/oregondigital:fx719v482"
 
@@ -319,6 +322,12 @@ handles_od_items:
   # General Catalog, 1949-1950
   "9361": "https://oregondigital.org/catalog/oregondigital:fx719v813"
 
+  # 2007 Oregon State University Baseball Guide
+  "9378": "https://oregondigital.org/catalog/oregondigital:fx71bh98c"
+
+  # 2006 Oregon State University Baseball Guide
+  "9379": "https://oregondigital.org/catalog/oregondigital:fx71bh973"
+
   # General Catalog, 1963-1964
   "9403": "https://oregondigital.org/catalog/oregondigital:fx719v678"
 
@@ -363,6 +372,30 @@ handles_od_items:
 
   # General Catalog, 1896-1897
   "10699": "https://oregondigital.org/catalog/oregondigital:fx719t75r"
+
+  # The Annual Cruise, 1932
+  "10853": "https://oregondigital.org/catalog/oregondigital:fx71bc67j"
+
+  # The Annual Cruise, 1940
+  "10854": "https://oregondigital.org/catalog/oregondigital:fx71bc757"
+
+  # The Annual Cruise, 1930
+  "10855": "https://oregondigital.org/catalog/oregondigital:fx71bc650"
+
+  # The Annual Cruise, 1935
+  "10856": "https://oregondigital.org/catalog/oregondigital:fx71bc70v"
+
+  # The Annual Cruise, 1936
+  "10857": "https://oregondigital.org/catalog/oregondigital:fx71bc714"
+
+  # The Annual Cruise, 1938
+  "10858": "https://oregondigital.org/catalog/oregondigital:fx71bc73p"
+
+  # The Annual Cruise, 1927
+  "10862": "https://oregondigital.org/catalog/oregondigital:fx71bc63f"
+
+  # The Annual Cruise, 1939
+  "10863": "https://oregondigital.org/catalog/oregondigital:fx71bc74z"
 
   # General Catalog, 1866-1867
   "11886": "https://oregondigital.org/catalog/oregondigital:fx719t647"
@@ -465,6 +498,90 @@ handles_od_items:
 
   # General Catalog, 2010-2011
   "15743": "https://oregondigital.org/catalog/oregondigital:fx719v40v"
+
+  # 2010 Oregon State University Baseball Guide
+  "20508": "https://oregondigital.org/catalog/oregondigital:fx71bj02r"
+
+  # 2010 NCAA Regional Oregon State University Baseball Guide
+  "20509": "https://oregondigital.org/catalog/oregondigital:fx71bj01g"
+
+  # 2011 Oregon State University Baseball Guide
+  "20510": "https://oregondigital.org/catalog/oregondigital:fx71bj05k"
+
+  # 2009 NCAA Regional Oregon State University Baseball Guide
+  "20511": "https://oregondigital.org/catalog/oregondigital:fx71bj006"
+
+  # 1984 Oregon State University Baseball Media Guide
+  "20688": "https://oregondigital.org/catalog/oregondigital:fx71bh795"
+
+  # 1985 Oregon State University Baseball Media Guide
+  "20689": "https://oregondigital.org/catalog/oregondigital:fx71bh80x"
+
+  # 1986 Oregon State University Baseball Media Guide
+  "20691": "https://oregondigital.org/catalog/oregondigital:fx71bh816"
+
+  # 1987 Oregon State University Baseball Media Guide
+  "20693": "https://oregondigital.org/catalog/oregondigital:fx71bh82g"
+
+  # 1988 Oregon State University Baseball Media Guide
+  "20694": "https://oregondigital.org/catalog/oregondigital:fx71bh83r"
+
+  # 1989 Oregon State University Baseball Media Guide
+  "20695": "https://oregondigital.org/catalog/oregondigital:fx71bh841"
+
+  # 1990 Oregon State University Baseball Media Guide
+  "20696": "https://oregondigital.org/catalog/oregondigital:fx71bh859"
+
+  # 1993 Oregon State University Baseball Media Guide
+  "20697": "https://oregondigital.org/catalog/oregondigital:fx71bh86k"
+
+  # 1994 Oregon State University Baseball Media Guide
+  "20698": "https://oregondigital.org/catalog/oregondigital:fx71bh87v"
+
+  # 1995 Oregon State University Baseball Media Guide
+  "20699": "https://oregondigital.org/catalog/oregondigital:fx71bh884"
+
+  # 1996 Oregon State University Baseball Media Guide
+  "20700": "https://oregondigital.org/catalog/oregondigital:fx71bh89d"
+
+  # 1997 Oregon State University Baseball Media Guide
+  "20701": "https://oregondigital.org/catalog/oregondigital:fx71bh663"
+
+  # 1998 Oregon State University Baseball Media Guide
+  "20702": "https://oregondigital.org/catalog/oregondigital:fx71bh905"
+
+  # 2000 Oregon State University Baseball Media Guide
+  "20703": "https://oregondigital.org/catalog/oregondigital:fx71bh92q"
+
+  # 1999 Oregon State University Baseball Media Guide
+  "20704": "https://oregondigital.org/catalog/oregondigital:fx71bh91f"
+
+  # 2001 Oregon State University Baseball Media Guide
+  "20705": "https://oregondigital.org/catalog/oregondigital:fx71bh69x"
+
+  # 2002 Oregon State University Baseball Media Guide
+  "20707": "https://oregondigital.org/catalog/oregondigital:fx71bh930"
+
+  # 2003 Oregon State University Baseball Media Guide
+  "20708": "https://oregondigital.org/catalog/oregondigital:fx71bh948"
+
+  # 2004 Oregon State University Baseball Media Guide
+  "20710": "https://oregondigital.org/catalog/oregondigital:fx71bh95j"
+
+  # 1984 Oregon State University Track & Field Media Guide
+  "21036": "https://oregondigital.org/catalog/oregondigital:fx71bj15t"
+
+  # 1985 Oregon State University Track & Field Media Guide
+  "21234": "https://oregondigital.org/catalog/oregondigital:fx71bj14j"
+
+  # 1986 Oregon State University Track & Field Media Guide
+  "21235": "https://oregondigital.org/catalog/oregondigital:fx71bj138"
+
+  # 1987 Oregon State University Track & Field Media Guide
+  "21236": "https://oregondigital.org/catalog/oregondigital:fx71bj120"
+
+  # 1988 Oregon State University Track & Field Media Guide
+  "21237": "https://oregondigital.org/catalog/oregondigital:fx71bj11q"
 
   # General Catalog, 2011-2012
   "21685": "https://oregondigital.org/catalog/oregondigital:fx719v393"
@@ -786,6 +903,15 @@ handles_od_items:
 
   # Urban League of Portland Meeting Minutes, 1992 (3)
   "28129": "https://oregondigital.org/catalog/oregondigital:df724586m"
+
+  # 2011 NCAA Regional Oregon State University Baseball Media Guide
+  "28341": "https://oregondigital.org/catalog/oregondigital:fx71bj031"
+
+  # 2011 NCAA Super Regional Oregon State University Baseball Media Guide
+  "28342": "https://oregondigital.org/catalog/oregondigital:fx71bj049"
+
+  # 2012 Oregon State University Baseball Media Guide
+  "28343": "https://oregondigital.org/catalog/oregondigital:fx71bj06v"
 
   # Urban League of Portland Meeting Minutes, 1993 (1)
   "28478": "https://oregondigital.org/catalog/oregondigital:df724587w"
