@@ -565,8 +565,12 @@ handles_ir_communities_collections:
   "1316": "https://ir.library.oregonstate.edu/catalog?q=CEOAS%20Reports&search_field=dspace_collection"
 # Chronicle 
   "15192": "https://ir.library.oregonstate.edu/catalog?q=Chronicle&search_field=dspace_collection"
+# Coastal Oregon Marine Experiment Station
+  "59643": "https://ir.library.oregonstate.edu/catalog?q=%22Coastal%20Oregon%20Marine%20Experiment%20Station%22&search_field=dspace_collection"
 # code4lib Conference 2006 
   "2933": "https://ir.library.oregonstate.edu/catalog?q=code4lib%20Conference%202006&search_field=dspace_collection"
+# Columbia Basin Resources
+  "59005": "https://ir.library.oregonstate.edu/catalog?q=%22Columbia%20Basin%20Resources%22&search_field=dspace_collection"
 # Common Data Set 
   "28861": "https://ir.library.oregonstate.edu/catalog?q=Common%20Data%20Set&search_field=dspace_collection"
 # Community Studies (Rural Studies Program) 
@@ -585,8 +589,12 @@ handles_ir_communities_collections:
   "43174": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202006)&search_field=dspace_collection"
 # Conference Materials (IIFET 2008) 
   "36186": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202008)&search_field=dspace_collection"
+# Conference Materials (IIFET 2012)
+  "59946": "https://ir.library.oregonstate.edu/catalog?q=%22Conference%20Materials%20(IIFET%202012)%22&search_field=dspace_collection"
 # Conference Materials (IIFET 2014) 
   "52888": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(IIFET%202014)&search_field=dspace_collection"
+# Conference Materials (IIFET 2016)
+  "59920": "https://ir.library.oregonstate.edu/catalog?q=%22Conference%20Materials%20(IIFET%202016)%22&search_field=dspace_collection"
 # Conference Materials (NAAFE Forum 2015) 
   "56427": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Materials%20(NAAFE%20Forum%202015)&search_field=dspace_collection"
 # Conference Materials (NAAFE Forum 2017)
@@ -605,6 +613,8 @@ handles_ir_communities_collections:
   "32231": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202012)&search_field=dspace_collection"
 # Conference Papers and Presentations (IIFET 2014) 
   "52605": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(IIFET%202014)&search_field=dspace_collection"
+# Conference Papers and Presentations (IIFET 2016)
+  "59919": "https://ir.library.oregonstate.edu/catalog?q=%22Conference%20Papers%20and%20Presentations%20(IIFET%202016)%22&search_field=dspace_collection"
 # Conference Papers and Presentations (NAAFE Forum 2015) 
   "56428": "https://ir.library.oregonstate.edu/catalog?q=Conference%20Papers%20and%20Presentations%20(NAAFE%20Forum%202015)&search_field=dspace_collection"
 # Conference Papers and Presentations (NAAFE Forum 2017)
@@ -655,6 +665,8 @@ handles_ir_communities_collections:
   "11172": "https://ir.library.oregonstate.edu/catalog?q=Fact%20Sheets%20(Rural%20Studies%20Program)&search_field=dspace_collection"
 # Faculty and HMSC Affilliated Research Publications (Hatfield Marine Science Center) 
   "1320": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20and%20HMSC%20Affilliated%20Research%20Publications%20(Hatfield%20Marine%20Science%20Center)&search_field=dspace_collection"
+# Faculty Posters and Presentations (Extended Campus)
+  "59944": "https://ir.library.oregonstate.edu/catalog?q=%22Faculty%20Posters%20and%20Presentations%20(Extended%20Campus)%22&search_field=dspace_collection"
 # Faculty Posters and Presentations (Science and Mathematics Education) 
   "28268": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Posters%20and%20Presentations%20(Science%20and%20Mathematics%20Education)&search_field=dspace_collection"
 # Faculty Presentations (Botany and Plant Pathology) 
@@ -719,6 +731,8 @@ handles_ir_communities_collections:
   "21413": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Ethnic%20Studies)&search_field=dspace_collection"
 # Faculty Research Publications (Exercise and Sport Science) 
   "19835": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Exercise%20and%20Sport%20Science)&search_field=dspace_collection"
+# Faculty Research Publications (Extended Campus)
+  "59943": "https://ir.library.oregonstate.edu/catalog?q=%22Faculty%20Research%20Publications%20(Extended%20Campus)%22&search_field=dspace_collection"
 # Faculty Research Publications (Fisheries and Wildlife) 
   "12626": "https://ir.library.oregonstate.edu/catalog?q=Faculty%20Research%20Publications%20(Fisheries%20and%20Wildlife)&search_field=dspace_collection"
 # Faculty Research Publications (Food Science and Technology) 
@@ -801,6 +815,8 @@ handles_ir_communities_collections:
   "43180": "https://ir.library.oregonstate.edu/catalog?q=Fishery%20Management%20(IIFET%202006)&search_field=dspace_collection"
 # Fishery Management (IIFET 2008) 
   "36187": "https://ir.library.oregonstate.edu/catalog?q=Fishery%20Management%20(IIFET%202008)&search_field=dspace_collection"
+# Fishery Research Reports
+  "59565": "https://ir.library.oregonstate.edu/catalog?q=%22Fishery%20Research%20Reports%22&search_field=dspace_collection"
 # Fishing Sector Behavior and Activities (IIFET 2000) 
   "30470": "https://ir.library.oregonstate.edu/catalog?q=Fishing%20Sector%20Behavior%20and%20Activities%20(IIFET%202000)&search_field=dspace_collection"
 # Focus on Forestry 
@@ -945,6 +961,8 @@ handles_ir_communities_collections:
   "19960": "https://ir.library.oregonstate.edu/catalog?q=OSU%20College%20Forests&search_field=dspace_collection"
 # OSU Perspective 
   "1349": "https://ir.library.oregonstate.edu/catalog?q=OSU%20Perspective&search_field=dspace_collection"
+# Pacifica Poetry International
+  "59591": "https://ir.library.oregonstate.edu/catalog?q=%22Pacifica%20Poetry%20International%22&search_field=dspace_collection"
 # Papers (Rural-Urban Connections) 
   "10572": "https://ir.library.oregonstate.edu/catalog?q=Papers%20(Rural-Urban%20Connections)&search_field=dspace_collection"
 # Papers in Forest Policy 
@@ -1109,6 +1127,8 @@ handles_ir_communities_collections:
   "23720": "https://ir.library.oregonstate.edu/catalog?q=Western%20Regional%20Extension%20Publication&search_field=dspace_collection"
 # Wild Cascades 
   "11611": "https://ir.library.oregonstate.edu/catalog?q=Wild%20Cascades&search_field=dspace_collection"
+# William Pearcy Field Journal Collection
+  "58895": "https://ir.library.oregonstate.edu/catalog?q=William%20Pearcy%20Field%20Journal%20Collection&search_field=dspace_collection"
 # Yaquina Bay Environmental Sampling Workshop 
   "13747": "https://ir.library.oregonstate.edu/catalog?q=Yaquina%20Bay%20Environmental%20Sampling%20Workshop&search_field=dspace_collection"
 # Yaquina Bay Resources 
