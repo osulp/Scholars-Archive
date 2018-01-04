@@ -184,14 +184,6 @@ module ScholarsArchive
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
             notify_admin(env, field: :degree_field, new_entries: all_new_entries)
           end
-#            degree_field_other_option = get_other_option(env, :degree_field)
-#            if degree_field_other_option.present?
-#              OtherOption.update(degree_field_other_option.id, name: env.curation_concern.degree_field_other.to_s)
-#            else
-#              OtherOption.find_or_create_by(name: env.curation_concern.degree_field_other.to_s, work_id: env.curation_concern.id, property_name: :degree_field.to_s)
-#              notify_admin(env, field: :degree_field, new_entries: env.curation_concern.degree_field_other)
-#            end
-#          end
 
           if env.curation_concern.degree_level_other.present?
             degree_level_other_option = get_other_option(env, :degree_level)

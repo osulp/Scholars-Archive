@@ -30,13 +30,6 @@
       else
         hide_field('.degree-grantors-other')
 
-      $('select.degree-field-selector').each (i, element) =>
-        default_degree_field = $(element.closest('li')).find('.degree_field_other')
-        if $(element).val() == "Other"
-          show_field(default_degree_field)
-        else
-          hide_field(default_degree_field)
-
       $('select.other-affiliation-selector').each (i, element) =>
         default_other_affiliation = $(element.closest('li')).find('.other_affiliation_other')
         if $(element).val() == "Other"
