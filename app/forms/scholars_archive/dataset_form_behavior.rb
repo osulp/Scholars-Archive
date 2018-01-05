@@ -17,11 +17,11 @@ module ScholarsArchive
       self.required_fields -= [:keyword]
 
       def primary_terms
-        [:title, :alt_title, :creator, :academic_affiliation, :other_affiliation, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :bibliographic_citation, :in_series, :subject, :rights_statement] | super
+        [:title, :alt_title, :creator, :academic_affiliation, :other_affiliation, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :bibliographic_citation, :in_series, :subject, :rights_statement, :nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :digitization_spec, :replaces, :additional_information] | super
       end
 
       def secondary_terms
-        [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :digitization_spec, :replaces, :additional_information]
+        []
       end
 
       def self.date_terms
