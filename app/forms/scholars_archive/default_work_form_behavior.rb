@@ -10,6 +10,7 @@ module ScholarsArchive
       attr_accessor :geo_section
 
       attr_accessor :other_affiliation_other
+      attr_accessor :degree_field_other
 
       self.terms += [:nested_related_items, :date_uploaded, :date_modified, :doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_reviewed, :date_accepted, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection, :isbn, :issn, :embargo_reason]
 
@@ -49,7 +50,8 @@ module ScholarsArchive
           }
         ] + [
             {
-                :other_affiliation_other => []
+                :other_affiliation_other => [],
+                :degree_field_other => []
             }
         ]
       end

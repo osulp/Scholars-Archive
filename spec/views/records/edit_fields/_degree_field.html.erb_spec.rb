@@ -83,29 +83,33 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   end
 
   context "for a work with degree field where 'Other' was selected and there is an OtherOption record in the database" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "Other" } }
+    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: ["Other"] } }
     let(:degree_field_other_option_test) {"testing degree field other option"}
 
     before do
+      allow(current_user).to receive(:admin?).and_return(true)
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
-      OtherOption.find_or_create_by(name: degree_field_other_option_test, work_id: work.id)
       work.degree_field_other = degree_field_other_option_test
+      assign(:degree_field_other_options, [OtherOption.find_or_create_by(name: degree_field_other_option_test, work_id: work.id)])
       assign(:form, form)
       render inline: form_template
     end
 
-    it 'has the "other" input visible in the form' do
-      expect(rendered).to have_selector('.degree-field-other input[type="text"]')
+    it 'has the "other" input not visible in the form' do
+      expect(rendered).to have_selector('.degree_field_other input[type="hidden"]', visible: false)
     end
 
-    it 'has the "other" input value as the default in the form' do
-      expect(rendered).to have_selector('.degree-field-other input[value="'+degree_field_other_option_test+'"]')
+    it 'has the "other" value listed in the table' do
+      expect(rendered).to have_content(degree_field_other_option_test)
     end
   end
 
   context "for a work with degree field where 'Other' was not selected" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: "test" } }
+    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field:
+        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"]
+    } }
+
 
     before do
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
@@ -115,8 +119,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     end
 
     it 'has the "other" input hidden in the form' do
-      expect(rendered).to have_selector('.degree-field-other input[type="hidden"]', visible: false)
-      expect(rendered).to have_selector('.degree-field-other input.hidden', visible: false)
+      expect(rendered).to have_selector('.degree_field_other input[type="hidden"]', visible: false)
+      expect(rendered).to have_selector('.degree_field_other input.hidden', visible: false)
     end
   end
 end

@@ -9,7 +9,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   let(:attributes) {
     {
         title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"],
-        degree_field: "Other",
+        degree_field: ["Other"],
         degree_level: "Other",
         degree_name: "Other",
         degree_grantors: "Other",
@@ -47,7 +47,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
 
   describe '#create' do
-    let(:test_degree_field_other) { "test1 degree field other" }
+    let(:test_degree_field_other) { ["test1 degree field other"] }
     let(:test_degree_level_other) { "test1 degree level other" }
     let(:test_degree_name_other) { "test1 degree name other" }
     let(:test_degree_grantors_other) { "test1 degree grantors other" }
@@ -63,7 +63,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
     end
     context 'with invalid other values selected for degree_field and degree_level' do
       let(:test_degree_level_other) { "Certificate" }
-      let(:test_degree_field_other) { "Zoology" }
+      let(:test_degree_field_other) { ["Zoology"] }
       let(:test_degree_name_other) { "Master of Arts (M.A.)" }
       let(:test_degree_grantors_other) { "Oregon State University" }
       let(:test_other_affiliation_other) { [ "Bioenergy Minor Program"] }
@@ -94,7 +94,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
     end
     context 'with blank "other" values selected for degree_level and degree_field and degree_name' do
       let(:test_degree_level_other) { "" }
-      let(:test_degree_field_other) { "" }
+      let(:test_degree_field_other) { [] }
       let(:test_degree_name_other) { "" }
       let(:test_degree_grantors_other) { "" }
       let(:test_other_affiliation_other) { [] }
@@ -124,7 +124,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   describe '#update' do
     context 'with other values selected for degree_field and degree_level and degree_name' do
       let(:test_degree_level_other) { "test2 degree level other" }
-      let(:test_degree_field_other) { "test2 degree field other" }
+      let(:test_degree_field_other) { ["test2 degree field other"] }
       let(:test_degree_name_other) { "test2 degree name other" }
       let(:test_degree_grantors_other) { "test2 degree grantors other" }
       let(:test_other_affiliation_other) { ["test2 other affiliation other"] }

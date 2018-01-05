@@ -67,6 +67,9 @@ module ScholarsArchive
         if env.attributes['other_affiliation']
           env.attributes['other_affiliation'].delete_if { |x| x == 'Other'}
         end
+        if env.attributes['degree_field']
+          env.attributes['degree_field'].delete_if { |x| x == 'Other'}
+        end
       end
 
       def clean_up_nested_attributes (env)

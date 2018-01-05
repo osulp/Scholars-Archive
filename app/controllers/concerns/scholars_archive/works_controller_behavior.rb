@@ -59,8 +59,8 @@ module ScholarsArchive
     end
 
     def get_other_option_values
-      degree_field_other_option = get_other_options('degree_field')
-      if degree_field_other_option.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
+      @degree_field_other_options = get_all_other_options('degree_field')
+      if @degree_field_other_options.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
           curation_concern.degree_field_other = degree_field_other_option.name
       end
       degree_level_other_option = get_other_options('degree_level')

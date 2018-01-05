@@ -48,9 +48,9 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
     options = build_field_options('')
     index_new = DateTime.now.to_i
     options[:value] = value if value.present?
-    options[:placeholder] = 'Other Affiliation'
-    options[:class] = ['form-control']
-    options[:type] = ['text']
+    options[:placeholder] = 'Other value'
+    options[:class] = ['form-control', 'hidden']
+    options[:type] = ['hidden']
     options[:name] = other_option_name
     options[:id] = index.zero? ? other_option_id : ''
     options
