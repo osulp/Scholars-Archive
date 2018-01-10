@@ -21,9 +21,11 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       object.triple_powered_properties.each do |o|
         if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
           uris = object.send(o[:field])
+          uris = object.send(o[:field]).reject { |u| u == "Other"}
           labels = ScholarsArchive::TriplePoweredService.new.fetch_all_labels(uris)
         else
           uris = Array(object.send(o[:field]))
+          uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
           labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
         end
         solr_doc[o[:field].to_s + '_label_ssim'] = labels

@@ -8,22 +8,16 @@ module ScholarsArchive
       # @param [Hyrax::Actors::Environment] env
       # @return [Boolean] true if create was successful
       def create(env)
-        validate(env) && save_nested_elements(env) && next_actor.create(env)
+        save_nested_elements(env) && next_actor.create(env)
       end
 
       # @param [Hyrax::Actors::Environment] env
       # @return [Boolean] true if update was successful
       def update(env)
-        validate(env) && update_nested_elements(env) && next_actor.update(env)
+        update_nested_elements(env) && next_actor.update(env)
       end
 
       private
-
-      def validate(env)
-        # TODO: add appropriate validation rules here to check for lat/lon coordinates and then close Milestone 3 issue: https://github.com/osulp/Scholars-Archive/issues/397
-        # return true unless nested_geo_present? (env)
-        return true
-      end
 
       def nested_geo_present? (env)
         env.attributes['nested_geo_attributes'].present?
@@ -66,9 +60,6 @@ module ScholarsArchive
         # selection before getting to the ModelActor, which is where the attributes appears to be persisted in fedora
         if env.attributes['other_affiliation']
           env.attributes['other_affiliation'].delete_if { |x| x == 'Other'}
-        end
-        if env.attributes['degree_field']
-          env.attributes['degree_field'].delete_if { |x| x == 'Other'}
         end
       end
 

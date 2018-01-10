@@ -5,6 +5,9 @@ class NestedRelatedItems < ActiveTriples::Resource
   property :label, predicate: ::RDF::Vocab::DC.title
   property :related_url, predicate: ::RDF::RDFS.seeAlso
 
+  attr_accessor :destroy_item # true/false
+  attr_accessor :validation_msg # string
+
   def initialize(uri=RDF::Node.new, parent=nil)
     if uri.try(:node?)
       uri = RDF::URI("#nested_related_items#{uri.to_s.gsub('_:', '')}")
