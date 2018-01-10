@@ -1,0 +1,99 @@
+{
+    "workflows": [{
+        "name": "HonorsCollege",
+        "label": "Honors College Thesis Workflow",
+        "description": "Workflow for Honors College Theses. Review includes the Honors College and OSULP.",
+        "actions": [{
+            "name": "Deposit",
+            "from_states": [],
+            "transition_to": "Honors College Review",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::PendingReviewNotification",
+                "to": ["approving"]
+            }, {
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::DepositReceivedNotification",
+                "to": ["depositing"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor",
+                "Hyrax::Workflow::DeactivateObject"
+            ]
+        }, {
+            "name": "Request Changes",
+            "from_states": [{
+                "names": ["Deposited", "Honors College Review", "Library Review"],
+                "roles": ["approving"]
+            }],
+            "transition_to": "Changes Required",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::ChangesRequiredNotification",
+                "to": ["depositing"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::GrantEditToDepositor",
+                "Hyrax::Workflow::DeactivateObject"
+            ]
+        }, {
+            "name": "Advance",
+            "from_states": [{
+                "names": ["Honors College Review"],
+                "roles": ["approving"]
+            }],
+            "transition_to": "Library Review",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::DepositedNotification",
+                "to": ["depositing"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor",
+                "Hyrax::Workflow::ActivateObject"
+            ]
+        }, {
+            "name": "Approve",
+            "from_states": [{
+                "names": ["Library Review"],
+                "roles": ["approving"]
+            }],
+            "transition_to": "Deposited",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::DepositedNotification",
+                "to": ["depositing"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor",
+                "Hyrax::Workflow::ActivateObject"
+            ]
+        }, {
+            "name": "Restart Review Process",
+            "from_states": [{
+                "names": ["Changes Required"],
+                "roles": ["depositing"]
+            }],
+            "transition_to": "Honors College Review",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::PendingReviewNotification",
+                "to": ["approving"]
+            }],
+            "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor"
+            ]
+        }, {
+            "name": "Comment",
+            "from_states": [{
+                    "names": ["Changes Required"],
+                    "roles": ["depositing"]
+                },
+                {
+                    "names": ["Honors College Review", "Library Review", "Deposited"],
+                    "roles": ["approving"]
+                }
+            ]
+        }]
+    }]
+}
