@@ -36,7 +36,7 @@ handles_ir_communities_collections:
 # Student Affairs, Division of  
   "955": "https://ir.library.oregonstate.edu/catalog?q=Student%20Affairs%2C%20Division%20of&search_field=dspace_community"
 # Cascades Campus
-  "2870": "https://ir.library.oregonstate.edu/catalog?utf8=%E2%9C%93&search_field=dspace_collection&q=\+%28%22Faculty+Research+Publications+Cascades%22+OR+%22Presentations+and+Posters+Cascades%22+OR+%22Cascades+Poster+Session%22+%22Theses+Cascades%22%29"
+  "2870": "https://ir.library.oregonstate.edu/catalog?utf8=%E2%9C%93&search_field=dspace_collection&q=%5C+%28%22Faculty+Research+Publications+Cascades%22+OR+%22Presentations+and+Posters+Cascades%22+OR+%22Cascades+Poster+Session%22+%22Theses+Cascades%22%29"
 # Center for Genome Research & Biocomputing  
   "42305": "https://ir.library.oregonstate.edu/catalog?q=Center%20for%20Genome%20Research%20%26%20Biocomputing&search_field=dspace_community"
 # College of Agricultural Sciences  
@@ -116,7 +116,7 @@ handles_ir_communities_collections:
 # Department of Integrative Biology  
   "52699": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Integrative%20Biology&search_field=dspace_community"
 # Department of Geosciences
-  "1718": "https://ir.library.oregonstate.edu/catalog?utf8=%E2%9C%93&search_field=dspace_community&q=\+%28%22Geology%22+OR+%22Geography%22+OR+%22Program%20in%20Water%20Conflict%20Management%20and%20Transformation%22%29"
+  "1718": "https://ir.library.oregonstate.edu/catalog?utf8=%E2%9C%93&search_field=dspace_community&q=%5C+%28%22Geology%22+OR+%22Geography%22+OR+%22Program%20in%20Water%20Conflict%20Management%20and%20Transformation%22%29"
 # Department of Mathematics  
   "13737": "https://ir.library.oregonstate.edu/catalog?q=Department%20of%20Mathematics&search_field=dspace_community"
 # Department of Medical Physics  
@@ -236,7 +236,7 @@ handles_ir_communities_collections:
 # Professional Science Master's Program  
   "29546": "https://ir.library.oregonstate.edu/catalog?q=Professional%20Science%20Master's%20Program&search_field=dspace_community"
 # Provost's Office
-  "9118": "https://ir.library.oregonstate.edu/catalog?utf8=%E2%9C%93&search_field=dspace_community&q=\+%28%22Information+Services%22+OR+%22University+Information+Technology+Committee%22%29"
+  "9118": "https://ir.library.oregonstate.edu/catalog?utf8=%E2%9C%93&search_field=dspace_community&q=%5C+%28%22Information+Services%22+OR+%22University+Information+Technology+Committee%22%29"
 # Program in Water Conflict Management and Transformation  
   "11272": "https://ir.library.oregonstate.edu/catalog?q=Program%20in%20Water%20Conflict%20Management%20and%20Transformation&search_field=dspace_community"
 # Registrar's Office  
