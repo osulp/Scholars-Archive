@@ -107,3 +107,6 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityWritingIntensiveCurriculum"
   term: "Writing Intensive Curriculum"
   active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityCenterForResearchOnLifelongSTEMLearning"
+  term: "Center for Research on Lifelong STEM Learning"
+  active: true
