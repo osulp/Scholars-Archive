@@ -70,6 +70,8 @@ gem 'browse-everything'
 
 gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
 
+gem "recaptcha", require: "recaptcha/rails"
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'

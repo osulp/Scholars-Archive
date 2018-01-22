@@ -692,6 +692,8 @@ GEM
       rdf (~> 2.2)
     rdf-xsd (2.2.0)
       rdf (~> 2.1)
+    recaptcha (4.6.3)
+      json
     redic (1.5.0)
       hiredis
     redis (3.3.5)
@@ -901,6 +903,7 @@ DEPENDENCIES
   puma (~> 3.0)
   puma_worker_killer
   rails (~> 5.0.2)
+  recaptcha
   redis (~> 3.0)
   rsolr (~> 1.0)
   rspec
