@@ -2,7 +2,7 @@ module Hyrax
   class ContactFormRecaptchaBehavior < ApplicationController
 
     def create
-      if Hyrax.config.recaptcha && verify_recaptcha(model: @contact_form)
+      if Hyrax.config.recaptcha? && verify_recaptcha(model: @contact_form)
         super
       else
         flash.now[:error] = 'Captcha did not verify properly.'
