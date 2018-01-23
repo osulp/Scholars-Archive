@@ -1,4 +1,4 @@
-Hyrax::Workflow::StatusListService.class_eval do
+Hyrax::Configuration.class_eval do
 
   attr_writer :recaptcha
   attr_reader :recaptcha
