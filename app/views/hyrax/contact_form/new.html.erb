@@ -6,14 +6,6 @@
     <%= t('hyrax.contact_form.header') %>
 </h1>
 
-<% if user_signed_in? %>
-  <% nm = current_user.name %>
-  <% em = current_user.email %>
-<% else %>
-  <% nm = '' %>
-  <% em = '' %>
-<% end %>
-
 <%= form_for @contact_form, url: hyrax.contact_form_index_path,
                             html: { class: 'form-horizontal' } do |f| %>
   <%= f.text_field :contact_method, class: 'hide' %>
@@ -28,12 +20,12 @@
 
   <div class="form-group">
     <%= f.label :name, t('hyrax.contact_form.name_label'), class: "col-sm-2 control-label" %>
-    <div class="col-sm-10"><%= f.text_field :name, value: nm, class: 'form-control', required: true %></div>
+    <div class="col-sm-10"><%= f.text_field :name, value: user_signed_in? ? current_user.name : "", class: 'form-control', required: true %></div>
   </div>
 
   <div class="form-group">
     <%= f.label :email, t('hyrax.contact_form.email_label'), class: "col-sm-2 control-label" %>
-    <div class="col-sm-10"><%= f.text_field :email, value: em, class: 'form-control', required: true %></div>
+    <div class="col-sm-10"><%= f.text_field :email, value: user_signed_in? ? current_user.email : '', class: 'form-control', required: true %></div>
   </div>
 
   <div class="form-group">
