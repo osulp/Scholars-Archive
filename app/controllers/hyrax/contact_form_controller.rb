@@ -1,5 +1,6 @@
 module Hyrax
   class ContactFormController < ApplicationController
+    include ContactFormRecaptchaBehavior
     before_action :build_contact_form
     layout 'homepage'
 
@@ -7,7 +8,7 @@ module Hyrax
 
     def create
       # not spam and a valid form
-      if verify_recaptcha(model: @contact_form) && @contact_form.valid?
+      if @contact_form.valid?
         ContactMailer.contact(@contact_form).deliver_now
         flash.now[:notice] = 'Thank you for your message!'
         after_deliver
