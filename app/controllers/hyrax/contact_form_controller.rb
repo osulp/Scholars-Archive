@@ -8,6 +8,7 @@ module Hyrax
 
     def create
       # not spam and a valid form
+      check_recaptcha
       if @contact_form.valid?
         ContactMailer.contact(@contact_form).deliver_now
         flash.now[:notice] = 'Thank you for your message!'
