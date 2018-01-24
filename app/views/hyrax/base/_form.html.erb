@@ -14,6 +14,11 @@
           <%= render 'form_visibility_error', f: f %>
         </div>
     <% end %>
+
+    <% provide :metadata_tab do %>
+      <p><%= I18n.t("simple_form.instructions.deposit_help").html_safe %></p>
+    <% end %>
+
     <% if Flipflop.batch_upload? && f.object.new_record? %>
         <% provide :metadata_tab do %>
             <!-- ScholarsArchive Note: After testing out the link 'Batch upload', found that it was missing the -->
