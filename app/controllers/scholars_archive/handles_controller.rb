@@ -65,6 +65,11 @@ module ScholarsArchive
         if new_ir_collections_path
           redirect_to new_ir_collections_path and return
         end
+
+        new_ir_mismatch_path = ir_mismatch_redirects["handles_mismatched_items"][params[:handle_localname]]
+        if new_ir_mismatch_path
+          redirect_to new_ir_mismatch_path and return
+        end
       end
 
       def od_redirects
@@ -77,6 +82,10 @@ module ScholarsArchive
 
       def ir_collections_redirects
         YAML.load(File.read("config/handles_ir_communities_collections.yml"))
+      end
+
+      def ir_mismatch_redirects
+        YAML.load(File.read("config/handles_mismatched_items.yml"))
       end
 
       def verify_handle_prefix

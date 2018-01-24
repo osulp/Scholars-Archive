@@ -1,0 +1,41 @@
+# Handle Redirects to SA for Mismatch between DSpace and Hyrax
+handles_mismatched_items:
+
+  # Instruments for rapidly measuring slope of grain in lumber
+  "1639": "https://ir.library.oregonstate.edu/concern/defaults/8c97kv14c"
+
+  # Bark-peeling machines and methods
+  "1873": "https://ir.library.oregonstate.edu/concern/defaults/cv43p1512"
+
+  # Effect of piling methods on air circulation in a lumber dry kiln
+  "1961": "https://ir.library.oregonstate.edu/concern/defaults/ft848v49g"
+
+  # Construction and use of graphs in kiln drying lumber
+  "1966": "https://ir.library.oregonstate.edu/concern/defaults/h989r762f"
+
+  # Construction and use of graphs in kiln drying lumber
+  "1967": "https://ir.library.oregonstate.edu/concern/defaults/h989r762f"
+
+  # Types of steam-heating systems, flow of steam cause and effect of air and water binding, importance of steam traps, steam pressure, and heat transfer in lumber dry kilns
+  "1971": "https://ir.library.oregonstate.edu/concern/defaults/kp78gm768"  
+  
+  # Relation of several formation variables to properties of phenolic-resin-bonded wood-waste hardboards
+  "2067": "https://ir.library.oregonstate.edu/concern/defaults/3j333637b"    
+
+  # Effect of moisture absorption on flexural properties of a glass-fabric-polyester laminate
+  "2130": "https://ir.library.oregonstate.edu/concern/defaults/k0698c445"    
+
+  # Interaction of moisture and wood
+  "2683": "https://ir.library.oregonstate.edu/concern/defaults/4b29b969s"    
+
+  # Stress-strain distribution in Douglas-fir beams within the plastic range
+  "2796": "https://ir.library.oregonstate.edu/concern/defaults/sf268874j"      
+
+  # Effect of temperature and restraint during drying on the tensile properties of handsheets
+  "2837": "https://ir.library.oregonstate.edu/concern/defaults/wh246w95n"    
+
+  # Cost-weight table
+  "17278": "https://ir.library.oregonstate.edu/concern/administrative_report_or_publications/kk91fq11x" 
+
+  # Involving the users remotely: an exploratory study using asynchronous usability testing
+  "58901": "https://ir.library.oregonstate.edu/concern/articles/kp78gj22j"      
