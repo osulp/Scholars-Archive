@@ -8,12 +8,13 @@ module Hyrax
 
     def create
       # not spam and a valid form
-      check_recaptcha
       if @contact_form.valid?
-        ContactMailer.contact(@contact_form).deliver_now
-        flash.now[:notice] = 'Thank you for your message!'
-        after_deliver
-        @contact_form = ContactForm.new
+        if check_recaptcha
+          ContactMailer.contact(@contact_form).deliver_now
+          flash.now[:notice] = 'Thank you for your message!'
+          after_deliver
+          @contact_form = ContactForm.new
+        end
       else
         flash.now[:error] = 'Sorry, this message was not sent successfully. '
         flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(", ")
@@ -32,7 +33,8 @@ module Hyrax
     # Override this method if you want to perform additional operations
     # when a email is successfully sent, such as sending a confirmation
     # response to the user.
-    def after_deliver; end
+    def after_deliver
+    end
 
     private
 

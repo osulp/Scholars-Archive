@@ -5,15 +5,9 @@ Hyrax::Configuration.class_eval do
     @recaptcha ||= false
   end
 
-  @recaptcha = true
+  attr_writer :recaptcha_site_key
+  attr_reader :recaptcha_site_key
 
-  # Enables the use of Google ReCaptcha on the contact form.
-  # A site key and secret key need to be supplied in order for google
-  # to authenticate and authorize/validate the 
-  #
-  # ReCaptcha site key and secret key, supplied by google after
-  # registering a domain.
-  # config.recaptcha_site_key = "xxxx_XXXXXXXXXXfffffffffff"
-  # WARNING: KEEP THIS SECRET. DO NOT STORE IN REPOSITORY
-  # config.recaptcha_secret_key = "xxxx_XXXXXXXXXXfffffffffff"
+  attr_writer :recaptcha_secret_key
+  attr_reader :recaptcha_secret_key
 end

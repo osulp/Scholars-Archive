@@ -46,6 +46,19 @@ Hyrax.config do |config|
 
   # How frequently should a file be audited
   # config.max_days_between_audits = 7
+  #
+  #
+  # Enables the use of Google ReCaptcha on the contact form.
+  # A site key and secret key need to be supplied in order for google
+  # to authenticate and authorize/validate the 
+  # config.recaptcha = false
+  #
+  # ReCaptcha site key and secret key, supplied by google after
+  # registering a domain.
+  config.recaptcha_site_key = "xxxx_XXXXXXXXXXfffffffffff"
+  # WARNING: KEEP THIS SECRET. DO NOT STORE IN REPOSITORY
+  config.recaptcha_secret_key = "xxxx_XXXXXXXXXXfffffffffff"
+
 
   # Enable displaying usage statistics in the UI
   # Defaults to false
