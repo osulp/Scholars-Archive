@@ -34,3 +34,7 @@ SCHOLARSARCHIVE_ADMIN_EMAIL: 'noreply@FQDN'
 
 # The full path to the directory that BrowseEverything uses for uploads, the webserver user must have access to this directory
 BROWSEEVERYTHING_FILESYSTEM_PATH: '/tmp/browse-everything'
+
+#Recaptcha configuration
+SCHOLARSARCHIVE_RECAPTCHA_SECRET_KEY: 'asdfasdfasdfasdfasdfadsfasdfadfsfa'
+SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY: 'asdfasdfadsfasdfasdfasdfasdfasdfad''

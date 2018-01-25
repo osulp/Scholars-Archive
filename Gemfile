@@ -70,6 +70,8 @@ gem 'browse-everything'
 
 gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
 
+gem "recaptcha", require: "recaptcha/rails"
+
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
@@ -91,6 +93,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'coveralls'
   gem 'rspec_junit_formatter'
