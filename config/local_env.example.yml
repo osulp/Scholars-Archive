@@ -1,4 +1,4 @@
-# Database 
+# Database
 SCHOLARSARCHIVE_ADAPTER: mysql2
 SCHOLARSARCHIVE_DB: development
 SCHOLARSARCHIVE_DB_HOST: localhost
@@ -13,7 +13,7 @@ SCHOLARSARCHIVE_REDIS_PORT: '6379'
 # Secret key for Devise and Rails security
 SCHOLARSARCHIVE_SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
 
-# CAS authentication 
+# CAS authentication
 SCHOLARSARCHIVE_CAS_BASE_URL: 'https://FQDN/cas'
 SCHOLARSARCHIVE_CAS_VALIDATE_URL: 'https://FQDN/cas/samlValidate'
 
@@ -37,4 +37,7 @@ BROWSEEVERYTHING_FILESYSTEM_PATH: '/tmp/browse-everything'
 
 #Recaptcha configuration
 SCHOLARSARCHIVE_RECAPTCHA_SECRET_KEY: 'asdfasdfasdfasdfasdfadsfasdfadfsfa'
-SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY: 'asdfasdfadsfasdfasdfasdfasdfasdfad''
+SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY: 'asdfasdfadsfasdfasdfasdfasdfasdfad'
+
+# NewRelic application monitoring
+NEWRELIC_LICENSE_KEY: thisisnttherealkeyhahaha!!11!1!
