@@ -15,12 +15,38 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       %(
       <tr>
       <th>Search and external link</th>
-      <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
+      <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
       </tr>
       )
     end
     it {
       expect(subject).to be_equivalent_to(expected)
     }
+
+    context "with a URI label" do
+      let(:label) { uri }
+      let(:label_uris) { uri }
+      let(:label_q) { CGI.escape(uri) }
+      it {
+        expect(subject).to be_equivalent_to(expected)
+      }
+    end
+
+    context "with a non-URI label" do
+      let(:label) { "Bob Ross" }
+      let(:label_uris) { label }
+      let(:label_q) { "Bob+Ross" }
+      let(:tr_content) do
+        %(
+        <tr>
+        <th>Search and external link</th>
+        <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a></li></ul></td>
+        </tr>
+        )
+      end
+      it {
+        expect(subject).to be_equivalent_to(expected)
+      }
+    end
   end
 end
