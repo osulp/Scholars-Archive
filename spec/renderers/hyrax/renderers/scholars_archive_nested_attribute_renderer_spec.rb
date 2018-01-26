@@ -17,7 +17,7 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
       <th>Sholars archive nested</th>
       <td><ul class="tabular"><li class="attribute sholars_archive_nested">          <span itemprop="relatedLink" itemscope itemtype="http://schema.org/relatedLink">
                   <span itemprop="url">
-                    <a href="/catalog?q=#{label_q}&amp;search_field=nested_related_items_label_ssim">#{label}</a><a aria-label="Open link in new window" class="btn btn-defaul" href="#{uri}"><span class="glyphicon glyphicon-new-window"></span></a>
+                    <a href="/catalog?q=#{label_q}&amp;search_field=nested_related_items_label_ssim">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}"><span class="glyphicon glyphicon-new-window"></span></a>
                   </span>
                 </span>
       </li></ul></td>

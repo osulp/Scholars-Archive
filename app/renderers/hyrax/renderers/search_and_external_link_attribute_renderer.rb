@@ -20,7 +20,7 @@ module Hyrax
               search_field: search_field, q: ERB::Util.h(query_hash['label'])
           )
           links << link_to(query_hash['label'], search_path) if query_hash['label'].present?
-          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, query_hash['uri'], 'aria-label' => "Open link in new window", class: 'btn btn-defaul') if query_hash['uri'].present?
+          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, query_hash['uri'], 'aria-label' => "Open link in new window", class: 'btn') if query_hash['uri'].present?
         end
 
         links.join('')
