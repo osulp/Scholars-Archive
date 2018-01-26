@@ -35,74 +35,69 @@ gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq'
-gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
+
+gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
 gem 'blacklight_range_limit'
+gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
 
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.8.0'
-gem 'capistrano-rails'
 gem 'capistrano-passenger'
+gem 'capistrano-rails'
 gem 'capistrano-rbenv'
 gem 'capistrano3-puma'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.0.0'
-gem 'rsolr', '~> 1.0'
+
+gem 'browse-everything'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
+gem 'devise_cas_authenticatable'
+gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.0.0'
+gem 'newrelic_rpm'
+gem 'recaptcha', require: 'recaptcha/rails'
+gem 'rsolr', '~> 1.0'
+gem 'staccato'
 
 # CAS Authentication gems
 gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
 gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
-gem 'devise_cas_authenticatable'
 gem 'sitemap_generator'
 
 # Used for integration of Blazegraph backend and required API
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
-gem 'staccato'
-
-gem 'browse-everything'
-
-gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
-
-gem "recaptcha", require: "recaptcha/rails"
-
 group :development do
-  # Use Capistrano for deployment
-  gem 'capistrano-rails'
-
+  gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
+  gem 'byebug', platform: :mri
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'solr_wrapper', '>= 0.3'
 end
 
 group :test do
-  gem 'rails-controller-testing'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-  gem 'coveralls'
-  gem 'rspec_junit_formatter'
-  gem 'rspec'
-  gem 'rspec-mocks'
-  gem 'simplecov'
-  gem 'webmock'
-  gem 'poltergeist'
   gem 'capybara'
+  gem 'coveralls'
   gem 'database_cleaner'
   gem 'equivalent-xml'
+  gem 'poltergeist'
+  gem 'rails-controller-testing'
+  gem 'rspec'
+  gem 'rspec-mocks'
+  gem 'rspec_junit_formatter'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'simplecov'
+  gem 'webmock'
 end
