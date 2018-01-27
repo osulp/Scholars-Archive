@@ -52,3 +52,5 @@ en:
       embargo:
         note_html: "Temporarily restrict access to your work."
         text: "Embargo"
+    errors:
+      graduation_year_error: "Invalid value. Please ensure a year is used in this field (e.g 1908)"

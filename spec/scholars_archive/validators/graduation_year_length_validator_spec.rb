@@ -11,7 +11,7 @@ RSpec.describe ScholarsArchive::Validators::GraduationYearLengthValidator do
       let(:record) {UndergraduateThesisOrProject.new(graduation_year: incorrect_graduation_year)}
       it "set an error on the record" do
         validator.validate(record)
-        expect(record.errors["graduation_year"]).to eq ["Please ensure you a year is used in this field (e.g 1901)"]
+        expect(record.errors["graduation_year"]).to eq ["Invalid value. Please ensure a year is used in this field (e.g 1908)"]
       end
     end
     context "When an etd has a proper graduation year" do
