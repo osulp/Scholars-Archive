@@ -10,7 +10,7 @@ module ScholarsArchive::Validators
 
     def valid_value(record)
       grad_year = DateTime.strptime(record.graduation_year.to_i.to_s, "%Y").year
-      valid_date_string(record.graduation_year) && valid_date_range(grad_year) && valid_date_length(grad_year)
+      valid_date_string(record.graduation_year) && valid_date_range(grad_year)
     end
 
     def valid_date_string(date)
@@ -19,12 +19,7 @@ module ScholarsArchive::Validators
     end
 
     def valid_date_range(grad_year)
-      return true if grad_year > 1868 && grad_year < (Date.today.year + 5)
-      false
-    end
-
-    def valid_date_length(grad_year)
-      return true if grad_year.to_s.length == 4
+      return true if grad_year >= 1868 && grad_year <= (Date.today.year + 5)
       false
     end
 
