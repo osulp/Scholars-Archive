@@ -12,7 +12,7 @@ module ScholarsArchive::Validators
     private
 
     def add_error_message(record)
-      record.errors["graduation_year"] << t("hyrax.errors.graduation_year_error")
+      record.errors["graduation_year"] << I18n.t("hyrax.errors.graduation_year_error")
     end
   end
 end
