@@ -14,7 +14,7 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
 
-  self.validates_with ScholarsArchive::Validators::GraduationYearLengthValidator
+  self.validates_with ScholarsArchive::Validators::GraduationYearValidator
 
   self.human_readable_type = 'Graduate Thesis Or Dissertation'
 end
