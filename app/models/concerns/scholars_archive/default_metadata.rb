@@ -28,6 +28,21 @@ module ScholarsArchive
 
       property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation
 
+      # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
+      property :conference_location, predicate: ::RDF::URI.new("http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent"), multiple: false do |index|
+        index.as :stored_searchable
+      end
+
+      # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
+      property :conference_name, predicate: ::RDF::Vocab::BIBO.presentedAt, multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
+      property :conference_section, predicate: ::RDF::URI.new("https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
         index.as :stored_searchable
       end

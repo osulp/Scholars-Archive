@@ -1,4 +1,4 @@
-module ScholarsArchive 
+module ScholarsArchive
   module DefaultWorkFormBehavior
     extend ActiveSupport::Concern
     included do
@@ -12,7 +12,7 @@ module ScholarsArchive
       attr_accessor :other_affiliation_other
       attr_accessor :degree_field_other
 
-      self.terms += [:nested_related_items, :date_uploaded, :date_modified, :doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_reviewed, :date_accepted, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection, :isbn, :issn, :embargo_reason]
+      self.terms += [:nested_related_items, :date_uploaded, :date_modified, :doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_reviewed, :date_accepted, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection, :isbn, :issn, :embargo_reason, :conference_location, :conference_name, :conference_section]
 
       self.required_fields += [:resource_type]
       self.required_fields -= [:keyword]
@@ -22,7 +22,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
+        [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_location, :conference_name, :conference_section, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
       end
 
       def self.date_terms
