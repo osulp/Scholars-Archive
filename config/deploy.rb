@@ -47,3 +47,24 @@ task :restart_monit do
   end
 end
 after "deploy:published", "restart_monit"
+
+# Production and Staging environments are set to compile errors pages in the asset pipeline,
+# and this task takes the most recent compiled error page and places it in the public/ path
+namespace :deploy do
+  desc 'Copy compiled error pages to public'
+  task :copy_error_pages do
+    on roles(:all) do
+      %w(404 500).each do |page|
+        page_glob = "#{current_path}/public/#{fetch(:assets_prefix)}/#{page}*.html"
+        # copy newest asset
+        asset_file = capture :ruby, %Q{-e "print Dir.glob('#{page_glob}').max_by { |file| File.mtime(file) }"}
+        if asset_file
+          execute :cp, "#{asset_file} #{current_path}/public/#{page}.html"
+        else
+          error "Error #{page} asset does not exist"
+        end
+      end
+    end
+  end
+  after :finishing, :copy_error_pages
+end

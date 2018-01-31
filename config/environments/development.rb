@@ -53,4 +53,10 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.assets.configure do |env|
+    env.register_mime_type 'text/haml', extensions: ['.html']
+    env.register_transformer 'text/haml', 'text/html', Tilt::HamlTemplate
+    env.register_engine '.haml', Tilt::HamlTemplate
+  end
 end
