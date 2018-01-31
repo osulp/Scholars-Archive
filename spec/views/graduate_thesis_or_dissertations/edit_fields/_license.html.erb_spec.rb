@@ -42,9 +42,9 @@ RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb',
       expect(rendered).to have_selector("select#graduate_thesis_or_dissertation_license option[value$='/4.0/']", count: 6)
     end
     it "does not render unneeded licenses" do
-      expect(rendered).to not_have_selector("select#graduate_thesis_or_dissertation_license option[value$='zero/1.0/']")
-      expect(rendered).to not_have_selector("select#graduate_thesis_or_dissertation_license option[value$='rr-r.html']")
-      expect(rendered).to not_have_selector("select#graduate_thesis_or_dissertation_license option[value$='mark/1.0/']")
+      expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='zero/1.0/']")
+      expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='rr-r.html']")
+      expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='mark/1.0/']")
     end
   end
 end
