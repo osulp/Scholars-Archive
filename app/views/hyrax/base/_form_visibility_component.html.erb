@@ -54,7 +54,7 @@
                   </div>
                   <div class="row">
                     <div class="col-md-3">
-                  <%= f.input :embargo_reason, label: "Reason For Embargo", wrapper: :inline, collection: ["Intellectual Property (patent, etc.)", "Pending Publication", "Ongoing Research", "Existing Confidentiality Agreement", "Other..."], input_html: { id: 'embargo_reason_select' } %>
+                  <%= f.input :embargo_reason, collection: [["Intellectual Property (patent, etc.)"], ["Pending Publication", "Ongoing Research"], ["Existing Confidentiality Agreement"], ["Other..."]], :prompt => "Please choose a reason for the embargo", label: "Reason For Embargo", wrapper: :inline, input_html: {id: 'embargo_reason_select' } %>
                   <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'hidden'}, input_html: { class: 'hidden other_field fill_column'}, wrapper_html: {class: 'fill_embargo_column'}, placeholder: "Please input the embargo reason" %>
                     </div>
                   </div>
