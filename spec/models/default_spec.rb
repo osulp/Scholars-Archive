@@ -174,7 +174,6 @@ RSpec.describe Default do
       end
     end
   end
-
   describe "#nested_geo_attributes" do
     let(:attributes) do
       [{
@@ -265,6 +264,12 @@ RSpec.describe Default do
       g.reload
 
       expect(g.nested_geo.first.label).to eq ["Salem"]
+    end
+  end
+  describe "#visibility" do
+    it "defaults to 'open' visibility" do
+      g = described_class.new
+      expect(g.visibility).to eq 'open'
     end
   end
 end
