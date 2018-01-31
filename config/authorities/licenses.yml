@@ -19,22 +19,22 @@ terms:
       active: false
 
     - id: http://creativecommons.org/licenses/by/4.0/
-      term: Attribution 4.0 International (CC BY 4.0)
+      term: Attribution 4.0 (CC BY 4.0)
       active: true
     - id: http://creativecommons.org/licenses/by-sa/4.0/
-      term: Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+      term: Attribution-ShareAlike 4.0 (CC BY-SA 4.0)
       active: true
     - id: http://creativecommons.org/licenses/by-nc/4.0/
-      term: Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+      term: Attribution-NonCommercial 4.0 (CC BY-NC 4.0)
       active: true
     - id: http://creativecommons.org/licenses/by-nd/4.0/
-      term: Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
+      term: Attribution-NoDerivatives 4.0 (CC BY-ND 4.0)
       active: true
     - id: http://creativecommons.org/licenses/by-nc-nd/4.0/
-      term: Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
+      term: Attribution-NonCommercial-NoDerivatives 4.0 (CC BY-NC-ND 4.0)
       active: true
     - id: http://creativecommons.org/licenses/by-nc-sa/4.0/
-      term: Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+      term: Attribution-NonCommercial-ShareAlike 4.0 (CC BY-NC-SA 4.0)
       active: true
     - id: http://creativecommons.org/publicdomain/mark/1.0/
       term: Public Domain Mark 1.0
