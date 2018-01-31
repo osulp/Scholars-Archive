@@ -1,0 +1,6 @@
+<% license_service = ScholarsArchive::LicenseService.new %>
+<%= f.input :license, as: :select,
+    collection: current_user.admin? ? license_service.select_sorted_all_options : license_service.select_active_options_from_model(f).select { |o| o[0].include?('4.0') },
+    include_blank: true,
+    item_helper: license_service.method(:include_current_value),
+    input_html: { class: 'form-control' } %>
