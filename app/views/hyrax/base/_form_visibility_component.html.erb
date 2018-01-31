@@ -65,20 +65,6 @@
         </li>
         <li class="radio">
           <label>
-            <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_LEASE, data: { 'target': '#collapseLease' } %>
-            <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_LEASE) %>
-            <%= t('hyrax.visibility.lease.note_html') %>
-            <div class="collapse" id="collapseLease">
-              <div class="form-inline">
-                <%= f.input :visibility_during_lease, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
-                <%= f.date_field :lease_expiration_date, wrapper: :inline, value: f.object.lease_expiration_date || Date.tomorrow, class: 'datepicker form-control' %>
-                <%= f.input :visibility_after_lease, wrapper: :inline, collection: visibility_options(:restrict), include_blank: false %>
-              </div>
-            </div>
-          </label>
-        </li>
-        <li class="radio">
-          <label>
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE %>
             <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE) %>
             <%= t('hyrax.visibility.restricted.note_html') %>
