@@ -1,5 +1,3 @@
-//= require bootstrap
-
 $(document).on('ready turbolinks:load', function() {
   var search_options = {
     placement: 'top',
