@@ -69,6 +69,9 @@ gem 'sitemap_generator'
 # Used for integration of Blazegraph backend and required API
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
+# For asset precompiled error pages, and/or general use because it's way better than ERB
+gem 'haml'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

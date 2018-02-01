@@ -33,3 +33,4 @@ fits.log
 
 # Ignore sitemap files
 /public/sitemap/*
+/public/assets*
