@@ -560,8 +560,7 @@ GEM
     mysql2 (0.3.21)
     nest (2.1.0)
       redic
-    net-http-persistent (3.0.0)
-      connection_pool (~> 2.2)
+    net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
@@ -905,6 +904,7 @@ DEPENDENCIES
   jquery-ui-rails
   listen (~> 3.0.5)
   mysql2 (~> 0.3.18)
+  net-http-persistent (~> 2.9)
   poltergeist
   puma (~> 3.0)
   puma_worker_killer
