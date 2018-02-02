@@ -266,5 +266,11 @@ RSpec.describe Default do
       expect(g.nested_geo.first.label).to eq ["Salem"]
     end
   end
+  describe 'visibility' do
+    it 'is set to open (public) by default' do
+      g = described_class.new(title: ['test'], keyword: ['test'])
+      expect(g.visibility).to eq 'open'
+    end
+  end
 end
 
