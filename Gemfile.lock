@@ -565,7 +565,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
-    newrelic_rpm (4.8.0.341)
     nio4r (2.2.0)
     noid (0.9.0)
     nokogiri (1.8.2)
@@ -906,7 +905,6 @@ DEPENDENCIES
   jquery-ui-rails
   listen (~> 3.0.5)
   mysql2 (~> 0.3.18)
-  newrelic_rpm
   poltergeist
   puma (~> 3.0)
   puma_worker_killer
