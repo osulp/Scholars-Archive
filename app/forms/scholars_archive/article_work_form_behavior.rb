@@ -1,4 +1,4 @@
-module ScholarsArchive 
+module ScholarsArchive
   module ArticleWorkFormBehavior
     extend ActiveSupport::Concern
     included do
@@ -8,7 +8,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        super - self.date_terms
+        super - self.date_terms - [:conference_location, :conference_name, :conference_section]
       end
     end
   end
