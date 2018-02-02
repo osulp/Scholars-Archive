@@ -66,7 +66,10 @@ gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
 gem 'sitemap_generator'
 
 # Used for integration of Blazegraph backend and required API
+# net-http-persistent 3.0 changes cause triplestore-adapter to break, awaiting fix for that
+gem 'net-http-persistent', '~> 2.9'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
+
 
 # For asset precompiled error pages, and/or general use because it's way better than ERB
 gem 'haml'
