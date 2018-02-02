@@ -6,6 +6,11 @@ module ScholarsArchive
     #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
     included do
+      after_initialize :set_default_visibility
+      def set_default_visibility
+        self.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC if new_record?
+      end
+
       property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
         index.as :stored_searchable
       end
