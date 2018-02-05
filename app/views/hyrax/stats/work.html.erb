@@ -11,16 +11,13 @@
   <div class="col-sm-12">
     <%= content_tag :h2, "Work Analytics" %>
     <div class="alert alert-info">
-      <i class="glyphicon glyphicon-info-sign large-icon"></i>
-      <p>
-        Analytics shown are from Fall 2017 onward. Pre-fall 2017 analytics may be accessed by contacting the repository administrator at <a href="mailto:scholarsarchive@oregonstate.edu">scholarsarchive@oregonstate.edu</a>. In that email, please provide links to the item you would like analytics for and what specific analytics you are looking for.
-        <br><br>
-        Thank you for your patience while we work to incorporate legacy analytics information into our new repository platform.
-      </p>
-    </div>
-    <div class="alert alert-info">
       <i class="glyphicon glyphicon-signal large-icon"></i>
-      <%= content_tag :strong, @stats.total_pageviews %> views since <%= @stats.created.strftime("%B %-d, %Y") %>
+      <% if @stats.date_available.present? %>
+        <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.date_available.strftime("%B %-d, %Y") %> 
+      <% else if @stats.created.present? %>
+        <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.created.strftime("%B %-d, %Y") %>
+      <% end %>
+        <%= content_tag :strong, @stats.total_pageviews %> 
     </div>
     <div class="stats-container">
       <div id="usage-stats" class="stats-placeholder"></div>
