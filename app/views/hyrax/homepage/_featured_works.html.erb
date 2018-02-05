@@ -1,0 +1,26 @@
+
+<h2 class="sr-only"><%= t('hyrax.homepage.featured_works.title') %></h2>
+<% if @featured_work_list.empty? %>
+  <p><%= t('hyrax.homepage.featured_works.no_works') %></p>
+<% elsif can? :update, FeaturedWork %>
+  <%= form_for [hyrax, @featured_work_list] do |f| %>
+    <div class="panel-group dd" id="dd">
+      <ol id="featured_works">
+        <%= f.fields_for :featured_works do |featured| %>
+          <%= render 'sortable_featured', f: featured %>
+        <% end %>
+      </ol>
+    </div>
+    <%= f.submit("Save order", class: 'btn btn-default') %>
+  <% end %>
+<% else %>
+  <div id='featured_works'>
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th scope="col"><%= t('.depositor') %></th>
+        <th scope="col"><%= t('.details') %></th>
+      </tr>
+      <%= render partial: 'recent_document', collection: @featured_work_list.featured_works.map(&:presenter) %>
+    </table>
+  </div>
+<% end %>
