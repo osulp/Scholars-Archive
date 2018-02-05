@@ -41,6 +41,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['peerreviewed_label_ssim'] = peerreviewed_label
       solr_doc['peerreviewed_label_tesim'] = peerreviewed_label
       solr_doc['replaces_ssim'] = object.replaces
+      solr_doc['title_ssi'] = object.title.first
     end
   end
 end
