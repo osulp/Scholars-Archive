@@ -74,6 +74,9 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 # For asset precompiled error pages, and/or general use because it's way better than ERB
 gem 'haml'
 
+# Gem vulnerability fix
+gem 'rest-client', '~> 1.7'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -92,7 +95,7 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'coveralls'
+  gem 'coveralls', '~> 0.8'
   gem 'database_cleaner'
   gem 'equivalent-xml'
   gem 'poltergeist'
@@ -101,6 +104,6 @@ group :test do
   gem 'rspec-mocks'
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
-  gem 'simplecov'
+  gem 'simplecov', '>= 0.9'
   gem 'webmock'
 end

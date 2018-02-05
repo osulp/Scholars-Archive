@@ -33,10 +33,11 @@ GIT
 
 GIT
   remote: https://github.com/osulp/triplestore-adapter
-  revision: f6344b8ebb5c0ddd6ed435baaefec7b6f91ba53a
+  revision: ab2b7bd31c0666c39be2a1ca96d53de0c6bde3f0
   specs:
     triplestore-adapter (0.1.0)
       json-ld
+      net-http-persistent (~> 2.9)
       rdf
       rdf-rdfxml
       rdf-vocab
@@ -172,8 +173,8 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (7.2.5)
       execjs
-    awesome_nested_set (3.1.3)
-      activerecord (>= 4.0.0, < 5.2)
+    awesome_nested_set (3.1.4)
+      activerecord (>= 4.0.0, < 5.3)
     aws-partitions (1.57.0)
     aws-sdk-core (3.14.0)
       aws-partitions (~> 1.0)
@@ -281,12 +282,12 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
-    coveralls (0.7.2)
-      multi_json (~> 1.3)
-      rest-client (= 1.6.7)
-      simplecov (>= 0.7)
-      term-ansicolor (= 1.2.2)
-      thor (= 0.18.1)
+    coveralls (0.8.21)
+      json (>= 1.8, < 3)
+      simplecov (~> 0.14.1)
+      term-ansicolor (~> 1.3)
+      thor (~> 0.19.4)
+      tins (~> 1.6)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.3)
@@ -309,6 +310,8 @@ GEM
       rubycas-client (>= 2.2.1)
     diff-lcs (1.3)
     docile (1.1.5)
+    domain_name (0.5.20170404)
+      unf (>= 0.0.5, < 1.0.0)
     dropbox_api (0.1.10)
       faraday (~> 0.9, ~> 0.8)
       oauth2 (~> 1.1)
@@ -317,7 +320,7 @@ GEM
     dry-container (0.6.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
-    dry-core (0.4.2)
+    dry-core (0.4.3)
       concurrent-ruby (~> 1.0)
     dry-equalizer (0.2.0)
     dry-logic (0.4.2)
@@ -369,15 +372,17 @@ GEM
     get_process_mem (0.2.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    google-api-client (0.19.5)
-      addressable (~> 2.5, >= 2.5.1)
-      googleauth (>= 0.5, < 0.7.0)
-      httpclient (>= 2.8.1, < 3.0)
-      mime-types (~> 3.0)
+    google-api-client (0.10.3)
+      addressable (~> 2.3)
+      googleauth (~> 0.5)
+      httpclient (~> 2.7)
+      hurley (~> 0.1)
+      memoist (~> 0.11)
+      mime-types (>= 1.6)
       representable (~> 3.0)
       retriable (>= 2.0, < 4.0)
-    google_drive (2.1.3)
-      google-api-client (>= 0.11.0, < 1.0.0)
+    google_drive (2.1.2)
+      google-api-client (>= 0.9.0, < 1.0.0)
       googleauth (>= 0.5.0, < 1.0.0)
       nokogiri (>= 1.5.3, < 2.0.0)
     googleauth (0.6.2)
@@ -396,10 +401,13 @@ GEM
     hashdiff (0.3.7)
     hiredis (0.6.1)
     htmlentities (4.3.4)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     http_logger (0.5.1)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
+    hurley (0.2)
     hydra-access-controls (10.5.0)
       active-fedora (>= 10.0.0, < 12)
       activesupport (>= 4, < 6)
@@ -547,9 +555,7 @@ GEM
       rails (>= 5.0.0)
     memoist (0.16.0)
     method_source (0.9.0)
-    mime-types (3.1)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types (2.99.3)
     mini_magick (4.8.0)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
@@ -564,6 +570,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
+    netrc (0.11.0)
     nio4r (2.2.0)
     noid (0.9.0)
     nokogiri (1.8.2)
@@ -697,7 +704,7 @@ GEM
       rdf (>= 2.2, < 4.0)
     rdf-xsd (2.2.1)
       rdf (>= 2.2, < 4.0)
-    recaptcha (4.6.3)
+    recaptcha (4.6.4)
       json
     redic (1.5.0)
       hiredis
@@ -713,8 +720,10 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     retriable (3.1.1)
     rsolr (1.1.2)
       builder (>= 2.1.2)
@@ -770,7 +779,7 @@ GEM
       rdf-xsd (>= 2.2, < 4.0)
       sparql (>= 2.2, < 4.0)
       sxp (~> 1.0)
-    sidekiq (5.0.5)
+    sidekiq (5.1.0)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
@@ -783,7 +792,7 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
-    simplecov (0.15.1)
+    simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -830,7 +839,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.13)
-    sshkit (1.15.1)
+    sshkit (1.16.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     staccato (0.5.1)
@@ -838,23 +847,26 @@ GEM
     sxp (1.0.1)
       rdf (>= 2.2, < 4.0)
     temple (0.8.0)
-    term-ansicolor (1.2.2)
-      tins (~> 0.8)
-    thor (0.18.1)
+    term-ansicolor (1.6.0)
+      tins (~> 1.0)
+    thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    tins (0.13.2)
+    tins (1.16.3)
     tinymce-rails (4.7.6)
       railties (>= 3.1.1)
     twitter-typeahead-rails (0.11.1.pre.corejavascript)
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (4.1.5)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.4)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -888,7 +900,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   coffee-rails (~> 4.2)
-  coveralls
+  coveralls (~> 0.8)
   database_cleaner
   devise
   devise-guests (~> 0.5)
@@ -912,6 +924,7 @@ DEPENDENCIES
   rails-controller-testing
   recaptcha
   redis (~> 3.0)
+  rest-client (~> 1.7)
   rsolr (~> 1.0)
   rspec
   rspec-mocks
@@ -922,7 +935,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda-matchers!
   sidekiq
-  simplecov
+  simplecov (>= 0.9)
   sitemap_generator
   solr_wrapper (>= 0.3)
   spring
