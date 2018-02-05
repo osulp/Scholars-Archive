@@ -14,10 +14,11 @@
       <i class="glyphicon glyphicon-signal large-icon"></i>
       <% if @stats.date_available.present? %>
         <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.date_available.strftime("%B %-d, %Y") %> 
-      <% else if @stats.created.present? %>
+      <% elsif @stats.created.present? %>
         <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.created.strftime("%B %-d, %Y") %>
-      <% end %>
+      <% else %>
         <%= content_tag :strong, @stats.total_pageviews %> 
+      <% end %>
     </div>
     <div class="stats-container">
       <div id="usage-stats" class="stats-placeholder"></div>
