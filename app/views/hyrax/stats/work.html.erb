@@ -12,12 +12,10 @@
     <%= content_tag :h2, "Work Analytics" %>
     <div class="alert alert-info">
       <i class="glyphicon glyphicon-signal large-icon"></i>
-      <% if @stats.date_available.present? %>
-        <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.date_available.strftime("%B %-d, %Y") %> 
-      <% elsif @stats.created.present? %>
-        <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.created.strftime("%B %-d, %Y") %>
+      <% if @stats.model.date_available.present? %>
+        <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.model.date_available.strftime("%B %-d, %Y") %> 
       <% else %>
-        <%= content_tag :strong, @stats.total_pageviews %> 
+        <%= content_tag :strong, @stats.total_pageviews %> since <%= @stats.created.strftime("%B %-d, %Y") %>
       <% end %>
     </div>
     <div class="stats-container">
