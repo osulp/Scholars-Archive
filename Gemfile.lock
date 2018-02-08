@@ -935,7 +935,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda-matchers!
   sidekiq (= 5.0.2)
-  simplecov
+  simplecov (>= 0.9)
   sitemap_generator
   solr_wrapper (>= 0.3)
   spring
