@@ -175,8 +175,8 @@ GEM
       execjs
     awesome_nested_set (3.1.4)
       activerecord (>= 4.0.0, < 5.3)
-    aws-partitions (1.57.0)
-    aws-sdk-core (3.14.0)
+    aws-partitions (1.59.0)
+    aws-sdk-core (3.15.0)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
@@ -362,7 +362,7 @@ GEM
       faraday (>= 0.7.4, < 1.0)
     fcrepo_wrapper (0.9.0)
       ruby-progressbar
-    ffi (1.9.18)
+    ffi (1.9.21)
     flipflop (2.3.1)
       activesupport (>= 4.0)
     flot-rails (0.0.7)
@@ -404,7 +404,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http_logger (0.5.1)
-    httparty (0.15.6)
+    httparty (0.15.7)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     hurley (0.2)
@@ -866,7 +866,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
+    unf_ext (0.0.7.5)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -935,7 +935,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   shoulda-matchers!
   sidekiq (= 5.0.2)
-  simplecov
+  simplecov (>= 0.9)
   sitemap_generator
   solr_wrapper (>= 0.3)
   spring
@@ -949,4 +949,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.0
+   1.13.1
