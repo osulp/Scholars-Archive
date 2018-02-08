@@ -779,11 +779,11 @@ GEM
       rdf-xsd (>= 2.2, < 4.0)
       sparql (>= 2.2, < 4.0)
       sxp (~> 1.0)
-    sidekiq (5.0.2)
+    sidekiq (5.1.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
-      redis (~> 3.3, >= 3.3.3)
+      redis (>= 3.3.5, < 5)
     signet (0.8.1)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -934,7 +934,7 @@ DEPENDENCIES
   rubycas-client-rails!
   sass-rails (~> 5.0)
   shoulda-matchers!
-  sidekiq (= 5.0.2)
+  sidekiq
   simplecov (>= 0.9)
   sitemap_generator
   solr_wrapper (>= 0.3)

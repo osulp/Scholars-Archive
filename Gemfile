@@ -32,7 +32,7 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
-gem 'sidekiq', '5.0.2'
+gem 'sidekiq'
 
 gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
 gem 'blacklight_range_limit'
