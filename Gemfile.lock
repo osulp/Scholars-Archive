@@ -362,7 +362,7 @@ GEM
       faraday (>= 0.7.4, < 1.0)
     fcrepo_wrapper (0.9.0)
       ruby-progressbar
-    ffi (1.9.21)
+    ffi (1.9.18)
     flipflop (2.3.1)
       activesupport (>= 4.0)
     flot-rails (0.0.7)
@@ -779,11 +779,11 @@ GEM
       rdf-xsd (>= 2.2, < 4.0)
       sparql (>= 2.2, < 4.0)
       sxp (~> 1.0)
-    sidekiq (5.1.1)
+    sidekiq (5.0.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+      redis (~> 3.3, >= 3.3.3)
     signet (0.8.1)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -862,7 +862,7 @@ GEM
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
-    uglifier (4.1.5)
+    uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -908,6 +908,7 @@ DEPENDENCIES
   edtf!
   equivalent-xml
   fcrepo_wrapper
+  ffi (= 1.9.18)
   haml
   hydra-role-management
   hyrax!
@@ -934,7 +935,7 @@ DEPENDENCIES
   rubycas-client-rails!
   sass-rails (~> 5.0)
   shoulda-matchers!
-  sidekiq
+  sidekiq (= 5.0.2)
   simplecov (>= 0.9)
   sitemap_generator
   solr_wrapper (>= 0.3)
