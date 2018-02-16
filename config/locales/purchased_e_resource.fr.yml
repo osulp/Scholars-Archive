@@ -1,0 +1,8 @@
+fr:
+  hyrax:
+    icons:
+      purchased_e_resource:     'fa fa-file-text-o'
+    select_type:
+      purchased_e_resource:
+        name:               "Purchased E Resource"
+        description:        "Purchased e resource œuvres"
