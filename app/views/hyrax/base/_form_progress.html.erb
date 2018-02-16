@@ -8,6 +8,8 @@
         <legend class="legend-save-work"><%= t('.requirements') %></legend>
         <ul class="requirements">
           <li class="incomplete" id="required-metadata"><%= t('.required_descriptions') %></li>
+          <%# NOTE: the change below for required-files was added on hyrax 2.0.0, so rebase this file %>
+          <%# TODO: rebase this file when upgrading to hyrax 2.0.1 or later %>
           <% if Hyrax.config.work_requires_files? && !current_user.admin? %>
             <li class="incomplete" id="required-files"><%= t('.required_files') %></li>
           <% end %>
@@ -45,9 +47,8 @@
       <% end %>
     <% end %>
     <br>
-    <% cancel_path = f.object.persisted? ? polymorphic_path([main_app, f.object]) : hyrax.my_works_path %>
     <%= link_to t(:'helpers.action.cancel'),
-                cancel_path,
+                hyrax.dashboard_path,
                 class: 'btn btn-default' %>
     <%# TODO: If we start using ActionCable, we could listen for object updates and
               alert the user that the object has changed by someone else %>
