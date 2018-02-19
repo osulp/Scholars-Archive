@@ -34,7 +34,7 @@ RSpec.feature 'Create a PurchasedEResource', js: false do
 
     it do
       allow_any_instance_of(ApplicationHelper).to receive(:select_tag_dates).and_return("")
-      visit new_hyrax_purchased_e_resource
+      visit new_hyrax_purchased_e_resource_path
       choose 'PurchasedEResource works'
       click_button 'Create work'
       fill_in 'Title', with: 'Test eresource'
