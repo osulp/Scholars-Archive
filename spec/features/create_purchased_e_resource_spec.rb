@@ -5,7 +5,7 @@ require 'spec_helper'
 include Warden::Test::Helpers
 
 # NOTE: If you generated more than one work, you have to set "js: true"
-RSpec.feature 'Create a PurchasedEResource', js: false do
+RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: false do
   context 'a logged in user' do
 
     let(:user) do
