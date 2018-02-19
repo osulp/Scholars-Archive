@@ -6,6 +6,8 @@ module Hyrax
     include ScholarsArchive::EtdWorkFormBehavior
     include ScholarsArchive::ArticleWorkFormBehavior
 
+    self.required_fields = [:title]
+
     self.model_class = ::PurchasedEResource
   end
 end
