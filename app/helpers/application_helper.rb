@@ -96,10 +96,10 @@ module ApplicationHelper
   def fixed_work_type_order(items=[])
     model_list = []
     items.each {|item| model_list.push(item) }
-    fixed_ordered_list = [Article, EescPublication, GraduateThesisOrDissertation, TechnicalReport, GraduateProject, AdministrativeReportOrPublication, HonorsCollegeThesis, ConferenceProceedingsOrJournal, UndergraduateThesisOrProject, OpenEducationalResource, Dataset, Default]
+    fixed_ordered_list = [{visible: true, model: Article}, {visible: true, model: EescPublication}, {visible: true, model: GraduateThesisOrDissertation}, {visible: true, model: TechnicalReport}, {visible: true, model: GraduateProject}, {visible: true, model: AdministrativeReportOrPublication}, {visible: true, model: HonorsCollegeThesis}, {visible: true, model: ConferenceProceedingsOrJournal}, {visible: true, model: UndergraduateThesisOrProject}, {visible: true, model: OpenEducationalResource}, {visible: true, model: Dataset}, {visible: true, model: Default}, {visible: false, model: nil}, {visible: true, model: PurchasedEResource}]
     lookup = {}
     model_list.each { |item| lookup[item.concern] = item }
-    fixed_ordered_list.each.map { |item| lookup[item] }
+    fixed_ordered_list.each.map { |item| [ ["visibility", item[:visible]], ["model", lookup[item[:model]]] ].to_h }
   end
 
   def embargo_select_options

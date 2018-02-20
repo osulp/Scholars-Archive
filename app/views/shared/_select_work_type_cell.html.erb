@@ -1,0 +1,12 @@
+<label>
+  <input type="radio" name="payload_concern" value="<%= presenter.concern %>"
+         data-single="<%= new_polymorphic_path([main_app, presenter.concern]) %>"
+         data-batch="<%= hyrax.new_batch_upload_path(payload_concern: presenter.concern) %>">
+  <div class="select-work-icon">
+    <span class="<%= presenter.icon_class %>"></span>
+  </div>
+  <div class="select-work-description">
+    <h3 class="work-type-title"><%= presenter.name %></h3>
+    <p><%= presenter.description %></p>
+  </div>
+</label>

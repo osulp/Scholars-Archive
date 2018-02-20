@@ -1,0 +1,10 @@
+zh:
+  hyrax:
+    icons:
+      purchased_e_resource:     'fa fa-file-text-o'
+    select_type:
+      purchased_e_resource:
+        # TODO: translate `human_name` into Chinese
+        name:               "Purchased E Resource"
+        # TODO: translate `human_name` into Chinese
+        description:        "Purchased e resource 作品"

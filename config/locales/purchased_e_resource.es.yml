@@ -1,0 +1,10 @@
+es:
+  hyrax:
+    icons:
+      purchased_e_resource:     'fa fa-file-text-o'
+    select_type:
+      purchased_e_resource:
+        # TODO: translate `human_name` into Spanish
+        name:               "Purchased E Resource"
+        # TODO: translate `human_name` into Spanish
+        description:        "Purchased e resource trabajos"
