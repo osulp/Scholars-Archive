@@ -19,6 +19,12 @@ module ScholarsArchive::TriplePoweredProperties
 
         return if values.include? 'Other'
 
+        if record.respond_to?(:unrequirerd_triple_powered_properties)
+          record.unrequirerd_triple_powered_properties.each do |property|
+            return if record[property].nil? || record[property].empty?
+          end
+        end
+
         values.each do |value|
           begin
             uri = URI.parse(value)

@@ -9,6 +9,7 @@ class PurchasedEResource < ActiveFedora::Base
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasEtdTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
+  include ScholarsArchive::UnrequiredTriplePoweredProperties
 
   self.indexer = PurchasedEResourceIndexer
   # Change this to restrict which works can be added as a child.
