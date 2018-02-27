@@ -4,8 +4,7 @@ module ScholarsArchive::Embargoes
       expired_embargoes = Hyrax::EmbargoService.assets_with_expired_embargoes
       expired_embargoes.each do |embargo|
         work = ActiveFedora::Base.find(embargo.solr_document[:id])
-        puts "Work thats being expired"
-        puts "Title: #{work.title}"
+        puts "Expired embargo for #{embargo.solr_document[:id]}"
         work.embargo_visibility!
         work.deactivate_embargo!
         work.embargo.save!
