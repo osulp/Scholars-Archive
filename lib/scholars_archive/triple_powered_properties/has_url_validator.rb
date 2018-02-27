@@ -11,6 +11,7 @@ module ScholarsArchive::TriplePoweredProperties
       return if record.triple_powered_properties.empty?
 
       record.triple_powered_properties.each do |prop|
+        return if prop[:skip_validation] && record[prop].empty? 
         if ScholarsArchive::FormMetadataService.multiple? record.to_model.class, prop[:field]
           values = record[prop[:field]]
         else
@@ -18,12 +19,6 @@ module ScholarsArchive::TriplePoweredProperties
         end
 
         return if values.include? 'Other'
-
-        if record.respond_to?(:unrequirerd_triple_powered_properties)
-          record.unrequirerd_triple_powered_properties.each do |property|
-            return if record[property].nil? || record[property].empty?
-          end
-        end
 
         values.each do |value|
           begin

@@ -7,9 +7,8 @@ class PurchasedEResource < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
-  include ScholarsArchive::HasEtdTriplePoweredProperties
+  include ScholarsArchive::HasPurchasedEResourceTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
-  include ScholarsArchive::UnrequiredTriplePoweredProperties
 
   self.indexer = PurchasedEResourceIndexer
   # Change this to restrict which works can be added as a child.
