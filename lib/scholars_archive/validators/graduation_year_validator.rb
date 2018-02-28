@@ -1,7 +1,7 @@
 module ScholarsArchive::Validators
   class GraduationYearValidator < ActiveModel::Validator
     def validate(record)
-      return if record.graduation_year.empty? || valid_value(record)
+      return if record.graduation_year.present? || valid_value(record)
       add_error_message(record)
       return
     end

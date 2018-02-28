@@ -58,5 +58,19 @@ RSpec.describe ScholarsArchive::Validators::GraduationYearValidator do
         expect(record.errors["graduation_year"]).to be_blank
       end
     end
+    context "When an etd has a nil graduation year" do
+      let(:record) {UndergraduateThesisOrProject.new(graduation_year: nil)}
+      it "does not set the error on the record" do
+        validator.validate(record)
+        expect(record.errors["graduation_year"]).to be_blank
+      end
+    end
+    context "When an etd has an empty graduation year" do
+      let(:record) {UndergraduateThesisOrProject.new(graduation_year: '')}
+      it "does not set the error on the record" do
+        validator.validate(record)
+        expect(record.errors["graduation_year"]).to be_blank
+      end
+    end
   end
 end
