@@ -7,7 +7,7 @@ class PurchasedEResource < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
-  include ScholarsArchive::HasEtdTriplePoweredProperties
+  include ScholarsArchive::HasPurchasedEResourceTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
 
   self.indexer = PurchasedEResourceIndexer
