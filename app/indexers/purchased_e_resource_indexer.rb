@@ -1,14 +1,7 @@
-# Generated via
-#  `rails generate hyrax:work PurchasedEResource`
-class PurchasedEResourceIndexer < Hyrax::WorkIndexer
-  # This indexes the default metadata. You can remove it if you want to
-  # provide your own metadata and indexing.
-  include Hyrax::IndexesBasicMetadata
+class PurchasedEResourceIndexer < DefaultWorkIndexer
+  self.stored_and_facetable_fields += %i[contributor_advisor contributor_committeemember degree_discipline degree_level degree_name degree_field degree_grantors graduation_year editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn]
 
-  # Fetch remote labels for based_near. You can remove this if you don't want
-  # this behavior
-  include Hyrax::IndexesLinkedMetadata
-
+  include ScholarsArchive::IndexesLinkedMetadata
 
   # Uncomment this block if you want to add custom indexing behavior:
   # def generate_solr_document
