@@ -3,7 +3,11 @@ STDOUT.sync = true
 
 ##
 # Expects a CSV in the format of id,from,to,property to change the value of a property for a specific ID. The
-# CSV needs to include the header row. See below for example:
+# CSV needs to include the header row.
+#
+# Execute like so: $bundle exec rails scholars_archive:bulk_update_csv csv=/full/path/to/spreadsheet.csv
+#
+# See below for example csv:
 # -----------------------
 # id,from,to,property
 # n296x1347,http://rightsstatements.org/vocab/CNE/1.0/,http://rightsstatements.org/vocab/InC/1.0/,rights_statement
