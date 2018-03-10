@@ -138,7 +138,7 @@ module ScholarsArchive
             end
           end
         else
-          if env.attributes[field.to_s].include?('Other')
+          if env.attributes[field.to_s].present? && env.attributes[field.to_s].include?('Other')
             env.curation_concern.errors.add(other_field, I18n.t("simple_form.actor_validation.other_value_missing"))
             error_counter += 1
           end
@@ -186,32 +186,36 @@ module ScholarsArchive
       end
 
       def other_affiliation_other_present? (env)
-        env.curation_concern.other_affiliation_other.present?
+        env.curation_concern.respond_to?(:other_affiliation_other) && env.curation_concern.other_affiliation_other.present?
       end
 
       def save_custom_option(env)
-        puts "save custom option"
+        puts "save custom option if any"
         if degree_present? (env)
           if env.curation_concern.degree_field_other.present?
-            puts "degree field other"
+            puts "saving degree field other and notifying admin"
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
             notify_admin(env, field: :degree_field, new_entries: all_new_entries)
           end
           if env.curation_concern.degree_level_other.present?
+            puts "degree level other and notifying admin"
             OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
             notify_admin(env, field: :degree_level, new_entries: env.curation_concern.degree_level_other)
           end
           if env.curation_concern.degree_name_other.present?
+            puts "degree name other and notifying admin"
             OtherOption.find_or_create_by(name: env.curation_concern.degree_name_other.to_s, work_id: env.curation_concern.id, property_name: :degree_name.to_s)
             notify_admin(env, field: :degree_name, new_entries: env.curation_concern.degree_name_other)
           end
           if env.curation_concern.degree_grantors_other.present?
+            puts "degree grantors other and notifying admin"
             OtherOption.find_or_create_by(name: env.curation_concern.degree_grantors_other.to_s, work_id: env.curation_concern.id, property_name: :degree_grantors.to_s)
             notify_admin(env, field: :degree_grantors, new_entries: env.curation_concern.degree_grantors_other)
           end
         end
 
         if other_affiliation_other_present? (env)
+          puts "other affiliation other and notifying admin"
           all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
           notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
         end
