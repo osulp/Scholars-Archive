@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   get '/downloads/:id(.:format)', to: 'scholars_archive/downloads#show', as: 'download'
   get '/single_use_link/download/:id(.:format)', to: 'scholars_archive/single_use_links_viewer#download', as: 'download_single_use_link'
+  get '/dashboard/shares(.:format)', to: 'scholars_archive/shares#index', as: 'dashboard_shares'
   mount Blacklight::Engine => '/'
 
   concern :searchable, Blacklight::Routes::Searchable.new
