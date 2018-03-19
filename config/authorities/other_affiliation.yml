@@ -113,3 +113,6 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/URAP"
   term: "Undergraduate Research Apprenticeship Program (URAP)"
   active: true
+- id: "http://id.loc.gov/authorities/names/n79100852"
+  term: "Oregon Sea Grant"
+  active: true
