@@ -35,7 +35,7 @@ module ScholarsArchive
 
       def self.date_in_past_five_years?(normalized_date, academic_date)
         last_five_years.map do |date|
-          Date.edtf(normalized_date || academic_date).include?(Date.edtf(date.year.to_s))
+          Date.edtf(normalized_date || academic_date).present? ? Date.edtf(normalized_date || academic_date).include?(Date.edtf(date.year.to_s)) : false
         end.include?(true)
       end
 
