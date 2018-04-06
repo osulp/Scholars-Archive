@@ -116,3 +116,9 @@ terms:
 - id: "http://id.loc.gov/authorities/names/n79100852"
   term: "Oregon Sea Grant"
   active: true
+- id: "http://opaquenamespace.org/ns/subject/ContinuingResearchersSupportProgram"
+  term: "Continuing Researchers Support Program"
+  active: true
+  - id: "http://opaquenamespace.org/ns/subject/BeginningResearchersSupportProgram"
+  term: "Beginning Researchers Support Program"
+  active: true
