@@ -73,6 +73,7 @@ module ScholarsArchive
           v.delete('bbox_lon_east')
         end
       end
+
     end
   end
 end

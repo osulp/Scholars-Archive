@@ -105,7 +105,7 @@ module ScholarsArchive
       # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
       attr_accessor :degree_level_other
 
-      property :degree_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/ThesisDegree"), multiple: false do |index|
+      property :degree_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/ThesisDegree") do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -255,6 +255,9 @@ module ScholarsArchive
 
       # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
       attr_accessor :geo_section
+
+      # accessor attribute used only to allow validators to check selected options depending on current_user role
+      attr_accessor :current_username
 
       class_attribute :controlled_properties
       self.controlled_properties = [:based_near]

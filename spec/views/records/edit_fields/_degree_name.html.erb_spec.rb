@@ -27,36 +27,39 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
   end
 
   context "for a work with degree name where 'Other' was selected and there is an OtherOption record for that work" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_name: "Other" } }
+    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_name: ["Other"] } }
     let(:degree_name_other_option_test) {"testing degree name other option"}
 
     before do
-      OtherOption.find_or_create_by(name: degree_name_other_option_test, work_id: work.id)
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
       work.degree_name_other = degree_name_other_option_test
+      assign(:degree_name_other_options, [OtherOption.find_or_create_by(name: degree_name_other_option_test, work_id: work.id)])
       assign(:form, form)
       render inline: form_template
     end
 
-    it 'has the "other" input visible in the form' do
-      expect(rendered).to have_selector('.degree-name-other input[type="text"]')
+    it 'has the "other" input not visible in the form' do
+      expect(rendered).to have_selector('.degree_name_other input[type="hidden"]', visible: false)
     end
 
-    it 'has the "other" input value as the default in the form' do
-      expect(rendered).to have_selector('.degree-name-other input[value="'+degree_name_other_option_test+'"]')
+    it 'has the "other" value listed in the table' do
+      expect(rendered).to have_content(degree_name_other_option_test)
     end
+
   end
 
   context "for a work with degree name where 'Other' was not selected" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_name: "test" } }
+    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_name: ["test"] } }
 
     before do
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
       assign(:form, form)
       render inline: form_template
     end
 
     it 'has the "other" input hidden in the form' do
-      expect(rendered).to have_selector('.degree-name-other input[type="hidden"]', visible: false)
-      expect(rendered).to have_selector('.degree-name-other input.hidden', visible: false)
+      expect(rendered).to have_selector('.degree_name_other input[type="hidden"]', visible: false)
+      expect(rendered).to have_selector('.degree_name_other input.hidden', visible: false)
     end
   end
 end

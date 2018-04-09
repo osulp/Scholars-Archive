@@ -12,6 +12,8 @@ class AdministrativeReportOrPublication < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
+  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   self.human_readable_type = 'Administrative Report Or Publication'
 end

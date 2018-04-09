@@ -16,6 +16,10 @@ class UndergraduateThesisOrProject < ActiveFedora::Base
   validates :title, presence: { message: 'Your work must have a title.' }
 
   self.validates_with ScholarsArchive::Validators::GraduationYearValidator
+  self.validates_with ScholarsArchive::Validators::OtherOptionDegreeValidator
+  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
+
 
   self.human_readable_type = 'Undergraduate Thesis Or Project'
 end

@@ -1,10 +1,37 @@
 <% degree_name_service = ScholarsArchive::DegreeNameService.new %>
 <%= f.input :degree_name,
-    collection: current_user.admin? ? degree_name_service.select_sorted_all_options : degree_name_service.select_active_options,
+    collection: current_user.admin? ? degree_name_service.select_sorted_all_options : degree_name_service.select_sorted_active_options,
     include_blank: true,
-    input_html: { class: "form-control degree-name-selector" } %>
-<% if f.object.model.degree_name.present? && f.object.model.degree_name == 'Other' && f.object.model.degree_name_other.present? %>
-    <%= f.input :degree_name_other, label: false, aria: { label: 'Degree Name' }, :placeholder => 'Degree Name', :input_html => {value: f.object.model.degree_name_other, :class => "form-control"}, :wrapper_html => {:class => "degree-name-other" } %>
-<% else %>
-    <%= f.input :degree_name_other, as: :hidden, label: false, aria: { label: 'Degree Name' }, :placeholder => 'Degree Name', :input_html => {:class => "form-control"}, :wrapper_html => {:class => "degree-name-other" } %>
-<% end %>
+    as: :multi_value_select_other,
+    input_html: { class: "form-control degree-name-selector #{f.object.new_record? ? 'new-record' : ''}"} %>
+
+<div class="other_options" id="other_options">
+  <% if @degree_name_other_options && @degree_name_other_options.count > 0 %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Other Entries Found for <%= I18n.t("simple_form.labels.defaults.degree_name")  %></th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @degree_name_other_options.each do |entry| %>
+            <tr class="edit_other_option" id="edit_other_option_<%= entry.id.to_s %>">
+              <td>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <label><%= entry.name.to_s %></label>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <a class="btn btn-danger" data-confirm="Are you sure? This action cannot be undone." data-remote="true" rel="nofollow" data-method="delete" href="/other_options/<%= entry.id.to_s %>">
+                  <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
+                </a>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>
