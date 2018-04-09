@@ -29,11 +29,6 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
   let(:options_presenter) { double(select_options: []) }
 
   before do
-    stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").with(  headers: {
-      'Accept'=>'*/*',
-      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      'User-Agent'=>'Ruby'
-    }).to_return(status: 200, body: "", headers: {})
     allow(Hyrax::AdminSetOptionsPresenter).to receive(:new).and_return(options_presenter)
     stub_template('hyrax/base/_form_progress.html.erb' => 'Progress')
     stub_template('hyrax/base/_form_relationships.html.erb' => "Relationships")
@@ -55,6 +50,7 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     end
 
     it 'shows link to LibGuide' do
+      stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").to_return(status: 200, body: "", headers: {})
       expect(rendered).to have_link 'https://guides.library.oregonstate.edu/Scholars-Archive'
     end
   end
