@@ -29,6 +29,12 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
   let(:options_presenter) { double(select_options: []) }
 
   before do
+    stub_request(:head, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").
+      with(  headers: {
+      'Accept'=>'*/*',
+      'User-Agent'=>'Ruby'
+    }).
+    to_return(status: 200, body: "", headers: {})
     allow(Hyrax::AdminSetOptionsPresenter).to receive(:new).and_return(options_presenter)
     stub_template('hyrax/base/_form_progress.html.erb' => 'Progress')
     stub_template('hyrax/base/_form_relationships.html.erb' => "Relationships")
