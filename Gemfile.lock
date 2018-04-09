@@ -219,6 +219,9 @@ GEM
       openseadragon (>= 0.2.0)
       rails
     blacklight_range_limit (6.3.3)
+    blacklight_advanced_search (6.3.1)
+      blacklight (~> 6.0, >= 6.0.1)
+      parslet
       blacklight (>= 6.0.2)
       jquery-rails
       rails (>= 3.0)
@@ -609,6 +612,7 @@ GEM
       rails (> 3.2.0)
     orm_adapter (0.5.0)
     os (0.9.6)
+    parslet (1.8.2)
     poltergeist (1.17.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -910,6 +914,7 @@ PLATFORMS
 
 DEPENDENCIES
   bagit (~> 0.4.1)
+  blacklight_advanced_search
   blacklight_oai_provider!
   blacklight_range_limit
   browse-everything
