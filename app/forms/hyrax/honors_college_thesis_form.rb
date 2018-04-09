@@ -6,5 +6,7 @@ module Hyrax
     include ScholarsArchive::EtdWorkFormBehavior
     self.model_class = ::HonorsCollegeThesis
     self.terms += [:resource_type]
+
+    self.required_fields += [:mentor]
   end
 end
