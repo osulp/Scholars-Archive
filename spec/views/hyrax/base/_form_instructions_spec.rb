@@ -45,12 +45,12 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
 
   context 'batch upload off' do
     before do
+      stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").to_return(status: 200, body: "", headers: {})
       allow(Flipflop).to receive(:batch_upload?).and_return(false)
       render
     end
 
     it 'shows link to LibGuide' do
-      stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").to_return(status: 200, body: "", headers: {})
       expect(rendered).to have_link 'https://guides.library.oregonstate.edu/Scholars-Archive'
     end
   end
