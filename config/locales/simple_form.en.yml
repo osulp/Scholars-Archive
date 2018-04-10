@@ -8,7 +8,7 @@ en:
       text: 'required'
     "yes": 'Yes'
     instructions:
-      deposit_help: "<b>Need help?</b> See the ScholarsArchive@OSU User Guide: <a href=\"https://guides.library.oregonstate.edu/Scholars-Archive\">https://guides.library.oregonstate.edu/Scholars-Archive</a>"
+      deposit_help: "<span class='label deposit-help'>Need help?</span> See the <a href='https://guides.library.oregonstate.edu/Scholars-Archive' target='_top'>ScholarsArchive@OSU User Guide</a><hr class='deposit-help'/>"
     actor_validation:
       other_value_exists: "This 'Other' value: \"%{other_entry}\" already exists, please select from the list."
       other_value_missing: "Please provide a value for 'Other'"

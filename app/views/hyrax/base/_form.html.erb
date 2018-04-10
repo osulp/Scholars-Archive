@@ -16,7 +16,7 @@
     <% end %>
 
     <% provide :metadata_tab do %>
-      <p><%= I18n.t("simple_form.instructions.deposit_help").html_safe %></p>
+      <p class='deposit-help'><%= I18n.t("simple_form.instructions.deposit_help").html_safe %></p>
     <% end %>
 
     <% if Flipflop.batch_upload? && f.object.new_record? %>
