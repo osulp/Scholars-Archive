@@ -45,6 +45,7 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     stub_template('hyrax/base/_form_relationships.html.erb' => "Relationships")
     allow(work).to receive(:new_record?).and_return(true)
     allow(work).to receive(:member_ids).and_return([1, 2])
+    allow(ability).to receive(:current_user).and_return(current_user)
     allow(curation_concern.model_name).to receive(:name).and_return('default')
     allow(controller).to receive(:current_user).and_return(current_user)
     assign(:form, form)

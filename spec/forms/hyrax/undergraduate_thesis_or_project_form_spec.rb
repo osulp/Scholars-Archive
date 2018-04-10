@@ -3,9 +3,18 @@ require 'rails_helper'
 RSpec.describe Hyrax::UndergraduateThesisOrProjectForm do
 
   let(:new_form) { described_class.new(UndergraduateThesisOrProject.new, nil, double("Controller")) }
+  let(:user) do
+    User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
+  end
+  let(:ability) {double("Ability")}
+
+  before do
+    allow(new_form).to receive(:current_ability).and_return(ability)
+    allow(ability).to receive(:current_user).and_return(user)
+  end
 
   it "responds to terms with the proper list of terms" do
-    expect(described_class.terms).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]  
+    expect(described_class.terms).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]
   end
 
   it "has the proper primary terms" do
