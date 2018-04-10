@@ -307,3 +307,11 @@ li.document .attribute-label {
 li.attribute.abstract a {
   color: #337ab7 !important;
 }
+
+.modal-footer.help-text {
+  b {
+    text-align: center;
+    width: 100%;
+    float: left;
+  }
+}
