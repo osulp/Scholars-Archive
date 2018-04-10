@@ -6,7 +6,9 @@ RSpec.describe Hyrax::GraduateThesisOrDissertationForm do
   let(:user) do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
   end
-  let(described_class).receive(:current_ability).and_return(user)
+  before do
+    allow(described_class).receive(:current_ability).and_return(user)
+  end
 
   it "responds to terms with the proper list of terms" do
     expect(described_class.terms).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]

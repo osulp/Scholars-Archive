@@ -6,7 +6,9 @@ RSpec.describe Hyrax::OpenEducationalResourceForm do
   let(:user) do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
   end
-  let(described_class).receive(:current_ability).and_return(user)
+  before do
+    allow(described_class).receive(:current_ability).and_return(user)
+  end
 
   it "responds to terms with the proper list of terms" do
     expect(described_class.terms).to include *[:resource_type, :is_based_on_url, :interactivity_type, :learning_resource_type, :typical_age_range, :time_required, :duration]
