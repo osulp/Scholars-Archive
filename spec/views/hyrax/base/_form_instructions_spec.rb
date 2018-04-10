@@ -19,6 +19,17 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
         ["Animal Sciences - 1984/2013", "http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp"],
     ]
   end
+  let(:test_sorted_all_options) do
+    [
+        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"],
+    ]
+  end
+  let(:test_sorted_current_options) do
+    [
+        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+    ]
+  end
   let(:work) {
     Default.new do |w|
       w.title = ['test']
@@ -41,6 +52,8 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     allow(controller).to receive(:action_name).and_return('new')
     allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_all_options).and_return(academic_unit_sorted_all_options)
     allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_current_options).and_return(academic_unit_sorted_current_options)
+    allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return(test_sorted_all_options)
+    allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return(test_sorted_current_options)
   end
 
   context 'batch upload off' do

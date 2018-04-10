@@ -91,6 +91,27 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
+      property :degree_field, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#majorField") do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
+      attr_accessor :degree_field_other
+
+      property :degree_level, predicate: ::RDF::URI.new("http://purl.org/NET/UNTL/vocabularies/degree-information/#level"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
+      attr_accessor :degree_level_other
+
+      property :degree_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/ThesisDegree"), multiple: false do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
+      attr_accessor :degree_name_other
+
       property :description, predicate: ::RDF::Vocab::DC11.description do |index|
         index.as :stored_searchable
       end

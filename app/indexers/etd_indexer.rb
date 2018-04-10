@@ -1,5 +1,5 @@
 class EtdIndexer < DefaultWorkIndexer
-  self.stored_and_facetable_fields += %i[contributor_advisor contributor_committeemember degree_discipline degree_level degree_name degree_field degree_grantors graduation_year]
+  self.stored_and_facetable_fields += %i[contributor_advisor contributor_committeemember degree_discipline degree_grantors graduation_year]
 
   # Fetch remote labels for based_near. You can remove this if you don't want
   # this behavior
