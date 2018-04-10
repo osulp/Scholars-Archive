@@ -7,6 +7,6 @@ module Hyrax
     self.model_class = ::HonorsCollegeThesis
     self.terms += [:resource_type]
 
-    self.required_fields += [:mentor]
+    self.required_fields += [:contributor_advisor]
   end
 end
