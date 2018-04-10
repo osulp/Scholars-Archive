@@ -41,11 +41,12 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     allow(controller).to receive(:action_name).and_return('new')
     allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_all_options).and_return(academic_unit_sorted_all_options)
     allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_current_options).and_return(academic_unit_sorted_current_options)
+    allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return(test_sorted_all_options)
+    allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return(test_sorted_current_options)
   end
 
   context 'batch upload off' do
     before do
-      stub_request(:get, "http://opaquenamespace.org/ns/osuDegreeFields.jsonld").to_return(status: 200, body: "", headers: {})
       allow(Flipflop).to receive(:batch_upload?).and_return(false)
       render
     end
