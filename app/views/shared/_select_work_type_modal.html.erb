@@ -27,6 +27,9 @@
             </div>
           </div>
         </div>
+        <div class="modal-footer help-text">
+          <%= render partial: 'shared/select_work_type_help' %>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal"><%= t('hyrax.dashboard.heading_actions.close') %></button>
           <input type="submit" class="btn btn-primary" value="<%= t('hyrax.dashboard.heading_actions.create_work') %>">
