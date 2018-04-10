@@ -313,5 +313,8 @@ li.attribute.abstract a {
     text-align: center;
     width: 100%;
     float: left;
+    a {
+      color: $osu-orange !important;
+    }
   }
 }
