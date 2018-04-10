@@ -24,10 +24,9 @@ module ScholarsArchive
       end
 
       def secondary_terms
-          t = [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_location, :conference_name, :conference_section, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
-          t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection]
-          t.flatten
-        end
+        t = [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_location, :conference_name, :conference_section, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
+        t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection]
+        t.flatten
       end
 
       def self.date_terms
