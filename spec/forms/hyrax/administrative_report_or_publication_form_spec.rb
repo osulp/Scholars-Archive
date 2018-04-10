@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::AdministrativeReportOrPublicationForm do
-
+  let(:user) do
+    User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
+  end
   let(:new_form) { described_class.new(AdministrativeReportOrPublication.new, nil, double("Controller")) }
+  let(described_class).receive(:current_ability).and_return(user)
 
   it "responds to terms with the proper list of terms" do
     expect(described_class.terms).to include *[:doi, :alt_title, :abstract, :license, :based_near, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_reviewed, :date_accepted, :replaces, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection]

@@ -3,9 +3,13 @@ require 'rails_helper'
 RSpec.describe Hyrax::GraduateProjectForm do
 
   let(:new_form) { described_class.new(GraduateProject.new, nil, double("Controller")) }
+  let(:user) do
+    User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
+  end
+  let(described_class).receive(:current_ability).and_return(user)
 
   it "responds to terms with the proper list of terms" do
-    expect(described_class.terms).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]  
+    expect(described_class.terms).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]
   end
   it "has the proper required fields" do
     expect(described_class.required_fields).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year]
