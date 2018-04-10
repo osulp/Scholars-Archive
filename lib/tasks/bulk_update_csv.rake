@@ -46,10 +46,11 @@ def update_property(logger, work, row)
     work[row[:property]] = row[:to]
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif(property.is_a?(ActiveTriples::Relation))
-    if(property.include?(row[:from]))
-      work[row[:property]].delete(row[:from])
+    found_row = property.find{|r| r.include?(row[:from])}
+    if(found_row)
+      work[row[:property]].delete(found_row)
       work[row[:property]] += [row[:to]]
-      logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
+      logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{row[:to]}\"")
     else
       logger.info("#{work.class} #{row[:id]} #{property.property} value \"#{row[:from]}\" not found, skipping update.")
       return nil
