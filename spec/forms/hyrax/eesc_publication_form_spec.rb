@@ -6,8 +6,11 @@ RSpec.describe Hyrax::EescPublicationForm do
   let(:user) do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
   end
+  let(:ability) {double("Ability")}
+
   before do
-    allow(new_form).to receive(:current_ability).and_return(user)
+    allow(new_form).to receive(:current_ability).and_return(ability)
+    allow(ability).to receive(:current_user).and_return(user)
   end
   it "responds to terms with the proper list of terms" do
     expect(described_class.terms).to include *[:doi, :alt_title, :abstract, :license, :based_near, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_reviewed, :date_valid, :date_accepted, :replaces, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection]
