@@ -19,6 +19,17 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
         ["Animal Sciences - 1984/2013", "http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp"],
     ]
   end
+  let(:test_sorted_all_options) do
+    [
+        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"],
+    ]
+  end
+  let(:test_sorted_current_options) do
+    [
+        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+    ]
+  end
   let(:work) {
     Default.new do |w|
       w.title = ['test']
