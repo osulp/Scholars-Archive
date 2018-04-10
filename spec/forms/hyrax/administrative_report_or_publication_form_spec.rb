@@ -7,7 +7,7 @@ RSpec.describe Hyrax::AdministrativeReportOrPublicationForm do
   let(:new_form) { described_class.new(AdministrativeReportOrPublication.new, nil, double("Controller")) }
 
   before do
-    allow(described_class).receive(:current_ability).and_return(user)
+    allow(described_class).to receive(:current_ability).and_return(user)
   end
 
   it "responds to terms with the proper list of terms" do

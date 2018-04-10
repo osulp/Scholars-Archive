@@ -7,7 +7,7 @@ RSpec.describe Hyrax::UndergraduateThesisOrProjectForm do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
   end
   before do
-    allow(described_class).receive(:current_ability).and_return(user)
+    allow(described_class).to receive(:current_ability).and_return(user)
   end
 
   it "responds to terms with the proper list of terms" do
