@@ -52,7 +52,7 @@ Hyrax.config do |config|
   #
   # Enables the use of Google ReCaptcha on the contact form.
   # A site key and secret key need to be supplied in order for google
-  # to authenticate and authorize/validate the 
+  # to authenticate and authorize/validate the
   # config.recaptcha = false
   #
   # ReCaptcha site key and secret key, supplied by google after
@@ -234,3 +234,4 @@ Qa::Authorities::Local.register_subauthority('subjects', 'Qa::Authorities::Local
 Qa::Authorities::Local.register_subauthority('genres', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('academic_units', 'ScholarsArchive::CacheBasedAuthority')
 Qa::Authorities::Local.register_subauthority('degree_fields', 'ScholarsArchive::CacheBasedAuthority')
+Qa::Authorities::Local.register_subauthority('degree_grantors', 'ScholarsArchive::ExtendedFileBasedAuthority')

@@ -2,15 +2,20 @@ terms:
 - id: "http://id.loc.gov/authorities/names/n95078079"
   term: "Oregon Agricultural College"
   active: true
+  admin_only: true
 - id: "http://id.loc.gov/authorities/names/n87850581"
   term: "Oregon State Agricultural College"
   active: true
+  admin_only: true
 - id: "http://id.loc.gov/authorities/names/n82022628"
   term: "Oregon State College"
   active: true
+  admin_only: true
 - id: "http://id.loc.gov/authorities/names/n80017721"
   term: "Oregon State University"
   active: true
+  admin_only: false
 - id: "Other"
   term: "Other"
   active: true
+  admin_only: false
