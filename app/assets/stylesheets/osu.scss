@@ -328,3 +328,17 @@ p.deposit-help {
 hr.deposit-help {
   margin: 0 0 10px 0;
 }
+
+.site-footer {
+  height: 150px !important;
+  .navbar-right {
+    margin-right: 15px;
+  }
+  .navbar-text {
+    margin: 0 15px;
+  }
+  .deployed {
+    color: rgba($color: #fff, $alpha: 0.2);
+    font-size: 12px;
+  }
+}
