@@ -64,7 +64,7 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     end
 
     it 'shows link to LibGuide' do
-      expect(rendered).to have_link 'https://guides.library.oregonstate.edu/Scholars-Archive'
+      expect(rendered).to have_link 'ScholarsArchive@OSU User Guide'
     end
   end
 end

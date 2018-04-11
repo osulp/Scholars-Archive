@@ -318,3 +318,13 @@ li.attribute.abstract a {
     }
   }
 }
+
+p.deposit-help {
+  span.label.deposit-help {
+    background-color: $osu-orange !important;
+    font-size: 1.35rem;
+  }
+}
+hr.deposit-help {
+  margin: 0 0 10px 0;
+}
