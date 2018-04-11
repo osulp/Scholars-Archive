@@ -14,7 +14,7 @@ set :repo_url, config['repository']
 set :deploy_to, config['deploy_to']
 
 # The server must have rbenv installed and the version of ruby specified here.
-set :rbenv_ruby, '2.5.0'
+set :rbenv_ruby, '2.5.1'
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
