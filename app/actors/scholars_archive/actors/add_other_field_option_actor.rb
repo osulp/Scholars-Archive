@@ -33,7 +33,7 @@ module ScholarsArchive
           error_counter += validate_other_value? env, field: :degree_name, collection: degree_name_options(env.user)
 
           # check if degree_grantors_other is already in the list or is missing
-          error_counter += validate_other_value? env, field: :degree_grantors, collection: degree_grantors_options(env.user)
+          error_counter += validate_other_value? env, field: :degree_grantors, collection: degree_grantors_options(env.curation_concern.degree_grantors, env.user)
         end
 
         if other_affiliation_other_present? (env)
@@ -171,9 +171,9 @@ module ScholarsArchive
         env_user.admin? ? service.select_sorted_all_options : service.select_active_options
       end
 
-      def degree_grantors_options(env_user)
+      def degree_grantors_options(value, env_user)
         service = ScholarsArchive::DegreeGrantorsService.new
-        env_user.admin? ? service.select_sorted_all_options : service.select_active_options
+        service.select_sorted_all_options(value, env_user.admin?)
       end
 
       def other_affiliation_options(env_user)
