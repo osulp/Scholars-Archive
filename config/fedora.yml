@@ -1,15 +1,13 @@
 development:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:<%= ENV['FCREPO_DEVELOPMENT_PORT'] || 8984 %>/rest
+  url: http://<%= ENV['SCHOLARSARCHIVE_FEDORA_HOST'] || 'localhost' %>:<%= ENV['FCREPO_DEVELOPMENT_PORT'] || 8984 %>/rest
   base_path: /dev
-  request: { timeout: 1000, open_timeout: 1000}
 test:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: http://127.0.0.1:<%= ENV['FCREPO_TEST_PORT'] || 8986 %>/rest
+  url: http://<%= ENV['SCHOLARSARCHIVE_FEDORA_HOST'] || 'localhost' %>:<%= ENV['FCREPO_DEVELOPMENT_PORT'] || 8986 %>/rest
   base_path: /test
-  request: { timeout: 1000, open_timeout: 1000}
 production:
   user: fedoraAdmin
   password: fedoraAdmin

@@ -41,3 +41,11 @@ SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY: 'asdfasdfadsfasdfasdfasdfasdfasdfad'
 
 # NewRelic application monitoring
 NEWRELIC_LICENSE_KEY: thisisnttherealkeyhahaha!!11!1!
+
+# Fedora repository server
+SCHOLARSARCHIVE_FEDORA_HOST: localhost
+SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8984/rest
+
+# SOLR index server
+SCHOLARSARCHIVE_SOLR_HOST: localhost
+SCHOLARSARCHIVE_SOLR_URL: http://localhost:8983/solr/hydra-development
