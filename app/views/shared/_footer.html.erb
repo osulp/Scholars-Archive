@@ -1,0 +1,16 @@
+<footer class="navbar navbar-inverse site-footer">
+  <div class="container-fluid">
+    <div class="navbar-text text-left">
+        <p><%= t('hyrax.footer.service_html') %></p>
+        <p><%= t('hyrax.footer.contact_info_html') %></p>
+        <p><%= t('hyrax.footer.links_html') %></p>
+    </div>
+    <div class="navbar-right">
+      <div class="navbar-text text-right">
+        <p>Powered by Hyrax <%= Hyrax::VERSION %></p>
+        <p><%= t('hyrax.footer.copyright_html') %></p>
+        <p class='deployed'><%= render partial: 'shared/application_revision' %></p>
+      </div>
+    </div>
+  </div>
+</footer>
