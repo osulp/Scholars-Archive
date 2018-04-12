@@ -58,7 +58,7 @@ module ScholarsArchive
       end
 
       def other_affiliation_other_present? (env)
-        env.curation_concern.respond_to?(:other_affiliation_other) && env.curation_concern.other_affiliation_other.present? && other_affiliation_in_collection?(env.curation_concern, field: :other_affiliation.to_s, collection: other_affiliation_options(env.user))
+        env.curation_concern.respond_to?(:other_affiliation_other) && env.curation_concern.other_affiliation_other.present? && valid_other_affiliation_other?(env.curation_concern, field: :other_affiliation.to_s, collection: other_affiliation_options(env.user))
       end
 
       def other_affiliation_options(env_user)
@@ -66,7 +66,7 @@ module ScholarsArchive
         env_user.admin? ? service.select_sorted_all_options : service.select_active_options
       end
 
-      def other_affiliation_in_collection? (record, field: nil, collection: [])
+      def valid_other_affiliation_other? (record, field: nil, collection: [])
         other_field = "#{field}_other".to_sym
         other_value = record.send(other_field) if record.respond_to?(other_field)
         error_counter = 0
@@ -77,7 +77,7 @@ module ScholarsArchive
             end
           end
         end
-        (error_counter > 0) ? true : false
+        (error_counter > 0) ? false : true
       end
 
       def other_value_in_collection? (other_value: nil, collection: [])
