@@ -18,12 +18,6 @@
       else
         hide_field('.degree-level-other')
 
-      default_degree_name = $('select.degree-name-selector :selected').val()
-      if default_degree_name == "Other"
-        show_field('.degree-name-other')
-      else
-        hide_field('.degree-name-other')
-
       default_degree_grantors = $('select.degree-grantors-selector :selected').val()
       if default_degree_grantors == "Other"
         show_field('.degree-grantors-other')
@@ -47,14 +41,6 @@
       else
         hide_field('.degree-level-other')
 
-    $('select.degree-name-selector').change ->
-      selected = $('select.degree-name-selector :selected').val()
-      $('.degree-name-other').find('input').val("")
-      if selected == "Other"
-        show_field('.degree-name-other')
-      else
-        hide_field('.degree-name-other')
-
     $('select.degree-grantors-selector').change ->
       selected = $('select.degree-grantors-selector :selected').val()
       $('.degree-grantors-other').find('input').val("")
@@ -66,6 +52,16 @@
     $(document).on('change', 'select.degree-field-selector', (event) ->
       selected = $(this).find(':selected')
       selected_li = $(this).closest('li').find('.degree_field_other')
+      $(selected_li).find('input').val("")
+      if selected.val() == "Other"
+        show_field(selected_li)
+      else
+        hide_field(selected_li)
+    )
+
+    $(document).on('change', 'select.degree-name-selector', (event) ->
+      selected = $(this).find(':selected')
+      selected_li = $(this).closest('li').find('.degree_name_other')
       $(selected_li).find('input').val("")
       if selected.val() == "Other"
         show_field(selected_li)

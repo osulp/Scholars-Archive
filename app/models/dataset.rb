@@ -13,5 +13,8 @@ class Dataset < ActiveFedora::Base
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
 
+  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
+
   self.human_readable_type = 'Dataset'
 end

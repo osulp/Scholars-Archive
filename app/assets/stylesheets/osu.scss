@@ -278,13 +278,15 @@ input.fill_column {
 
 .other_affiliation_other.multi-value-select-other.has-error,
 .degree_field_other.multi-value-select-other.has-error,
+.degree_name_other.multi-value-select-other.has-error,
 .related_item.multi-value-label-url.has-error {
   background-color: white;
   margin-bottom: 3.5em;
 }
 
 .other_affiliation_other.multi-value-select-other.has-error .help-block,
-.degree_field_other.multi-value-select-other.has-error .help-block {
+.degree_field_other.multi-value-select-other.has-error .help-block,
+.degree_name_other.multi-value-select-other.has-error .help-block {
   padding-top: 3em;
 }
 
