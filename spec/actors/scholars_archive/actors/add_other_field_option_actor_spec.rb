@@ -47,35 +47,81 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
 
   describe '#create' do
-    let(:test_degree_field_other) { ["test1 degree field other"] }
-    let(:test_degree_level_other) { "test1 degree level other" }
-    let(:test_degree_name_other) { ["test1 degree name other"] }
-    let(:test_degree_grantors_other) { "test1 degree grantors other" }
-    let(:test_other_affiliation_other) { [ "test entry one", "test entry two"] }
+    before do
+      curation_concern.id = "test1"
+    end
 
-    context 'with other values selected for degree_field, degree_field, and degree_name' do
-      before do
-        curation_concern.id = "test1"
-      end
-      it "persists other values if they don't exist" do
+    context "persists valid values" do
+      let(:test_degree_level_other) { "test1 degree level other" }
+      let(:test_degree_field_other) { ["test1 degree field other"] }
+      let(:test_degree_name_other) { ["test1 degree name other"] }
+      let(:test_degree_grantors_other) { "test1 degree grantors other" }
+      let(:test_other_affiliation_other) { ["test1 other affiliation other"] }
+
+      it "runs the environment on create" do
         expect(subject.create(env)).to be true
+        expect(OtherOption.find_by(property_name: "degree_field")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "degree_level")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "degree_name")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "degree_grantors")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "other_affiliation")).to be_a_kind_of(OtherOption)
+      end
+    end
+
+    context "should not persist invalid values" do
+      let(:test_degree_level_other) { "" }
+      let(:test_degree_field_other) { [""] }
+      let(:test_degree_name_other) { [""] }
+      let(:test_degree_grantors_other) { "" }
+      let(:test_other_affiliation_other) { [""] }
+
+      it "runs the environment on update" do
+        expect(subject.create(env)).to be true
+        expect(OtherOption.find_by(property_name: "degree_field")).to be_nil
+        expect(OtherOption.find_by(property_name: "degree_level")).to be_nil
+        expect(OtherOption.find_by(property_name: "degree_name")).to be_nil
+        expect(OtherOption.find_by(property_name: "degree_grantors")).to be_nil
+        expect(OtherOption.find_by(property_name: "other_affiliation")).to be_nil
       end
     end
   end
 
   describe '#update' do
-    context 'with other values selected for degree_field and degree_level and degree_name' do
+    before do
+      curation_concern.id = "test4"
+    end
+
+    context "persist valid values" do
       let(:test_degree_level_other) { "test2 degree level other" }
       let(:test_degree_field_other) { ["test2 degree field other"] }
       let(:test_degree_name_other) { ["test2 degree name other"] }
       let(:test_degree_grantors_other) { "test2 degree grantors other" }
       let(:test_other_affiliation_other) { ["test2 other affiliation other"] }
 
-      before do
-        curation_concern.id = "test4"
-      end
-      it "persists other values if they don't exist" do
+      it "runs the environment on update" do
         expect(subject.update(env)).to be true
+        expect(OtherOption.find_by(property_name: "degree_field")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "degree_level")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "degree_name")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "degree_grantors")).to be_a_kind_of(OtherOption)
+        expect(OtherOption.find_by(property_name: "other_affiliation")).to be_a_kind_of(OtherOption)
+      end
+    end
+
+    context "should not persist options in the database given invalid values" do
+      let(:test_degree_level_other) { "" }
+      let(:test_degree_field_other) { [""] }
+      let(:test_degree_name_other) { [""] }
+      let(:test_degree_grantors_other) { "" }
+      let(:test_other_affiliation_other) { [""] }
+
+      it "runs the environment on update" do
+        expect(subject.update(env)).to be true
+        expect(OtherOption.find_by(property_name: "degree_field")).to be_nil
+        expect(OtherOption.find_by(property_name: "degree_level")).to be_nil
+        expect(OtherOption.find_by(property_name: "degree_name")).to be_nil
+        expect(OtherOption.find_by(property_name: "degree_grantors")).to be_nil
+        expect(OtherOption.find_by(property_name: "other_affiliation")).to be_nil
       end
     end
   end
