@@ -1,0 +1,15 @@
+<% if !last_page_button %>
+  <% if !(next_page + 1 >= max_page_number(@response, @pagination) + 1) %>
+    <li class=<%= @pagination.current_page == max_page_number(@response, @pagination) ? "disabled next_page_button" : "next_page_button"%>>
+      <a data-ajax-modal="preserve" href=<%= generate_next_page_link(state, request_keys, page: next_page) %>>
+        <%= next_page + 1 %>
+      </a>
+    </li>
+  <% end %>
+<% else %>
+  <li class=<%= @pagination.current_page == max_page_number(@response, @pagination) ? "disabled" : ""%>>
+    <a data-ajax-modal="preserve" href=<%= generate_next_page_link(state, request_keys, page: max_page_number(@response, @pagination) - 1) %>>
+      Last Page
+    </a>
+  </li>
+<% end %>

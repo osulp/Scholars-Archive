@@ -344,3 +344,12 @@ hr.deposit-help {
     font-size: 12px;
   }
 }
+
+.modal-footer {
+  .pagination {
+    margin: 0;
+    ul.pagination {
+      margin: 0;
+    }
+  }
+}

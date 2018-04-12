@@ -1,0 +1,57 @@
+<div class="prev_next_links btn-group pull-left">
+  <div class="pagination">
+    <ul class="pagination">
+      <!-- Renders the last page link on the modal -->
+      <%= render partial: 'previous_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, prev_page: @pagination.current_page - 1, current_page: @pagination.current_page, first_page_button: true} %>
+
+      <!-- Renders the next page button on the modal -->
+      <li>
+        <%= link_to_previous_page @pagination, raw(t('views.pagination.previous')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], data: { ajax_modal: "preserve" } do %>
+          <span class="disabled btn btn-disabled"><%= raw(t('views.pagination.previous')) %></span>
+        <% end %>
+      </li>
+
+      <!-- if not on the first page, render previous page buttons down to 'window size'-->
+      <% if @pagination.current_page > 1 %>
+        <% Hyrax.config.pagination_links_range.downto(1) do |i| %>
+          <%= render partial: 'previous_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, prev_page: @pagination.current_page - (i - 1), first_page_button: false} %>
+        <% end %>
+      <% end %>
+
+      <!-- Current page -->
+      <li class="active">
+        <a>
+          <%= @pagination.current_page %>
+        </a>
+      </li>
+
+      <!-- If not at the max page, render next pages up to 'window size' -->
+      <% if @pagination.current_page < max_page_number(@response, @pagination) %>
+        <% 1.upto(Hyrax.config.pagination_links_range) do |i| %>
+          <%= render partial: 'next_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + (i - 1), last_page_button: false} %>
+        <% end %>
+      <% end %>
+
+      <!-- Renders next page button -->
+      <li>
+        <%= link_to_next_page @pagination, raw(t('views.pagination.next')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], class: 'btn btn-link',  data: { ajax_modal: "preserve" } do %>
+          <span class="disabled btn  btn-disabled"><%= raw(t('views.pagination.next')) %></span>
+        <% end %>
+      </li>
+
+      <!-- renders last page button -->
+      <%= render partial: 'next_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + 1, last_page_button: true} %>
+    </ul>
+  </div>
+</div>
+
+<div class="sort_options btn-group pull-right">
+  <% if @pagination.sort == 'index' -%>
+    <span class="active az btn btn-default"><%= t('blacklight.search.facets.sort.index') %></span>
+    <%= link_to(t('blacklight.search.facets.sort.count'), @pagination.params_for_resort_url('count', search_state.to_h), class: "sort_change numeric btn btn-default", data: { ajax_modal: "preserve" }) %>
+  <% elsif @pagination.sort == 'count' -%>
+    <%=  link_to(t('blacklight.search.facets.sort.index'), @pagination.params_for_resort_url('index', search_state.to_h), class: "sort_change az btn btn-default",  data: { ajax_modal: "preserve" }) %>
+    <span class="active numeric btn btn-default"><%= t('blacklight.search.facets.sort.count') %></span>
+  <% end -%>
+</div>
+

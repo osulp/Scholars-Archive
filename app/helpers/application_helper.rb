@@ -36,7 +36,7 @@ module ApplicationHelper
     data_fields = [{ id: 'geo_fields_data' }]
 
     coordinates = f.object.model.nested_geo.to_a
-    
+
     if coordinates.none? { |h| h.type == :bbox.to_s }
       options << { t('simple_form.labels.defaults.nested_geo_bbox').pluralize => :nested_geo_bbox.to_s }
     end
@@ -117,5 +117,17 @@ module ApplicationHelper
 
   def help_block_wrapper
     "<span class=\"help-block\">#{yield}</span>".html_safe
+  end
+
+  def generate_previous_page_link(search_state, request_keys, page: current_page)
+    Kaminari::Helpers::PrevPage.new(self, params: search_state, param_name: request_keys[:page], current_page: page).url
+  end
+
+  def generate_next_page_link(search_state, request_keys, page: )
+    Kaminari::Helpers::NextPage.new(self, params: search_state, param_name: request_keys[:page], current_page: page).url
+  end
+
+  def max_page_number(response_object, pagination_object)
+    ((response_object["response"]["numFound"] / pagination_object.limit) + 1)
   end
 end
