@@ -91,6 +91,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'docker-stack'
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
