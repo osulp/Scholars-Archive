@@ -10,13 +10,13 @@ RSpec.feature 'Create a Administrative Report Or Publication', js: false do
     let(:current_user) { user }
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test Default Admin Set"],
+      AdminSet.create(title: ["Test Administrative Report or Publication Admin Set"],
              description: ["A substantial description"],
              edit_users: ["admin"])
     end
 
     let(:permission_template) do
-      Hyrax::PermissionTemplate.create!(admin_set_id: admin_set.id)
+      Hyrax::PermissionTemplate.create!(source_id: admin_set.id)
     end
 
     let(:workflow) do

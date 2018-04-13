@@ -14,7 +14,6 @@
     <%= render 'relationships', presenter: @presenter %>
   </div>
   <div class="col-sm-4">
-    <%= render "show_actions", presenter: @presenter %>
     <%# Use the fully qualified path to avoid RSpec error: translation missing: en.hyrax.base.show.html.erb.last_modified %>
     <%= t('hyrax.base.show.last_modified', value: @presenter.date_modified) %>
     <%= render 'representative_media', presenter: @presenter %>
