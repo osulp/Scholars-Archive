@@ -11,13 +11,13 @@ RSpec.feature 'Create a Eesc Publication', skip: true, type: :feature do
     end
 
     let(:admin_set) do
-      AdminSet.create(title: ["A completely unique name"],
+      AdminSet.create(title: ["Test EESC Publication Admin Set"],
              description: ["A substantial description"],
              edit_users: [user.user_key])
     end
 
     let(:permission_template) do
-      Hyrax::PermissionTemplate.create!(admin_set_id: admin_set.id)
+      Hyrax::PermissionTemplate.create!(source_id: admin_set.id)
     end
 
     let(:workflow) do
