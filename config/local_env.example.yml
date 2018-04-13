@@ -49,3 +49,6 @@ SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8984/rest
 # SOLR index server
 SCHOLARSARCHIVE_SOLR_HOST: localhost
 SCHOLARSARCHIVE_SOLR_URL: http://localhost:8983/solr/hydra-development
+
+# Capistrano deployment log path
+SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG: /path/to/app/revisions.log
