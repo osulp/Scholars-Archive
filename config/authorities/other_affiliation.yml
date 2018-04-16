@@ -122,3 +122,12 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/BeginningResearchersSupportProgram"
   term: "Beginning Researchers Support Program"
   active: true
+- id: "http://id.loc.gov/authorities/names/no2009155203"
+  term: "Kiewit Center for Infrastructure and Transportation"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/CoRIS"
+  term: "Collaborative Robotics and Intelligent Systems (CoRIS) Institute"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/CenterForSmallFarmsAndCommunityFoodSystems"
+  term: "Center for Small Farms and Community Food Systems"
+  active: true
