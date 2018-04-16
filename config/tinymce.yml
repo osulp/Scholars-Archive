@@ -1,7 +1,8 @@
 menubar: false
 toolbar1: styleselect | bold italic | undo redo
-toolbar2: table | fullscreen | image
+toolbar2: table | fullscreen | image | link
 plugins:
   - table
   - fullscreen
   - image
+  - link
