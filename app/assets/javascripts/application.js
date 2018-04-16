@@ -24,5 +24,6 @@
 //= require default_datatable_order
 //= require 'blacklight_range_limit'
 //= require browse_everything
+//= require tinymce
 //= require_tree .
 //= require hyrax
