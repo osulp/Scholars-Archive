@@ -5,4 +5,4 @@ en:
     select_type:
       undergraduate_thesis_or_project:
         name:               "Undergraduate Thesis Or Project"
-        description:        "Thesis and non-thesis undergraduate projects, papers, and presentations"
+        description:        "Theses and projects required for completion of Undergraduate degrees."
