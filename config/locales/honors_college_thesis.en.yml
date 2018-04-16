@@ -5,4 +5,4 @@ en:
     select_type:
       honors_college_thesis:
         name:               "Honors College Thesis"
-        description:        "Thesis from the University Honors College"
+        description:        "Theses for the University Honors College."
