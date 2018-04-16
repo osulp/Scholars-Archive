@@ -1,5 +1,5 @@
 revision = ''
-revision_file_path = File.join(Rails.root, '..', 'revisions.log')
+revision_file_path = ENV['SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG'] || File.join(Rails.root, '..', 'revisions.log')
 begin
   lines = File.open(revision_file_path).to_a.map{ |line| line.chomp }
   last_revision = lines.last.split(' ')[3].gsub(')','')
