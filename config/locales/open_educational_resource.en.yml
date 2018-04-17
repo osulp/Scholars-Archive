@@ -5,4 +5,4 @@ en:
     select_type:
       open_educational_resource:
         name:               "Open Educational Resource"
-        description:        "OERs from Open OSU and other sources"
+        description:        "OERs from Open OSU and other sources."

@@ -5,4 +5,4 @@ en:
     select_type:
       conference_proceedings_or_journal:
         name:               "Conference Proceedings Or Journal"
-        description:        "Content that is deposited as part of an OSU Published Conference Proceedings or OSU Published Journal"
+        description:        "Content that is deposited as part of an OSU Published Conference Proceedings or OSU Published Journal."
