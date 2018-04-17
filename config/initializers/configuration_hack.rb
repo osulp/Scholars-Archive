@@ -10,4 +10,7 @@ Hyrax::Configuration.class_eval do
 
   attr_writer :recaptcha_secret_key
   attr_reader :recaptcha_secret_key
+
+  attr_writer :pagination_links_range
+  attr_reader :pagination_links_range
 end
