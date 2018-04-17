@@ -157,12 +157,16 @@ div#date_wrapper, div#geo_wrapper {
 }
 
 .select2-container {
-  width: 125% !important;
+  width: 75% !important;
   border: none !important;
 }
 
 #s2id_find_child_work {
-  width: 95% !important;
+  width: 75% !important;
+}
+
+table[data-behavior="child-relationships"] > tbody > tr > td {
+  max-width: 0;
 }
 
 .form-group .controlled_vocabulary {
