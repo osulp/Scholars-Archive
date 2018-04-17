@@ -7,9 +7,5 @@ module Hyrax
 
     self.model_class = ::UndergraduateThesisOrProject
     self.required_fields -= [:degree_grantors]
-
-    def primary_terms
-      super + [:degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year, :contributor_advisor, :contributor_committeemember]
-    end
   end
 end
