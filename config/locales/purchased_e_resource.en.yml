@@ -5,4 +5,4 @@ en:
     select_type:
       purchased_e_resource:
         name:               "Purchased e-Resource"
-        description:        "Purchased e-Resource works"
+        description:        "Purchased e-Resource works."

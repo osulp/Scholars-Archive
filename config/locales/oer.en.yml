@@ -5,4 +5,4 @@ en:
     select_type:
       oer:
         name:               "OER"
-        description:        "Open Educational Resources including curricula and learning objects"
+        description:        "Open Educational Resources including curricula and learning objects."

@@ -5,4 +5,4 @@ en:
     select_type:
       article:
         name:               "Article"
-        description:        "Scholarly research articles"
+        description:        "Scholarly research articles."
