@@ -5,11 +5,11 @@ namespace :scholars_archive do
   desc "Resource Type Processing"
   task process_resource_type: :environment do
     resource_type_csv = ENV['resource_type_csv']
-    process(resource_type_csv)
+    process_resource_type(resource_type_csv)
   end
 end
 
-def process(resource_type_csv)
+def process_resource_type(resource_type_csv)
   csv_file = File.join(File.dirname(__FILE__), resource_type_csv)
   lines = CSV.read(csv_file, headers: true, encoding: 'ISO-8859-1:UTF-8').map(&:to_hash)
   lines.each do |line|
