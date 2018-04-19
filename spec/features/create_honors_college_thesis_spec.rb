@@ -7,7 +7,6 @@ include Warden::Test::Helpers
 RSpec.feature 'Create a Honors College Thesis', js: false do
   context 'a logged in user' do
     let(:user) { User.first }
-    let(:role) { Role.find_or_create_by(name: "admin")}
     let(:current_user) { user }
 
     let(:admin_set) do
@@ -61,15 +60,11 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       Devise.cas_create_user = true
       User.authenticate_with_cas_ticket(@ticket)
 
-      allow(user).to receive(:admin?).and_return(true)
-      role.users << user
-
       login_as user
       visit new_hyrax_honors_college_thesis_path
     end
 
-    it "creates a new work" do
-      expect(page).to have_content "Add New Honors College Thesis"
+    it "renders the new form" do
       fill_in 'honors_college_thesis_title', with: 'Test Honors College Thesis'
       fill_in 'Creator', with: 'Test Honors College Thesis Creator'
       fill_in 'Commencement Year', with: '2018'
@@ -78,10 +73,9 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       select "In Copyright", :from => "honors_college_thesis_rights_statement"
       check 'agreement'
 
-      select "Bachelor's", :from => "honors_college_thesis_degree_level"
-      find('body').click
       select "Zoology", :from => "honors_college_thesis_degree_field"
       find('body').click
+
       select "Master of Arts (M.A.)", :from => "honors_college_thesis_degree_name"
       find('body').click
 
@@ -92,10 +86,7 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
 
       choose('honors_college_thesis_visibility_open')
 
-      click_button 'Save'
-      expect(page).to have_content 'Your files are being processed by ScholarsArchive@OSU'
-      visit '/dashboard/my/works/'
-      expect(page).to have_content 'Test Honors College Thesis'
+      expect(page).to have_content "Add New Honors College Thesis"
     end
 
     context "sees default form values" do
@@ -105,8 +96,14 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       it "default degree grantors" do
         expect(page).to have_select('honors_college_thesis_degree_grantors', selected: 'Oregon State University')
       end
+      it "default degree level" do
+        expect(page).to have_select('honors_college_thesis_degree_level', selected: "Bachelor's")
+      end
       it "default non-academic affiliation" do
         expect(page).to have_select('honors_college_thesis_other_affiliation', selected: 'Honors College')
+      end
+      it "default peerreviewed" do
+        expect(page).to have_select('honors_college_thesis_peerreviewed', selected: 'No')
       end
     end
   end
