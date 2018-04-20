@@ -56,3 +56,7 @@ en:
         text: "Embargo"
     errors:
       graduation_year_error: "Invalid value. Please ensure a year is used in this field (e.g 1908)"
+
+    works:
+      create:
+        after_create_html: "ScholarsArchive@OSU has received your upload. Your file is currently being processed. Thank you for your deposit."
