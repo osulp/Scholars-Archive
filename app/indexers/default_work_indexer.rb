@@ -18,7 +18,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
       degree_field_labels = ScholarsArchive::DegreeFieldService.new.all_labels(object.degree_field)
-      byebug
       object.triple_powered_properties.each do |o|
         if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
           uris = object.send(o[:field])
