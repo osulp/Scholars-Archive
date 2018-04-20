@@ -12,8 +12,8 @@
     <%= content_tag :h2, "File Analytics" %>
     <div class="alert alert-info">
       <i class="glyphicon glyphicon-signal large-icon"></i>
-      <% if @stats.model.date_available.present? %>
-        <%= content_tag :strong, @stats.total_pageviews %> views and <%= content_tag :strong, @stats.total_downloads %> downloads since <%= Date.strptime(@stats.model.date_available).strftime("%B %-d, %Y") %>
+      <% if @stats.model.parent.date_available.present? %>
+        <%= content_tag :strong, @stats.total_pageviews %> views and <%= content_tag :strong, @stats.total_downloads %> downloads since <%= Date.strptime(@stats.model.parent.date_available).strftime("%B %-d, %Y") %>
       <% else %>
         <%= content_tag :strong, @stats.total_pageviews %> views and <%= content_tag :strong, @stats.total_downloads %> downloads since <%= @stats.created.strftime("%B %-d, %Y") %>
       <% end %>
