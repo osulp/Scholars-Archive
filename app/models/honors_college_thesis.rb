@@ -24,8 +24,8 @@ class HonorsCollegeThesis < ActiveFedora::Base
 
   private
   def set_defaults
-    self.resource_type ||= ["Honors College Thesis"]
-    self.other_affiliation ||= ["http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege"]
+    self.resource_type = ["Honors College Thesis"] if self.resource_type.empty?
+    self.other_affiliation = ["http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege"] if self.other_affiliation.empty?
     self.degree_level ||= "Bachelor's"
     self.peerreviewed ||= "FALSE"
   end
