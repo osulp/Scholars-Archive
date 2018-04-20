@@ -16,4 +16,9 @@ class AdministrativeReportOrPublication < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   self.human_readable_type = 'Administrative Report Or Publication'
+
+  private
+  def set_defaults
+    self.peerreviewed ||= 'FALSE'
+  end
 end

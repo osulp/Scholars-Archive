@@ -6,10 +6,13 @@ module ScholarsArchive
     #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
     included do
+      # Set the visibility for all works
       after_initialize :set_default_visibility
       def set_default_visibility
         self.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC if new_record?
       end
+      # Provide each model a hook to set property defaults
+      after_initialize :set_defaults, unless: :persisted?
 
       property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
         index.as :stored_searchable
