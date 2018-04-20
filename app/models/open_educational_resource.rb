@@ -18,4 +18,8 @@ class OpenEducationalResource < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   self.human_readable_type = 'Open Educational Resource'
+
+  private
+  def set_defaults
+  end
 end

@@ -17,4 +17,8 @@ class EescPublication < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
 
   self.human_readable_type = 'EESC Publication'
+
+  private
+  def set_defaults
+  end
 end

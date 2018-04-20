@@ -20,6 +20,13 @@ class HonorsCollegeThesis < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-
   self.human_readable_type = 'Honors College Thesis'
+
+  private
+  def set_defaults
+    self.resource_type ||= ["Honors College Thesis"]
+    self.other_affiliation ||= ["http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege"]
+    self.degree_level ||= "Bachelor's"
+    self.peerreviewed ||= "FALSE"
+  end
 end

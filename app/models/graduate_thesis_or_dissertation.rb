@@ -20,4 +20,9 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   self.human_readable_type = 'Graduate Thesis Or Dissertation'
+
+  private
+  def set_defaults
+    self.peerreviewed ||= 'FALSE'
+  end
 end

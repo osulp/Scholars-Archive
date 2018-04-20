@@ -11,7 +11,6 @@ class ConferenceProceedingsOrJournal < ActiveFedora::Base
 
   self.indexer = ArticleIndexer
 
-
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
   validates :title, presence: { message: 'Your work must have a title.' }
@@ -20,4 +19,9 @@ class ConferenceProceedingsOrJournal < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   self.human_readable_type = 'Conference Proceedings Or Journal'
+
+  private
+  def set_defaults
+    self.peerreviewed ||= 'FALSE'
+  end
 end

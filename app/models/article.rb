@@ -19,4 +19,8 @@ class Article < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
 
   self.human_readable_type = 'Article'
+
+  private
+  def set_defaults
+  end
 end
