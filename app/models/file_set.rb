@@ -2,4 +2,8 @@
 class FileSet < ActiveFedora::Base
   include ::Hyrax::FileSetBehavior
   include ::ScholarsArchive::DefaultMetadata
+
+  private
+  def set_defaults
+  end
 end
