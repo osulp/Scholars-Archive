@@ -8,7 +8,7 @@
 # -   total_downloads for fileset
 
 require 'csv'
-require 'hyrax/file_usage'
+
 namespace :scholars_archive do
   desc "Get Total Downloads for Fileset"
   task get_fileset_downloads: :environment do
@@ -39,8 +39,8 @@ namespace :scholars_archive do
             stats = Hyrax::FileUsage.new(fileset_id)
             total_downloads = stats.total_downloads
             csv << [work_id, work.title.first, work.graduation_year, work.degree_level, work.degree_name.first,
-            work.degree_field.first, work.academic_affiliation.first, work.admin_set.titlte.first, fileset_id,
-            fileset.date_uploaded, fileset.title.first]
+            work.degree_field.first, work.academic_affiliation.first, work.admin_set.title.first, fileset_id,
+            fileset.date_uploaded, fileset.title.first, total_downloads]
           end
         rescue => e
           puts "ERROR processing work: #{work_id} : #{e}"
