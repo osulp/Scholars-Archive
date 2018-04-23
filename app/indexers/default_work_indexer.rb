@@ -27,7 +27,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
           uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
           labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
         end
-        byebug
         solr_doc[o[:field].to_s + '_label_ssim'] = labels
         solr_doc[o[:field].to_s + '_label_tesim'] = labels
       end
