@@ -51,7 +51,7 @@ class SolrDocument
   end
 
   def degree_field_label
-    self['degree_field_label_ssim']
+    ScholarsArchive::LabelParserService.parse_label_uris(self['degree_field_label_ssim'])
   end
 
   def degree_grantors_label
