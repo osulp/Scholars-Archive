@@ -17,7 +17,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       license_labels = ScholarsArchive::LicenseService.new.all_labels(object.license)
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
-      degree_field_labels = ScholarsArchive::DegreeFieldService.new.all_labels_truncated(object.degree_field)
+
       object.triple_powered_properties.each do |o|
         if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
           uris = object.send(o[:field])
@@ -34,8 +34,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
 
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
       solr_doc['rights_statement_label_tesim'] = rights_statement_labels
-      solr_doc['degree_field_label_ssim'] = degree_field_labels
-      solr_doc['degree_field_label_tesim'] = degree_field_labels
       solr_doc['license_label_ssim'] = license_labels
       solr_doc['license_label_tesim'] = license_labels
       solr_doc['language_label_ssim'] = language_labels
