@@ -9,10 +9,6 @@ module ScholarsArchive
       @authority.all.select { |r| values.include?(r[:id]) }.map { |hash| hash['label'] }
     end
 
-    def all_labels_truncated(values)
-      all_labels(values).map{|value| value.split("-").first}
-    end
-
     def select_sorted_active_options
       select_active_options.sort
     end

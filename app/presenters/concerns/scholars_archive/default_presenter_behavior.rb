@@ -21,7 +21,6 @@ module ScholarsArchive
                :degree_level,
                :degree_name,
                :degree_field,
-               :degree_field_label,
                :digitization_spec,
                :doi,
                :dspace_collection,
