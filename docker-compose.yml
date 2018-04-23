@@ -1,0 +1,159 @@
+version: '2'
+
+volumes:
+  blazegraph:
+  fcrepo:
+  solr:
+  redis:
+  app:
+
+networks:
+  external:
+  internal:
+
+services:
+  blazegraph:
+    image: lyrasis/blazegraph:2.1.4
+    expose:
+      - 8080
+    volumes:
+      - blazegraph:/var/lib/jetty
+    networks:
+      internal:
+
+  solr:
+    image: solr:alpine
+    expose:
+      - 8983
+    volumes:
+      - solr:/opt/solr/server/solr/mycores
+      - ./solr/conf:/opt/solr/server/solr/configsets/_default/conf
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - hydra-${RAILS_ENV}
+    networks:
+      internal:
+
+  fcrepo:
+    image: nulib/fcrepo4
+    expose:
+      - 8080
+    volumes:
+      - fcrepo:/data
+    environment:
+      - JAVA_OPTS=${JAVA_OPTS} -Dfcrepo.modeshape.configuration="classpath:/config/file-simple/repository.json" -Dfcrepo.object.directory="/data/objects" -Dfcrepo.binary.directory="/data/binaries"
+    networks:
+      internal:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=12341234
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=12341234
+      - MYSQL_DATABASE=development
+    networks:
+      internal:
+
+  db_test:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=12341234
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=12341234
+      - MYSQL_DATABASE=test
+    networks:
+      internal:
+
+  app:
+    build: .
+    volumes:
+      - .:/data
+      - app:/data/tmp/uploads
+    networks:
+      internal:
+
+  web:
+    extends: app
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -p 3000 -b '0.0.0.0' -e ${RAILS_ENV}"
+    depends_on:
+      - db
+      - db_test
+      - solr
+      - fcrepo
+      - redis
+      - memcache
+      - db_migrate
+    expose:
+      - 3000
+    links:
+      - db
+      - db_test
+      - fcrepo
+      - solr
+      - redis
+
+  workers:
+    extends: app
+    command: bundle exec sidekiq
+    depends_on:
+      - db
+      - db_test
+      - solr
+      - fcrepo
+      - redis
+      - initialize_app
+      - db_migrate
+    links:
+      - db
+      - db_test
+      - fcrepo
+      - solr
+      - redis
+
+  initialize_app:
+    extends: app
+    restart: on-failure
+    command: echo 'Not using Zookeeper'
+
+  db_migrate:
+    extends: app
+    restart: on-failure
+    command: bundle exec rails db:migrate RAILS_ENV=${RAILS_ENV}
+    depends_on:
+      - db
+      - db_test
+    links:
+      - db
+      - db_test
+
+  lb:
+    image: dockercloud/haproxy:1.5.3
+    links:
+      - web
+    environment:
+      - DOCKER_TLS_VERIFY
+      - DOCKER_HOST
+      - DOCKER_CERT_PATH
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      # You must uncomment this line if and only if you are running docker-machine
+      # - $DOCKER_CERT_PATH:$DOCKER_CERT_PATH
+    networks:
+      internal:
+      external:
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis:/data
+    networks:
+      internal:
+
+  memcache:
+    image: memcached:alpine
+    networks:
+      internal:

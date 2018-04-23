@@ -25,7 +25,6 @@ module ScholarsArchive
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Pacific Time (US & Canada)'
-    config.active_job.queue_adapter = :sidekiq
     config.autoload_paths += %W(#{config.root}/lib)
 
     # load and inject local_env.yml key/values into ENV
@@ -36,12 +35,14 @@ module ScholarsArchive
       end if File.exists?(env_file)
     end
 
+    config.active_job.queue_adapter = ENV.fetch('ACTIVE_JOB_QUEUE_ADAPTER', 'sidekiq').to_sym
+
     #Allows for the application to use classes in
     #lib/scholars_archive/triple_powered_properties
     config.enable_dependency_loading = true
     config.autoload_paths << Rails.root.join('lib')
 
-    config.rubycas.cas_base_url = ENV["SCHOLARSARCHIVE_CAS_BASE_URL"] || 'https://cas.myorganization.com'
+    config.rubycas.cas_base_url = ENV.fetch('SCHOLARSARCHIVE_CAS_BASE_URL', 'https://cas.myorganization.com')
     config.to_prepare  do
       Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::InterpretVisibilityActor, ScholarsArchive::Actors::NestedFieldsOperationsActor)
       Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, ScholarsArchive::Actors::AddOtherFieldOptionActor)

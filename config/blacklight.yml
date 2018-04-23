@@ -1,13 +1,13 @@
 development:
   adapter: solr
-  url: http://<%= ENV['SCHOLARSARCHIVE_SOLR_HOST'] || 'localhost' %>:<%= ENV['SOLR_DEVELOPMENT_PORT'] || 8983 %>/solr/hydra-development
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8983') %>/solr/hydra-development
 test: &test
   adapter: solr
-  url: http://<%= ENV['SCHOLARSARCHIVE_SOLR_HOST'] || 'localhost' %>:<%= ENV['SOLR_TEST_PORT'] || 8985 %>/solr/hydra-test
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8985') %>/solr/hydra-test
 production:
   adapter: solr
-  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:8983/solr/hydra-prod" %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/hydra-production') %>
 staging:
   adapter: solr
-  url: <%= ENV['SCHOLARSARCHIVE_SOLR_URL'] || "http://127.0.0.1:8983/solr/hydra-staging" %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/hydra-staging') %>
 
