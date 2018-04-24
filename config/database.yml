@@ -24,7 +24,7 @@ development:
   database: 'db/development.sqlite3'
   <% else %>
   host: <%= ENV.fetch('SCHOLARSARCHIVE_DB_HOST', 'localhost') == 'localhost' ? 'localhost' : 'db' %>
-  database: <%= ENV.fetch('RAILS_ENV', 'sa-development') %>
+  database: <%= ENV.fetch('SCHOLARSARCHIVE_DB_HOST', 'localhost') == 'localhost' ? ENV.fetch('SCHOLARSARCHIVE_DB') : 'development' %>
   <% end %>
 
 # Warning: The database defined as "test" will be erased and
@@ -35,8 +35,8 @@ test:
   <% if ENV.fetch('SCHOLARSARCHIVE_ADAPTER', 'sqlite3').casecmp('sqlite3').zero? %>
   database: 'db/test.sqlite3'
   <% else %>
-  host: <%= ENV.fetch('SCHOLARSARCHIVE_DB_HOST', 'localhost') == 'localhost' ? 'localhost' : 'db_test' %>
-  database: <%= ENV.fetch('RAILS_ENV', 'sa-test') %>
+  host: <%= ENV.fetch('SCHOLARSARCHIVE_DB_HOST', 'localhost') == 'localhost' ? 'localhost' : 'db' %>
+  database: <%= ENV.fetch('SCHOLARSARCHIVE_DB_HOST', 'localhost') == 'localhost' ? ENV.fetch('SCHOLARSARCHIVE_DB') : 'development' %>
   <% end %>
 
 production: &production

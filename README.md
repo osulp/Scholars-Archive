@@ -3,11 +3,16 @@
 ## Requirements
 The details provided assume that the official Docker daemon is running in the background. Download and install Docker Community Edition from https://www.docker.com/community-edition.
 
-_Suggested_: If using ohmyzsh (http://ohmyz.sh/), add the docker-compose plugin to the .zshrc for better command-line aliases and integration.
+**Suggested:** If using ohmyzsh (http://ohmyz.sh/), add the docker-compose plugin to the .zshrc for better command-line aliases and integration.
 
+**Important:** _By default, using the included `.env` file, docker will run the services in the context of `RAILS_ENV=development`_.
+
+# Docker Compose basics
 ## Build the base application container
 `$ docker-compose build`
+
 ## Start all of the services
+
 `$ docker-compose up` : Start the containers in the foreground
 `$ docker-compose up -d` : Start the containers in the background
 
@@ -28,14 +33,14 @@ Ohmyzsh with the docker-compose plugin makes executing these types of commands e
 
 `$ dce web bundle exec rails c` : Equivilent for docker-compose exec ...
 
-## Local development
+# Local development
 Use Docker to expose the app to localhost (so you can just visit http://localhost instead of finding the app's IP address assigned by Docker), do this:
 
 `$ cp docker-compose.override.example.yml docker-compose.override.yml`
 
 You can also customize that file to expose ports for things like Solr or Fedora, Redis, etc.
 
-## Attaching a debugger to the web application
+# Attaching a debugger to the web application
 `$ cp docker-compose.override.example.yml docker-compose.override.yml`
 
 Uncomment the line that runs the application using rdebug-ide:
@@ -56,4 +61,18 @@ Attach the debugger to the container, the steps to do this are specific to the I
   "remoteWorkspaceRoot": "/data",
   "showDebuggerOutput": true
 },
+```
+
+# Running specs
+Docker and local configurations are structured such that setting `RAILS_ENV=test` before bringing up the docker services will set SOLR and Fedora connections to use the proper index/repository. There are two database services configured (best practice for MySQL in docker), and the other services are configured to handle both `development` and `test` environments properly.
+
+## Bring up docker in the test environment
+```
+$ docker-compose down
+$ RAILS_ENV=test docker-compose up
+
+# after the services have finished booting, in another window
+
+$ docker-compose run web bundle exec rspec
+# ... watch the tests run
 ```

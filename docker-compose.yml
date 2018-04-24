@@ -1,17 +1,20 @@
 version: '2'
 
 volumes:
-  blazegraph:
-  fcrepo:
-  solr:
-  redis:
   app:
+  blazegraph:
+  db:
+  fcrepo:
+  redis:
+  solr:
 
 networks:
   external:
   internal:
 
 services:
+  ##
+  # Run blazegraph and persist data across sessions.
   blazegraph:
     image: lyrasis/blazegraph:2.1.4
     expose:
@@ -21,6 +24,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
   solr:
     image: solr:alpine
     expose:
@@ -35,6 +40,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Run Fedora repository, persisting data in a volume across sessions.
   fcrepo:
     image: nulib/fcrepo4
     expose:
@@ -46,6 +53,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Run an instance of MySQL with a database named 'development' for running specs. See config/database.yml
   db:
     image: mysql:5.7
     restart: always
@@ -54,9 +63,14 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=12341234
       - MYSQL_DATABASE=development
+    volumes:
+      - db:/var/lib/mysql
     networks:
       internal:
 
+  ##
+  # Run an instance of MySQL with a database named 'test' for running specs. See config/database.yml. Has no volume
+  # and doesn't intend on persisting data across sessions.
   db_test:
     image: mysql:5.7
     restart: always
@@ -68,6 +82,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Basic image for the rails application server, see Dockerfile
   app:
     build: .
     volumes:
@@ -76,6 +92,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
   web:
     extends: app
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -p 3000 -b '0.0.0.0' -e ${RAILS_ENV}"
@@ -86,6 +104,7 @@ services:
       - fcrepo
       - redis
       - memcache
+      - initialize_blazegraph
       - db_migrate
     expose:
       - 3000
@@ -96,6 +115,8 @@ services:
       - solr
       - redis
 
+  ##
+  # Runs sidekiq to process background jobs
   workers:
     extends: app
     command: bundle exec sidekiq
@@ -106,6 +127,7 @@ services:
       - fcrepo
       - redis
       - initialize_app
+      - initialize_blazegraph
       - db_migrate
     links:
       - db
@@ -114,11 +136,28 @@ services:
       - solr
       - redis
 
+  ##
+  # Not in use, although could be used to boostrap data prior to running the web/workers
   initialize_app:
     extends: app
     restart: on-failure
     command: echo 'Not using Zookeeper'
 
+  ##
+  # Using the app image (because it has BASH), ensure that the blazegraph namespaces for test and development exist
+  initialize_blazegraph:
+    extends: app
+    restart: on-failure
+    depends_on:
+      - blazegraph
+    links:
+      - blazegraph
+    command: >
+      bash -c "curl -v -X POST -d 'com.bigdata.rdf.sail.namespace=test' --header 'Content-Type:text/plain' http://blazegraph:8080/bigdata/namespace
+      && curl -v -X POST -d 'com.bigdata.rdf.sail.namespace=development' --header 'Content-Type:text/plain' http://blazegraph:8080/bigdata/namespace"
+
+  ##
+  # Ensure that the database migrations are run on the appropriate database related to the RAILS_ENV running
   db_migrate:
     extends: app
     restart: on-failure
@@ -130,6 +169,8 @@ services:
       - db
       - db_test
 
+  ##
+  # Load balancer, although not strictly necessary.. would allow the app to work with regular port 80
   lb:
     image: dockercloud/haproxy:1.5.3
     links:
@@ -146,6 +187,8 @@ services:
       internal:
       external:
 
+  ##
+  # Redis for the background job queues
   redis:
     image: redis:alpine
     volumes:
@@ -153,6 +196,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Memcache for rails caching
   memcache:
     image: memcached:alpine
     networks:
