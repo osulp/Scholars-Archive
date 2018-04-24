@@ -65,6 +65,7 @@ services:
       - MYSQL_DATABASE=development
     volumes:
       - db:/var/lib/mysql
+      - ./config/mysql/mysqld.cnf:/etc/mysql/conf.d/custom.cnf
     networks:
       internal:
 
@@ -79,6 +80,8 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=12341234
       - MYSQL_DATABASE=test
+    volumes:
+      - ./config/mysql/mysqld.cnf:/etc/mysql/conf.d/custom.cnf
     networks:
       internal:
 
