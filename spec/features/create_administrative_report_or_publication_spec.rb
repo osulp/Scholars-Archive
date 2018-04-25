@@ -10,9 +10,14 @@ RSpec.feature 'Create a Administrative Report Or Publication', js: false do
     let(:current_user) { user }
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test Administrative Report or Publication Admin Set"],
-             description: ["A substantial description"],
-             edit_users: ["admin"])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do

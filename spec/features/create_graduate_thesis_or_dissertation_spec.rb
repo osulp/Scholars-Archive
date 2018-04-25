@@ -10,9 +10,14 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
     let(:current_user) { user }
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test Graduate Thesis or Dissertation Admin Set"],
-             description: ["A substantial description"],
-             edit_users: ["admin"])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do

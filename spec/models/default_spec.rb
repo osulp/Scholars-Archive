@@ -10,7 +10,6 @@ RSpec.describe Default do
       g.attributes = {
           :date_created => date
       }
-      g.save!(:validate => false)
       g
     }
     let(:date) { "2022-01-01" }
@@ -22,7 +21,6 @@ RSpec.describe Default do
         g.attributes = {
             :date_created => nil
         }
-        g.save!(:validate => false)
         g
       end
       it "should be blank" do
@@ -35,7 +33,6 @@ RSpec.describe Default do
         g.attributes = {
             :date_created => "typo2011-01-01"
         }
-        g.save!(:validate => false)
         g
       end
       it "should be blank" do
@@ -80,7 +77,6 @@ RSpec.describe Default do
       g.attributes = {
           :date_created => date
       }
-      g.save!(:validate => false)
       g
     }
     let(:date) { "2022-01-01" }
@@ -92,7 +88,6 @@ RSpec.describe Default do
           g.attributes = {
               :date_created => nil
           }
-          g.save!(:validate => false)
           g
         end
         it "should be blank" do
@@ -105,7 +100,6 @@ RSpec.describe Default do
           g.attributes = {
               :date_created => date_created
           }
-          g.save!(:validate => false)
           g
         end
         let(:date_created) { "1973-03-09" }
@@ -119,7 +113,6 @@ RSpec.describe Default do
           g.attributes = {
               :date_copyright => date_copyright
           }
-          g.save!(:validate => false)
           g
         end
         let(:date_copyright) { "1943" }
@@ -133,7 +126,6 @@ RSpec.describe Default do
           g.attributes = {
               :date_issued => date_issued
           }
-          g.save!(:validate => false)
           g
         end
         let(:date_issued) { "1943" }
@@ -184,7 +176,6 @@ RSpec.describe Default do
     it "should be able to delete items" do
       g = described_class.new(title: ['test'], keyword: ['test'])
       g.nested_geo_attributes = attributes
-      g.save!(:validate => false)
       g.nested_geo_attributes = [
           {
               :id => g.nested_geo.first.id,
@@ -194,25 +185,17 @@ RSpec.describe Default do
               :label => "Banana"
           }
       ]
-      g.save!(:validate => false)
-      g.reload
-
       expect(g.nested_geo.length).to eq 1
       expect(g.nested_geo.first.label).to eq ["Banana"]
     end
     it "should work on already persisted items" do
-      g = described_class.new.tap{|x| x.save(:validate => false)}
+      g = described_class.new(title: ['test'], keyword: ['test'])
       g.nested_geo_attributes = attributes
-
-      g.save!(:validate => false)
-      g.reload
-
       expect(g.nested_geo.first.label).to eq ["Salem"]
     end
     it "should be able to edit" do
       g = described_class.new(title: ['test'], keyword: ['test'])
       g.nested_geo_attributes = attributes
-      g.save!(:validate => false)
       expect(g.nested_geo.length).to eq 1
       expect(g.nested_geo.first.label).to eq ["Salem"]
 
@@ -242,9 +225,6 @@ RSpec.describe Default do
             "label" => "2"
         }
     ]
-
-    g.save!(:validate => false)
-    g.reload
     expect(g.nested_geo.length).to eq 2
     expect(g.nested_geo.map{|x| x.label.first}).to contain_exactly("1","2")
   end
@@ -259,10 +239,6 @@ RSpec.describe Default do
               }
           ]
       }
-
-      g.save!(:validate => false)
-      g.reload
-
       expect(g.nested_geo.first.label).to eq ["Salem"]
     end
   end
@@ -273,4 +249,3 @@ RSpec.describe Default do
     end
   end
 end
-

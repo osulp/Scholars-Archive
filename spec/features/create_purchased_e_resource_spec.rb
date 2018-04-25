@@ -13,9 +13,14 @@ RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: fal
     end
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test Purchased E Resource Admin Set"],
-             description: ["A substantial description"],
-             edit_users: [user.user_key])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do
