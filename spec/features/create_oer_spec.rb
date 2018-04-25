@@ -11,9 +11,14 @@ RSpec.feature 'Create a Oer', skip: true, type: :feature do
     end
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test OER Admin Set"],
-             description: ["A substantial description"],
-             edit_users: [user.user_key])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do

@@ -7,7 +7,6 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
     Default.new do |w|
       w.title = ['test']
       w.rights_statement = [rights_statement_uri]
-      w.save!
     end
   }
   let(:solr_document) do
@@ -41,6 +40,7 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
     allow_any_instance_of(ScholarsArchive::DegreeGrantorsService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['http://id.loc.gov/authorities/names/n80017721','Oregon State University']])
     allow_any_instance_of(ScholarsArchive::OtherAffiliationService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['http://opaquenamespace.org/ns/subject/OregonStateUniversityBioenergyMinorProgram', 'Oregon State University Bioenergy Minor Program']])
     allow(presenter).to receive(:workflow).and_return(workflow_presenter)
+    allow(presenter).to receive(:id).and_return('blah')
     assign(:presenter, presenter)
     render 'hyrax/base/work_description.erb', presenter: presenter
   end

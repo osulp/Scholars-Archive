@@ -11,9 +11,14 @@ RSpec.feature 'Create a Open Educational Resource', skip: true, type: :feature d
     end
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test Open Educational Resource Admin Set"],
-             description: ["A substantial description"],
-             edit_users: [user.user_key])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do
