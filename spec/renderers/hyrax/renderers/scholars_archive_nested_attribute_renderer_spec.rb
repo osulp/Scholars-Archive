@@ -15,7 +15,7 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
         %(
       <tr>
       <th>Sholars archive nested</th>
-      <td><ul class="tabular"><li class="attribute sholars_archive_nested">          <span itemprop="relatedLink" itemscope itemtype="http://schema.org/relatedLink">
+      <td><ul class="tabular"><li class="attribute attribute-sholars_archive_nested">          <span itemprop="relatedLink" itemscope itemtype="http://schema.org/relatedLink">
                   <span itemprop="url">
                     <a href="/catalog?q=#{label_q}&amp;search_field=nested_related_items_label_ssim">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
                   </span>
@@ -37,7 +37,7 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
         %(
       <tr>
       <th>Sholars archive nested</th>
-      <td><ul class="tabular"><li class="attribute sholars_archive_nested">          <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+      <td><ul class="tabular"><li class="attribute attribute-sholars_archive_nested">          <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
                   <span itemprop="name">
                     <a href="/catalog?f%5Bnested_geo_label_ssim%5D%5B%5D=#{label_geo_q}">#{label_geo.to_s}</a>
                   </span>
