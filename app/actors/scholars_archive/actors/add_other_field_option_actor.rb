@@ -4,17 +4,17 @@ module ScholarsArchive
     # * #create
     # * #update
     # it must instantiate the next actor in the chain and instantiate it.
-    class AddOtherFieldOptionActor < Hyrax::Actors::BaseActor
+    class AddOtherFieldOptionActor < Hyrax::Actors::AbstractActor
       # @param [Hyrax::Actors::Environment] env
       # @return [Boolean] true if create was successful
       def create(env)
-        save_custom_option(env) && next_actor.create(env)
+        next_actor.create(env) && save_custom_option(env)
       end
 
       # @param [Hyrax::Actors::Environment] env
       # @return [Boolean] true if update was successful
       def update(env)
-        update_custom_option(env) && next_actor.update(env)
+        next_actor.update(env) && update_custom_option(env)
       end
 
       private
