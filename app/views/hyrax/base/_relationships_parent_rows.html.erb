@@ -3,21 +3,7 @@
   <%= render 'relationships_parent_row', type: model_name, items: items, presenter: presenter %>
 <% end %>
 
-<dt> <%= "Parents" %> </dt>
-<dd>
-    <% if ScholarsArchive::ParentQueryService.query_parents_for_id(presenter.solr_document.id).blank? %>
-      <p><%= "Empty" %></p>
-    <% else %>
-      <ul class="tabular">
-        <% ScholarsArchive::ParentQueryService.query_parents_for_id(presenter.solr_document.id).each do |item| %>
-          <li class='attribute attribute-title'>
-            <%= link_to item["title_tesim"].first, url_for_document(SolrDocument.find(item["id"])) %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </dd>
-
+<%= render 'parent_relationship_table', child_id: presenter.solr_document.id %>
 
 <%# Render grouped presenters. Show rows if there are any items of that type %>
 <% presenter.presenter_types.each do |type| %>

@@ -1,4 +1,5 @@
 en:
+  parents: "Parents"
   blacklight:
     search:
       fields:
