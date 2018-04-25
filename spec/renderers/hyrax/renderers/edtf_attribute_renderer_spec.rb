@@ -11,7 +11,7 @@ RSpec.describe Hyrax::Renderers::EdtfAttributeRenderer do
       %(
       <tr>
       <th>Edtf</th>
-      <td><ul class="tabular"><li class="attribute edtf"><a href="/catalog?f%5Bdate_created_sim%5D%5B%5D=2017-06%2F2017-07">2017-06/2017-07</a></li></ul></td>
+      <td><ul class="tabular"><li class="attribute attribute-edtf"><a href="/catalog?f%5Bdate_created_sim%5D%5B%5D=2017-06%2F2017-07">2017-06/2017-07</a></li></ul></td>
       </tr>
       )
     end

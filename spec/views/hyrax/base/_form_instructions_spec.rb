@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'spec_helper'
 
 RSpec.describe 'hyrax/base/_form.erb', type: :view do
   let(:current_user) { User.new(username: 'admin', email: 'test@example.com', guest: false) }
@@ -33,7 +32,6 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
   let(:work) {
     Default.new do |w|
       w.title = ['test']
-      w.save!
     end
   }
   let(:curation_concern) {work}
