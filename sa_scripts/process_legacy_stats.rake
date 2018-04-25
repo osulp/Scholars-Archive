@@ -5,11 +5,12 @@ namespace :scholars_archive do
   desc "Process legacy stats file"
   task process_legacy_stats: :environment do
     stats_dir = ENV['stats_dir']
-    process(stats_dir)
+    bitstream_filename_csv = ENV['bitstream_filename_csv']
+    process(stats_dir, bitstream_filename_csv)
   end
 end
 
-def process(stats_dir)
+def process(stats_dir, bitstream_filename_csv)
   csv_output_path = File.join(Rails.root, 'tmp', 'legacy-stats-processed.csv')
   CSV.open(csv_output_path, 'ab') do |csv|
     user = User.first
@@ -17,9 +18,11 @@ def process(stats_dir)
       begin
         puts "Processing #{File.join(stats_dir, handle)}"
         rows = get_csv_rows(stats_dir, handle)
+        # move processing rows here, instead of in record processing, to speedup process
+        filename_rows = add_filename_to_rows(rows, bitstream_filename_csv)
         work = find_parent_work(handle)
-        set_work_view_stats(work, rows, user, csv)
-        set_file_download_stats(work, rows, user, csv)
+        #set_work_view_stats(work, filename_rows, user, csv)
+        set_file_download_stats(work, filename_rows, user, csv)
       rescue => e
         puts "ERROR processing #{File.join(stats_dir, handle)} : #{e}"
       end
@@ -85,5 +88,23 @@ end
 
 def group_by_file(rows, column)
   rows.group_by { |r| r[column] }
+end
+
+# add filename to row with missing filename
+# e.g., "bitstream","","62440","","",""...
+# to "bitstream","","62440","ORIGINAL","3","ec1621-e.pdf"...
+def add_filename_to_rows(rows, bitstream_filename_csv)
+  csv_file = File.join(File.dirname(__FILE__), bitstream_filename_csv)
+  lines = CSV.read(csv_file, headers: true, encoding: 'ISO-8859-1:UTF-8').map(&:to_hash)
+  rows.each do |row|
+    if row[0].casecmp('bitstream') == 0
+      bitstream_id = row[2]
+      filename = row[5]
+      if filename.nil? || filename.empty?
+        puts "Processing filename #{bitstream_id}"
+        row[5] = lines.select{ |l| l['bitstream_id'].casecmp(bitstream_id).zero? }.map{ |l| l['name'] }.first
+      end
+    end 
+  end
 end
 
