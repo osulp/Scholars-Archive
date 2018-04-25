@@ -15,7 +15,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       %(
       <tr>
       <th>Search and external link</th>
-      <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
+      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
       </tr>
       )
     end
@@ -40,7 +40,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
         %(
         <tr>
         <th>Search and external link</th>
-        <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a></li></ul></td>
+        <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a></li></ul></td>
         </tr>
         )
       end
