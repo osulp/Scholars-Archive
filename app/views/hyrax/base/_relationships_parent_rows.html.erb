@@ -1,0 +1,32 @@
+<%# Render presenters which aren't specified in the 'presenter_types' %>
+<% presenter.grouped_presenters(except: presenter.presenter_types).each_pair do |model_name, items| %>
+  <%= render 'relationships_parent_row', type: model_name, items: items, presenter: presenter %>
+<% end %>
+
+<dt> <%= "Parents" %> </dt>
+<dd>
+    <% if ScholarsArchive::ParentQueryService.query_parents_for_id(presenter.solr_document.id).blank? %>
+      <p><%= "Empty" %></p>
+    <% else %>
+      <ul class="tabular">
+        <% ScholarsArchive::ParentQueryService.query_parents_for_id(presenter.solr_document.id).each do |item| %>
+          <li class='attribute attribute-title'>
+            <%= link_to item["title_tesim"].first, url_for_document(SolrDocument.find(item["id"])) %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </dd>
+
+
+<%# Render grouped presenters. Show rows if there are any items of that type %>
+<% presenter.presenter_types.each do |type| %>
+  <% presenter.grouped_presenters(filtered_by: type).each_pair do |_, items| %>
+    <%= render 'relationships_parent_row', type: type, items: items, presenter: presenter %>
+  <% end %>
+<% end %>
+
+<% if current_user %>
+<%= presenter.attribute_to_html(:admin_set, render_as: :faceted, html_dl: true) %>
+<% end %>
+
