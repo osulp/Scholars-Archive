@@ -5,7 +5,9 @@ RUN apt-get update -qq && \
 RUN mkdir -p /opt/fits && \
     curl -fSL -o /opt/fits-1.0.5.zip http://projects.iq.harvard.edu/files/fits/files/fits-1.0.5.zip && \
     cd /opt && unzip fits-1.0.5.zip && chmod +X fits-1.0.5/fits.sh
-
+# Necessary for bundler to properly install some gems
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
 RUN mkdir /data
 WORKDIR /data
 ADD Gemfile /data/Gemfile

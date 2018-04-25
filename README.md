@@ -7,21 +7,41 @@ The details provided assume that the official Docker daemon is running in the ba
 
 **Important:** _By default, using the included `.env` file, docker will run the services in the context of `RAILS_ENV=development`_.
 
+# Docker notes
+- `$ docker system prune` : A command that will reclaim disk space by deleting stopped containers, networks, dangling images and build cache.
+- `$ docker volume ls` : Show a list of named volumes which hold persistent data for containers.
+- `$ docker volume rm [VOLUME NAME]` : Remove a named volume, to force the system to rebuild and start that services persistent data from scratch.
 # Docker Compose basics
 ## Build the base application container
+**Important:** Rebuilding the docker container is required whenever Gemfile or Dockerfile updates affect the application.
+
 `$ docker-compose build`
 
 ## Start all of the services
 
-`$ docker-compose up` : Start the containers in the foreground
-`$ docker-compose up -d` : Start the containers in the background
+- `$ docker-compose up` : Start the containers in the foreground
+- `$ docker-compose up -d` : Start the containers in the background
 
+## Create an administrator
+
+- Visit the site and login with OSU credentials to create a user account. (http://test.library.oregonstate.edu:3000)
+- Create an 'admin' role and add that role to the user account.
+```
+$ docker-compose exec web bundle exec rails c
+
+#within the Rails Console;
+Role.create(name: 'admin')
+User.first.roles << Role.first
+```
+
+## Load Workflows
+`$ docker-compose exec web bundle exec rails hyrax:workflow:load`
 ## Run any command on the web application container
 _$ docker-compose exec web [COMMAND]_
 
-`$ docker-compose exec web bundle exec rails c` : Open the rails console
-
-`$ docker-compose exec web bundle exec rspec` : Run the tests
+- `$ docker-compose exec web bash` : Open a terminal session on the web container
+- `$ docker-compose exec web bundle exec rails c` : Open the rails console
+- `$ docker-compose exec web bundle exec rspec` : Run the tests
 
 ### Running commands that alter the local filesystem
 When you do anything that changes the filesystem (rake tasks or otherwise), you may want to pass through your user ID so that on your local filesystem you still own the files:

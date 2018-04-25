@@ -1,4 +1,4 @@
-version: '2'
+version: '2.3'
 
 volumes:
   app:
@@ -50,6 +50,12 @@ services:
       - fcrepo:/data
     environment:
       - JAVA_OPTS=${JAVA_OPTS} -Dfcrepo.modeshape.configuration="classpath:/config/file-simple/repository.json" -Dfcrepo.object.directory="/data/objects" -Dfcrepo.binary.directory="/data/binaries"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/rest"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
     networks:
       internal:
 
@@ -99,16 +105,32 @@ services:
   # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
   web:
     extends: app
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -p 3000 -b '0.0.0.0' -e ${RAILS_ENV}"
+    # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
+    # have been run already have been run and if so it just starts the server without the first three commands
+    # taking time to run.
+    command: >
+      bash -c "bundle exec rails hyrax:default_admin_set:create
+      && bundle exec rails hyrax:default_collection_types:create
+      && bundle exec rails hyrax:workflow:load
+      && rm -f tmp/pids/server.pid
+      && bundle exec rails server -p 3000 -b '0.0.0.0' -e ${RAILS_ENV}"
     depends_on:
-      - db
-      - db_test
-      - solr
-      - fcrepo
-      - redis
-      - memcache
-      - initialize_blazegraph
-      - db_migrate
+      db:
+        condition: service_started
+      db_test:
+        condition: service_started
+      solr:
+        condition: service_started
+      fcrepo:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      memcache:
+        condition: service_started
+      initialize_blazegraph:
+        condition: service_started
+      db_migrate:
+        condition: service_started
     expose:
       - 3000
     links:
@@ -129,7 +151,6 @@ services:
       - solr
       - fcrepo
       - redis
-      - initialize_app
       - initialize_blazegraph
       - db_migrate
     links:
@@ -140,11 +161,11 @@ services:
       - redis
 
   ##
-  # Not in use, although could be used to boostrap data prior to running the web/workers
-  initialize_app:
-    extends: app
-    restart: on-failure
-    command: echo 'Not using Zookeeper'
+  # Could be used to bootstrap some data or the application state before running
+  #initialize_app:
+  #  extends: app
+  #  restart: on-failure
+  #  command: echo 'not used'
 
   ##
   # Using the app image (because it has BASH), ensure that the blazegraph namespaces for test and development exist
