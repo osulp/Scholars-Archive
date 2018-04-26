@@ -1,5 +1,5 @@
 <% parent_solr_docs = ScholarsArchive::ParentQueryService.query_parents_for_id(child_id) %>
-<dt> <%= t(".parents") %> </dt>
+<dt> <%= t("hyrax.base.parents") %> </dt>
 <dd>
   <% if parent_solr_docs.blank? %>
     <p><%= t(".empty") %></p>

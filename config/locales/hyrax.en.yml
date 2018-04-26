@@ -1,5 +1,4 @@
 en:
-  parents: "Parents"
   blacklight:
     search:
       fields:
@@ -37,6 +36,7 @@ en:
     account_name:           "ONID Account ID"
     work_url_label:         "Citeable URL"
     base:
+      parents: "Parents"
       metadata:
         attribute_name_label: Attribute Name
         attribute_values_label: Values
