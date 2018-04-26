@@ -94,8 +94,10 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'docker-stack'
+  gem 'debase'
+  gem 'debase-ruby_core_source'
   gem 'fcrepo_wrapper'
+  gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
 end
