@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180412183213) do
+ActiveRecord::Schema.define(version: 20180426200658) do
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id",                     null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20180412183213) do
     t.index ["file_set_id", "file_id"], name: "by_file_set_id_and_file_id", using: :btree
   end
 
-  create_table "collection_branding_infos", force: :cascade do |t|
+  create_table "collection_branding_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "collection_id"
     t.string   "role"
     t.string   "local_path"
@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(version: 20180412183213) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "collection_type_participants", force: :cascade do |t|
+  create_table "collection_type_participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "hyrax_collection_type_id"
     t.string   "agent_type"
     t.string   "agent_id"
     t.string   "access"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.index ["hyrax_collection_type_id"], name: "hyrax_collection_type_id"
+    t.index ["hyrax_collection_type_id"], name: "hyrax_collection_type_id", using: :btree
   end
 
   create_table "content_blocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -119,20 +119,21 @@ ActiveRecord::Schema.define(version: 20180412183213) do
     t.index ["user_id"], name: "index_file_view_stats_on_user_id", using: :btree
   end
 
-  create_table "hyrax_collection_types", force: :cascade do |t|
+  create_table "hyrax_collection_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string  "title"
-    t.text    "description"
+    t.text    "description",                limit: 65535
     t.string  "machine_id"
-    t.boolean "nestable",                   default: true,  null: false
-    t.boolean "discoverable",               default: true,  null: false
-    t.boolean "sharable",                   default: true,  null: false
-    t.boolean "allow_multiple_membership",  default: true,  null: false
-    t.boolean "require_membership",         default: false, null: false
-    t.boolean "assigns_workflow",           default: false, null: false
-    t.boolean "assigns_visibility",         default: false, null: false
-    t.boolean "share_applies_to_new_works", default: true,  null: false
-    t.boolean "brandable",                  default: true,  null: false
-    t.index ["machine_id"], name: "index_hyrax_collection_types_on_machine_id", unique: true
+    t.boolean "nestable",                                 default: true,      null: false
+    t.boolean "discoverable",                             default: true,      null: false
+    t.boolean "sharable",                                 default: true,      null: false
+    t.boolean "allow_multiple_membership",                default: true,      null: false
+    t.boolean "require_membership",                       default: false,     null: false
+    t.boolean "assigns_workflow",                         default: false,     null: false
+    t.boolean "assigns_visibility",                       default: false,     null: false
+    t.boolean "share_applies_to_new_works",               default: true,      null: false
+    t.boolean "brandable",                                default: true,      null: false
+    t.string  "badge_color",                              default: "#663333"
+    t.index ["machine_id"], name: "index_hyrax_collection_types_on_machine_id", unique: true, using: :btree
   end
 
   create_table "hyrax_features", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -237,7 +238,7 @@ ActiveRecord::Schema.define(version: 20180412183213) do
     t.string   "access"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["permission_template_id"], name: "fk_rails_9c1ccdc6d5", using: :btree
+    t.index ["permission_template_id", "agent_id", "agent_type", "access"], name: "uk_permission_template_accesses", unique: true, using: :btree
   end
 
   create_table "permission_templates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -247,7 +248,7 @@ ActiveRecord::Schema.define(version: 20180412183213) do
     t.datetime "updated_at"
     t.date     "release_date"
     t.string   "release_period"
-    t.index ["source_id"], name: "index_permission_templates_on_source_id", unique: true
+    t.index ["source_id"], name: "index_permission_templates_on_source_id", unique: true, using: :btree
   end
 
   create_table "proxy_deposit_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -573,6 +574,7 @@ ActiveRecord::Schema.define(version: 20180412183213) do
     t.index ["work_id"], name: "index_work_view_stats_on_work_id", using: :btree
   end
 
+  add_foreign_key "collection_type_participants", "hyrax_collection_types"
   add_foreign_key "curation_concerns_operations", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
