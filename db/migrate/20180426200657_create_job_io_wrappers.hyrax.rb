@@ -1,4 +1,3 @@
-# This migration comes from hyrax (originally 20170621201939)
 class CreateJobIoWrappers < ActiveRecord::Migration[5.0]
   def change
     create_table :job_io_wrappers do |t|
