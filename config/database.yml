@@ -29,7 +29,7 @@ development:
 test:
   <<: *default
   # README: If ENV is localhost or 127.0.0.1 then it is assumed to not be running docker, so force 127.0.0.1 which is critical for circleci2
-  host: <%= %w(localhost 127.0.0.1).include?(ENV.fetch('SCHOLARSARCHIVE_DB_HOST', '127.0.0.1')) ? '127.0.0.1' : 'db' %>
+  host: <%= %w(localhost 127.0.0.1).include?(ENV.fetch('SCHOLARSARCHIVE_DB_HOST', '127.0.0.1')) ? '127.0.0.1' : 'db_test' %>
   # If ENV is localhost or 127.0.0.1 then it is assumed to not be running docker, so use a unique database name
   database: <%= %w(localhost 127.0.0.1).include?(ENV.fetch('SCHOLARSARCHIVE_DB_HOST', '127.0.0.1')) ? 'sa_test' : 'test' %>
 
