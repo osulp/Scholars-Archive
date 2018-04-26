@@ -108,7 +108,7 @@ Hyrax.config do |config|
   # config.redis_namespace = "hyrax"
 
   # Path to the file characterization tool
-  # config.fits_path = "fits.sh"
+  config.fits_path = ENV.fetch('FITS_PATH', 'fits.sh')
 
   # Path to the file derivatives creation tool
   # config.libreoffice_path = "soffice"

@@ -35,3 +35,4 @@ fits.log
 /public/sitemap/*
 /public/assets*
 /public/branding*
+docker-compose.override.yml
