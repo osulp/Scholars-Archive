@@ -71,12 +71,15 @@ gem 'sitemap_generator'
 gem 'net-http-persistent', '~> 2.9'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
+# simple_form 3.5.1 broke hydra-editor for certain model types;
+#   see: https://github.com/plataformatec/simple_form/issues/1549
+gem 'simple_form', '~> 3.2', '<= 3.5.0'
+
+# Gem vulnerability fix
+gem 'rest-client', '~> 2.0'
 
 # For asset precompiled error pages, and/or general use because it's way better than ERB
 gem 'haml'
-
-# Gem vulnerability fix
-gem 'rest-client', '~> 1.7'
 
 gem 'bagit', '~>0.4.1'
 
