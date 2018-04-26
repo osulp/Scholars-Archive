@@ -53,7 +53,6 @@ module ScholarsArchive
           :degree_field,
           :embargo_reason,
           :degree_level_other,
-
           :degree_grantors_other,
           :member_of_collection_ids,
           {
