@@ -1,8 +1,8 @@
 <% parent_solr_docs = ScholarsArchive::ParentQueryService.query_parents_for_id(child_id) %>
-<dt> <%= t("hyrax.base.parents") %> </dt>
+<dt> <%= t("hyrax.base.relationships_parent_rows_label") %> </dt>
 <dd>
   <% if parent_solr_docs.blank? %>
-    <p><%= t(".empty") %></p>
+    <p><%= t("hyrax.base.rows_empty_text") %></p>
   <% else %>
     <ul class="tabular">
       <% parent_solr_docs.each do |item| %>

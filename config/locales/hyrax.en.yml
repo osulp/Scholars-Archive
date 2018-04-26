@@ -36,7 +36,8 @@ en:
     account_name:           "ONID Account ID"
     work_url_label:         "Citeable URL"
     base:
-      parents: "Parents"
+      relationships_parent_rows_label: "Parents:"
+      rows_empty_text: "This work has no parents."
       metadata:
         attribute_name_label: Attribute Name
         attribute_values_label: Values
