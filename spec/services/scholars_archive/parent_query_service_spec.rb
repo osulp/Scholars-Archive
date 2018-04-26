@@ -1,16 +1,8 @@
 require 'spec_helper'
 require 'rails_helper'
 describe ScholarsArchive::ParentQueryService do
-  let(:parent_doc){{"response":
-                    {"docs":
-                     [{"id": "asdf"}]
-                    }
-                  }}
-  let(:empty_results){{"response":
-                       {"docs":
-                        []
-                       }
-                     }}
+  let(:parent_doc){{"response":{"docs":[{"id": "asdf"}]}}.stringify_keys}
+  let(:empty_results){{"response":{"docs":[]}}.stringify_keys}
   let(:child_id) {"child_id"}
   describe "#query_parents_for_id" do
     before do
