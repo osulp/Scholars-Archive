@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  # Hyrax 2.1 migration
+  skip_after_action :discard_flash_if_xhr
+
   before_action :check_d2h_http_header_auth
 
   def check_d2h_http_header_auth
