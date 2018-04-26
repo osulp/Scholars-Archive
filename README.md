@@ -96,3 +96,33 @@ $ RAILS_ENV=test docker-compose up
 $ docker-compose run web bundle exec rspec
 # ... watch the tests run
 ```
+
+# Help? Something is broken.
+
+1. ### There are no workflows in the system.
+    This can happen if the rake task fails to load because there are no permission templates in the database to match those in Fedora. At minimum, the Default Admin Set must exist and can be created manually in the Rails console;
+
+    `Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)`
+
+    Following this fix, run the workflow load rake task:
+
+    `$ docker-compose exec web bundle exec rails hyrax:workflow:load`
+
+2. ### The web container logged **ERROR: Default admin set exists but it does not have an associated permission template.**
+
+    This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
+    ```
+    This may happen if you cleared your database but you did not clear out Fedora and Solr.
+
+    You could manually create the permission template in the rails console (non-destructive):
+
+      Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)
+
+    OR you could start fresh by clearing Fedora and Solr (destructive):
+
+      require 'active_fedora/cleaner'
+      ActiveFedora::Cleaner.clean!
+    ```
+    Following this fix, run the workflow load rake task:
+
+    `$ docker-compose exec web bundle exec rails hyrax:workflow:load`
