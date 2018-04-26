@@ -95,6 +95,8 @@ services:
   # Basic image for the rails application server, see Dockerfile
   app:
     build: .
+    environment:
+      - RAILS_ENV=${RAILS_ENV}
     volumes:
       - .:/data
       - app:/data/tmp/uploads
