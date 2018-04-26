@@ -43,8 +43,8 @@ module ScholarsArchive
 
     config.rubycas.cas_base_url = ENV["SCHOLARSARCHIVE_CAS_BASE_URL"] || 'https://cas.myorganization.com'
     config.to_prepare  do
-      Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::OptimisticLockValidator, ScholarsArchive::Actors::NestedFieldsOperationsActor)
-      Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::OptimisticLockValidator, ScholarsArchive::Actors::AddOtherFieldOptionActor)
+      Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::InterpretVisibilityActor, ScholarsArchive::Actors::NestedFieldsOperationsActor)
+      Hyrax::CurationConcern.actor_factory.insert_after(Hyrax::Actors::ModelActor, ScholarsArchive::Actors::AddOtherFieldOptionActor)
     end
 
   end
