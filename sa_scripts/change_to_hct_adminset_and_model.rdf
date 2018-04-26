@@ -1,0 +1,17 @@
+# SPARQL Update to change AdminSet and Model values directly on item in Fedora
+# The Fedora port number (localhost:8084) will depend on SSH tunneling settings.
+# Need to find the exact AdminSet URIs to change from and to, from Fedora on Production (including any port number).
+# These can be found in the Fedora Web URI or RDF dump of an item, not the Hyrax Web URI.
+
+PREFIX ns001: <info:fedora/fedora-system:def/model#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+DELETE {
+  <> ns001:hasModel "UndergraduateThesisOrProject" .
+  <> dcterms:isPartOf <http://localhost:8084/fcrepo/rest/prod/79/40/7x/16/79407x16z> .
+}
+INSERT {
+  <> ns001:hasModel "HonorsCollegeThesis" .
+  <> dcterms:isPartOf <http://localhost:8084/fcrepo/rest/prod/98/80/vv/41/9880vv41d> .
+}
+WHERE { }
