@@ -24,10 +24,18 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    # config.advanced_search[:qt] ||= 'advanced'
+#    config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
+
+    config.advanced_search = {
+      :form_solr_parameters => {
+#        "facet.limit" => -1, # return all facet values
+        "facet.limit" => 20,
+        "facet.sort" => "index" # sort by byte order of values
+      }
+    }
 
     config.view.gallery.partials = [:index_header, :index]
     config.view.masonry.partials = [:index]
@@ -46,7 +54,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: "search",
       rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim"
+#      qf: "title_tesim description_tesim creator_tesim keyword_tesim"
+
     }
 
     # solr field configuration for document/show views
@@ -58,14 +67,28 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_facet_field "academic_affiliation_label_ssim", label: "Academic Affiliation", limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
-    config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year', range: true
+
+#    config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year', range: true
+    config.add_facet_field(solr_name('graduation_year', :facetable)) do |field|
+      field.label = "Commencement Year"
+      field.range = true
+      field.include_in_advanced_search = false
+    end
+
     config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
     config.add_facet_field solr_name("creator", :facetable), label: "Creator", limit: 5
-    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
+
+#    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
+    config.add_facet_field('date_facet_yearly_ssim') do |field|
+      field.label = "Date"
+      field.range = true
+      field.include_in_advanced_search = false
+    end
+
     config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, sort: 'index', partial: 'date_decades_facet'
-    config.add_facet_field "degree_field_label_ssim", label: "Degree Field", limit: 5, helper_method: :parsed_label_uri
+    config.add_facet_field "degree_field_label_ssim", label: "Degree Field", limit: -1, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
     config.add_facet_field solr_name("file_format", :facetable), label: "File Format", limit: 5
@@ -74,7 +97,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "language_label_ssim", label: "Language", limit: 5
     config.add_facet_field "license_label_ssim", label: "License", limit: 5
     config.add_facet_field solr_name("based_near_label", :facetable), label: "Location", limit: 5
-    config.add_facet_field "other_affiliation_label_ssim", label: "Non-Academic Affiliation", limit: 5, helper_method: :parsed_label_uri
+    config.add_facet_field "other_affiliation_label_ssim", label: "Non-Academic Affiliation", helper_method: :parsed_label_uri
     config.add_facet_field "peerreviewed_label_ssim", label: "Peer Reviewed", limit: 2
     config.add_facet_field solr_name("resource_type", :facetable), label: "Resource Type", limit: 5
     config.add_facet_field "rights_statement_label_ssim", label: "Rights Statement", limit: 5
@@ -195,6 +218,8 @@ class CatalogController < ApplicationController
 
     config.add_search_field('academic_affiliation_label') do |field|
       solr_name = solr_name("academic_affiliation_label", :stored_searchable)
+      field.include_in_simple_select = false
+      field.label = "Academic Affiliation"
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -203,6 +228,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('nested_related_items_label') do |field|
       solr_name = solr_name("nested_related_items_label", :stored_searchable)
+      field.label = "Related Items"
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -211,6 +237,8 @@ class CatalogController < ApplicationController
 
     config.add_search_field('other_affiliation_label') do |field|
       solr_name = solr_name("other_affiliation_label", :stored_searchable)
+      field.include_in_simple_select = false
+      field.label = "Non-Academic Affiliation"
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -242,7 +270,9 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('degree_field_label') do |field|
-      solr_name = solr_name("degree_field_label", :stored_searchable)
+#      solr_name = solr_name("degree_field_label", :stored_searchable)
+      solr_name = "degree_field_label_tesim"
+      field.label = "Degree Field"
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -251,6 +281,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('degree_grantors_label') do |field|
       solr_name = solr_name("degree_grantors_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -356,6 +387,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('language') do |field|
       solr_name = solr_name("language", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -364,6 +396,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('language_label') do |field|
       solr_name = solr_name("language_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -372,6 +405,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('rights_statement_label') do |field|
       solr_name = solr_name("rights_statement_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -380,6 +414,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('license_label') do |field|
       solr_name = solr_name("license_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -388,6 +423,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('peerreviewed_label') do |field|
       solr_name = solr_name("peerreviewed_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -396,6 +432,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('resource_type') do |field|
       solr_name = solr_name("resource_type", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -414,15 +451,14 @@ class CatalogController < ApplicationController
       field.label = "Geographic Coordinates"
       field.solr_parameters = { :"spellcheck.dictionary" => "nested_geo_label" }
       solr_name = solr_name("nested_geo_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
       }
     end
 
-
-
-    config.add_search_field('format') do |field|
+    config.add_search_field('file_format') do |field|
       solr_name = solr_name("format", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
@@ -465,6 +501,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('rights') do |field|
       solr_name = solr_name("rights", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
