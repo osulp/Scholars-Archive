@@ -1,0 +1,15 @@
+<% parent_solr_docs = ScholarsArchive::ParentQueryService.query_parents_for_id(child_id) %>
+<dt> <%= t("hyrax.base.relationships_parent_rows_label") %> </dt>
+<dd>
+  <% if parent_solr_docs.blank? %>
+    <p><%= t("hyrax.base.rows_empty_text") %></p>
+  <% else %>
+    <ul class="tabular">
+      <% parent_solr_docs.each do |item| %>
+        <li class='attribute attribute-title'>
+          <%= link_to item["title_tesim"].first, url_for_document(SolrDocument.find(item["id"])) %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</dd>
