@@ -10,7 +10,6 @@ describe ScholarsArchive::ParentQueryService do
         allow(ActiveFedora::SolrService).to receive(:get).with("member_ids_ssim:#{child_id}", rows: 100000).and_return(parent_doc)
       end
       it "returns the parent works" do
-        byebug
         expect(described_class.query_parents_for_id(child_id).length).to eq 1
       end
     end
@@ -19,7 +18,6 @@ describe ScholarsArchive::ParentQueryService do
         allow(ActiveFedora::SolrService).to receive(:get).with("member_ids_ssim:#{child_id}", rows: 100000).and_return(empty_results)
       end
       it "returns an empty array" do
-        byebug
         expect(described_class.query_parents_for_id(child_id).length).to eq 0
       end
     end
