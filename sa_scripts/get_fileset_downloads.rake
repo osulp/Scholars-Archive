@@ -7,6 +7,18 @@
 # -   fileset metadata (e.g., file_id, filename, date upload),
 # -   total_downloads for fileset
 
+# How to continue with a in-complete process:
+# - use nohup 2>&1 & to create processing log
+# - sort the full list of workids
+# - open log and grep 'ERROR processing work' with cut -d to get list of workids with error
+# - you need to re-run the script:
+# -   get the error processing words re-processed
+# -   find the cut-off workid in the full list and process the rest of wordids
+
+# Google has quota on how many requests per IP
+# "The 10,000 requests per view (profile) per day or the 10 concurrent requests per view (profile) cannot be increased."
+# the script will request data from Google for each fileset, so prepare the workids to be processed not to exceed the quota
+
 require 'csv'
 
 namespace :scholars_archive do
@@ -21,7 +33,7 @@ namespace :scholars_archive do
     workids_file = File.join(File.dirname(__FILE__), workids_list)
     works_to_process = []
     File.readlines(workids_file).each do |line|
-      works_to_process.push(line.chomp)
+      works_to_process.push(line.chomp.strip)
     end
     works_to_process.sort!
 
@@ -43,7 +55,7 @@ namespace :scholars_archive do
             fileset.date_uploaded, fileset.title.first, total_downloads]
           end
         rescue => e
-          puts "ERROR processing work: #{work_id} : #{e}"
+          puts "ERROR with work: #{work_id} : #{e}"
         end
       end
     end
