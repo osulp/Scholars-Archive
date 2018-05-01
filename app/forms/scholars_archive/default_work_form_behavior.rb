@@ -25,7 +25,7 @@ module ScholarsArchive
 
       def secondary_terms
         t = [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_name, :conference_section, :conference_location, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
-        t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection] if current_ability.current_user.admin?
+        t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection, :description] if current_ability.current_user.admin?
         t.flatten
       end
 
