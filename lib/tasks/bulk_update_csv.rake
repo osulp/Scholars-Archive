@@ -32,7 +32,7 @@ def process_csv(path)
 end
 
 def update_work(logger, row)
-  work = ActiveFedora::Base.find(row[:id].to_s)
+  work = ActiveFedora::Base.find(row[:id].to_s.gsub("'",""))
   work = update_property(logger, work, row)
   if(!work.nil?)
     work.save!(validate: false)
@@ -46,18 +46,24 @@ def update_property(logger, work, row)
     work[row[:property]] = row[:to]
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif(property.is_a?(ActiveTriples::Relation))
-    found_row = property.find{|r| r.include?(row[:from])}
+    found_row = property.find{|r| r.include?(row[:from] || '')}
     if(found_row)
       work[row[:property]].delete(found_row)
       work[row[:property]] += [row[:to]]
       logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{row[:to]}\"")
+    elsif(row[:from].casecmp('*').zero?)
+      work[row[:property]] = [row[:to]]
+      logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{row[:to]}\", originally was \"#{row[:from].map(&:to_s).join('\",\"')}\"")
+    elsif(row[:from].blank?)
+      work[row[:property]] += [row[:to]]
+      logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{row[:to]}\"")
     else
       logger.info("#{work.class} #{row[:id]} #{property.property} value \"#{row[:from]}\" not found, skipping update.")
       return nil
     end
   else
-    logger.info("#{work.class} #{row[:id]} #{row[:property]} value \"#{property}\" not found, skipping update.")
-    return nil
+    work[row[:property]] = row[:to]
+    logger.info("#{work.class} #{row[:id]} #{row[:property]} set to \"#{row[:to]}\"")
   end
   return work
 end
