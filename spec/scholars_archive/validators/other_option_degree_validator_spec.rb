@@ -77,16 +77,16 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
         # curation_concern.id = "test3"
       end
       it "raises error if degree_level is blank" do
-        expect(record.errors[:degree_level_other].first).to eq "Please provide a value for 'Other'"
+        expect(record.errors[:degree_level_other].first).to eq nil
       end
       it "raises error if degree_field is blank" do
-        expect(record.errors[:degree_field_other].first).to eq "Please provide a value for 'Other'"
+        expect(record.errors[:degree_field_other].first).to eq nil
       end
       it "raises error if degree_name is blank" do
-        expect(record.errors[:degree_name_other].first).to eq "Please provide a value for 'Other'"
+        expect(record.errors[:degree_name_other].first).to eq nil
       end
       it "raises error if degree_grantors is blank" do
-        expect(record.errors[:degree_grantors_other].first).to eq "Please provide a value for 'Other'"
+        expect(record.errors[:degree_grantors_other].first).to eq nil
       end
     end
   end

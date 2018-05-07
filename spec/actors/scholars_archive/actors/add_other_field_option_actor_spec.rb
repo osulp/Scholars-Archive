@@ -58,6 +58,23 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_grantors_other) { "test1 degree grantors other" }
       let(:test_other_affiliation_other) { ["test1 other affiliation other"] }
 
+
+      let(:attributes) {
+        {
+            title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"],
+            degree_field: ["Other"],
+            degree_level: "Other",
+            degree_name: ["Other"],
+            degree_grantors: "Other",
+            other_affiliation: ["Other"],
+            degree_field_other: test_degree_field_other,
+            degree_level_other: test_degree_level_other,
+            degree_name_other: test_degree_name_other,
+            degree_grantors_other: test_degree_grantors_other,
+            other_affiliation_other: test_other_affiliation_other
+        }
+      }
+
       it "runs the environment on create" do
         expect(subject.create(env)).to be true
         expect(OtherOption.find_by(property_name: "degree_field")).to be_a_kind_of(OtherOption)
@@ -97,6 +114,22 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_name_other) { ["test2 degree name other"] }
       let(:test_degree_grantors_other) { "test2 degree grantors other" }
       let(:test_other_affiliation_other) { ["test2 other affiliation other"] }
+
+      let(:attributes) {
+        {
+            title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"],
+            degree_field: ["Other"],
+            degree_level: "Other",
+            degree_name: ["Other"],
+            degree_grantors: "Other",
+            other_affiliation: ["Other"],
+            degree_field_other: test_degree_field_other,
+            degree_level_other: test_degree_level_other,
+            degree_name_other: test_degree_name_other,
+            degree_grantors_other: test_degree_grantors_other,
+            other_affiliation_other: test_other_affiliation_other
+        }
+      }
 
       it "runs the environment on update" do
         expect(subject.update(env)).to be true
