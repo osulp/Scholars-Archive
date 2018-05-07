@@ -45,10 +45,16 @@ module ScholarsArchive
           error_counter += 1
         end
       else
-        if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s] == 'Other'
-          add_error_message(record, other_field, I18n.t("simple_form.actor_validation.other_value_missing"))
-          error_counter += 1
-        end
+        # NOTE: For some reason the code bellow causes CreateDerivativesJob to fail with "NoMethodError: undefined
+        # method title for nil:NilClass" as reported in https://github.com/osulp/Scholars-Archive/issues/1383
+        #
+        # TODO: For now, I think we should only do validation with JS until we figure out a better way
+        # to handle server side validation for custom 'Other' options when they are missing or blank.
+        #
+        # if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s] == 'Other'
+        #   add_error_message(record, other_field, I18n.t("simple_form.actor_validation.other_value_missing"))
+        #   error_counter += 1
+        # end
       end
       return error_counter
     end
@@ -70,9 +76,10 @@ module ScholarsArchive
       (error_counter > 0) ? false : true
     end
 
-    def self.is_valid_other_field_multiple? (record, field: nil, env_user: nil)
+    def self.is_valid_other_field_multiple? (record, env_attributes: nil, field: nil, env_user: nil)
       other_field = "#{field}_other".to_sym
-      other_value = record.send(other_field)
+      # other_value = record.send(other_field)
+      other_value = env_attributes[other_field.to_s]
       error_counter = 0
       collection = get_collection(field, record: record, env_user: env_user)
 
@@ -111,12 +118,18 @@ module ScholarsArchive
           end
         end
       else
-        if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
-          err_message = I18n.t("simple_form.actor_validation.other_value_missing")
-          add_error_message(record, other_field, err_message)
-          record.send(field) << [{option: "Other", err_msg: err_message}.to_json]
-          error_counter += 1
-        end
+        # NOTE: For some reason the code bellow also causes CreateDerivativesJob to fail with "NoMethodError: undefined
+        # method title for nil:NilClass" as reported in https://github.com/osulp/Scholars-Archive/issues/1383
+        #
+        # TODO: For now, I think we should only do validation with JS until we figure out a better way
+        # to handle server side validation for custom 'Other' options when they are missing or blank.
+        #
+        # if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
+        #   err_message = I18n.t("simple_form.actor_validation.other_value_missing")
+        #   add_error_message(record, field, err_message)
+        #   record.send(field) << [{option: "Other", err_msg: err_message}.to_json]
+        #   error_counter += 1
+        # end
       end
 
       if error_counter > 0

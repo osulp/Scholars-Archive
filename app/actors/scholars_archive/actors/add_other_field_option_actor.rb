@@ -26,17 +26,17 @@ module ScholarsArchive
       def save_custom_option(env)
         puts "save custom option if any"
         if degree_present? (env)
-          if env.curation_concern.degree_field_other.present? && is_valid_other_field_multiple?(env, :degree_field)
+          if is_valid_other_field_multiple?(env, :degree_field)
             puts "saving degree field other and notifying admin"
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
             notify_admin(env, field: :degree_field, new_entries: all_new_entries)
           end
-          if env.curation_concern.degree_level_other.present? && is_valid_other_field?(env, :degree_level)
+          if env.attributes["degree_level_other"].present? && is_valid_other_field?(env, :degree_level)
             puts "degree level other and notifying admin"
             OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
             notify_admin(env, field: :degree_level, new_entries: env.curation_concern.degree_level_other)
           end
-          if env.curation_concern.degree_name_other.present? && is_valid_other_field_multiple?(env, :degree_name)
+          if is_valid_other_field_multiple?(env, :degree_name)
             puts "degree name other and notifying admin"
             all_new_entries = persist_multiple_other_entries(env, :degree_name)
             notify_admin(env, field: :degree_name, new_entries: all_new_entries)
@@ -55,7 +55,15 @@ module ScholarsArchive
           notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
         end
 
+        clean_up_fields(env)
         return true
+      end
+
+      def clean_up_fields (env)
+        env.attributes.delete('degree_field_other') if env.attributes['degree_field']
+        env.attributes.delete('degree_name_other') if env.attributes['degree_name']
+        env.attributes.delete('degree_grantors_other') if env.attributes['degree_grantors']
+        env.attributes.delete('degree_level_other') if env.attributes['degree_grantors']
       end
 
       def other_affiliation_other_present? (env)
@@ -72,7 +80,7 @@ module ScholarsArchive
       end
 
       def is_valid_other_field_multiple? (env, field)
-        ScholarsArchive::FieldValidationService.is_valid_other_field_multiple?(env.curation_concern, field: field, env_user: env.user)
+        ScholarsArchive::FieldValidationService.is_valid_other_field_multiple?(env.curation_concern, env_attributes: env.attributes, field: field, env_user: env.user)
       end
 
       def valid_other_affiliation_other? (record, field: nil, collection: [])
@@ -97,7 +105,10 @@ module ScholarsArchive
         puts "persist multiple other entries"
         all_current_entries = get_all_other_options(env, field).map(&:name)
         all_new_entries = []
-        env.curation_concern.send("#{field.to_s}_other").each do |entry|
+        other_field = "#{field.to_s}_other"
+
+        return all_new_entries if env.attributes[other_field].blank?
+        env.attributes[other_field].each do |entry|
           puts "entry check"
           unless all_current_entries.include? entry
             OtherOption.find_or_create_by(name: entry.to_s, work_id: env.curation_concern.id, property_name: field.to_s)
@@ -109,7 +120,7 @@ module ScholarsArchive
 
       def update_custom_option(env)
         if degree_present? (env)
-          if env.curation_concern.degree_field_other.present? && is_valid_other_field_multiple?(env, :degree_field)
+          if is_valid_other_field_multiple?(env, :degree_field)
 
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
             notify_admin(env, field: :degree_field, new_entries: all_new_entries)
@@ -125,7 +136,7 @@ module ScholarsArchive
             end
           end
 
-          if env.curation_concern.degree_name_other.present? && is_valid_other_field_multiple?(env, :degree_field)
+          if is_valid_other_field_multiple?(env, :degree_name)
             puts "degree name other and notifying admin"
             all_new_entries = persist_multiple_other_entries(env, :degree_name)
             notify_admin(env, field: :degree_name, new_entries: all_new_entries)
@@ -147,6 +158,8 @@ module ScholarsArchive
           notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
         end
 
+
+        clean_up_fields(env)
         return true
       end
 
