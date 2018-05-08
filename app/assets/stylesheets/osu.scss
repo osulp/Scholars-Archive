@@ -1,5 +1,12 @@
 @import 'osu_settings';
 
+/* Temporary override to disable 'Explore Collections' tab */
+
+#content-wrapper > div > div.row.home-content > div:nth-child(2) > ul > li:nth-child(2) {
+  display: none;
+}
+
+
 /* Override Hyrax dashboard class. */
 .dashboard {
   padding-top: 0px !important;
