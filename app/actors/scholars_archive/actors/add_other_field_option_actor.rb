@@ -26,7 +26,7 @@ module ScholarsArchive
       def save_custom_option(env)
         puts "save custom option if any"
         if degree_present? (env)
-          if is_valid_other_field_multiple?(env, :degree_field)
+          if env.attributes["degree_field_other"].present? && is_valid_other_field_multiple?(env, :degree_field)
             puts "saving degree field other and notifying admin"
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
             notify_admin(env, field: :degree_field, new_entries: all_new_entries)
@@ -36,7 +36,7 @@ module ScholarsArchive
             OtherOption.find_or_create_by(name: env.curation_concern.degree_level_other.to_s, work_id: env.curation_concern.id, property_name: :degree_level.to_s)
             notify_admin(env, field: :degree_level, new_entries: env.curation_concern.degree_level_other)
           end
-          if is_valid_other_field_multiple?(env, :degree_name)
+          if env.attributes["degree_name_other"].present? && is_valid_other_field_multiple?(env, :degree_name)
             puts "degree name other and notifying admin"
             all_new_entries = persist_multiple_other_entries(env, :degree_name)
             notify_admin(env, field: :degree_name, new_entries: all_new_entries)
@@ -169,9 +169,11 @@ module ScholarsArchive
 
 
       def notify_admin(env, field:, new_entries:)
-        ScholarsArchive::OtherOptionCreateSuccessService.new(env.curation_concern,
-                                                             field: field,
-                                                             new_entries: new_entries).call
+        if new_entries.present? && new_entries.respond_to?(:size) && new_entries.size > 0
+          ScholarsArchive::OtherOptionCreateSuccessService.new(env.curation_concern,
+                                                               field: field,
+                                                               new_entries: new_entries).call
+        end
       end
 
       def get_other_option(env, field)
