@@ -78,7 +78,6 @@ module ScholarsArchive
 
     def self.is_valid_other_field_multiple? (record, env_attributes: nil, field: nil, env_user: nil)
       other_field = "#{field}_other".to_sym
-      # other_value = record.send(other_field)
       other_value = env_attributes[other_field.to_s]
       error_counter = 0
       collection = get_collection(field, record: record, env_user: env_user)
