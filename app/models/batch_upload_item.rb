@@ -24,4 +24,8 @@ class BatchUploadItem < ActiveFedora::Base
   def create_or_update
     raise "This is a read only record"
   end
+
+  private
+  def set_defaults
+  end
 end
