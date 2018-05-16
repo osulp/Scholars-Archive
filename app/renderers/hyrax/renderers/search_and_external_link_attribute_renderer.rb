@@ -19,6 +19,9 @@ module Hyrax
             query_hash = JSON.parse(query.to_s.gsub('=>', ':'))
             label = query_hash['label']
             uri = query_hash['uri']
+          elsif query.include?("$")
+            label = query.split("$").first
+            uri = query.split("$").second
           else
             label = query
             uri = case field
