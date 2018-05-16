@@ -27,7 +27,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
     context "with a URI label" do
       let(:renderer) { described_class.new(field, [linked_label.to_s], search_field: 'based_near_label') }
       let(:linked_label_label) { "label" }
-      let(:linked_label_label) { "uri" }
+      let(:linked_label_uri) { "uri" }
       let(:tr_content) do
         %(
       <tr>
