@@ -28,6 +28,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       let(:renderer) { described_class.new(field, [linked_label.to_s], search_field: 'based_near_label') }
       let(:linked_label_label) { "label" }
       let(:linked_label_uri) { "uri" }
+      let(:expected) { Nokogiri::HTML(tr_content) }
       let(:tr_content) do
         %(
       <tr>
