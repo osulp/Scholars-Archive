@@ -13,7 +13,7 @@ Hyrax::Workflow::StatusListService.class_eval do
       return [] if actionable_roles.empty? || user.sipity_agent.workflow_responsibilities.empty?
       responsibilities = []
       user.sipity_agent.workflow_responsibilities.each do |r|
-        admin_set_id = r.workflow_role.workflow.permission_template.admin_set_id
+        admin_set_id = r.workflow_role.workflow.permission_template.source_id
         role_name = r.workflow_role.role.name
         workflow_name = r.workflow_role.workflow.name
         responsibilities << "#{admin_set_id}-#{workflow_name}-#{role_name}"
