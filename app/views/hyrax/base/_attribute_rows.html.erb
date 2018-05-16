@@ -54,7 +54,7 @@
 <%= presenter.attribute_to_html(:digitization_spec, label: t('simple_form.labels.defaults.digitization_spec')) %>
 <%= presenter.attribute_to_html(:replaces, render_as: :external_link) %>
 <%= presenter.attribute_to_html(:additional_information, label: t('simple_form.labels.defaults.additional_information')) %>
-<%= presenter.attribute_to_html(:based_near_label, render_as: :faceted) %>
+<%= presenter.attribute_to_html(:based_near_linked, render_as: :search_and_external_link, label: "Location", search_field: 'based_near_label') %>
 <%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
 <%= presenter.attribute_to_html(:embargo_reason) %>
 <%= presenter.attribute_to_html(:duration, label: t('simple_form.labels.defaults.duration')) %>
