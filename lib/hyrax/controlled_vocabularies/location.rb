@@ -31,14 +31,14 @@ module Hyrax
       end
 
       # Fetch parent features if they exist. Necessary for automatic population of rdf label.
-      # def fetch
-      #   result = super
-      #   return result if top_level_element?
-      #   parentFeature.each do |feature|
-      #     feature.fetch
-      #   end
-      #   result
-      # end
+      def fetch
+        result = super
+        return result if top_level_element?
+        parentFeature.each do |feature|
+          feature.fetch
+        end
+        result
+      end
 
       def fetch_value(resource)
         super(resource)
