@@ -27,8 +27,10 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
           uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
           labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
         end
-        solr_doc[o[:field].to_s + '_label_ssim'] = labels
-        solr_doc[o[:field].to_s + '_label_tesim'] = labels
+        solr_doc[o[:field].to_s + '_label_ssim'] = [labels.first]
+        solr_doc[o[:field].to_s + '_label_tesim'] = [labels.first]
+        solr_doc[o[:field].to_s + '_alt_label_ssim'] = labels.drop(1)
+        solr_doc[o[:field].to_s + '_alt_label_tesim'] = labels.drop(1)
       end
 
       solr_doc['based_near_linked_ssim'] = object.based_near.each.map{ |location| location.solrize.second[:label]}
