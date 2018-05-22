@@ -136,6 +136,6 @@ module ApplicationHelper
 
     #calculate max page number with new array of objects. Pushes float to
     #ceiling
-    (filtered_records.length / pagination_object.limit).ceil
+    (filtered_records.length.to_f / pagination_object.limit.to_f).ceil
   end
 end
