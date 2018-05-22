@@ -134,7 +134,8 @@ module ApplicationHelper
     #remove records from the array if current_user doesnt have access to read it
     filtered_records = records.reject { |record| current_user.cannot? :read, record["id"] }
 
-    #calculate max page number with new array of objects.
-    filtered_records.length / pagination_object.limit
+    #calculate max page number with new array of objects. Pushes float to
+    #ceiling
+    (filtered_records.length / pagination_object.limit).ceil
   end
 end
