@@ -2,9 +2,9 @@ module ScholarsArchive
   module ArticlePresenterBehavior
     extend ActiveSupport::Concern
     included do
-      delegate :conference_location,
-               :conference_name,
+      delegate :conference_name,
                :conference_section,
+               :conference_location,
                :editor,
                :has_journal,
                :has_number,

@@ -1,5 +1,5 @@
 class ArticleIndexer < DefaultWorkIndexer
-  self.stored_and_facetable_fields += %i[editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn]
+  self.stored_and_facetable_fields += %i[editor has_volume has_number conference_name conference_section conference_location has_journal is_referenced_by isbn]
   # Fetch remote labels for based_near. You can remove this if you don't want
   # this behavior
   include ScholarsArchive::IndexesLinkedMetadata

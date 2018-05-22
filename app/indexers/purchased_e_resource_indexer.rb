@@ -1,5 +1,5 @@
 class PurchasedEResourceIndexer < DefaultWorkIndexer
-  self.stored_and_facetable_fields += %i[contributor_advisor contributor_committeemember degree_discipline degree_level degree_name degree_field degree_grantors graduation_year editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn]
+  self.stored_and_facetable_fields += %i[contributor_advisor contributor_committeemember degree_discipline degree_level degree_name degree_field degree_grantors graduation_year editor has_volume has_number conference_name conference_section conference_location has_journal is_referenced_by isbn]
 
   include ScholarsArchive::IndexesLinkedMetadata
 
