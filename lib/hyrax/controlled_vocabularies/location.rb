@@ -1,8 +1,6 @@
 module Hyrax
   module ControlledVocabularies
     class Location < ActiveTriples::Resource
-      include ScholarsArchive::Controlled
-
       configure rdf_label: ::RDF::Vocab::GEONAMES.name
 
       property :parentFeature, :predicate => RDF::URI('http://www.geonames.org/ontology#parentFeature'), :class_name => 'Hyrax::ControlledVocabularies::Location'
@@ -22,7 +20,6 @@ module Hyrax
         unless parentFeature.empty? or RDF::URI(label.first).valid?
           #TODO: Identify more featureCodes that should cause us to terminate the sequence
           return label if top_level_element?
-
           parent_label = (parentFeature.first.kind_of? ActiveTriples::Resource) ? parentFeature.first.rdf_label.first : []
           return label if parent_label.empty? or RDF::URI(parent_label).valid? or parent_label.starts_with? '_:'
           label = "#{label.first} >> #{parent_label}"
@@ -31,17 +28,13 @@ module Hyrax
       end
 
       # Fetch parent features if they exist. Necessary for automatic population of rdf label.
-      def fetch
-        result = super
+      def fetch(headers)
+        result = super(headers)
         return result if top_level_element?
         parentFeature.each do |feature|
-          feature.fetch
+          feature.fetch(headers)
         end
         result
-      end
-
-      def fetch_value(resource)
-        super(resource)
       end
 
       # Persist parent features.
