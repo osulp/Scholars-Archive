@@ -128,14 +128,9 @@ module ApplicationHelper
   end
 
   def max_page_number(response_object, pagination_object)
-    #query solr for records with values in the facet value
-    records = ActiveFedora::SolrService.get("#{@facet.key}:*", :rows => 1000000)["response"]["docs"]
-
-    #remove records from the array if current_user doesnt have access to read it
-    filtered_records = records.reject { |record| current_user.cannot? :read, record["id"] }
-
+    records = ScholarsArchive::RecordsByUserGroupAndVisibility.new.call(current_user, @facet)
     #calculate max page number with new array of objects. Pushes float to
     #ceiling
-    (filtered_records.length.to_f / pagination_object.limit.to_f).ceil
+    (records.length.to_f / pagination_object.limit.to_f).ceil
   end
 end
