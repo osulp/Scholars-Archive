@@ -1,30 +1,47 @@
 module ScholarsArchive
   class RecordsByUserGroupAndVisibility
+    #def call(current_user, facet)
+    #  records = []
+    #  if current_user.admin?
+    #    records << admin_search(facet)
+    #  elsif current_user.guest?
+    #    current_user.groups.each do |group|
+    #      records << public_search(facet, group)
+    #    end
+    #  else
+    #    current_user.groups.each do |group|
+    #      records << public_search(facet, group)
+    #      records << authenticated_search(facet, group)
+    #    end
+    #  end
+    #  records << other_owned_records(facet, current_user.username)
+    #  records.flatten.uniq! { |hash| hash["id"] }
+    #end
+
     def call(current_user, facet)
-      records = []
-      #If user is admin, return all records under a specific facet search
+      query_strings = []
       if current_user.admin?
-        records << admin_search(facet)
-      #If user is a guest, only show public works in the users groups
+        query_strings << admin_search(facet)
       elsif current_user.guest?
-        current_user.groups.each do |group|
-          records << public_search(facet, group)
+	current_user.groups.each do |group|
+	  query_strings << public_search(facet, group)
         end
-      #User is authenticated and should see both public and authenticated works
       else
         current_user.groups.each do |group|
-          records << public_search(facet, group)
-          records << authenticated_search(facet, group)
+          query_strings << public_search(facet, group)
+          query_strings << authenticated_search(facet, group)
         end
       end
-      records << other_owned_records(facet, current_user.username)
-      records.flatten.uniq! { |hash| hash["id"] }
+      query_strings << other_owned_records(facet, current_user.username)
+      puts facet.key
+      puts ActiveFedora::SolrService.get( query_strings.join(" OR "), :rows => 1000000 )["response"]["docs"]
+      ActiveFedora::SolrService.get( query_strings.join(" OR "), :rows => 1000000 )["response"]["docs"].map { |item| item[facet.key.gsub("sim", "tesim")] }.uniq
     end
 
     private
 
     def public_search(facet, group)
-      search_builder.group_records(facet.key, group, visibility: "public")
+      search_builder.group_records(facet.key, group, visibility: "open")
     end
 
     def authenticated_search(facet, group)

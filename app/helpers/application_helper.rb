@@ -129,8 +129,6 @@ module ApplicationHelper
 
   def max_page_number(response_object, pagination_object)
     records = ScholarsArchive::RecordsByUserGroupAndVisibility.new.call(current_user, @facet)
-    #calculate max page number with new array of objects. Pushes float to
-    #ceiling
     (records.length.to_f / pagination_object.limit.to_f).ceil
   end
 end
