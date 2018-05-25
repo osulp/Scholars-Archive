@@ -215,8 +215,18 @@ div .modal-dialog {
 }
 
 div .select-worktype {
-  border-bottom: solid 1px #d3d3d3;
-  border-left: solid 1px #d3d3d3;
+  border: none;
+}
+
+.worktype-row {
+  margin: 0 !important;
+  &.light-background {
+    background-color: #f0f0f0;
+  }
+  h3:not(.work-type-title) {
+    margin-top: 0 !important;
+    color: $osu-orange;
+  }
 }
 
 .row.match-my-cols {
