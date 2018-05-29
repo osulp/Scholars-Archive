@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426200658) do
+ActiveRecord::Schema.define(version: 20180529220525) do
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id",                     null: false
@@ -550,6 +550,9 @@ ActiveRecord::Schema.define(version: 20180426200658) do
     t.string   "zotero_userid"
     t.string   "username"
     t.string   "preferred_locale"
+    t.string   "api_person_type"
+    t.string   "api_student_type"
+    t.datetime "api_person_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
