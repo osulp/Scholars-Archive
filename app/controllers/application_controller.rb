@@ -15,6 +15,13 @@ class ApplicationController < ActionController::Base
   skip_after_action :discard_flash_if_xhr
 
   before_action :check_d2h_http_header_auth
+  before_action :update_from_person_api
+
+  def update_from_person_api
+    if user_signed_in?
+      current_user.update_from_person_api
+    end
+  end
 
   def check_d2h_http_header_auth
     if !user_signed_in? && request.headers.key?('HTTP_D2H_AUTHENTICATION')
