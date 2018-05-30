@@ -1,0 +1,13 @@
+<div class="row <%= classname %>">
+  <div class="col-md-12 select-worktype">
+    <h3>Graduate Students</h3>
+  </div>
+</div>
+<div class="row <%= classname %>">
+  <div class="col-md-6 select-worktype">
+    <%= render partial: 'shared/select_work_type_cell', locals: {presenter: presenters[GraduateThesisOrDissertation]} %>
+  </div>
+  <div class="col-md-6 select-worktype">
+    <%= render partial: 'shared/select_work_type_cell', locals: {presenter: presenters[GraduateProject]} %>
+  </div>
+</div>
