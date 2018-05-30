@@ -6,6 +6,7 @@ module Hyrax
       property :parentFeature, :predicate => RDF::URI('http://www.geonames.org/ontology#parentFeature'), :class_name => 'Hyrax::ControlledVocabularies::Location'
       property :parentCountry, :predicate => RDF::URI('http://www.geonames.org/ontology#parentCountry'), :class_name => 'Hyrax::ControlledVocabularies::Location'
       property :featureCode, :predicate => RDF::URI('http://www.geonames.org/ontology#featureCode')
+      property :featureClass, :predicate => RDF::URI('http://www.geonames.org/ontology#featureClass')
 
 
       # Return a tuple of url & label
@@ -19,10 +20,13 @@ module Hyrax
         label = super
         unless parentFeature.empty? or RDF::URI(label.first).valid?
           #TODO: Identify more featureCodes that should cause us to terminate the sequence
-          return label if top_level_element?
+          return "#{label}" if top_level_element?
           parent_label = (parentFeature.first.kind_of? ActiveTriples::Resource) ? parentFeature.first.rdf_label.first : []
+          fc_label = (featureClass.first.kind_of? ActiveTriples::Resource) ? featureClass.first.rdf_label.first : []
+
           return label if parent_label.empty? or RDF::URI(parent_label).valid? or parent_label.starts_with? '_:'
-          label = "#{label.first} >> #{parent_label}"
+          # return label if fc_label.empty? or RDF::URI(fc_label).valid?
+          label = "#{label.first} , #{parent_label}  (#{fc_label})"
         end
         Array(label)
       end
@@ -34,6 +38,9 @@ module Hyrax
         parentFeature.each do |feature|
           feature.fetch(headers)
         end
+        featureClass.each do |fc|
+          fc.fetch(headers)
+        end
         result
       end
 
@@ -43,6 +50,9 @@ module Hyrax
         return result if top_level_element?
         parentFeature.each do |feature|
           feature.persist!
+        end
+        featureClass.each do |fc|
+          fc.persist!
         end
         result
       end
