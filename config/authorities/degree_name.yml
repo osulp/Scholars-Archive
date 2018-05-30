@@ -59,6 +59,9 @@ terms:
 - id: "Professional Science Masters in Environmental Sciences"
   term: "Professional Science Masters in Environmental Sciences"
   active: true
+- id: "Master of Forestry (M.F.)"
+  term: "Master of Forestry (M.F.)"
+  active: true
 - id: "Other"
   term: "Other"
   active: true
