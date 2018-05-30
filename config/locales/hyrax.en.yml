@@ -67,3 +67,13 @@ en:
     works:
       create:
         after_create_html: "ScholarsArchive@OSU has received your upload. Your file is currently being processed. Thank you for your deposit."
+
+    homepage:
+      featured_works:
+        document:
+          subject_label: Subjects
+          subject_missing: no subjects specified
+      recently_uploaded:
+        document:
+          subject_label: Subjects
+          subject_missing: no subjects specified
