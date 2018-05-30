@@ -33,6 +33,7 @@ RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: fal
     before do
       Hyrax::PermissionTemplateAccess.create(permission_template: permission_template, agent_type: 'user', agent_id: user.user_key, access: 'deposit')
       Sipity::WorkflowAction.create(id: 4, name: 'show', workflow_id: workflow.id)
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
       login_as user
     end
 

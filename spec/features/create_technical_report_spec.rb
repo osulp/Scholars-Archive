@@ -68,6 +68,7 @@ RSpec.feature 'Create a Technical Report', js: false do
       Devise.cas_create_user = true
       User.authenticate_with_cas_ticket(@ticket)
 
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
       login_as user
       visit new_hyrax_technical_report_path
     end
