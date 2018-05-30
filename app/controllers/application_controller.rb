@@ -19,7 +19,12 @@ class ApplicationController < ActionController::Base
 
   def update_from_person_api
     if user_signed_in?
-      current_user.update_from_person_api
+      begin
+        current_user.update_from_person_api
+      rescue
+        # Don't fail hard when the API queries fail
+        logger.error("Failed accessing OSU API, unable to synchronize user details.")
+      end
     end
   end
 
