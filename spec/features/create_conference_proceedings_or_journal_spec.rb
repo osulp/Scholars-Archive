@@ -59,6 +59,7 @@ RSpec.feature 'Create a Conference Proceedings Or Journal', js: false do
       allow_any_instance_of(ApplicationHelper).to receive(:select_tag_dates).and_return("")
 
       ENV["SCHOLARSARCHIVE_DEFAULT_ADMIN_SET"] = 'Test Default Admin Set'
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
 
       @ticket = CASClient::ServiceTicket.new("ST-test", nil)
       @ticket.extra_attributes = {:id => 10, :email => "admin@example.com"}

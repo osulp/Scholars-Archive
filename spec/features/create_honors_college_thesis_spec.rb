@@ -58,7 +58,7 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       allow_any_instance_of(ScholarsArchive::OtherAffiliationService).to receive(:select_sorted_all_options).and_return([['Honors College', 'http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege'],['Other', 'Other']])
 
       ENV["SCHOLARSARCHIVE_DEFAULT_ADMIN_SET"] = 'Test Default Admin Set'
-
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
       @ticket = CASClient::ServiceTicket.new("ST-test", nil)
       @ticket.extra_attributes = {:id => 10, :email => "admin@example.com"}
       @ticket.success = true
