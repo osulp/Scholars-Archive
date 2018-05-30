@@ -218,14 +218,27 @@ div .select-worktype {
   border: none;
 }
 
-.worktype-row {
-  margin: 0 !important;
-  &.light-background {
-    background-color: #f0f0f0;
-  }
-  h3:not(.work-type-title) {
-    margin-top: 0 !important;
-    color: $osu-orange;
+.new-work-select {
+  .modal-body {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      li {
+        .worktype-row {
+          margin: 0 !important;
+          h3:not(.work-type-title) {
+            margin-top: 0 !important;
+            color: $osu-orange;
+          }
+        }
+      }
+      li:nth-child(odd) {
+        .worktype-row {
+          background-color: #f0f0f0;
+        }
+      }
+    }
   }
 }
 

@@ -42,7 +42,7 @@ module ScholarsArchive
       url = "#{ENV['OSU_API_HOST']}/oauth2/token"
       @logger.debug("OsuApiService#get_token : fetching token : #{url}")
       response = post(url, {grant_type: 'client_credentials', client_id: ENV['OSU_API_CLIENT_ID'], client_secret: ENV['OSU_API_CLIENT_SECRET']})
-      @logger.error("OsuApiService#get_token", response) unless response.status == 200
+      @logger.error("OsuApiService#get_token failed : #{response.status} : #{response.reason_phrase}") unless response.status == 200
       if response.status == 200
         json = JSON.parse(response.body)
         json['access_token']
