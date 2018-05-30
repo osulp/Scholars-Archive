@@ -21,10 +21,9 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
         uris = Array(object.send(o[:field]))
         uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
         labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
-        solr_doc[o[:field].to_s + '_label_ssim'] = [labels.first]
-        solr_doc[o[:field].to_s + '_label_tesim'] = [labels.first]
+        solr_doc[o[:field].to_s + '_label_ssim'] = labels
+        solr_doc[o[:field].to_s + '_label_tesim'] = labels
       end
-
       solr_doc['based_near_linked_ssim'] = object.based_near.each.map{ |location| location.solrize.second[:label]}
       solr_doc['based_near_linked_tesim'] = object.based_near.each.map{ |location| location.solrize.second[:label]}
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
