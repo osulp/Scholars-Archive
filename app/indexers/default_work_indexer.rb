@@ -18,8 +18,8 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
       object.triple_powered_properties.each do |o|
-        uris = Array(object.send(o[:field]))
-        uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
+        uris = object.send(o[:field])
+        uris = object.send(o[:field]).reject { |u| u == "Other" }
         labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
         solr_doc[o[:field].to_s + '_label_ssim'] = labels
         solr_doc[o[:field].to_s + '_label_tesim'] = labels
