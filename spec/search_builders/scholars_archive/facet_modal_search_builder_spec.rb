@@ -15,7 +15,7 @@ describe ScholarsArchive::FacetModalSearchBuilder do
 
   describe "#group_records" do
     it "returns a string with the facet and without filesets" do
-      expect(search_builder.group_records(facet_string, group, visibility)).to eq "(creator_sim:* AND read_access_group_ssim:admin AND visibility_ssi:open AND -has_model_ssim:FileSet)"
+      expect(search_builder.group_records(facet_string, group, visibility: visibility)).to eq "(creator_sim:* AND read_access_group_ssim:admin AND visibility_ssi:open AND -has_model_ssim:FileSet)"
     end
   end
 
