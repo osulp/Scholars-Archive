@@ -7,9 +7,8 @@ include Warden::Test::Helpers
 # NOTE: If you generated more than one work, you have to set "js: true"
 RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: false do
   context 'a logged in user' do
-
     let(:user) do
-      User.new(email: 'test@example.com',guest: false) { |u| u.save!(validate: false)}
+      User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false)}
     end
 
     let(:admin_set) do
@@ -34,6 +33,7 @@ RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: fal
     before do
       Hyrax::PermissionTemplateAccess.create(permission_template: permission_template, agent_type: 'user', agent_id: user.user_key, access: 'deposit')
       Sipity::WorkflowAction.create(id: 4, name: 'show', workflow_id: workflow.id)
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
       login_as user
     end
 

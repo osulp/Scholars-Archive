@@ -6,7 +6,9 @@ include Warden::Test::Helpers
 
 RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
   context 'a logged in user' do
-    let(:user) { User.first }
+    let(:user) do
+      User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false)}
+    end
     let(:current_user) { user }
 
     let(:admin_set) do
@@ -65,7 +67,7 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
 
       Devise.cas_create_user = true
       User.authenticate_with_cas_ticket(@ticket)
-
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
       login_as user
       visit new_hyrax_undergraduate_thesis_or_project_path
     end

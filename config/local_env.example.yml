@@ -73,3 +73,9 @@ NEWRELIC_LICENSE_KEY: thisisnttherealkeyhahaha!!11!1!
 
 # Capistrano deployment log path
 SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG: /path/to/app/revisions.log
+
+#OSU API services configurations
+OSU_API_HOST: https://fqdn.to.server
+OSU_API_CLIENT_ID: abc1234
+OSU_API_CLIENT_SECRET: def5678
+OSU_API_PERSON_REFRESH_SECONDS: '<%= 30 * 24 * 60 * 60 %>'

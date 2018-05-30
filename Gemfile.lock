@@ -929,6 +929,7 @@ DEPENDENCIES
   devise_cas_authenticatable
   edtf!
   equivalent-xml
+  faraday
   fcrepo_wrapper
   ffi (= 1.9.18)
   haml
