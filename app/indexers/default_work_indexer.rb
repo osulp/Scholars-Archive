@@ -18,19 +18,11 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
       object.triple_powered_properties.each do |o|
-        if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
-          uris = object.send(o[:field])
-          uris = object.send(o[:field]).reject { |u| u == "Other"}
-          labels = ScholarsArchive::TriplePoweredService.new.fetch_all_labels(uris)
-        else
-          uris = Array(object.send(o[:field]))
-          uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
-          labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
-        end
+        uris = Array(object.send(o[:field]))
+        uris = Array(object.send(o[:field])).reject { |u| u == "Other" }
+        labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
         solr_doc[o[:field].to_s + '_label_ssim'] = [labels.first]
         solr_doc[o[:field].to_s + '_label_tesim'] = [labels.first]
-        solr_doc[o[:field].to_s + '_alt_label_ssim'] = labels.drop(1)
-        solr_doc[o[:field].to_s + '_alt_label_tesim'] = labels.drop(1)
       end
 
       solr_doc['based_near_linked_ssim'] = object.based_near.each.map{ |location| location.solrize.second[:label]}
