@@ -45,9 +45,10 @@ GIT
 
 GIT
   remote: https://github.com/samvera/hyrax.git
-  revision: d4c8b0e4f076ef6315d238187ff0bcfff369abd0
+  revision: a09fca9a421ccaccbda36c73b009331d1aa683c3
+  tag: v2.1.0.rc4
   specs:
-    hyrax (2.1.0.rc1)
+    hyrax (2.1.0.rc4)
       active-fedora (~> 11.5, >= 11.5.2)
       almond-rails (~> 0.1)
       awesome_nested_set (~> 3.1)
@@ -432,7 +433,7 @@ GEM
       deprecation
       mime-types (> 2.0, < 4.0)
       mini_magick (>= 3.2, < 5)
-    hydra-editor (4.0.1)
+    hydra-editor (4.0.2)
       active-fedora (>= 9.0.0)
       almond-rails (~> 0.1)
       cancancan (~> 1.8)
@@ -871,7 +872,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     tins (1.16.3)
-    tinymce-rails (4.7.12)
+    tinymce-rails (4.7.13)
       railties (>= 3.1.1)
     twitter-typeahead-rails (0.11.1.pre.corejavascript)
       actionpack (>= 3.1)
