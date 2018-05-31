@@ -218,10 +218,13 @@ GEM
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
       rails
-    blacklight_range_limit (6.3.3)
     blacklight_advanced_search (6.3.1)
       blacklight (~> 6.0, >= 6.0.1)
+      blacklight (>= 6.0.2)
+      jquery-rails
       parslet
+      rails (>= 3.0)
+    blacklight_range_limit (6.3.3)
       blacklight (>= 6.0.2)
       jquery-rails
       rails (>= 3.0)
