@@ -36,9 +36,5 @@ module ScholarsArchive
     def not_filesets
       "-has_model_ssim:FileSet"
     end
-
-    def solr_service
-      ActiveFedora::SolrService
-    end
   end
 end
