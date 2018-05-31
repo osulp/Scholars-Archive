@@ -84,6 +84,8 @@ gem 'haml'
 
 gem 'bagit', '~>0.4.1'
 
+gem 'newrelic_rpm'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
