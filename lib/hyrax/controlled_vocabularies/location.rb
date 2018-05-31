@@ -18,15 +18,16 @@ module Hyrax
       # Overrides rdf_label to recursively add location disambiguation when available.
       def rdf_label
         label = super
+
         unless parentFeature.empty? or RDF::URI(label.first).valid?
           #TODO: Identify more featureCodes that should cause us to terminate the sequence
-          return "#{label}" if top_level_element?
+          return label if top_level_element?
           parent_label = (parentFeature.first.kind_of? ActiveTriples::Resource) ? parentFeature.first.rdf_label.first : []
           return label if parent_label.empty? or RDF::URI(parent_label).valid? or parent_label.starts_with? '_:'
-          label = "#{label.first} , #{parent_label}"
+          fc_label = ScholarsArchive::FeatureClassUriToLabel.new.uri_to_label(featureClass.first.id.to_s) unless featureClass.blank?
+          label = "#{label.first} , #{parent_label} (#{fc_label}) " unless parent_label.include?("(")
+          label = "#{label.first} , #{parent_label}".gsub(/\((.*)\)/, " (#{fc_label}) " ) if parent_label.include?("(")
         end
-        # fc_label = ScholarsArchive::FeatureClassUriToLabel.new.uri_to_label(featureClass.first.id.to_s) unless featureClass.blank?
-        # label << " (#{fc_label}) " unless label.last.include?("(")
         Array(label)
       end
 
@@ -47,9 +48,6 @@ module Hyrax
         parentFeature.each do |feature|
           feature.persist!
         end
-        # featureClass.each do |fc|
-        #   fc.persist!
-        # end
         result
       end
 
