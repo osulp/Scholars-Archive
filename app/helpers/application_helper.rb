@@ -127,6 +127,7 @@ module ApplicationHelper
   end
 
   def max_page_number(response_object, pagination_object)
-    ((response_object["response"]["numFound"] / pagination_object.limit) + 1)
+    records = ScholarsArchive::RecordsByUserGroupAndVisibility.new.call(current_user, @facet)
+    (records.length.to_f / pagination_object.limit.to_f).ceil
   end
 end
