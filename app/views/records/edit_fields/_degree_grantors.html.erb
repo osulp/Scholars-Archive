@@ -4,7 +4,7 @@
     include_blank: true,
     input_html: { class: "form-control degree-grantors-selector" } %>
 <% if f.object.model.degree_grantors.present? && f.object.model.degree_grantors == 'Other' && f.object.model.degree_grantors_other.present? %>
-    <%= f.input :degree_grantors_other, label: false, aria: { label: 'Degree Grantors' }, :placeholder => 'Degree Grantors', :input_html => {value: f.object.model.degree_grantors_other, :class => "form-control"}, :wrapper_html => {:class => "degree-grantors-other" } %>
+    <%= f.input :degree_grantors_other, label: false, aria: { label: 'Degree Grantors' }, :placeholder => 'Degree Grantors', :input_html => {value: f.object.model.degree_grantors_other, :class => "form-control"}, :wrapper_html => {:class => "degree-grantors-other" }, required: true %>
 <% else %>
     <%= f.input :degree_grantors_other, as: :hidden, label: false, aria: { label: 'Degree Grantors' }, :placeholder => 'Degree Grantors', :input_html => {:class => "form-control"}, :wrapper_html => {:class => "degree-grantors-other" } %>
 <% end %>
