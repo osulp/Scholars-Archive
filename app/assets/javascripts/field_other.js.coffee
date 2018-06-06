@@ -4,11 +4,13 @@
       $(class_selector).addClass("hidden")
       $(class_selector).find('input').attr("type", "hidden")
       $(class_selector).find('input').addClass("hidden")
+      $(class_selector).find('input').removeAttr('required')
 
     show_field = (class_selector) ->
       $(class_selector).removeClass("hidden")
       $(class_selector).find('input').attr("type", "text")
       $(class_selector).find('input').removeClass("hidden")
+      $(class_selector).find('input').attr('required', 'required')
 
     load_default_values = () ->
 
