@@ -53,10 +53,10 @@ SCHOLARSARCHIVE_CAS_VALIDATE_URL: 'https://FQDN/cas/samlValidate'
 # Default selected Admin Set on work form
 SCHOLARSARCHIVE_DEFAULT_ADMIN_SET: 'Default Admin Set'
 
-# DSpace2Hydra Migration User for API access, bypasses CAS authentication. 'USERNAME' requires a matching entry
+# User for API access, bypasses CAS authentication. 'USERNAME' requires a matching entry (User.email_address)
 # in the users table
-HTTP_D2H_AUTHENTICATION_TOKEN: '12345678901234567890'
-HTTP_D2H_AUTHENTICATION_USERNAME: 'bobross@FQDN'
+HTTP_API_AUTHENTICATION_TOKEN: '12345678901234567890'
+HTTP_API_AUTHENTICATION_USERNAME: 'bobross@FQDN'
 
 # Adminstrators email address for notifications
 SCHOLARSARCHIVE_ADMIN_EMAIL: 'noreply@FQDN'
@@ -70,9 +70,6 @@ SCHOLARSARCHIVE_CACHE_TIMEOUT: '365'
 #Recaptcha configuration
 SCHOLARSARCHIVE_RECAPTCHA_SECRET_KEY: 'asdfasdfasdfasdfasdfadsfasdfadfsfa'
 SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY: 'asdfasdfadsfasdfasdfasdfasdfasdfad'
-
-# NewRelic application monitoring
-NEWRELIC_LICENSE_KEY: thisisnttherealkeyhahaha!!11!1!
 
 # Capistrano deployment log path
 SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG: /path/to/app/revisions.log
