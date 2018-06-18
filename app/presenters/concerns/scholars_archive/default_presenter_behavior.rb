@@ -6,7 +6,7 @@ module ScholarsArchive
                :academic_affiliation_label,
                :additional_information,
                :alt_title,
-               :based_near,
+               :based_near_linked,
                :bibliographic_citation,
                :conference_name,
                :conference_section,

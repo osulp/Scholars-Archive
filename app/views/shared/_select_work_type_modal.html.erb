@@ -7,25 +7,28 @@
       </div>
       <form class="new-work-select">
         <div class="modal-body">
-          <% model_list_fixed = fixed_work_type_order(create_work_presenter) %>
-          <div class="row match-my-cols">
-            <div class="col-md-12">
-              <% model_list_fixed.each_slice(2) do |row_presenter| %>
-                <div class="row">
-                  <div class="col-md-6 select-worktype">
-                    <% if row_presenter[0]["visibility"] || !row_presenter[0]["model"].nil? %>
-                      <%= render partial: 'shared/select_work_type_cell', locals: {presenter: row_presenter[0]["model"]} %>
-                    <% end %>
-                  </div>
-                  <div class="col-md-6 select-worktype">
-                    <% if row_presenter[1]["visibility"] || !row_presenter[1]["model"].nil? %>
-                      <%= render partial: 'shared/select_work_type_cell', locals: {presenter: row_presenter[1]["model"]} %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
+          <ul>
+            <% presenters = fixed_work_type_order(create_work_presenter) %>
+            <li>
+              <%= render partial: 'shared/select_work_type_graduate_students', locals: {presenters: presenters, classname: 'worktype-row'} %>
+            </li>
+            <li>
+              <%= render partial: 'shared/select_work_type_undergrad_students', locals: {presenters: presenters, classname: 'worktype-row'} %>
+            </li>
+            <% if !current_user.student? || current_user.admin? %>
+              <li>
+                <%= render partial: 'shared/select_work_type_faculty_article_deposits', locals: {presenters: presenters, classname: 'worktype-row'} %>
+              </li>
+            <% end %>
+            <li>
+              <%= render partial: 'shared/select_work_type_other_scholarly_content', locals: {presenters: presenters, classname: 'worktype-row'} %>
+            </li>
+            <% if !current_user.student? || current_user.admin? %>
+              <li>
+                <%= render partial: 'shared/select_work_type_administrator', locals: {presenters: presenters, classname: 'worktype-row'} %>
+              </li>
+            <% end %>
+          </ul>
         </div>
         <div class="modal-footer help-text">
           <%= render partial: 'shared/select_work_type_help' %>

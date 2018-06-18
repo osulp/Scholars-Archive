@@ -1,3 +1,4 @@
+<% max_pages = max_page_number(@response, @pagination) %>
 <div class="prev_next_links btn-group pull-left">
   <div class="pagination">
     <ul class="pagination">
@@ -26,9 +27,9 @@
       </li>
 
       <!-- If not at the max page, render next pages up to 'window size' -->
-      <% if @pagination.current_page < max_page_number(@response, @pagination) %>
+      <% if @pagination.current_page < max_pages %>
         <% 1.upto(Hyrax.config.pagination_links_range) do |i| %>
-          <%= render partial: 'next_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + (i - 1), last_page_button: false} %>
+          <%= render partial: 'next_page_link', locals: {max_pages: max_pages, state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + (i - 1), last_page_button: false} %>
         <% end %>
       <% end %>
 
@@ -40,7 +41,7 @@
       </li>
 
       <!-- renders last page button -->
-      <%= render partial: 'next_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + 1, last_page_button: true} %>
+      <%= render partial: 'next_page_link', locals: {max_pages: max_pages, state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + 1, last_page_button: true} %>
     </ul>
   </div>
 </div>

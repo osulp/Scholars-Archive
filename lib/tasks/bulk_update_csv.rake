@@ -53,7 +53,7 @@ def update_property(logger, work, row)
       logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{row[:to]}\"")
     elsif(row[:from].casecmp('*').zero?)
       work[row[:property]] = [row[:to]]
-      logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{row[:to]}\", originally was \"#{row[:from].map(&:to_s).join('\",\"')}\"")
+      logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{row[:to]}\"")
     elsif(row[:from].blank?)
       work[row[:property]] += [row[:to]]
       logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{row[:to]}\"")

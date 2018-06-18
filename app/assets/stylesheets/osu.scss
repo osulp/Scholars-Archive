@@ -1,11 +1,15 @@
-@import 'osu_settings';
+@import "osu_settings";
 
 /* Temporary override to disable 'Explore Collections' tab */
 
-#content-wrapper > div > div.row.home-content > div:nth-child(2) > ul > li:nth-child(2) {
+#content-wrapper
+  > div
+  > div.row.home-content
+  > div:nth-child(2)
+  > ul
+  > li:nth-child(2) {
   display: none;
 }
-
 
 /* Override Hyrax dashboard class. */
 .dashboard {
@@ -17,7 +21,7 @@
 }
 
 .image-masthead .background-container {
-  background-image: image-url('SA-Mast-Head.png') !important;
+  background-image: image-url("SA-Mast-Head.png") !important;
 }
 
 #masthead {
@@ -44,12 +48,13 @@
   text-decoration: none;
 }
 
-#lower-banner-border-masthead a:hover, a:focus {
+#lower-banner-border-masthead a:hover,
+a:focus {
   text-decoration: underline;
 }
 
 #lower-banner-border-masthead .group-header h1 {
-  font-family: 'Open sans',sans-serif;
+  font-family: "Open sans", sans-serif;
   display: inline;
   padding: 0;
   font-size: 1rem;
@@ -58,7 +63,7 @@
 }
 
 #logo {
-  min-height:105px;
+  min-height: 105px;
   float: none;
 }
 
@@ -90,14 +95,14 @@
   #logo span.institution_name {
     padding-left: 0px;
   }
-
 }
 
 div.facets h3 {
   font-size: 1.2em !important;
 }
 
-div#date_wrapper, div#geo_wrapper {
+div#date_wrapper,
+div#geo_wrapper {
   padding-left: 1em;
 }
 
@@ -119,11 +124,11 @@ div#date_wrapper, div#geo_wrapper {
 }
 
 #date_fields tr.date_field button.remove_date_type.date-range {
-    margin-top: -12.5em;
+  margin-top: -12.5em;
 }
 
 #date_fields tr.date_field button.remove_date_type.date-default {
-    margin-top: -6em;
+  margin-top: -6em;
 }
 
 .date-range-label {
@@ -146,7 +151,6 @@ div#date_wrapper, div#geo_wrapper {
   margin-left: -4em;
 }
 
-
 #geo_fields .btn.remove {
   color: #d9534f;
 }
@@ -155,11 +159,13 @@ div#date_wrapper, div#geo_wrapper {
   max-width: 46.5em !important;
 }
 
-.multi_value .listing, .controlled_vocabulary .listing {
+.multi_value .listing,
+.controlled_vocabulary .listing {
   max-width: 53em !important;
 }
 
-.input-group-addon, .input-group-btn {
+.input-group-addon,
+.input-group-btn {
   width: 1% !important;
 }
 
@@ -181,7 +187,7 @@ table[data-behavior="child-relationships"] > tbody > tr > td {
 }
 
 .select2-default {
- background-color: none !important;
+  background-color: none !important;
 }
 
 .select2-container .select2-choice .select2-arrow {
@@ -209,8 +215,31 @@ div .modal-dialog {
 }
 
 div .select-worktype {
-  border-bottom: solid 1px #D3D3D3;
-  border-left: solid 1px #D3D3D3;
+  border: none;
+}
+
+.new-work-select {
+  .modal-body {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      li {
+        .worktype-row {
+          margin: 0 !important;
+          h3:not(.work-type-title) {
+            margin-top: 0 !important;
+            color: $osu-orange;
+          }
+        }
+      }
+      li:nth-child(odd) {
+        .worktype-row {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
 }
 
 .row.match-my-cols {
@@ -218,9 +247,9 @@ div .select-worktype {
   padding: 0 15px 0 15px;
 }
 
-.row.match-my-cols [class*="col-"]{
-    margin-bottom: -99999px;
-    padding-bottom: 99999px;
+.row.match-my-cols [class*="col-"] {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
 }
 
 footer.site-footer {
@@ -230,7 +259,13 @@ footer.site-footer {
   padding: 20px 0 20px 20px;
   background: $osu-black;
   /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #39393a), color-stop(100%, #252525));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #39393a),
+    color-stop(100%, #252525)
+  );
   /* Chrome,Safari4+ */
   background: -webkit-linear-gradient(top, #39393a 0%, #252525 100%);
   /* Chrome10+,Safari5.1+ */
@@ -253,7 +288,7 @@ footer.site-footer a.navbar-link:hover {
   text-decoration: none;
 }
 
-div[class$=embargo_release_date]{
+div[class$="embargo_release_date"] {
   width: 100%;
 }
 
@@ -309,10 +344,6 @@ input.fill_column {
   font-size: 24px;
 }
 
-li.document .list-thumbnail {
-  width: 15%;
-}
-
 li.document .attribute-label {
   font-size: 15px;
 }
@@ -363,4 +394,8 @@ hr.deposit-help {
       margin: 0;
     }
   }
+}
+
+li.attribute {
+  word-break: break-word;
 }

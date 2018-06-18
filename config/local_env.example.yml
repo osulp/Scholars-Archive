@@ -1,14 +1,47 @@
+# Background job queue
+# Docker
+#ACTIVE_JOB_QUEUE_ADAPTER: sidekiq
+
+# File characterization
+# Docker
+#FITS_PATH: /opt/fits-1.0.5/fits.sh
+
+# Rails defaults
+# Docker
+#RAILS_CACHE_STORE_URL: memcache
+#RAILS_LOG_TO_STDOUT: 'true'
+
 # Database
-SCHOLARSARCHIVE_ADAPTER: mysql2
-SCHOLARSARCHIVE_DB: development
-SCHOLARSARCHIVE_DB_HOST: localhost
 SCHOLARSARCHIVE_DB_PASSWORD: '12341234'
-SCHOLARSARCHIVE_DB_PORT: '3300'
+SCHOLARSARCHIVE_DB_PORT: '3306'
 SCHOLARSARCHIVE_DB_USERNAME: root
+SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
+# Docker
+#SCHOLARSARCHIVE_DB_HOST: db
+# Production/Staging only; not needed for development/test as these are set in database.yml
+#SCHOLARSARCHIVE_DB: development
+
+# Fedora repository server
+SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8984
+# Docker
+#SCHOLARSARCHIVE_FEDORA_URL: http://fcrepo:8080
+
+# SOLR index server
+SCHOLARSARCHIVE_SOLR_URL: http://localhost:8983
+# Docker
+#SCHOLARSARCHIVE_SOLR_URL: http://solr:8983
 
 # Redis for background jobs and notifications
-SCHOLARSARCHIVE_REDIS_HOST: localhost
 SCHOLARSARCHIVE_REDIS_PORT: '6379'
+SCHOLARSARCHIVE_REDIS_HOST: localhost
+# Docker
+#SCHOLARSARCHIVE_REDIS_HOST: redis
+
+# Triplestore adapter cache
+SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: blazegraph
+SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL: 'http://127.0.0.1:9999/blazegraph/namespace/<%= ENV.fetch('RAILS_ENV') %>/sparql'
+# Docker
+#SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL: 'http://blazegraph:8080/bigdata/namespace/<%= ENV.fetch('RAILS_ENV') %>/sparql'
 
 # Secret key for Devise and Rails security
 SCHOLARSARCHIVE_SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
@@ -16,10 +49,6 @@ SCHOLARSARCHIVE_SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bob
 # CAS authentication
 SCHOLARSARCHIVE_CAS_BASE_URL: 'https://FQDN/cas'
 SCHOLARSARCHIVE_CAS_VALIDATE_URL: 'https://FQDN/cas/samlValidate'
-
-# Triplestore adapter cache
-SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: blazegraph
-SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URI: 'http://127.0.0.1:8080/blazegraph/namespace/development/sparql'
 
 # Default selected Admin Set on work form
 SCHOLARSARCHIVE_DEFAULT_ADMIN_SET: 'Default Admin Set'
@@ -42,13 +71,11 @@ SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY: 'asdfasdfadsfasdfasdfasdfasdfasdfad'
 # NewRelic application monitoring
 NEWRELIC_LICENSE_KEY: thisisnttherealkeyhahaha!!11!1!
 
-# Fedora repository server
-SCHOLARSARCHIVE_FEDORA_HOST: localhost
-SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8984/rest
-
-# SOLR index server
-SCHOLARSARCHIVE_SOLR_HOST: localhost
-SCHOLARSARCHIVE_SOLR_URL: http://localhost:8983/solr/hydra-development
-
 # Capistrano deployment log path
 SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG: /path/to/app/revisions.log
+
+#OSU API services configurations
+OSU_API_HOST: https://fqdn.to.server
+OSU_API_CLIENT_ID: abc1234
+OSU_API_CLIENT_SECRET: def5678
+OSU_API_PERSON_REFRESH_SECONDS: '<%= 30 * 24 * 60 * 60 %>'

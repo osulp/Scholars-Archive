@@ -6,17 +6,24 @@ include Warden::Test::Helpers
 
 RSpec.feature 'Create a Administrative Report Or Publication', js: false do
   context 'a logged in user' do
-    let(:user) { User.first }
+    let(:user) do
+      User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false)}
+    end
     let(:current_user) { user }
 
     let(:admin_set) do
-      AdminSet.create(title: ["Test Default Admin Set"],
-             description: ["A substantial description"],
-             edit_users: ["admin"])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do
-      Hyrax::PermissionTemplate.create!(admin_set_id: admin_set.id)
+      Hyrax::PermissionTemplate.create!(source_id: admin_set.id)
     end
 
     let(:workflow) do
@@ -52,6 +59,7 @@ RSpec.feature 'Create a Administrative Report Or Publication', js: false do
       allow_any_instance_of(ApplicationHelper).to receive(:select_tag_dates).and_return("")
 
       ENV["SCHOLARSARCHIVE_DEFAULT_ADMIN_SET"] = 'Test Default Admin Set'
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
 
       @ticket = CASClient::ServiceTicket.new("ST-test", nil)
       @ticket.extra_attributes = {:id => 10, :email => "admin@example.com"}

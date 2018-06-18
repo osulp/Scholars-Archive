@@ -7,19 +7,23 @@ include Warden::Test::Helpers
 # NOTE: If you generated more than one work, you have to set "js: true"
 RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: false do
   context 'a logged in user' do
-
     let(:user) do
-      User.new(email: 'test@example.com',guest: false) { |u| u.save!(validate: false)}
+      User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false)}
     end
 
     let(:admin_set) do
-      AdminSet.create(title: ["A completely unique name"],
-             description: ["A substantial description"],
-             edit_users: [user.user_key])
+      begin
+        AdminSet.find('blah')
+      rescue ActiveFedora::ObjectNotFoundError
+        AdminSet.create(id: 'blah',
+                        title: ["title"],
+                        description: ["A substantial description"],
+                        edit_users: ["admin"])
+      end
     end
 
     let(:permission_template) do
-      Hyrax::PermissionTemplate.create!(admin_set_id: admin_set.id)
+      Hyrax::PermissionTemplate.create!(source_id: admin_set.id)
     end
 
     let(:workflow) do
@@ -29,6 +33,7 @@ RSpec.feature 'Create a PurchasedEResource', skip: true, type: :feature, js: fal
     before do
       Hyrax::PermissionTemplateAccess.create(permission_template: permission_template, agent_type: 'user', agent_id: user.user_key, access: 'deposit')
       Sipity::WorkflowAction.create(id: 4, name: 'show', workflow_id: workflow.id)
+      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
       login_as user
     end
 

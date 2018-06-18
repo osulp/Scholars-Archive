@@ -2,9 +2,6 @@ require 'rails_helper'
 require 'spec_helper'
 include Warden::Test::Helpers
 
-# Feature test needs net connect for docker-stack capability
-WebMock.allow_net_connect!
-
 RSpec.describe "Modal facet pagination", type: :feature, clean_repo: true do
   let!(:lots_of_works) do
     # Generate a bunch of works so that the pagination will show multiple pages
@@ -23,6 +20,7 @@ RSpec.describe "Modal facet pagination", type: :feature, clean_repo: true do
 
   before do
     visit '/'
+    allow_any_instance_of(ApplicationHelper).to receive(:max_page_number).with(anything(), anything()).and_return(2)
   end
 
   describe 'when searching the catalog' do

@@ -11,7 +11,22 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  # Hyrax 2.1 migration
+  skip_after_action :discard_flash_if_xhr
+
   before_action :check_d2h_http_header_auth
+  before_action :update_from_person_api
+
+  def update_from_person_api
+    if user_signed_in?
+      begin
+        current_user.update_from_person_api
+      rescue
+        # Don't fail hard when the API queries fail
+        logger.error("Failed accessing OSU API, unable to synchronize user details.")
+      end
+    end
+  end
 
   def check_d2h_http_header_auth
     if !user_signed_in? && request.headers.key?('HTTP_D2H_AUTHENTICATION')
@@ -27,11 +42,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def default_url_options(options={})
+  def default_url_options
     if Rails.env == "production"
-      options.merge(protocol: :https)
+      super.merge(protocol: :https) if Rails.env == 'production'
     else
-      options
+      super
     end
   end
 

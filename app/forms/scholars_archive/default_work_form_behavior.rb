@@ -48,19 +48,20 @@ module ScholarsArchive
 
       def self.build_permitted_params
         super + self.date_terms + [
-            :degree_level,
-            :degree_name,
-            :degree_field,
-            :embargo_reason,
-            :degree_level_other,
-            :degree_grantors_other,
-            {
-                :nested_geo_attributes => [:id, :_destroy, :point_lat, :point_lon, :bbox_lat_north, :bbox_lon_west, :bbox_lat_south, :bbox_lon_east, :label, :point, :bbox],
-                :nested_related_items_attributes => [:id, :_destroy, :label, :related_url],
-                :other_affiliation_other => [],
-                :degree_field_other => [],
-                :degree_name_other => []
-            }
+          :degree_level,
+          :degree_name,
+          :degree_field,
+          :embargo_reason,
+          :degree_level_other,
+          :degree_grantors_other,
+          :member_of_collection_ids,
+          {
+            :nested_geo_attributes => [:id, :_destroy, :point_lat, :point_lon, :bbox_lat_north, :bbox_lon_west, :bbox_lat_south, :bbox_lon_east, :label, :point, :bbox],
+            :nested_related_items_attributes => [:id, :_destroy, :label, :related_url],
+            :other_affiliation_other => [],
+            :degree_field_other => [],
+            :degree_name_other => []
+          }
         ]
       end
 

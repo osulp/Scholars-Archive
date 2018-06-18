@@ -15,7 +15,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       %(
       <tr>
       <th>Search and external link</th>
-      <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
+      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
       </tr>
       )
     end
@@ -32,6 +32,25 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       }
     end
 
+    context "with a linked label" do
+      let(:linked_data_string) { "label$uri" }
+      let(:linked_data_label) { "label" }
+      let(:linked_data_uri) { "uri" }
+      let(:renderer) { described_class.new(field, [linked_data_string.to_s], search_field: 'based_near_label') }
+      let(:expected) { Nokogiri::HTML(tr_content) }
+      let(:tr_content) do
+        %(
+      <tr>
+      <th>Search and external link</th>
+      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{linked_data_label}&search_field=based_near_label">#{linked_data_label}</a><a aria-label="Open link in new window" class="btn" href="#{linked_data_uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
+      </tr>
+        )
+      end
+      it {
+        expect(subject).to be_equivalent_to(expected)
+      }
+    end
+
     context "with a non-URI label" do
       let(:label) { "Bob Ross" }
       let(:label_uris) { label }
@@ -40,7 +59,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
         %(
         <tr>
         <th>Search and external link</th>
-        <td><ul class="tabular"><li class="attribute search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a></li></ul></td>
+        <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a></li></ul></td>
         </tr>
         )
       end

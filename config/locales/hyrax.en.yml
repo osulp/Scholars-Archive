@@ -35,6 +35,13 @@ en:
     institution_name_full:  "Oregon State University"
     account_name:           "ONID Account ID"
     work_url_label:         "Citeable URL"
+    base:
+      relationships_parent_rows_label: "Parents:"
+      rows_empty_text: "This work has no parents."
+      metadata:
+        attribute_name_label: Attribute Name
+        attribute_values_label: Values
+        header: Descriptions
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."
@@ -60,3 +67,13 @@ en:
     works:
       create:
         after_create_html: "ScholarsArchive@OSU has received your upload. Your file is currently being processed. Thank you for your deposit."
+
+    homepage:
+      featured_works:
+        document:
+          subject_label: Subjects
+          subject_missing: no subjects specified
+      recently_uploaded:
+        document:
+          subject_label: Subjects
+          subject_missing: no subjects specified

@@ -56,7 +56,8 @@ gem 'browse-everything'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.0.0'
+gem 'faraday'
+gem 'hyrax', github: 'samvera/hyrax', branch: '2.1-stable'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr', '~> 1.0'
 gem 'staccato'
@@ -71,14 +72,19 @@ gem 'sitemap_generator'
 gem 'net-http-persistent', '~> 2.9'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
+# simple_form 3.5.1 broke hydra-editor for certain model types;
+#   see: https://github.com/plataformatec/simple_form/issues/1549
+gem 'simple_form', '~> 3.2', '<= 3.5.0'
+
+# Gem vulnerability fix
+gem 'rest-client', '~> 2.0'
 
 # For asset precompiled error pages, and/or general use because it's way better than ERB
 gem 'haml'
 
-# Gem vulnerability fix
-gem 'rest-client', '~> 1.7'
-
 gem 'bagit', '~>0.4.1'
+
+gem 'newrelic_rpm'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -91,8 +97,10 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'docker-stack'
+  gem 'debase'
+  gem 'debase-ruby_core_source'
   gem 'fcrepo_wrapper'
+  gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
 end

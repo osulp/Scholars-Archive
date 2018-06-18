@@ -70,6 +70,10 @@ class SolrDocument
     self['language_label_ssim']
   end
 
+  def based_near_linked
+    self["based_near_linked_ssim"]
+  end
+
   def nested_geo
     self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
   end
