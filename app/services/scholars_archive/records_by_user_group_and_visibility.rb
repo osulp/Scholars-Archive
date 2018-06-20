@@ -15,7 +15,7 @@ module ScholarsArchive
         end
       end
       query_strings << other_owned_records(facet, current_user.username)
-      ActiveFedora::SolrService.get( query_strings.join(" OR "), :rows => 1000000 )["response"]["docs"].map { |item| item[facet.key.gsub("sim", "tesim")] }.uniq
+      facets(query_strings, facet.key)
     end
 
     private
@@ -38,6 +38,23 @@ module ScholarsArchive
 
     def search_builder
       ScholarsArchive::FacetModalSearchBuilder.new
+    end
+
+    def solr_connection
+      RSolr::Ext.connect(url: ENV['SCHOLARSARCHIVE_SOLR_URL'])
+    end
+
+    def solr_params(query_strings, facet_field)
+      {
+        rows: 0,
+        queries: query_strings,
+        facets: { fields: [facet_field]}
+      }
+    end
+
+    def facets(query_strings, facet_field)
+      response = solr_connection.find(solr_params(query_strings, facet_field), method: :get)
+      Hash[*response['facet_counts']['facet_fields'][facet_field]].keys
     end
   end
 end
