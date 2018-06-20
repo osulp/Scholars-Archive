@@ -6,6 +6,6 @@ module Hyrax
     include ScholarsArchive::EtdWorkFormBehavior
 
     self.model_class = ::UndergraduateThesisOrProject
-    self.required_fields -= [:degree_grantors]
+    self.required_fields -= [:other_affiliation]
   end
 end
