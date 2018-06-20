@@ -41,7 +41,7 @@ module ScholarsArchive
     end
 
     def solr_connection
-      RSolr::Ext.connect(url: ENV['SCHOLARSARCHIVE_SOLR_URL'])
+      RSolr::Ext.connect(url: ActiveFedora.solr_config[:url])
     end
 
     def solr_params(query_strings, facet_field)
