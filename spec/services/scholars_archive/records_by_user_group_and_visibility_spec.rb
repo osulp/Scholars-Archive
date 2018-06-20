@@ -12,9 +12,6 @@ describe ScholarsArchive::RecordsByUserGroupAndVisibility do
   let(:guest_solr_search) { "guest_search" }
   let(:auth_solr_search) { "auth_search" }
   let(:other_record_search) { "other_record_search" }
-  let(:admin_records) { {"response":{"docs":[{"creator_sim":"bob"}.stringify_keys, {"creator_sim":"ross"}.stringify_keys, {"creator_sim":"banana"}.stringify_keys]}.stringify_keys}.stringify_keys }
-  let(:guest_records) { {"response":{"docs":[{"creator_sim":"bob"}.stringify_keys, {"creator_sim":"ross"}.stringify_keys]}.stringify_keys}.stringify_keys }
-  let(:auth_records) { {"response":{"docs":[{"creator_sim":"bob"}.stringify_keys]}.stringify_keys}.stringify_keys }
   let(:facet_key) { "creator_sim" }
   let(:combined_searches) { "" }
 
@@ -31,7 +28,7 @@ describe ScholarsArchive::RecordsByUserGroupAndVisibility do
         allow(user).to receive(:guest?).and_return(false)
         allow(service).to receive(:admin_search).with(facet).and_return(admin_solr_search)
         allow(service).to receive(:other_owned_records).with(facet, username).and_return(other_record_search)
-        allow(service).to receive(:facets).with(anything(), anything()).and_return(admin_records)
+        allow(service).to receive(:facets).with(anything(), anything()).and_return(admin_facet_results)
       end
       it "returns all unique creators in an array" do
         expect(service.call(user, facet)).to eq (admin_facet_results)
@@ -44,7 +41,7 @@ describe ScholarsArchive::RecordsByUserGroupAndVisibility do
         allow(user).to receive(:guest?).and_return(true)
         allow(service).to receive(:admin_search).with(facet).and_return(guest_solr_search)
         allow(service).to receive(:other_owned_records).with(facet, username).and_return(other_record_search)
-        allow(service).to receive(:facets).with(anything(), anything()).and_return(guest_records)
+        allow(service).to receive(:facets).with(anything(), anything()).and_return(guest_facet_results)
       end
       it "returns all unique creators in an array" do
         expect(service.call(user, facet)).to eq (guest_facet_results)
@@ -57,7 +54,7 @@ describe ScholarsArchive::RecordsByUserGroupAndVisibility do
         allow(user).to receive(:guest?).and_return(false)
         allow(service).to receive(:admin_search).with(facet).and_return(auth_solr_search)
         allow(service).to receive(:other_owned_records).with(facet, username).and_return(other_record_search)
-        allow(service).to receive(:facets).with(anything(), anything()).and_return(auth_records)
+        allow(service).to receive(:facets).with(anything(), anything()).and_return(auth_facet_results)
       end
       it "returns all unique creators in an array" do
         expect(service.call(user, facet)).to eq (auth_facet_results)
