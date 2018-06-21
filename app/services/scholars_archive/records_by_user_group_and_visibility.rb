@@ -1,6 +1,8 @@
 module ScholarsArchive
   class RecordsByUserGroupAndVisibility
     def call(current_user, facet)
+      return facets(public_search(facet, "public"), facet.key) unless current_user
+
       query_strings = []
       if current_user.admin?
         query_strings << admin_search(facet)
