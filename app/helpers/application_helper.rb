@@ -126,8 +126,8 @@ module ApplicationHelper
     Kaminari::Helpers::NextPage.new(self, params: search_state, param_name: request_keys[:page], current_page: page).url
   end
 
-  def max_page_number(response_object, pagination_object)
-    records = ScholarsArchive::RecordsByUserGroupAndVisibility.new.call(current_user, @facet)
-    (records.length.to_f / pagination_object.limit.to_f).ceil
+  def max_page_number(facet_object, pagination_object)
+    facet_values = ScholarsArchive::AllVisibleFacetsService.new.call(facet_object)
+    (facet_values.length.to_f / pagination_object.limit.to_f).ceil
   end
 end
