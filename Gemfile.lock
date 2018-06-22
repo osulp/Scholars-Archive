@@ -742,8 +742,6 @@ GEM
     retriable (3.1.1)
     rsolr (1.1.2)
       builder (>= 2.1.2)
-    rsolr-ext (1.0.3)
-      rsolr (>= 1.0.2)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -953,8 +951,7 @@ DEPENDENCIES
   recaptcha
   redis (~> 3.0)
   rest-client (~> 2.0)
-  rsolr (~> 1.0)
-  rsolr-ext
+  rsolr
   rspec
   rspec-mocks
   rspec-rails
