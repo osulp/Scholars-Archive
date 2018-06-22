@@ -17,7 +17,7 @@ RSpec.describe Hyrax::GraduateProjectForm do
     expect(described_class.terms).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :contributor_advisor, :contributor_committeemember, :graduation_year, :degree_discipline]
   end
   it "has the proper required fields" do
-    expect(described_class.required_fields).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year, :academic_affiliation]
+    expect(described_class.required_fields).to include *[:degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year]
   end
 
   it "has the proper primary terms" do
