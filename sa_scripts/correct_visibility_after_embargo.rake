@@ -31,6 +31,15 @@ namespace :scholars_archive do
           work.embargo.save!
           work.save!
           logger.info "Correct visibility for handle: #{handle} to 'open', the original embargo history is #{doc['embargo_history_ssim']}"
+          work.ordered_members.to_a.each do |f|
+            f.visibility = 'open'
+            f.embargo.save
+            if f.save
+              logger.info "Correct visibility of fileset for handle: #{handle} to 'open', #{f}"
+            else
+              logger.info "Unsuccefully correct visibility of fileset for handle: #{handle} to 'open', #{f}"
+            end
+          end
         end
         # if embargo_release_date_dtsi exists (indicates embargoed currently),
         # then change visibility_after_embargo_ssim from 'authenticated' to 'open'
@@ -39,6 +48,15 @@ namespace :scholars_archive do
           work.embargo.save!
           work.save!
           logger.info "Correct visibility_after_embargo for handle: #{handle} to 'open', the embargo release date is #{doc['embargo_release_date_dtsi']}"
+          work.ordered_members.to_a.each do |f|
+            f.visibility_after_embargo = 'open'
+            f.embargo.save
+            if f.save
+              logger.info "Correct visibility_after_embargo of fileset for handle: #{handle} to 'open', #{f}"
+            else
+              logger.info "Unsuccefully correct visibility_after_embargo of fileset for handle: #{handle} to 'open', #{f}"
+            end
+          end
         end
       rescue => e
         logger.info "failed to correct visibility for handle: #{handle} for: #{e.message}"
