@@ -59,7 +59,7 @@ gem 'devise_cas_authenticatable'
 gem 'faraday'
 gem 'hyrax', github: 'samvera/hyrax', branch: '2.1-stable'
 gem 'recaptcha', require: 'recaptcha/rails'
-gem 'rsolr', '~> 1.0'
+gem 'rsolr'
 gem 'staccato'
 
 # CAS Authentication gems
@@ -85,9 +85,6 @@ gem 'haml'
 gem 'bagit', '~>0.4.1'
 
 gem 'newrelic_rpm'
-
-# Necessary for facet pagination functionality
-gem 'rsolr-ext'
 
 group :development do
   gem 'listen', '~> 3.0.5'
