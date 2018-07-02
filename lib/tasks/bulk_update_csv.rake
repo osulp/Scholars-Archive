@@ -35,8 +35,7 @@ def update_work(logger, row)
   work = ActiveFedora::Base.find(row[:id].to_s.gsub("'",""))
   work = update_property(logger, work, row)
   if(!work.nil?)
-    work.save!(validate: false)
-    work.update_index
+    work.save
   end
 end
 
@@ -48,8 +47,9 @@ def update_property(logger, work, row)
   elsif(property.is_a?(ActiveTriples::Relation))
     found_row = property.find{|r| r.include?(row[:from] || '')}
     if(found_row)
-      work[row[:property]].delete(found_row)
-      work[row[:property]] += [row[:to]]
+      work[row[:property]] = nil if work[row[:property]].length == 1
+      work[row[:property]].delete(found_row) if work[row[:property]].length > 1
+      work[row[:property]] += [row[:to]] unless row[:to].blank?
       logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{row[:to]}\"")
     elsif(row[:from].casecmp('*').zero?)
       work[row[:property]] = [row[:to]]
