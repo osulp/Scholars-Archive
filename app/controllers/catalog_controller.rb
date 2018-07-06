@@ -28,7 +28,7 @@ class CatalogController < ApplicationController
       url_key: 'advanced',
       query_parser: 'dismax',
       form_solr_parameters: {
-        "facet.limit" => -1,
+        "facet.limit" => 20,
         "facet.sort" => "index" # sort by byte order of values
       }
     }
@@ -63,10 +63,10 @@ class CatalogController < ApplicationController
     config.add_facet_field "academic_affiliation_label_ssim", label: "Academic Affiliation", limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
 
-#    config.add_facet_field solr_name('graduation_year', :facetable), limit: 5, label: 'Commencement Year', range: true
     config.add_facet_field(solr_name('graduation_year', :facetable)) do |field|
       field.label = "Commencement Year"
       field.range = true
+      field.include_in_advanced_search = false
     end
 
     config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
@@ -78,6 +78,7 @@ class CatalogController < ApplicationController
     config.add_facet_field('date_facet_yearly_ssim') do |field|
       field.label = "Date"
       field.range = true
+      field.include_in_advanced_search = false
     end
 
     config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, sort: 'index', partial: 'date_decades_facet'
@@ -274,6 +275,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('degree_grantors_label') do |field|
       solr_name = solr_name("degree_grantors_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -397,6 +399,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('rights_statement_label') do |field|
       solr_name = solr_name("rights_statement_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -405,6 +408,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('license_label') do |field|
       solr_name = solr_name("license_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -413,6 +417,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('peerreviewed_label') do |field|
       solr_name = solr_name("peerreviewed_label", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -421,6 +426,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('resource_type') do |field|
       solr_name = solr_name("resource_type", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -438,6 +444,7 @@ class CatalogController < ApplicationController
     config.add_search_field('nested_geo_label') do |field|
       field.label = "Geographic Coordinates"
       field.solr_parameters = { :"spellcheck.dictionary" => "nested_geo_label" }
+      field.include_in_advanced_search = false
       solr_name = solr_name("nested_geo_label", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
@@ -464,6 +471,7 @@ class CatalogController < ApplicationController
     config.add_search_field('based_near') do |field|
       field.label = "Location"
       solr_name = solr_name("based_near", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -480,6 +488,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('depositor') do |field|
       solr_name = solr_name("depositor", :symbol)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -497,6 +506,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('based_near_label') do |field|
       solr_name = solr_name("based_near_label", :stored_searchable)
+      field.label = "Location"
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name

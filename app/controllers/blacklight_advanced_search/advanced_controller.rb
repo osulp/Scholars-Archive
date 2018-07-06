@@ -1,3 +1,5 @@
+# Copied from blacklight_advanced_search plugin, changed to remove filter adjustments
+#
 # Need to sub-class CatalogController so we get all other plugins behavior
 # for our own "inside a search context" lookup of facets.
 class BlacklightAdvancedSearch::AdvancedController < CatalogController
