@@ -51,7 +51,6 @@ class CatalogController < ApplicationController
       qt: "search",
       rows: 10,
       qf: "title_tesim description_tesim creator_tesim keyword_tesim"
-
     }
 
     # solr field configuration for document/show views
