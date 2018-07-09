@@ -8,12 +8,11 @@
     <% advanced_query.filters[solr_field].each do |value| %>
         <li>
             <span class="selected"><%= h(facet_display_value(solr_field, value)) %></span>
-            <%= link_to(remove_advanced_facet_param(solr_field, value, params), :class => "remove") do %>
+            <%= link_to BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path do %>
                 <span class="glyphicon glyphicon-remove"></span><span class="sr-only">[remove]</span>
             <% end %>
         </li>
     <% end %>
     </ul>
   </div>
-  <%= render_facet_limit display_facet, :layout => nil, :partial => advanced_search_facet_partial_name(display_facet) %>
 </div>
