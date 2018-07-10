@@ -186,7 +186,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim",
+        qf: "#{all_names} abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim",
         pf: title_name.to_s
       }
     end
@@ -290,9 +290,9 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('description') do |field|
+    config.add_search_field('abstract') do |field|
       field.label = "Abstract or Summary"
-      solr_name = solr_name("description", :stored_searchable)
+      solr_name = solr_name("abstract", :stored_searchable)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
