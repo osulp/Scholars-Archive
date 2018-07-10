@@ -5,14 +5,14 @@
   <div class="inclusive_or well">
     <h4>Any of:</h4>
     <ul class="list-unstyled facet-values">
-    <% advanced_query.filters[solr_field].each do |value| %>
+      <% advanced_query.filters[solr_field].each do |value| %>
         <li>
-            <span class="selected"><%= h(facet_display_value(solr_field, value)) %></span>
-            <%= link_to BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path(remove_advanced_facet_param(solr_field, value, params)) do %>
-                <span class="glyphicon glyphicon-remove"></span><span class="sr-only">[remove]</span>
-            <% end %>
+          <span class="selected"><%= h(facet_display_value(solr_field, value)) %></span>
+          <%= link_to remove_advanced_facet_param(solr_field, value, params) do %>
+            <span class="glyphicon glyphicon-remove"></span><span class="sr-only">[remove]</span>
+          <% end %>
         </li>
-    <% end %>
+      <% end %>
     </ul>
   </div>
   <%= render_facet_limit display_facet, :partial => advanced_search_facet_partial_name(display_facet) %>
