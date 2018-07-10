@@ -39,6 +39,8 @@ gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight
 gem 'blacklight_range_limit'
 gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
 
+gem 'blacklight_advanced_search'
+
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.3.18'
 # Use Capistrano for deployment
