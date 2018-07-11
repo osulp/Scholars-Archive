@@ -39,5 +39,5 @@
 
 
 <div class="navbar-form">
-  <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h.except(:search_field)), class: 'advanced_search' %>
+  <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h.except(:search_field, :page)), class: 'advanced_search' %>
 </div>
