@@ -81,7 +81,13 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
     end
 
-    config.add_facet_field 'date_decades_ssim', :label => 'Decade', :limit => 10, sort: 'index', partial: 'date_decades_facet'
+    config.add_facet_field 'date_decades_ssim' do |field|
+      field.label = 'Decade'
+      field.limit = 10
+      field.sort = 'index'
+      field.partial = 'date_decades_facet'
+      field.include_in_advanced_search = false
+    end
     config.add_facet_field "degree_field_label_ssim", label: "Degree Field", limit: -1, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
