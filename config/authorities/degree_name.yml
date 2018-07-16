@@ -62,6 +62,9 @@ terms:
 - id: "Master of Forestry (M.F.)"
   term: "Master of Forestry (M.F.)"
   active: true
+- id: "Honors Baccalaureate of Fine Arts (H.B.F.A.)"
+  term: "Honors Baccalaureate of Fine Arts (H.B.F.A.)"
+  active: true
 - id: "Other"
   term: "Other"
   active: true
