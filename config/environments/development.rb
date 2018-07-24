@@ -54,6 +54,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.public_file_server.enabled = true
+
   config.assets.configure do |env|
     env.register_mime_type 'text/haml', extensions: ['.html']
     env.register_transformer 'text/haml', 'text/html', Tilt::HamlTemplate
