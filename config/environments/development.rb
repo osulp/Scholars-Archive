@@ -24,7 +24,7 @@ Rails.application.configure do
     }
   end
 
-  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+  config.cache_store = :mem_cache_store, ENV.fetch('RAILS_CACHE_STORE_URL', 'localhost')
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
