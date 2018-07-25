@@ -9,7 +9,8 @@ module ScholarsArchive
                :has_journal,
                :has_number,
                :has_volume,
-               :is_referenced_by,  to: :solr_document
+               :is_referenced_by,
+               :web_of_science_uid, to: :solr_document
     end
   end
 end
