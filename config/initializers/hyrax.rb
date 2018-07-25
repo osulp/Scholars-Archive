@@ -134,6 +134,42 @@ Hyrax.config do |config|
   # The default is true.
   # config.work_requires_files = true
 
+  # Enable IIIF image service. This is required to use the
+  # UniversalViewer-ified show page
+  #
+  # If you have run the riiif generator, an embedded riiif service
+  # will be used to deliver images via IIIF. If you have not, you will
+  # need to configure the following other configuration values to work
+  # with your image server:
+  #
+  #   * iiif_image_url_builder
+  #   * iiif_info_url_builder
+  #   * iiif_image_compliance_level_uri
+  #   * iiif_image_size_default
+  #
+  # Default is false
+  config.iiif_image_server = true
+
+  # Returns a URL that resolves to an image provided by a IIIF image server
+  config.iiif_image_url_builder = lambda do |file_id, base_url, size|
+    Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
+  end
+
+  # Returns a URL that resolves to an info.json file provided by a IIIF image server
+  config.iiif_info_url_builder = lambda do |file_id, base_url|
+    uri = Riiif::Engine.routes.url_helpers.info_url(file_id, host: base_url)
+    uri.sub(%r{/info\.json\Z}, '')
+  end
+
+  # Returns a URL that indicates your IIIF image server compliance level
+  config.iiif_image_compliance_level_uri = 'http://iiif.io/api/image/2/level2.json'
+
+  # Returns a IIIF image size default
+  config.iiif_image_size_default = '600,'
+
+  # Fields to display in the IIIF metadata section; default is the required fields
+  config.iiif_metadata_fields = Hyrax::Forms::WorkForm.required_fields
+
   # Should a button with "Share my work" show on the front page to all users (even those not logged in)?
   # config.always_display_share_button = true
 

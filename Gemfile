@@ -63,6 +63,7 @@ gem 'hyrax', github: 'samvera/hyrax', branch: '2.1-stable'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
+gem 'dalli'
 
 # CAS Authentication gems
 gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
@@ -121,3 +122,5 @@ group :test do
   gem 'simplecov', '>= 0.9'
   gem 'webmock'
 end
+
+gem 'riiif', '~> 1.1'

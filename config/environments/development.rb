@@ -24,7 +24,7 @@ Rails.application.configure do
     }
   end
 
-  config.cache_store = :file_store, "#{Rails.root}/tmp/cache"
+  config.cache_store = :mem_cache_store, ENV.fetch('RAILS_CACHE_STORE_URL', 'localhost')
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -53,6 +53,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.public_file_server.enabled = true
 
   config.assets.configure do |env|
     env.register_mime_type 'text/haml', extensions: ['.html']

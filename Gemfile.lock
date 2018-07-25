@@ -301,6 +301,7 @@ GEM
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
     daemons (1.2.6)
+    dalli (2.7.8)
     database_cleaner (1.7.0)
     debase (0.2.2)
       debase-ruby_core_source (>= 0.10.2)
@@ -747,6 +748,9 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     retriable (3.1.1)
+    riiif (1.7.1)
+      deprecation (>= 1.0.0)
+      railties (>= 4.2, < 6)
     rsolr (1.1.2)
       builder (>= 2.1.2)
     rspec (3.7.0)
@@ -930,6 +934,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   coveralls (~> 0.8)
+  dalli
   database_cleaner
   debase
   debase-ruby_core_source
@@ -959,6 +964,7 @@ DEPENDENCIES
   recaptcha
   redis (~> 3.0)
   rest-client (~> 2.0)
+  riiif (~> 1.1)
   rsolr
   rspec
   rspec-mocks
