@@ -14,7 +14,7 @@ RSpec.describe ArticlePresenter do
   end
   let(:user) { double(user_key: 'sarah')}
   let(:solr_properties) do
-    ["resource_type", "editor", "has_volume", "has_number", "conference_location", "conference_name", "conference_section", "has_journal", "is_referenced_by", "isbn"]
+    ["resource_type", "editor", "has_volume", "has_number", "conference_location", "conference_name", "conference_section", "has_journal", "is_referenced_by", "isbn", "web_of_science_uid"]
   end
   subject { presenter }
   it "delegates to the solr_document" do
@@ -34,4 +34,5 @@ RSpec.describe ArticlePresenter do
   it { is_expected.to delegate_method(:has_journal).to(:solr_document) }
   it { is_expected.to delegate_method(:is_referenced_by).to(:solr_document) }
   it { is_expected.to delegate_method(:isbn).to(:solr_document) }
+  it { is_expected.to delegate_method(:web_of_science_uid).to(:solr_document) }
 end
