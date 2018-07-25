@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe Hyrax::ArticleForm do
   let(:new_form) { described_class.new(Article.new, nil, double('Controller')) }
   let(:user) do
@@ -15,7 +13,9 @@ RSpec.describe Hyrax::ArticleForm do
   end
 
   it 'responds to terms with the proper list of terms' do
-    expect(described_class.terms).to include(%i[resource_type editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by web_of_science_uid])
+    %i[resource_type editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by web_of_science_uid].each do |t|
+      expect(described_class.terms).to include(t)
+    end
   end
 
   it 'responds to date_terms' do

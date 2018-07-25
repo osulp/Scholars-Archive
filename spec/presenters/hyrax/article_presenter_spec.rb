@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe ArticlePresenter do
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
