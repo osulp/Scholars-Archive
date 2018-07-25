@@ -25,6 +25,10 @@ module ScholarsArchive
       property :is_referenced_by, predicate: ::RDF::Vocab::DC.isReferencedBy do |index|
         index.as :stored_searchable
       end
+
+      property :web_of_science_uid, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/webOfScienceUid"), multiple: false do |index|
+        index.as :stored_searchable
+      end
     end
   end
 end
