@@ -20,12 +20,20 @@ module ScholarsArchive
       self.required_fields -= [:keyword]
 
       def primary_terms
-        [:title, :alt_title, :creator, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
+        if current_ability.current_user && current_ability.current_user.admin?
+          super
+        else
+          [:title, :alt_title, :creator, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
+        end
       end
 
       def secondary_terms
-        t = [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_name, :conference_section, :conference_location, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
-        t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection, :description, :identifier] if current_ability.current_user.admin?
+        if current_ability.current_user && current_ability.current_user.admin?
+          t = super
+          t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection, :description, :identifier]
+        else
+          t = [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_name, :conference_section, :conference_location, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
+        end
         t.flatten
       end
 

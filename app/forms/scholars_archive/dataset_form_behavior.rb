@@ -17,13 +17,21 @@ module ScholarsArchive
       self.required_fields -= [:keyword]
 
       def primary_terms
-        t = [:title, :alt_title, :creator, :academic_affiliation, :other_affiliation, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :bibliographic_citation, :in_series, :subject, :rights_statement, :nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :digitization_spec, :replaces, :additional_information] | super
-        t << [:description] if current_ability.current_user.admin?
-        t.flatten
+        if current_ability.current_user && current_ability.current_user.admin?
+          t = super
+          t << :description
+        else
+          t = [:title, :alt_title, :creator, :academic_affiliation, :other_affiliation, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :bibliographic_citation, :in_series, :subject, :rights_statement, :nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :digitization_spec, :replaces, :additional_information] | super
+        end
+        t
       end
 
       def secondary_terms
-        []
+        if current_ability.current_user && current_ability.current_user.admin?
+          super
+        else
+          []
+        end
       end
 
       def self.date_terms
