@@ -92,9 +92,9 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.2.2'
 
-
 group :staging, :production do
   gem 'ddtrace'
+  gem 'secure_headers'
 end
 
 group :development do

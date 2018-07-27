@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  ensure_security_headers
   helper Openseadragon::OpenseadragonHelper
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
