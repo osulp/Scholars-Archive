@@ -65,7 +65,7 @@ SCHOLARSARCHIVE_ADMIN_EMAIL: 'noreply@FQDN'
 BROWSEEVERYTHING_FILESYSTEM_PATH: '/tmp/browse-everything'
 
 # Cache timeout duration for the image-server
-SCHOLARSARCHIVE_CACHE_TIMEOUT: 365
+SCHOLARSARCHIVE_CACHE_TIMEOUT: '365'
 
 #Recaptcha configuration
 SCHOLARSARCHIVE_RECAPTCHA_SECRET_KEY: 'asdfasdfasdfasdfasdfadsfasdfadfsfa'
