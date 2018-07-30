@@ -9,10 +9,11 @@ module ScholarsArchive::Embargoes
         #attempt to expire embargo
         begin
           Hyrax::Actors::EmbargoActor.new(work).destroy
-        rescue
+        rescue => e
           file_name = Date.today.to_s + "-embargo-debug.log"
           logger = Logger.new(File.join(Rails.root, 'log', file_name))
           logger.warning("Couldnt destroy embargo for #{work.id}")
+          logger.warning ([e.message]+e.backtrace).join("\n")
           expired = false
         end
 
@@ -22,10 +23,11 @@ module ScholarsArchive::Embargoes
           #Attempt to save the file_set
           begin
             work.save!
-          rescue
+          rescue => e
             file_name = Date.today.to_s + "-embargo-file_set-debug.log"
             logger = Logger.new(File.join(Rails.root, 'log', file_name))
-            logger.warning("Couldnt destroy embargo for #{work.id}")
+            logger.warning("Couldnt update fileset #{work.id}")
+            logger.warning ([e.message]+e.backtrace).join("\n")
           end
 
         elsif !work.file_set? && expired
@@ -33,10 +35,11 @@ module ScholarsArchive::Embargoes
           #Attempt to copy visibility
           begin
             work.copy_visibility_to_files
-          rescue
+          rescue => e
             file_name = Date.today.to_s + "-embargo-copy_vis-debug.log"
             logger = Logger.new(File.join(Rails.root, 'log', file_name))
-            logger.warning("Couldnt destroy embargo for #{work.id}")
+            logger.warning("Couldnt copy visibility for #{work.id}")
+            logger.warning ([e.message]+e.backtrace).join("\n")
           end
 
         end
