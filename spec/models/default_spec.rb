@@ -228,6 +228,74 @@ RSpec.describe Default do
     expect(g.nested_geo.length).to eq 2
     expect(g.nested_geo.map{|x| x.label.first}).to contain_exactly("1","2")
   end
+
+  describe "#nested_ordered_creator_attributes" do
+    let(:attributes) do
+      [{
+           :index => "0",
+           :creator => "CreatorA"
+       }]
+    end
+    it "should be able to delete items" do
+      g = described_class.new(title: ['test'])
+      g.nested_ordered_creator_attributes = attributes
+      g.nested_ordered_creator_attributes = [
+          {
+              :id => g.nested_ordered_creator.first.id,
+              :_destroy => true
+          },
+          {
+              :creator => "CreatorB"
+          }
+      ]
+      expect(g.nested_ordered_creator.length).to eq 1
+      expect(g.nested_ordered_creator.first.creator).to eq ["CreatorB"]
+    end
+    it "should work on already persisted items" do
+      g = described_class.new(title: ['test'])
+      g.nested_ordered_creator_attributes = attributes
+      expect(g.nested_ordered_creator.first.creator).to eq ["CreatorA"]
+    end
+    it "should be able to edit" do
+      g = described_class.new(title: ['test'])
+      g.nested_ordered_creator_attributes = attributes
+      expect(g.nested_ordered_creator.length).to eq 1
+      expect(g.nested_ordered_creator.first.creator).to eq ["CreatorA"]
+
+      g.nested_ordered_creator.first.creator = ["CreatorB"]
+      g.nested_ordered_creator.first.persist!
+      expect(g.nested_ordered_creator.length).to eq 1
+      expect(g.nested_ordered_creator.first.creator).to eq ["CreatorB"]
+    end
+    it "should not create blank ones" do
+      g = described_class.new(title: ['test'], keyword: ['test'])
+      g.nested_ordered_creator_attributes = [
+          {
+              :index => "",
+              :creator => "",
+          }
+      ]
+      expect(g.nested_ordered_creator.length).to eq 0
+    end
+  end
+
+  it "should be able to create multiple nested ordered creators" do
+    g = described_class.new(title: ['test'])
+    g.nested_ordered_creator_attributes = [
+        {
+          "index" => "0",
+          "creator" => "Creator1"
+        },
+        {
+          "index" => "1",
+          "creator" => "Creator2"
+        }
+    ]
+    expect(g.nested_ordered_creator.length).to eq 2
+    expect(g.nested_ordered_creator.map{|x| x.index.first}).to contain_exactly("0","1")
+    expect(g.nested_ordered_creator.map{|x| x.creator.first}).to contain_exactly("Creator1","Creator2")
+  end
+
   describe "#attributes=" do
     it "accepts nested attributes" do
       g = described_class.new(title: ['test'], keyword: ['test'])

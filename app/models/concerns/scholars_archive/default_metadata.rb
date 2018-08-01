@@ -205,7 +205,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator do |index|
+      property :nested_ordered_creator, predicate: ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => NestedOrderedCreator do |index|
         index.as :stored_searchable, :facetable
       end
 
