@@ -45,7 +45,7 @@
 <%= presenter.attribute_to_html(:nested_related_items_label, render_as: :scholars_archive_nested, search_field: 'nested_related_items_label', itemprop_option: 'url', label: t('simple_form.labels.defaults.nested_related_items')) %>
 <%= presenter.attribute_to_html(:hydrologic_unit_code, label: t('simple_form.labels.defaults.hydrologic_unit_code')) %>
 <%= presenter.attribute_to_html(:nested_geo, render_as: :scholars_archive_nested, search_field: 'nested_geo_label_ssim', itemprop_option: 'geo', label: t('blacklight.search.form.nested_geo')) %>
-<%= presenter.attribute_to_html(:funding_statement, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.funding_statement')) %>
+<%= presenter.attribute_to_html(:funding_statement, label: t('simple_form.labels.defaults.funding_statement')) %>
 <%= presenter.attribute_to_html(:publisher, render_as: :search_and_external_link) %>
 <%= presenter.attribute_to_html(:peerreviewed_label, render_as: :linked, search_field: 'peerreviewed_label', label: t('simple_form.labels.defaults.peerreviewed')) %>
 <%= presenter.attribute_to_html(:language_label, render_as: :search_and_external_link, search_field: 'language_label', label: t('simple_form.labels.defaults.language')) %>
