@@ -1,7 +1,7 @@
 en:
   activefedora:
     models:
-      administrative_report_or_publication: "Administrative Report or Publication"
+      administrative_report_or_publication: "Administrative Report Or Publication"
       article: "Article"
       conference_proceedings_or_journal: "Conference Proceedings Or Journal"
       dataset: "Dataset"
