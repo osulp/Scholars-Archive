@@ -18,8 +18,6 @@ class ConferenceProceedingsOrJournal < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Conference Proceedings Or Journal'
-
   private
   def set_defaults
     self.peerreviewed ||= 'FALSE'

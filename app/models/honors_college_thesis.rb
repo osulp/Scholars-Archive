@@ -20,8 +20,6 @@ class HonorsCollegeThesis < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Honors College Thesis'
-
   private
   def set_defaults
     self.resource_type = ["Honors College Thesis"] if self.resource_type.empty?

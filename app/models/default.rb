@@ -18,8 +18,6 @@ class Default < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Other Scholarly Content'
-
   private
   def set_defaults
   end

@@ -1,4 +1,19 @@
 en:
+  activefedora:
+    models:
+      administrative_report_or_publication: "Administrative Report or Publication"
+      article: "Article"
+      conference_proceedings_or_journal: "Conference Proceedings Or Journal"
+      dataset: "Dataset"
+      default: "Other Scholarly Content"
+      eesc_publication: "EESC Publication"
+      graduate_project: "Graduate Project"
+      graduate_thesis_or_dissertation: "Graduate Thesis Or Dissertation"
+      honors_college_thesis: "Honors College Thesis"
+      open_educational_resource: "Open Educational Resource"
+      purchased_e_resource: "Purchased e-Resource"
+      technical_report: "Technical Report"
+      undergraduate_thesis_or_project: "Undergraduate Thesis Or Project"
   blacklight:
     search:
       fields:

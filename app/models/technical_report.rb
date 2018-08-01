@@ -16,8 +16,6 @@ class TechnicalReport < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Technical Report'
-
   private
   def set_defaults
     self.peerreviewed ||= 'FALSE'

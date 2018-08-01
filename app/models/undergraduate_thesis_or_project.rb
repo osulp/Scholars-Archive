@@ -20,8 +20,6 @@ class UndergraduateThesisOrProject < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Undergraduate Thesis Or Project'
-
   private
   def set_defaults
     self.peerreviewed ||= 'FALSE'
