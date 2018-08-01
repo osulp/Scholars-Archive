@@ -26,5 +26,6 @@
 //= require 'blacklight_range_limit'
 //= require browse_everything
 //= require tinymce
+//= require ordered_creator
 //= require_tree .
 //= require hyrax
