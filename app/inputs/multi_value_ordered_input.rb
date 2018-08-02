@@ -21,16 +21,18 @@ class MultiValueOrderedInput < MultiValueInput
 
   def inner_wrapper
     "
-      <li class='field-wrapper dd' id='dd' data-id='1' >
-        <div class='drag-this'>
-          <div class='col-md-1'>
-            <div class='dd-handle dd3-handle'>Hello I am click</div>
-          </div>
-          <div class='col-md-11'>\n
-            #{yield}\n
-          </div>
-        </div>
+      <li class='field-wrapper dd-item'>
+        <div class='dd-handle dd3-handle'></div>\n
+        #{yield}\n
       </li>\n
+    "
+  end
+
+  def outer_wrapper
+    "
+      <ul class='listing draggable-order dd-list'>\n        
+        #{yield}\n      
+      </ul>\n
     "
   end
 

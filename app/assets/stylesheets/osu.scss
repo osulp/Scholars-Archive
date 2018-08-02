@@ -399,3 +399,26 @@ hr.deposit-help {
 li.attribute {
   word-break: break-word;
 }
+
+.ordered-field-container {
+  position: inherit;
+  display: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  .draggable-order {
+    .dd-item {
+      display: table;
+    }
+    .dd3-handle {
+      display: table-cell;
+      position: inherit;
+    }
+    .dd3-handle:before {
+      top: 6px;
+    }
+    input {
+      font-size: initial;
+      padding-left: 5px;
+    }
+  }
+}
