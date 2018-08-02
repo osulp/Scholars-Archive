@@ -24,7 +24,7 @@ class MultiValueOrderedInput < MultiValueInput
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle'></div>\n
         #{yield}\n
-        <input type='hidden' name=#{nested_field_name(value, index)} id=#{nested_field_id(value, index)} />
+        <input type='hidden' name='#{nested_field_name(value, index)}' id='#{nested_field_id(value, index)}'' />
       </li>\n
     "
   end
@@ -39,15 +39,37 @@ class MultiValueOrderedInput < MultiValueInput
   private
 
   def build_field(value, index)
-    label_options = build_label_options(value, index)
-    input_label = @builder.text_field(:creator, label_options)
-  
-    if value.destroy_item == true
-      destroy_options = build_destroy_options(value.id, index)
-      destroy_input = @builder.text_field(:_destroy, destroy_options)
+    unless value.is_a?(String)
+      if value.new_record?
+        index = value.object_id
+      end
+      label_options = build_label_options(value, index)
+      input_label = @builder.text_field(:nested_ordered_creator_label, label_options)
+
+      unless value.new_record?
+        id_options = build_id_options(value.id, index)
+        input_id = @builder.text_field(:id, id_options)
+      end
+
+      if value.destroy_item == true
+        destroy_options = build_destroy_options(value.id, index)
+        destroy_input = @builder.text_field(:_destroy, destroy_options)
+      end
+
+      help_block = nested_item_help_block_wrapper do
+        value.validation_msg.present? ? value.validation_msg : ''
+      end
+
+      if value.validation_msg.present?
+        nested_item = nested_item_wrapper(value) do
+          "#{help_block}#{input_label}"
+        end
+      else
+        nested_item = "#{input_label}"
+      end
+
+      "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
     end
-  
-    "#{destroy_input ||= '' }#{nested_item}"
   end
 
   def nested_item_wrapper(value)
@@ -82,20 +104,10 @@ class MultiValueOrderedInput < MultiValueInput
   def build_label_options(value, index)
     label_value = value.creator.first
     options = build_field_options(label_value, index)
-    options[:name] = nested_field_name(:label.to_s, index)
-    options[:id] = nested_field_id(:label.to_s, index)
+    options[:name] = nested_field_name(:creator.to_s, index)
+    options[:id] = nested_field_id(:creator.to_s, index)
     options[:placeholder] = 'Label'
     options[:readonly] = 'readonly' if value.validation_msg.present? || label_value.present?
-    options
-  end
-
-  def build_url_options(value, index)
-    url_value = value.related_url.first
-    options = build_field_options(url_value, index)
-    options[:name] = nested_field_name(:related_url.to_s, index)
-    options[:id] = nested_field_id(:related_url.to_s, index)
-    options[:placeholder] = 'Related Url'
-    options[:readonly] = 'readonly' if value.validation_msg.present? || url_value.present?
     options
   end
 
