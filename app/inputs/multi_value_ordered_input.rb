@@ -10,7 +10,7 @@ class MultiValueOrderedInput < MultiValueInput
 
     outer_wrapper do
       buffer_each(collection) do |value, index|
-        inner_wrapper do
+        inner_wrapper(value, index) do
           build_field(value, index)
         end
       end
@@ -19,18 +19,18 @@ class MultiValueOrderedInput < MultiValueInput
 
   protected
 
-  def inner_wrapper
+  def inner_wrapper(value, index)
     "
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle'></div>\n
         #{yield}\n
+        <input type='hidden' name=#{nested_field_name(value, index)} id=#{nested_field_id(value, index)} />
       </li>\n
     "
   end
 
   def outer_wrapper
-    "
-      <ul class='listing draggable-order dd-list'>\n        
+    " <ul class='listing draggable-order dd-list'>\n        
         #{yield}\n      
       </ul>\n
     "
@@ -38,40 +38,17 @@ class MultiValueOrderedInput < MultiValueInput
 
   private
 
-  # def build_field(value, index)
-  #   if value.new_record?
-  #     index = value.object_id
-  #   end
-  #   label_options = build_label_options(value, index)
-  #   input_label = @builder.text_field(:label, label_options)
-  #
-  #   related_url_options = build_url_options(value, index)
-  #   input_related_url = @builder.text_field(:related_url, related_url_options)
-  #
-  #   unless value.new_record?
-  #     id_options = build_id_options(value.id, index)
-  #     input_id = @builder.text_field(:id, id_options)
-  #   end
-  #
-  #   if value.destroy_item == true
-  #     destroy_options = build_destroy_options(value.id, index)
-  #     destroy_input = @builder.text_field(:_destroy, destroy_options)
-  #   end
-  #
-  #   help_block = nested_item_help_block_wrapper do
-  #     value.validation_msg.present? ? value.validation_msg : ''
-  #   end
-  #
-  #   if value.validation_msg.present?
-  #     nested_item = nested_item_wrapper(value) do
-  #       "#{help_block}#{input_label}#{input_related_url}"
-  #     end
-  #   else
-  #     nested_item = "#{input_label}#{input_related_url}"
-  #   end
-  #
-  #   "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
-  # end
+  def build_field(value, index)
+    label_options = build_label_options(value, index)
+    input_label = @builder.text_field(:creator, label_options)
+  
+    if value.destroy_item == true
+      destroy_options = build_destroy_options(value.id, index)
+      destroy_input = @builder.text_field(:_destroy, destroy_options)
+    end
+  
+    "#{destroy_input ||= '' }#{nested_item}"
+  end
 
   def nested_item_wrapper(value)
     "<div class= \"#{attribute_name} related_item multi-value-label-url #{'has-error' if value.validation_msg.present?} \">#{yield}</div>"
@@ -103,7 +80,7 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def build_label_options(value, index)
-    label_value = value.label.first
+    label_value = value.creator.first
     options = build_field_options(label_value, index)
     options[:name] = nested_field_name(:label.to_s, index)
     options[:id] = nested_field_id(:label.to_s, index)
