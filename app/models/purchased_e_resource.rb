@@ -20,8 +20,6 @@ class PurchasedEResource < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Purchased e-Resource'
-
   private
   def set_defaults
   end

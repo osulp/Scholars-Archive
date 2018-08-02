@@ -16,8 +16,6 @@ class Dataset < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
-  self.human_readable_type = 'Dataset'
-
   private
   def set_defaults
   end
