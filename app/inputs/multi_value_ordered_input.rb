@@ -116,10 +116,11 @@ class MultiValueOrderedInput < MultiValueInput
     options = build_field_options(index_value, index)
     options[:name] = nested_field_name(:index.to_s, index)
     options[:id] = nested_field_id(:index.to_s, index)
+    options[:class] << "index"
     options[:placeholder] = 'Index'
     # uncomment below to make a hidden input
     # options[:type] = ['hidden']
-    options[:readonly] = 'readonly' if value.validation_msg.present? || index_value.present?
+    # options[:readonly] = 'readonly' if value.validation_msg.present? || index_value.present?
     options
   end
 
