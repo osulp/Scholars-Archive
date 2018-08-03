@@ -6,7 +6,7 @@ module ScholarsArchive
 
       delegate :nested_geo_attributes=, :to => :model
       delegate :nested_related_items_attributes=, :to => :model
-      delegate :nested_order_creator_attributes=, :to => :model
+      delegate :nested_ordered_creator_attributes=, :to => :model
 
       def initialize_fields
         model.nested_geo.build
