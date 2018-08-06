@@ -18,16 +18,11 @@ function reindexNestedOrderedField() {
 
 Blacklight.onLoad(function() {
   var mycallback = function(mutationsList) {
-    alert("buggaboo")
-    for(var mutation of mutationsList) {
-      if (mutation.type == 'childList') {
-        console.log('A child node has been added or removed.');
-      }
-    }
-    hidden_index_selectors = $($('.ordered-field-container')).find(".index");
-    hidden_index_selectors.each(function (index) {
-      hidden_index_selectors[index].value = index;
-    });
+        hidden_index_selectors = $($('.ordered-field-container')).find(".index");
+        hidden_index_selectors.each(function (index) {
+          hidden_index_selectors[index].value = index;
+        });
+    
   };
 
   orderedDragAndDrop($('.ordered-field-container'));
