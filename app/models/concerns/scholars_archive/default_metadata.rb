@@ -272,7 +272,8 @@ module ScholarsArchive
       accepts_nested_attributes_for :based_near, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? }
       accepts_nested_attributes_for :nested_geo, :allow_destroy => true, :reject_if => :all_blank
       accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
-      accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => :all_blank
+      # reject if all attributes all blank OR if either index or creator is blank
+      accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end
