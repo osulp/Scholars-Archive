@@ -245,11 +245,40 @@ RSpec.describe Default do
               :_destroy => true
           },
           {
+              :index => "1",
               :creator => "CreatorB"
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 1
       expect(g.nested_ordered_creator.first.creator).to eq ["CreatorB"]
+    end
+    it "should not persist items when all are blank" do
+      g = described_class.new(title: ['test1'])
+      g.nested_ordered_creator_attributes = [
+          {
+              :index => "",
+              :creator => ""
+          },
+          {
+              :index => "",
+              :creator => ""
+          }
+      ]
+      expect(g.nested_ordered_creator.length).to eq 0
+    end
+    it "should not persist items when either one of the attributes are blank" do
+      g = described_class.new(title: ['test1'])
+      g.nested_ordered_creator_attributes = [
+          {
+              :index => "",
+              :creator => "CreatorA"
+          },
+          {
+              :index => "1",
+              :creator => ""
+          }
+      ]
+      expect(g.nested_ordered_creator.length).to eq 0
     end
     it "should work on already persisted items" do
       g = described_class.new(title: ['test'])
