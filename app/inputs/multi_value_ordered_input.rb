@@ -107,7 +107,6 @@ class MultiValueOrderedInput < MultiValueInput
     options[:name] = nested_field_name(:creator.to_s, index)
     options[:id] = nested_field_id(:creator.to_s, index)
     options[:placeholder] = 'Label'
-    # options[:readonly] = 'readonly' if value.validation_msg.present? || creator_value.present?
     options
   end
 
