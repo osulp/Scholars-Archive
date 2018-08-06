@@ -29,7 +29,7 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def outer_wrapper
-    " <ul class='listing draggable-order dd-list'>\n        
+    " <ul class='listing draggable-order dd-list' data-object-name='#{object_name}'>\n
         #{yield}\n      
       </ul>\n
     "
@@ -107,7 +107,7 @@ class MultiValueOrderedInput < MultiValueInput
     options[:name] = nested_field_name(:creator.to_s, index)
     options[:id] = nested_field_id(:creator.to_s, index)
     options[:placeholder] = 'Label'
-    options[:readonly] = 'readonly' if value.validation_msg.present? || creator_value.present?
+    # options[:readonly] = 'readonly' if value.validation_msg.present? || creator_value.present?
     options
   end
 
@@ -135,7 +135,7 @@ class MultiValueOrderedInput < MultiValueInput
   def collection
     @collection ||= begin
       val = object[attribute_name]
-      val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_s }.reverse!
+      val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_s }
     end
   end
 end
