@@ -54,11 +54,13 @@
         id = getLastChildId(last_child)
 
         if id != -1
-          html = last_child.html()
           time = new Date().getTime() # use current time to make sure the new id is unique
-          html = html.replace(new RegExp("\\["+id+"\\]", 'g'),'['+(id+time)+']')
-          html = html.replace(new RegExp('_'+id+'_', 'g'), '_'+(id+time)+'_')
-          last_child.html(html)
+          last_child.find('input').each (i, e) =>
+            name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
+            $(e).prop('name', name)
+            id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
+            $(e).prop('id', id)
+            return
       , 15)
     )
 
