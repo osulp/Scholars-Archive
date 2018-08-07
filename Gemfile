@@ -86,8 +86,13 @@ gem 'rest-client', '~> 2.0'
 gem 'haml'
 
 gem 'bagit', '~>0.4.1'
-
+gem 'lograge'
 gem 'newrelic_rpm'
+gem 'riiif', '~> 1.1'
+
+group :staging, :production do
+  gem 'ddtrace'
+end
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -122,5 +127,3 @@ group :test do
   gem 'simplecov', '>= 0.9'
   gem 'webmock'
 end
-
-gem 'riiif', '~> 1.1'
