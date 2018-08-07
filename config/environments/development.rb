@@ -61,4 +61,6 @@ Rails.application.configure do
     env.register_transformer 'text/haml', 'text/html', Tilt::HamlTemplate
     env.register_engine '.haml', Tilt::HamlTemplate
   end
+
+  config.log_formatter = ::Logger::Formatter.new
 end
