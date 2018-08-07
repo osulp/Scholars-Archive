@@ -29,7 +29,7 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def outer_wrapper
-    " <ul id='ordered-creator' class='listing draggable-order dd-list' data-object-name='#{object_name}'>\n
+    " <ul class='listing draggable-order dd-list' data-object-name='#{object_name}'>\n
         #{yield}\n      
       </ul>\n
     "

@@ -6,7 +6,7 @@ function orderedDragAndDrop(selector) {
 }
 
 function reindexNestedOrderedField(mutationsList) {
-  hidden_index_selectors = $($('.ordered-field-container')).find(".index");
+  hidden_index_selectors = $($(".ordered-field-container .index"));
   hidden_index_selectors.each(function (index) {
     hidden_index_selectors[index].value = index;
   });
