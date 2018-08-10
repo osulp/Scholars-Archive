@@ -413,6 +413,23 @@ li.attribute {
       display: table-cell;
       position: inherit;
     }
+
+    .glyphicons {
+      display: table-cell;
+      position: inherit;
+    }
+
+    .glyphicons > .row > .glyphicon {
+    }
+    .glyphicons > .row {
+      display: table-cell;
+      position: inherit;
+    }
+
+    .glyphicons:before {
+      top: 6px;
+    }
+
     .dd3-handle:before {
       top: 6px;
     }

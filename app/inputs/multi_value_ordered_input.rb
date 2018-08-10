@@ -23,7 +23,15 @@ class MultiValueOrderedInput < MultiValueInput
     "
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle'></div>\n
-        #{yield}
+        #{yield}\n
+        <div class='glyphicons'>
+          <div class='row'>
+            <i class='glyphicon glyphicon-arrow-up ordered-up-arrow'></i>
+          </div>
+          <div class='row'>
+            <i class='glyphicon glyphicon-arrow-down ordered-down-arrow'></i>
+          </div>
+        </div>
       </li>\n
     "
   end
@@ -118,7 +126,7 @@ class MultiValueOrderedInput < MultiValueInput
     options[:class] << "index"
     options[:placeholder] = 'Index'
     # uncomment below to make a hidden input
-    # options[:type] = ['hidden']
+    options[:type] = ['hidden']
     # options[:readonly] = 'readonly' if value.validation_msg.present? || index_value.present?
     options
   end
