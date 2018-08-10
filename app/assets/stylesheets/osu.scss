@@ -414,19 +414,12 @@ li.attribute {
       position: inherit;
     }
 
-    .glyphicons {
+    .glyphicon {
       display: table-cell;
       position: inherit;
     }
 
-    .glyphicons > .row > .glyphicon {
-    }
-    .glyphicons > .row {
-      display: table-cell;
-      position: inherit;
-    }
-
-    .glyphicons:before {
+    .glyphicon:before {
       top: 6px;
     }
 

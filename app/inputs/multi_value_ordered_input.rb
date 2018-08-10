@@ -24,14 +24,8 @@ class MultiValueOrderedInput < MultiValueInput
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle'></div>\n
         #{yield}\n
-        <div class='glyphicons'>
-          <div class='row'>
-            <i class='glyphicon glyphicon-arrow-up ordered-up-arrow'></i>
-          </div>
-          <div class='row'>
-            <i class='glyphicon glyphicon-arrow-down ordered-down-arrow'></i>
-          </div>
-        </div>
+        <i class='glyphicon glyphicon-arrow-up ordered-up-arrow'></i>
+        <i class='glyphicon glyphicon-arrow-down ordered-down-arrow'></i>
       </li>\n
     "
   end

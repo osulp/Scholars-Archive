@@ -5,6 +5,16 @@ function orderedDragAndDrop(selector) {
   });
 }
 
+function bindUpDownArrow(mutationsList) {
+  $('.ordered-up-arrow').on('click', function(e) {
+    $(this).parent().insertBefore($(this).parent().prev());
+  });
+  $('.ordered-down-arrow').on('click', function(e) {
+    $(this).parent().insertAfter($(this).parent().next());
+  });
+  reindexNestedOrderedField();
+}
+
 function reindexNestedOrderedField(mutationsList) {
   hidden_index_selectors = $(".ordered-field-container .index");
   hidden_index_selectors.each(function (index) {
@@ -17,9 +27,11 @@ Blacklight.onLoad(function () {
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
     var config = { childList: true };
-    var observer = new MutationObserver(reindexNestedOrderedField);
+    var reindexObserver = new MutationObserver(reindexNestedOrderedField);
+    var upDownObserver = new MutationObserver(bindUpDownArrow);
     nodes.forEach(function (node) {
-      observer.observe(node, config);
+      reindexObserver.observe(node, config);
+      upDownObserver.observe(node, config)
     });
   }
 });
