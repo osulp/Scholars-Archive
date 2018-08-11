@@ -426,9 +426,22 @@ li.attribute {
     .dd3-handle:before {
       top: 6px;
     }
+    .dd3-handle {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
     input {
       font-size: initial;
       padding-left: 5px;
+    }
+  }
+  .group-up-down-arrows {
+    button {
+      margin-right: 2px;
+    }
+
+    button.up-arrow {
+      margin-left: 2px;
     }
   }
 }
