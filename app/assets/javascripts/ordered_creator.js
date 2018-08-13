@@ -6,11 +6,11 @@ function orderedDragAndDrop(selector) {
 }
 
 function bindUpDownArrow(mutationsList) {
-  $('.ordered-up-arrow').unbind("click").on('click', function(e) {
-    swapUp(this);
+  $('button.up-arrow').unbind("click").on('click', function(e) {
+    swapUp($(this).parent());
   });
-  $('.ordered-down-arrow').unbind("click").on('click', function(e) {
-    swapDown(this);
+  $('button.down-arrow').unbind("click").on('click', function(e) {
+    swapDown($(this).parent());
   });
 }
 
@@ -42,5 +42,6 @@ Blacklight.onLoad(function () {
       reindexObserver.observe(node, config);
       bindObserver.observe(node, config);
     });
+    bindUpDownArrow();
   }
 });
