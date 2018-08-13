@@ -24,11 +24,11 @@ class MultiValueOrderedInput < MultiValueInput
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle'></div>
         <div class='input-group-btn group-up-down-arrows'>
-          <button type='button' class='btn btn-default up-arrow' aria-label='Up'>
+          <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
             <span class='glyphicon glyphicon-arrow-up ordered-up-arrow'></span>
           </button>
 
-          <button type='button' class='btn btn-default down-arrow' aria-label='Down'>
+          <button type='button' class='btn btn-default down-arrow' aria-label='Move Down' data-toggle='tooltip' data-placement='top' title='Move Down'>
             <span class='glyphicon glyphicon-arrow-down ordered-down-arrow'></span>
           </button>
         </div>
@@ -66,27 +66,13 @@ class MultiValueOrderedInput < MultiValueInput
       destroy_input = @builder.text_field(:_destroy, destroy_options)
     end
 
-    help_block = nested_item_help_block_wrapper do
-      value.validation_msg.present? ? value.validation_msg : ''
-    end
-
-    if value.validation_msg.present?
-      nested_item = nested_item_wrapper(value) do
-        "#{help_block}#{input_creator}#{input_index}"
-      end
-    else
-      nested_item = "#{input_creator}#{input_index}"
-    end
+    nested_item = "#{input_creator}#{input_index}"
 
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end
 
   def nested_item_wrapper(value)
     "<div class= \"#{attribute_name} related_item multi-value-label-url #{'has-error' if value.validation_msg.present?} \">#{yield}</div>"
-  end
-
-  def nested_item_help_block_wrapper
-    "<span class=\"help-block\">#{yield}</span>"
   end
 
   def build_id_options(value, index)
