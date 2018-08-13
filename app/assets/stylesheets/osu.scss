@@ -412,13 +412,27 @@ li.attribute {
     .dd3-handle {
       display: table-cell;
       position: inherit;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
     }
-    .dd3-handle:before {
-      top: 6px;
+
+    .glyphicon {
+      display: inline-block;
+      position: inherit;
     }
+
     input {
       font-size: initial;
       padding-left: 5px;
+    }
+  }
+  .group-up-down-arrows {
+    button {
+      margin-right: 2px;
+    }
+
+    button.up-arrow {
+      margin-left: 2px;
     }
   }
 }

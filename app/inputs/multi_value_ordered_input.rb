@@ -22,16 +22,25 @@ class MultiValueOrderedInput < MultiValueInput
   def inner_wrapper(value, index)
     "
       <li class='field-wrapper dd-item'>
-        <div class='dd-handle dd3-handle'></div>\n
+        <div class='dd-handle dd3-handle'></div>
+        <div class='input-group-btn group-up-down-arrows'>
+          <button type='button' class='btn btn-default up-arrow' aria-label='Up'>
+            <span class='glyphicon glyphicon-arrow-up ordered-up-arrow'></span>
+          </button>
+
+          <button type='button' class='btn btn-default down-arrow' aria-label='Down'>
+            <span class='glyphicon glyphicon-arrow-down ordered-down-arrow'></span>
+          </button>
+        </div>
         #{yield}
-      </li>\n
+      </li>
     "
   end
 
   def outer_wrapper
-    " <ul class='listing draggable-order dd-list' data-object-name='#{object_name}'>\n
-        #{yield}\n      
-      </ul>\n
+    " <ul class='listing draggable-order dd-list' data-object-name='#{object_name}'>
+        #{yield}
+      </ul>
     "
   end
 
@@ -118,7 +127,7 @@ class MultiValueOrderedInput < MultiValueInput
     options[:class] << "index"
     options[:placeholder] = 'Index'
     # uncomment below to make a hidden input
-    # options[:type] = ['hidden']
+    options[:type] = ['hidden']
     # options[:readonly] = 'readonly' if value.validation_msg.present? || index_value.present?
     options
   end

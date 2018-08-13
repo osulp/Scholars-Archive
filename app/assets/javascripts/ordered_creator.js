@@ -5,6 +5,25 @@ function orderedDragAndDrop(selector) {
   });
 }
 
+function bindUpDownArrow(mutationsList) {
+  $('button.up-arrow').unbind("click").on('click', function(e) {
+    swapUp($(this).parent());
+  });
+  $('button.down-arrow').unbind("click").on('click', function(e) {
+    swapDown($(this).parent());
+  });
+}
+
+function swapUp(selector) {
+  $(selector).parent().insertBefore($(selector).parent().prev());
+  reindexNestedOrderedField();
+}
+
+function swapDown(selector) {
+  $(selector).parent().insertAfter($(selector).parent().next());
+  reindexNestedOrderedField();
+}
+
 function reindexNestedOrderedField(mutationsList) {
   hidden_index_selectors = $(".ordered-field-container .index");
   hidden_index_selectors.each(function (index) {
@@ -17,9 +36,12 @@ Blacklight.onLoad(function () {
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
     var config = { childList: true };
-    var observer = new MutationObserver(reindexNestedOrderedField);
+    var reindexObserver = new MutationObserver(reindexNestedOrderedField);
+    var bindObserver = new MutationObserver(bindUpDownArrow);
     nodes.forEach(function (node) {
-      observer.observe(node, config);
+      reindexObserver.observe(node, config);
+      bindObserver.observe(node, config);
     });
+    bindUpDownArrow();
   }
 });
