@@ -6,12 +6,14 @@ function orderedDragAndDrop(selector) {
 }
 
 function bindUpDownArrow(mutationsList) {
-  $('button.up-arrow').unbind("click").on('click', function(e) {
+  $('button.up-arrow').prop('disabled',false).unbind("click").on('click', function(e) {
     swapUp($(this).parent());
   });
-  $('button.down-arrow').unbind("click").on('click', function(e) {
+  $('button.down-arrow').prop('disabled',false).unbind("click").on('click', function(e) {
     swapDown($(this).parent());
   });
+  $('ul.draggable-order > li:first-child button.up-arrow').prop('disabled',true);
+  $('ul.draggable-order > li:last-child button.down-arrow').prop('disabled',true);
 }
 
 function swapUp(selector) {
