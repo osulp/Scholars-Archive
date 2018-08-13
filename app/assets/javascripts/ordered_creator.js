@@ -5,7 +5,7 @@ function orderedDragAndDrop(selector) {
   });
 }
 
-function bindUpDownArrow() {
+function bindUpDownArrow(mutationsList) {
   $('.ordered-up-arrow').unbind("click").on('click', function(e) {
     swapUp(this);
   });
@@ -29,7 +29,6 @@ function reindexNestedOrderedField(mutationsList) {
   hidden_index_selectors.each(function (index) {
     hidden_index_selectors[index].value = index;
   });
-  bindUpDownArrow();
 }
 
 Blacklight.onLoad(function () {
@@ -38,8 +37,10 @@ Blacklight.onLoad(function () {
   if (nodes !== null) {
     var config = { childList: true };
     var reindexObserver = new MutationObserver(reindexNestedOrderedField);
+    var bindObserver = new MutationObserver(bindUpDownArrow);
     nodes.forEach(function (node) {
       reindexObserver.observe(node, config);
+      bindObserver.observe(node, config);
     });
   }
 });
