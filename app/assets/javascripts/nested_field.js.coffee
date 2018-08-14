@@ -56,10 +56,7 @@
         if id != -1
           time = new Date().getTime() # use current time to make sure the new id is unique
           last_child.find('input').each (i, e) =>
-            name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
-            $(e).prop('name', name)
-            id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
-            $(e).prop('id', id)
+            swapIdOnElement(i, e)
             return
       , 15)
     )
@@ -74,11 +71,16 @@
       if id != -1
         time = new Date().getTime()
         item.find('input').each (i, e) =>
-            name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
-            $(e).prop('name', name)
-            id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
-            $(e).prop('id', id)
+            swapIdOnElement(i, e)
             return
+
+
+    swapIdOnElement = (i, e) ->
+      name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
+      $(e).prop('name', name)
+      id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
+      $(e).prop('id', id)
+      return
 
 
     removeEmptyItems = (items) ->
