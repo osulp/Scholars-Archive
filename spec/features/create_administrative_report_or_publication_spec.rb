@@ -75,7 +75,9 @@ RSpec.feature 'Create a Administrative Report Or Publication', js: false do
 
     it "renders the new form" do
       fill_in 'administrative_report_or_publication_title', with: 'Test Administrative Report Or Publication'
-      fill_in 'Creator', with: 'Test Administrative Report Or Publication Creator'
+
+      creator_input = find(:css, "input.nested-field.administrative_report_or_publication_nested_ordered_creator")
+      fill_in creator_input[:id], with: 'Test Administrative Report Or Publication Creator'
 
       select "In Copyright", :from => "administrative_report_or_publication_rights_statement"
       find('body').click
