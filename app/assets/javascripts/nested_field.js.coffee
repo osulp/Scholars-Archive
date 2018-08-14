@@ -72,11 +72,13 @@
       id = getLastChildId(item)
 
       if id != -1
-        html = item.html()
-        time = new Date().getTime() # use current time to make sure the new id is unique
-        html = html.replace(new RegExp("\\["+id+"\\]", 'g'),'['+(id+time)+']')
-        html = html.replace(new RegExp('_'+id+'_', 'g'), '_'+(id+time)+'_')
-        item.html(html)
+        time = new Date().getTime()
+        item.find('input').each (i, e) =>
+            name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
+            $(e).prop('name', name)
+            id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
+            $(e).prop('id', id)
+            return
 
 
     removeEmptyItems = (items) ->
