@@ -75,7 +75,9 @@ RSpec.feature 'Create a Conference Proceedings Or Journal', js: false do
 
     it "renders the new form" do
       fill_in 'conference_proceedings_or_journal_title', with: 'Test Conference Proceedings Or Journal'
-      fill_in 'Creator', with: 'Test Conference Proceedings Or Journal Creator'
+
+      creator_input = find(:css, "input.nested-field.conference_proceedings_or_journal_nested_ordered_creator")
+      fill_in creator_input[:id], with: 'Test Conference Proceedings Or Journal Creator'
 
       select "In Copyright", :from => "conference_proceedings_or_journal_rights_statement"
       find('body').click

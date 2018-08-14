@@ -74,7 +74,10 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
 
     it 'renders the new form' do
       fill_in 'graduate_thesis_or_dissertation_title', with: 'Test Graduate Thesis Or Dissertation'
-      fill_in 'Creator', with: 'Test Graduate Thesis Or Dissertation Creator'
+
+      creator_input = find(:css, "input.nested-field.graduate_thesis_or_dissertation_nested_ordered_creator")
+      fill_in creator_input[:id], with: 'Test Graduate Thesis Or Dissertation Creator'
+
       fill_in 'Commencement Year', with: '2018'
 
       select "In Copyright", :from => "graduate_thesis_or_dissertation_rights_statement"
