@@ -80,7 +80,7 @@ class SolrDocument
   end
 
   def nested_ordered_creator_label
-    self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)]
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)])
   end 
 
   def system_created
