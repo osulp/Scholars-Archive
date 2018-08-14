@@ -17,7 +17,7 @@ module ScholarsArchive
       self.terms += [:nested_related_items, :nested_ordered_creator, :date_uploaded, :date_modified, :doi, :other_affiliation, :academic_affiliation, :alt_title, :abstract, :license, :resource_type, :date_available, :date_copyright, :date_issued, :date_collected, :date_valid, :date_reviewed, :date_accepted, :degree_level, :degree_name, :degree_field, :replaces, :nested_geo, :hydrologic_unit_code, :funding_body, :funding_statement, :in_series, :tableofcontents, :bibliographic_citation, :peerreviewed, :additional_information, :digitization_spec, :file_extent, :file_format, :dspace_community, :dspace_collection, :isbn, :issn, :embargo_reason, :conference_name, :conference_section, :conference_location]
 
       self.terms -= [:creator]
-      self.required_fields += [:resource_type]
+      self.required_fields += [:resource_type, :nested_ordered_creator]
       self.required_fields -= [:keyword, :creator]
 
       def primary_terms
