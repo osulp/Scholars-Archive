@@ -40,6 +40,8 @@ module ScholarsArchive
                :license,
                :license_label,
                :nested_geo,
+               :nested_ordered_creator,
+               :nested_ordered_creator_label,
                :nested_related_items,
                :nested_related_items_label,
                :other_affiliation_label,

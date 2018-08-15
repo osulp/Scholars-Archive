@@ -54,11 +54,63 @@
         id = getLastChildId(last_child)
 
         if id != -1
-          html = last_child.html()
           time = new Date().getTime() # use current time to make sure the new id is unique
-          html = html.replace(new RegExp("\\["+id+"\\]", 'g'),'['+(id+time)+']')
-          html = html.replace(new RegExp('_'+id+'_', 'g'), '_'+(id+time)+'_')
-          last_child.html(html)
+          last_child.find('input').each (i, e) =>
+            swapIdOnElement(i, e)
+            return
       , 15)
     )
+
+    resetNestedItemId = (item) ->
+      # remove id
+      item.find("input[id$='_id']").remove()
+
+      # get child id
+      id = getLastChildId(item)
+
+      if id != -1
+        time = new Date().getTime()
+        item.find('input').each (i, e) =>
+            swapIdOnElement(i, e)
+            return
+
+
+    swapIdOnElement = (i, e) ->
+      name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
+      $(e).prop('name', name)
+      id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
+      $(e).prop('id', id)
+      return
+
+
+    removeEmptyItems = (items) ->
+      # when we get existing items on load, remove item if empty
+      if items.length > 1
+        all_items = items.find("input:text")
+        all_items.each (i, e) ->
+          if $(e).val().length == 0
+            $(e).parent().remove()
+
+    resetNestedFieldItems = (field_selector) ->
+      reindex_ordered_list = ""
+      items = $(field_selector).find('ul.dd-list li.dd-item')
+      removeEmptyItems(items)
+
+      items.each (idx, element) ->
+        removed = $(element).clone()
+        id_field = removed.find("input[name$='[id]']")
+        if(id_field.length > 0)
+          destroy_field = $("<input type='hidden'>")
+          index = getFieldIndex(id_field)
+          if index != -1
+            destroy_field.attr("name", id_field.attr("name").replace(/\[id\]/,"[_destroy]"))
+            destroy_field.attr("id", id_field.attr("id").replace(new RegExp('_'+index+'_id', 'g'), '_'+index+'__destroy'))
+            destroy_field.val('1')
+            destroy_field.insertAfter(id_field)
+            reindex_ordered_list += "<li class='hidden'>"+removed.html()+"</li>"
+            resetNestedItemId($(element))
+
+      $(field_selector).append($(reindex_ordered_list))
+
+    resetNestedFieldItems('.nested-field.ordered-field-container')
 ) jQuery

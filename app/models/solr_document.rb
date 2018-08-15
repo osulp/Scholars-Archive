@@ -79,6 +79,10 @@ class SolrDocument
     ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
   end
 
+  def nested_ordered_creator_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)])
+  end 
+
   def system_created
     Time.parse self['system_create_dtsi']
   end

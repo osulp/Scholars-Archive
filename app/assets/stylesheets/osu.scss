@@ -403,3 +403,40 @@ hr.deposit-help {
 li.attribute {
   word-break: break-word;
 }
+
+.ordered-field-container {
+  position: inherit;
+  display: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  .draggable-order {
+    .dd-item {
+      display: table;
+    }
+    .dd3-handle {
+      display: table-cell;
+      position: inherit;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+
+    .glyphicon {
+      display: inline-block;
+      position: inherit;
+    }
+
+    input {
+      font-size: initial;
+      padding-left: 5px;
+    }
+  }
+  .group-up-down-arrows {
+    button {
+      margin-right: 2px;
+    }
+
+    button.up-arrow {
+      margin-left: 2px;
+    }
+  }
+}

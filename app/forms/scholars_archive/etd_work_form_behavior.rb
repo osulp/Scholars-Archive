@@ -9,7 +9,7 @@ module ScholarsArchive
       self.required_fields += [:degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year]
 
       def primary_terms
-        [:title, :alt_title, :creator, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year, :contributor_advisor, :contributor_committeemember, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
+        [:title, :alt_title, :nested_ordered_creator, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :degree_grantors, :graduation_year, :contributor_advisor, :contributor_committeemember, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
       end
 
       def secondary_terms
