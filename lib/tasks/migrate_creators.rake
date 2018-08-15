@@ -3,6 +3,9 @@ namespace :scholars_archive do
   task :convert_creators do
     require 'csv'
 
+    file_name = "#{Date.today}-creator-migration.log"
+    logger = Logger.new(File.join(Rails.root, 'log', file_name))
+
     # Iterate over csv first for migrated works
     CSV.foreach('/data0/hydra/shared/creator_data.csv', :headers => true) do |row|#Pull data from file
       # Set work and handle as empty string unless it is already assigned with something
@@ -14,6 +17,12 @@ namespace :scholars_archive do
         #If we are on a new work and it isnt the first row, then check the previous work and see if the creators are the same length and the new creators
         unless work.creators.length == work.nested_ordered_creators.length
           # Report that the amount of creators is different than the amount of nested_ordered_creators
+          logger.warning("MISSMATCH_TYPE: NUMBER_OF_CREATORS\n")
+          logger.warning("Work was found to have a missmatch in the creators.\n")
+          logger.warning("WORK_ID: #{work.id}\n")
+          logger.warning("CREATORS: #{work.creators}\n")
+          logger.warning("DSPACE_CREATORS: #{work.nested_ordered_creators.map{ |c| c.creator.first }}\n")
+          logger.warning("======================================================================================================\n")
         end
       end
 
@@ -26,6 +35,12 @@ namespace :scholars_archive do
       # Check if the works creators contains the current name
       if !work.creators.include?(row["text_value"])
         # Report miss match
+          logger.warning("MISSMATCH_TYPE: MISSING CREATOR\n")
+          logger.warning("Name from DSpace was not found on this work.\n")
+          logger.warning("WORK_ID: #{work.id}\n")
+          logger.warning("CREATORS: #{work.creators}\n")
+          logger.warning("DSPACE_CREATOR: #{row["text_value"]}\n")
+          logger.warning("======================================================================================================")
       end
 
       # Add the current name and place as a nested ordered creator to the work.
