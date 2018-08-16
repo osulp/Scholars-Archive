@@ -47,7 +47,7 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
 
   it 'shows citeable url' do
     expect(page).to have_content 'Citeable URL'
-    expect(page).to have_content 'http://test.host/concern/defaults/'+presenter.id
+    expect(page).to have_content 'https://test.host/concern/defaults/'+presenter.id
   end
 
 end
