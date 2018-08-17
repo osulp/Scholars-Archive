@@ -44,7 +44,15 @@ namespace :scholars_archive do
       end
 
       # Add the current name and place as a nested ordered creator to the work.
-      work.nested_ordered_creators << NestedOrderedCreator.create(creator:row["text_value"], index: row["place"] - 1) 
+      nested_creator = { :index => row["place"] - 1, :creator => row["text_value"] }
+      work.nested_ordered_creator_attributes = [nested_creator]
+
+      if work.save
+        logger.info "\t\t update for work id #{work.id} completed successfully"
+      else
+        logger.info "\t\t failed to update work id #{work.id} on save"
+      end
+
 
     end
 
@@ -53,16 +61,32 @@ namespace :scholars_archive do
 
     # Iterate over all docs
     docs.each do |doc|
-
       # Find work based on ID
-      work = ActiveFedora::Base.find(doc["id"]) 
+      work = ActiveFedora::Base.find(doc["id"])
 
-      # Iterate over the creators
-      work.creators.each_with_index do |creator, i|
-
-        # Translate creators over to nested ordered creators
-        work.nested_ordered_creators << NestedOrderedCreator.create(creator: creator, index: i)
-      end
+      update_work(work, logger)
     end
+  end
+end
+
+def update_work(work, logger)
+  ordered_creators = []
+
+  # Iterate over the creators
+  work.creators.each_with_index do |creator, i|
+
+    # Translate creators over to nested ordered creators
+    ordered_creators << {
+      :index => creator.to_s,
+      :creator => i.to_s
+    }
+  end
+
+  work.nested_ordered_creator_attributes = ordered_creators
+
+  if work.save
+    logger.info "\t\t update for work id #{work.id} completed successfully"
+  else
+    logger.info "\t\t failed to update work id #{work.id} on save"
   end
 end
