@@ -65,9 +65,8 @@ namespace :scholars_archive do
         end
       end
     end
+    logger.info "DONE"
   end
-
-  logger.info "DONE"
 end
 
 def check_and_update_work(work, row, logger)
