@@ -37,31 +37,14 @@ namespace :scholars_archive do
 
       puts doc.first["id"].to_s
 
-      # Query for object in database.
-      work = ActiveFedora::Base.find(doc.first["id"])
-
-      # Check if the works creators contains the current name
-      if !work.creator.include?(row["text_value"])
-        # Report miss match
-          logger.warn("MISSMATCH_TYPE: MISSING CREATOR\n")
-          logger.warn("Name from DSpace was not found on this work.\n")
-          logger.warn("WORK_ID: #{work.id}\n")
-          logger.warn("CREATORS: #{work.creator.first}\n")
-          logger.warn("DSPACE_CREATOR: #{row["text_value"]}\n")
-          logger.warn("======================================================================================================")
+      begin
+        # Query for object in database.
+        work = ActiveFedora::Base.find(doc.first["id"])
+        check_and_update_work(work, row, logger)
+      rescue => e
+        logger.info "\t\t failed to update work id #{doc["id"]}, error found:"
+        logger.info "\t\t #{e.message}"
       end
-
-      # Add the current name and place as a nested ordered creator to the work.
-      nested_creator = { :index => (row["place"].to_i - 1), :creator => row["text_value"] }
-      work.nested_ordered_creator_attributes = [nested_creator]
-
-      if work.save
-        logger.info "\t\t update for work id #{work.id} completed successfully"
-      else
-        logger.info "\t\t failed to update work id #{work.id} on save"
-      end
-
-
     end
 
     # Query solr for all docs without handles
@@ -71,11 +54,43 @@ namespace :scholars_archive do
     docs.each do |doc|
       # Find work based on ID
       unless doc["nested_ordered_creator_label_ssim"]
-        work = ActiveFedora::Base.find(doc["id"])
 
-        update_work(work, logger)
+        begin
+          # Find work based on ID
+          work = ActiveFedora::Base.find(doc["id"])
+          update_work(work, logger)
+        rescue => e
+          logger.info "\t\t failed to update work id #{doc["id"]}, error found:"
+          logger.info "\t\t #{e.message}"
+        end
       end
     end
+    logger.info "DONE"
+  end
+end
+
+def check_and_update_work(work, row, logger)
+  # Check if the works creators contains the current name
+  if !work.creator.include?(row["text_value"])
+    # Report miss match
+    logger.warn("MISSMATCH_TYPE: MISSING CREATOR\n")
+    logger.warn("Name from DSpace was not found on this work.\n")
+    logger.warn("WORK_ID: #{work.id}\n")
+    logger.warn("CREATORS: #{work.creator.first}\n")
+    logger.warn("DSPACE_CREATOR: #{row["text_value"]}\n")
+    logger.warn("======================================================================================================")
+  end
+
+  # Add the current name and place as a nested ordered creator to the work.
+  nested_creator = { :index => (row["place"].to_i - 1), :creator => row["text_value"] }
+  work.nested_ordered_creator_attributes = [nested_creator]
+
+  logger.info "\t saving nested ordered creator #{nested_creator.to_s} from dpace for work #{work.id}"
+
+  if work.save
+    logger.info "\t update for work id #{work.id} completed successfully"
+  else
+    logger.info "\t failed to update work id #{work.id} on save"
   end
 end
 
@@ -95,10 +110,12 @@ def update_work(work, logger)
 
     work.nested_ordered_creator_attributes = ordered_creators
 
+    logger.info "\t migrating creators #{work.creator.to_s} to nested ordered creators #{ordered_creators.to_s} for work #{work.id}"
+
     if work.save
-      logger.info "\t\t update for work id #{work.id} completed successfully"
+      logger.info "\t update for work id #{work.id} completed successfully"
     else
-      logger.info "\t\t failed to update work id #{work.id} on save"
+      logger.info "\t failed to update work id #{work.id} on save"
     end
   end
 end
