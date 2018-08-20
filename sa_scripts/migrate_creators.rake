@@ -48,7 +48,7 @@ namespace :scholars_archive do
     end
 
     # Query solr for all docs without handles
-    docs = ActiveFedora::SolrService.query('creator_tesim:* AND -has_model_ssim:FileSet')
+    docs = ActiveFedora::SolrService.query('creator_tesim:* AND -has_model_ssim:FileSet', {:rows => 100000})
 
     # Iterate over all docs
     docs.each do |doc|
