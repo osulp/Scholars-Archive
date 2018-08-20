@@ -76,6 +76,7 @@
 
 
     swapIdOnElement = (i, e) ->
+      time = new Date().getTime() # use current time to make sure the new id is unique
       name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
       $(e).prop('name', name)
       id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
