@@ -54,9 +54,9 @@
         id = getLastChildId(last_child)
 
         if id != -1
-          time = new Date().getTime() # use current time to make sure the new id is unique
+          newId = new Date().getTime() + id # use current time to make sure the new id is unique
           last_child.find('input').each (i, e) =>
-            swapIdOnElement(i, e)
+            swapIdOnElement(i, e, newId)
             return
       , 15)
     )
@@ -69,17 +69,16 @@
       id = getLastChildId(item)
 
       if id != -1
-        time = new Date().getTime()
+        newId = new Date().getTime() + id
         item.find('input').each (i, e) =>
-            swapIdOnElement(i, e)
+            swapIdOnElement(i, e, newId)
             return
 
 
-    swapIdOnElement = (i, e) ->
-      time = new Date().getTime() # use current time to make sure the new id is unique
-      name = $(e).prop('name').replace(/\[\d+\]/g, "[#{time}]")
+    swapIdOnElement = (i, e, newId) ->
+      name = $(e).prop('name').replace(/\[\d+\]/g, "[#{newId}]")
       $(e).prop('name', name)
-      id = $(e).prop('id').replace(/_\d+_/g, "_#{time}_")
+      id = $(e).prop('id').replace(/_\d+_/g, "_#{newId}_")
       $(e).prop('id', id)
       return
 
