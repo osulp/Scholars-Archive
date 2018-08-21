@@ -1,5 +1,6 @@
 <%= presenter.attribute_to_html(:alt_title, render_as: :external_link, label: t('simple_form.labels.defaults.alt_title')) %>
-<%= presenter.attribute_to_html(:creator, render_as: :search_and_external_link) %>
+<%= presenter.attribute_to_html(:nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label', itemprop_option: 'creator', label: "Creator") %>
+<%#= presenter.attribute_to_html(:creator, render_as: :search_and_external_link) %>
 <%= presenter.attribute_to_html(:contributor, render_as: :search_and_external_link) %>
 <%= presenter.attribute_to_html(:abstract, label: t('simple_form.labels.defaults.abstract')) %>
 <%= presenter.attribute_to_html(:license_label, render_as: :search_and_external_link, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label')) %>
@@ -43,7 +44,6 @@
 <%= presenter.attribute_to_html(:tableofcontents, label: t('simple_form.labels.defaults.tableofcontents')) %>
 <%= presenter.attribute_to_html(:rights_statement_label, render_as: :search_and_external_link, search_field: 'rights_statement_label', label: t('simple_form.labels.defaults.rights_statement')) %>
 <%= presenter.attribute_to_html(:nested_related_items_label, render_as: :scholars_archive_nested, search_field: 'nested_related_items_label', itemprop_option: 'url', label: t('simple_form.labels.defaults.nested_related_items')) %>
-<%= presenter.attribute_to_html(:nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label', itemprop_option: 'creator', label: "Creator") %>
 <%= presenter.attribute_to_html(:hydrologic_unit_code, label: t('simple_form.labels.defaults.hydrologic_unit_code')) %>
 <%= presenter.attribute_to_html(:nested_geo, render_as: :scholars_archive_nested, search_field: 'nested_geo_label_ssim', itemprop_option: 'geo', label: t('blacklight.search.form.nested_geo')) %>
 <%= presenter.attribute_to_html(:funding_statement, label: t('simple_form.labels.defaults.funding_statement')) %>
