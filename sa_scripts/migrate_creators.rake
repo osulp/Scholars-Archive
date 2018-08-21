@@ -22,6 +22,7 @@ namespace :scholars_archive do
           logger.warn("MISSMATCH_TYPE: NUMBER_OF_CREATORS\n")
           logger.warn("Work was found to have a missmatch in the creators.\n")
           logger.warn("WORK_ID: #{work.id}\n")
+          logger.warn("WORK TYPE: #{work.model_name.to_s}\n")
           logger.warn("CREATORS: #{work.creators.first}\n")
           logger.warn("DSPACE_CREATORS: #{work.nested_ordered_creators.map{ |c| c.creator.first }}\n")
           logger.warn("======================================================================================================\n")
@@ -53,7 +54,7 @@ namespace :scholars_archive do
     # Iterate over all docs
     docs.each do |doc|
       # Find work based on ID
-      unless doc["nested_ordered_creator_label_ssim"]
+      unless doc["nested_ordered_creator_label_ssim"].present?
 
         begin
           # Find work based on ID
@@ -76,6 +77,7 @@ def check_and_update_work(work, row, logger)
     logger.warn("MISSMATCH_TYPE: MISSING CREATOR\n")
     logger.warn("Name from DSpace was not found on this work.\n")
     logger.warn("WORK_ID: #{work.id}\n")
+    logger.warn("WORK_TYPE: #{work.model_name.to_s}\n")
     logger.warn("CREATORS: #{work.creator.first}\n")
     logger.warn("DSPACE_CREATOR: #{row["text_value"]}\n")
     logger.warn("======================================================================================================")
@@ -85,12 +87,12 @@ def check_and_update_work(work, row, logger)
   nested_creator = { :index => (row["place"].to_i - 1), :creator => row["text_value"] }
   work.nested_ordered_creator_attributes = [nested_creator]
 
-  logger.info "\t saving nested ordered creator #{nested_creator.to_s} from dpace for work #{work.id}"
+  logger.info "\t saving nested ordered creator #{nested_creator.to_s} from dspace for work #{work.id} (#{work.model_name.to_s})"
 
   if work.save
-    logger.info "\t update for work id #{work.id} completed successfully"
+    logger.info "\t update for work id #{work.id} (#{work.model_name.to_s}) completed successfully"
   else
-    logger.info "\t failed to update work id #{work.id} on save"
+    logger.info "\t failed to update work id #{work.id} (#{work.model_name.to_s}) on save"
   end
 end
 
@@ -110,12 +112,12 @@ def update_work(work, logger)
 
     work.nested_ordered_creator_attributes = ordered_creators
 
-    logger.info "\t migrating creators #{work.creator.to_s} to nested ordered creators #{ordered_creators.to_s} for work #{work.id}"
+    logger.info "\t migrating creators #{work.creator.to_a.to_s} to nested ordered creators #{ordered_creators.to_s} for work #{work.id} (#{work.model_name.to_s})"
 
     if work.save
-      logger.info "\t update for work id #{work.id} completed successfully"
+      logger.info "\t update for work id #{work.id} (#{work.model_name.to_s}) completed successfully"
     else
-      logger.info "\t failed to update work id #{work.id} on save"
+      logger.info "\t failed to update work id #{work.id} (#{work.model_name.to_s}) on save"
     end
   end
 end
