@@ -404,6 +404,12 @@ li.attribute {
   word-break: break-word;
 }
 
+ol.dd-list {
+  .dd-item {
+    display: table;
+  }
+}
+
 .ordered-field-container {
   position: inherit;
   display: inherit;
