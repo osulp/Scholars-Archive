@@ -217,6 +217,55 @@ class CatalogController < ApplicationController
       }
     end
 
+    stored_searchable_fields = [
+      {field_name: "academic_affiliation_label" , field_label: "Academic Affiliation", simple_select: false},
+      {field_name: "other_affiliation_label" , field_label: "Non-Academic Affiliation", simple_search: false},
+      {field_name: "nested_related_items_label" , field_label: "Related Items"},
+      {field_name: "nested_ordered_creator_label" , field_label: "Creator"},
+      {field_name: "nested_ordered_title_label" , field_label: "Title"},
+      {field_name: "dspace_collection" , field_label: "Dspace Collection"},
+      {field_name: "dspace_community" , field_label: "Dspace Community"},
+      {field_name: "contributor_advisor" , field_label: "Advisor"},
+      {field_name: "contributor_committeemember" , field_label: "Committee Member"},
+      {field_name: "degree_grantors_label" , field_label: "Degree Grantors", advanced_search: false},
+      {field_name: "abstract" , field_label: "Abstract or Summary"},
+      {field_name: "publisher" , field_label: "Publisher"},
+      {field_name: "date_accepted" , field_label: "Date Accepted"},
+      {field_name: "date_available" , field_label: "Date Available"},
+      {field_name: "date_collected" , field_label: "Date Collected"},
+      {field_name: "date_copyright" , field_label: "Date Copyrighted"},
+      {field_name: "date_issued" , field_label: "Date Issued"},
+      {field_name: "date_reviewed" , field_label: "Date Reviewed"},
+      {field_name: "date_valid" , field_label: "Date Valid"},
+      {field_name: "subject" , field_label: "Subject"},
+      {field_name: "language" , field_label: "Language", advanced_search: false},
+      {field_name: "language_label" , field_label: "Language Label", advanced_search: false},
+      {field_name: "rights_statement_label" , field_label: "Rights Statement", advanced_search: false},
+      {field_name: "license_label" , field_label: "License", advanced_search: false},
+      {field_name: "peerreviewed_label" , field_label: "Peer Reviewed", advanced_search: false},
+      {field_name: "resource_type" , field_label: "Resource Type", advanced_search: false},
+      {field_name: "hydrologic_unit_code" , field_label: "Hydrological Unit Code"},
+      {field_name: "based_near" , field_label: "Location", advanced_search: false},
+      {field_name: "keyword" , field_label: "Keyword"},
+      {field_name: "rights" , field_label: "Rights", advanced_search: false},
+      {field_name: "based_near_label" , field_label: "Location"},
+      {field_name: "contributor" , field_label: "Contributor"}
+    ]
+
+    stored_searchable_fields.each do |field|
+      config.add_search_field(field[:field_name]) do |field|
+        solr_name = solr_name(field[:field_name], :stored_searchable)
+        field.include_in_simple_select = field[:simple_select] unless field[:simple_select].nil?
+        field.include_in_advanced_search = field[:advanced_search] unless field[:advanced_search].nil?
+
+        field.label = field[:field_label]
+        field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+        }
+      end
+    end
+
     config.add_search_field('academic_affiliation_label') do |field|
       solr_name = solr_name("academic_affiliation_label", :stored_searchable)
       field.include_in_simple_select = false
@@ -247,7 +296,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('nested_ordered_title_label') do |field|
       solr_name = solr_name("nested_ordered_title_label", :stored_searchable)
-      field.label = "Creator"
+      field.label = "Title"
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -280,13 +329,13 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('creator') do |field|
-      solr_name = solr_name("creator", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('creator') do |field|
+    #   solr_name = solr_name("creator", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
     config.add_search_field('contributor_advisor') do |field|
       solr_name = solr_name("contributor_advisor", :stored_searchable)
@@ -325,13 +374,13 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('title') do |field|
-      solr_name = solr_name("title", :stored_searchable)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
+    # config.add_search_field('title') do |field|
+    #   solr_name = solr_name("title", :stored_searchable)
+    #   field.solr_local_parameters = {
+    #     qf: solr_name,
+    #     pf: solr_name
+    #   }
+    # end
 
     config.add_search_field('abstract') do |field|
       field.label = "Abstract or Summary"

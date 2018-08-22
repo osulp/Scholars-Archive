@@ -5,20 +5,23 @@ module ScholarsArchive
     included do
       def to_solr(solr_doc = {})
         super.tap do |doc|
-          build_nested_geo
+          build_nested_geo(nested_geo)
 
           point_labels = map_geo_to_labels(nested_geo, ActiveArchive::Geological, :point)
           bbox_labels = map_geo_to_labels(nested_geo, ActiveArchive::Geological, :bbox)
           labels = point_labels + bbox_labels
 
+          #To add more nested objects, Add another line here
           related_items_labels = map_object_to_labels(nested_related_itmes, ActiveArchive::RelatedItems, :label, :related_url)
           ordered_creator_labels = map_object_to_labels(nested_ordered_creator, ActiveArchive::Creator, :creator, :index)
           ordered_title_labels = map_object_to_labels(nested_ordered_creator, ActiveArchive::Title, :title, :index)
 
+          # Add the label and the data from the previous line here.
           labels = [{label: "nested_geo_label", data: labels }, 
                     {label: "nested_related_items_label", data: related_items_labels}, 
                     {label: "nested_ordered_creator_label", data: ordered_creator_labels},
                     {label: "nested_ordered_title_label", data: ordered_title_labels]]
+
           labels.each do |label_set|  
             doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :symbol)] = label_set[:data]
             doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :stored_searchable)] = label_set[:data] 
