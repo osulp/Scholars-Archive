@@ -9,10 +9,12 @@ module ScholarsArchive
       delegate :nested_ordered_creator_attributes=, :to => :model
 
       def initialize_fields
-        model.nested_geo.build
-        model.nested_related_items.build
-        model.nested_ordered_creator.build
+        nested_models.each { |nested| model.call(nested).build }
         super
+      end
+
+      def nested_models
+        [:nested_geo, :nested_related_items, :nested_ordered_creator, :nested_ordered_title]
       end
 
     end
