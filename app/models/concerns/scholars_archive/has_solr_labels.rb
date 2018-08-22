@@ -12,7 +12,7 @@ module ScholarsArchive
           labels = point_labels + bbox_labels
 
           #To add more nested objects, Add another line here
-          related_items_labels = map_object_to_labels(nested_related_itmes, ActiveArchive::RelatedItems, :label, :related_url)
+          related_items_labels = nested_related_items.map{ |i| (i.instance_of? ActiveArchive::RelatedItems) ? "#{i.label.first}$#{i.related_url.first}$#{i.index.first}" : i }.select(&:present?)
           ordered_creator_labels = map_object_to_labels(nested_ordered_creator, ActiveArchive::Creator, :creator, :index)
           ordered_title_labels = map_object_to_labels(nested_ordered_creator, ActiveArchive::Title, :title, :index)
 
