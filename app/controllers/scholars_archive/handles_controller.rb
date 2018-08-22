@@ -2,7 +2,6 @@ module ScholarsArchive
   class HandlesController < ApplicationController
     before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
     before_action :handle_redirects, only: [:handle_show, :handle_download]
-    skip_before_action :check_d2h_http_header_auth
 
     def handle_file_404
     end
