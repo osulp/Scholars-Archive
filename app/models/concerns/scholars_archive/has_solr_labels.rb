@@ -20,7 +20,7 @@ module ScholarsArchive
           labels = [{label: "nested_geo_label", data: labels }, 
                     {label: "nested_related_items_label", data: related_items_labels}, 
                     {label: "nested_ordered_creator_label", data: ordered_creator_labels},
-                    {label: "nested_ordered_title_label", data: ordered_title_labels]]
+                    {label: "nested_ordered_title_label", data: ordered_title_labels}]
 
           labels.each do |label_set|  
             doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :symbol)] = label_set[:data]

@@ -6,9 +6,9 @@ module ActiveArchive
     attr_accessor :destroy_item # true/false
     attr_accessor :validation_msg # string
 
-    def initialize(uri=RDF::Node.new, parent=nil, uri_label)
+    def initialize(uri=RDF::Node.new, parent=nil)
       if uri.try(:node?)
-        uri = RDF::URI("##{uri_label}#{uri.to_s.gsub('_:', '')}")
+        uri = RDF::URI("#ordered_nestable#{uri.to_s.gsub('_:', '')}")
       elsif uri.start_with?("#")
         uri = RDF::URI(uri)
       end

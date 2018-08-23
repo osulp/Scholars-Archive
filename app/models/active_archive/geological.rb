@@ -13,5 +13,14 @@ module ActiveArchive
     attr_accessor :bbox_lon_west
     attr_accessor :bbox_lat_south
     attr_accessor :bbox_lon_east
+
+    def initialize(uri=RDF::Node.new, parent=nil)
+      if uri.try(:node?)
+        uri = RDF::URI("#nested_geo#{uri.to_s.gsub('_:', '')}")
+      elsif uri.start_with?("#")
+        uri = RDF::URI(uri)
+      end
+      super
+    end
   end
 end

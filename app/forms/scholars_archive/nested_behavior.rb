@@ -4,14 +4,14 @@ module ScholarsArchive
 
     included do
       # Dunno if this is gonna work
-      lambda { |nested_models=nested_models| nested_models.each { |model| delegate "%s_attributes=" % model, to: :model}
-      # delegate :nested_geo_attributes=, :to => :model
-      # delegate :nested_related_items_attributes=, :to => :model
-      # delegate :nested_ordered_creator_attributes=, :to => :model
-      # delegate :nested_ordered_title_attributes=, :to => :model
+      # lambda { |nested_models=nested_models| nested_models.each { |model| delegate "%s_attributes=" % model, to: :model}}
+      delegate :nested_geo_attributes=, :to => :model
+      delegate :nested_related_items_attributes=, :to => :model
+      delegate :nested_ordered_creator_attributes=, :to => :model
+      delegate :nested_ordered_title_attributes=, :to => :model
 
       def initialize_fields
-        nested_models.each { |nested| model.call(nested).build }
+        nested_models.each { |nested| model.send(nested).build }
         super
       end
 
