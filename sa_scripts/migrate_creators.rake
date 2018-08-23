@@ -48,6 +48,8 @@ namespace :scholars_archive do
       end
     end
 
+    logger.info "DONE"
+
   end
 end
 
