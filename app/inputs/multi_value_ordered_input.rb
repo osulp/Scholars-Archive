@@ -50,8 +50,17 @@ class MultiValueOrderedInput < MultiValueInput
     if value.new_record?
       index = value.object_id
     end
-    creator_options = build_creator_options(value, index)
-    input_creator = @builder.text_field(:creator, creator_options)
+
+    if value.is_a?(NestedOrderedCreator)
+      creator_options = build_creator_options(value, index)
+      input_creator = @builder.text_field(:creator, creator_options)
+    elsif value.is_a?(NestedOrderedTitle)
+      creator_options = build_title_options(value, index)
+      input_creator = @builder.text_field(:title, creator_options)
+    elsif value.is_a?(NestedRelatedItems)
+      creator_options = build_related_items_options(value, index)
+      input_creator = @builder.text_field(:label, creator_options)
+    end
 
     index_options = build_index_options(value, index)
     input_index = @builder.text_field(:index, index_options)
@@ -67,6 +76,10 @@ class MultiValueOrderedInput < MultiValueInput
     end
 
     nested_item = "#{input_creator}#{input_index}"
+
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts nested_item
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end
@@ -101,6 +114,24 @@ class MultiValueOrderedInput < MultiValueInput
     options = build_field_options(creator_value, index)
     options[:name] = nested_field_name(:creator.to_s, index)
     options[:id] = nested_field_id(:creator.to_s, index)
+    options[:placeholder] = 'Label'
+    options
+  end
+
+  def build_title_options(value, index)
+    creator_value = value.title.first
+    options = build_field_options(creator_value, index)
+    options[:name] = nested_field_name(:title.to_s, index)
+    options[:id] = nested_field_id(:title.to_s, index)
+    options[:placeholder] = 'Label'
+    options
+  end
+
+  def build_related_items_options(value, index)
+    creator_value = value.label.first
+    options = build_field_options(creator_value, index)
+    options[:name] = nested_field_name(:label.to_s, index)
+    options[:id] = nested_field_id(:label.to_s, index)
     options[:placeholder] = 'Label'
     options
   end
