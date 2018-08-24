@@ -46,6 +46,7 @@ Blacklight.onLoad(function () {
   orderedDragAndDrop($('.nested-ordered-related-items'));
   orderedDragAndDrop($('.nested-ordered-title'));
   orderedDragAndDrop($('.nested-ordered-creator'));
+
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
     var config = { childList: true };
