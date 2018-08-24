@@ -59,6 +59,22 @@ class MultiValueOrderedInput < MultiValueInput
       index = value.object_id
     end
 
+    if value.is_a?(NestedOrderedCreator)
+      creator_options = build_creator_options(value, index)
+      input_creator = @builder.text_field(:creator, creator_options)
+    elsif value.is_a?(NestedOrderedTitle)
+      creator_options = build_title_options(value, index)
+      input_creator = @builder.text_field(:title, creator_options)
+    elsif value.is_a?(NestedRelatedItems)
+      creator_options = build_related_items_label_options(value, index)
+      url_options = build_related_items_url_options(value, index)
+      input_creator = @builder.text_field(:label, creator_options)
+      input_creator_2 = @builder.text_field(:related_url, url_options)
+    end
+
+    index_options = build_index_options(value, index)
+    input_index = @builder.text_field(:index, index_options)
+
     unless value.new_record?
       id_options = build_id_options(value.id, index)
       input_id = @builder.text_field(:id, id_options)
@@ -174,6 +190,7 @@ class MultiValueOrderedInput < MultiValueInput
 
   def collection
     @collection ||= begin
+      puts object[attribute_name].to_s
       val = object[attribute_name]
       val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_s }
     end
