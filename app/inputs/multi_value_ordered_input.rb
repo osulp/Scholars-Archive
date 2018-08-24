@@ -58,8 +58,10 @@ class MultiValueOrderedInput < MultiValueInput
       creator_options = build_title_options(value, index)
       input_creator = @builder.text_field(:title, creator_options)
     elsif value.is_a?(NestedRelatedItems)
-      creator_options = build_related_items_options(value, index)
+      creator_options = build_related_items_label_options(value, index)
+      url_options = build_related_items_url_options(value, index)
       input_creator = @builder.text_field(:label, creator_options)
+      input_creator_2 = @builder.text_field(:related_url, url_options)
     end
 
     index_options = build_index_options(value, index)
@@ -75,7 +77,7 @@ class MultiValueOrderedInput < MultiValueInput
       destroy_input = @builder.text_field(:_destroy, destroy_options)
     end
 
-    nested_item = "#{input_creator}#{input_index}"
+    nested_item = "#{input_creator}#{input_creator_2}#{input_index}"
 
     puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     puts nested_item
@@ -127,12 +129,21 @@ class MultiValueOrderedInput < MultiValueInput
     options
   end
 
-  def build_related_items_options(value, index)
+  def build_related_items_label_options(value, index)
     creator_value = value.label.first
     options = build_field_options(creator_value, index)
     options[:name] = nested_field_name(:label.to_s, index)
     options[:id] = nested_field_id(:label.to_s, index)
     options[:placeholder] = 'Label'
+    options
+  end
+
+  def build_related_items_url_options(value, index)
+    creator_value = value.related_url.first
+    options = build_field_options(creator_value, index)
+    options[:name] = nested_field_name(:related_url.to_s, index)
+    options[:id] = nested_field_id(:related_url.to_s, index)
+    options[:placeholder] = 'URL'
     options
   end
 
@@ -159,6 +170,7 @@ class MultiValueOrderedInput < MultiValueInput
 
   def collection
     @collection ||= begin
+      puts object[attribute_name].to_s
       val = object[attribute_name]
       val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_s }
     end

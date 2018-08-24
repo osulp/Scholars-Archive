@@ -27,14 +27,17 @@ function swapDown(selector) {
 }
 
 function reindexNestedOrderedField(mutationsList) {
-  hidden_index_selectors = $(".ordered-field-container .index");
-  hidden_index_selectors.each(function (index) {
+  hidden_index_selectors = $(".ordered-field-container");
+  
+  hidden_index_selectors.each(function (index, el) {
     hidden_index_selectors[index].value = index;
   });
 }
 
 Blacklight.onLoad(function () {
-  orderedDragAndDrop($('.ordered-field-container'));
+  $('.ordered-field-container').each(function(index, el){
+    orderedDragAndDrop(el);
+  });
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
     var config = { childList: true };
