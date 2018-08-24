@@ -30,13 +30,15 @@ function reindexNestedOrderedField(mutationsList) {
   hidden_index_selectors = $(".ordered-field-container");
   
   hidden_index_selectors.each(function (index, el) {
-    hidden_index_selectors[index].value = index;
+    $(el).find(".index").each(function (index, el){
+      $(el)[index].value = index;
+    });
   });
 }
 
 Blacklight.onLoad(function () {
   $('.ordered-field-container').each(function(index, el){
-    orderedDragAndDrop(el);
+    orderedDragAndDrop($(el));
   });
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
