@@ -82,11 +82,26 @@
       $(e).prop('id', id)
       return
 
+    allEmptyItems = (items) ->
+      all_items = items.find("input:text")
+      empty_items = 0
+      all_items.each (i, e) ->
+        if $(e).val().length == 0
+          empty_items++
+
+      if all_items.length == empty_items
+        return true
+      else
+        return false
 
     removeEmptyItems = (items) ->
-      # when we get existing items on load, remove item if empty
-      if items.length > 1
-        all_items = items.find("input:text")
+      all_items = items.find("input:text")
+
+      if (allEmptyItems(items) == true)
+        all_items.each (i, e) ->
+          if $(e).val().length == 0 && i > 0
+            $(e).parent().remove()
+      else
         all_items.each (i, e) ->
           if $(e).val().length == 0
             $(e).parent().remove()
@@ -112,5 +127,7 @@
 
       $(field_selector).append($(reindex_ordered_list))
 
-    resetNestedFieldItems('.nested-field.ordered-field-container')
+    resetNestedFieldItems('.nested-ordered-creator.ordered-field-container')
+    resetNestedFieldItems('.nested-ordered-title.ordered-field-container')
+    resetNestedFieldItems('.nested-ordered-related-items.ordered-field-container')
 ) jQuery
