@@ -94,22 +94,25 @@
       else
         return false
 
-    removeEmptyItems = (items) ->
+    removeEmptyItems = (items, is_multiple) ->
       all_items = items.find("input:text")
-
       if (allEmptyItems(items) == true)
         all_items.each (i, e) ->
-          if $(e).val().length == 0 && i > 0
-            $(e).parent().remove()
+          if is_multiple == true
+            if $(e).val().length == 0 && i > 1
+              $(e).parent().remove()
+          else
+            if $(e).val().length == 0 && i > 0
+              $(e).parent().remove()
       else
         all_items.each (i, e) ->
           if $(e).val().length == 0
             $(e).parent().remove()
 
-    resetNestedFieldItems = (field_selector) ->
+    resetNestedFieldItems = (field_selector, is_multiple) ->
       reindex_ordered_list = ""
       items = $(field_selector).find('ul.dd-list li.dd-item')
-      removeEmptyItems(items)
+      removeEmptyItems(items, is_multiple)
 
       items.each (idx, element) ->
         removed = $(element).clone()
@@ -127,7 +130,7 @@
 
       $(field_selector).append($(reindex_ordered_list))
 
-    resetNestedFieldItems('.nested-ordered-creator.ordered-field-container')
-    resetNestedFieldItems('.nested-ordered-title.ordered-field-container')
-    resetNestedFieldItems('.nested-ordered-related-items.ordered-field-container')
+    resetNestedFieldItems('.nested-ordered-creator.ordered-field-container', false)
+    resetNestedFieldItems('.nested-ordered-title.ordered-field-container', false)
+    resetNestedFieldItems('.nested-ordered-related-items.ordered-field-container', true)
 ) jQuery
