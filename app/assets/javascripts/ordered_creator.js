@@ -35,8 +35,35 @@ function reindexNestedOrderedField(mutationsList) {
   hidden_index_selectors.each(function (index) {
     hidden_index_selectors[index].value = index;
   });
-
   hidden_index_selectors = $(".nested-ordered-related-items .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-abstract .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-alt-title .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-contributor .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-description .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-editor .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-tableofcontents .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-typical-age-range .index");
   hidden_index_selectors.each(function (index) {
     hidden_index_selectors[index].value = index;
   });
@@ -46,6 +73,14 @@ Blacklight.onLoad(function () {
   orderedDragAndDrop($('.nested-ordered-related-items'));
   orderedDragAndDrop($('.nested-ordered-title'));
   orderedDragAndDrop($('.nested-ordered-creator'));
+  orderedDragAndDrop($('.nested-ordered-abstract'));
+  orderedDragAndDrop($('.nested-ordered-alt-title'));
+  orderedDragAndDrop($('.nested-ordered-contributor'));
+  orderedDragAndDrop($('.nested-ordered-description'));
+  orderedDragAndDrop($('.nested-ordered-editor'));
+  orderedDragAndDrop($('.nested-ordered-tableofcontents'));
+  orderedDragAndDrop($('.nested-ordered-typical-age-range'));
+
 
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
