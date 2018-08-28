@@ -113,7 +113,7 @@
       reindex_ordered_list = ""
       items = $(field_selector).find('ul.dd-list li.dd-item')
       removeEmptyItems(items, is_multiple)
-
+      items = $(field_selector).find('ul.dd-list li.dd-item')
       items.each (idx, element) ->
         removed = $(element).clone()
         id_field = removed.find("input[name$='[id]']")
@@ -130,7 +130,7 @@
 
       $(field_selector).append($(reindex_ordered_list))
 
-    resetNestedFieldItems('.nested-ordered-creator.ordered-field-container', false)
-    resetNestedFieldItems('.nested-ordered-title.ordered-field-container', false)
-    resetNestedFieldItems('.nested-ordered-related-items.ordered-field-container', true)
+    resetNestedFieldItems('.nested-ordered-creator', false)
+    resetNestedFieldItems('.nested-ordered-title', false)
+    resetNestedFieldItems('.nested-ordered-related-items', true)
 ) jQuery
