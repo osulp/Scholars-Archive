@@ -199,13 +199,17 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
+      property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => ActiveArchive::Geological
 
-      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => NestedRelatedItems do |index|
+      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => ActiveArchive::RelatedItems do |index|
         index.as :stored_searchable
       end
 
-      property :nested_ordered_creator, predicate: ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => NestedOrderedCreator do |index|
+      property :nested_ordered_creator, predicate: ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => ActiveArchive::Creator do |index|
+        index.as :stored_searchable, :facetable
+      end
+
+      property :nested_ordered_title, predicate: ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => ActiveArchive::Title do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -274,6 +278,7 @@ module ScholarsArchive
       accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
       # reject if all attributes all blank OR if either index or creator is blank
       accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_title, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:title].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end

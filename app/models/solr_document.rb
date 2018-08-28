@@ -35,40 +35,20 @@ class SolrDocument
     end
   end
 
-  def peerreviewed_label
-    self['peerreviewed_label_ssim']
+  def self.ssim_methods(ssim_names)
+    ssim_names.each do |ssim_name|
+      define_method ssim_name.gsub("_ssim", "").to_sym do
+        self[ssim_name]
+      end
+    end
   end
 
-  def license_label
-    self['license_label_ssim']
-  end
-
-  def academic_affiliation_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['academic_affiliation_label_ssim'])
-  end
-
-  def degree_field_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['degree_field_label_ssim'])
-  end
-
-  def degree_grantors_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['degree_grantors_label_ssim'])
-  end
-
-  def other_affiliation_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['other_affiliation_label_ssim'])
-  end
-
-  def rights_statement_label
-    self['rights_statement_label_ssim']
-  end
-
-  def language_label
-    self['language_label_ssim']
-  end
-
-  def based_near_linked
-    self['based_near_linked_ssim']
+  def self.uri_methods(uri_names)
+    uri_names.each do |uri_name|
+      define_method uri_name.gsub("_ssim", "").to_sym do
+        ScholarsArchive::LabelParserService.parse_label_uris(self[uri_name])
+      end
+    end
   end
 
   def nested_geo
@@ -86,6 +66,10 @@ class SolrDocument
   def system_created
     Time.parse self['system_create_dtsi']
   end
+
+  ssim_methods %w[based_near_linked_ssim language_label_ssim rights_statement_label_ssim license_label_ssim peerreviewed_label_ssim]
+  
+  uri_methods %w[academic_affiliation_label_ssim degree_field_label_ssim degree_grantors_label_ssim other_affiliation_label_ssim]
 
   solrized_methods %w[
     abstract

@@ -50,8 +50,18 @@ class MultiValueOrderedInput < MultiValueInput
     if value.new_record?
       index = value.object_id
     end
-    creator_options = build_creator_options(value, index)
-    input_creator = @builder.text_field(:creator, creator_options)
+
+    object_options = ''
+    input_options = ''
+
+    case value
+    when ActiveArchive::Creator
+      object_options = build_creator_options(value, index)
+      input_options = @builder.text_field(:creator, object_options)
+    when ActiveArchive::Title
+      object_options = build_title_options(value, index)
+      input_options = @builder.text_field(:title, object_options)
+    end
 
     index_options = build_index_options(value, index)
     input_index = @builder.text_field(:index, index_options)
@@ -66,7 +76,7 @@ class MultiValueOrderedInput < MultiValueInput
       destroy_input = @builder.text_field(:_destroy, destroy_options)
     end
 
-    nested_item = "#{input_creator}#{input_index}"
+    nested_item = "#{input_options}#{input_index}"
 
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end
@@ -101,6 +111,15 @@ class MultiValueOrderedInput < MultiValueInput
     options = build_field_options(creator_value, index)
     options[:name] = nested_field_name(:creator.to_s, index)
     options[:id] = nested_field_id(:creator.to_s, index)
+    options[:placeholder] = 'Label'
+    options
+  end
+
+  def build_title_options(value, index)
+    title_value = value.title.first
+    options = build_field_options(title_value, index)
+    options[:name] = nested_field_name(:title.to_s, index)
+    options[:id] = nested_field_id(:title.to_s, index)
     options[:placeholder] = 'Label'
     options
   end
