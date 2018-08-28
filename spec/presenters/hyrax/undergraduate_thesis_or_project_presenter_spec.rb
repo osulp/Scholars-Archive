@@ -5,10 +5,18 @@ RSpec.describe UndergraduateThesisOrProjectPresenter do
   let(:ability) { double "Ability" }
   let(:presenter) { described_class.new(solr_document, ability) }
   let(:attributes) { file.to_solr }
+  let(:nested_ordered_title_attributes) do
+    [
+      {
+        :title => "TestTitle",
+        :index => "0"
+      }
+    ]
+  end
   let(:file) do
     UndergraduateThesisOrProject.new(
           id: '123abc',
-          title: ["File title"],
+          nested_ordered_title_attributes: nested_ordered_title_attributes,
           depositor: user.user_key,
           label: "filename.tif")
   end

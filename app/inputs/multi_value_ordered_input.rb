@@ -79,10 +79,6 @@ class MultiValueOrderedInput < MultiValueInput
 
     nested_item = "#{input_creator}#{input_creator_2}#{input_index}"
 
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    puts nested_item
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end
 

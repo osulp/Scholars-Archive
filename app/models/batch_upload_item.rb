@@ -10,6 +10,8 @@ class BatchUploadItem < ActiveFedora::Base
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedDefaultLicenses
+  include ScholarsArchive::HasNestedOrderedProperties
+
 
   self.indexer = DefaultWorkIndexer
 

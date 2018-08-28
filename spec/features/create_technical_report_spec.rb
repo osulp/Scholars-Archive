@@ -74,7 +74,8 @@ RSpec.feature 'Create a Technical Report', js: false do
     end
 
     it "renders the new form" do
-      fill_in 'technical_report_title', with: 'Test Technical Report'
+      ordered_title_input = find(:css, "input.nested-field.technical_report_nested_ordered_title")
+      fill_in ordered_title_input[:id], with: 'Test Technical Report'
 
       creator_input = find(:css, "input.nested-field.technical_report_nested_ordered_creator")
       fill_in creator_input[:id], with: 'Test Technical Report Creator'

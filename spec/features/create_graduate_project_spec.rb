@@ -73,7 +73,8 @@ RSpec.feature 'Create a Graduate Project', js: false do
     end
 
     it "renders the new form" do
-      fill_in 'graduate_project_title', with: 'Test Graduate Project'
+      ordered_title_input = find(:css, "input.nested-field.graduate_project_nested_ordered_title")
+      fill_in ordered_title_input[:id], with: 'Test Graduate Project'
 
       creator_input = find(:css, "input.nested-field.graduate_project_nested_ordered_creator")
       fill_in creator_input[:id], with: 'Test Graduate Project Creator'

@@ -87,6 +87,10 @@ class SolrDocument
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_title_label', :symbol)])
   end
 
+  def title
+    self[Solrizer.solr_name('title', :stored_searchable)] || nested_ordered_title_label || []
+  end
+
   def system_created
     Time.parse self['system_create_dtsi']
   end

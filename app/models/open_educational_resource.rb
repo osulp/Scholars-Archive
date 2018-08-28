@@ -8,11 +8,11 @@ class OpenEducationalResource < ActiveFedora::Base
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedOerLicenses
+  include ScholarsArchive::HasNestedOrderedProperties
 
   self.indexer = OerIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
-  validates :title, presence: { message: 'Your work must have a title.' }
 
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
