@@ -22,13 +22,15 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :typical_age_range, predicate: ::RDF::Vocab::LRMI.typicalAgeRange do |index|
+      property :nested_ordered_typical_age_range, predicate: ::RDF::Vocab::LRMI.typicalAgeRange do |index|
         index.as :stored_searchable
       end
 
       property :duration, predicate: ::RDF::Vocab::MA.duration do |index|
         index.as :stored_searchable
       end
+
+      accepts_nested_attributes_for :nested_ordered_typical_age_range, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:typical_age_range].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end

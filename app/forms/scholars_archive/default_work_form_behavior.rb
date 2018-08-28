@@ -21,12 +21,12 @@ module ScholarsArchive
       self.required_fields -= [:keyword, :creator]
 
       def primary_terms
-        [:nested_ordered_title, :title, :alt_title, :nested_ordered_creator, :contributor, :abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
+        [:nested_ordered_title, :title, :nested_ordered_alt_title, :nested_ordered_creator, :nested_ordered_contributor, :nested_ordered_abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :nested_ordered_tableofcontents, :rights_statement] | super
       end
 
       def secondary_terms
         t = [:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :conference_name, :conference_section, :conference_location, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
-        t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection, :description, :identifier] if current_ability.current_user.admin?
+        t << [:keyword, :source, :funding_body, :dspace_community, :dspace_collection, :nested_ordered_description, :identifier] if current_ability.current_user.admin?
         t.flatten
       end
 

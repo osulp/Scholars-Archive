@@ -15,7 +15,7 @@ module ScholarsArchive
       # Provide each model a hook to set property defaults
       after_initialize :set_defaults, unless: :persisted?
 
-      property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
+      property :nested_ordered_abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
         index.as :stored_searchable
       end
 
@@ -27,7 +27,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :alt_title, predicate: ::RDF::Vocab::DC.alternative do |index|
+      property :nested_ordered_alt_title, predicate: ::RDF::Vocab::DC.alternative do |index|
         index.as :stored_searchable
       end
 
@@ -52,7 +52,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
+      property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
         index.as :stored_searchable
       end
 
@@ -116,7 +116,7 @@ module ScholarsArchive
       # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
       attr_accessor :degree_name_other
 
-      property :description, predicate: ::RDF::Vocab::DC11.description do |index|
+      property :nested_ordered_description, predicate: ::RDF::Vocab::DC11.description do |index|
         index.as :stored_searchable
       end
 
@@ -261,7 +261,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :tableofcontents, predicate: ::RDF::Vocab::DC.tableOfContents do |index|
+      property :nested_ordered_tableofcontents, predicate: ::RDF::Vocab::DC.tableOfContents do |index|
         index.as :stored_searchable
       end
 
@@ -279,7 +279,11 @@ module ScholarsArchive
       accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
       # reject if all attributes all blank OR if either index or creator is blank
       accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
-      accepts_nested_attributes_for :nested_ordered_title, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:title].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_abstract, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:abstracrt.blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_alt_title, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:alt_title].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_contributor, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:contributor].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_description, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:description].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_tableofcontents, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:tableofcontents].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end

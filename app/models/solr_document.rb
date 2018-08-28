@@ -95,6 +95,20 @@ class SolrDocument
      nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)]
   end
 
+  def nested_ordered_abstract_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
+  end
+
+  def nested_ordered_contributor_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)])
+  end
+
+  def nested_ordered_description_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_description_label', :symbol)])
+  end
+
+  end
+
   def system_created
     Time.parse self['system_create_dtsi']
   end
