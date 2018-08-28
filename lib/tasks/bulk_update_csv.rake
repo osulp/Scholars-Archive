@@ -49,20 +49,20 @@ def update_property(logger, work, row)
     if(found_row)
       work[row[:property]] = nil if work[row[:property]].length == 1
       work[row[:property]].delete(found_row) if work[row[:property]].length > 1
-      work[row[:property]] += [row[:to]] unless row[:to].blank?
+      work[row[:property]] += [row[:to].split('|')].flatten unless row[:to].blank?
       logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{row[:to]}\"")
     elsif(row[:from].casecmp('*').zero?)
-      work[row[:property]] = [row[:to]]
+      work[row[:property]] = [row[:to].split('|')].flatten
       logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{row[:to]}\"")
     elsif(row[:from].blank?)
-      work[row[:property]] += [row[:to]]
+      work[row[:property]] += [row[:to].split('|')].flatten
       logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{row[:to]}\"")
     else
       logger.info("#{work.class} #{row[:id]} #{property.property} value \"#{row[:from]}\" not found, skipping update.")
       return nil
     end
   else
-    work[row[:property]] = row[:to]
+    work[row[:property]] = [row[:to].split('|')].flatten
     logger.info("#{work.class} #{row[:id]} #{row[:property]} set to \"#{row[:to]}\"")
   end
   return work
