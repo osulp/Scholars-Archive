@@ -6,7 +6,7 @@ module ScholarsArchive
     #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
     included do
-      property :editor, predicate: ::RDF::Vocab::BIBO.editor do |index|
+      property :nested_ordered_editor, predicate: ::RDF::Vocab::BIBO.editor do |index|
         index.as :stored_searchable
       end
 
@@ -29,6 +29,8 @@ module ScholarsArchive
       property :web_of_science_uid, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/webOfScienceUid"), multiple: false do |index|
         index.as :stored_searchable
       end
+
+      accepts_nested_attributes_for :nested_ordered_editor, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:editor].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end
