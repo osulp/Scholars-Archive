@@ -3,11 +3,20 @@ require 'spec_helper'
 RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   let(:url) { "http://example.com" }
   let(:rights_statement_uri) { 'http://rightsstatements.org/vocab/InC/1.0/' }
+  let(:nested_ordered_title_attributes) do
+    [
+      {
+        :title => "TestTitle",
+        :index => "0"
+      }
+    ]
+  end
   let(:work) {
-    Default.new do |w|
-      w.title = ['test']
+    work = Default.new do |w|
       w.rights_statement = [rights_statement_uri]
     end
+    work.nested_ordered_title_attributes = nested_ordered_title_attributes
+    work
   }
   let(:solr_document) do
     SolrDocument.new(work.to_solr)

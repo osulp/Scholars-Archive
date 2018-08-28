@@ -8,12 +8,13 @@ class Article < ActiveFedora::Base
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedArticleLicenses
+  include ScholarsArchive::HasNestedOrderedProperties
+
 
   self.indexer = ArticleIndexer
 
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
-  validates :title, presence: { message: 'Your work must have a title.' }
 
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator

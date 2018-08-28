@@ -7,6 +7,7 @@ class Default < ActiveFedora::Base
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedDefaultLicenses
+  include ScholarsArchive::HasNestedOrderedProperties
 
   self.indexer = DefaultWorkIndexer
 
@@ -16,16 +17,6 @@ class Default < ActiveFedora::Base
   self.validates_with ScholarsArchive::Validators::OtherOptionDegreeValidator
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
-
-  def to_s
-    if title.present?
-      title
-    elsif nested_ordered_title.first.title.present?
-      nested_ordered_title.select { |i| i.title.present? }.map{|i| (i.instance_of? NestedOrderedTitle) ? [i.title.first, i.index.first] : i }.select(&:present?).sort_by{ |array| array[1] }.map{ |array| array[0] }.first
-    else
-      'No Title'
-    end
-  end
 
   private
   def set_defaults

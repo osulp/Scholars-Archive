@@ -73,7 +73,8 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
     end
 
     it "renders the new form" do
-      fill_in 'undergraduate_thesis_or_project_title', with: 'Test Undergraduate Thesis Or Project'
+      ordered_title_input = find(:css, "input.nested-field.undergraduate_thesis_or_project_nested_ordered_creator")
+      fill_in ordered_title_input[:id], with: 'Test Undergraduate Thesis Or Project'
 
       creator_input = find(:css, "input.nested-field.undergraduate_thesis_or_project_nested_ordered_creator")
       fill_in creator_input[:id], with: 'Test Undergraduate Thesis Or Project Creator'

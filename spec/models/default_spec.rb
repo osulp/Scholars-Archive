@@ -4,22 +4,34 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe Default do
+  let(:nested_ordered_title_attributes) do
+    [
+      {
+        :title => "TestTitle",
+        :index => "0"
+      }
+    ]
+  end
   describe "date facet yearly" do
     let(:asset) {
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
       g.attributes = {
-          :date_created => date
+        :date_created => date,
+        :nested_ordered_title_attributes => nested_ordered_title_attributes
       }
       g
     }
+
+
     let(:date) { "2022-01-01" }
     let(:facet) { asset.to_solr["date_facet_yearly_ssim"] }
 
     context "when given date is nil" do
       let(:asset) do
-        g = described_class.new(title: ['test'], keyword: ['test'])
+        g = described_class.new(keyword: ['test'])
         g.attributes = {
-            :date_created => nil
+            :date_created => nil,
+            :nested_ordered_title_attributes => nested_ordered_title_attributes
         }
         g
       end
@@ -29,9 +41,15 @@ RSpec.describe Default do
     end
     context "when given an invalid date" do
       let(:asset) do
-        g = described_class.new(title: ['test'], keyword: ['test'])
+        g = described_class.new(keyword: ['test'])
         g.attributes = {
-            :date_created => "typo2011-01-01"
+            :date_created => "typo2011-01-01",
+            :nested_ordered_title_attributes => [
+              {
+                :title => "TestTitle",
+                :index => "0"
+              }
+            ]
         }
         g
       end
@@ -73,9 +91,10 @@ RSpec.describe Default do
   end
   describe "decade facets" do
     let(:asset) {
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
       g.attributes = {
-          :date_created => date
+          :date_created => date,
+          :nested_ordered_title_attributes => nested_ordered_title_attributes
       }
       g
     }
@@ -84,9 +103,10 @@ RSpec.describe Default do
     context "when no date" do
       context "and no other usable date" do
         let(:asset) do
-          g = described_class.new(title: ['test'], keyword: ['test'])
+          g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_created => nil
+              :date_created => nil,
+              :nested_ordered_title_attributes => nested_ordered_title_attributes
           }
           g
         end
@@ -96,9 +116,11 @@ RSpec.describe Default do
       end
       context "but date_created present" do
         let(:asset) do
-          g = described_class.new(title: ['test'], keyword: ['test'])
+          g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_created => date_created
+              :date_created => date_created,
+              :nested_ordered_title_attributes => nested_ordered_title_attributes
+
           }
           g
         end
@@ -109,9 +131,10 @@ RSpec.describe Default do
       end
       context "but copyright date present" do
         let(:asset) do
-          g = described_class.new(title: ['test'], keyword: ['test'])
+          g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_copyright => date_copyright
+              :date_copyright => date_copyright,
+              :nested_ordered_title_attributes => nested_ordered_title_attributes
           }
           g
         end
@@ -122,9 +145,10 @@ RSpec.describe Default do
       end
       context "but copyright date present" do
         let(:asset) do
-          g = described_class.new(title: ['test'], keyword: ['test'])
+          g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_issued => date_issued
+              :date_issued => date_issued,
+              :nested_ordered_title_attributes => nested_ordered_title_attributes
           }
           g
         end
@@ -174,7 +198,7 @@ RSpec.describe Default do
        }]
     end
     it "should be able to delete items" do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = attributes
       g.nested_geo_attributes = [
           {
@@ -185,17 +209,22 @@ RSpec.describe Default do
               :label => "Banana"
           }
       ]
+
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+
       expect(g.nested_geo.length).to eq 1
       expect(g.nested_geo.first.label).to eq ["Banana"]
     end
     it "should work on already persisted items" do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = attributes
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_geo.first.label).to eq ["Salem"]
     end
     it "should be able to edit" do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = attributes
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_geo.length).to eq 1
       expect(g.nested_geo.first.label).to eq ["Salem"]
 
@@ -205,18 +234,19 @@ RSpec.describe Default do
       expect(g.nested_geo.first.label).to eq ["Banana"]
     end
     it "should not create blank ones" do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = [
           {
               :label => "",
               :point => "",
           }
       ]
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_geo.length).to eq 0
     end
   end
   it "should be able to create multiple nested geo points" do
-    g = described_class.new(title: ['test'], keyword: ['test'])
+    g = described_class.new(keyword: ['test'])
     g.nested_geo_attributes = [
         {
             "label" => "1"
@@ -225,6 +255,7 @@ RSpec.describe Default do
             "label" => "2"
         }
     ]
+    g.nested_ordered_title_attributes = nested_ordered_title_attributes
     expect(g.nested_geo.length).to eq 2
     expect(g.nested_geo.map{|x| x.label.first}).to contain_exactly("1","2")
   end
@@ -236,8 +267,10 @@ RSpec.describe Default do
            :creator => "CreatorA"
        }]
     end
+    
     it "should be able to delete items" do
-      g = described_class.new(title: ['test'])
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = attributes
       g.nested_ordered_creator_attributes = [
           {
@@ -253,7 +286,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.first.creator).to eq ["CreatorB"]
     end
     it "should not persist items when all are blank" do
-      g = described_class.new(title: ['test1'])
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
               :index => "",
@@ -267,7 +301,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.length).to eq 0
     end
     it "should not persist items when either one of the attributes are blank" do
-      g = described_class.new(title: ['test1'])
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
               :index => "",
@@ -281,13 +316,15 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.length).to eq 0
     end
     it "should work on already persisted items" do
-      g = described_class.new(title: ['test'])
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = attributes
       expect(g.nested_ordered_creator.first.creator).to eq ["CreatorA"]
     end
     it "should be able to edit" do
-      g = described_class.new(title: ['test'])
+      g = described_class.new()
       g.nested_ordered_creator_attributes = attributes
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_ordered_creator.length).to eq 1
       expect(g.nested_ordered_creator.first.creator).to eq ["CreatorA"]
 
@@ -297,7 +334,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.first.creator).to eq ["CreatorB"]
     end
     it "should not create blank ones" do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
               :index => "",
@@ -309,7 +347,8 @@ RSpec.describe Default do
   end
 
   it "should be able to create multiple nested ordered creators" do
-    g = described_class.new(title: ['test'])
+    g = described_class.new()
+    g.nested_ordered_title_attributes = nested_ordered_title_attributes
     g.nested_ordered_creator_attributes = [
         {
           "index" => "0",
@@ -325,23 +364,121 @@ RSpec.describe Default do
     expect(g.nested_ordered_creator.map{|x| x.creator.first}).to contain_exactly("Creator1","Creator2")
   end
 
+  describe "#nested_ordered_title_attributes" do
+    let(:attributes) do
+      [{
+        :index => "0",
+        :title => "TitleA"
+      }]
+    end
+    it "should be able to delete items" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = attributes
+      g.nested_ordered_title_attributes = [
+        {
+          :id => g.nested_ordered_title.first.id,
+          :_destroy => true
+        },
+        {
+          :index => "1",
+          :title => "TitleB"
+        }
+      ]
+      expect(g.nested_ordered_title.length).to eq 1
+      expect(g.nested_ordered_title.first.title).to eq ["TitleB"]
+    end
+    it "should not persist items when all are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = [
+        {
+          :index => "",
+          :title => ""
+        },
+        {
+          :index => "",
+          :title => ""
+        }
+      ]
+      expect(g.nested_ordered_title.length).to eq 0
+    end
+    it "should not persist items when either one of the attributes are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = [
+        {
+          :index => "",
+          :title => "TitleA"
+        },
+        {
+          :index => "1",
+          :title => ""
+        }
+      ]
+      expect(g.nested_ordered_title.length).to eq 0
+    end
+    it "should work on already persisted items" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = attributes
+      expect(g.nested_ordered_title.first.title).to eq ["TitleA"]
+    end
+    it "should be able to edit" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = attributes
+      expect(g.nested_ordered_title.length).to eq 1
+      expect(g.nested_ordered_title.first.title).to eq ["TitleA"]
+
+      g.nested_ordered_title.first.title = ["TitleB"]
+      g.nested_ordered_title.first.persist!
+      expect(g.nested_ordered_title.length).to eq 1
+      expect(g.nested_ordered_title.first.title).to eq ["TitleB"]
+    end
+    it "should not create blank ones" do
+      g = described_class.new(keyword: ['test'])
+      g.nested_ordered_title_attributes = [
+        {
+          :index => "",
+          :title => "",
+        }
+      ]
+      expect(g.nested_ordered_title.length).to eq 0
+    end
+  end
+
+  it "should be able to create multiple nested ordered title" do
+    g = described_class.new()
+    g.nested_ordered_title_attributes = [
+      {
+        "index" => "0",
+        "title" => "Title1"
+      },
+      {
+        "index" => "1",
+        "title" => "Title2"
+      }
+    ]
+    expect(g.nested_ordered_title.length).to eq 2
+    expect(g.nested_ordered_title.map{|x| x.index.first}).to contain_exactly("0","1")
+    expect(g.nested_ordered_title.map{|x| x.title.first}).to contain_exactly("Title1","Title2")
+  end
+
   describe "#attributes=" do
     it "accepts nested attributes" do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.attributes = {
-          :nested_geo_attributes => [
-              {
-                  :label => "Salem",
-                  :point => "[44.9430556,-123.0338889]"
-              }
-          ]
+        :nested_geo_attributes => [
+          {
+            :label => "Salem",
+            :point => "[44.9430556,-123.0338889]"
+          }
+        ]
       }
       expect(g.nested_geo.first.label).to eq ["Salem"]
     end
   end
   describe 'visibility' do
     it 'is set to open (public) by default' do
-      g = described_class.new(title: ['test'], keyword: ['test'])
+      g = described_class.new(keyword: ['test'])
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.visibility).to eq 'open'
     end
   end

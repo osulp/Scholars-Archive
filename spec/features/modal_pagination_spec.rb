@@ -7,13 +7,20 @@ RSpec.describe "Modal facet pagination", type: :feature, clean_repo: true do
     # Generate a bunch of works so that the pagination will show multiple pages
     works = []
     (1..26).each do |i|
-      works << Default.new do |work|
-        work.title = ["Research#{i}"]
+      nested_ordered_title_attributes = [
+        {
+          :title => "TestTitle#{i}",
+          :index => "0"
+        }
+      ]
+      w = Default.new do |work|
         work.subject << ["research#{i}subject"]
         work.apply_depositor_metadata('jilluser')
         work.read_groups = ['public']
-        work.save!
       end
+      w.nested_ordered_title_attributes = nested_ordered_title_attributes
+      w.save!
+      works << w
     end
     works
   end
@@ -28,8 +35,8 @@ RSpec.describe "Modal facet pagination", type: :feature, clean_repo: true do
       click_button "search-submit-header"
 
       expect(page).to have_content 'Search Results'
-      expect(page).to have_content lots_of_works.first.title.first
-      expect(page).to have_content lots_of_works.second.title.first
+      expect(page).to have_content lots_of_works.first.nested_ordered_title.first.title.first
+      expect(page).to have_content lots_of_works.second.nested_ordered_title.first.title.first
 
       click_link "Subject"
       click_link "more Subjects »"
@@ -44,8 +51,8 @@ RSpec.describe "Modal facet pagination", type: :feature, clean_repo: true do
         click_link lots_of_works[7].subject.first
       end
 
-      expect(page).to have_content lots_of_works[7].title.first
-      expect(page).not_to have_content lots_of_works.first.title.first
+      expect(page).to have_content lots_of_works[7].nested_ordered_title.first.title.first
+      expect(page).not_to have_content lots_of_works.first.nested_ordered_title.first.title.first
     end
   end
 end
