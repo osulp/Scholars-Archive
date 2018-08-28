@@ -83,16 +83,9 @@
       return
 
     allEmptyItems = (items) ->
-      all_items = items.find("input:text")
-      empty_items = 0
-      all_items.each (i, e) ->
-        if $(e).val().length == 0
-          empty_items++
-
-      if all_items.length == empty_items
-        return true
-      else
-        return false
+      text_items = items.find('input:text')
+      empty_items = text_items.filter (i,e) -> $(e).val().length == 0
+      return empty_items.length == text_items.length
 
     removeEmptyItems = (items, is_multiple) ->
       all_items = items.find("input:text")
