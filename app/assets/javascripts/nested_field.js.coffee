@@ -126,4 +126,12 @@
     resetNestedFieldItems('.nested-ordered-creator', false)
     resetNestedFieldItems('.nested-ordered-title', false)
     resetNestedFieldItems('.nested-ordered-related-items', true)
+    resetNestedFieldItems('.nested-ordered-abstract', false)
+    resetNestedFieldItems('.nested-ordered-alt-title', false)
+    resetNestedFieldItems('.nested-ordered-contributor', false)
+    resetNestedFieldItems('.nested-ordered-description', false)
+    resetNestedFieldItems('.nested-ordered-editor', false)
+    resetNestedFieldItems('.nested-ordered-tableofcontents', false)
+    resetNestedFieldItems('.nested-ordered-typical-age-range', false)
+
 ) jQuery
