@@ -123,8 +123,8 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def build_title_options(value, index)
-    creator_value = value.title.first
-    options = build_field_options(creator_value, index)
+    title_value = value.title.first
+    options = build_field_options(title_value, index)
     options[:name] = nested_field_name(:title.to_s, index)
     options[:id] = nested_field_id(:title.to_s, index)
     options[:placeholder] = 'Label'
@@ -132,8 +132,8 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def build_related_items_label_options(value, index)
-    creator_value = value.label.first
-    options = build_field_options(creator_value, index)
+    label_value = value.label.first
+    options = build_field_options(label_value, index)
     options[:name] = nested_field_name(:label.to_s, index)
     options[:id] = nested_field_id(:label.to_s, index)
     options[:placeholder] = 'Label'
@@ -141,8 +141,8 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def build_related_items_url_options(value, index)
-    creator_value = value.related_url.first
-    options = build_field_options(creator_value, index)
+    related_url_value = value.related_url.first
+    options = build_field_options(related_url_value, index)
     options[:name] = nested_field_name(:related_url.to_s, index)
     options[:id] = nested_field_id(:related_url.to_s, index)
     options[:placeholder] = 'URL'
@@ -156,9 +156,7 @@ class MultiValueOrderedInput < MultiValueInput
     options[:id] = nested_field_id(:index.to_s, index)
     options[:class] << "index"
     options[:placeholder] = 'Index'
-    # uncomment below to make a hidden input
     options[:type] = ['hidden']
-    # options[:readonly] = 'readonly' if value.validation_msg.present? || index_value.present?
     options
   end
 
