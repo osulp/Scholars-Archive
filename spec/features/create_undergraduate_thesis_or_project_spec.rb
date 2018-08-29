@@ -99,9 +99,7 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
       check 'agreement'
 
       click_link "Files" # switch tab
-      within('span#addfiles') do
-        attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
-      end
+      attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
 
       choose('undergraduate_thesis_or_project_visibility_open')
 

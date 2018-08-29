@@ -99,9 +99,7 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       check 'agreement'
 
       click_link "Files" # switch tab
-      within('span#addfiles') do
-        attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
-      end
+      attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
 
       choose('graduate_thesis_or_dissertation_visibility_open')
 

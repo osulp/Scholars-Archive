@@ -89,9 +89,7 @@ RSpec.feature 'Create a Technical Report', js: false do
       check 'agreement'
 
       click_link "Files" # switch tab
-      within('span#addfiles') do
-        attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
-      end
+      attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
 
       choose('technical_report_visibility_open')
 
