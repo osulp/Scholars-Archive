@@ -1,17 +1,16 @@
-class NestedRelatedItems < ActiveTriples::Resource
+class NestedOrderedTitle < ActiveTriples::Resource
   # Usage notes and expectations can be found in the Metadata Application Profile:
   #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
-  property :label, predicate: ::RDF::Vocab::DC.title
-  property :related_url, predicate: ::RDF::RDFS.seeAlso
   property :index, predicate: ::RDF::Vocab::DC.identifier
+  property :title, predicate: ::RDF::Vocab::DC.title
 
   attr_accessor :destroy_item # true/false
   attr_accessor :validation_msg # string
 
   def initialize(uri=RDF::Node.new, parent=nil)
     if uri.try(:node?)
-      uri = RDF::URI("#nested_related_items#{uri.to_s.gsub('_:', '')}")
+      uri = RDF::URI("#nested_ordered_title#{uri.to_s.gsub('_:', '')}")
     elsif uri.start_with?("#")
       uri = RDF::URI(uri)
     end

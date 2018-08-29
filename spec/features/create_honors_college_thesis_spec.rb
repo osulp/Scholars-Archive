@@ -72,7 +72,8 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
     end
 
     it "renders the new form" do
-      fill_in 'honors_college_thesis_title', with: 'Test Honors College Thesis'
+      ordered_title_input = find(:css, "input.nested-field.honors_college_thesis_nested_ordered_title")
+      fill_in ordered_title_input[:id], with: 'Test Honors College Thesis'
 
       creator_input = find(:css, "input.nested-field.honors_college_thesis_nested_ordered_creator")
       fill_in creator_input[:id], with: 'Test Honors College Thesis Creator'

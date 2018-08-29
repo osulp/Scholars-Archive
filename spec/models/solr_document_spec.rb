@@ -65,9 +65,9 @@ RSpec.describe SolrDocument do
     context "when there are related items" do
       it "should return their labels" do
         document = described_class.new({
-                                           "nested_related_items_label_ssim" => ["label1$www.blah.com"]
+                                           "nested_related_items_label_ssim" => ["label1$www.blah.com$0"]
                                        })
-        expect(document.nested_related_items_label).to eq [{'label'=>'label1', 'uri'=>'www.blah.com'}]
+        expect(document.nested_related_items_label).to eq [{'label'=>'label1', 'uri'=>'www.blah.com', 'index'=>'0'}]
       end
     end
   end

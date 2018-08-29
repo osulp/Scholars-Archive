@@ -7,12 +7,12 @@ class Default < ActiveFedora::Base
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedDefaultLicenses
+  include ScholarsArchive::HasNestedOrderedProperties
 
   self.indexer = DefaultWorkIndexer
 
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
-  validates :title, presence: { message: 'Your work must have a title.' }
 
   self.validates_with ScholarsArchive::Validators::OtherOptionDegreeValidator
   self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator

@@ -76,12 +76,20 @@ class SolrDocument
   end
 
   def nested_related_items_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
+    ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
   end
 
   def nested_ordered_creator_label
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)])
   end 
+
+  def nested_ordered_title_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_title_label', :symbol)])
+  end
+
+  def title
+    self[Solrizer.solr_name('title', :stored_searchable)] || nested_ordered_title_label || []
+  end
 
   def system_created
     Time.parse self['system_create_dtsi']

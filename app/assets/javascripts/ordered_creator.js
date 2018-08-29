@@ -27,14 +27,26 @@ function swapDown(selector) {
 }
 
 function reindexNestedOrderedField(mutationsList) {
-  hidden_index_selectors = $(".ordered-field-container .index");
+  hidden_index_selectors = $(".nested-ordered-creator .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+  hidden_index_selectors = $(".nested-ordered-title .index");
+  hidden_index_selectors.each(function (index) {
+    hidden_index_selectors[index].value = index;
+  });
+
+  hidden_index_selectors = $(".nested-ordered-related-items .index");
   hidden_index_selectors.each(function (index) {
     hidden_index_selectors[index].value = index;
   });
 }
 
 Blacklight.onLoad(function () {
-  orderedDragAndDrop($('.ordered-field-container'));
+  orderedDragAndDrop($('.nested-ordered-related-items'));
+  orderedDragAndDrop($('.nested-ordered-title'));
+  orderedDragAndDrop($('.nested-ordered-creator'));
+
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
     var config = { childList: true };

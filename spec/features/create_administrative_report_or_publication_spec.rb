@@ -74,7 +74,8 @@ RSpec.feature 'Create a Administrative Report Or Publication', js: false do
     end
 
     it "renders the new form" do
-      fill_in 'administrative_report_or_publication_title', with: 'Test Administrative Report Or Publication'
+      ordered_title_input = find(:css, "input.nested-field.administrative_report_or_publication_nested_ordered_title")
+      fill_in ordered_title_input[:id], with: 'Test Administrative Report Or Publication'
 
       creator_input = find(:css, "input.nested-field.administrative_report_or_publication_nested_ordered_creator")
       fill_in creator_input[:id], with: 'Test Administrative Report Or Publication Creator'
