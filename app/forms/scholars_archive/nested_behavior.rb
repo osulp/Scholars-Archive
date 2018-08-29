@@ -7,7 +7,7 @@ module ScholarsArchive
       delegate :nested_geo_attributes=, :to => :model
       delegate :nested_related_items_attributes=, :to => :model
       delegate :nested_ordered_creator_attributes=, :to => :model
-      delegate :nested_ordered_contirbutor_attributes=, :to => :model
+      delegate :nested_ordered_contributor_attributes=, :to => :model
       delegate :nested_ordered_description_attributes=, :to => :model
       delegate :nested_ordered_abstract_attributes=, :to => :model
       delegate :nested_ordered_title_attributes=, :to => :model

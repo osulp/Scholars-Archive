@@ -29,32 +29,32 @@ function swapDown(selector) {
 function reindexNestedOrderedField(mutationsList) {
 
   nested_fields = ['.nested-ordered-creator', 
-                     'nested-ordered-title', 
-                     'nested-ordered-abstract', 
-                     'nested-ordered-contributor', 
-                     'nested-ordered-description', 
-                     'nested-ordered-related-items']
+                     '.nested-ordered-title', 
+                     '.nested-ordered-abstract', 
+                     '.nested-ordered-contributor', 
+                     '.nested-ordered-description', 
+                     '.nested-ordered-related-items']
 
-  nested_fields.each(function(idx, element){
+  for (element in nested_fields) {
     selectors = $(element);
     selectors.each(function (index) {
       selectors[index].value = index;
     });
-  })
+  }
 }
 
 Blacklight.onLoad(function () {
 
   nested_fields = ['.nested-ordered-creator', 
-                     'nested-ordered-title', 
-                     'nested-ordered-abstract', 
-                     'nested-ordered-contributor', 
-                     'nested-ordered-description', 
-                     'nested-ordered-related-items']
+                     '.nested-ordered-title', 
+                     '.nested-ordered-abstract', 
+                     '.nested-ordered-contributor', 
+                     '.nested-ordered-description', 
+                     '.nested-ordered-related-items']
 
-  nested_fields.each (function(index, element){
+  for (element in nested_fields) {
     orderedDragAndDrop($(element));
-  })
+  }
 
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
