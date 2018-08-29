@@ -23,7 +23,7 @@ class MultiValueOrderedInput < MultiValueInput
     "
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle'></div>
-        <div class='input-group-btn group-up-down-arrows'>
+        <div class='input-group-btn group-up-down-arrows #{multi_input_nested_item_class(value)}'>
           <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
             <span class='glyphicon glyphicon-arrow-up ordered-up-arrow'></span>
           </button>
@@ -35,6 +35,14 @@ class MultiValueOrderedInput < MultiValueInput
         #{yield}
       </li>
     "
+  end
+
+  def multi_input_nested_item_class(value)
+    "#{'multi-input-nested-item' if has_multi_input_elements?(value)}"
+  end
+
+  def has_multi_input_elements?(value)
+    value.is_a?(NestedRelatedItems)
   end
 
   def outer_wrapper
@@ -86,10 +94,6 @@ class MultiValueOrderedInput < MultiValueInput
       nested_item = "#{input_label}#{input_url}#{input_index}"
     end
     "#{nested_item ||= ''}"
-  end
-
-  def nested_item_wrapper(value)
-    "<div class= \"#{attribute_name} related_item multi-value-label-url #{'has-error' if value.validation_msg.present?} \">#{yield}</div>"
   end
 
   def build_id_options(value, index)
