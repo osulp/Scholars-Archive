@@ -89,7 +89,10 @@ RSpec.feature 'Create a Conference Proceedings Or Journal', js: false do
       check 'agreement'
 
       click_link "Files" # switch tab
-      attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
+      expect(page).to have_content "Add files"
+      within('button#addfiles') do
+        attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
+      end
 
       choose('conference_proceedings_or_journal_visibility_open')
 
