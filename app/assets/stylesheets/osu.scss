@@ -426,6 +426,11 @@ ol.dd-list {
       border-bottom-right-radius: 3px;
     }
 
+    .dd-handle.dd3-handle {
+      max-width: 30px;
+      padding: 0px;
+    }
+
     .glyphicon {
       display: inline-block;
       position: inherit;
@@ -440,9 +445,20 @@ ol.dd-list {
     button {
       margin-right: 2px;
     }
-
     button.up-arrow {
       margin-left: 2px;
+    }
+  }
+  .multi-input-nested-item {
+    button.down-arrow {
+      float: right;
+    }
+  }
+}
+.dd-dragel {
+  .multi-input-nested-item {
+    button.down-arrow {
+      float: right;
     }
   }
 }

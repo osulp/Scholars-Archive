@@ -5,8 +5,8 @@ module ScholarsArchive
     included do
       def to_s
         if title.present?
-          title
-        elsif nested_ordered_title.first.title.present?
+          title.first
+        elsif nested_ordered_title.present?
           ordered_titles.first
         else
           'No Title'
