@@ -124,16 +124,17 @@
       $(field_selector).append($(reindex_ordered_list))
 
     nested_fields = ['.nested-ordered-creator', 
-                     'nested-ordered-title', 
-                     'nested-ordered-abstract', 
-                     'nested-ordered-contributor', 
-                     'nested-ordered-description', 
-                     'nested-ordered-related-items']
+                     '.nested-ordered-title', 
+                     '.nested-ordered-abstract', 
+                     '.nested-ordered-contributor', 
+                     '.nested-ordered-description', 
+                     '.nested-ordered-related-items']
 
-    nested_fields.each (idx, val) ->
-      if val != ".nested-ordered-related-items"
-        resetNestedFieldItems(val, false)
-      else
-        resetNestedFieldItems(val, true)
+    for field in nested_fields
+      do ->
+        if field != ".nested-ordered-related-items"
+          resetNestedFieldItems(field, false)
+        else
+          resetNestedFieldItems(field, true)
 
 ) jQuery
