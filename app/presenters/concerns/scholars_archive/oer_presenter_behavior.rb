@@ -6,8 +6,7 @@ module ScholarsArchive
                :is_based_on_url,
                :learning_resource_type,
                :time_required,
-               :nested_ordered_typical_age_range,
-               :nested_ordered_typical_age_range_label,
+               :typical_age_range,
                :duration,  to: :solr_document
     end
   end

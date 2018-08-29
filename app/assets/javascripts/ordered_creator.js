@@ -27,60 +27,34 @@ function swapDown(selector) {
 }
 
 function reindexNestedOrderedField(mutationsList) {
-  hidden_index_selectors = $(".nested-ordered-creator .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-title .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-related-items .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-abstract .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-alt-title .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-contributor .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-description .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-editor .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-tableofcontents .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-typical-age-range .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
+
+  nested_fields = ['.nested-ordered-creator', 
+                     'nested-ordered-title', 
+                     'nested-ordered-abstract', 
+                     'nested-ordered-contributor', 
+                     'nested-ordered-description', 
+                     'nested-ordered-related-items']
+
+  nested_fields.each(function(idx, element){
+    selectors = $(element);
+    selectors.each(function (index) {
+      selectors[index].value = index;
+    });
+  })
 }
 
 Blacklight.onLoad(function () {
-  orderedDragAndDrop($('.nested-ordered-related-items'));
-  orderedDragAndDrop($('.nested-ordered-title'));
-  orderedDragAndDrop($('.nested-ordered-creator'));
-  orderedDragAndDrop($('.nested-ordered-abstract'));
-  orderedDragAndDrop($('.nested-ordered-alt-title'));
-  orderedDragAndDrop($('.nested-ordered-contributor'));
-  orderedDragAndDrop($('.nested-ordered-description'));
-  orderedDragAndDrop($('.nested-ordered-editor'));
-  orderedDragAndDrop($('.nested-ordered-tableofcontents'));
-  orderedDragAndDrop($('.nested-ordered-typical-age-range'));
 
+  nested_fields = ['.nested-ordered-creator', 
+                     'nested-ordered-title', 
+                     'nested-ordered-abstract', 
+                     'nested-ordered-contributor', 
+                     'nested-ordered-description', 
+                     'nested-ordered-related-items']
+
+  nested_fields.each (function(index, element){
+    orderedDragAndDrop($(element));
+  })
 
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {

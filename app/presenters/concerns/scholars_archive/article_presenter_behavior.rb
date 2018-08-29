@@ -5,7 +5,7 @@ module ScholarsArchive
       delegate :conference_name,
                :conference_section,
                :conference_location,
-               :nested_ordered_editor,
+               :editor,
                :has_journal,
                :has_number,
                :has_volume,

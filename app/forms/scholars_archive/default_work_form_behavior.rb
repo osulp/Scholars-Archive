@@ -21,7 +21,7 @@ module ScholarsArchive
       self.required_fields -= [:keyword, :creator]
 
       def primary_terms
-        [:nested_ordered_title, :title, :nested_ordered_alt_title, :nested_ordered_creator, :nested_ordered_contributor, :nested_ordered_abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
+        [:nested_ordered_title, :title, :alt_title, :nested_ordered_creator, :nested_ordered_contributor, :nested_ordered_abstract, :license, :resource_type, :doi, :dates_section, :degree_level, :degree_name, :degree_field, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super
       end
 
       def secondary_terms

@@ -60,35 +60,23 @@ class MultiValueOrderedInput < MultiValueInput
     end
 
     if value.is_a?(NestedOrderedCreator)
-      creator_options = build_creator_options(value, index)
+      creator_options = build_item_options(value, index, :creator)
       input_creator = @builder.text_field(:creator, creator_options)
     elsif value.is_a?(NestedOrderedTitle)
-      creator_options = build_title_options(value, index)
+      creator_options = build_item_options(value, index, :title)
       input_creator = @builder.text_field(:title, creator_options)
     elsif value.is_a?(NestedOrderedAbstract)
-      creator_options = build_abstract_options(value, index)
+      creator_options = build_item_options(value, index, :abstract)
       input_creator = @builder.text_field(:abstract, creator_options)
-    elsif value.is_a?(NestedOrderedAltTitle)
-      creator_options = build_alt_title_options(value, index)
-      input_creator = @builder.text_field(:alt_title, creator_options)
     elsif value.is_a?(NestedOrderedContributor)
-      creator_options = build_contributor_options(value, index)
+      creator_options = build_item_options(value, index, :contributor)
       input_creator = @builder.text_field(:contributor, creator_options)
     elsif value.is_a?(NestedOrderedDescription)
-      creator_options = build_description_options(value, index)
+      creator_options = build_item_options(value, index, :description)
       input_creator = @builder.text_field(:description, creator_options)
-    elsif value.is_a?(NestedOrderedEditor)
-      creator_options = build_editor_options(value, index)
-      input_creator = @builder.text_field(:editor, creator_options)
-    elsif value.is_a?(NestedOrderedTableOfContents)
-      creator_options = build_tableofcontents_options(value, index)
-      input_creator = @builder.text_field(:tableofcontents, creator_options)
-    elsif value.is_a?(NestedOrderedTypicalAgeRange)
-      creator_options = build_typical_age_range_options(value, index)
-      input_creator = @builder.text_field(:typical_age_range, creator_options)
     elsif value.is_a?(NestedRelatedItems)
-      creator_options = build_related_items_label_options(value, index)
-      url_options = build_related_items_url_options(value, index)
+      creator_options = build_item_options(value, index, :label)
+      url_options = build_item_options(value, index, :related_url)
       input_creator = @builder.text_field(:label, creator_options)
       input_creator_2 = @builder.text_field(:related_url, url_options)
     end
@@ -154,102 +142,12 @@ class MultiValueOrderedInput < MultiValueInput
     options
   end
 
-  def build_creator_options(value, index)
-    creator_value = value.creator.first
+  def build_item_options(value, index, method)
+    creator_value = value.send(method).first
     options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:creator.to_s, index)
-    options[:id] = nested_field_id(:creator.to_s, index)
+    options[:name] = nested_field_name(method.to_s, index)
+    options[:id] = nested_field_id(method.to_s, index)
     options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_title_options(value, index)
-    title_value = value.title.first
-    options = build_field_options(title_value, index)
-    options[:name] = nested_field_name(:title.to_s, index)
-    options[:id] = nested_field_id(:title.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_abstract_options(value, index)
-    creator_value = value.abstract.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:abstract.to_s, index)
-    options[:id] = nested_field_id(:abstract.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_alt_title_options(value, index)
-    creator_value = value.alt_title.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:alt_title.to_s, index)
-    options[:id] = nested_field_id(:alt_title.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_contributor_options(value, index)
-    creator_value = value.contributor.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:contributor.to_s, index)
-    options[:id] = nested_field_id(:contributor.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_description_options(value, index)
-    creator_value = value.description.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:description.to_s, index)
-    options[:id] = nested_field_id(:description.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_editor_options(value, index)
-    creator_value = value.editor.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:editor.to_s, index)
-    options[:id] = nested_field_id(:editor.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_tableofcontents_options(value, index)
-    creator_value = value.tableofcontents.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:tableofcontents.to_s, index)
-    options[:id] = nested_field_id(:tableofcontents.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_typical_age_range_options(value, index)
-    creator_value = value.typical_age_range.first
-    options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:typical_age_range.to_s, index)
-    options[:id] = nested_field_id(:typical_age_range.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_related_items_label_options(value, index)
-    label_value = value.label.first
-    options = build_field_options(label_value, index)
-    options[:name] = nested_field_name(:label.to_s, index)
-    options[:id] = nested_field_id(:label.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_related_items_url_options(value, index)
-    related_url_value = value.related_url.first
-    options = build_field_options(related_url_value, index)
-    options[:name] = nested_field_name(:related_url.to_s, index)
-    options[:id] = nested_field_id(:related_url.to_s, index)
-    options[:placeholder] = 'URL'
     options
   end
 
