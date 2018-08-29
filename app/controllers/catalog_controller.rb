@@ -167,14 +167,9 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("nested_geo_label", :stored_searchable), label: "Geographic Coordinates"
     config.add_show_field solr_name("nested_related_items_label", :stored_searchable), label: "Related Items"
     config.add_show_field solr_name("nested_ordered_creator_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_alt_title_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_description_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_contributor_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_abstract_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_editor_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_tableofcontents_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_typical_age_range_label", :stored_searchable), label: "Creator"
-
+    config.add_show_field solr_name("nested_ordered_description_label", :stored_searchable), label: "Description"
+    config.add_show_field solr_name("nested_ordered_contributor_label", :stored_searchable), label: "Contributor"
+    config.add_show_field solr_name("nested_ordered_abstract_label", :stored_searchable), label: "Abstract"
     config.add_show_field solr_name("rights", :stored_searchable), label: "Rights"
     config.add_show_field solr_name("resource_type", :stored_searchable), label: "Resource Type"
     config.add_show_field solr_name("format", :stored_searchable), label: "File Format"
@@ -201,7 +196,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_title_label_tesim nested_ordered_alt_title_label_tesim nested_ordered_description_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim nested_ordered_editor_label_tesim nested_ordered_tableofcontents_label_tesim nested_ordered_typical_age_range_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
+        qf: "#{all_names} contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_title_label_tesim nested_ordered_description_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
         pf: title_name.to_s
       }
     end
@@ -252,14 +247,6 @@ class CatalogController < ApplicationController
           pf: solr_name
       }
     end
-    config.add_search_field('nested_ordered_alt_title_label') do |field|
-      solr_name = solr_name("nested_ordered_alt_title_label", :stored_searchable)
-      field.label = "Creator"
-      field.solr_local_parameters = {
-          qf: solr_name,
-          pf: solr_name
-      }
-    end
     config.add_search_field('nested_ordered_description_label') do |field|
       solr_name = solr_name("nested_ordered_description_label", :stored_searchable)
       field.label = "Description"
@@ -284,31 +271,6 @@ class CatalogController < ApplicationController
           pf: solr_name
       }
     end
-    config.add_search_field('nested_ordered_editor_label') do |field|
-      solr_name = solr_name("nested_ordered_editor_label", :stored_searchable)
-      field.label = "Editor"
-      field.solr_local_parameters = {
-          qf: solr_name,
-          pf: solr_name
-      }
-    end
-    config.add_search_field('nested_ordered_tableofcontents_label') do |field|
-      solr_name = solr_name("nested_ordered_tableofcontents_label", :stored_searchable)
-      field.label = "Table of Contents"
-      field.solr_local_parameters = {
-          qf: solr_name,
-          pf: solr_name
-      }
-    end
-    config.add_search_field('nested_ordered_typical_age_range_label') do |field|
-      solr_name = solr_name("nested_ordered_typical_age_range_label", :stored_searchable)
-      field.label = "Typical Age Range"
-      field.solr_local_parameters = {
-          qf: solr_name,
-          pf: solr_name
-      }
-    end
-
 
     config.add_search_field('other_affiliation_label') do |field|
       solr_name = solr_name("other_affiliation_label", :stored_searchable)

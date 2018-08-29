@@ -123,15 +123,17 @@
 
       $(field_selector).append($(reindex_ordered_list))
 
-    resetNestedFieldItems('.nested-ordered-creator', false)
-    resetNestedFieldItems('.nested-ordered-title', false)
-    resetNestedFieldItems('.nested-ordered-related-items', true)
-    resetNestedFieldItems('.nested-ordered-abstract', false)
-    resetNestedFieldItems('.nested-ordered-alt-title', false)
-    resetNestedFieldItems('.nested-ordered-contributor', false)
-    resetNestedFieldItems('.nested-ordered-description', false)
-    resetNestedFieldItems('.nested-ordered-editor', false)
-    resetNestedFieldItems('.nested-ordered-tableofcontents', false)
-    resetNestedFieldItems('.nested-ordered-typical-age-range', false)
+    nested_fields = ['.nested-ordered-creator', 
+                     'nested-ordered-title', 
+                     'nested-ordered-abstract', 
+                     'nested-ordered-contributor', 
+                     'nested-ordered-description', 
+                     'nested-ordered-related-items']
+
+    nested_fields.each (idx, val) ->
+      if val != ".nested-ordered-related-items"
+        resetNestedFieldItems(val, false)
+      else
+        resetNestedFieldItems(val, true)
 
 ) jQuery

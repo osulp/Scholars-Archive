@@ -46,8 +46,6 @@ module ScholarsArchive
                :nested_ordered_title_label,
                :nested_ordered_abstract,
                :nested_ordered_abstract_label,
-               :nested_ordered_alt_title,
-               :nested_ordered_alt_title_label,
                :nested_ordered_contributor,
                :nested_ordered_contributor_label,
                :nested_ordered_description,
