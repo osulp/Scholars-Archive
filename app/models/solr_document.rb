@@ -103,8 +103,6 @@ class SolrDocument
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_description_label', :symbol)])
   end
 
-  end
-
   def system_created
     Time.parse self['system_create_dtsi']
   end

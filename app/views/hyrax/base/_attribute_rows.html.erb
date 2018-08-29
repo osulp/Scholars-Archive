@@ -5,7 +5,6 @@
 <%= presenter.attribute_to_html(:nested_ordered_abstract_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_abstract_label', itemprop_option: 'abstract', label: "Abstract") %>
 <%= presenter.attribute_to_html(:nested_ordered_contributor_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_contributor_label', itemprop_option: 'contributor', label: "Contributors") %>
 <%= presenter.attribute_to_html(:nested_ordered_description_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_description_label', itemprop_option: 'description', label: "Description") %>
-<%= presenter.attribute_to_html(:contributor, render_as: :search_and_external_link) %>
 <%= presenter.attribute_to_html(:abstract, label: t('simple_form.labels.defaults.abstract')) %>
 <%= presenter.attribute_to_html(:license_label, render_as: :search_and_external_link, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label')) %>
 <%= presenter.attribute_to_html(:resource_type, render_as: :faceted, label: t('simple_form.labels.defaults.resource_type')) %>
