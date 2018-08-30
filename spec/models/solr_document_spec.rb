@@ -72,7 +72,79 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#nested_ordered_creator" do
+    context "when there are no ordered creators" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "nested_ordered_creator_label_ssim" => []
+                                       })
+        expect(document.nested_ordered_creator_label).to eq []
+      end
+    end
+    context "when there are ordered creators" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "nested_ordered_creator_label_ssim" => ["creator1$0"]
+                                       })
+        expect(document.nested_ordered_creator_label).to eq ['creator1']
+      end
+    end
+  end
 
+  describe "#title" do
+    context "when there are no core metadata titles and no ordered titles" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "title_tesim" => []
+                                       })
+        expect(document.title).to eq []
+      end
+    end
+    context "when there are only ordered titles" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "nested_ordered_title_label_ssim" => ["title3$0", 'title4$1']
+                                       })
+        expect(document.title).to eq ['title3', 'title4']
+      end
+    end
+    context "when there are only core metadata titles" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "title_tesim" => ['title2','title1']
+                                       })
+        expect(document.title).to eq ['title2', 'title1']
+      end
+    end
+    context "when there are both core metadata titles and ordered titles" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "title_tesim" => ['title1','title2'],
+                                           "nested_ordered_title_label_ssim" => ["title3$0", 'title4$1'],
+                                       })
+        expect(document.title).to eq ['title3', 'title4']
+      end
+    end
+  end
+
+  describe "#nested_ordered_title" do
+    context "when there are no ordered titles" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "nested_ordered_title_label_ssim" => []
+                                       })
+        expect(document.nested_ordered_title_label).to eq []
+      end
+    end
+    context "when there are ordered titles" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "nested_ordered_title_label_ssim" => ["title1$0"]
+                                       })
+        expect(document.nested_ordered_title_label).to eq ['title1']
+      end
+    end
+  end
 
   describe "#oai_nested_related_items_label" do
     context "when there are no related items" do
