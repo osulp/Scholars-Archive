@@ -19,6 +19,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
+        index.as :stored_searchable
+      end
+
       property :academic_affiliation, predicate: ::RDF::URI("http://vivoweb.org/ontology/core#AcademicDepartment") do |index|
         index.as :stored_searchable, :facetable
       end
@@ -53,6 +57,10 @@ module ScholarsArchive
       end
 
       property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor, :class_name => NestedOrderedContributor do |index|
+        index.as :stored_searchable
+      end
+
+      property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
         index.as :stored_searchable
       end
 
@@ -117,6 +125,10 @@ module ScholarsArchive
       attr_accessor :degree_name_other
 
       property :nested_ordered_description, predicate: ::RDF::Vocab::DC11.description, class_name: NestedOrderedDescription do |index|
+        index.as :stored_searchable
+      end
+
+      property :description, predicate: ::RDF::Vocab::DC11.description do |index|
         index.as :stored_searchable
       end
 
