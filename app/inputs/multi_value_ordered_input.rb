@@ -61,24 +61,24 @@ class MultiValueOrderedInput < MultiValueInput
 
     if value.is_a?(NestedOrderedCreator)
       item_options = build_item_options(value, index, :creator)
-      input_creator = @builder.text_field(:creator, item_options)
+      input_field = @builder.text_field(:creator, item_options)
     elsif value.is_a?(NestedOrderedTitle)
       item_options = build_item_options(value, index, :title)
-      input_creator = @builder.text_field(:title, item_options)
+      input_field = @builder.text_field(:title, item_options)
     elsif value.is_a?(NestedOrderedAbstract)
       item_options = build_item_options(value, index, :abstract)
-      input_creator = @builder.text_area(:abstract, item_options)
+      input_field = @builder.text_area(:abstract, item_options)
     elsif value.is_a?(NestedOrderedContributor)
       item_options = build_item_options(value, index, :contributor)
-      input_creator = @builder.text_field(:contributor, item_options)
+      input_field = @builder.text_field(:contributor, item_options)
     elsif value.is_a?(NestedOrderedDescription)
       item_options = build_item_options(value, index, :description)
-      input_creator = @builder.text_area(:description, item_options)
+      input_field = @builder.text_area(:description, item_options)
     elsif value.is_a?(NestedRelatedItems)
       item_options = build_item_options(value, index, :label)
       url_options = build_item_options(value, index, :related_url)
-      input_creator = @builder.text_field(:label, item_options)
-      input_creator_2 = @builder.text_field(:related_url, url_options)
+      input_field = @builder.text_field(:label, item_options)
+      input_field_2 = @builder.text_field(:related_url, url_options)
     end
 
     index_options = build_index_options(value, index)
@@ -94,7 +94,7 @@ class MultiValueOrderedInput < MultiValueInput
       destroy_input = @builder.text_field(:_destroy, destroy_options)
     end
 
-    nested_item = "#{input_creator}#{input_creator_2}#{input_index}"
+    nested_item = "#{input_field}#{input_field_2}#{input_index}"
 
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end

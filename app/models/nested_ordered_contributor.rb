@@ -3,7 +3,7 @@ class NestedOrderedContributor < ActiveTriples::Resource
   #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
   property :index, predicate: ::RDF::Vocab::DC.identifier
-  property :contributor, predicate: ::RDF::Vocab::DC.creator
+  property :contributor, predicate: ::RDF::Vocab::DC11.contributor
 
   attr_accessor :destroy_item # true/false
   attr_accessor :validation_msg # string
