@@ -55,7 +55,7 @@
 
         if id != -1
           newId = new Date().getTime() + id # use current time to make sure the new id is unique
-          last_child.find('input').each (i, e) =>
+          last_child.find('input, textarea').each (i, e) =>
             swapIdOnElement(i, e, newId)
             return
       , 15)
@@ -70,7 +70,7 @@
 
       if id != -1
         newId = new Date().getTime() + id
-        item.find('input').each (i, e) =>
+        item.find('input, textarea').each (i, e) =>
             swapIdOnElement(i, e, newId)
             return
 
@@ -82,14 +82,14 @@
       $(e).prop('id', id)
       return
 
-    allEmptyItems = (items) ->
-      text_items = items.find('input:text')
+    allEmptyItems = (items, input_selector) ->
+      text_items = items.find(input_selector)
       empty_items = text_items.filter (i,e) -> $(e).val().length == 0
       return empty_items.length == text_items.length
 
-    removeEmptyItems = (items, is_multiple) ->
-      all_items = items.find("input:text")
-      if (allEmptyItems(items) == true)
+    removeEmptyItems = (items, is_multiple, input_selector) ->
+      all_items = items.find(input_selector)
+      if (allEmptyItems(items, input_selector) == true)
         all_items.each (i, e) ->
           if is_multiple == true
             if $(e).val().length == 0 && i > 1
@@ -102,10 +102,10 @@
           if $(e).val().length == 0
             $(e).parent().remove()
 
-    resetNestedFieldItems = (field_selector, is_multiple) ->
+    resetNestedFieldItems = (field_selector, is_multiple, input_selector) ->
       reindex_ordered_list = ""
       items = $(field_selector).find('ul.dd-list li.dd-item')
-      removeEmptyItems(items, is_multiple)
+      removeEmptyItems(items, is_multiple, input_selector)
       items = $(field_selector).find('ul.dd-list li.dd-item')
       items.each (idx, element) ->
         removed = $(element).clone()
@@ -132,9 +132,13 @@
 
     for field in nested_fields
       do ->
-        if field != ".nested-ordered-related-items"
-          resetNestedFieldItems(field, false)
+        if field == ".nested-ordered-related-items"
+          resetNestedFieldItems(field, true, 'input:text')
+        else if field == '.nested-ordered-abstract'
+          resetNestedFieldItems(field, false, 'textarea')
+        else if field == '.nested-ordered-description'
+          resetNestedFieldItems(field, false, 'textarea')
         else
-          resetNestedFieldItems(field, true)
+          resetNestedFieldItems(field, false, 'input:text')
 
 ) jQuery
