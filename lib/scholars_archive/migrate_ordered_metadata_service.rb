@@ -13,11 +13,12 @@ class MigrateOrderedMetadataService
   ##
   # For the given handle, detect if the work has already been migrated or perform the migration
   def migrated_work?(handle)
+    Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : Processing handle")
     doc = solr_doc(handle).first
     if migrated?(doc)
-      Rails.logger.debug("MigrateOrderedMetadataService : #{doc['id']} : Work has already been migrated")
+      Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Work has already been migrated")
     else
-      Rails.logger.debug("MigrateOrderedMetadataService : #{doc['id']} : Finding work, attempting to migrate")
+      Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Finding work, attempting to migrate")
       work = ActiveFedora::Base.find(doc['id'])
       work.nested_ordered_creator_attributes = creators(handle, doc)
       work.nested_ordered_title_attributes = titles(handle, doc)
@@ -25,13 +26,13 @@ class MigrateOrderedMetadataService
       # work.save
 
       # TODO:
-      Rails.logger.debug("MigrateOrderedMetadataService : #{doc['id']} : Work successfully migrated")
+      Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Work successfully migrated")
     end
     true
     work
   rescue StandardError => e
     trace = e.backtrace.join("\n")
-    Rails.logger.error("MigrateOrderedMetadataService : #{doc['id']} : Error migrating work; #{e.message}\n#{trace}")
+    Rails.logger.error("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Error migrating work; #{e.message}\n#{trace}")
     false
   end
 
