@@ -2,6 +2,11 @@ module ScholarsArchive
   module WorksControllerBehavior
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior
+    before_action :migrate_work_in_place, only: [:edit, :show]
+
+    def migrate_work_in_place
+      Migrator.migrated_work?(work: curation_concern)
+    end
 
     def new
       curation_concern.publisher = ["Oregon State University"]
