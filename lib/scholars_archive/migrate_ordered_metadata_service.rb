@@ -12,27 +12,35 @@ class MigrateOrderedMetadataService
 
   ##
   # For the given handle, detect if the work has already been migrated or perform the migration
-  def migrated_work?(handle)
-    Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : Processing handle")
-    doc = solr_doc(handle).first
+  def migrated_work?(handle: nil, work: nil)
+    Rails.logger.debug("MigrateOrderedMetadataService(handle:#{handle}, work:#{work}) : Processing")
+    unless work.nil?
+      if work.replaces.empty?
+        doc = work.to_solr
+      else
+        handle = "1957/#{work.replaces.split('/1957/')[1]}"
+      end
+    end
+
+    doc = solr_doc(handle).first if handle.present?
     if migrated?(doc)
-      Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Work has already been migrated")
+      Rails.logger.debug("MigrateOrderedMetadataService(handle:#{handle}, work:#{work}) : #{doc['id']} : Work has already been migrated")
     else
-      Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Finding work, attempting to migrate")
-      work = ActiveFedora::Base.find(doc['id'])
+      Rails.logger.debug("MigrateOrderedMetadataService(handle:#{handle}, work:#{work}) : #{doc['id']} : Finding work, attempting to migrate")
+      work = ActiveFedora::Base.find(doc['id']) unless work.present?
       work.nested_ordered_creator_attributes = creators(handle, doc)
       work.nested_ordered_title_attributes = titles(handle, doc)
       work.nested_related_items_attributes = related_items(doc)
       # work.save
 
       # TODO:
-      Rails.logger.debug("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Work successfully migrated")
+      Rails.logger.debug("MigrateOrderedMetadataService(handle:#{handle}, work:#{work}) : #{doc['id']} : Work successfully migrated")
     end
     true
     work
   rescue StandardError => e
     trace = e.backtrace.join("\n")
-    Rails.logger.error("MigrateOrderedMetadataService(#{handle}) : #{doc['id']} : Error migrating work; #{e.message}\n#{trace}")
+    Rails.logger.error("MigrateOrderedMetadataService(handle:#{handle}, work:#{work}) : #{doc['id']} : Error migrating work; #{e.message}\n#{trace}")
     false
   end
 
@@ -66,18 +74,20 @@ class MigrateOrderedMetadataService
   end
 
   def ordered_metadata(csv, handle, solr_doc, solr_field, ordered_field_name)
-    # In the target CSV, find the rows that have a matching handle column,
-    # then sort and map those rows to the ordered data structure. If there are
-    # not rows found in the CSV, then revert to mapping the original SOLR index data
-    # to the ordered data structure
-    #
-    # ie. [ { index: 0, creator: 'Ross, Bob' }, { index: 1, creator: 'Ross, Steve' }]
-    # ie. [ { index: 0, title: 'A brief history of time' }, { index: 1, title: 'Meditations on the concept of pizza' }]
-    found = csv.select { |l| l[4].casecmp(handle).zero? }
-               .sort_by! { |obj| obj[3] }
-               .map
-               .with_index { |obj, i| { index: i, ordered_field_name.to_sym => obj[2] } }
-    return found unless found.empty?
+    unless handle.nil?
+      # In the target CSV, find the rows that have a matching handle column,
+      # then sort and map those rows to the ordered data structure. If there are
+      # not rows found in the CSV, then revert to mapping the original SOLR index data
+      # to the ordered data structure
+      #
+      # ie. [ { index: 0, creator: 'Ross, Bob' }, { index: 1, creator: 'Ross, Steve' }]
+      # ie. [ { index: 0, title: 'A brief history of time' }, { index: 1, title: 'Meditations on the concept of pizza' }]
+      found = csv.select { |l| l[4].casecmp(handle).zero? }
+                .sort_by! { |obj| obj[3] }
+                .map
+                .with_index { |obj, i| { index: i, ordered_field_name.to_sym => obj[2] } }
+      return found unless found.empty?
+    end
     ordered_solr_metadata(solr_doc, solr_field, ordered_field_name)
   end
 
