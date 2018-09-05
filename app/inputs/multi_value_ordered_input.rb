@@ -60,23 +60,23 @@ class MultiValueOrderedInput < MultiValueInput
     end
 
     if value.is_a?(NestedOrderedCreator)
-      item_options = build_item_options(value, index, :creator)
+      item_options = build_item_options(value, index, :creator, '')
       input_field = @builder.text_field(:creator, item_options)
     elsif value.is_a?(NestedOrderedTitle)
-      item_options = build_item_options(value, index, :title)
+      item_options = build_item_options(value, index, :title, '')
       input_field = @builder.text_field(:title, item_options)
     elsif value.is_a?(NestedOrderedAbstract)
-      item_options = build_item_options(value, index, :abstract)
+      item_options = build_item_options(value, index, :abstract, '')
       input_field = @builder.text_area(:abstract, item_options)
     elsif value.is_a?(NestedOrderedContributor)
-      item_options = build_item_options(value, index, :contributor)
+      item_options = build_item_options(value, index, :contributor, '')
       input_field = @builder.text_field(:contributor, item_options)
     elsif value.is_a?(NestedOrderedAdditionalInformation)
       item_options = build_item_options(value, index, :additional_information)
       input_field = @builder.text_area(:additional_information, item_options)
     elsif value.is_a?(NestedRelatedItems)
-      item_options = build_item_options(value, index, :label)
-      url_options = build_item_options(value, index, :related_url)
+      item_options = build_item_options(value, index, :label, 'Label')
+      url_options = build_item_options(value, index, :related_url, 'URI')
       input_field = @builder.text_field(:label, item_options)
       input_field_2 = @builder.text_field(:related_url, url_options)
     end
@@ -142,12 +142,12 @@ class MultiValueOrderedInput < MultiValueInput
     options
   end
 
-  def build_item_options(value, index, method)
+  def build_item_options(value, index, method, placeholder)
     creator_value = value.send(method).first
     options = build_field_options(creator_value, index)
     options[:name] = nested_field_name(method.to_s, index)
     options[:id] = nested_field_id(method.to_s, index)
-    options[:placeholder] = 'Label'
+    options[:placeholder] = placeholder
     options
   end
 
