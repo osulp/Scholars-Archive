@@ -12,6 +12,14 @@ module ScholarsArchive
         ordered_creators.present? ? ordered_creators : super
       end
 
+      def abstract
+        ordered_abstracts.present? ? ordered_abstracts : super
+      end
+
+      def contributor
+        ordered_contributors.present? ? ordered_contributors : super
+      end
+
       # Returns an array of only titles given an array of values that also
       # include indexes in the form [[title, index], ...].
       #
@@ -27,6 +35,14 @@ module ScholarsArchive
         sort_creators_by_index.map{ |creators| creators.first }
       end
 
+      def ordered_abstracts
+        sort_abstracts_by_index.map{ |abstracts| abstracts.first }
+      end
+
+      def ordered_contributors
+        sort_contributors_by_index.map{ |contributors| contributors.first }
+      end
+
       # Returns a sorted array (by index value) of nested titles given an array with two
       # values per element in the form [[title, index],...].
       #
@@ -40,6 +56,14 @@ module ScholarsArchive
 
       def sort_creators_by_index
         validate_creators.sort_by{ |creators| creators.second }
+      end
+
+      def sort_abstracts_by_index
+        validate_abstracts.sort_by{ |abstracts| abstracts.second }
+      end
+
+      def sort_contributors_by_index
+        validate_contributors.sort_by{ |contributors| contributors.second }
       end
 
       # Returns an array of items in the form [[title, index], ...] given an
@@ -59,6 +83,18 @@ module ScholarsArchive
       def validate_creators
         nested_ordered_creator.select { |i| i.creator.present? && i.index.present? }
           .map{|i| (i.instance_of? NestedOrderedCreator) ? [i.creator.first, i.index.first] : [i] }
+          .select(&:present?)
+      end
+
+      def validate_abstracts
+        nested_ordered_abstract.select { |i| i.abstract.present? && i.index.present? }
+          .map{|i| (i.instance_of? NestedOrderedAbstract) ? [i.abstract.first, i.index.first] : [i] }
+          .select(&:present?)
+      end
+
+      def validate_contributors
+        nested_ordered_contributor.select { |i| i.contributor.present? && i.index.present? }
+          .map{|i| (i.instance_of? NestedOrderedContributor) ? [i.contributor.first, i.index.first] : [i] }
           .select(&:present?)
       end
     end
