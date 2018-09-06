@@ -33,7 +33,7 @@ function reindexNestedOrderedField(mutationsList) {
                      '.nested-ordered-abstract .index', 
                      '.nested-ordered-contributor .index', 
                      '.nested-ordered-additional-information .index', 
-                     '.nested-ordered-related-item .index']
+                     '.nested-ordered-related-items .index']
 
   for (element in nested_fields) {
     selectors = $(nested_fields[element]);

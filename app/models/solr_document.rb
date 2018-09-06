@@ -95,6 +95,10 @@ class SolrDocument
      nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)]
   end
 
+  def abstract
+     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)]
+  end
+
   def nested_ordered_abstract_label
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
   end

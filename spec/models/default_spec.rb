@@ -460,6 +460,179 @@ RSpec.describe Default do
     expect(g.nested_ordered_title.map{|x| x.title.first}).to contain_exactly("Title1","Title2")
   end
 
+  describe "#nested_ordered_contributor_attributes" do
+    let(:attributes) do
+      [{
+        :index => "0",
+        :contributor => "ContributorA"
+      }]
+    end
+
+    it "should be able to delete items" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_contributor_attributes = attributes
+      g.nested_ordered_contributor_attributes = [
+        {
+          :id => g.nested_ordered_contributor.first.id,
+          :_destroy => true
+        },
+        {
+          :index => "1",
+          :contributor => "ContributorB"
+        }
+      ]
+      expect(g.nested_ordered_contributor.length).to eq 1
+      expect(g.nested_ordered_contributor.first.contributor).to eq ["ContributorB"]
+    end
+    it "should not persist items when all are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_contributor_attributes = [
+        {
+          :index => "",
+          :contributor => ""
+        },
+        {
+          :index => "",
+          :contributor => ""
+        }
+      ]
+      expect(g.nested_ordered_contributor.length).to eq 0
+    end
+    it "should not persist items when either one of the attributes are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_contributor_attributes = [
+        {
+          :index => "",
+          :contributor => "ContributorA"
+        },
+        {
+          :index => "1",
+          :contributor => ""
+        }
+      ]
+      expect(g.nested_ordered_contributor.length).to eq 0
+    end
+    it "should work on already persisted items" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_contributor_attributes = attributes
+      expect(g.nested_ordered_contributor.first.contributor).to eq ["ContributorA"]
+    end
+    it "should be able to edit" do
+      g = described_class.new()
+      g.nested_ordered_contributor_attributes = attributes
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      expect(g.nested_ordered_contributor.length).to eq 1
+      expect(g.nested_ordered_contributor.first.contributor).to eq ["ContributorA"]
+
+      g.nested_ordered_contributor.first.contributor = ["ContributorB"]
+      g.nested_ordered_contributor.first.persist!
+      expect(g.nested_ordered_contributor.length).to eq 1
+      expect(g.nested_ordered_contributor.first.contributor).to eq ["ContributorB"]
+    end
+    it "should not create blank ones" do
+      g = described_class.new(keyword: ['test'])
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_contributor_attributes = [
+        {
+          :index => "",
+          :contributor => "",
+        }
+      ]
+      expect(g.nested_ordered_contributor.length).to eq 0
+    end
+  end
+
+  describe "#nested_ordered_abstract_attributes" do
+    let(:attributes) do
+      [{
+        :index => "0",
+        :abstract => "AbstractA"
+      }]
+    end
+
+    it "should be able to delete items" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_abstract_attributes = attributes
+      g.nested_ordered_abstract_attributes = [
+        {
+          :id => g.nested_ordered_abstract.first.id,
+          :_destroy => true
+        },
+        {
+          :index => "1",
+          :abstract => "AbstractB"
+        }
+      ]
+      expect(g.nested_ordered_abstract.length).to eq 1
+      expect(g.nested_ordered_abstract.first.abstract).to eq ["AbstractB"]
+    end
+    it "should not persist items when all are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_abstract_attributes = [
+        {
+          :index => "",
+          :abstract => ""
+        },
+        {
+          :index => "",
+          :abstract => ""
+        }
+      ]
+      expect(g.nested_ordered_abstract.length).to eq 0
+    end
+    it "should not persist items when either one of the attributes are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_abstract_attributes = [
+        {
+          :index => "",
+          :abstract => "AbstractA"
+        },
+        {
+          :index => "1",
+          :abstract => ""
+        }
+      ]
+      expect(g.nested_ordered_abstract.length).to eq 0
+    end
+    it "should work on already persisted items" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_abstract_attributes = attributes
+      expect(g.nested_ordered_abstract.first.abstract).to eq ["AbstractA"]
+    end
+    it "should be able to edit" do
+      g = described_class.new()
+      g.nested_ordered_abstract_attributes = attributes
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      expect(g.nested_ordered_abstract.length).to eq 1
+      expect(g.nested_ordered_abstract.first.abstract).to eq ["AbstractA"]
+
+      g.nested_ordered_abstract.first.abstract = ["AbstractB"]
+      g.nested_ordered_abstract.first.persist!
+      expect(g.nested_ordered_abstract.length).to eq 1
+      expect(g.nested_ordered_abstract.first.abstract).to eq ["AbstractB"]
+    end
+    it "should not create blank ones" do
+      g = described_class.new(keyword: ['test'])
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_abstract_attributes = [
+        {
+          :index => "",
+          :abstract => "",
+        }
+      ]
+      expect(g.nested_ordered_abstract.length).to eq 0
+    end
+  end
+
+
   describe "#attributes=" do
     it "accepts nested attributes" do
       g = described_class.new(keyword: ['test'])
