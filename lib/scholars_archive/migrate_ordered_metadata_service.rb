@@ -26,6 +26,9 @@ module ScholarsArchive
         work.nested_ordered_creator_attributes = creators(handle, doc)
         work.nested_ordered_title_attributes = titles(handle, doc)
         work.nested_related_items_attributes = related_items(doc)
+        work.nested_contributor_attributes = contributors(doc)
+        work.nested_description_attributes = descriptions(doc)
+        work.nested_abstract_attributes = abstracts(doc)
         work.save
         log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Work successfully migrated")
       end
@@ -58,6 +61,18 @@ module ScholarsArchive
       found.map.with_index { |obj, i| { index: i, label: obj.split('$').first, uri: obj.split('$').last } }
     end
 
+    def contributors(solr_doc)
+      ordered_solr_metadata(solr_doc, 'contributor_tesim')
+    end
+
+    def abstracts(solr_doc)
+      ordered_solr_metadata(solr_doc, 'abstract_tesim')
+    end
+
+    def descriptions(solr_doc)
+      ordered_solr_metadata(solr_doc, 'description_tesim')
+    end
+
     def fedora_work(id)
       work = ActiveFedora::Base.find(id)
     end
@@ -78,6 +93,11 @@ module ScholarsArchive
         !solr_doc['nested_ordered_creator_tesim'].empty? &&
         solr_doc['nested_ordered_title_tesim'].present? &&
         !solr_doc['nested_ordered_title_tesim'].empty?
+    end
+
+    def ordered_solr_metadata(solr_doc, solr_field)
+      found = solr_doc[solr_field] || []
+      found.map.with_index { |obj, i| { index: i, label: obj } }
     end
 
     def ordered_metadata(csv, handle, solr_doc, solr_field, ordered_field_name)
