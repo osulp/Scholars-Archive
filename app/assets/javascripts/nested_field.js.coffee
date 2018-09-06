@@ -127,7 +127,7 @@
                      '.nested-ordered-title', 
                      '.nested-ordered-abstract', 
                      '.nested-ordered-contributor', 
-                     '.nested-ordered-description', 
+                     '.nested-ordered-additional-information', 
                      '.nested-ordered-related-items']
 
     for field in nested_fields
@@ -136,7 +136,7 @@
           resetNestedFieldItems(field, true, 'input:text')
         else if field == '.nested-ordered-abstract'
           resetNestedFieldItems(field, false, 'textarea')
-        else if field == '.nested-ordered-description'
+        else if field == '.nested-ordered-additional-information'
           resetNestedFieldItems(field, false, 'textarea')
         else
           resetNestedFieldItems(field, false, 'input:text')

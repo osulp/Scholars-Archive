@@ -32,8 +32,8 @@ function reindexNestedOrderedField(mutationsList) {
                      '.nested-ordered-title .index', 
                      '.nested-ordered-abstract .index', 
                      '.nested-ordered-contributor .index', 
-                     '.nested-ordered-description .index', 
-                     '.nested-ordered-related-item .indexs']
+                     '.nested-ordered-additional-information .index', 
+                     '.nested-ordered-related-item .index']
 
   for (element in nested_fields) {
     selectors = $(nested_fields[element]);
@@ -49,7 +49,7 @@ Blacklight.onLoad(function () {
                      '.nested-ordered-title', 
                      '.nested-ordered-abstract', 
                      '.nested-ordered-contributor', 
-                     '.nested-ordered-description', 
+                     '.nested-ordered-additional-information', 
                      '.nested-ordered-related-items']
 
   for (element in nested_fields) {

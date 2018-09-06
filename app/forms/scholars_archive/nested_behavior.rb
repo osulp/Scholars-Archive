@@ -8,7 +8,7 @@ module ScholarsArchive
       delegate :nested_related_items_attributes=, :to => :model
       delegate :nested_ordered_creator_attributes=, :to => :model
       delegate :nested_ordered_contributor_attributes=, :to => :model
-      delegate :nested_ordered_description_attributes=, :to => :model
+      delegate :nested_ordered_additional_information_attributes=, :to => :model
       delegate :nested_ordered_abstract_attributes=, :to => :model
       delegate :nested_ordered_title_attributes=, :to => :model
 
@@ -20,7 +20,7 @@ module ScholarsArchive
         model.nested_ordered_title.build
         model.nested_ordered_abstract.build
         model.nested_ordered_contributor.build
-        model.nested_ordered_description.build
+        model.nested_ordered_additional_information.build
         super
       end
 

@@ -95,10 +95,6 @@ class SolrDocument
      nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)]
   end
 
-  def description
-    nested_ordered_description_label.present? ? nested_ordered_description_label : self[Solrizer.solr_name('description', :stored_searchable)] || []
-  end
-
   def nested_ordered_abstract_label
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
   end
@@ -107,24 +103,8 @@ class SolrDocument
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)])
   end
 
-  def nested_ordered_description_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_description_label', :symbol)])
-  end
-
-  def description
-    nested_ordered_description_label.present? ? nested_ordered_description_label : self[Solrizer.solr_name('description', :stored_searchable)] || []
-  end
-
-  def nested_ordered_abstract_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
-  end
-
-  def nested_ordered_contributor_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)])
-  end
-
-  def nested_ordered_description_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_description_label', :symbol)])
+  def nested_ordered_additional_information_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_additional_information_label', :symbol)])
   end
 
   def system_created
@@ -134,7 +114,6 @@ class SolrDocument
   solrized_methods %w[
     abstract
     academic_affiliation
-    additional_information
     alt_title
     bibliographic_citation
     conference_location

@@ -27,7 +27,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :additional_information, predicate: ::RDF::Vocab::DC.description do |index|
+      property :nested_ordered_additional_information, predicate: ::RDF::Vocab::DC.description, :class_name => NestedOrderedAdditionalInformation do |index|
         index.as :stored_searchable
       end
 
@@ -123,10 +123,6 @@ module ScholarsArchive
 
       # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
       attr_accessor :degree_name_other
-
-      property :nested_ordered_description, predicate: ::RDF::Vocab::DC11.description, class_name: NestedOrderedDescription do |index|
-        index.as :stored_searchable
-      end
 
       property :description, predicate: ::RDF::Vocab::DC11.description do |index|
         index.as :stored_searchable
@@ -294,7 +290,7 @@ module ScholarsArchive
       accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
       accepts_nested_attributes_for :nested_ordered_abstract, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:abstract].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
       accepts_nested_attributes_for :nested_ordered_contributor, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:contributor].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
-      accepts_nested_attributes_for :nested_ordered_description, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:description].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_additional_information, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:additional_information].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end

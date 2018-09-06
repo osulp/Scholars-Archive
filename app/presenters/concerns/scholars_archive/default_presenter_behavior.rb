@@ -4,7 +4,6 @@ module ScholarsArchive
     included do
       delegate :abstract,
                :academic_affiliation_label,
-               :additional_information,
                :alt_title,
                :based_near_linked,
                :bibliographic_citation,
@@ -48,8 +47,8 @@ module ScholarsArchive
                :nested_ordered_abstract_label,
                :nested_ordered_contributor,
                :nested_ordered_contributor_label,
-               :nested_ordered_description,
-               :nested_ordered_description_label,
+               :nested_ordered_additional_information,
+               :nested_ordered_additional_information_label,
                :nested_related_items,
                :nested_related_items_label,
                :other_affiliation_label,

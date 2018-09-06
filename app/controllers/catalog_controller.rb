@@ -167,7 +167,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name("nested_geo_label", :stored_searchable), label: "Geographic Coordinates"
     config.add_show_field solr_name("nested_related_items_label", :stored_searchable), label: "Related Items"
     config.add_show_field solr_name("nested_ordered_creator_label", :stored_searchable), label: "Creator"
-    config.add_show_field solr_name("nested_ordered_description_label", :stored_searchable), label: "Description"
+    config.add_show_field solr_name("nested_ordered_additional_information_label", :stored_searchable), label: "Additional Information"
     config.add_show_field solr_name("nested_ordered_contributor_label", :stored_searchable), label: "Contributor"
     config.add_show_field solr_name("nested_ordered_abstract_label", :stored_searchable), label: "Abstract"
     config.add_show_field solr_name("rights", :stored_searchable), label: "Rights"
@@ -196,7 +196,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(" ")
       title_name = solr_name("title", :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_title_label_tesim nested_ordered_description_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
+        qf: "#{all_names} contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_title_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
         pf: title_name.to_s
       }
     end
@@ -247,8 +247,8 @@ class CatalogController < ApplicationController
           pf: solr_name
       }
     end
-    config.add_search_field('nested_ordered_description_label') do |field|
-      solr_name = solr_name("nested_ordered_description_label", :stored_searchable)
+    config.add_search_field('nested_ordered_additional_information_label') do |field|
+      solr_name = solr_name("nested_ordered_additional_information_label", :stored_searchable)
       field.label = "Description"
       field.solr_local_parameters = {
           qf: solr_name,

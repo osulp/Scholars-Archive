@@ -57,7 +57,7 @@
 <%= presenter.attribute_to_html(:file_extent, label: t('simple_form.labels.defaults.file_extent')) %>
 <%= presenter.attribute_to_html(:digitization_spec, label: t('simple_form.labels.defaults.digitization_spec')) %>
 <%= presenter.attribute_to_html(:replaces, render_as: :external_link) %>
-<%= presenter.attribute_to_html(:additional_information, label: t('simple_form.labels.defaults.additional_information')) %>
+<%= presenter.attribute_to_html(:nested_ordered_additional_information_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_additional_information_label', itemprop_option: 'additional_information', label: "Additional Information") %>
 <%= presenter.attribute_to_html(:based_near_linked, render_as: :search_and_external_link, label: "Location", search_field: 'based_near_label') %>
 <%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
 <%= presenter.attribute_to_html(:embargo_reason) %>

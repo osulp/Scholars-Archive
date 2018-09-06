@@ -25,7 +25,7 @@ module ScholarsArchive
           ordered_title_labels = nested_ordered_title.map{|i| (i.instance_of? NestedOrderedTitle) ? "#{i.title.first}$#{i.index.first}" : i }.select(&:present?)
           ordered_abstract_labels = nested_ordered_abstract.map{|i| (i.instance_of? NestedOrderedAbstract) ? "#{i.abstract.first}$#{i.index.first}" : i }.select(&:present?)
           ordered_contributor_labels = nested_ordered_contributor.map{|i| (i.instance_of? NestedOrderedContributor) ? "#{i.contributor.first}$#{i.index.first}" : i }.select(&:present?)
-          ordered_description_labels = nested_ordered_description.map{|i| (i.instance_of? NestedOrderedDescription) ? "#{i.description.first}$#{i.index.first}" : i }.select(&:present?)
+          ordered_additional_information_labels = nested_ordered_additional_information.map{|i| (i.instance_of? NestedOrderedAdditionalInformation) ? "#{i.additional_information.first}$#{i.index.first}" : i }.select(&:present?)
 
           labels = [{label: "nested_geo_label", data: labels }, 
             {label: "nested_related_items_label", data: related_items_labels}, 
@@ -33,7 +33,7 @@ module ScholarsArchive
             {label: "nested_ordered_title_label", data: ordered_title_labels},
             {label: "nested_ordered_abstract_label", data: ordered_abstract_labels},
             {label: "nested_ordered_contributor_label", data: ordered_contributor_labels},
-            {label: "nested_ordered_description_label", data: ordered_description_labels}
+            {label: "nested_ordered_additional_information_label", data: ordered_additional_information_labels}
             ]
 
           labels.each do |label_set|  
