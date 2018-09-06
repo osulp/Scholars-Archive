@@ -9,6 +9,8 @@ module ScholarsArchive
     def initialize(args)
       @creator_csv = CSV.read(args[:creator_csv_path])
       @title_csv = CSV.read(args[:title_csv_path])
+      @contributor_csv = CSV.read(args[:contributor_csv_path])
+      @abstract_csv = CSV.read(args[:abstract_csv_path])
       @logger = Logger.new(File.join(Rails.root, 'log', 'ordered-metadata-migration.log'))
     end
 
@@ -26,9 +28,9 @@ module ScholarsArchive
         work.nested_ordered_creator_attributes = creators(handle, doc)
         work.nested_ordered_title_attributes = titles(handle, doc)
         work.nested_related_items_attributes = related_items(doc)
-        work.nested_contributor_attributes = contributors(doc)
-        work.nested_description_attributes = descriptions(doc)
-        work.nested_abstract_attributes = abstracts(doc)
+        work.nested_contributor_attributes = contributors(handle, doc)
+        work.nested_additional_information_attributes = additional_informations(doc)
+        work.nested_abstract_attributes = abstracts(handle, doc)
         work.save
         log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Work successfully migrated")
       end
@@ -61,16 +63,16 @@ module ScholarsArchive
       found.map.with_index { |obj, i| { index: i, label: obj.split('$').first, uri: obj.split('$').last } }
     end
 
-    def contributors(solr_doc)
-      ordered_solr_metadata(solr_doc, 'contributor_tesim')
+    def contributors(handle, solr_doc)
+      ordered_metadata(@contributor_csv, handle, solr_doc, 'contributor_tesim', 'contributor')
     end
 
-    def abstracts(solr_doc)
-      ordered_solr_metadata(solr_doc, 'abstract_tesim')
+    def abstracts(handle, solr_doc)
+      ordered_metadata(@abstract_csv, handle, solr_doc, 'abstract_tesim', 'abstract')
     end
 
-    def descriptions(solr_doc)
-      ordered_solr_metadata(solr_doc, 'description_tesim')
+    def additional_informations(solr_doc)
+      ordered_solr_metadata(solr_doc, 'additional_information_tesim')
     end
 
     def fedora_work(id)
