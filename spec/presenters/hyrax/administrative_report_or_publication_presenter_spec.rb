@@ -53,7 +53,6 @@ RSpec.describe AdministrativeReportOrPublicationPresenter do
   it { is_expected.to delegate_method(:tableofcontents).to(:solr_document) }
   it { is_expected.to delegate_method(:bibliographic_citation).to(:solr_document) }
   it { is_expected.to delegate_method(:peerreviewed_label).to(:solr_document) }
-  it { is_expected.to delegate_method(:additional_information).to(:solr_document) }
   it { is_expected.to delegate_method(:digitization_spec).to(:solr_document) }
   it { is_expected.to delegate_method(:file_extent).to(:solr_document) }
   it { is_expected.to delegate_method(:file_format).to(:solr_document) }

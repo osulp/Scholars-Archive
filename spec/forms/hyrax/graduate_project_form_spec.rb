@@ -25,7 +25,7 @@ RSpec.describe Hyrax::GraduateProjectForm do
   end
 
   it "has the proper secondary terms" do
-    expect(new_form.secondary_terms).to include *[:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :additional_information, :isbn, :issn]
+    expect(new_form.secondary_terms).to include *[:nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :file_format, :file_extent, :digitization_spec, :replaces, :nested_ordered_additional_information, :isbn, :issn]
   end
 
   it "responds to date_terms" do
