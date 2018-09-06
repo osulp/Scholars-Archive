@@ -20,6 +20,10 @@ module ScholarsArchive
         ordered_contributors.present? ? ordered_contributors : super
       end
 
+      def additional_information
+        ordered_info.present? ? ordered_info : super
+      end
+
       # Returns an array of only titles given an array of values that also
       # include indexes in the form [[title, index], ...].
       #
@@ -43,6 +47,10 @@ module ScholarsArchive
         sort_contributors_by_index.map{ |contributors| contributors.first }
       end
 
+      def ordered_info
+        sort_info_by_index.map{ |info| info.first }
+      end
+
       # Returns a sorted array (by index value) of nested titles given an array with two
       # values per element in the form [[title, index],...].
       #
@@ -64,6 +72,10 @@ module ScholarsArchive
 
       def sort_contributors_by_index
         validate_contributors.sort_by{ |contributors| contributors.second }
+      end
+
+      def sort_info_by_index
+        validate_info.sort_by{ |info| info.second }
       end
 
       # Returns an array of items in the form [[title, index], ...] given an
@@ -95,6 +107,12 @@ module ScholarsArchive
       def validate_contributors
         nested_ordered_contributor.select { |i| i.contributor.present? && i.index.present? }
           .map{|i| (i.instance_of? NestedOrderedContributor) ? [i.contributor.first, i.index.first] : [i] }
+          .select(&:present?)
+      end
+
+      def validate_info
+        nested_ordered_additional_information.select { |i| i.additional_information.present? && i.index.present? }
+          .map{|i| (i.instance_of? NestedOrderedAdditionalInformation) ? [i.additional_information.first, i.index.first] : [i] }
           .select(&:present?)
       end
     end
