@@ -88,7 +88,27 @@ class SolrDocument
   end
 
   def title
-    self[Solrizer.solr_name('title', :stored_searchable)] || nested_ordered_title_label || []
+     nested_ordered_title_label.present? ? nested_ordered_title_label : self[Solrizer.solr_name('title', :stored_searchable)]
+  end
+
+  def creator
+     nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)]
+  end
+
+  def description
+    nested_ordered_description_label.present? ? nested_ordered_description_label : self[Solrizer.solr_name('description', :stored_searchable)] || []
+  end
+
+  def nested_ordered_abstract_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
+  end
+
+  def nested_ordered_contributor_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)])
+  end
+
+  def nested_ordered_description_label
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_description_label', :symbol)])
   end
 
   def description
