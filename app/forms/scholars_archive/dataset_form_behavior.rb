@@ -17,8 +17,8 @@ module ScholarsArchive
       self.required_fields -= [:keyword, :creator, :title]
 
       def primary_terms
-        t = [:nested_ordered_title, :alt_title, :nested_ordered_creator, :academic_affiliation, :other_affiliation, :nested_ordered_contributor, :nested_ordered_abstract, :license, :resource_type, :doi, :dates_section, :bibliographic_citation, :in_series, :subject, :rights_statement, :nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :digitization_spec, :replaces, :additional_information] | super
-        t << [:nested_ordered_additional_information] if current_ability.current_user.admin?
+        t = [:nested_ordered_title, :alt_title, :nested_ordered_creator, :academic_affiliation, :other_affiliation, :nested_ordered_contributor, :nested_ordered_abstract, :license, :resource_type, :doi, :dates_section, :bibliographic_citation, :in_series, :subject, :rights_statement, :nested_related_items, :hydrologic_unit_code, :geo_section, :funding_statement, :publisher, :peerreviewed, :language, :digitization_spec, :replaces, :nested_ordered_additional_information] | super
+        t << [:description] if current_ability.current_user.admin?
         t.flatten
       end
 
