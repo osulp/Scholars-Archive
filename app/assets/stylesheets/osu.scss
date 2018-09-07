@@ -446,7 +446,7 @@ ol.dd-list.dd-dragel {
       position: inherit;
     }
 
-    input {
+    input textarea{
       font-size: initial;
       padding-left: 5px;
     }
@@ -459,6 +459,12 @@ ol.dd-list.dd-dragel {
       margin-left: 2px;
     }
   }
+
+  .text-area-nested-field {
+    button.down-arrow {
+      float: right;
+    }
+  }
   .multi-input-nested-item {
     button.down-arrow {
       float: right;
@@ -467,6 +473,11 @@ ol.dd-list.dd-dragel {
 }
 .dd-dragel {
   .multi-input-nested-item {
+    button.down-arrow {
+      float: right;
+    }
+  }
+  .text-area-nested-field{
     button.down-arrow {
       float: right;
     }
