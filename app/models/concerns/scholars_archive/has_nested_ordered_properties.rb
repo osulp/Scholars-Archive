@@ -99,9 +99,10 @@ module ScholarsArchive
       end
 
       def validate_abstracts
-        nested_ordered_abstract.select { |i| i.abstract.present? && i.index.present? }
-          .map{|i| (i.instance_of? NestedOrderedAbstract) ? [i.abstract.first, i.index.first] : [i] }
-          .select(&:present?)
+        nested_ordered_abstract.select do |i|
+          i.present? if i.is_a? String 
+          i.abstract.present? && i.index.present? if i.respond_to?(:abstract)
+        end.map{|i| (i.instance_of? NestedOrderedAbstract) ? [i.abstract.first, i.index.first] : [i] }.select(&:present?)
       end
 
       def validate_contributors
