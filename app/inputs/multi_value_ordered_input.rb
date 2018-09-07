@@ -59,6 +59,31 @@ class MultiValueOrderedInput < MultiValueInput
       index = value.object_id
     end
 
+    if value.is_a?(NestedOrderedCreator)
+      item_options = build_item_options(value, index, :creator)
+      input_field = @builder.text_field(:creator, item_options)
+    elsif value.is_a?(NestedOrderedTitle)
+      item_options = build_item_options(value, index, :title)
+      input_field = @builder.text_field(:title, item_options)
+    elsif value.is_a?(NestedOrderedAbstract)
+      item_options = build_item_options(value, index, :abstract)
+      input_field = @builder.text_area(:abstract, item_options)
+    elsif value.is_a?(NestedOrderedContributor)
+      item_options = build_item_options(value, index, :contributor)
+      input_field = @builder.text_field(:contributor, item_options)
+    elsif value.is_a?(NestedOrderedAdditionalInformation)
+      item_options = build_item_options(value, index, :additional_information)
+      input_field = @builder.text_area(:additional_information, item_options)
+    elsif value.is_a?(NestedRelatedItems)
+      item_options = build_item_options(value, index, :label)
+      url_options = build_item_options(value, index, :related_url)
+      input_field = @builder.text_field(:label, item_options)
+      input_field_2 = @builder.text_field(:related_url, url_options)
+    end
+
+    index_options = build_index_options(value, index)
+    input_index = @builder.text_field(:index, index_options)
+
     unless value.new_record?
       id_options = build_id_options(value.id, index)
       input_id = @builder.text_field(:id, id_options)
@@ -69,7 +94,7 @@ class MultiValueOrderedInput < MultiValueInput
       destroy_input = @builder.text_field(:_destroy, destroy_options)
     end
 
-    nested_item = build_nested_item(value, index)
+    nested_item = "#{input_field}#{input_field_2}#{input_index}"
 
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end
@@ -117,39 +142,12 @@ class MultiValueOrderedInput < MultiValueInput
     options
   end
 
-  def build_creator_options(value, index)
-    creator_value = value.creator.first
+  def build_item_options(value, index, method)
+    creator_value = value.send(method).first
     options = build_field_options(creator_value, index)
-    options[:name] = nested_field_name(:creator.to_s, index)
-    options[:id] = nested_field_id(:creator.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_title_options(value, index)
-    title_value = value.title.first
-    options = build_field_options(title_value, index)
-    options[:name] = nested_field_name(:title.to_s, index)
-    options[:id] = nested_field_id(:title.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_related_items_label_options(value, index)
-    label_value = value.label.first
-    options = build_field_options(label_value, index)
-    options[:name] = nested_field_name(:label.to_s, index)
-    options[:id] = nested_field_id(:label.to_s, index)
-    options[:placeholder] = 'Label'
-    options
-  end
-
-  def build_related_items_url_options(value, index)
-    related_url_value = value.related_url.first
-    options = build_field_options(related_url_value, index)
-    options[:name] = nested_field_name(:related_url.to_s, index)
-    options[:id] = nested_field_id(:related_url.to_s, index)
-    options[:placeholder] = 'URL'
+    options[:name] = nested_field_name(method.to_s, index)
+    options[:id] = nested_field_id(method.to_s, index)
+    options[:placeholder] = method.to_s.titleize if prop_with_labels.include?(method)
     options
   end
 
@@ -162,6 +160,10 @@ class MultiValueOrderedInput < MultiValueInput
     options[:placeholder] = 'Index'
     options[:type] = ['hidden']
     options
+  end
+
+  def prop_with_labels
+    [:label, :related_url]
   end
 
   def nested_field_name(property, index)

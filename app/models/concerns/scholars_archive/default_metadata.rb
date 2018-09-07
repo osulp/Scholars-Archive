@@ -15,6 +15,10 @@ module ScholarsArchive
       # Provide each model a hook to set property defaults
       after_initialize :set_defaults, unless: :persisted?
 
+      property :nested_ordered_abstract, predicate: ::RDF::Vocab::DC.abstract, :class_name => NestedOrderedAbstract do |index|
+        index.as :stored_searchable
+      end
+
       property :abstract, predicate: ::RDF::Vocab::DC.abstract do |index|
         index.as :stored_searchable
       end
@@ -23,7 +27,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :additional_information, predicate: ::RDF::Vocab::DC.description do |index|
+      property :nested_ordered_additional_information, predicate: ::RDF::Vocab::DC.description, :class_name => NestedOrderedAdditionalInformation do |index|
         index.as :stored_searchable
       end
 
@@ -50,6 +54,10 @@ module ScholarsArchive
       # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
       property :conference_section, predicate: ::RDF::URI.new("https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track"), multiple: false do |index|
         index.as :stored_searchable, :facetable
+      end
+
+      property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor, :class_name => NestedOrderedContributor do |index|
+        index.as :stored_searchable
       end
 
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|
@@ -278,8 +286,11 @@ module ScholarsArchive
       accepts_nested_attributes_for :nested_geo, :allow_destroy => true, :reject_if => :all_blank
       accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
       # reject if all attributes all blank OR if either index or creator is blank
-      accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
       accepts_nested_attributes_for :nested_ordered_title, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:title].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_abstract, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:abstract].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_contributor, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:contributor].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_additional_information, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:index].blank? || attributes[:additional_information].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
     end
   end
 end

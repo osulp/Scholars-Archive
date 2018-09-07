@@ -27,25 +27,34 @@ function swapDown(selector) {
 }
 
 function reindexNestedOrderedField(mutationsList) {
-  hidden_index_selectors = $(".nested-ordered-creator .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
-  hidden_index_selectors = $(".nested-ordered-title .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
 
-  hidden_index_selectors = $(".nested-ordered-related-items .index");
-  hidden_index_selectors.each(function (index) {
-    hidden_index_selectors[index].value = index;
-  });
+  nested_fields = ['.nested-ordered-creator .index', 
+                     '.nested-ordered-title .index', 
+                     '.nested-ordered-abstract .index', 
+                     '.nested-ordered-contributor .index', 
+                     '.nested-ordered-additional-information .index', 
+                     '.nested-ordered-related-items .index']
+
+  for (element in nested_fields) {
+    selectors = $(nested_fields[element]);
+    selectors.each(function (index) {
+      selectors[index].value = index;
+    });
+  }
 }
 
 Blacklight.onLoad(function () {
-  orderedDragAndDrop($('.nested-ordered-related-items'));
-  orderedDragAndDrop($('.nested-ordered-title'));
-  orderedDragAndDrop($('.nested-ordered-creator'));
+
+  nested_fields = ['.nested-ordered-creator', 
+                     '.nested-ordered-title', 
+                     '.nested-ordered-abstract', 
+                     '.nested-ordered-contributor', 
+                     '.nested-ordered-additional-information', 
+                     '.nested-ordered-related-items']
+
+  for (element in nested_fields) {
+    orderedDragAndDrop($(nested_fields[element]));
+  }
 
   var nodes = document.querySelectorAll('.dd-list');
   if (nodes !== null) {
