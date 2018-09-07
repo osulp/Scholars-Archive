@@ -20,13 +20,13 @@ es:
           date_collected: "Fecha Recogida"
           date_valid: "Fecha Válida"
   hyrax:
-    product_name:           "Hyrax"
-    product_twitter_handle: "@HydraSphere"
-    institution_name:       "institución"
-    institution_name_full:  "El nombre de la institución"
-    account_name:           "Mi identificador de cuenta institucional"
+    product_name:           "ScholarsArchive@OSU"
+    product_twitter_handle: ""
+    institution_name:       "Universidad Estatal de Oregón"
+    institution_name_full:  "Universidad Estatal de Oregón"
+    account_name:           "ONID Account ID"
     directory:
       suffix:               "@example.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; 2017 Proyecto Hydra</strong> bajo licencia de Apache, Version 2.0"
+      copyright_html: "<strong>Copyright &copy; 2018 Universidad Estatal de Oregón</strong> bajo licencia de Apache, Version 2.0"
       service_html: Un servicio de <a href="http://projecthydra.org/" class="navbar-link" target="_blank">Proyecto Hydra</a>.
