@@ -147,7 +147,7 @@ class MultiValueOrderedInput < MultiValueInput
     options = build_field_options(creator_value, index)
     options[:name] = nested_field_name(method.to_s, index)
     options[:id] = nested_field_id(method.to_s, index)
-    options[:placeholder] = 'Label'
+    options[:placeholder] = method.to_s.titleize if prop_with_labels.include?(method)
     options
   end
 
@@ -160,6 +160,10 @@ class MultiValueOrderedInput < MultiValueInput
     options[:placeholder] = 'Index'
     options[:type] = ['hidden']
     options
+  end
+
+  def prop_with_labels
+    [:label, :related_url]
   end
 
   def nested_field_name(property, index)
