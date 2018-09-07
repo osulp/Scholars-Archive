@@ -87,32 +87,31 @@ module ScholarsArchive
       # input: [#<NestedOrderedTitle: ...>, #<NestedOrderedTitle: ...>, ""]
       # output: [["Another Title", "1"], ["My Title", "0"]]
       def validate_titles
-        nested_ordered_title.select { |i| i.title.present? && i.index.present? }
+        nested_ordered_title.select { |i| (i.instance_of? NestedOrderedTitle) ? (i.title.present? && i.index.present?) : i.present? }
           .map{|i| (i.instance_of? NestedOrderedTitle) ? [i.title.first, i.index.first] : [i] }
           .select(&:present?)
       end
 
       def validate_creators
-        nested_ordered_creator.select { |i| i.creator.present? && i.index.present? }
+        nested_ordered_creator.select { |i| (i.instance_of? NestedOrderedCreator) ? (i.creator.present? && i.index.present?) : i.present? }
           .map{|i| (i.instance_of? NestedOrderedCreator) ? [i.creator.first, i.index.first] : [i] }
           .select(&:present?)
       end
 
       def validate_abstracts
-        nested_ordered_abstract.select do |i|
-          i.present? if i.is_a? String 
-          i.abstract.present? && i.index.present? if i.respond_to?(:abstract)
-        end.map{|i| (i.instance_of? NestedOrderedAbstract) ? [i.abstract.first, i.index.first] : [i] }.select(&:present?)
+        nested_ordered_abstract.select { |i| (i.instance_of? NestedOrderedAbstract) ? (i.abstract.present? && i.index.present?) : i.present?}
+          .map{|i| (i.instance_of? NestedOrderedAbstract) ? [i.abstract.first, i.index.first] : [i] }
+          .select(&:present?)
       end
 
       def validate_contributors
-        nested_ordered_contributor.select { |i| i.contributor.present? && i.index.present? }
+        nested_ordered_contributor.select { |i| (i.instance_of? NestedOrderedContributor) ? (i.contributor.present? && i.index.present?) : i.present? }
           .map{|i| (i.instance_of? NestedOrderedContributor) ? [i.contributor.first, i.index.first] : [i] }
           .select(&:present?)
       end
 
       def validate_info
-        nested_ordered_additional_information.select { |i| i.additional_information.present? && i.index.present? }
+        nested_ordered_additional_information.select { |i| (i.instance_of? NestedOrderedAdditionalInformation) ? (i.additional_information.present? && i.index.present?) : i.present? }
           .map{|i| (i.instance_of? NestedOrderedAdditionalInformation) ? [i.additional_information.first, i.index.first] : [i] }
           .select(&:present?)
       end
