@@ -406,7 +406,18 @@ li.attribute {
 
 ol.dd-list {
   .dd-item {
+    //display: table;
+  }
+}
+
+ol.dd-list.dd-dragel {
+  display: inherit;
+  .dd-item {
     display: table;
+  }
+  .dd3-handle.dd-handle {
+    display: table-cell;
+    position: inherit;
   }
 }
 
@@ -419,13 +430,12 @@ ol.dd-list {
     .dd-item {
       display: table;
     }
-    .dd3-handle {
+    .dd3-handle.dd-handle {
       display: table-cell;
       position: inherit;
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px;
     }
-
     .dd-handle.dd3-handle {
       max-width: 30px;
       padding: 0px;
