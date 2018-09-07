@@ -404,9 +404,9 @@ li.attribute {
   word-break: break-word;
 }
 
-ol.dd-list {
-  .dd-item {
-    //display: table;
+.field-wrapper {
+  textarea {
+    resize: vertical;
   }
 }
 
