@@ -463,6 +463,7 @@ ol.dd-list.dd-dragel {
   .text-area-dd-handle {
     height: 68px !important;
     position: absolute !important;
+    z-index: 1;
   }
 
   .text-area-nested-field {

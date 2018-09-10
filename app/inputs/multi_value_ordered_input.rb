@@ -54,7 +54,7 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def is_text_area?(value)
-    value.is_a?(NestedOrderedAbstract || NestedOrderedAdditionalInformation)
+    value.is_a?(NestedOrderedAbstract) || value.is_a?(NestedOrderedAdditionalInformation) 
   end
 
   def outer_wrapper
