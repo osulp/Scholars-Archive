@@ -5,19 +5,19 @@ module ScholarsArchive
     included do
 
       def title
-        nested_ordered_titles.present? ? ordered_titles : super
+        nested_ordered_title.present? ? ordered_titles : super
       end
 
       def creator
-        nested_ordered_creators.present? ? ordered_creators : super
+        nested_ordered_creator.present? ? ordered_creators : super
       end
 
       def abstract
-        nested_ordered_abstracts.present? ? ordered_abstracts : super
+        nested_ordered_abstract.present? ? ordered_abstracts : super
       end
 
       def contributor
-        nested_ordered_contributors.present? ? ordered_contributors : super
+        nested_ordered_contributor.present? ? ordered_contributors : super
       end
 
       def additional_information
