@@ -5,23 +5,23 @@ module ScholarsArchive
     included do
 
       def title
-        ordered_titles.present? ? ordered_titles : super
+        nested_ordered_title.present? ? ordered_titles : super
       end
 
       def creator
-        ordered_creators.present? ? ordered_creators : super
+        nested_ordered_creator.present? ? ordered_creators : super
       end
 
       def abstract
-        ordered_abstracts.present? ? ordered_abstracts : super
+        nested_ordered_abstract.present? ? ordered_abstracts : super
       end
 
       def contributor
-        ordered_contributors.present? ? ordered_contributors : super
+        nested_ordered_contributor.present? ? ordered_contributors : super
       end
 
       def additional_information
-        ordered_info.present? ? ordered_info : super
+        nested_ordered_additional_information.present? ? ordered_info : super
       end
 
       # Returns an array of only titles given an array of values that also
