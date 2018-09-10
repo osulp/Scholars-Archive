@@ -460,9 +460,35 @@ ol.dd-list.dd-dragel {
     }
   }
 
+  .text-area-dd-handle {
+    height: 68px !important;
+    position: absolute !important;
+  }
+
   .text-area-nested-field {
+    width: 78px !important;
+    height: 68px;
+    
     button.down-arrow {
       float: right;
+      top: 34px;
+      position: absolute;
+      width: 53%;
+      height: 34px;
+      margin-left: 33px !important;
+      margin-right: 2px;
+    }
+    button.up-arrow {
+      top: 0px;
+      position: absolute;
+      width: 53%;
+      height: 34px;
+      margin-right: 2px;
+      margin-left: 33px;
+    }
+    .glyphicon {
+      top: 10px;
+      right: 11px;
     }
   }
   .multi-input-nested-item {
@@ -471,6 +497,11 @@ ol.dd-list.dd-dragel {
     }
   }
 }
+
+textarea.nested-field {
+  min-height: 68px !important;
+}
+
 .dd-dragel {
   .multi-input-nested-item {
     button.down-arrow {

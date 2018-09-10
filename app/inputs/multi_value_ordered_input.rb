@@ -22,7 +22,7 @@ class MultiValueOrderedInput < MultiValueInput
   def inner_wrapper(value, index)
     "
       <li class='field-wrapper dd-item'>
-        <div class='dd-handle dd3-handle'></div>
+        <div class='dd-handle dd3-handle #{text_area_handle_class(value)}'></div>
         <div class='input-group-btn group-up-down-arrows #{multi_input_nested_item_class(value)} #{text_area_class(value)}'>
           <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
             <span class='glyphicon glyphicon-arrow-up ordered-up-arrow'></span>
@@ -43,6 +43,10 @@ class MultiValueOrderedInput < MultiValueInput
 
   def text_area_class(value)
     "#{'text-area-nested-field' if is_text_area?(value)}"
+  end
+
+  def text_area_handle_class(value)
+    "#{'text-area-dd-handle' if is_text_area?(value)}"
   end
 
   def has_multi_input_elements?(value)
