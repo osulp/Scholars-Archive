@@ -36,9 +36,9 @@ module ScholarsArchive
         work.nested_ordered_creator_attributes = creators unless creators.empty?
         work.nested_ordered_title_attributes = titles unless titles.empty?
         work.nested_related_items_attributes = related_items unless related_items.empty?
-        work.nested_contributor_attributes = contributors unless contributors.empty?
-        work.nested_additional_information_attributes = additional_informations unless additional_informations.empty?
-        work.nested_abstract_attributes = abstracts unless abstracts.empty?
+        work.nested_ordered_contributor_attributes = contributors unless contributors.empty?
+        work.nested_ordered_additional_information_attributes = additional_informations unless additional_informations.empty?
+        work.nested_ordered_abstract_attributes = abstracts unless abstracts.empty?
         work.save
         log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Work successfully migrated")
 
@@ -47,9 +47,9 @@ module ScholarsArchive
           child.nested_ordered_creator_attributes = creators unless creators.empty?
           child.nested_ordered_title_attributes = ordered_solr_metadata({ 'title_tesim' => child.title }, 'title_tesim', 'title')
           child.nested_related_items_attributes = related_items unless related_items.empty?
-          child.nested_contributor_attributes = contributors unless contributors.empty?
-          child.nested_additional_information_attributes = additional_informations unless additional_informations.empty?
-          child.nested_abstract_attributes = abstracts unless abstracts.empty?
+          child.nested_ordered_contributor_attributes = contributors unless contributors.empty?
+          child.nested_ordered_additional_information_attributes = additional_informations unless additional_informations.empty?
+          child.nested_ordered_abstract_attributes = abstracts unless abstracts.empty?
           child.save
           log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Work successfully migrated")
         end
