@@ -63,7 +63,7 @@ module ScholarsArchive
       false
     end
 
-    #private
+    # private
 
     def log(msg)
       @logger.debug(msg)
@@ -96,7 +96,7 @@ module ScholarsArchive
     end
 
     def fedora_work(id)
-      work = ActiveFedora::Base.find(id)
+      ActiveFedora::Base.find(id)
     end
 
     def solr_doc(handle, work)
@@ -130,7 +130,7 @@ module ScholarsArchive
       else
         combined = csv_metadata.concat(solr_metadata_not_in_csv(csv_metadata, solr_metadata))
       end
-      combined.map.with_index { |obj, i| { index: i, ordered_field_name.to_sym => obj }}
+      combined.map.with_index { |obj, i| { index: i, ordered_field_name.to_sym => obj } }
     end
 
     def ordered_csv_metadata(csv, handle)
