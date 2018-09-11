@@ -20,7 +20,7 @@ namespace :scholars_archive do
                          .sort
                          .uniq
 
-    file_name = "#{Date.today}-creator-migration.log"
+    file_name = "#{Date.today}-handles-ordered-metadata-migration.log"
     logger = Logger.new(File.join(Rails.root, 'log', file_name))
     logger.debug("Processing #{handles.count} handles")
 
@@ -43,6 +43,10 @@ namespace :scholars_archive do
       title_csv_path: ENV.fetch('TITLE_CSV_PATH', 'tmp/title_migration.csv'),
       contributor_csv_path: ENV.fetch('CONTRIBUTOR_CSV_PATH', 'tmp/contributor_migration.csv')
     )
+
+    file_name = "#{Date.today}-handles-ordered-metadata-migration.log"
+    logger = Logger.new(File.join(Rails.root, 'log', file_name))
+    logger.debug("Processing works without handles")
 
     query_string = '-replaces_ssim:* and depositor_ssim:* and workflow_state_name_ssim:*'
     doc = ActiveFedora::SolrService.query(query_string, df: 'id', fl: 'id', rows: 100_000)
