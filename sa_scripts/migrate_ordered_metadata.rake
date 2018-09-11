@@ -5,7 +5,7 @@ STDOUT.sync = true
 
 namespace :scholars_archive do
   desc 'Migrate metadata for ordered properties having CSVs supporting the order of metadata'
-  task migrate_ordered_metadata_with_csv: :environment do
+  task migrate_ordered_metadata_with_handles: :environment do
 
     creator_csv_path = ENV.fetch('CREATOR_CSV_PATH', 'tmp/creator_migration.csv')
 
