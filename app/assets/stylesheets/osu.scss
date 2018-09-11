@@ -504,14 +504,41 @@ textarea.nested-field {
 }
 
 .dd-dragel {
+  .text-area-dd-handle {
+    height: 68px !important;
+    position: absolute !important;
+    z-index: 1;
+  }
   .multi-input-nested-item {
+    
     button.down-arrow {
       float: right;
     }
   }
-  .text-area-nested-field{
+  .text-area-nested-field {
+    width: 78px !important;
+    height: 68px;
+    
     button.down-arrow {
       float: right;
+      top: 34px;
+      position: absolute;
+      width: 53%;
+      height: 34px;
+      margin-left: 33px !important;
+      margin-right: 2px;
     }
+    button.up-arrow {
+      top: 0px;
+      position: absolute;
+      width: 53%;
+      height: 34px;
+      margin-right: 2px;
+      margin-left: 33px;
+    }
+    // .glyphicon {
+    //   top: 10px;
+    //   right: 11px;
+    // }
   }
 }
