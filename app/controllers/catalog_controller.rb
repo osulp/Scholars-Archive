@@ -214,6 +214,7 @@ class CatalogController < ApplicationController
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       solr_name = solr_name("contributor", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -250,6 +251,14 @@ class CatalogController < ApplicationController
     config.add_search_field('nested_ordered_additional_information_label') do |field|
       solr_name = solr_name("nested_ordered_additional_information_label", :stored_searchable)
       field.label = "Description"
+      field.solr_local_parameters = {
+          qf: solr_name,
+          pf: solr_name
+      }
+    end
+    config.add_search_field('nested_ordered_title_label') do |field|
+      solr_name = solr_name("nested_ordered_title_label", :stored_searchable)
+      field.label = "Title"
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -300,6 +309,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('creator') do |field|
       solr_name = solr_name("creator", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -345,6 +355,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('title') do |field|
       solr_name = solr_name("title", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
@@ -354,6 +365,7 @@ class CatalogController < ApplicationController
     config.add_search_field('abstract') do |field|
       field.label = "Abstract or Summary"
       solr_name = solr_name("abstract", :stored_searchable)
+      field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
