@@ -21,7 +21,7 @@ terms:
   term: "Extension Service"
   active: true
 - id: "http://id.loc.gov/authorities/names/n80126175"
-  term: "Extension Service and Agricultural Experiment Station"
+  term: "Agricultural Experiment Station"
   active: true
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityFacultySenateLibraryCommittee"
   term: "Faculty Senate Library Committee"
