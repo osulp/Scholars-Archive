@@ -15,7 +15,7 @@ module ScholarsArchive
       # Provide each model a hook to set property defaults
       after_initialize :set_defaults, unless: :persisted?
 
-      property :nested_ordered_abstract, predicate: ::RDF::Vocab::DC.abstract, :class_name => NestedOrderedAbstract do |index|
+      property :nested_ordered_abstract, predicate: ::RDF::Vocab::BIBO.abstract, :class_name => NestedOrderedAbstract do |index|
         index.as :stored_searchable
       end
 
@@ -214,11 +214,11 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :nested_ordered_creator, predicate: ::RDF::URI("http://id.loc.gov/vocabulary/relators/aut"), :class_name => NestedOrderedCreator do |index|
+      property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_title, predicate: ::RDF::URI("http://id.loc.gov/authorities/subjects/sh85095369"), :class_name => NestedOrderedTitle do |index|
+      property :nested_ordered_title, predicate: ::RDF::Vocab::DC11.title, :class_name => NestedOrderedTitle do |index|
         index.as :stored_searchable, :facetable
       end
 
