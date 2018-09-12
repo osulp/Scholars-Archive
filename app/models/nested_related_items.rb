@@ -4,7 +4,7 @@ class NestedRelatedItems < ActiveTriples::Resource
 
   property :label, predicate: ::RDF::Vocab::DC.title
   property :related_url, predicate: ::RDF::RDFS.seeAlso
-  property :index, predicate: ::RDF::Vocab::DC.identifier
+  property :index, predicate: ::RDF::URI("http://purl.org/ontology/olo/core#index")
 
   attr_accessor :destroy_item # true/false
   attr_accessor :validation_msg # string

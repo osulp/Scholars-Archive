@@ -2,8 +2,8 @@ class NestedOrderedAdditionalInformation < ActiveTriples::Resource
   # Usage notes and expectations can be found in the Metadata Application Profile:
   #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
-  property :index, predicate: ::RDF::Vocab::DC.identifier
-  property :additional_information, predicate: ::RDF::Vocab::DC11.description
+  property :index, predicate: ::RDF::URI("http://purl.org/ontology/olo/core#index")
+  property :additional_information, predicate: ::RDF::Vocab::DC.description
 
   attr_accessor :destroy_item # true/false
   attr_accessor :validation_msg # string
