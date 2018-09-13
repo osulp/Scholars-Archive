@@ -27,7 +27,11 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_additional_information, predicate: ::RDF::Vocab::DC.description, :class_name => NestedOrderedAdditionalInformation do |index|
+      property :nested_ordered_additional_information, predicate: ::RDF::URI("http://id.loc.gov/authorities/subjects/sh2002004491"), :class_name => NestedOrderedAdditionalInformation do |index|
+        index.as :stored_searchable
+      end
+
+      property :additional_information, predicate: ::RDF::Vocab::DC.description do |index|
         index.as :stored_searchable
       end
 
@@ -56,7 +60,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor, :class_name => NestedOrderedContributor do |index|
+      property :nested_ordered_contributor, predicate: ::RDF::URI.new("http://id.loc.gov/vocabulary/relators/ctb"), :class_name => NestedOrderedContributor do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -214,11 +218,11 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator do |index|
+      property :nested_ordered_creator, predicate: ::RDF::Vocab::DC.creator, :class_name => NestedOrderedCreator do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_title, predicate: ::RDF::Vocab::DC11.title, :class_name => NestedOrderedTitle do |index|
+      property :nested_ordered_title, predicate: ::RDF::URI("http://id.loc.gov/authorities/subjects/sh85135655"), :class_name => NestedOrderedTitle do |index|
         index.as :stored_searchable, :facetable
       end
 

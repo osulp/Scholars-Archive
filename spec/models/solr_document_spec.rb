@@ -127,6 +127,42 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#creator" do
+    context "when there are no core metadata creators and no ordered creators" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "creator_tesim" => []
+                                       })
+        expect(document.creator).to eq []
+      end
+    end
+    context "when there are only ordered creators" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "nested_ordered_creator_label_ssim" => ["creatorA$0", 'creatorB$1']
+                                       })
+        expect(document.creator).to eq ['creatorA', 'creatorB']
+      end
+    end
+    context "when there are only core metadata creators" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "creator_tesim" => ['creatorB','creatorA']
+                                       })
+        expect(document.creator).to eq ['creatorB', 'creatorA']
+      end
+    end
+    context "when there are both core metadata creators and ordered creators" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "creator_tesim" => ['creatorA','creatorB'],
+                                           "nested_ordered_creator_label_ssim" => ["creatorC$0", 'creatorD$1'],
+                                       })
+        expect(document.creator).to eq ['creatorC', 'creatorD']
+      end
+    end
+  end
+
   describe "#nested_ordered_title" do
     context "when there are no ordered titles" do
       it "should return an empty array" do
