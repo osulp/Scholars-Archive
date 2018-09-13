@@ -87,7 +87,6 @@ gem 'haml'
 
 gem 'bagit', '~>0.4.1'
 gem 'lograge'
-gem 'newrelic_rpm'
 gem 'riiif', '~> 1.1'
 
 group :staging, :production do

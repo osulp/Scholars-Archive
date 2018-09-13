@@ -596,7 +596,6 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
     netrc (0.11.0)
-    newrelic_rpm (5.1.0.344)
     nio4r (2.3.0)
     noid (0.9.0)
     noid-rails (3.0.0)
@@ -967,7 +966,6 @@ DEPENDENCIES
   lograge
   mysql2 (~> 0.3.18)
   net-http-persistent (~> 2.9)
-  newrelic_rpm
   poltergeist
   puma (~> 3.0)
   puma_worker_killer
@@ -1003,4 +1001,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.1
+   1.16.4
