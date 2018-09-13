@@ -38,12 +38,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['based_near_linked_ssim'] = object.based_near.each.map{ |location| location.solrize.second[:label]}
       solr_doc['based_near_linked_tesim'] = object.based_near.each.map{ |location| location.solrize.second[:label]}
 
-      solr_doc['nested_creator_tesim'] = object.nested_ordered_creator.each.map{ |creator| creator.creator.first } 
-      solr_doc['nested_creator_tesim'] = object.nested_ordered_creator.each.map{ |creator| creator.creator.first }  
-
-      solr_doc['nested_contributor_tesim'] = object.nested_ordered_contributor.each.map{ |con| con.contributor.first } 
-      solr_doc['nested_contributor_tesim'] = object.nested_ordered_contributor.each.map{ |con| con.contributor.first } 
-
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
       solr_doc['rights_statement_label_tesim'] = rights_statement_labels
       solr_doc['license_label_ssim'] = license_labels

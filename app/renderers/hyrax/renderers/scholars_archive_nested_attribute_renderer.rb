@@ -18,6 +18,8 @@ module Hyrax
           itemprop_geo_wrapper do
             link_to_sa_field(search_field, value)
           end
+        elsif itemprop_option == 'ordered'
+          link_to_sa_field(search_field, value)
         else
           link_to_sa_field(search_field, value)
         end

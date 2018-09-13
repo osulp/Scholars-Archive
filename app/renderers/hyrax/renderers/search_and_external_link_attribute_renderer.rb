@@ -61,7 +61,7 @@ module Hyrax
         value = yaml['terms'].find { |l| l['term'].casecmp(term).zero? }
         return '' if value.nil?
         value['id']
-       end
+      end
     end
   end
 end
