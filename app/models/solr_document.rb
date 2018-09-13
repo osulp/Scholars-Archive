@@ -95,10 +95,6 @@ class SolrDocument
      nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)]
   end
 
-  def contributor
-     nested_ordered_contributor_label.present? ? nested_ordered_contributor_label : self[Solrizer.solr_name('contributor', :stored_searchable)]
-  end
-
   def abstract
      nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)]
   end
