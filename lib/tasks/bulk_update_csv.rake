@@ -61,11 +61,11 @@ def update_property(logger, work, row)
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif property.is_a?(ActiveTriples::Relation)
     work = if row[:from].casecmp('+').zero?
-             add_to_multivalue_row(logger, work, row)
+             add_to_multivalue_row(logger, work, row, property)
            elsif row[:from].casecmp('*').zero?
-             overwrite_multivalue_row(logger, work, row)
+             overwrite_multivalue_row(logger, work, row, property)
            else
-             process_if_found_row(logger, work, row)
+             process_if_found_row(logger, work, row, property)
            end
   else
     work[row[:property]] = [row[:to].split('|')].flatten
@@ -74,19 +74,19 @@ def update_property(logger, work, row)
   work
 end
 
-def overwrite_multivalue_row(logger, work, row)
+def overwrite_multivalue_row(logger, work, row, property)
   work[row[:property]] = [row[:to].split('|')].flatten
   logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{row[:to]}\"")
   work
 end
 
-def add_to_multivalue_row(logger, work, row)
+def add_to_multivalue_row(logger, work, row, property)
   work[row[:property]] += [row[:to].split('|')].flatten
   logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{row[:to]}\"")
   work
 end
 
-def process_if_found_row(logger, work, row)
+def process_if_found_row(logger, work, row, property)
   found_row = property.find { |r| r.include?(row[:from]) }
   if found_row
     work[row[:property]] = nil if work[row[:property]].length == 1
