@@ -1,9 +1,8 @@
-<%= presenter.attribute_to_html(:nested_ordered_title_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_title_label', itemprop_option: 'title', label: 'Title') %>
 <%= presenter.attribute_to_html(:alt_title, render_as: :external_link, label: t('simple_form.labels.defaults.alt_title')) %>
-<%= presenter.attribute_to_html(:nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label', itemprop_option: 'creator', label: "Creator") %>
+<%= presenter.attribute_to_html(:nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label_ssim', itemprop_option: 'url', label: "Creator") %>
 <%#= presenter.attribute_to_html(:creator, render_as: :search_and_external_link) %>
-<%= presenter.attribute_to_html(:nested_ordered_abstract_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_abstract_label', itemprop_option: 'abstract', label: "Abstract") %>
-<%= presenter.attribute_to_html(:nested_ordered_contributor_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_contributor_label', itemprop_option: 'contributor', label: "Contributors") %>
+<%= presenter.attribute_to_html(:nested_ordered_abstract_label, label: "Abstract") %>
+<%= presenter.attribute_to_html(:nested_ordered_contributor_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_contributor_label_ssim', itemprop_option: 'url', label: "Contributor") %>
 <%#= presenter.attribute_to_html(:nested_ordered_description_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_description_label', itemprop_option: 'description', label: "Description") %>
 <%#= presenter.attribute_to_html(:abstract, label: t('simple_form.labels.defaults.abstract')) %>
 <%= presenter.attribute_to_html(:license_label, render_as: :search_and_external_link, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label')) %>
@@ -46,7 +45,7 @@
 <%= presenter.attribute_to_html(:subject, render_as: :search_and_external_link) %>
 <%= presenter.attribute_to_html(:tableofcontents, label: t('simple_form.labels.defaults.tableofcontents')) %>
 <%= presenter.attribute_to_html(:rights_statement_label, render_as: :search_and_external_link, search_field: 'rights_statement_label', label: t('simple_form.labels.defaults.rights_statement')) %>
-<%= presenter.attribute_to_html(:nested_related_items_label, render_as: :scholars_archive_nested, search_field: 'nested_related_items_label', itemprop_option: 'url', label: t('simple_form.labels.defaults.nested_related_items')) %>
+<%= presenter.attribute_to_html(:nested_related_items_label, render_as: :scholars_archive_nested, search_field: 'nested_related_items_label_ssim', itemprop_option: 'url', label: t('simple_form.labels.defaults.nested_related_items')) %>
 <%= presenter.attribute_to_html(:hydrologic_unit_code, label: t('simple_form.labels.defaults.hydrologic_unit_code')) %>
 <%= presenter.attribute_to_html(:nested_geo, render_as: :scholars_archive_nested, search_field: 'nested_geo_label_ssim', itemprop_option: 'geo', label: t('blacklight.search.form.nested_geo')) %>
 <%= presenter.attribute_to_html(:funding_statement, label: t('simple_form.labels.defaults.funding_statement')) %>
@@ -57,7 +56,7 @@
 <%= presenter.attribute_to_html(:file_extent, label: t('simple_form.labels.defaults.file_extent')) %>
 <%= presenter.attribute_to_html(:digitization_spec, label: t('simple_form.labels.defaults.digitization_spec')) %>
 <%= presenter.attribute_to_html(:replaces, render_as: :external_link) %>
-<%= presenter.attribute_to_html(:nested_ordered_additional_information_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_additional_information_label', itemprop_option: 'additional_information', label: "Additional Information") %>
+<%= presenter.attribute_to_html(:nested_ordered_additional_information_label, label: "Additional Information") %>
 <%= presenter.attribute_to_html(:based_near_linked, render_as: :search_and_external_link, label: "Location", search_field: 'based_near_label') %>
 <%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
 <%= presenter.attribute_to_html(:embargo_reason) %>

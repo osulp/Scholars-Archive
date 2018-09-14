@@ -15,7 +15,7 @@ module ScholarsArchive
       labels.each do |label|
         parsed_label_uris << { 'label' => strip_uri(label), 'uri' => strip_label(label), 'index' => extract_index(label) }
       end
-      parsed_label_uris.sort_by { |hash| hash['index'] } 
+      parsed_label_uris.sort_by { |hash| hash['index'] }.select { |hash| !hash["label"].empty? } 
     end
 
     private
