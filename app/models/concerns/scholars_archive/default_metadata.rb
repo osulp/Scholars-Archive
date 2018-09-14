@@ -57,7 +57,7 @@ module ScholarsArchive
       end
 
       property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor, :class_name => NestedOrderedContributor do |index|
-        index.as :stored_searchable
+        index.as :stored_searchable, :facetable
       end
 
       property :contributor, predicate: ::RDF::Vocab::DC11.contributor do |index|

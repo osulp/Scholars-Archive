@@ -25,6 +25,10 @@ module HyraxHelper
     value.split('$').first
   end
 
+  def parsed_index(value)
+    value.split('$').first
+  end
+
   def truncated_summary(options)
     value = options[:value].first
     value.truncate_words(50)
