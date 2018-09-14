@@ -99,6 +99,10 @@ class SolrDocument
      nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)]
   end
 
+  def additional_information
+     nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)]
+  end
+
   def nested_ordered_abstract_label
     ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
   end
