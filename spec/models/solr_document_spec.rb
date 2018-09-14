@@ -175,12 +175,12 @@ RSpec.describe SolrDocument do
     context "when there are only ordered abstracts" do
       it "should return their labels" do
         document = described_class.new({
-                                           "nested_ordered_abstract_label_ssim" => ["abstractA$0", 'abstractB$1']
+                                           "nested_ordered_abstract_label_tesim" => ["abstractA$0", 'abstractB$1']
                                        })
         expect(document.abstract).to eq ['abstractA', 'abstractB']
       end
     end
-    context "when there are only core metadata abstracts" do
+    context "when there are only old abstracts" do
       it "should return their labels" do
         document = described_class.new({
                                            "abstract_tesim" => ['abstractB','abstractA']
@@ -188,11 +188,11 @@ RSpec.describe SolrDocument do
         expect(document.abstract).to eq ['abstractB', 'abstractA']
       end
     end
-    context "when there are both core metadata creators and ordered abstracts" do
+    context "when there are both old and ordered abstracts" do
       it "should return their labels" do
         document = described_class.new({
                                            "abstract_tesim" => ['abstractA','abstractB'],
-                                           "nested_ordered_abstract_label_ssim" => ["abstractC$0", 'abstractD$1'],
+                                           "nested_ordered_abstract_label_tesim" => ["abstractC$0", 'abstractD$1'],
                                        })
         expect(document.abstract).to eq ['abstractC', 'abstractD']
       end
@@ -211,7 +211,7 @@ RSpec.describe SolrDocument do
     context "when there are only ordered additional_informations" do
       it "should return their labels" do
         document = described_class.new({
-                                           "nested_ordered_additional_information_label_ssim" => ["additional_informationA$0", 'additional_informationB$1']
+                                           "nested_ordered_additional_information_label_tesim" => ["additional_informationA$0", 'additional_informationB$1']
                                        })
         expect(document.additional_information).to eq ['additional_informationA', 'additional_informationB']
       end
