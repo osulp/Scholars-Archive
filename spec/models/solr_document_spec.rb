@@ -163,6 +163,78 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#abstract" do
+    context "when there are no core metadata abstracts and no ordered abstracts" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "abstract_tesim" => []
+                                       })
+        expect(document.abstract).to eq []
+      end
+    end
+    context "when there are only ordered abstracts" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "nested_ordered_abstract_label_ssim" => ["abstractA$0", 'abstractB$1']
+                                       })
+        expect(document.abstract).to eq ['abstractA', 'abstractB']
+      end
+    end
+    context "when there are only core metadata abstracts" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "abstract_tesim" => ['abstractB','abstractA']
+                                       })
+        expect(document.abstract).to eq ['abstractB', 'abstractA']
+      end
+    end
+    context "when there are both core metadata creators and ordered abstracts" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "abstract_tesim" => ['abstractA','abstractB'],
+                                           "nested_ordered_abstract_label_ssim" => ["abstractC$0", 'abstractD$1'],
+                                       })
+        expect(document.abstract).to eq ['abstractC', 'abstractD']
+      end
+    end
+  end
+
+  describe "#additional_information" do
+    context "when there are no core metadata additional_informations and no ordered additional_informations" do
+      it "should return an empty array" do
+        document = described_class.new({
+                                           "additional_information_tesim" => []
+                                       })
+        expect(document.additional_information).to eq []
+      end
+    end
+    context "when there are only ordered additional_informations" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "nested_ordered_additional_information_label_ssim" => ["additional_informationA$0", 'additional_informationB$1']
+                                       })
+        expect(document.additional_information).to eq ['additional_informationA', 'additional_informationB']
+      end
+    end
+    context "when there are only core metadata additional_informations" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "additional_information_tesim" => ['additional_informationB','additional_informationA']
+                                       })
+        expect(document.additional_information).to eq ['additional_informationB', 'additional_informationA']
+      end
+    end
+    context "when there are both core metadata creators and ordered additional_informations" do
+      it "should return their labels" do
+        document = described_class.new({
+                                           "additional_information_tesim" => ['additional_informationA','additional_informationB'],
+                                           "nested_ordered_additional_information_label_ssim" => ["additional_informationC$0", 'additional_informationD$1'],
+                                       })
+        expect(document.additional_information).to eq ['additional_informationC', 'additional_informationD']
+      end
+    end
+  end
+
   describe "#nested_ordered_title" do
     context "when there are no ordered titles" do
       it "should return an empty array" do
