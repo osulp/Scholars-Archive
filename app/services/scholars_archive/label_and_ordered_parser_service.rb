@@ -50,7 +50,7 @@ module ScholarsArchive
     # ==== Example
     #
     # input: ["hello","world","hola","mundo"]
-    # output: ["hello"]
+    # output: ["hello", "world"]
     def self.drop_last_two(items)
       items.present? ? items[0...-2] : []
     end
