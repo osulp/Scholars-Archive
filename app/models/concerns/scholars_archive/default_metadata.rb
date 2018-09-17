@@ -222,7 +222,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_title, predicate: ::RDF::URI("http://id.loc.gov/authorities/subjects/sh85135655"), :class_name => NestedOrderedTitle do |index|
+      property :nested_ordered_title, predicate: ::RDF::Vocab::DC11.title, :class_name => NestedOrderedTitle do |index|
         index.as :stored_searchable, :facetable
       end
 
