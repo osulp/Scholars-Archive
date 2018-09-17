@@ -11,7 +11,7 @@ module ScholarsArchive
       def set_default_visibility
         self.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC if new_record?
       end
-      
+
       # Provide each model a hook to set property defaults
       after_initialize :set_defaults, unless: :persisted?
 
@@ -28,6 +28,10 @@ module ScholarsArchive
       end
 
       property :nested_ordered_additional_information, predicate: ::RDF::Vocab::DC.description, :class_name => NestedOrderedAdditionalInformation do |index|
+        index.as :stored_searchable
+      end
+
+      property :additional_information, predicate: ::RDF::Vocab::DC.description do |index|
         index.as :stored_searchable
       end
 
