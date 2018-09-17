@@ -80,39 +80,35 @@ class SolrDocument
   end
 
   def nested_ordered_creator_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)])
-  end 
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)]) || []
+  end
 
   def nested_ordered_title_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_title_label', :symbol)])
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_title_label', :symbol)]) || []
   end
 
   def title
-     nested_ordered_title_label.present? ? nested_ordered_title_label : self[Solrizer.solr_name('title', :stored_searchable)]
+     nested_ordered_title_label.present? ? nested_ordered_title_label : self[Solrizer.solr_name('title', :stored_searchable)] || []
   end
 
   def creator
-     nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)]
-  end
-
-  def abstract
-     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)]
+     nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)] || []
   end
 
   def additional_information
-     nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)]
+     nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)] || []
   end
 
   def nested_ordered_abstract_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)])
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)]) || []
   end
 
   def nested_ordered_contributor_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)])
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)]) || []
   end
 
   def nested_ordered_additional_information_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_additional_information_label', :symbol)])
+    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_additional_information_label', :symbol)]) || []
   end
 
   def system_created
@@ -235,5 +231,9 @@ class SolrDocument
     else
       Rails.application.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url], controller: "hyrax/#{self['has_model_ssim'].first.to_s.underscore.pluralize}", id: id)
     end
+  end
+
+  def abstract
+     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
   end
 end
