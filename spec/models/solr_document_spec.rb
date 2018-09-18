@@ -266,7 +266,7 @@ RSpec.describe SolrDocument do
     context "when there are related items" do
       it "should return their labels and uris as array" do
         document = described_class.new({
-                                           "nested_related_items_label_ssim" => ["label1$www.blah.com", "label3$www.example.org"]
+                                           "nested_related_items_label_ssim" => ["label1$www.blah.com$0", "label3$www.example.org$1"]
                                        })
         expect(document.oai_nested_related_items_label).to eq ['label1: www.blah.com', 'label3: www.example.org']
       end
@@ -350,9 +350,4 @@ RSpec.describe SolrDocument do
       end
     end
   end
-
-
-
-
-
 end
