@@ -2,8 +2,7 @@ module ScholarsArchive
   class LabelAndOrderedParserService
     def self.parse(labels)
       labels ||= []
-      parsed_labels = []
-      parsed_labels = labels.map{ |label| parse_index(label)}.sort_by{ |array| array[1] }.map{ |array| array[0] }
+      labels.map{ |label| parse_index(label)}.sort_by{ |array| array[1] }.map{ |array| array[0] }
     end
 
     def self.parse_label_uris(labels)
@@ -35,7 +34,7 @@ module ScholarsArchive
     end
 
     def self.parse_index(label)
-      [extract_label(label), extract_index(label)]
+      [label, extract_index(label)]
     end
 
     # Returns an array except the last two items. Returns [] if items is nil.

@@ -35,6 +35,9 @@ en:
           date_collected: "Date Collected"
           date_valid: "Date Valid"
           resource_type_sim: "Resource Type"
+          creator_sim: "Creator"
+          contributor_sim: "Contributor"
+          nested_related_items_label_ssim: "Related Items"
       form:
         nested_geo_points: "Geographic Points"
         nested_geo_bbox: "Bounding Box"

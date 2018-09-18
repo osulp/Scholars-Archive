@@ -80,7 +80,7 @@ class SolrDocument
   end
 
   def nested_ordered_creator_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)]) || []
+    ScholarsArchive::LabelAndOrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)]) || []
   end
 
   def nested_ordered_title_label
@@ -104,7 +104,7 @@ class SolrDocument
   end
 
   def nested_ordered_contributor_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)]) || []
+    ScholarsArchive::LabelAndOrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)]) || []
   end
 
   def nested_ordered_additional_information_label

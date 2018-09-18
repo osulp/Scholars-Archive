@@ -12,7 +12,11 @@ module Hyrax
       def li_value(value)
         if itemprop_option == 'url'
           itemprop_url_wrapper do
-            links_to_search_field_and_external_uri(search_field, value)
+            if search_type == 'faceted'
+              links_to_faceted_search_field(search_field, value)
+            else
+              links_to_search_field_and_external_uri(search_field, value)
+            end
           end
         elsif itemprop_option == 'geo'
           itemprop_geo_wrapper do
