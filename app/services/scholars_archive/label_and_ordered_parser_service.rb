@@ -3,9 +3,6 @@ module ScholarsArchive
     def self.parse(labels)
       labels ||= []
       parsed_labels = []
-      labels.each do |label|
-        parsed_labels << index_label(label)
-      end
       parsed_labels = labels.map{ |label| parse_index(label)}.sort_by{ |array| array[1] }.map{ |array| array[0] }
     end
 
@@ -31,10 +28,6 @@ module ScholarsArchive
 
     def self.extract_index(label)
       build_array(label).last
-    end
-
-    def self.index_label(label)
-      "#{label.split('$').first}$#{label.split('$').last}"
     end
 
     def self.build_array(label)
