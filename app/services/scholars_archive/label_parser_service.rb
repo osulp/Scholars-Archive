@@ -21,11 +21,17 @@ module ScholarsArchive
     private
 
     def self.strip_uri(label)
-      label.split("$").first
+      items = build_array(label)
+      items[0...-1].join('$')
     end
 
     def self.strip_label(label)
-      label.split("$").second
+      items = build_array(label)
+      items.last
+    end
+
+    def self.build_array(label)
+      label&.split('$') || []
     end
   end
 end

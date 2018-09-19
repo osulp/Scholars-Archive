@@ -7,5 +7,11 @@ describe ScholarsArchive::OrderedParserService do
     it "returns labels ordered by index" do
       expect(described_class.parse(labels)).to eq ["ordered_creator_1", "ordered_creator_2", "ordered_creator_3"]
     end
+    context "when label includes a special character $" do
+      let(:labels) { ["label1 the cost is $200.00$0", "$100.00$1"] }
+      it "returns a hash of label and index from a label$index pair" do
+        expect(described_class.parse(labels)).to eq ['label1 the cost is $200.00', '$100.00']
+      end
+    end
   end
 end
