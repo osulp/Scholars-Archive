@@ -9,7 +9,7 @@ module Hyrax
       self.model_class = BatchUploadItem
       include HydraEditor::Form::Permissions
 
-      self.terms -= [:title, :resource_type, :creator, :nested_ordered_title, :nested_ordered_additional_information]
+      self.terms -= [:title, :resource_type, :creator, :nested_ordered_title]
       self.required_fields -= [:keyword, :resource_type]
 
       attr_accessor :payload_concern # a Class name: what is form creating a batch of?
