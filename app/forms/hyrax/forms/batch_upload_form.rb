@@ -9,7 +9,7 @@ module Hyrax
       self.model_class = BatchUploadItem
       include HydraEditor::Form::Permissions
 
-      self.terms -= [:title, :resource_type, :creator]
+      self.terms -= [:title, :resource_type, :creator, :nested_ordered_title, :nested_ordered_additional_information]
       self.required_fields -= [:keyword, :resource_type]
 
       attr_accessor :payload_concern # a Class name: what is form creating a batch of?
@@ -25,7 +25,7 @@ module Hyrax
 
       # On the batch upload, title is set per-file.
       def primary_terms
-        [:alt_title, :contributor, :abstract, :license, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super - [:title, :resource_type]
+        [:alt_title, :nested_ordered_creator, :contributor, :nested_ordered_abstract, :license, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super - [:title, :nested_ordered_title, :resource_type]
       end
 
       # # On the batch upload, title is set per-file.
