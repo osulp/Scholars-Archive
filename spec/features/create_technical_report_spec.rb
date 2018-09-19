@@ -90,7 +90,7 @@ RSpec.feature 'Create a Technical Report', js: false do
 
       click_link "Files" # switch tab
       expect(page).to have_content "Add files"
-      within('button#addfiles') do
+      within('#addfiles') do
         attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
       end
 
