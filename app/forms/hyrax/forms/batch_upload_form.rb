@@ -10,7 +10,7 @@ module Hyrax
       include HydraEditor::Form::Permissions
 
       self.terms -= [:title, :resource_type, :creator, :nested_ordered_title]
-      self.required_fields -= [:keyword, :resource_type]
+      self.required_fields -= [:keyword, :resource_type, :nested_ordered_title]
 
       attr_accessor :payload_concern # a Class name: what is form creating a batch of?
 
