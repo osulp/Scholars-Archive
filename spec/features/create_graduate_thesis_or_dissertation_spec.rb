@@ -99,7 +99,8 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       check 'agreement'
 
       click_link "Files" # switch tab
-      within('span#addfiles') do
+      expect(page).to have_content "Add files"
+      within('#addfiles') do
         attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
       end
 

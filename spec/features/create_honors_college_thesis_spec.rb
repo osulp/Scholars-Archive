@@ -91,7 +91,8 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       find('body').click
 
       click_link "Files" # switch tab
-      within('span#addfiles') do
+      expect(page).to have_content "Add files"
+      within('#addfiles') do
         attach_file("files[]", File.join(Rails.root, '/spec/fixtures/files/world.png'))
       end
 
