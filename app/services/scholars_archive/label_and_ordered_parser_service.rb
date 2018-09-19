@@ -2,8 +2,9 @@ module ScholarsArchive
   class LabelAndOrderedParserService
     def self.parse(labels)
       labels ||= []
-      parsed_labels = []
-      parsed_labels = labels.map{ |label| parse_index(label)}.sort_by{ |array| array[1] }.map{ |array| array[0] }
+      labels.map{ |label| parse_index(label)}
+            .sort_by{ |array| array[1] }
+            .map{ |array| array[0] }
     end
 
     def self.parse_label_uris(labels)
@@ -19,7 +20,7 @@ module ScholarsArchive
 
     def self.extract_label(label)
       items = build_array(label)
-      drop_last_two(items).join('$')
+      items[0...-2].join('$')
     end
 
     def self.extract_uri(label)
@@ -31,21 +32,11 @@ module ScholarsArchive
     end
 
     def self.build_array(label)
-      label.split("$")
+      label&.split('$') || []
     end
 
     def self.parse_index(label)
       [extract_label(label), extract_index(label)]
-    end
-
-    # Returns an array except the last two items. Returns [] if items is nil.
-    #
-    # ==== Example
-    #
-    # input: ["hello","world","hola","mundo"]
-    # output: ["hello", "world"]
-    def self.drop_last_two(items)
-      items.present? ? items[0...-2] : []
     end
   end
 end

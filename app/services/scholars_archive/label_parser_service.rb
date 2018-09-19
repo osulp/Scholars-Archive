@@ -22,7 +22,7 @@ module ScholarsArchive
 
     def self.strip_uri(label)
       items = build_array(label)
-      drop_last(items).join('$')
+      items[0...-1].join('$')
     end
 
     def self.strip_label(label)
@@ -31,17 +31,7 @@ module ScholarsArchive
     end
 
     def self.build_array(label)
-      label.split("$")
-    end
-
-    # Returns an array except the last item. Returns [] if items is nil.
-    #
-    # ==== Example
-    #
-    # input: ["hello","world","hola","mundo"]
-    # output: ["hello","world","hola"]
-    def self.drop_last(items)
-      items.present? ? items[0...-1] : []
+      label&.split('$') || []
     end
   end
 end
