@@ -33,7 +33,7 @@ gem 'redis', '~> 3.0'
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq', '5.0.2'
-gem 'ffi', '1.9.18'
+gem 'ffi', '~> 1.9.24'
 
 gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
 gem 'blacklight_range_limit'
@@ -88,6 +88,10 @@ gem 'haml'
 gem 'bagit', '~>0.4.1'
 gem 'lograge'
 gem 'riiif', '~> 1.1'
+
+# Security update
+gem 'rubyzip', '~> 1.2.2'
+
 
 group :staging, :production do
   gem 'ddtrace'
