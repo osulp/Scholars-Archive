@@ -35,6 +35,7 @@ test:
 
 production: &production
   <<: *default
+  pool: <%= ENV.fetch('SCHOLARSARCHIVE_DB_POOL', 50) %>
 
 staging:
   <<: *production
