@@ -32,24 +32,108 @@ module ScholarsArchive
         abstracts = abstracts(doc)
 
         log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Finding work, attempting to migrate")
+
         work = fedora_work(doc['id']) unless work.present?
-        work.nested_ordered_creator_attributes = creators unless creators.empty?
-        work.nested_ordered_title_attributes = titles unless titles.empty?
-        work.nested_related_items_attributes = related_items unless related_items.empty?
-        work.nested_ordered_contributor_attributes = contributors unless contributors.empty?
-        work.nested_ordered_additional_information_attributes = additional_informations unless additional_informations.empty?
-        work.nested_ordered_abstract_attributes = abstracts unless abstracts.empty?
+
+        unless creators.empty?
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate creators [solr]: creator_tesim: #{doc['creator_tesim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate creators [fedora]: work.nested_ordered_creator: #{work.nested_ordered_creator.to_json} work.creator: #{work.creator.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate creators [csv/solr]: #{creators}")
+          work.nested_ordered_creator = []
+          work.nested_ordered_creator_attributes = creators
+        end
+
+        unless titles.empty?
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate titles [solr]: title_tesim: #{doc['title_tesim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate titles [fedora]: work.nested_ordered_title: #{work.nested_ordered_title.to_json} work.title: #{work.title.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate titles [csv/solr]: #{titles}")
+          work.nested_ordered_title = []
+          work.nested_ordered_title_attributes = titles
+        end
+
+        unless related_items.empty?
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate related_items [solr]: nested_related_items_label_ssim: #{doc['nested_related_items_label_ssim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate related_items [fedora]: work.nested_related_items: #{work.nested_related_items.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate related_items [csv/solr]: #{related_items}")
+          work.nested_related_items = []
+          work.nested_related_items_attributes = related_items
+        end
+
+        unless contributors.empty?
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate contributors [solr]: contributor_tesim: #{doc['contributor_tesim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate contributors [fedora]: work.nested_ordered_contributor: #{work.nested_ordered_contributor.to_json} work.contributor: #{work.contributor.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate contributors [csv/solr]: #{contributors}")
+          work.nested_ordered_contributor = []
+          work.nested_ordered_contributor_attributes = contributors
+        end
+
+        unless additional_informations.empty?
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate additional_informations [solr]: additional_information_tesim: #{doc['additional_information_tesim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate additional_informations [fedora]: work.nested_ordered_additional_information: #{work.nested_ordered_additional_information.to_json} work.additional_information: #{work.additional_information.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate additional_informations [csv/solr]: #{additional_informations}")
+          work.nested_ordered_additional_information = []
+          work.nested_ordered_additional_information_attributes = additional_informations
+        end
+
+        unless abstracts.empty?
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate abstract: [solr]: abstract_tesim: #{doc['abstract_tesim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate abstract: [fedora]: work.nested_ordered_abstract: #{work.nested_ordered_abstract.to_json} work.abstract: #{work.abstract.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Attempting to migrate abstract [csv/solr]: #{abstracts}")
+          work.nested_ordered_abstract = []
+          work.nested_ordered_abstract_attributes = abstracts
+        end
+
         work.save
         log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Work successfully migrated")
 
-        work.members.reject { |m| m.class == 'FileSet' }.each do |child|
+        work.members.reject { |m| m.class.to_s == 'FileSet' }.each do |child|
           log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
-          child.nested_ordered_creator_attributes = creators unless creators.empty?
+
+          unless creators.empty?
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [solr]: child creator_tesim: #{doc['creator_tesim']}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [fedora]: child.nested_ordered_creator: #{child.nested_ordered_creator.to_json} child.creator: #{child.creator.to_json}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [csv/solr]: #{creators}")
+            child.nested_ordered_creator = []
+            child.nested_ordered_creator_attributes = creators
+          end
+
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [solr]: child title_tesim: #{doc['title_tesim']}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [fedora]: child.nested_ordered_title: #{child.nested_ordered_title.to_json} child.title: #{child.title.to_json}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [csv/solr]: #{titles}")
+          child.nested_ordered_title = []
           child.nested_ordered_title_attributes = ordered_solr_metadata({ 'title_tesim' => child.title }, 'title_tesim', 'title')
-          child.nested_related_items_attributes = related_items unless related_items.empty?
-          child.nested_ordered_contributor_attributes = contributors unless contributors.empty?
-          child.nested_ordered_additional_information_attributes = additional_informations unless additional_informations.empty?
-          child.nested_ordered_abstract_attributes = abstracts unless abstracts.empty?
+
+          unless related_items.empty?
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate related_items [solr]: child nested_related_items_label_ssim: #{doc['nested_related_items_label_ssim']}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate related_items [fedora]: child.nested_related_items: #{child.nested_related_items.to_json}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate related_items [csv/solr]: #{related_items}")
+            child.nested_related_items = []
+            child.nested_related_items_attributes = related_items
+          end
+
+          unless contributors.empty?
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate contributors [solr]: child contributor_tesim: #{doc['contributor_tesim']}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate contributors [fedora]: child.nested_ordered_contributor: #{child.nested_ordered_contributor.to_json} child.contributor: #{child.contributor.to_json}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate contributors [csv/solr]: #{contributors}")
+            child.nested_ordered_contributor = []
+            child.nested_ordered_contributor_attributes = contributors
+          end
+
+          unless additional_informations.empty?
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate additional_informations [solr]: child additional_information_tesim: #{doc['additional_information_tesim']}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate additional_informations [fedora]: child.nested_ordered_additional_information: #{child.nested_ordered_additional_information.to_json} child.additional_information: #{child.additional_information.to_json}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate additional_informations [csv/solr]: #{additional_informations}")
+            child.nested_ordered_additional_information = []
+            child.nested_ordered_additional_information_attributes = additional_informations
+          end
+
+          unless abstracts.empty?
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate abstract: [solr]: child abstract_tesim: #{doc['abstract_tesim']}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate abstract: [fedora]: child.nested_ordered_abstract: #{child.nested_ordered_abstract.to_json} child.abstract: #{child.abstract.to_json}")
+            log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate abstract [csv/solr]: #{abstracts}")
+            child.nested_ordered_abstract = []
+            child.nested_ordered_abstract_attributes = abstracts
+          end
           child.save
           log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Work successfully migrated")
         end
@@ -80,7 +164,7 @@ module ScholarsArchive
 
     def related_items(solr_doc)
       found = solr_doc['nested_related_items_label_ssim'] || []
-      found.map.with_index { |obj, i| { index: i, label: obj.split('$').first, related_url: obj.split('$').last } }
+      found.map.with_index { |obj, i| { index: i.to_s, label: obj.split('$').first, related_url: obj.split('$').last } }
     end
 
     def contributors(handle, solr_doc)
@@ -119,7 +203,7 @@ module ScholarsArchive
 
     def ordered_solr_metadata(solr_doc, solr_field, ordered_field_name)
       found = solr_doc[solr_field] || []
-      found.map.with_index { |obj, i| { index: i, ordered_field_name.to_sym => obj } }
+      found.map.with_index { |obj, i| { index: i.to_s, ordered_field_name.to_sym => obj } }
     end
 
     def ordered_metadata(csv, handle, solr_doc, solr_field, ordered_field_name)
@@ -130,7 +214,7 @@ module ScholarsArchive
       else
         combined = csv_metadata.concat(solr_metadata_not_in_csv(csv_metadata, solr_metadata))
       end
-      combined.map.with_index { |obj, i| { index: i, ordered_field_name.to_sym => obj } }
+      combined.map.with_index { |obj, i| { index: i.to_s, ordered_field_name.to_sym => obj } }
     end
 
     def ordered_csv_metadata(csv, handle)
