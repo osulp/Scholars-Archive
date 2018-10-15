@@ -1,3 +1,4 @@
+<%# OVERRIDE: (10-15-17) This file was rebased for Hyrax 2.3.0. Please rebase for future updates. %>
 <aside id="form-progress" class="form-progress panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= t("hyrax.works.progress.header") %></h3>
@@ -13,7 +14,7 @@
           <% if Hyrax.config.work_requires_files? && !current_user.admin? %>
             <li class="incomplete" id="required-files"><%= t('.required_files') %></li>
           <% end %>
-          <% if Flipflop.active_deposit_agreement_acceptance? %>
+          <% if Flipflop.show_deposit_agreement? && Flipflop.active_deposit_agreement_acceptance? %>
             <li class="incomplete" id="required-agreement"><%= t('.required_agreement') %></li>
           <% end %>
         </ul>
@@ -34,25 +35,31 @@
       <% if ::Flipflop.active_deposit_agreement_acceptance? %>
         <label>
           <%= check_box_tag 'agreement', 1, f.object.agreement_accepted, required: true %>
-          <%= t('hyrax.active_consent_to_agreement') %><br>
+          <%= t('hyrax.active_consent_to_agreement') %><br />
           <%= link_to t('hyrax.pages.tabs.agreement_page'),
                       hyrax.agreement_path,
                       target: '_blank' %>
         </label>
       <% else %>
-        <%= t('hyrax.passive_consent_to_agreement') %><br>
+        <%= t('hyrax.passive_consent_to_agreement') %><br />
         <%= link_to t('hyrax.pages.tabs.agreement_page'),
                     hyrax.agreement_path,
                     target: '_blank' %>
       <% end %>
     <% end %>
-    <br>
-    <%= link_to t(:'helpers.action.cancel'),
-                hyrax.dashboard_path,
-                class: 'btn btn-default' %>
+    <br />
     <%# TODO: If we start using ActionCable, we could listen for object updates and
               alert the user that the object has changed by someone else %>
     <%= f.input Hyrax::Actors::OptimisticLockValidator.version_field, as: :hidden if f.object.persisted? %>
     <%= f.submit class: 'btn btn-primary', onclick: "confirmation_needed = false;", id: "with_files_submit", name: "save_with_files" %>
+  </div>
+
+  <%# Provide immediate feedback after the form is submitted while the subsequent page is loading %>
+  <div class="panel-footer hidden">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-complete active">
+        <span id="form-feedback" aria-live="assertive">Saving your work. This may take a few moments</span>
+      </div>
+    </div>
   </div>
 </aside>
