@@ -99,7 +99,7 @@ module ScholarsArchive
 
           log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [solr]: child title_tesim: #{doc['title_tesim']}")
           log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [fedora]: child.nested_ordered_title: #{child.nested_ordered_title.to_json} child.title: #{child.title.to_json}")
-          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [csv/solr]: #{titles}")
+          log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Attempting to migrate titles [csv/solr]: #{child.title.to_json}")
           child.nested_ordered_title = []
           child.nested_ordered_title_attributes = ordered_solr_metadata({ 'title_tesim' => child.title }, 'title_tesim', 'title')
 
