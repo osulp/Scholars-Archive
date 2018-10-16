@@ -8,10 +8,10 @@
     <div class="col-sm-10">
       <span class="sr-only"><%= t('hyrax.homepage.recently_uploaded.document.title_label') %></span><h3><%= link_to recent_document.to_s, [main_app, recent_document] %></h3>
       <p>
-        <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.depositor_label') %>:</span> <%= link_to_profile recent_document.depositor(t('hyrax.homepage.recently_uploaded.document.depositor_missing')) %>
+        <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.creator_label') %>:</span> <%= link_to_facet_list(recent_document.creator.first(5), 'creator', t('hyrax.homepage.recently_uploaded.document.creator_missing')).html_safe %>
       </p>
       <p>
-        <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.subject_label') %>:</span> <%= link_to_facet_list(recent_document.subject, 'subject', t('hyrax.homepage.recently_uploaded.document.subject_missing')).html_safe %>
+        <span class="recent-label"><%= t('hyrax.homepage.recently_uploaded.document.subject_label') %>:</span> <%= link_to_facet_list(recent_document.subject.first(5), 'subject', t('hyrax.homepage.recently_uploaded.document.subject_missing')).html_safe %>
       </p>
     </div>
   </div>

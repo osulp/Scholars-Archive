@@ -90,9 +90,11 @@ en:
     homepage:
       featured_works:
         document:
-          subject_label: Subjects
+          creator_label: Creator
+          subject_label: Subject
           subject_missing: no subjects specified
       recently_uploaded:
         document:
-          subject_label: Subjects
+          creator_label: Creator
+          subject_label: Subject
           subject_missing: no subjects specified
