@@ -7,8 +7,9 @@
       <% end %>
     </h3>
   </div>
-  <div class="featured-field featured-item-depositor">
-    <span class="featured-label"><%= t('hyrax.homepage.featured_works.document.depositor_label') %>:</span> <%= link_to_profile featured.depositor(t('hyrax.homepage.featured_works.document.depositor_missing')) %>
+<%# OVERRIDE: (2018-10-16) Changed Depositor to Creator %>
+  <div class="featured-field featured-item-creator">
+    <span class="featured-label"><%= t('hyrax.homepage.featured_works.document.creator_label') %>:</span> <%= link_to_facet_list(featured.creator, 'creator', t('hyrax.homepage.featured_works.document.creator_missing')) %>
   </div>
 <%# OVERRIDE: (2018-10-16) Changed keywords to Subject %>
   <div class="featured-field featured-item-subject">
