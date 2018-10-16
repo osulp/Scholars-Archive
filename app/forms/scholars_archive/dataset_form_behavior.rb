@@ -48,7 +48,11 @@ module ScholarsArchive
           {
             :nested_geo_attributes => [:id, :_destroy, :point_lat, :point_lon, :bbox_lat_north, :bbox_lon_west, :bbox_lat_south, :bbox_lon_east, :label, :point, :bbox],
             :nested_ordered_creator_attributes => [:id, :_destroy, :index, :creator],
-            :nested_related_items_attributes => [:id, :_destroy, :label, :related_url]
+            :nested_ordered_title_attributes => [:id, :_destroy, :index, :title],
+            :nested_ordered_contributor_attributes => [:id, :_destroy, :index, :contributor],
+            :nested_ordered_abstract_attributes => [:id, :_destroy, :index, :abstract],
+            :nested_ordered_additional_information_attributes => [:id, :_destroy, :index, :additional_information],
+            :nested_related_items_attributes => [:id, :_destroy, :label, :related_url, :index]
           }
         ] + [
             {
