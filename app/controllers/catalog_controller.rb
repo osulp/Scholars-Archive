@@ -14,7 +14,7 @@ class CatalogController < ApplicationController
   end
 
   def self.title_field
-    solr_name('title', :stored_sortable)
+    solr_name('nested_ordered_title_label', :stored_sortable)
   end
 
   def self.modified_field
@@ -50,11 +50,11 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       qt: "search",
       rows: 10,
-      qf: "title_tesim description_tesim creator_tesim keyword_tesim"
+      qf: "nested_ordered_title_label_tesim description_tesim creator_tesim keyword_tesim"
     }
 
     # solr field configuration for document/show views
-    config.index.title_field = solr_name("title", :stored_searchable)
+    config.index.title_field = solr_name("nested_ordered_title_label", :stored_searchable)
     config.index.display_type_field = solr_name("has_model", :symbol)
     config.index.thumbnail_field = 'thumbnail_path_ss'
 
@@ -195,7 +195,7 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise.
     config.add_search_field('all_fields', label: 'All Fields') do |field|
       all_names = config.show_fields.values.map(&:field).join(" ")
-      title_name = solr_name("title", :stored_searchable)
+      title_name = solr_name("nested_ordered_title_label", :stored_searchable)
       field.solr_parameters = {
         qf: "#{all_names} alt_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_title_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
         pf: title_name.to_s
