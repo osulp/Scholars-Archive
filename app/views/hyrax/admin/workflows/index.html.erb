@@ -33,7 +33,7 @@
                   <% @status_list.each do |document| %>
                       <tr>
                         <td>
-                          <%= link_to document, [main_app, document] %>
+                          <%= link_to document.title.join('; '), [main_app, document] %>
                         </td>
                         <td>
                           <%= document.depositor %>
