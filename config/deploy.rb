@@ -30,7 +30,7 @@ set :pty, true
 append :linked_files, 'config/local_env.yml', 'config/config.yml', 'config/initializers/hyrax.rb', 'config/analytics.yml'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp', 'config/puma', 'public/assets', 'public/sitemap'
+append :linked_dirs, 'log', 'tmp', 'config/puma', 'public/assets', 'public/sitemap', 'public/branding'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
