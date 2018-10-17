@@ -30,7 +30,12 @@ class SolrDocument
   def self.solrized_methods(property_names)
     property_names.each do |property_name|
       define_method property_name.to_sym do
-        self[Solrizer.solr_name(property_name)]
+        values = self[Solrizer.solr_name(property_name)]
+        if values.respond_to?(:each)
+          values.reject(&:blank?)
+        else
+          values
+        end
       end
     end
   end
