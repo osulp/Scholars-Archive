@@ -28,7 +28,7 @@ terms:
   active: true
 - id: "http://id.loc.gov/authorities/names/n84147452"
   term: "Graduate School"
-  active: true
+  active: false
 - id: "http://id.loc.gov/authorities/names/n84131837"
   term: "Hatfield Marine Science Center"
   active: true
