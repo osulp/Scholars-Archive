@@ -22,7 +22,6 @@ RSpec.describe Default do
       g
     }
 
-
     let(:date) { "2022-01-01" }
     let(:facet) { asset.to_solr["date_facet_yearly_ssim"] }
 
@@ -300,20 +299,27 @@ RSpec.describe Default do
       ]
       expect(g.nested_ordered_creator.length).to eq 0
     end
-    it "should not persist items when either one of the attributes are blank" do
+    it "should not persist item when only creator is blank" do
       g = described_class.new()
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
-          {
-              :index => "",
-              :creator => "CreatorA"
-          },
           {
               :index => "1",
               :creator => ""
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 0
+    end
+    it "should persist item when only index is blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_creator_attributes = [
+          {
+              :index => "",
+              :creator => "CreatorA"
+          }
+      ]
+      expect(g.nested_ordered_creator.length).to eq 1
     end
     it "should work on already persisted items" do
       g = described_class.new()
@@ -364,6 +370,99 @@ RSpec.describe Default do
     expect(g.nested_ordered_creator.map{|x| x.creator.first}).to contain_exactly("Creator1","Creator2")
   end
 
+  describe "#nested_related_items_attributes" do
+    let(:attributes) do
+      [{
+           :index => "0",
+           :label => "LabelA",
+           :related_url => "UrlA"
+       }]
+    end
+    
+    it "should be able to delete items" do
+      g = described_class.new()
+      g.nested_related_items_attributes = attributes
+      g.nested_related_items_attributes = [
+          {
+              :id => g.nested_related_items.first.id,
+              :_destroy => true
+          },
+          {
+              :index => "1",
+              :label => "LabelB",
+              :related_url => "UrlB"
+          }
+      ]
+      expect(g.nested_related_items.length).to eq 1
+      expect(g.nested_related_items.first.label).to eq ["LabelB"]
+    end
+    it "should not persist items when all are blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = attributes
+      g.nested_related_items_attributes = [
+          {
+              :index => "",
+              :label => "",
+              :related_url => ""
+          },
+          {
+              :index => "",
+              :label => "",
+              :related_url => ""
+          }
+      ]
+      expect(g.nested_related_items.length).to eq 0
+    end
+    
+    it "should work on already persisted items" do
+      g = described_class.new()
+      g.nested_related_items_attributes = attributes
+      expect(g.nested_related_items.first.label).to eq ["LabelA"]
+    end
+    it "should be able to edit" do
+      g = described_class.new()
+      g.nested_related_items_attributes = attributes
+      expect(g.nested_related_items.length).to eq 1
+      expect(g.nested_related_items.first.label).to eq ["LabelA"]
+
+      g.nested_related_items.first.label = ["LabelB"]
+      g.nested_related_items.first.persist!
+      expect(g.nested_related_items.length).to eq 1
+      expect(g.nested_related_items.first.label).to eq ["LabelB"]
+    end
+    it "should not create blank ones" do
+      g = described_class.new(keyword: ['test'])
+      g.nested_related_items_attributes = [
+          {
+              :index => "",
+              :label => "",
+              :related_url => ""
+          }
+      ]
+      expect(g.nested_related_items.length).to eq 0
+    end
+  end
+
+  it "should be able to create multiple nested related items with order index" do
+    g = described_class.new()
+    g.nested_related_items_attributes = [
+        {
+          "index" => "0",
+          "related_url" => "ItemUrl1",
+          "label" =>"Label1"
+        },
+        {
+          "index" => "1",
+          "related_url" => "ItemUrl2",
+          "label" =>"Label2"
+        }
+    ]
+    expect(g.nested_related_items.length).to eq 2
+    expect(g.nested_related_items.map{|x| x.index.first}).to contain_exactly("0","1")
+    expect(g.nested_related_items.map{|x| x.related_url.first}).to contain_exactly("ItemUrl1","ItemUrl2")
+    expect(g.nested_related_items.map{|x| x.label.first}).to contain_exactly("Label1","Label2")
+  end
+
   describe "#nested_ordered_title_attributes" do
     let(:attributes) do
       [{
@@ -401,20 +500,28 @@ RSpec.describe Default do
       ]
       expect(g.nested_ordered_title.length).to eq 0
     end
-    it "should not persist items when either one of the attributes are blank" do
+
+    it "should not persist item when only title is blank" do
       g = described_class.new()
       g.nested_ordered_title_attributes = [
-        {
-          :index => "",
-          :title => "TitleA"
-        },
-        {
-          :index => "1",
-          :title => ""
-        }
+          {
+              :index => "1",
+              :title => ""
+          }
       ]
       expect(g.nested_ordered_title.length).to eq 0
     end
+    it "should persist item when only index is blank" do
+      g = described_class.new()
+      g.nested_ordered_title_attributes = [
+          {
+              :index => "",
+              :title => "TitleA"
+          }
+      ]
+      expect(g.nested_ordered_title.length).to eq 1
+    end
+
     it "should work on already persisted items" do
       g = described_class.new()
       g.nested_ordered_title_attributes = attributes
@@ -500,21 +607,28 @@ RSpec.describe Default do
       ]
       expect(g.nested_ordered_contributor.length).to eq 0
     end
-    it "should not persist items when either one of the attributes are blank" do
+
+    it "should not persist item when only contributor is blank" do
       g = described_class.new()
-      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = [
-        {
-          :index => "",
-          :contributor => "ContributorA"
-        },
-        {
-          :index => "1",
-          :contributor => ""
-        }
+          {
+              :index => "1",
+              :contributor => ""
+          }
       ]
       expect(g.nested_ordered_contributor.length).to eq 0
     end
+    it "should persist item when only index is blank" do
+      g = described_class.new()
+      g.nested_ordered_contributor_attributes = [
+          {
+              :index => "",
+              :contributor => "ContributorA"
+          }
+      ]
+      expect(g.nested_ordered_contributor.length).to eq 1
+    end
+
     it "should work on already persisted items" do
       g = described_class.new()
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
@@ -586,21 +700,29 @@ RSpec.describe Default do
       ]
       expect(g.nested_ordered_abstract.length).to eq 0
     end
-    it "should not persist items when either one of the attributes are blank" do
+
+    it "should not persist item when only abstract is blank" do
       g = described_class.new()
-      g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = [
-        {
-          :index => "",
-          :abstract => "AbstractA"
-        },
-        {
-          :index => "1",
-          :abstract => ""
-        }
+          {
+              :index => "1",
+              :abstract => ""
+          }
       ]
       expect(g.nested_ordered_abstract.length).to eq 0
     end
+
+    it "should persist item when only index is blank" do
+      g = described_class.new()
+      g.nested_ordered_abstract_attributes = [
+          {
+              :index => "",
+              :abstract => "AbstractA"
+          }
+      ]
+      expect(g.nested_ordered_abstract.length).to eq 1
+    end
+
     it "should work on already persisted items" do
       g = described_class.new()
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
