@@ -228,8 +228,11 @@ module ScholarsArchive
          .map { |obj| obj[2] }
     end
 
+    ##
+    # Find any metadata values in the solr_metdata that aren't in the CSV metadata, case-insensitive and 
+    # without any bogus whitespace characters. Any still found in SOLR will be appended.
     def solr_metadata_not_in_csv(csv_metadata, solr_metadata)
-      not_in_csv = solr_metadata.reject { |s| csv_metadata.include?(s) }
+      not_in_csv = solr_metadata.reject { |s| csv_metadata.any? { |c| c.casecmp(s.strip).zero? } }
       log("ERROR: Found solr metadata that wasn't in the CSV, appending to the end of the list during migration => #{not_in_csv.join('; ')}") unless not_in_csv.empty?
       not_in_csv
     end
