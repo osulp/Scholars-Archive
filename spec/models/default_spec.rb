@@ -313,7 +313,7 @@ RSpec.describe Default do
     it "should persist item when only index is blank" do
       g = described_class.new()
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
-      g.nested_ordered_label_attributes = [
+      g.nested_ordered_creator_attributes = [
           {
               :index => "",
               :creator => "CreatorA"
@@ -398,7 +398,7 @@ RSpec.describe Default do
     end
     it "should not persist items when all are blank" do
       g = described_class.new()
-      g.nested_ordered_title_attributes = nested_ordered_title_attributes
+      g.nested_ordered_title_attributes = attributes
       g.nested_related_items_attributes = [
           {
               :index => "",
