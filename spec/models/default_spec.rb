@@ -445,7 +445,7 @@ RSpec.describe Default do
 
   it "should be able to create multiple nested related items with order index" do
     g = described_class.new()
-    g.nested_related_items_attributes = nested_related_items_attributes
+    g.nested_related_items_attributes = attributes
     g.nested_related_items_attributes = [
         {
           "index" => "0",
