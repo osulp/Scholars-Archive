@@ -39,14 +39,14 @@ namespace :scholars_archive do
       csv << ["etd_id", "etd_title", "graduation_year", "degree_level", "degree_name", "degree_field",
               "academic_affiliation", "clickable_url", "total_downloads"]
       works_to_process.each do |work_id|
+        logger.info "Processing work: #{work_id}"
+        work_model = has_model_ssim.constantize
+        work = work_model.find(work_id)
+        work_url = citeable_url + work_id
+        (degree_field, academic_affiliation) = getUriLabel(work_id, logger)
+        filesets = extract_all_filesets(work)
+        work_downloads = 0
         begin
-          logger.info "Processing work: #{work_id}"
-          work_model = has_model_ssim.constantize
-          work = work_model.find(work_id)
-          work_url = citeable_url + work_id
-          (degree_field, academic_affiliation) = getUriLabel(work_id)
-          filesets = extract_all_filesets(work)
-          work_downloads = 0
           filesets.each do |fileset|
             fileset_id = fileset.id
             logger.info "Processing fileset: #{fileset_id}"
@@ -63,25 +63,27 @@ namespace :scholars_archive do
     end
   end
 
-  def getUriLabel(work_id)
+  def getUriLabel(work_id, logger)
     etd_doc = ActiveFedora::SolrService.query("id:#{work_id}", :rows => 1)
     if etd_doc.present?
       # sample data: Integrative Biology$http://opaquenamespace.org/ns/osuDegreeFields/KhFIkND8
-      if etd_doc.first["degree_field_label_ssim"].first.split('$').first.present?
+      if etd_doc.first["degree_field_label_ssim"].present?
         degree_field = etd_doc.first["degree_field_label_ssim"].first.split('$').first
       else
-        logger.error "degree_field not found in ETD #{work_id} in Solr"
+        logger.info "degree_field not found in ETD #{work_id} in Solr"
+        degree_field = ''
       end
 
-      if etd_doc.first["academic_affiliation_label_ssim"].first.split('$').first.present?
+      if etd_doc.first["academic_affiliation_label_ssim"].present?
         academic_affiliation = etd_doc.first["academic_affiliation_label_ssim"].first.split('$').first
       else
-        logger.error "academic affiliation not found in ETD #{work_id} in Solr"
+        logger.info "academic affiliation not found in ETD #{work_id} in Solr"
+        academic_affiliation = ''
       end
     else
       logger.error "ETD #{work_id} not found in Solr"
     end
-    return degree_field, academic_affiliation
+    [degree_field, academic_affiliation]
   end
 
   def extract_all_filesets(work)
