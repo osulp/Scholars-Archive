@@ -72,7 +72,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
-    config.add_facet_field "nested_ordered_creator_label_ssim", label: "Creator", limit: 5, helper_method: :parsed_index
+    config.add_facet_field "creator_ssim", label: "Creator", limit: 5
     config.add_facet_field "nested_ordered_contributor_label_ssim", label: "Contributor", limit: 5, helper_method: :parsed_index
 
 #    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
