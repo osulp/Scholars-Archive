@@ -36,3 +36,6 @@ fits.log
 /public/assets*
 /public/branding*
 docker-compose.override.yml
+
+revisions.log
+migration.csv
