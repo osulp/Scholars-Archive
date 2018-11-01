@@ -49,7 +49,7 @@ module ScholarsArchive
           
           doc[ActiveFedora.index_field_mapper.solr_name("rights_statement", :facetable)] = rights_statement.first
           doc[ActiveFedora.index_field_mapper.solr_name("license", :facetable)] = license.first
-          doc['creator_ssim'] = creator_labels
+          doc['creator_sim'] = creator_labels
         end
       end
     end
