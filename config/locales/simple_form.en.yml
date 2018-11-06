@@ -138,6 +138,7 @@ en:
         is_referenced_by: "Referenced By"
         isbn: "ISBN"
         issn: "ISSN"
+        depositor: "Depositor"
         keyword: "Keyword"
         language: "Language"
         learning_resource_type: "Type of Learning Resource"
