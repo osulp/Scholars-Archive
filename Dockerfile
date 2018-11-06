@@ -1,6 +1,6 @@
 FROM ruby:2.5.1
 RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev mysql-client nodejs libreoffice imagemagick unzip ghostscript libclamav-dev clamav && \
+    apt-get install -y build-essential libpq-dev mysql-client nodejs libreoffice imagemagick unzip ghostscript libclamav-dev clamav clamav-freshclam && \
     rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /opt/fits && \
     curl -fSL -o /opt/fits-1.0.5.zip http://projects.iq.harvard.edu/files/fits/files/fits-1.0.5.zip && \
