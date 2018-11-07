@@ -3,7 +3,7 @@ module ScholarsArchive
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior
     included do
-      before_action :redirect_mismatched_work
+      before_action :redirect_mismatched_work, only: [:show]
       before_action :migrate_work_in_place, only: [:edit, :show]
 
       def redirect_mismatched_work
