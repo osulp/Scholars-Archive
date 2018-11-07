@@ -3,6 +3,7 @@
             <%= render_edit_field_partial(term, f: f) %>
           <% end %>
         </div>
+        <%= render 'form_media', f: f %>
         <% if f.object.display_additional_fields? %>
           <%= link_to t('hyrax.works.form.additional_fields'),
                       '#extended-terms',
@@ -12,7 +13,6 @@
                       'aria-expanded'=> "false",
                       'aria-controls'=> "extended-terms" %>
           <div id="extended-terms" class='collapse'>
-            <%= render 'form_media', f: f %>
             <% f.object.secondary_terms.each do |term| %>
               <%= render_edit_field_partial(term, f: f) %>
             <% end %>
