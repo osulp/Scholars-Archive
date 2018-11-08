@@ -6,6 +6,7 @@ module Hyrax
       # Since hyrax doesnt create new models and simply uses this one, we need to override the model to alter the fields on the form
       include HydraEditor::Form
       include HydraEditor::Form::Permissions
+      include ScholarsArchive::NestedRelatedBehavior
       # Used by the search builder
       attr_reader :scope
 
@@ -26,7 +27,7 @@ module Hyrax
       self.terms = [:title, :creator, :contributor, :description,
                     :date_created, :subject, :language,
                     :representative_id, :thumbnail_id, :based_near,
-                    :related_url, :visibility, :collection_type_gid]
+                    :nested_related_items, :visibility, :collection_type_gid]
 
       self.required_fields = [:title]
 
@@ -70,7 +71,7 @@ module Hyrax
          :subject,
          :language,
          :based_near,
-         :related_url]
+         :nested_related_items]
       end
 
       def banner_info
@@ -129,6 +130,14 @@ module Hyrax
       end
 
       private
+
+        def self.build_permitted_params
+          super + [
+            {
+              :nested_related_items_attributes => [:id, :_destroy, :label, :related_url, :index]
+            }
+          ]
+        end
 
         def all_files_with_access
           member_presenters(member_work_ids).flat_map(&:file_set_presenters).map { |x| [x.to_s, x.id] }

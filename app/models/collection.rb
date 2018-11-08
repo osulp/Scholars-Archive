@@ -3,5 +3,14 @@ class Collection < ActiveFedora::Base
   include ::Hyrax::CollectionBehavior
   # You can replace these metadata if they're not suitable
   include Hyrax::BasicMetadata
-  self.indexer = Hyrax::CollectionWithBasicMetadataIndexer
+  include ScholarsArchive::HasNestedOrderedProperties
+  include ScholarsArchive::HasSolrLabels
+
+  self.indexer = CollectionIndexer
+
+  property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => NestedRelatedItems do |index|
+    index.as :stored_searchable
+  end
+
+  accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
 end
