@@ -4,19 +4,11 @@ module ScholarsArchive
     include Hyrax::WorksControllerBehavior
     included do
       before_action :redirect_mismatched_work, only: [:show]
-      before_action :migrate_work_in_place, only: [:edit, :show]
 
       def redirect_mismatched_work
         curation_concern = ActiveFedora::Base.find(params[:id])
         if curation_concern.class != _curation_concern_type
           redirect_to(main_app.polymorphic_path(curation_concern), status: :moved_permanently) and return
-        end
-      end
-
-      def migrate_work_in_place
-        work = ActiveFedora::Base.find(params[:id])
-        unless Migrator.has_migrated?(work: work)
-          render("/scholars_archive/migration/migration_failed.html.haml", status: 404) and return
         end
       end
     end
