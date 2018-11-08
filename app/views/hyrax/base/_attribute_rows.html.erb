@@ -63,4 +63,4 @@
 <%= presenter.attribute_to_html(:duration, label: t('simple_form.labels.defaults.duration')) %>
 <%= presenter.attribute_to_html(:isbn, label: t('simple_form.labels.defaults.isbn')) %>
 <%= presenter.attribute_to_html(:issn, label: t('simple_form.labels.defaults.issn')) %>
-<%= presenter.attribute_to_html(:depositor, label: t('simple_form.labels.defaults.depositor')) if current_user.admin? %>
+<%= presenter.attribute_to_html(:depositor, label: t('simple_form.labels.defaults.depositor')) if current_user&.admin? %>
