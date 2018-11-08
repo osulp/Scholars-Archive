@@ -22,6 +22,7 @@ module Hyrax
 
       delegate :blacklight_config, to: Hyrax::CollectionsController
 
+      #OVERRIDE HERE
       self.terms = [:title, :creator, :contributor, :description,
                     :date_created, :subject, :language,
                     :representative_id, :thumbnail_id, :based_near,
@@ -61,6 +62,7 @@ module Hyrax
       end
 
       # Terms that appear within the accordion
+      #OVERRIDE HERE
       def secondary_terms
         [:creator,
          :contributor,
