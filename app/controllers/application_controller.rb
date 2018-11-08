@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  ensure_security_headers
+  ensure_security_headers if Rails.env.production? || Rails.env.staging?
   helper Openseadragon::OpenseadragonHelper
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
