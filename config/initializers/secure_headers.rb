@@ -1,4 +1,4 @@
-unless Rails.env.production? || Rails.env.staging? 
+if Rails.env.production? || Rails.env.staging? 
   SecureHeaders::Configuration.default do |config|
     config.cookies = {
       secure: true, # mark all cookies as "Secure"
