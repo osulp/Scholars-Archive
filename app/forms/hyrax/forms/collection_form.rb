@@ -10,7 +10,7 @@ module Hyrax
       # Used by the search builder
       attr_reader :scope
 
-      delegate :id, :depositor, :permissions, :human_readable_type, :member_ids, :nestable?, to: :model
+      delegate :id, :depositor, :permissions, :human_readable_type, :member_ids, :nestable?, :nested_related_items, to: :model
 
       class_attribute :membership_service_class
 
@@ -134,7 +134,7 @@ module Hyrax
         def self.build_permitted_params
           super + [
             {
-              :nested_related_items_attributes => [:id, :_destroy, :label, :related_url, :index]
+              :nested_related_items_attributes => [:id, :_destroy, :label, :related_url]
             }
           ]
         end

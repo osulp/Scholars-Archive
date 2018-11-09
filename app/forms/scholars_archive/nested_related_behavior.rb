@@ -5,8 +5,8 @@ module ScholarsArchive
       delegate :nested_related_items_attributes=, :to => :model
       def initialize_fields
         puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        puts model.nested_related_items.first
-        model.nested_related_items.build({index:"0"})
+        puts model.methods
+        model.nested_related_items.build()
         super
       end
     end
