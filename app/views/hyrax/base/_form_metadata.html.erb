@@ -3,8 +3,9 @@
             <%= render_edit_field_partial(term, f: f) %>
           <% end %>
         </div>
-        <%= render 'form_media', f: f %>
+        <%= render 'form_media', f: f if f.object.model.class.to_s == "Dataset" %>
         <% if f.object.display_additional_fields? %>
+          <%= render 'form_media', f: f %>
           <%= link_to t('hyrax.works.form.additional_fields'),
                       '#extended-terms',
                       class: 'btn btn-primary additional-fields',
