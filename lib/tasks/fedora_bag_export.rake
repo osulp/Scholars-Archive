@@ -24,7 +24,7 @@ namespace :scholars_archive do
   desc 'Generate Bags for Preservation'
   task fedora_bag_export: :environment do
     require 'bagit'
-    bag_export_path = File.join(Rails.root, 'tmp')
+    bag_export_path = ENV['bag_export_path']
     export_work_list = ENV['workids_list']
     has_model_ssim = ENV['has_model_ssim']
     fedora_bag_export(bag_export_path, export_work_list, has_model_ssim)
@@ -37,7 +37,7 @@ namespace :scholars_archive do
     logger.info 'Generate Bags for Preservation: '
     counter = 0
 
-    workids_file = File.join(File.dirname(__FILE__), workids_list)
+    workids_file = File.join(File.dirname(__FILE__), export_work_list)
     work_to_export = []
     File.readlines(workids_file).each do |line|
       work_to_export.push(line.chomp.strip)
@@ -64,39 +64,39 @@ namespace :scholars_archive do
           download_link = 'https://ir.library.oregonstate.edu/downloads/' + fileset.id.to_s
           filename = fileset.label
           if fileset.embargo_id.present?
-            logger.warn "#{work_id}, #{fileset} is embargoed"
+            logger.warn "#{work_id}, #{fileset.id}, #{fileset} is embargoed"
           else
             command = "curl #{download_link} -o #{bag_data_dir_path}/#{filename}"
             system(command)
-            logger.info "\t #{command}"
-            logger.info "\t Download bitstream #{fileset.id}, #{filename}"
+            logger.info "Download bitstream #{fileset.id}, #{filename}"
           end
         end
         # find all children works
         childrenworks = extract_all_children(work)
         # export work metadata to bagit-info.txt
-        logger.info "\t Save work metadata #{work.id}"
-        info_str = ''
+        logger.info "Save work metadata #{work.id}"
+        info_str = "WORK_ID:#{work.id} \n"
         work.attribute_names.sort.each do |attr|
-          info_str += work.attr + "\n"
+          info_str += "#{attr} + #{work.send(attr)} + \n"
         end
         File.open(baginfo_path, 'a') { |file| file.write(info_str) }
         childrenworks.each do |child|
-          info_str = ''
+          logger.info "Save work metadata #{child.id}"
+          info_str = "CHILD WORK_ID:#{child.id} \n"
           child.attribute_names.sort.each do |attr|
-            info_str += child.attr + "\n"
+            info_str += "#{attr} + #{child.send(attr)} + \n"
           end
           File.open(baginfo_path, 'a') { |file| file.write(info_str) }
         end
-        logger.info "\t Create Bag"
+        logger.info "Create Bag"
         bag = BagIt::Bag.new(bag_dir_path)
         bag.manifest!
         counter += 1
       rescue StandardError => e
-        logger.warn "\t failed to export Bag for work #{work.id}, error found:"
-        logger.warn "\t #{e.message}"
+        logger.warn "failed to export Bag for work #{work.id}, error found:"
+        logger.warn "#{e.message}"
       end
-      logger.info "\t Created Bags: #{counter}"
+      logger.info "Created Bags: #{counter}"
     end
     logger.info 'DONE!'
     logger.info "Total Created Bags: #{counter}"
@@ -119,7 +119,7 @@ namespace :scholars_archive do
         children << member
         children << extract_all_children(member)
       else
-        skip
+        next
       end
     end
   end
