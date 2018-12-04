@@ -369,6 +369,20 @@ RSpec.describe Default do
     expect(g.nested_ordered_creator.map{|x| x.index.first}).to contain_exactly("0","1")
     expect(g.nested_ordered_creator.map{|x| x.creator.first}).to contain_exactly("Creator1","Creator2")
   end
+  # Test sort is happening on id as integer, especially for more than 10 items, see Issue #1773
+  it "should return multiple nested ordered creators in correct order" do
+    g = described_class.new()
+    g.nested_ordered_title_attributes = nested_ordered_title_attributes
+    g.nested_ordered_creator_attributes = [
+        { "index" => "0", "creator" => "Creator0" },
+        { "index" => "21", "creator" => "Creator21" },
+        { "index" => "1", "creator" => "Creator1" },
+        { "index" => "10", "creator" => "Creator10" },
+        { "index" => "2", "creator" => "Creator2"},
+        { "index" => "3", "creator" => "Creator3"}
+    ]
+    expect(g.creator).to eq ["Creator0", "Creator1", "Creator2", "Creator3", "Creator10", "Creator21"]
+  end
 
   describe "#nested_related_items_attributes" do
     let(:attributes) do
