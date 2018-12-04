@@ -53,29 +53,30 @@ module ScholarsArchive
 
       # Returns a sorted array (by index value) of nested titles given an array with two
       # values per element in the form [[title, index],...].
+      # Updated to make sure sort is done on integer values of index, see Issue #1773
       #
       # ==== Example
       #
       # input: [["Another Title", "1"], ["My Title", "0"]]
       # output: [["My Title", "0"], ["Another Title", "1"]]
       def sort_titles_by_index
-        validate_titles.sort_by{ |titles| titles.second }
+        validate_titles.sort_by{ |titles| titles.second.to_i }
       end
 
       def sort_creators_by_index
-        validate_creators.sort_by{ |creators| creators.second }
+        validate_creators.sort_by{ |creators| creators.second.to_i }
       end
 
       def sort_abstracts_by_index
-        validate_abstracts.sort_by{ |abstracts| abstracts.second }
+        validate_abstracts.sort_by{ |abstracts| abstracts.second.to_i }
       end
 
       def sort_contributors_by_index
-        validate_contributors.sort_by{ |contributors| contributors.second }
+        validate_contributors.sort_by{ |contributors| contributors.second.to_i }
       end
 
       def sort_info_by_index
-        validate_info.sort_by{ |info| info.second }
+        validate_info.sort_by{ |info| info.second.to_i }
       end
 
       # Returns an array of items in the form [[title, index], ...] given an
