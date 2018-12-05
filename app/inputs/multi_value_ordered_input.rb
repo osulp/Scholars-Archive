@@ -189,7 +189,7 @@ class MultiValueOrderedInput < MultiValueInput
   def collection
     @collection ||= begin
       val = object[attribute_name]
-      val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_s }
+      val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_i }
     end
   end
 end
