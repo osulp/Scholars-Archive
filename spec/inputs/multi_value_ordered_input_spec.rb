@@ -2,29 +2,14 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe 'MultiValueOrderedInput', type: :input do
-  class Foo < ActiveFedora::Base
+  class FooBar < ActiveFedora::Base
     property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator
     accepts_nested_attributes_for :nested_ordered_creator
   end
 
-  describe '#build_field' do
-    let(:foo) { Foo.new }
-    let(:ref1) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
-    let(:ref2) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
-    before { foo.nested_ordered_creator = [ref1, ref2] }
-    let(:builder) { double('builder', object: foo, object_name: 'foo') }
-
-    subject { MultiValueOrderedInput.new(builder, :nested_ordered_creator, nil, :multi_value, {}) }
-
-    it 'renders multi-value' do
-      expect(subject).to receive(:build_field).with(ref1, Fixnum)
-      expect(subject).to receive(:build_field).with(ref2, Fixnum)
-      subject.input({})
-    end
-  end
-
   describe '#collection' do
-    let(:bar) { Foo.new }
+    let(:foo) { FooBar.new }
+
     let(:creator1) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
     let(:creator2) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
     let(:creator3) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
@@ -32,7 +17,7 @@ describe 'MultiValueOrderedInput', type: :input do
     let(:creator5) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
     let(:creator6) { NestedOrderedCreator.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
 
-    before { 
+    before do
       creator1.creator = ["creator0"]
       creator1.index = ["0"]
 
@@ -51,9 +36,10 @@ describe 'MultiValueOrderedInput', type: :input do
       creator6.creator = ["creator3"]
       creator6.index = ["3"]
 
-      bar.nested_ordered_creator = [creator1, creator2, creator3, creator4, creator5, creator6]
-    }
-    let(:builder) { double('builder', object: bar, object_name: 'bar') }
+      foo.nested_ordered_creator = [creator1, creator2, creator3, creator4, creator5, creator6]
+    end
+
+    let(:builder) { double('builder', object: foo, object_name: 'foo') }
 
     subject { MultiValueOrderedInput.new(builder, :nested_ordered_creator, nil, :multi_value, {}) }
 
@@ -67,6 +53,5 @@ describe 'MultiValueOrderedInput', type: :input do
       expect(subject.send(:collection).map {|c| c.creator.first}).to eq (["creator0", "creator1", "creator2", "creator3", "creator10", "creator21"])
       subject.input({})
     end
-
   end
 end
