@@ -1,9 +1,12 @@
-# Export binaries and metadata from Hyrax/Fedora Commons in Bags for MetaArchives preservation
-# An example: given a list of works created by Solr like work sf268524q
-# the script will create a directory sf268524q, download binaries of its filesets
-# sf268524q and 2z10wq31x, and save work metadata to bagit-infor.txt
+# frozen_string_literal: true
+
+# Export binaries and metadata from Hyrax/Fedora Commons in Bags for preservation
+# Given a list of works created by Solr (like sf268524q), the script will:
+# create a directory sf268524q
+# download binaries of all its filesets
+# save metadata of work and its children works to bagit-infor.txt
 # The script works as follows
-# query Solr with to get all works of an adminset (fileset does not have adminset)
+# get works list and has_model from argument
 # foreach work
 #   create a directory named by work_id
 #   get all its filesets
@@ -11,91 +14,113 @@
 #       get its download link
 #       download bitstream to directory work_id/data
 #   end
-#   save work metadata to bagit-infor.txt
-#   bagit
+#   get all children works
+#   foreach child work
+#     save work metadata to bagit-infor.txt
+#   end
+#   call bagit
 # end
 namespace :scholars_archive do
-  desc 'Generate Bags for MetaArchive Preservation'
+  desc 'Generate Bags for Preservation'
   task fedora_bag_export: :environment do
     require 'bagit'
-    export_path = '/data0/hydra/shared/tmp/fedora_bag_export/exports/ETD_exports/'
-    export_work_list = File.join(File.dirname(__FILE__), '../../sa_scripts/etd_export.list')
-    has_model_ssim = 'GraduateThesisOrDissertation'
-    fedora_bag_export(export_path, export_work_list, has_model_ssim)
+    bag_export_path = ENV['bag_export_path']
+    export_work_list = ENV['workids_list']
+    has_model_ssim = ENV['has_model_ssim']
+    fedora_bag_export(bag_export_path, export_work_list, has_model_ssim)
   end
 
-  def fedora_bag_export(export_path, export_work_list, has_model_ssim)
+  def fedora_bag_export(bag_export_path, export_work_list, has_model_ssim)
     # Create logger
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/fedora-bag-export-#{datetime_today}.log")
-    logger.info "Generate Bags for MetaArchive Preservation: "
+    logger = ActiveSupport::Logger.new("#{Rails.root}/log/bag-export-#{datetime_today}.log")
+    logger.info 'Generate Bags for Preservation: '
     counter = 0
 
-    # Have to careful with the data format because otherwise Fedora will complain with id not found
-    # you do not need to wrap id in double quote
-    work_to_export = Array.new
-    File.readlines(export_work_list).each do |line|
-      work_to_export.push(line.chomp)
+    workids_file = File.join(File.dirname(__FILE__), export_work_list)
+    work_to_export = []
+    File.readlines(workids_file).each do |line|
+      work_to_export.push(line.chomp.strip)
     end
-
     work_to_export.sort!
     logger.info "A total of #{work_to_export.length} Fedora works to export."
 
     # Perform export
-    # to run test locally, you need to run RAILS_ENV=development not staging
+    # to run test locally: prefix RAILS_ENV=development
     work_to_export.each do |work_id|
       logger.info "Export work #{work_id}"
       # create BagIt directory
-      bag_dir_path = File.join(export_path, work_id)
+      bag_dir_path = File.join(bag_export_path, work_id)
       Dir.mkdir(bag_dir_path) unless Dir.exist?(bag_dir_path)
       bag_data_dir_path = File.join(bag_dir_path, 'data')
       Dir.mkdir(bag_data_dir_path) unless Dir.exist?(bag_data_dir_path)
-      # bag-info.txt
-      baginfo = File.join(bag_dir_path, 'bag-info.txt')
+      baginfo_path = File.join(bag_dir_path, 'bag-info.txt')
       begin
         work_model = has_model_ssim.constantize
         work = work_model.find(work_id)
         # find all filesets
         filesets = extract_all_filesets(work)
         filesets.each do |fileset|
-          #get download link e.g., https://ir.library.oregonstate.edu/downloads/1831cq42s
-          download_link = 'https://ir.library.oregonstate.edu/downloads/' + "#{fileset.id}"
+          download_link = 'https://ir.library.oregonstate.edu/downloads/' + fileset.id.to_s
           filename = fileset.label
-          command = "curl #{download_link} > #{bag_data_dir_path}/#{filename}"
-          system(command)
-          logger.info "\t #{command}"
-          logger.info "\t Download bitstream #{fileset.id}"
+          if fileset.embargo_id.present?
+            logger.warn "#{work_id}, #{fileset.id}, #{fileset} is embargoed"
+          else
+            command = "curl #{download_link} -o #{bag_data_dir_path}/#{filename}"
+            system(command)
+            logger.info "Download bitstream #{fileset.id}, #{filename}"
+          end
         end
+        # find all children works
+        childrenworks = extract_all_children(work)
         # export work metadata to bagit-info.txt
-        logger.info "\t Save work metadata #{work.id}"
-        info_str = "id: " + work.id + "\n" + "title: " + work.title.first + "\n" + "admin_set: " + work.admin_set.title.first + "\n" + "creator(s): " + work.creator.join(",")
-        File.open(baginfo, 'w') {|file| file.write(info_str)}
-        logger.info "\t Create Bag"
+        logger.info "Save work metadata #{work.id}"
+        info_str = "WORK_ID:#{work.id} \n"
+        work.attribute_names.sort.each do |attr|
+          info_str += "#{attr} + #{work.send(attr)} + \n"
+        end
+        File.open(baginfo_path, 'a') { |file| file.write(info_str) }
+        childrenworks.each do |child|
+          logger.info "Save work metadata #{child.id}"
+          info_str = "CHILD WORK_ID:#{child.id} \n"
+          child.attribute_names.sort.each do |attr|
+            info_str += "#{attr} + #{child.send(attr)} + \n"
+          end
+          File.open(baginfo_path, 'a') { |file| file.write(info_str) }
+        end
+        logger.info "Create Bag"
         bag = BagIt::Bag.new(bag_dir_path)
         bag.manifest!
         counter += 1
-
-      rescue => e
-        logger.info "\t failed to export Bag for work #{work.id}, error found:"
-        logger.info "\t #{e.message}"
+      rescue StandardError => e
+        logger.warn "failed to export Bag for work #{work.id}, error found:"
+        logger.warn "#{e.message}"
       end
-      logger.info "\t Create Bags: #{counter}"
+      logger.info "Created Bags: #{counter}"
     end
-    logger.info "DONE!"
-    logger.info "Total Create Bags: #{counter}"
-
+    logger.info 'DONE!'
+    logger.info "Total Created Bags: #{counter}"
   end
 
   # originally developed at https://github.com/osulp/Scholars-Archive/blob/master/app/controllers/scholars_archive/handles_controller.rb#L96
   def extract_all_filesets(work)
     filesets = []
     work.members.each do |member|
-      if member.class.to_s != "FileSet"
-        filesets << extract_all_filesets(member)
-      else
-        filesets << member
-      end
+      filesets << extract_all_filesets(member) if member.class.to_s != 'FileSet'
+      filesets << member if member.class.to_s == 'FileSet'
     end
     filesets.flatten.compact
+  end
+
+  def extract_all_children(work)
+    children = []
+    work.members.each do |member|
+      if member.class.to_s != 'FileSet'
+        children << member
+        children << extract_all_children(member)
+      else
+        next
+      end
+    end
   end
 end
