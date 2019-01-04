@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Connects this user object to Hydra behaviors.
   include Hydra::User
@@ -7,9 +9,7 @@ class User < ApplicationRecord
   include Hyrax::User
   include Hyrax::UserUsageStats
 
-  if Blacklight::Utils.needs_attr_accessible?
-    attr_accessible :email, :password, :password_confirmation
-  end
+  attr_accessible :email, :password, :password_confirmation if Blacklight::Utils.needs_attr_accessible?
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
   # Include default devise modules. Others available are:
@@ -43,13 +43,13 @@ class User < ApplicationRecord
   # number of seconds have elapsed since the previous update occurred.
   def update_from_person_api
     right_now = DateTime.now.in_time_zone(ScholarsArchive::Application.config.time_zone)
-    if !self.api_person_updated_at || self.api_person_updated_at + ENV['OSU_API_PERSON_REFRESH_SECONDS'].to_i.seconds < right_now
+    if !api_person_updated_at || api_person_updated_at + ENV['OSU_API_PERSON_REFRESH_SECONDS'].to_i.seconds < right_now
       service = ScholarsArchive::OsuApiService.new
       person = service.get_person(username)
       self.api_person_type = person['attributes']['primaryAffiliation']
       self.api_person_updated_at = DateTime.now
       # TODO: set api_student_type to nil, undergraduate, or graduate once the Person API has been extended to support fetching this data
-      self.save
+      save
     end
   end
 
@@ -57,7 +57,8 @@ class User < ApplicationRecord
   # true in the case where the API could not provide the details per users preference
   # in Banner.
   def employee?
-    return self.api_person_type.casecmp('employee').zero? if self.api_person_type
+    return api_person_type.casecmp('employee').zero? if api_person_type
+
     true
   end
 
@@ -65,7 +66,8 @@ class User < ApplicationRecord
   # true in the case where the API could not provide the details per users preference
   # in Banner.
   def student?
-    return self.api_person_type.casecmp('student').zero? if self.api_person_type
+    return api_person_type.casecmp('student').zero? if api_person_type
+
     true
   end
 end

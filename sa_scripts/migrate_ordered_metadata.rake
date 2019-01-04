@@ -6,7 +6,6 @@ STDOUT.sync = true
 namespace :scholars_archive do
   desc 'Migrate metadata for ordered properties having CSVs supporting the order of metadata'
   task migrate_ordered_metadata_with_handles: :environment do
-
     creator_csv_path = ENV.fetch('CREATOR_CSV_PATH', 'tmp/creator_migration.csv')
 
     migrator = ScholarsArchive::MigrateOrderedMetadataService.new(
@@ -46,7 +45,7 @@ namespace :scholars_archive do
 
     file_name = "#{Date.today}-handles-ordered-metadata-migration.log"
     logger = Logger.new(File.join(Rails.root, 'log', file_name))
-    logger.debug("Processing works without handles")
+    logger.debug('Processing works without handles')
 
     query_string = '-replaces_ssim:* and depositor_ssim:* and workflow_state_name_ssim:*'
     doc = ActiveFedora::SolrService.query(query_string, df: 'id', fl: 'id', rows: 100_000)
@@ -73,30 +72,26 @@ namespace :scholars_archive do
 
     file_name = "force-#{Date.today}-handles-ordered-metadata-migration.log"
     logger = Logger.new(File.join(Rails.root, 'log', file_name))
-    logger.debug("Processing works without handles (force) - already partially migrated")
+    logger.debug('Processing works without handles (force) - already partially migrated')
 
     query_string = '-nested_ordered_creator_tesim:http* AND nested_ordered_creator_tesim:[* TO *] AND -has_model_ssim:FileSet AND -replaces_tesim:[* TO *]'
     doc = ActiveFedora::SolrService.query(query_string, df: 'id', fl: 'id', rows: 100_000)
     ids = doc.map { |d| d['id'] }
     counter = 0
     ids.each do |id|
-      begin
-        work = ActiveFedora::Base.find(id)
-        if force_migration(work, migrator, logger) == true
-          counter += 1
-        end
-      rescue => e
-        logger.debug "\tfailed to save/migrate work #{id}: #{e.message} #{e.backtrace}"
-      end
+      work = ActiveFedora::Base.find(id)
+      counter += 1 if force_migration(work, migrator, logger) == true
+    rescue StandardError => e
+      logger.debug "\tfailed to save/migrate work #{id}: #{e.message} #{e.backtrace}"
     end
     logger.debug "Total items successfully cleaned up: #{counter}"
-    logger.debug("Done")
+    logger.debug('Done')
   end
 
   def force_migration(work, migrator, logger)
     work_id = work.present? ? work.id : nil
     handle = nil
-    doc = migrator.solr_doc(handle,work)
+    doc = migrator.solr_doc(handle, work)
     logger.debug("Preparing work:#{work_id}) : #{doc['id']} : Finding work, attempting to migrate")
 
     creators = creators(handle, doc, migrator)
@@ -136,7 +131,7 @@ namespace :scholars_archive do
       logger.debug("Force migrate for work:#{work_id}) : #{doc['id']} : Failed to migrate work")
       return false
     end
-    return false
+    false
   end
 
   def creators(handle, solr_doc, migrator)

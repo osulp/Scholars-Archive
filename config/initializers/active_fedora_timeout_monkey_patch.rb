@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # TODO: we can remove this file once this PR https://github.com/samvera/active_fedora/pull/1271 is released in active-fedora
 
 module ActiveFedoraOverride
@@ -7,10 +9,8 @@ module ActiveFedoraOverride
 
   def authorized_connection
     super.tap do |conn|
-      if request_options
-        request_options.each do |option, value|
-          conn.options[option.to_sym] = value
-        end
+      request_options&.each do |option, value|
+        conn.options[option.to_sym] = value
       end
     end
   end

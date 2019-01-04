@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for the degree_names field
   class DegreeNameService < Hyrax::QaSelectService
@@ -12,6 +14,5 @@ module ScholarsArchive
     def select_sorted_all_options
       select_all_options.sort
     end
-
   end
 end

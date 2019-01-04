@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module OerPresenterBehavior
     extend ActiveSupport::Concern
@@ -7,7 +9,7 @@ module ScholarsArchive
                :learning_resource_type,
                :time_required,
                :typical_age_range,
-               :duration,  to: :solr_document
+               :duration, to: :solr_document
     end
   end
 end

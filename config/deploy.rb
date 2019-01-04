@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'yaml'
-config = YAML.load_file('config/config.yml')["deployment"] || {}
+config = YAML.load_file('config/config.yml')['deployment'] || {}
 
 # config valid only for current version of Capistrano
 lock '3.8.2'
@@ -43,10 +45,10 @@ set :passenger_restart_with_touch, true
 # tell monit to restart all defined processes (i.e. puma, sidekiq)
 task :restart_monit do
   on roles(:app) do
-    execute "sudo /usr/bin/monit restart all"
+    execute 'sudo /usr/bin/monit restart all'
   end
 end
-after "deploy:published", "restart_monit"
+after 'deploy:published', 'restart_monit'
 
 # Production and Staging environments are set to compile errors pages in the asset pipeline,
 # and this task takes the most recent compiled error page and places it in the public/ path
@@ -54,10 +56,10 @@ namespace :deploy do
   desc 'Copy compiled error pages to public'
   task :copy_error_pages do
     on roles(:all) do
-      %w(404 500).each do |page|
+      %w[404 500].each do |page|
         page_glob = "#{current_path}/public/#{fetch(:assets_prefix)}/#{page}*.html"
         # copy newest asset
-        asset_file = capture :ruby, %Q{-e "print Dir.glob('#{page_glob}').max_by { |file| File.mtime(file) }"}
+        asset_file = capture :ruby, %{-e "print Dir.glob('#{page_glob}').max_by { |file| File.mtime(file) }"}
         if asset_file
           execute :cp, "#{asset_file} #{current_path}/public/#{page}.html"
         else

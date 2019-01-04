@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   module ContactFormRecaptchaBehavior
     def check_recaptcha
@@ -6,7 +8,7 @@ module Hyrax
           true
         else
           flash.now[:error] = 'Captcha did not verify properly.'
-          flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(", ")
+          flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(', ')
           false
         end
       else

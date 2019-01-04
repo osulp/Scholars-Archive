@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 RSpec.describe Hyrax::ArticleForm do
-  let(:new_form) { described_class.new(Article.new, nil, double('Controller')) }
+  let(:new_form) { described_class.new(Article.new, nil, instance_double('Controller')) }
   let(:user) do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
-  let(:ability) { double('Ability') }
+  let(:ability) { instance_double('Ability') }
 
   before do
     allow(new_form).to receive(:current_ability).and_return(ability)

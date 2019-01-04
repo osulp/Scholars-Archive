@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Get total downloads and metadata for fileset and its parent work
 # Given a list of parent work ids (e.g., ETD), the script will
 # - find filesets for each work
@@ -22,7 +24,7 @@
 require 'csv'
 
 namespace :scholars_archive do
-  desc "Get Total Downloads for Fileset"
+  desc 'Get Total Downloads for Fileset'
   task get_fileset_downloads: :environment do
     workids_list = ENV['workids_list']
     has_model_ssim = ENV['has_model_ssim']
@@ -40,23 +42,21 @@ namespace :scholars_archive do
     csv_output_path = File.join(Rails.root, 'tmp', 'total-downloads-fileset.csv')
     CSV.open(csv_output_path, 'ab') do |csv|
       works_to_process.each do |work_id|
-        begin
-          puts "Processing work: #{work_id}"
-          work_model = has_model_ssim.constantize
-          work = work_model.find(work_id)
-          filesets = extract_all_filesets(work)
-          filesets.each do |fileset|
-            fileset_id = fileset.id
-            puts "Processing fileset: #{fileset_id}"
-            stats = Hyrax::FileUsage.new(fileset_id)
-            total_downloads = stats.total_downloads
-            csv << [work_id, work.title.first, work.graduation_year, work.degree_level, work.degree_name.first,
-            work.degree_field.first, work.academic_affiliation.first, work.admin_set.title.first, fileset_id,
-            fileset.date_uploaded, fileset.title.first, total_downloads]
-          end
-        rescue => e
-          puts "ERROR with work: #{work_id} : #{e}"
+        puts "Processing work: #{work_id}"
+        work_model = has_model_ssim.constantize
+        work = work_model.find(work_id)
+        filesets = extract_all_filesets(work)
+        filesets.each do |fileset|
+          fileset_id = fileset.id
+          puts "Processing fileset: #{fileset_id}"
+          stats = Hyrax::FileUsage.new(fileset_id)
+          total_downloads = stats.total_downloads
+          csv << [work_id, work.title.first, work.graduation_year, work.degree_level, work.degree_name.first,
+                  work.degree_field.first, work.academic_affiliation.first, work.admin_set.title.first, fileset_id,
+                  fileset.date_uploaded, fileset.title.first, total_downloads]
         end
+      rescue StandardError => e
+        puts "ERROR with work: #{work_id} : #{e}"
       end
     end
   end
@@ -64,11 +64,11 @@ namespace :scholars_archive do
   def extract_all_filesets(work)
     filesets = []
     work.members.each do |member|
-      if member.class.to_s != "FileSet"
-        filesets << extract_all_filesets(member)
-      else
-        filesets << member
-      end
+      filesets << if member.class.to_s != 'FileSet'
+                    extract_all_filesets(member)
+                  else
+                    member
+                  end
     end
     filesets.flatten.compact
   end

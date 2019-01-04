@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class OrderedParserService
     def self.parse(labels)
       labels ||= []
-      sorted_labels = labels.map{ |label| parse_index(label)}
-                            .sort_by{ |array| array[1].to_i }
-                            .map{ |array| array[0] }
+      sorted_labels = labels.map { |label| parse_index(label) }
+                            .sort_by { |array| array[1] }
+                            .map { |array| array[0] }
     end
 
     private

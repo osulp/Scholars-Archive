@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'coveralls'
 require 'simplecov'
 require 'capybara/rspec'
@@ -46,13 +48,13 @@ RSpec.configure do |config|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  # rspec-mocks config goes here. You can use an alternate test double
+  # rspec-mocks config goes here. You can use an alternate test instance_double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
     # Prevents you from mocking or stubbing a method that does not exist on
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
-    mocks.verify_partial_doubles = true
+    mocks.verify_partial_instance_doubles = true
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
@@ -62,80 +64,77 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-
   # The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
-=begin
-  # This allows you to limit a spec run to individual examples or groups
-  # you care about by tagging them with `:focus` metadata. When nothing
-  # is tagged with `:focus`, all examples get run. RSpec also provides
-  # aliases for `it`, `describe`, and `context` that include `:focus`
-  # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
-  config.filter_run_when_matching :focus
+  # with RSpec, but feel free to customize to your heart's content.
+  #   # This allows you to limit a spec run to individual examples or groups
+  #   # you care about by tagging them with `:focus` metadata. when nothing
+  #   # is tagged with `:focus`, all examples get run. RSpec also provides
+  #   # aliases for `it`, `describe`, and `context` that include `:focus`
+  #   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
+  #   config.filter_run_when_matching :focus
+  #
+  #   # Allows RSpec to persist some state between runs in order to support
+  #   # the `--only-failures` and `--next-failure` CLI options. We recommend
+  #   # you configure your source control system to ignore this file.
+  #   config.example_status_persistence_file_path = "spec/examples.txt"
+  #
+  #   # Limits the available syntax to the non-monkey patched syntax that is
+  #   # recommended. For more details, see:
+  #   #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
+  #   #   - http://www.teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
+  #   #   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
+  #   config.disable_monkey_patching!
+  #
+  #   # Many RSpec users commonly either run the entire suite or an individual
+  #   # file, and it's useful to allow more verbose output when running an
+  #   # individual spec file.
+  #   if config.files_to_run.one?
+  #     # Use the documentation formatter for detailed output,
+  #     # unless a formatter has already been configured
+  #     # (e.g. via a command-line flag).
+  #     config.default_formatter = 'doc'
+  #   end
+  #
+  #   # Print the 10 slowest examples and example groups at the
+  #   # end of the spec run, to help surface which specs are running
+  #   # particularly slow.
+  #   config.profile_examples = 10
+  #
+  #   # Run specs in random order to surface order dependencies. If you find an
+  #   # order dependency and want to debug it, you can fix the order by providing
+  #   # the seed, which is printed after each run.
+  #   #     --seed 1234
+  #   config.order = :random
+  #
+  #   # Seed global randomization in this process using the `--seed` CLI option.
+  #   # Setting this allows you to use `--seed` to deterministically reproduce
+  #   # test failures related to randomization by passing the same `--seed` value
+  #   # as the one that triggered the failure.
+  #   Kernel.srand config.seed
+  config.before do |example|
+    if example.metadata[:type] == :feature && Capybara.current_driver != :rack_test
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.start
+    end
 
-  # Allows RSpec to persist some state between runs in order to support
-  # the `--only-failures` and `--next-failure` CLI options. We recommend
-  # you configure your source control system to ignore this file.
-  config.example_status_persistence_file_path = "spec/examples.txt"
-
-  # Limits the available syntax to the non-monkey patched syntax that is
-  # recommended. For more details, see:
-  #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
-  #   - http://www.teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
-  #   - http://rspec.info/blog/2014/05/notable-changes-in-rspec-3/#zero-monkey-patching-mode
-  config.disable_monkey_patching!
-
-  # Many RSpec users commonly either run the entire suite or an individual
-  # file, and it's useful to allow more verbose output when running an
-  # individual spec file.
-  if config.files_to_run.one?
-    # Use the documentation formatter for detailed output,
-    # unless a formatter has already been configured
-    # (e.g. via a command-line flag).
-    config.default_formatter = 'doc'
-  end
-
-  # Print the 10 slowest examples and example groups at the
-  # end of the spec run, to help surface which specs are running
-  # particularly slow.
-  config.profile_examples = 10
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = :random
-
-  # Seed global randomization in this process using the `--seed` CLI option.
-  # Setting this allows you to use `--seed` to deterministically reproduce
-  # test failures related to randomization by passing the same `--seed` value
-  # as the one that triggered the failure.
-  Kernel.srand config.seed
-=end
-config.before do |example|
-  if example.metadata[:type] == :feature && Capybara.current_driver != :rack_test
-    DatabaseCleaner.strategy = :truncation
-  else
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.start
-  end
-
-  # using :workflow is preferable to :clean_repo, use the former if possible
-  # It's important that this comes after DatabaseCleaner.start
-  ensure_deposit_available_for(user) if example.metadata[:workflow]
-  if example.metadata[:clean_repo]
-    ActiveFedora::Cleaner.clean!
-    # The JS is executed in a different thread, so that other thread
-    # may think the root path has already been created:
-    ActiveFedora.fedora.connection.send(:init_base_path) if example.metadata[:js]
-  end
-  Hyrax.config.nested_relationship_reindexer = if example.metadata[:with_nested_reindexing]
-                                                 # Use the default relationship reindexer (and the cascading reindexing of child documents)
-                                                 Hyrax.config.default_nested_relationship_reindexer
-                                               else
-                                                 # Don't use the nested relationship reindexer. This slows everything down quite a bit.
-                                                 ->(id:, extent:) {}
-                                               end
+    # using :workflow is preferable to :clean_repo, use the former if possible
+    # It's important that this comes after DatabaseCleaner.start
+    ensure_deposit_available_for(user) if example.metadata[:workflow]
+    if example.metadata[:clean_repo]
+      ActiveFedora::Cleaner.clean!
+      # The JS is executed in a different thread, so that other thread
+      # may think the root path has already been created:
+      ActiveFedora.fedora.connection.send(:init_base_path) if example.metadata[:js]
+    end
+    Hyrax.config.nested_relationship_reindexer = if example.metadata[:with_nested_reindexing]
+                                                   # Use the default relationship reindexer (and the cascading reindexing of child documents)
+                                                   Hyrax.config.default_nested_relationship_reindexer
+                                                 else
+                                                   # Don't use the nested relationship reindexer. This slows everything down quite a bit.
+                                                   ->(id:, extent:) {}
+                                                 end
   end
 
   config.before(:all, type: :feature) do
@@ -145,12 +144,11 @@ config.before do |example|
     # 2) The first feature test will trigger rack-timeout
     #
     # Precompile the assets to prevent these issues.
-    visit "/assets/application.css"
-    visit "/assets/application.js"
+    visit '/assets/application.css'
+    visit '/assets/application.js'
   end
 
   config.after do
     DatabaseCleaner.clean
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module Workflow
     class DepositReceivedNotification < ScholarsArchive::Workflow::AbstractNotification

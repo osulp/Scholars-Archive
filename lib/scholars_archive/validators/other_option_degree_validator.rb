@@ -1,18 +1,19 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Validators
   class OtherOptionDegreeValidator < ActiveModel::Validator
-
-    def degree_present? (record)
+    def degree_present?(record)
       record.respond_to?(:degree_field) && record.respond_to?(:degree_level) && record.respond_to?(:degree_name)
     end
 
-    def degree_grantors_present? (record)
+    def degree_grantors_present?(record)
       record.respond_to?(:degree_grantors) && record.degree_grantors.present? && record.respond_to?(:degree_grantors_other)
     end
 
     def validate(record)
       error_counter = 0
 
-      if degree_present? (record)
+      if degree_present? record
         # check if degree_level_other is already in the list or is missing
         error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
                                                                                        field: :degree_level,
@@ -29,14 +30,14 @@ module ScholarsArchive::Validators
                                                                                                 env_user: current_user_editor(record)
       end
 
-      if degree_grantors_present? (record)
+      if degree_grantors_present? record
         # check if degree_grantors_other is already in the list or is missing
         error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
                                                                                        field: :degree_grantors,
                                                                                        env_user: current_user_editor(record)
       end
 
-      return
+      nil
     end
 
     def current_user_editor(record)

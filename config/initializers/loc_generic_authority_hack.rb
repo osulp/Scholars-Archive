@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Qa::Authorities::Loc::GenericAuthority.class_eval do
   def build_query_url(q)
     escaped_query = "#{URI.escape(q)}*"

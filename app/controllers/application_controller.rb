@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   helper Openseadragon::OpenseadragonHelper
   # Adds a few additional behaviors into the application controller
@@ -25,9 +27,9 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       begin
         current_user.update_from_person_api
-      rescue
+      rescue StandardError
         # Don't fail hard when the API queries fail
-        logger.error("Failed accessing OSU API, unable to synchronize user details.")
+        logger.error('Failed accessing OSU API, unable to synchronize user details.')
       end
     end
   end
@@ -38,6 +40,7 @@ class ApplicationController < ActionController::Base
   # and to verify that the http request in question is providing legit credentials.
   def http_header_auth?
     return false unless request.headers.key?('HTTP_API_AUTHENTICATION')
+
     credentials = api_credentials(request.headers)
     credentials[:header][:token] == credentials[:config][:token] && credentials[:header][:username] == credentials[:config][:username]
   end
@@ -69,6 +72,7 @@ class ApplicationController < ActionController::Base
     token = ENV.fetch('HTTP_API_AUTHENTICATION_TOKEN', nil)
     username = ENV.fetch('HTTP_API_AUTHENTICATION_USERNAME', nil)
     raise 'Invalid or missing configurations for HTTP API authentication' unless token && username
+
     {
       header: {
         username: headers['HTTP_API_AUTHENTICATION'].split('|')[0],
@@ -84,7 +88,7 @@ class ApplicationController < ActionController::Base
   ##
   # Force https for production
   def default_url_options
-    if Rails.env == "production"
+    if Rails.env == 'production'
       super.merge(protocol: :https) if Rails.env == 'production'
     else
       super

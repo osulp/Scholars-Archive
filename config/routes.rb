@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount BrowseEverything::Engine => '/browse'
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
   get '/dashboard/shares(.:format)', to: 'scholars_archive/shares#index', as: 'dashboard_shares'
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
-
 
   concern :searchable, Blacklight::Routes::Searchable.new
 
@@ -29,7 +30,6 @@ Rails.application.routes.draw do
     require 'sidekiq/web'
     mount Sidekiq::Web => '/sidekiq'
   end
-
 
   mount Hydra::RoleManagement::Engine => '/'
   mount Qa::Engine => '/authorities'

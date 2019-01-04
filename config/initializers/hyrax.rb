@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Hyrax.config do |config|
   # Injected via `rails g hyrax:work Article`
   config.register_curation_concern :article
@@ -38,10 +40,10 @@ Hyrax.config do |config|
   # config.default_active_workflow_name = 'default'
 
   # Email recipient of messages sent via the contact form
-  config.contact_email = "scholarsarchive@oregonstate.edu"
+  config.contact_email = 'scholarsarchive@oregonstate.edu'
 
   # Text prefacing the subject entered in the contact form
-  config.subject_prefix = "Scholars Archive Contact Form: "
+  config.subject_prefix = 'Scholars Archive Contact Form: '
 
   # Configurable window size for the Facet -> More modal
   config.pagination_links_range = 2
@@ -60,10 +62,9 @@ Hyrax.config do |config|
   #
   # ReCaptcha site key and secret key, supplied by google after
   # registering a domain.
-  config.recaptcha_site_key = "xxxx_XXXXXXXXXXfffffffffff"
+  config.recaptcha_site_key = 'xxxx_XXXXXXXXXXfffffffffff'
   # WARNING: KEEP THIS SECRET. DO NOT STORE IN REPOSITORY
-  config.recaptcha_secret_key = "xxxx_XXXXXXXXXXfffffffffff"
-
+  config.recaptcha_secret_key = 'xxxx_XXXXXXXXXXfffffffffff'
 
   # Enable displaying usage statistics in the UI
   # Defaults to false

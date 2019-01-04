@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Forms
     class BatchUploadForm < Hyrax::Forms::WorkForm
@@ -9,8 +11,8 @@ module Hyrax
       self.model_class = BatchUploadItem
       include HydraEditor::Form::Permissions
 
-      self.terms -= [:title, :resource_type, :creator, :nested_ordered_title]
-      self.required_fields -= [:keyword, :resource_type, :nested_ordered_title]
+      self.terms -= %i[title resource_type creator nested_ordered_title]
+      self.required_fields -= %i[keyword resource_type nested_ordered_title]
 
       attr_accessor :payload_concern # a Class name: what is form creating a batch of?
 
@@ -25,7 +27,7 @@ module Hyrax
 
       # On the batch upload, title is set per-file.
       def primary_terms
-        [:alt_title, :nested_ordered_creator, :contributor, :nested_ordered_abstract, :license, :doi, :identifier, :bibliographic_citation, :academic_affiliation, :other_affiliation, :in_series, :subject, :tableofcontents, :rights_statement] | super - [:title, :nested_ordered_title, :resource_type]
+        %i[alt_title nested_ordered_creator contributor nested_ordered_abstract license doi identifier bibliographic_citation academic_affiliation other_affiliation in_series subject tableofcontents rights_statement] | super - %i[title nested_ordered_title resource_type]
       end
 
       # # On the batch upload, title is set per-file.
@@ -65,12 +67,11 @@ module Hyrax
       class Name < ActiveModel::Name
         def initialize(klass, namespace = nil, name = nil)
           super
-          @route_key          = "batch_uploads"
+          @route_key          = 'batch_uploads'
           @singular_route_key = ActiveSupport::Inflector.singularize(@route_key)
-          @route_key << "_index" if @plural == @singular
+          @route_key << '_index' if @plural == @singular
         end
       end
     end
   end
 end
-

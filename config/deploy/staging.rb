@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'yaml'
-config = YAML.load_file('config/config.yml')["deployment"]["staging"] || {}
+config = YAML.load_file('config/config.yml')['deployment']['staging'] || {}
 
 # server-based syntax
 # ======================
@@ -9,7 +11,7 @@ config = YAML.load_file('config/config.yml')["deployment"]["staging"] || {}
 # server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
-server "#{config['host']}", user: "#{config['user']}", roles: %w{app db web}
+server (config['host']).to_s, user: (config['user']).to_s, roles: %w[app db web]
 
 # role-based syntax
 # ==================
@@ -60,5 +62,3 @@ set :branch, config['branch']
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-
-

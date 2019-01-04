@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 namespace :scholars_archive do
-  desc "Clean up the community/collection metadata"
+  desc 'Clean up the community/collection metadata'
   task collection_community_cleanup: :environment do
     csv_path = '/data0/hydra/shared/tmp/dspace_community_collections.csv'
     json_path = '/data0/hydra/shared/tmp/handles-communities-collections.json'
@@ -37,11 +39,13 @@ end
 
 def get_json_communities(json, handle)
   return [] unless json.key?(handle) && !json[handle][0]['dspace_community_tesim'].nil?
+
   json[handle][0]['dspace_community_tesim'].uniq
 end
 
 def get_json_collections(json, handle)
   return [] unless json.key?(handle) && !json[handle][0]['dspace_collection_tesim'].nil?
+
   json[handle][0]['dspace_collection_tesim'].uniq
 end
 
@@ -53,15 +57,16 @@ def process(csv_path, json_path, collections_path)
   puts solr.count
   puts handles.count
   puts collections.count
-  handles.each_pair do |k,v|
+  handles.each_pair do |k, v|
     puts "processing:#{solr[k]}"
     next if solr[k].nil?
+
     puts k
     work_id = solr[k][0]['id']
     handle_communities = get_handle_communities(v)
     handle_collections = get_handle_collections(v)
     if handle_communities.any?(&:nil?)
-      handle_communities << collections.select {|c| handle_collections.include?(c['collection_name']) }.map {|c| c['community_name'] }
+      handle_communities << collections.select { |c| handle_collections.include?(c['collection_name']) }.map { |c| c['community_name'] }
       handle_communities = handle_communities.flatten.uniq.reject(&:nil?)
     end
     solr_communities = get_json_communities(solr, k)
@@ -69,6 +74,7 @@ def process(csv_path, json_path, collections_path)
     solr_missing_communities = handle_communities - solr_communities
     solr_missing_collections = handle_collections - solr_collections
     next if solr_missing_collections.empty? && solr_missing_communities.empty?
+
     work = ActiveFedora::Base.find(work_id)
     solr_missing_collections.each do |s|
       work.dspace_collection += [s]

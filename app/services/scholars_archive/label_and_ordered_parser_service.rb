@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class LabelAndOrderedParserService
     def self.parse(labels)
       labels ||= []
-      labels.map{ |label| parse_index(label)}
-            .sort_by{ |array| array[1].to_i }
-            .map{ |array| array[0] }
+      labels.map { |label| parse_index(label) }
+            .sort_by { |array| array[1] }
+            .map { |array| array[0] }
     end
 
     def self.parse_label_uris(labels)
@@ -13,7 +15,7 @@ module ScholarsArchive
       labels.each do |label|
         parsed_label_uris << { 'label' => extract_label(label), 'uri' => extract_uri(label), 'index' => extract_index(label) }
       end
-      parsed_label_uris.sort_by { |hash| hash['index'].to_i }.select { |hash| !hash["label"].empty? }
+      parsed_label_uris.sort_by { |hash| hash['index'] }.reject { |hash| hash['label'].empty? }
     end
 
     private

@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Renderers
     class SearchAndExternalLinkAttributeRenderer < AttributeRenderer
       include ApplicationHelper
+
       private
 
       def li_value(value)
@@ -19,19 +22,19 @@ module Hyrax
             query_hash = JSON.parse(query.to_s.gsub('=>', ':'))
             label = query_hash['label']
             uri = query_hash['uri']
-          elsif query.include?("$")
-            label = query.split("$").first
-            uri = query.split("$").second
+          elsif query.include?('$')
+            label = query.split('$').first
+            uri = query.split('$').second
           else
             label = query
             uri = case field
-              when 'rights_statement_label' then maybe_rights_statement_uri(query)
-              when 'license_label' then maybe_license_uri(query)
-              else maybe_uri(query)
+                  when 'rights_statement_label' then maybe_rights_statement_uri(query)
+                  when 'license_label' then maybe_license_uri(query)
+                  else maybe_uri(query)
             end
           end
           links << link_to(label, search_path_for(label)) unless label.blank?
-          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, uri, 'aria-label' => "Open link in new window", class: 'btn', target: '_blank') unless uri.blank?
+          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, uri, 'aria-label' => 'Open link in new window', class: 'btn', target: '_blank') unless uri.blank?
         end
 
         links.join('')
@@ -60,6 +63,7 @@ module Hyrax
       def extract_value_from_yaml(yaml, term)
         value = yaml['terms'].find { |l| l['term'].casecmp(term).zero? }
         return '' if value.nil?
+
         value['id']
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work HonorsCollegeThesis`
 module Hyrax
@@ -7,6 +9,6 @@ module Hyrax
     self.model_class = ::HonorsCollegeThesis
     self.terms += [:resource_type]
 
-    self.required_fields += [:contributor_advisor, :other_affiliation]
+    self.required_fields += %i[contributor_advisor other_affiliation]
   end
 end

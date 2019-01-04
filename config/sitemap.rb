@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://ir.library.oregonstate.edu"
+SitemapGenerator::Sitemap.default_host = 'https://ir.library.oregonstate.edu'
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.public_path = '/data0/hydra/shared/public/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemap/'
@@ -27,20 +29,20 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  admin_set_map = YAML.load(File.read("config/admin_set_map.yml"))
+  admin_set_map = YAML.safe_load(File.read('config/admin_set_map.yml'))
   cursorMark = '*'
-  models = admin_set_map.map { |model,desc| model }
+  models = admin_set_map.map { |model, _desc| model }
   models << 'FileSet'
   models << 'Collection'
   # all public docs (visibility open) for all work modoles including FileSite and Collection
   solr_query_str = "({!terms f=has_model_ssim}#{models.join(',')}) AND visibility_ssi:open"
   loop do
     response = ActiveFedora::SolrService.get(solr_query_str,
-                                             'fl'         => 'id,has_model_ssim',
-                                             'fq'         => '', # optional filter query
+                                             'fl' => 'id,has_model_ssim',
+                                             'fq' => '', # optional filter query
                                              'cursorMark' => cursorMark, # we need to use the cursor mark to handle paging
-                                             'rows'       => 1000,
-                                             'sort'       => 'id asc')
+                                             'rows' => 1000,
+                                             'sort' => 'id asc')
 
     response['response']['docs'].each do |doc|
       if doc['has_model_ssim'].include? 'Collection'

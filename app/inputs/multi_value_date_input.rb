@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class MultiValueDateInput < MultiValueInput
   def input_type
-    'multi_value'.freeze
+    'multi_value'
   end
 
   private
@@ -28,7 +30,7 @@ class MultiValueDateInput < MultiValueInput
     calendar_widget = build_calendar_widget(value, index)
 
     date_field_inputs = date_field_inputs_wrapper(index) do
-     "#{input_date}#{calendar_widget}"
+      "#{input_date}#{calendar_widget}"
     end
 
     "#{date_field_inputs}#{toggle_checkbox}"
@@ -91,7 +93,7 @@ class MultiValueDateInput < MultiValueInput
     HTML
   end
 
-  def build_start_calendar(value, index)
+  def build_start_calendar(_value, index)
     start_date_options = start_date_options(index)
     input_start_date = @builder.text_field('', start_date_options)
 
@@ -130,7 +132,7 @@ class MultiValueDateInput < MultiValueInput
     options[:type] = 'button'
     options[:name] = 'calendar_end'
     options[:class] = ['calendar_end']
-    options['aria-label'.to_sym] = "Calendar End"
+    options['aria-label'.to_sym] = 'Calendar End'
     options
   end
 
@@ -139,7 +141,7 @@ class MultiValueDateInput < MultiValueInput
     options[:type] = 'button'
     options[:name] = 'calendar_start'
     options[:class] = ['calendar_start']
-    options['aria-label'.to_sym] = "Calendar Start"
+    options['aria-label'.to_sym] = 'Calendar Start'
     options
   end
 
@@ -165,7 +167,7 @@ class MultiValueDateInput < MultiValueInput
   end
 
   def start_date_options(index)
-    options = build_field_options('',index)
+    options = build_field_options('', index)
     options[:placeholder] = 'Start date'
     options[:class] = ['form-control', 'timepicker_start']
     options[:type] = ['text']
@@ -184,7 +186,6 @@ class MultiValueDateInput < MultiValueInput
     options
   end
 
-
   def start_date_id(index)
     "timepicker_start_#{attribute_name}_#{index}"
   end
@@ -192,5 +193,4 @@ class MultiValueDateInput < MultiValueInput
   def end_date_id(index)
     "timepicker_end_#{attribute_name}_#{index}"
   end
-
 end

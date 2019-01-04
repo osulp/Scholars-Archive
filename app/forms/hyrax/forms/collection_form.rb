@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Forms
     # rubocop:disable Metrics/ClassLength
     class CollectionForm
-      # OVERRIDDEN FROM https://github.com/samvera/hyrax/blob/master/app/forms/hyrax/forms/collection_form.rb 
+      # OVERRIDDEN FROM https://github.com/samvera/hyrax/blob/master/app/forms/hyrax/forms/collection_form.rb
       # Since hyrax doesnt create new models and simply uses this one, we need to override the model to alter the fields on the form
       include HydraEditor::Form
       include HydraEditor::Form::Permissions
@@ -22,11 +24,11 @@ module Hyrax
 
       delegate :blacklight_config, to: Hyrax::CollectionsController
 
-      #OVERRIDE HERE
-      self.terms = [:title, :creator, :contributor, :description,
-                    :date_created, :subject, :language,
-                    :representative_id, :thumbnail_id, :based_near,
-                    :related_url, :visibility, :collection_type_gid]
+      # OVERRIDE HERE
+      self.terms = %i[title creator contributor description
+                      date_created subject language
+                      representative_id thumbnail_id based_near
+                      related_url visibility collection_type_gid]
 
       self.required_fields = [:title]
 
@@ -58,28 +60,28 @@ module Hyrax
 
       # Terms that appear above the accordion
       def primary_terms
-        [:title, :description]
+        %i[title description]
       end
 
       # Terms that appear within the accordion
-      #OVERRIDE HERE
+      # OVERRIDE HERE
       def secondary_terms
-        [:creator,
-         :contributor,
-         :date_created,
-         :subject,
-         :language,
-         :based_near,
-         :related_url]
+        %i[creator
+           contributor
+           date_created
+           subject
+           language
+           based_near
+           related_url]
       end
 
       def banner_info
         @banner_info ||= begin
           # Find Banner filename
-          banner_info = CollectionBrandingInfo.where(collection_id: id).where(role: "banner")
+          banner_info = CollectionBrandingInfo.where(collection_id: id).where(role: 'banner')
           banner_file = File.split(banner_info.first.local_path).last unless banner_info.empty?
           file_location = banner_info.first.local_path unless banner_info.empty?
-          relative_path = "/" + banner_info.first.local_path.split("/")[-4..-1].join("/") unless banner_info.empty?
+          relative_path = '/' + banner_info.first.local_path.split('/')[-4..-1].join('/') unless banner_info.empty?
           { file: banner_file, full_path: file_location, relative_path: relative_path }
         end
       end
@@ -87,10 +89,10 @@ module Hyrax
       def logo_info
         @logo_info ||= begin
           # Find Logo filename, alttext, linktext
-          logos_info = CollectionBrandingInfo.where(collection_id: id).where(role: "logo")
+          logos_info = CollectionBrandingInfo.where(collection_id: id).where(role: 'logo')
           logos_info.map do |logo_info|
             logo_file = File.split(logo_info.local_path).last
-            relative_path = "/" + logo_info.local_path.split("/")[-4..-1].join("/")
+            relative_path = '/' + logo_info.local_path.split('/')[-4..-1].join('/')
             alttext = logo_info.alt_text
             linkurl = logo_info.target_url
             { file: logo_file, full_path: logo_info.local_path, relative_path: relative_path, alttext: alttext, linkurl: linkurl }
@@ -106,6 +108,7 @@ module Hyrax
 
       def thumbnail_title
         return unless model.thumbnail
+
         model.thumbnail.title.first
       end
 
@@ -123,33 +126,32 @@ module Hyrax
         collection = Collection.find(id)
         colls = Hyrax::Collections::NestedCollectionQueryService.available_parent_collections(child: collection, scope: scope, limit_to_id: nil)
         @available_parents = colls.map do |col|
-          { "id" => col.id, "title_first" => col.title.first }
+          { 'id' => col.id, 'title_first' => col.title.first }
         end
         @available_parents.to_json
       end
 
       private
 
-        def all_files_with_access
-          member_presenters(member_work_ids).flat_map(&:file_set_presenters).map { |x| [x.to_s, x.id] }
-        end
+      def all_files_with_access
+        member_presenters(member_work_ids).flat_map(&:file_set_presenters).map { |x| [x.to_s, x.id] }
+      end
 
-        # Override this method if you have a different way of getting the member's ids
-        def member_work_ids
-          response = collection_member_service.available_member_work_ids.response
-          response.fetch('docs').map { |doc| doc['id'] }
-        end
+      # Override this method if you have a different way of getting the member's ids
+      def member_work_ids
+        response = collection_member_service.available_member_work_ids.response
+        response.fetch('docs').map { |doc| doc['id'] }
+      end
 
-        def collection_member_service
-          @collection_member_service ||= membership_service_class.new(scope: scope, collection: collection, params: blacklight_config.default_solr_params)
-        end
+      def collection_member_service
+        @collection_member_service ||= membership_service_class.new(scope: scope, collection: collection, params: blacklight_config.default_solr_params)
+      end
 
-        def member_presenters(member_ids)
-          PresenterFactory.build_for(ids: member_ids,
-                                     presenter_class: WorkShowPresenter,
-                                     presenter_args: [nil])
-        end
+      def member_presenters(member_ids)
+        PresenterFactory.build_for(ids: member_ids,
+                                   presenter_class: WorkShowPresenter,
+                                   presenter_args: [nil])
+      end
     end
-    # rubocop:enable ClassLength
   end
 end

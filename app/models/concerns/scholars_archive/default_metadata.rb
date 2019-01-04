@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module DefaultMetadata
     extend ActiveSupport::Concern
@@ -15,7 +17,7 @@ module ScholarsArchive
       # Provide each model a hook to set property defaults
       after_initialize :set_defaults, unless: :persisted?
 
-      property :nested_ordered_abstract, predicate: ::RDF::Vocab::BIBO.abstract, :class_name => NestedOrderedAbstract do |index|
+      property :nested_ordered_abstract, predicate: ::RDF::Vocab::BIBO.abstract, class_name: NestedOrderedAbstract do |index|
         index.as :stored_searchable
       end
 
@@ -23,11 +25,11 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :academic_affiliation, predicate: ::RDF::URI("http://vivoweb.org/ontology/core#AcademicDepartment") do |index|
+      property :academic_affiliation, predicate: ::RDF::URI('http://vivoweb.org/ontology/core#AcademicDepartment') do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_additional_information, predicate: ::RDF::Vocab::DC.description, :class_name => NestedOrderedAdditionalInformation do |index|
+      property :nested_ordered_additional_information, predicate: ::RDF::Vocab::DC.description, class_name: NestedOrderedAdditionalInformation do |index|
         index.as :stored_searchable
       end
 
@@ -46,7 +48,7 @@ module ScholarsArchive
       property :bibliographic_citation, predicate: ::RDF::Vocab::DC.bibliographicCitation
 
       # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
-      property :conference_location, predicate: ::RDF::URI.new("http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent"), multiple: false do |index|
+      property :conference_location, predicate: ::RDF::URI.new('http://d-nb.info/standards/elementset/gnd#placeOfConferenceOrEvent'), multiple: false do |index|
         index.as :stored_searchable
       end
 
@@ -56,11 +58,11 @@ module ScholarsArchive
       end
 
       # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
-      property :conference_section, predicate: ::RDF::URI.new("https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track"), multiple: false do |index|
+      property :conference_section, predicate: ::RDF::URI.new('https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor, :class_name => NestedOrderedContributor do |index|
+      property :nested_ordered_contributor, predicate: ::RDF::Vocab::DC11.contributor, class_name: NestedOrderedContributor do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -99,7 +101,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :date_reviewed, predicate: ::RDF::URI.new("http://schema.org/lastReviewed") do |index|
+      property :date_reviewed, predicate: ::RDF::URI.new('http://schema.org/lastReviewed') do |index|
         index.as :stored_searchable
       end
 
@@ -107,21 +109,21 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :degree_field, predicate: ::RDF::URI.new("http://vivoweb.org/ontology/core#majorField") do |index|
+      property :degree_field, predicate: ::RDF::URI.new('http://vivoweb.org/ontology/core#majorField') do |index|
         index.as :stored_searchable, :facetable
       end
 
       # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
       attr_accessor :degree_field_other
 
-      property :degree_level, predicate: ::RDF::URI.new("http://purl.org/NET/UNTL/vocabularies/degree-information/#level"), multiple: false do |index|
+      property :degree_level, predicate: ::RDF::URI.new('http://purl.org/NET/UNTL/vocabularies/degree-information/#level'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
       # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
       attr_accessor :degree_level_other
 
-      property :degree_name, predicate: ::RDF::URI.new("http://purl.org/ontology/bibo/ThesisDegree") do |index|
+      property :degree_name, predicate: ::RDF::URI.new('http://purl.org/ontology/bibo/ThesisDegree') do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -132,7 +134,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :digitization_spec, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/conversionSpecifications") do |index|
+      property :digitization_spec, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/conversionSpecifications') do |index|
         index.as :stored_searchable
       end
 
@@ -140,11 +142,11 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :dspace_collection, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCollection") do |index|
+      property :dspace_collection, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/dspaceCollection') do |index|
         index.as :stored_searchable
       end
 
-      property :dspace_community, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/dspaceCommunity") do |index|
+      property :dspace_community, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/dspaceCommunity') do |index|
         index.as :stored_searchable
       end
 
@@ -164,11 +166,11 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :funding_statement, predicate: ::RDF::URI.new("http://datacite.org/schema/kernel-4/fundingReference") do |index|
+      property :funding_statement, predicate: ::RDF::URI.new('http://datacite.org/schema/kernel-4/fundingReference') do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :hydrologic_unit_code, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/hydrologicUnitCode") do |index|
+      property :hydrologic_unit_code, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/hydrologicUnitCode') do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -184,7 +186,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :in_series, predicate: ::RDF::URI.new("http://lsdis.cs.uga.edu/projects/semdis/opus#in_series") do |index|
+      property :in_series, predicate: ::RDF::URI.new('http://lsdis.cs.uga.edu/projects/semdis/opus#in_series') do |index|
         index.as :stored_searchable
       end
 
@@ -212,21 +214,21 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_geo, :predicate => ::RDF::URI("https://purl.org/geojson/vocab#Feature"), :class_name => NestedGeo
+      property :nested_geo, predicate: ::RDF::URI('https://purl.org/geojson/vocab#Feature'), class_name: NestedGeo
 
-      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, :class_name => NestedRelatedItems do |index|
+      property :nested_related_items, predicate: ::RDF::Vocab::DC.relation, class_name: NestedRelatedItems do |index|
         index.as :stored_searchable
       end
 
-      property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator do |index|
+      property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, class_name: NestedOrderedCreator do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :nested_ordered_title, predicate: ::RDF::Vocab::DC11.title, :class_name => NestedOrderedTitle do |index|
+      property :nested_ordered_title, predicate: ::RDF::Vocab::DC11.title, class_name: NestedOrderedTitle do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :other_affiliation, predicate: ::RDF::URI("http://vivoweb.org/ontology/core#Department") do |index|
+      property :other_affiliation, predicate: ::RDF::URI('http://vivoweb.org/ontology/core#Department') do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -237,7 +239,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :peerreviewed, predicate: ::RDF::URI("http://purl.org/ontology/bibo/peerReviewed"), multiple: false do |index|
+      property :peerreviewed, predicate: ::RDF::URI('http://purl.org/ontology/bibo/peerReviewed'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
@@ -286,15 +288,15 @@ module ScholarsArchive
       class_attribute :controlled_properties
       self.controlled_properties = [:based_near]
 
-      accepts_nested_attributes_for :based_near, :allow_destroy => true, :reject_if => proc { |a| a[:id].blank? }
-      accepts_nested_attributes_for :nested_geo, :allow_destroy => true, :reject_if => :all_blank
-      accepts_nested_attributes_for :nested_related_items, :allow_destroy => true, :reject_if => :all_blank
+      accepts_nested_attributes_for :based_near, allow_destroy: true, reject_if: proc { |a| a[:id].blank? }
+      accepts_nested_attributes_for :nested_geo, allow_destroy: true, reject_if: :all_blank
+      accepts_nested_attributes_for :nested_related_items, allow_destroy: true, reject_if: :all_blank
       # reject if all attributes all blank OR if either index or creator is blank
-      accepts_nested_attributes_for :nested_ordered_title, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:title].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
-      accepts_nested_attributes_for :nested_ordered_creator, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:creator].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
-      accepts_nested_attributes_for :nested_ordered_abstract, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:abstract].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
-      accepts_nested_attributes_for :nested_ordered_contributor, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:contributor].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
-      accepts_nested_attributes_for :nested_ordered_additional_information, :allow_destroy => true, :reject_if => proc { |attributes| attributes[:additional_information].blank? || attributes.all? { |key, value| key == "_destroy" || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_title, allow_destroy: true, reject_if: proc { |attributes| attributes[:title].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_creator, allow_destroy: true, reject_if: proc { |attributes| attributes[:creator].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_abstract, allow_destroy: true, reject_if: proc { |attributes| attributes[:abstract].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_contributor, allow_destroy: true, reject_if: proc { |attributes| attributes[:contributor].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
+      accepts_nested_attributes_for :nested_ordered_additional_information, allow_destroy: true, reject_if: proc { |attributes| attributes[:additional_information].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
     end
   end
 end

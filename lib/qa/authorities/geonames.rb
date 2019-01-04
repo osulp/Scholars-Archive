@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Qa::Authorities
   class Geonames < Base
     include WebServiceBase
@@ -10,7 +12,7 @@ module Qa::Authorities
 
     def search(q)
       unless username
-        Rails.logger.error "Questioning Authority tried to call geonames, but no username was set"
+        Rails.logger.error 'Questioning Authority tried to call geonames, but no username was set'
         return []
       end
       parse_authority_response(json(build_query_url(q)))
@@ -35,26 +37,25 @@ module Qa::Authorities
 
     private
 
-      # Reformats the data received from the service
-      def parse_authority_response(response)
-        response['geonames'].map do |result|
-          # Note: the trailing slash is meaningful.
-          { 'id' => "http://sws.geonames.org/#{result['geonameId']}/",
-            'label' => label.call(result, translate_fcl(result['fcl'])) }
-        end
+    # Reformats the data received from the service
+    def parse_authority_response(response)
+      response['geonames'].map do |result|
+        # Note: the trailing slash is meaningful.
+        { 'id' => "http://sws.geonames.org/#{result['geonameId']}/",
+          'label' => label.call(result, translate_fcl(result['fcl'])) }
       end
+    end
 
-      def translate_fcl(fcl)
-        { "A" => "Administrative Boundary",
-          "H" => "Hydrographic",
-          "L" => "Area",
-          "P" => "Populated Place",
-          "R" => "Road / Railroad",
-          "S" => "Spot",
-          "T" => "Hypsographic",
-          "U" => "Undersea",
-          "V" => "Vegetation"
-        }[fcl]
-      end
+    def translate_fcl(fcl)
+      { 'A' => 'Administrative Boundary',
+        'H' => 'Hydrographic',
+        'L' => 'Area',
+        'P' => 'Populated Place',
+        'R' => 'Road / Railroad',
+        'S' => 'Spot',
+        'T' => 'Hypsographic',
+        'U' => 'Undersea',
+        'V' => 'Vegetation' }[fcl]
+    end
   end
 end

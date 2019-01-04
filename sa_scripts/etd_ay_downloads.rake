@@ -16,7 +16,7 @@
 require 'csv'
 
 namespace :scholars_archive do
-  desc "Get Total Downloads for ETD works"
+  desc 'Get Total Downloads for ETD works'
   task etd_ay_downloads: :environment do
     workids_list = ENV['workids_list']
     has_model_ssim = 'GraduateThesisOrDissertation'
@@ -36,8 +36,8 @@ namespace :scholars_archive do
 
     csv_output_path = File.join(Rails.root, 'tmp', 'etd-ay-downloads.csv')
     CSV.open(csv_output_path, 'ab') do |csv|
-      csv << ["etd_id", "etd_title", "graduation_year", "degree_level", "degree_name", "degree_field",
-              "academic_affiliation", "clickable_url", "total_downloads"]
+      csv << %w[etd_id etd_title graduation_year degree_level degree_name degree_field
+                academic_affiliation clickable_url total_downloads]
       works_to_process.each do |work_id|
         logger.info "Processing work: #{work_id}"
         work_model = has_model_ssim.constantize
@@ -56,7 +56,7 @@ namespace :scholars_archive do
           end
           csv << [work_id, work.title.first, work.graduation_year, work.degree_level, work.degree_name.first,
                   degree_field, academic_affiliation, work_url, work_downloads]
-        rescue => e
+        rescue StandardError => e
           logger.error "ERROR with work: #{work_id} : #{e}"
         end
       end
@@ -64,18 +64,18 @@ namespace :scholars_archive do
   end
 
   def getUriLabel(work_id, logger)
-    etd_doc = ActiveFedora::SolrService.query("id:#{work_id}", :rows => 1)
+    etd_doc = ActiveFedora::SolrService.query("id:#{work_id}", rows: 1)
     if etd_doc.present?
       # sample data: Integrative Biology$http://opaquenamespace.org/ns/osuDegreeFields/KhFIkND8
-      if etd_doc.first["degree_field_label_ssim"].present?
-        degree_field = etd_doc.first["degree_field_label_ssim"].first.split('$').first
+      if etd_doc.first['degree_field_label_ssim'].present?
+        degree_field = etd_doc.first['degree_field_label_ssim'].first.split('$').first
       else
         logger.info "degree_field not found in ETD #{work_id} in Solr"
         degree_field = ''
       end
 
-      if etd_doc.first["academic_affiliation_label_ssim"].present?
-        academic_affiliation = etd_doc.first["academic_affiliation_label_ssim"].first.split('$').first
+      if etd_doc.first['academic_affiliation_label_ssim'].present?
+        academic_affiliation = etd_doc.first['academic_affiliation_label_ssim'].first.split('$').first
       else
         logger.info "academic affiliation not found in ETD #{work_id} in Solr"
         academic_affiliation = ''

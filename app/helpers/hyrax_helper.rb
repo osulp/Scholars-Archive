@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module HyraxHelper
   include ::BlacklightHelper
   include Hyrax::BlacklightOverride
@@ -6,14 +8,14 @@ module HyraxHelper
   def human_readable_date_edtf(options)
     value = options[:value].first
     date = Date.edtf(value)
-    if date.instance_of? EDTF::Interval
-      output = date.from.edtf + ' to ' + date.to.edtf
-    elsif date.present?
-      output = date.edtf
-    else
-      output = value
-    end
-    return output
+    output = if date.instance_of? EDTF::Interval
+               date.from.edtf + ' to ' + date.to.edtf
+             elsif date.present?
+               date.edtf
+             else
+               value
+             end
+    output
   end
 
   ##

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class RecordsByUserGroupAndVisibility
     def call(current_user, facet)
-      return facets(public_search(facet, "public"), facet.key) unless current_user
+      return facets(public_search(facet, 'public'), facet.key) unless current_user
 
       query_strings = []
       if current_user.admin?
@@ -23,11 +25,11 @@ module ScholarsArchive
     private
 
     def public_search(facet, group)
-      search_builder.group_records(facet.key, group, visibility: "open")
+      search_builder.group_records(facet.key, group, visibility: 'open')
     end
 
     def authenticated_search(facet, group)
-      search_builder.group_records(facet.key, group, visibility: "authenticated")
+      search_builder.group_records(facet.key, group, visibility: 'authenticated')
     end
 
     def admin_search(facet)
@@ -51,7 +53,7 @@ module ScholarsArchive
         rows: 0,
         queries: query_strings,
         facets: { fields: [facet_field] },
-        "facet.limit" => 10000
+        'facet.limit' => 10_000
       }
     end
 

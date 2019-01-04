@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -274,8 +276,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  config.cas_base_url = ENV["SCHOLARSARCHIVE_CAS_BASE_URL"] || 'https://cas.myorganization.com'
-  config.cas_validate_url = ENV["SCHOLARSARCHIVE_CAS_VALIDATE_URL"] || 'https://cas.myorganization.com/cas/someValidation'
+  config.cas_base_url = ENV['SCHOLARSARCHIVE_CAS_BASE_URL'] || 'https://cas.myorganization.com'
+  config.cas_validate_url = ENV['SCHOLARSARCHIVE_CAS_VALIDATE_URL'] || 'https://cas.myorganization.com/cas/someValidation'
   config.cas_logout_url_param = 'follow'
   config.cas_destination_logout_param_name = 'url'
 end

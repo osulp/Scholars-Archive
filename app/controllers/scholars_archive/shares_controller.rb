@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class SharesController < Hyrax::My::SharesController
     include ScholarsArchive::MySharesBehavior
