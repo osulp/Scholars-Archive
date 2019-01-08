@@ -23,6 +23,9 @@ Style/MixinUsage:
 RSpec/SubjectStub:
   Enabled: false
 
+RSpec/VerifiedDoubles:
+  Enabled: false
+
 # THESE SHOULD BE WORKED ON AND FIXED AS TECHNICAL DEBT
 # 141 Offenses
 Style/Documentation:
