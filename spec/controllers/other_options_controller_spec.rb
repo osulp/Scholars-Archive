@@ -12,15 +12,6 @@ RSpec.describe OtherOptionsController, type: :controller do
       property_name: 'other_affiliation'
     }
   end
-
-  let(:invalid_attributes) do
-    {
-      name: nil,
-      work_id: nil,
-      property_name: nil
-    }
-  end
-
   let(:user) do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end

@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
@@ -28,7 +27,7 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
     allow(view).to receive(:can?).and_return(true)
   end
 
-  context 'for a work with degree name where Other was selected and there is an OtherOption record for that work' do
+  context 'when for a work with degree name where Other was selected and there is an OtherOption record for that work' do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_name: ['Other'] } }
     let(:degree_name_other_option_test) { 'testing degree name other option' }
 
@@ -49,7 +48,7 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
     end
   end
 
-  context 'for a work with degree name where othero was not selected' do
+  context 'when for a work with degree name where othero was not selected' do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_name: ['test'] } }
 
     before do

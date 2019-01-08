@@ -30,7 +30,6 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   let(:workflow_presenter) do
     instance_double('workflow_presenter', badge: 'Foobar')
   end
-
   let(:test_sorted_all_options) do
     [
       ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],

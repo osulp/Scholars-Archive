@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
@@ -28,7 +27,7 @@ RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
     allow(view).to receive(:can?).and_return(true)
   end
 
-  context 'for a work with degree level where Other was selected and there is an OtherOption record for that work' do
+  context 'when for a work with degree level where Other was selected and there is an OtherOption record for that work' do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_level: 'Other' } }
     let(:degree_level_other_option_test) { 'testing degree field other option' }
 
@@ -44,11 +43,11 @@ RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
     end
 
     it 'has the other input value as the default in the form' do
-      expect(rendered).to have_selector('.degree-level-other input[value='' + degree_level_other_option_test + '']')
+      expect(rendered).to have_selector('.degree-level-other input[value=\'' + degree_level_other_option_test + '\']')
     end
   end
 
-  context 'for a work with degree level where Other was not selected' do
+  context 'when for a work with degree level where Other was not selected' do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_level: 'test' } }
 
     before do

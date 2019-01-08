@@ -26,7 +26,6 @@ RSpec.describe GraduateProjectPresenter do
     )
   end
   let(:user) { instance_double(user_key: 'sarah') }
-
   let(:solr_properties) do
     %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end

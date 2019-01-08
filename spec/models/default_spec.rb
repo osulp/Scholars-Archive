@@ -24,7 +24,6 @@ RSpec.describe Default do
       }
       g
     end
-
     let(:date) { '2022-01-01' }
     let(:facet) { asset.to_solr['date_facet_yearly_ssim'] }
 

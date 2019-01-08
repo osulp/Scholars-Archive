@@ -10,11 +10,9 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
         work.attributes = attributes
       end
     end
-
     let!(:depositor) do
       User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
     end
-
     let(:attributes) do
       {
         title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
@@ -26,7 +24,6 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
         depositor: depositor.username
       }
     end
-
     let(:test_degree_field_other) { ['test1 degree field other'] }
     let(:test_degree_level_other) { 'test1 degree level other' }
     let(:test_degree_name_other) { ['test1 degree name other'] }
@@ -56,20 +53,20 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
       let(:test_other_affiliation_other) { ['Bioenergy Minor Program'] }
 
       it 'raises error if the degree level already exists' do
-        expect(record.errors[:degree_level_other].first).to eq 'This 'Other' value: \'Certificate\' already exists, please select from the list.'
+        expect(record.errors[:degree_level_other].first).to eq 'This \'Other\' value: \'Certificate\' already exists, please select from the list.'
       end
       it 'raises error if the degree field already exists' do
-        expect(record.errors[:degree_field_other].first).to eq 'This 'Other' value: \'Zoology\' already exists, please select from the list.'
+        expect(record.errors[:degree_field_other].first).to eq 'This \'Other\' value: \'Zoology\' already exists, please select from the list.'
       end
       it 'raises error if the degree name already exists' do
-        expect(record.errors[:degree_name_other].first).to eq 'This 'Other' value: \'Master of Arts (M.A.)\' already exists, please select from the list.'
+        expect(record.errors[:degree_name_other].first).to eq 'This \'Other\' value: \'Master of Arts (M.A.)\' already exists, please select from the list.'
       end
       it 'raises error if the degree grantors already exists' do
-        expect(record.errors[:degree_grantors_other].first).to eq 'This 'Other' value: \'Oregon State University\' already exists, please select from the list.'
+        expect(record.errors[:degree_grantors_other].first).to eq 'This \'Other\' value: \'Oregon State University\' already exists, please select from the list.'
       end
     end
 
-    context 'with blank 'other' values selected for degree_level and degree_field and degree_name and degree_grantors' do
+    context 'with blank \'other\' values selected for degree_level and degree_field and degree_name and degree_grantors' do
       let(:test_degree_level_other) { '' }
       let(:test_degree_field_other) { [] }
       let(:test_degree_name_other) { [] }

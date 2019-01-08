@@ -10,11 +10,9 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
         work.attributes = attributes
       end
     end
-
     let!(:depositor) do
       User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
     end
-
     let(:attributes) do
       {
         title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
@@ -22,7 +20,6 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
         depositor: depositor.username
       }
     end
-
     let(:test_other_affiliation_other) { ['test entry one', 'test entry two'] }
 
     before do
@@ -42,7 +39,7 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
       let(:test_other_affiliation_other) { ['Oregon State University Bioenergy Minor Program'] }
 
       it 'raises error if the other_affiliation entry already exists' do
-        expect(record.errors[:other_affiliation_other].first).to eq 'This 'Other' value: \'Oregon State University Bioenergy Minor Program\' already exists, please select from the list.'
+        expect(record.errors[:other_affiliation_other].first).to eq 'This \'Other\' value: \'Oregon State University Bioenergy Minor Program\' already exists, please select from the list.'
       end
     end
   end

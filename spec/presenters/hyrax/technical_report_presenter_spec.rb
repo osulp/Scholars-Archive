@@ -26,7 +26,6 @@ RSpec.describe TechnicalReportPresenter do
     )
   end
   let(:user) { instance_double(user_key: 'sarah') }
-
   let(:solr_properties) do
     %w[doi abstract alt_title license based_near_linked resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed_label digitization_spec file_extent file_format dspace_community dspace_collection]
   end

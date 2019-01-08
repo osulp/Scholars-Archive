@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'honors_college_theses/edit_fields/_license.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     HonorsCollegeThesis.new do |work|
       work.attributes = attributes

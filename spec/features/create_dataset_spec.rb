@@ -6,12 +6,11 @@ require 'rails_helper'
 require 'spec_helper'
 include Warden::Test::Helpers
 
-RSpec.describe 'Create a Dataset', skip: true, type: :feature do
+RSpec.describe Dataset, skip: true, type: :feature do
   context 'when a logged in user' do
     let(:user) do
       User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false) }
     end
-
     let(:admin_set) do
       AdminSet.find('blah')
     rescue ActiveFedora::ObjectNotFoundError
@@ -20,11 +19,9 @@ RSpec.describe 'Create a Dataset', skip: true, type: :feature do
                       description: ['A substantial description'],
                       edit_users: ['admin'])
     end
-
     let(:permission_template) do
       Hyrax::PermissionTemplate.create!(source_id: admin_set.id)
     end
-
     let(:workflow) do
       Sipity::Workflow.create(name: 'test', allows_access_grant: true, active: true, permission_template_id: permission_template.id)
     end

@@ -1,6 +1,6 @@
 require: rubocop-rspec
 
-#inherit_from: .rubocop_fixme.yml
+inherit_from: .rubocop_fix_me.yml
 
 AllCops:
   TargetRubyVersion: 2.5
@@ -16,11 +16,6 @@ AllCops:
     - 'lib/tasks/**/*'
     - 'config/**/*'
     - 'sa_scripts/**/*'
-
-Metrics/BlockLength:
-  ExcludedMethods: ['included']
-  Exclude:
-    - 'spec/**/*'
 
 Style/AsciiComments:
   Enabled: false
@@ -66,8 +61,3 @@ RSpec/AnyInstance:
 # FactoryBot/StaticAttributeDefinedDynamically:
 #   Enabled: false
 
-Metrics/LineLength:
-  IgnoredPatterns: ['(\A|\s)#']
-  Max: 120
-  Exclude:
-    - 'spec/**/*'

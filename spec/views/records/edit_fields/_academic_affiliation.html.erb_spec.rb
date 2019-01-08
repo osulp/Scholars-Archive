@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
@@ -29,7 +28,6 @@ RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view
       ['4-H Youth Development Education - 2006/2010', 'http://opaquenamespace.org/ns/osuAcademicUnits/5eh7OKFX']
     ]
   end
-
   let(:test_sorted_all_options_truncated_values) do
     [
       'Accounting',
@@ -38,7 +36,6 @@ RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view
       '4-H Youth Development Education'
     ]
   end
-
   let(:test_sorted_current_options) do
     [
       ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
@@ -46,14 +43,12 @@ RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view
       ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7']
     ]
   end
-
   let(:test_sorted_current_open_options) do
     [
       ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
       ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7']
     ]
   end
-
   let(:test_sorted_current_open_options_truncated_values) do
     [
       'Accounting',

@@ -11,7 +11,7 @@ RSpec.describe 'Modal facet pagination', type: :feature, clean_repo: true do
     (1..26).each do |i|
       nested_ordered_title_attributes = [
         {
-          title: 'TestTitle#{i}',
+          title: "TestTitle#{i}",
           index: '0'
         }
       ]

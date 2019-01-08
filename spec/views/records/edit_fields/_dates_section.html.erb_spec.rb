@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     Default.new do |work|
       work.attributes = attributes
@@ -48,7 +47,6 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
   context 'when for a persisted object' do
     let(:date) { '2017-01-27' }
     let(:date_range) { '2017-05-24/2017-05-31' }
-
     let(:attributes) do
       {
         title: ['test'],

@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::ContactFormController, type: :controller do
-  let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
   routes { Hyrax::Engine.routes }
+
+  let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
   let(:required_params) do
     {
       category: 'Depositing content',

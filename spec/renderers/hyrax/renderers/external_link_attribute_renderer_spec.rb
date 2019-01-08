@@ -9,13 +9,12 @@ RSpec.describe Hyrax::Renderers::ExternalLinkAttributeRenderer do
     subject { Nokogiri::HTML(renderer.render) }
 
     let(:expected) { Nokogiri::HTML(tr_content) }
-
     let(:tr_content) do
       '<tr><th>Name</th>\n' \
-       '<td><ul class='tabular'>' \
-       '<li class='attribute attribute-name'>'\
-       '<a href='http://example.com'>'\
-       'http://example.com&nbsp;&nbsp;<span class='glyphicon glyphicon-new-window'></span></a></li>'\
+       '<td><ul class=\'tabular\'>' \
+       '<li class=\'attribute attribute-name\'>'\
+       '<a href=\'http://example.com\'>'\
+       'http://example.com&nbsp;&nbsp;<span class=\'glyphicon glyphicon-new-window\'></span></a></li>'\
        '</ul></td></tr>'
     end
 

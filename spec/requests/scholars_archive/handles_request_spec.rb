@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'spec_helper'
 
-describe 'external redirection' do
+describe ApplicationController do
   it 'redirects to od' do
     get '/xmlui/handle/1957/1891'
     response.should redirect_to('https://oregondigital.org/sets/osu-scarc')

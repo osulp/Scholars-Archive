@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     Default.new do |work|
       work.attributes = attributes
@@ -37,7 +36,6 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
         related_url: test_url
       }
     end
-
     let(:attributes) do
       {
         title: ['test'],

@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   let(:ability) { instance_double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
-
   let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
@@ -21,27 +20,23 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
       <% end %>
     )
   end
-
   let(:test_sorted_all_options) do
     [
       ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
       ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
     ]
   end
-
   let(:test_sorted_all_options_truncated_values) do
     [
       'Adult Education',
       'Animal Breeding'
     ]
   end
-
   let(:test_sorted_current_options) do
     [
       ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi']
     ]
   end
-
   let(:test_sorted_current_options_truncated_values) do
     [
       'Adult Education'
@@ -84,7 +79,7 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     end
   end
 
-  context 'for a work with degree field where Other was selected and there is an OtherOption record in the database' do
+  context 'when for a work with degree field where Other was selected and there is an OtherOption record in the database' do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field: ['Other'] } }
     let(:degree_field_other_option_test) { 'testing degree field other option' }
 
@@ -107,7 +102,7 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     end
   end
 
-  context 'for a work with degree field where Other was not selected' do
+  context 'when for a work with degree field where Other was not selected' do
     let(:attributes) do
       { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field:
         ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'] }

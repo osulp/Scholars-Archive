@@ -21,7 +21,6 @@ describe ScholarsArchive::OtherOptionCreateSuccessService do
       other_affiliation: ['Other']
     }
   end
-
   let(:test_degree_field_other) { ['test1 degree field other'] }
   let(:test_degree_level_other) { 'test1 degree level other' }
   let(:test_degree_name_other) { 'test1 degree name other' }

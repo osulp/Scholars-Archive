@@ -59,7 +59,6 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_name_other) { ['test1 degree name other'] }
       let(:test_degree_grantors_other) { 'test1 degree grantors other' }
       let(:test_other_affiliation_other) { ['test1 other affiliation other'] }
-
       let(:attributes) do
         {
           title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
@@ -115,7 +114,6 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_name_other) { ['test2 degree name other'] }
       let(:test_degree_grantors_other) { 'test2 degree grantors other' }
       let(:test_other_affiliation_other) { ['test2 other affiliation other'] }
-
       let(:attributes) do
         {
           title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],

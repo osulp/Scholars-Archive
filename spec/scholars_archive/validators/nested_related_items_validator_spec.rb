@@ -10,11 +10,9 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
         work.attributes = attributes
       end
     end
-
     let!(:depositor) do
       User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
     end
-
     let(:test_label) { 'Oregon Digital' }
     let(:test_url) { 'https://oregondigital.org/catalog/' }
     let(:test_item) do
@@ -23,7 +21,6 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
         related_url: test_url
       }
     end
-
     let(:attributes) do
       {
         title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
