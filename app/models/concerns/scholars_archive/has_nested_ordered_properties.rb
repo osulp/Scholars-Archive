@@ -3,7 +3,6 @@
 module ScholarsArchive
   module HasNestedOrderedProperties
     extend ActiveSupport::Concern
-
     included do
       def title
         nested_ordered_title.present? ? ordered_titles : super
@@ -33,23 +32,23 @@ module ScholarsArchive
       # input: [["My Title","0"], ["Another Tilte", "1"]]
       # output: [["My Title", "Another Title"]]
       def ordered_titles
-        sort_titles_by_index.map(&:first)
+        sort_titles_by_index.map { |titles| titles.first }
       end
 
       def ordered_creators
-        sort_creators_by_index.map(&:first)
+        sort_creators_by_index.map { |creators| creators.first }
       end
 
       def ordered_abstracts
-        sort_abstracts_by_index.map(&:first)
+        sort_abstracts_by_index.map { |abstracts| abstracts.first }
       end
 
       def ordered_contributors
-        sort_contributors_by_index.map(&:first)
+        sort_contributors_by_index.map { |contributors| contributors.first }
       end
 
       def ordered_info
-        sort_info_by_index.map(&:first)
+        sort_info_by_index.map { |info| info.first }
       end
 
       # Returns a sorted array (by index value) of nested titles given an array with two
@@ -61,23 +60,23 @@ module ScholarsArchive
       # input: [["Another Title", "1"], ["My Title", "0"]]
       # output: [["My Title", "0"], ["Another Title", "1"]]
       def sort_titles_by_index
-        validate_titles.sort_by(&:second)
+        validate_titles.sort_by { |titles| titles.second.to_i }
       end
 
       def sort_creators_by_index
-        validate_creators.sort_by(&:second)
+        validate_creators.sort_by { |creators| creators.second.to_i }
       end
 
       def sort_abstracts_by_index
-        validate_abstracts.sort_by(&:second)
+        validate_abstracts.sort_by { |abstracts| abstracts.second.to_i }
       end
 
       def sort_contributors_by_index
-        validate_contributors.sort_by(&:second)
+        validate_contributors.sort_by { |contributors| contributors.second.to_i }
       end
 
       def sort_info_by_index
-        validate_info.sort_by(&:second)
+        validate_info.sort_by { |info| info.second.to_i }
       end
 
       # Returns an array of items in the form [[title, index], ...] given an
