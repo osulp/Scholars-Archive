@@ -3,7 +3,7 @@
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
-  let(:presenter) { instance_instance_double Hyrax::SelectTypeListPresenter }
+  let(:presenter) { instance_double Hyrax::SelectTypeListPresenter }
   let(:type_presenters) do
     [
       Hyrax::SelectTypePresenter.new(AdministrativeReportOrPublication),
@@ -21,7 +21,7 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
       Hyrax::SelectTypePresenter.new(UndergraduateThesisOrProject)
     ]
   end
-  let(:ability) { instance_double(current_user: current_user) }
+  let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: true, api_person_type: api_person_type) }
 
   before do

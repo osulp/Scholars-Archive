@@ -23,12 +23,12 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   let(:solr_document) do
     SolrDocument.new(work.to_solr)
   end
-  let(:ability) { instance_double }
+  let(:ability) { double }
   let(:presenter) do
     DefaultPresenter.new(solr_document, ability)
   end
   let(:workflow_presenter) do
-    instance_double('workflow_presenter', badge: 'Foobar')
+    double('workflow_presenter', badge: 'Foobar')
   end
   let(:test_sorted_all_options) do
     [

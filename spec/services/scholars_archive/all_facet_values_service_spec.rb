@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 describe ScholarsArchive::AllFacetValuesService do
   let(:service) { described_class.new }
-  let(:facet) { instance_double('facet') }
+  let(:facet) { double('facet') }
   let(:facet_results) { %w[bob ross banana] }
   let(:solr_results) { { 'bob' => 1, 'ross' => 1, 'banana' => 1 } }
   let(:facet_key) { 'creator_sim' }

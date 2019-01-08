@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'hyrax/base/_form.erb', type: :view do
   let(:current_user) { User.new(username: 'admin', email: 'test@example.com', guest: false) }
-  let(:ability) { instance_double }
+  let(:ability) { double }
   let(:form) do
     Hyrax::DefaultForm.new(work, ability, controller)
   end
@@ -37,7 +37,7 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     end
   end
   let(:curation_concern) { work }
-  let(:options_presenter) { instance_double(select_options: []) }
+  let(:options_presenter) { double(select_options: []) }
 
   before do
     allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_all_options).and_return(academic_unit_sorted_all_options)

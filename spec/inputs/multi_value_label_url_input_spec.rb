@@ -16,7 +16,7 @@ describe MultiValueLabelUrlInput, type: :input do
     let(:foo) { Foo.new }
     let(:ref1) { NestedRelatedItems.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
     let(:ref2) { NestedRelatedItems.new(RDF::Node.new, Default::GeneratedResourceSchema.new) }
-    let(:builder) { instance_double('builder', object: foo, object_name: 'foo') }
+    let(:builder) { double('builder', object: foo, object_name: 'foo') }
 
     before { foo.bar = [ref1, ref2] }
 

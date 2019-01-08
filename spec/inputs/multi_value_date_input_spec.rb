@@ -14,7 +14,7 @@ describe MultiValueDateInput, type: :input do
     let(:foo) { Foo.new }
     let(:date1) { '2017-08-03' }
     let(:date2) { '2017-08-12' }
-    let(:builder) { instance_double('builder', object: foo, object_name: 'foo') }
+    let(:builder) { double('builder', object: foo, object_name: 'foo') }
 
     before { foo.multi_value_date = [date1, date2] }
 

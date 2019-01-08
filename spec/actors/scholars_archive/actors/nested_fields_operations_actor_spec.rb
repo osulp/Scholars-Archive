@@ -18,7 +18,7 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   let(:user) do
     User.new(email: 'test@example.com', guest: false)
   end
-  let(:ability) { instance_double(current_user: user) }
+  let(:ability) { double(current_user: user) }
   let(:env) { Hyrax::Actors::Environment.new(curation_concern, ability, attributes) }
   let(:terminator) { Hyrax::Actors::Terminator.new }
   let(:attributes) do
