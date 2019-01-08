@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class MultiValueSelectOtherInput < MultiValueSelectInput
   # Overriding so that we can handle the "Other" option with an input
   def input_type
-    'multi_value'.freeze
+    'multi_value'
   end
 
   private
 
   def build_field(value, index)
     render_options = select_options
-    if ['err_msg', 'err_valid_val'].any? { |msg| value.include? msg }
+    if %w[err_msg err_valid_val].any? { |msg| value.include? msg }
       error = JSON.parse(value)
       value = error['option']
       other_entry_value = error['other_entry']
@@ -46,12 +48,12 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
 
   def other_input_options(index, other_value, value)
     options = build_field_options('')
-    show_hide_element = (other_value.present? || value == 'Other')? [] : ['hidden']
+    show_hide_element = other_value.present? || value == 'Other' ? [] : ['hidden']
     index_new = DateTime.now.to_i
     options[:value] = other_value if other_value.present?
     options[:placeholder] = 'Other value'
     options[:class] = ['form-control'] + show_hide_element
-    options[:type] = (show_hide_element.include? 'hidden')? show_hide_element : ['text']
+    options[:type] = show_hide_element.include? 'hidden' ? show_hide_element : ['text']
     options[:name] = other_option_name
     options[:id] = index.zero? ? other_option_id : ''
     options

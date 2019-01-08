@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for the degree_fields
   class DegreeFieldService < Hyrax::QaSelectService
@@ -18,7 +20,7 @@ module ScholarsArchive
     end
 
     def other_option
-      ['Other', 'Other']
+      %w[Other Other]
     end
 
     def select_sorted_current_options
@@ -36,7 +38,7 @@ module ScholarsArchive
     private
 
     def truncate_date(options)
-      options.map {|option| [option.first.split(" - ").first, option.second]}
+      options.map { |option| [option.first.split(' - ').first, option.second] }
     end
   end
 end

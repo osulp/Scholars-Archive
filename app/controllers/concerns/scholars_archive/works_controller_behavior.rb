@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module WorksControllerBehavior
     extend ActiveSupport::Concern
@@ -8,15 +10,15 @@ module ScholarsArchive
       def redirect_mismatched_work
         curation_concern = ActiveFedora::Base.find(params[:id])
         if curation_concern.class != _curation_concern_type
-          redirect_to(main_app.polymorphic_path(curation_concern), status: :moved_permanently) and return
+          redirect_to(main_app.polymorphic_path(curation_concern), status: :moved_permanently) && return
         end
       end
     end
 
     def new
-      curation_concern.publisher = ["Oregon State University"]
-      curation_concern.rights_statement = ["http://rightsstatements.org/vocab/InC/1.0/"]
-      curation_concern.degree_grantors = "http://id.loc.gov/authorities/names/n80017721" if curation_concern.respond_to?(:degree_grantors)
+      curation_concern.publisher = ['Oregon State University']
+      curation_concern.rights_statement = ['http://rightsstatements.org/vocab/InC/1.0/']
+      curation_concern.degree_grantors = 'http://id.loc.gov/authorities/names/n80017721' if curation_concern.respond_to?(:degree_grantors)
       super
     end
 
@@ -38,12 +40,11 @@ module ScholarsArchive
 
     private
 
-    def set_embargo_release_date
-    end
+    def set_embargo_release_date; end
 
     def mutate_embargo_date
       translated_date = date_string.split.first.to_i.send(date_string.split.second.to_sym).from_now.to_date
-      params[hash_key_for_curation_concern]["embargo_release_date"] = Date.parse(translated_date.to_date.to_s).strftime("%Y-%m-%d")
+      params[hash_key_for_curation_concern]['embargo_release_date'] = Date.parse(translated_date.to_date.to_s).strftime('%Y-%m-%d')
     end
 
     def set_other_option_values
@@ -73,11 +74,11 @@ module ScholarsArchive
     def get_other_option_values
       @degree_field_other_options = get_all_other_options('degree_field')
       if @degree_field_other_options.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
-          curation_concern.degree_field_other = degree_field_other_option.name
+        curation_concern.degree_field_other = degree_field_other_option.name
       end
       @degree_name_other_options = get_all_other_options('degree_name')
       if @degree_name_other_options.present? && curation_concern.degree_name.present? && curation_concern.degree_name == 'Other'
-          curation_concern.degree_name_other = degree_name_other_option.name
+        curation_concern.degree_name_other = degree_name_other_option.name
       end
       degree_level_other_option = get_other_options('degree_level')
       if degree_level_other_option.present? && curation_concern.degree_level.present? && curation_concern.degree_level == 'Other'
@@ -94,20 +95,20 @@ module ScholarsArchive
       curation_concern.nested_geo.each do |geo|
         if geo.bbox.present?
           # bbox is stored as a string array of lat/long string arrays like: '["121.1", "121.2", "44.1", "44.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2","44.1","44.2"]
-          box_array = geo.bbox.to_a.first.tr('[]" ','').split(',')
+          box_array = geo.bbox.to_a.first.tr('[]" ', '').split(',')
           geo.bbox_lat_north = box_array[0]
           geo.bbox_lon_west = box_array[1]
           geo.bbox_lat_south = box_array[2]
           geo.bbox_lon_east = box_array[3]
           geo.type = :bbox.to_s
         end
-        if geo.point.present?
-          # point is stored as a string array of lat/long string arrays like: '["121.1", "121.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2"]
-          point_array = geo.point.to_a.first.tr('[]" ','').split(',')
-          geo.point_lat = point_array[0]
-          geo.point_lon = point_array[1]
-          geo.type = :point.to_s
-        end
+        next unless geo.point.present?
+
+        # point is stored as a string array of lat/long string arrays like: '["121.1", "121.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2"]
+        point_array = geo.point.to_a.first.tr('[]" ', '').split(',')
+        geo.point_lat = point_array[0]
+        geo.point_lon = point_array[1]
+        geo.type = :point.to_s
       end
     end
 

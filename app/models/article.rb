@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work Article`
 class Article < ActiveFedora::Base
@@ -10,16 +12,15 @@ class Article < ActiveFedora::Base
   include ScholarsArchive::ExcludedArticleLicenses
   include ScholarsArchive::HasNestedOrderedProperties
 
-
   self.indexer = ArticleIndexer
 
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
-  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
+  validates_with ScholarsArchive::Validators::OtherAffiliationValidator
 
   private
-  def set_defaults
-  end
+
+  def set_defaults; end
 end

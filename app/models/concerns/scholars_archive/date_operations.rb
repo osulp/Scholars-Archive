@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module DateOperations
     extend ActiveSupport::Concern
 
-    def to_solr(solr_doc={})
+    def to_solr(solr_doc = {})
       solr_doc = super
-      solr_doc = solr_doc.merge({"date_decades_ssim" => decades})
-      solr_doc = solr_doc.merge({"date_facet_yearly_ssim" => date_facet_yearly})
+      solr_doc = solr_doc.merge('date_decades_ssim' => decades)
+      solr_doc = solr_doc.merge('date_facet_yearly_ssim' => date_facet_yearly)
       solr_doc
     end
 
@@ -15,10 +17,11 @@ module ScholarsArchive
     # If given date_value = invalid date, i.e. "typo_here2011-12-01", we will get nil
     def date_facet_yearly
       return nil if yearly_dates.empty?
+
       yearly_dates
     rescue ArgumentError => e
       Rails.logger.warn e.message
-      return nil
+      nil
     end
 
     # decades is intended to be used for date_decades_ssim, which is used by the decade facet
@@ -33,19 +36,20 @@ module ScholarsArchive
     #  g) given date_value = invalid date, i.e. "typo_here2011-12-01", we will get nil
     def decades
       return nil if decade_dates.empty?
+
       decade_dates.map(&:decade)
     rescue ArgumentError => e
       Rails.logger.warn e.message
-      return nil
+      nil
     end
 
     # Determine the date value to use for Decades facet and date facet yearly processing.
     def date_value
-      if date_created.present? then
+      if date_created.present?
         date_created
-      elsif date_copyright.present? then
+      elsif date_copyright.present?
         date_copyright
-      elsif date_issued.present? then
+      elsif date_issued.present?
         date_issued
       end
     end
@@ -59,7 +63,7 @@ module ScholarsArchive
     #  e) given date_value = "2017-12/2019-12", we will get [2017, 2018, 2019]
     #  f) given date_value = "2017/2019", we will get [2017, 2018, 2019]
     def yearly_dates
-      (date_value) ? clean_years : []
+      date_value ? clean_years : []
     end
 
     def clean_years
@@ -75,25 +79,26 @@ module ScholarsArchive
 
     def decade_dates
       return [] unless date_value
+
       dates = DateDecadeConverter.new(date_value).run
       dates ||= Array.wrap(DecadeDecorator.new(parsed_year)) if parsed_year
-      dates ? dates : []
+      dates || []
     end
 
     def parsed_year
-      clean_datetime.year if clean_datetime
+      clean_datetime&.year
     end
 
     def clean_datetime
-      if date_value =~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/ # YYYY-MM-DD
-        DateTime.strptime(date_value, "%Y-%m-%d")
-      elsif date_value  =~ /^[0-9]{4}-[0-9]{2}$/ # YYYY-MM
-        DateTime.strptime(date_value, "%Y-%m")
-      elsif date_value =~ /^[0-9]{4}/ # YYYY
-        DateTime.strptime(date_value.split("-").first, "%Y")
+      if /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.match?(date_value) # YYYY-MM-DD
+        DateTime.strptime(date_value, '%Y-%m-%d')
+      elsif /^[0-9]{4}-[0-9]{2}$/.match?(date_value) # YYYY-MM
+        DateTime.strptime(date_value, '%Y-%m')
+      elsif /^[0-9]{4}/.match?(date_value) # YYYY
+        DateTime.strptime(date_value.split('-').first, '%Y')
       else
         Rails.logger.warn "Invalid date_value: #{date_value}. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY."
-        return nil
+        nil
       end
     end
 
@@ -110,11 +115,11 @@ module ScholarsArchive
       private
 
       def first_year
-        year - year%10
+        year - year % 10
       end
 
       def last_year
-        year + 10 - (year+10)%10 - 1
+        year + 10 - (year + 10) % 10 - 1
       end
     end
 
@@ -128,15 +133,16 @@ module ScholarsArchive
 
       def run
         return unless valid_date_range?
+
         decades.times.map do |decade|
-          DecadeDecorator.new(earliest_date + 10*decade)
+          DecadeDecorator.new(earliest_date + 10 * decade)
         end
       end
 
       private
 
       def earliest_date
-        @earliest_date ||= dates.first - dates.first%10
+        @earliest_date ||= dates.first - dates.first % 10
       end
 
       def valid_decade_size?
@@ -148,11 +154,11 @@ module ScholarsArchive
       end
 
       def dates
-        @dates ||= date.to_s.split("-").map(&:to_i)
+        @dates ||= date.to_s.split('-').map(&:to_i)
       end
 
       def decades
-        calculated_decades = (dates.last - dates.first)/10 + 1
+        calculated_decades = (dates.last - dates.first) / 10 + 1
         calculated_decades <= 3 ? calculated_decades : 0
       end
     end

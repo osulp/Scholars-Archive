@@ -1,32 +1,37 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe GraduateProjectPresenter do
+  subject { presenter }
+
   let(:solr_document) { SolrDocument.new(attributes) }
-  let(:ability) { double "Ability" }
+  let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
   let(:attributes) { file.to_solr }
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => "TestTitle",
-        :index => "0"
+        title: 'TestTitle',
+        index: '0'
       }
     ]
   end
   let(:file) do
     GraduateProject.new(
-          id: '123abc',
-          nested_ordered_title_attributes: nested_ordered_title_attributes,
-          depositor: user.user_key,
-          label: "filename.tif")
+      id: '123abc',
+      nested_ordered_title_attributes: nested_ordered_title_attributes,
+      depositor: user.user_key,
+      label: 'filename.tif'
+    )
   end
-  let(:user) { double(user_key: 'sarah')}
+  let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
-    ["contributor_advisor", "contributor_committeemember", "degree_discipline", "degree_field", "degree_grantors", "degree_level", "degree_name", "graduation_year"]
+    %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
-  subject { presenter }
-  it "delegates to the solr_document" do
+
+  it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(solr_document).to receive(property.to_sym)
       presenter.send(property)

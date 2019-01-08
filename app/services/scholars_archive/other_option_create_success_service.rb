@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class OtherOptionCreateSuccessService < Hyrax::AbstractMessageService
     include ActionView::Helpers::UrlHelper
@@ -32,7 +34,7 @@ module ScholarsArchive
     end
 
     def entries_text
-      if ScholarsArchive::FormMetadataService.multiple? curation_concern.to_model.class,metadata_field.to_sym
+      if ScholarsArchive::FormMetadataService.multiple? curation_concern.to_model.class, metadata_field.to_sym
         new_entries.to_a.join(', ')
       else
         new_entries.to_s
@@ -40,7 +42,7 @@ module ScholarsArchive
     end
 
     def work_path
-      Rails.application.routes.url_helpers.url_for(:only_path => false, :action => 'show', :controller => 'hyrax/'+curation_concern.model_name.plural, :host=> Rails.application.config.action_mailer.default_url_options[:host], protocol: "https", id: work_id)
+      Rails.application.routes.url_helpers.url_for(only_path: false, action: 'show', controller: 'hyrax/' + curation_concern.model_name.plural, host: Rails.application.config.action_mailer.default_url_options[:host], protocol: 'https', id: work_id)
     end
   end
 end

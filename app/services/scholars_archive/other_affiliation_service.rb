@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for other_affiliation field
   class OtherAffiliationService < Hyrax::QaSelectService
@@ -10,7 +12,7 @@ module ScholarsArchive
     end
 
     def other_option
-      ['Other', 'Other']
+      %w[Other Other]
     end
 
     def select_sorted_all_options

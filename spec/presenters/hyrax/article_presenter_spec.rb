@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe ArticlePresenter do
+  subject { presenter }
+
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
@@ -8,8 +10,8 @@ RSpec.describe ArticlePresenter do
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => "TestTitle",
-        :index => "0"
+        title: 'TestTitle',
+        index: '0'
       }
     ]
   end
@@ -26,7 +28,6 @@ RSpec.describe ArticlePresenter do
   let(:solr_properties) do
     %w[resource_type editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn web_of_science_uid]
   end
-  subject { presenter }
 
   it 'delegates to the solr_document' do
     solr_properties.each do |property|

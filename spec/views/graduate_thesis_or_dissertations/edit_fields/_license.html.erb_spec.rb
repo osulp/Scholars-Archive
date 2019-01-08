@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
-  let(:current_user) { User.new(email: 'test@example.com',guest: false) }
+  let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::GraduateThesisOrDissertationForm.new(work, ability, controller)
   end
@@ -26,7 +28,7 @@ RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb',
     allow(view).to receive(:can?).and_return(true)
   end
 
-  context "for a new object" do
+  context 'for a new object' do
     let(:work) { GraduateThesisOrDissertation.new }
 
     before do
@@ -34,15 +36,15 @@ RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb',
       render inline: form_template
     end
 
-    it "draws the page" do
+    it 'draws the page' do
       expect(rendered).to have_selector("form[action='/concern/graduate_thesis_or_dissertations']")
     end
 
-    it "only renders CC4 licenses" do
+    it 'only renders CC4 licenses' do
       expect(rendered).to have_selector("select#graduate_thesis_or_dissertation_license option[value$='/4.0/']", count: 6)
       expect(rendered).to have_selector("select#graduate_thesis_or_dissertation_license option[value$='rr-r.html']", count: 1)
     end
-    it "does not render unneeded licenses" do
+    it 'does not render unneeded licenses' do
       expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='zero/1.0/']")
       expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='mark/1.0/']")
     end

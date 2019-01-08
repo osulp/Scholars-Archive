@@ -1,0 +1,559 @@
+# NOTE: THESE HAVE BEEN DISABLED BECAUSE THEY ARE HARDER TO FIX
+# THERE SHOULD BE DISCUSSION ON WHETHER WE WANT TO TRACK THESE
+# IF SO WE SHOULD SLOWLY REMOVE THEM AND FIX THEM
+# IF NOT WE CAN MOVE THEM TO THE .rubocop.yml FILE
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+RSpec/SubjectStub:
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/ScatteredLet:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+# THESE SHOULD BE WORKED ON AND FIXED AS TECHNICAL DEBT
+# 141 Offenses
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'app/indexers/scholars_archive/sa_deep_indexing_service.rb'
+    - 'app/indexers/purchased_e_resource_indexer.rb'
+    - 'app/indexers/etd_indexer.rb'
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/indexers/oer_indexer.rb'
+    - 'app/indexers/article_indexer.rb'
+    - 'app/renderers/hyrax/renderers/external_link_attribute_renderer.rb'
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/forms/scholars_archive/dataset_form_behavior.rb'
+    - 'app/forms/scholars_archive/etd_work_form_behavior.rb'
+    - 'app/forms/scholars_archive/article_work_form_behavior.rb'
+    - 'app/forms/scholars_archive/nested_behavior.rb'
+    - 'app/forms/scholars_archive/date_terms_behavior.rb'
+    - 'app/forms/scholars_archive/oer_work_form_behavior.rb'
+    - 'app/forms/scholars_archive/default_work_form_behavior.rb'
+    - 'app/forms/hyrax/graduate_thesis_or_dissertation_form.rb'
+    - 'app/forms/hyrax/graduate_project_form.rb'
+    - 'app/forms/hyrax/conference_proceedings_or_journal_form.rb'
+    - 'app/forms/hyrax/forms/batch_upload_form.rb'
+    - 'app/forms/hyrax/forms/collection_form.rb'
+    - 'app/forms/hyrax/default_form.rb'
+    - 'app/forms/hyrax/honors_college_thesis_form.rb'
+    - 'app/forms/hyrax/open_educational_resource_form.rb'
+    - 'app/forms/hyrax/dataset_form.rb'
+    - 'app/forms/hyrax/article_form.rb'
+    - 'app/forms/hyrax/purchased_e_resource_form.rb'
+    - 'app/forms/hyrax/undergraduate_thesis_or_project_form.rb'
+    - 'app/forms/hyrax/eesc_publication_form.rb'
+    - 'app/forms/hyrax/technical_report_form.rb'
+    - 'app/forms/hyrax/administrative_report_or_publication_form.rb'
+    - 'app/mailers/application_mailer.rb'
+    - 'app/search_builders/scholars_archive/catalog_search_builder.rb'
+    - 'app/search_builders/scholars_archive/facet_modal_search_builder.rb'
+    - 'app/models/qa.rb'
+    - 'app/models/nested_related_items.rb'
+    - 'app/models/solr_document.rb'
+    - 'app/models/nested_ordered_additional_information.rb'
+    - 'app/models/qa/local_authority_entry.rb'
+    - 'app/models/nested_ordered_creator.rb'
+    - 'app/models/nested_ordered_contributor.rb'
+    - 'app/models/ability.rb'
+    - 'app/models/search_builder.rb'
+    - 'app/models/nested_ordered_abstract.rb'
+    - 'app/models/other_option.rb'
+    - 'app/models/application_record.rb'
+    - 'app/models/nested_geo.rb'
+    - 'app/models/oai_set.rb'
+    - 'app/models/concerns/scholars_archive/has_purchased_e_resource_triple_powered_properties.rb'
+    - 'app/models/concerns/scholars_archive/excluded_article_licenses.rb'
+    - 'app/models/concerns/scholars_archive/has_etd_triple_powered_properties.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/models/concerns/scholars_archive/date_operations.rb'
+    - 'app/models/concerns/scholars_archive/excluded_oer_licenses.rb'
+    - 'app/models/concerns/scholars_archive/excluded_default_licenses.rb'
+    - 'app/models/concerns/scholars_archive/has_nested_ordered_properties.rb'
+    - 'app/models/concerns/scholars_archive/etd_metadata.rb'
+    - 'app/models/concerns/scholars_archive/oer_metadata.rb'
+    - 'app/models/concerns/scholars_archive/article_metadata.rb'
+    - 'app/models/concerns/scholars_archive/has_triple_powered_properties.rb'
+    - 'app/models/concerns/scholars_archive/excluded_etd_licenses.rb'
+    - 'app/models/concerns/scholars_archive/default_metadata.rb'
+    - 'app/models/user.rb'
+    - 'app/models/nested_ordered_title.rb'
+    - 'app/presenters/article_presenter.rb'
+    - 'app/presenters/purchased_e_resource_presenter.rb'
+    - 'app/presenters/concerns/scholars_archive/etd_presenter_behavior.rb'
+    - 'app/presenters/concerns/scholars_archive/article_presenter_behavior.rb'
+    - 'app/presenters/concerns/scholars_archive/default_presenter_behavior.rb'
+    - 'app/presenters/concerns/scholars_archive/oer_presenter_behavior.rb'
+    - 'app/authorities/scholars_archive/extended_file_based_authority.rb'
+    - 'app/authorities/scholars_archive/cache_based_authority.rb'
+    - 'app/authorities/parsers/academic_units_parser.rb'
+    - 'app/authorities/parsers/degree_fields_parser.rb'
+    - 'app/jobs/migrate_creators_no_handles_job.rb'
+    - 'app/jobs/reindex_everything_job.rb'
+    - 'app/jobs/resolrize_job.rb'
+    - 'app/controllers/scholars_archive/downloads_controller.rb'
+    - 'app/controllers/scholars_archive/shares_controller.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/scholars_archive/single_use_links_viewer_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/other_options_controller.rb'
+    - 'app/controllers/saved_searches_controller.rb'
+    - 'app/controllers/hyrax/contact_form_controller.rb'
+    - 'app/controllers/hyrax/graduate_thesis_or_dissertations_controller.rb'
+    - 'app/controllers/hyrax/undergraduate_thesis_or_projects_controller.rb'
+    - 'app/controllers/hyrax/administrative_report_or_publications_controller.rb'
+    - 'app/controllers/hyrax/datasets_controller.rb'
+    - 'app/controllers/hyrax/technical_reports_controller.rb'
+    - 'app/controllers/hyrax/open_educational_resources_controller.rb'
+    - 'app/controllers/hyrax/articles_controller.rb'
+    - 'app/controllers/hyrax/conference_proceedings_or_journals_controller.rb'
+    - 'app/controllers/hyrax/honors_college_theses_controller.rb'
+    - 'app/controllers/hyrax/purchased_e_resources_controller.rb'
+    - 'app/controllers/hyrax/eesc_publications_controller.rb'
+    - 'app/controllers/hyrax/defaults_controller.rb'
+    - 'app/controllers/hyrax/graduate_projects_controller.rb'
+    - 'app/controllers/search_history_controller.rb'
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/download_analytics_behavior.rb'
+    - 'app/controllers/concerns/scholars_archive/purchased_e_resource_works_controller_behavior.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/controllers/concerns/scholars_archive/my_shares_behavior.rb'
+    - 'app/controllers/concerns/hyrax/contact_form_recaptcha_behavior.rb'
+    - 'app/helpers/hyrax_helper.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/services/scholars_archive/form_metadata_service.rb'
+    - 'app/services/scholars_archive/records_by_user_group_and_visibility.rb'
+    - 'app/services/scholars_archive/caching_service.rb'
+    - 'app/services/scholars_archive/admin_set_select_service.rb'
+    - 'app/services/scholars_archive/edtf_date_compare_service.rb'
+    - 'app/services/scholars_archive/triple_powered_service.rb'
+    - 'app/services/scholars_archive/label_and_ordered_parser_service.rb'
+    - 'app/services/scholars_archive/label_parser_service.rb'
+    - 'app/services/scholars_archive/all_facet_values_service.rb'
+    - 'app/services/scholars_archive/osu_api_service.rb'
+    - 'app/services/scholars_archive/ordered_parser_service.rb'
+    - 'app/services/scholars_archive/workflow/deposit_received_notification.rb'
+    - 'app/services/scholars_archive/workflow/deposited_notification.rb'
+    - 'app/services/scholars_archive/workflow/abstract_notification.rb'
+    - 'app/services/scholars_archive/workflow/pending_review_notification.rb'
+    - 'app/services/scholars_archive/workflow/changes_required_notification.rb'
+    - 'app/services/scholars_archive/other_option_create_success_service.rb'
+    - 'app/services/scholars_archive/parent_query_service.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'app/services/scholars_archive/handle_error_logging_service.rb'
+    - 'app/services/scholars_archive/peerreviewed_service.rb'
+    - 'app/inputs/multi_value_select_other_input.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/inputs/multi_value_date_input.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/triple_powered_properties/triple_powered_form.rb'
+    - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'lib/scholars_archive/embargoes/embargo_releaser.rb'
+    - 'lib/scholars_archive/validators/graduation_year_validator.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+    - 'lib/scholars_archive/feature_class_uri_to_label.rb'
+    - 'lib/qa/authorities/geonames.rb'
+    - 'lib/hyrax/controlled_vocabularies/location.rb'
+
+# 52 offenses
+Metrics/LineLength:
+  IgnoredPatterns: ['(\A|\s)#']
+  Max: 120
+  Exclude:
+    - 'spec/**/*'
+    - 'app/indexers/purchased_e_resource_indexer.rb'
+    - 'app/indexers/etd_indexer.rb'
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/indexers/oer_indexer.rb'
+    - 'app/indexers/article_indexer.rb'
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/forms/scholars_archive/dataset_form_behavior.rb'
+    - 'app/forms/scholars_archive/etd_work_form_behavior.rb'
+    - 'app/forms/scholars_archive/article_work_form_behavior.rb'
+    - 'app/forms/scholars_archive/oer_work_form_behavior.rb'
+    - 'app/forms/scholars_archive/default_work_form_behavior.rb'
+    - 'app/forms/hyrax/forms/batch_upload_form.rb'
+    - 'app/forms/hyrax/forms/collection_form.rb'
+    - 'app/forms/hyrax/purchased_e_resource_form.rb'
+    - 'app/search_builders/scholars_archive/facet_modal_search_builder.rb'
+    - 'app/models/solr_document.rb'
+    - 'app/models/honors_college_thesis.rb'
+    - 'app/models/concerns/scholars_archive/has_purchased_e_resource_triple_powered_properties.rb'
+    - 'app/models/concerns/scholars_archive/has_etd_triple_powered_properties.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/models/concerns/scholars_archive/has_nested_ordered_properties.rb'
+    - 'app/models/concerns/scholars_archive/etd_metadata.rb'
+    - 'app/models/concerns/scholars_archive/article_metadata.rb'
+    - 'app/models/concerns/scholars_archive/has_triple_powered_properties.rb'
+    - 'app/models/concerns/scholars_archive/default_metadata.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
+    - 'app/jobs/migrate_creators_no_handles_job.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/services/scholars_archive/degree_field_service.rb'
+    - 'app/services/scholars_archive/admin_set_select_service.rb'
+    - 'app/services/scholars_archive/edtf_date_compare_service.rb'
+    - 'app/services/scholars_archive/triple_powered_service.rb'
+    - 'app/services/scholars_archive/label_and_ordered_parser_service.rb'
+    - 'app/services/scholars_archive/osu_api_service.rb'
+    - 'app/services/scholars_archive/workflow/abstract_notification.rb'
+    - 'app/services/scholars_archive/other_option_create_success_service.rb'
+    - 'app/services/scholars_archive/academic_units_service.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'app/services/scholars_archive/handle_error_logging_service.rb'
+    - 'app/services/scholars_archive/degree_grantors_service.rb'
+    - 'app/inputs/multi_value_date_input.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'lib/scholars_archive/document/qualified_dublin_core.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+    - 'lib/hyrax/controlled_vocabularies/location.rb'
+
+# 32 offenses
+Metrics/AbcSize:
+  Exclude:
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/forms/scholars_archive/nested_behavior.rb'
+    - 'app/forms/hyrax/forms/collection_form.rb'
+    - 'app/models/solr_document.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/models/concerns/scholars_archive/date_operations.rb'
+    - 'app/models/concerns/scholars_archive/has_nested_ordered_properties.rb'
+    - 'app/models/user.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
+    - 'app/authorities/scholars_archive/cache_based_authority.rb'
+    - 'app/jobs/migrate_creators_no_handles_job.rb'
+    - 'app/jobs/reindex_everything_job.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/hyrax/contact_form_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/download_analytics_behavior.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/services/scholars_archive/records_by_user_group_and_visibility.rb'
+    - 'app/services/scholars_archive/triple_powered_service.rb'
+    - 'app/services/scholars_archive/osu_api_service.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'app/inputs/multi_value_select_other_input.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'lib/scholars_archive/embargoes/embargo_releaser.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/hyrax/controlled_vocabularies/location.rb'
+
+# 32 offenses
+Metrics/MethodLength:
+  Exclude:
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/renderers/hyrax/renderers/scholars_archive_nested_attribute_renderer.rb'
+    - 'app/forms/scholars_archive/dataset_form_behavior.rb'
+    - 'app/forms/scholars_archive/default_work_form_behavior.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
+    - 'app/jobs/migrate_creators_no_handles_job.rb'
+    - 'app/jobs/reindex_everything_job.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/hyrax/contact_form_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/download_analytics_behavior.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/controllers/concerns/hyrax/contact_form_recaptcha_behavior.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/services/scholars_archive/records_by_user_group_and_visibility.rb'
+    - 'app/services/scholars_archive/caching_service.rb'
+    - 'app/services/scholars_archive/triple_powered_service.rb'
+    - 'app/services/scholars_archive/osu_api_service.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'app/inputs/multi_value_select_other_input.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/inputs/multi_value_date_input.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'lib/scholars_archive/embargoes/embargo_releaser.rb'
+    - 'lib/scholars_archive/document/qualified_dublin_core.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+
+# 4 offenses
+Metrics/BlockLength:
+  ExcludedMethods: ['included']
+  Exclude:
+    - 'spec/**/*'
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/controllers/catalog_controller.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+
+# 8 offenses
+Lint/UselessAssignment:
+  Exclude:
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/services/scholars_archive/ordered_parser_service.rb'
+    - 'app/inputs/multi_value_select_other_input.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+
+# 10 offenses
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/hyrax/controlled_vocabularies/location.rb'
+
+# 10 offenses
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+    - 'lib/hyrax/controlled_vocabularies/location.rb'
+
+# 1 offense
+Layout/EndAlignment:
+  Exclude:
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+
+# 7 offenses
+Naming/UncommunicativeMethodParamName:
+  Exclude:
+    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
+    - 'app/authorities/parsers/academic_units_parser.rb'
+    - 'app/authorities/parsers/degree_fields_parser.rb'
+    - 'app/jobs/resolrize_job.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/services/scholars_archive/license_service.rb'
+    - 'lib/qa/authorities/geonames.rb'
+
+# 1 offense
+Naming/MemoizedInstanceVariableName:
+  Exclude:
+    - 'app/forms/hyrax/forms/batch_upload_form.rb'
+
+# 1 offense
+Lint/MissingCopEnableDirective:
+  Exclude:
+    - 'app/forms/hyrax/forms/collection_form.rb'
+
+# 9 offenses
+Metrics/ClassLength:
+  Exclude:
+    - 'app/models/solr_document.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/catalog_controller.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/inputs/multi_value_date_input.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+
+# 1 offense
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'app/models/oai_set.rb'
+
+# 1 offense
+Lint/ShadowedArgument:
+  Exclude:
+    - 'app/models/concerns/scholars_archive/date_operations.rb'
+
+# 1 offense
+Performance/TimesMap:
+  Exclude:
+    - 'app/models/concerns/scholars_archive/date_operations.rb'
+
+# 2 offenses
+Metrics/ModuleLength:
+  Exclude:
+    - 'app/models/concerns/scholars_archive/default_metadata.rb'
+    - 'app/helpers/application_helper.rb'
+
+# 13 offenses
+Style/GuardClause:
+  Exclude:
+    - 'app/models/user.rb'
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
+    - 'app/jobs/migrate_creators_no_handles_job.rb'
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/controllers/concerns/scholars_archive/download_analytics_behavior.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/services/scholars_archive/triple_powered_service.rb'
+    - 'app/services/scholars_archive/osu_api_service.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+
+# 6 offenses
+Naming/PredicateName:
+  Exclude:
+    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
+    - 'app/controllers/concerns/hyrax/contact_form_recaptcha_behavior.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'app/inputs/multi_value_ordered_input.rb'
+    - 'lib/scholars_archive/triple_powered_properties/triple_powered_form.rb'
+    - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+
+# 4 offenses
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
+    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
+    - 'app/controllers/blacklight_advanced_search/advanced_controller.rb'
+    - 'app/services/scholars_archive/osu_api_service.rb'
+
+# 8 offenses
+Lint/UselessAccessModifier:
+  Exclude:
+    - 'app/authorities/parsers/academic_units_parser.rb'
+    - 'app/authorities/parsers/degree_fields_parser.rb'
+    - 'app/services/scholars_archive/caching_service.rb'
+    - 'app/services/scholars_archive/edtf_date_compare_service.rb'
+    - 'app/services/scholars_archive/label_and_ordered_parser_service.rb'
+    - 'app/services/scholars_archive/label_parser_service.rb'
+    - 'app/services/scholars_archive/ordered_parser_service.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+
+# 8 offenses
+Lint/IneffectiveAccessModifier:
+  Exclude:
+    - 'app/authorities/parsers/academic_units_parser.rb'
+    - 'app/authorities/parsers/degree_fields_parser.rb'
+    - 'app/services/scholars_archive/caching_service.rb'
+    - 'app/services/scholars_archive/edtf_date_compare_service.rb'
+    - 'app/services/scholars_archive/label_and_ordered_parser_service.rb'
+    - 'app/services/scholars_archive/label_parser_service.rb'
+    - 'app/services/scholars_archive/ordered_parser_service.rb'
+    - 'app/services/scholars_archive/field_validation_service.rb'
+
+# 2 offenses
+Naming/VariableName:
+  Exclude:
+    - 'app/jobs/resolrize_job.rb'
+    - 'lib/hyrax/controlled_vocabularies/location.rb'
+
+# 1 offense
+Lint/EmptyWhen:
+  Exclude:
+    - 'app/controllers/scholars_archive/handles_controller.rb'
+
+# 1 offense
+Style/NestedTernaryOperator:
+  Exclude:
+    - 'app/helpers/application_helper.rb'
+
+# 1 offense
+Lint/InterpolationCheck:
+  Exclude:
+    - 'app/services/scholars_archive/osu_api_service.rb'
+
+# 1 offense
+Style/EmptyElse:
+  Exclude:
+    - 'app/services/scholars_archive/field_validation_service.rb'
+
+# 2 offenses
+Style/IfInsideElse:
+  Exclude:
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+
+# 3 offenses
+Style/NumericPredicate:
+  Exclude:
+    - 'app/services/scholars_archive/field_validation_service.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
+    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
+
+# 1 offense
+Lint/LiteralAsCondition:
+  Exclude:
+    - 'app/inputs/multi_value_select_other_input.rb'
+
+# 1 offense
+Naming/VariableNumber:
+  Exclude:
+    - 'app/inputs/multi_value_ordered_input.rb'
+
+# 2 offenses
+RSpec/FilePath:
+  Exclude:
+    - 'spec/requests/scholars_archive/handles_request_spec.rb'
+    - 'spec/services/scholars_archive/licence_service_spec.rb'
+
+# 1 offense
+Lint/NonLocalExitFromIterator:
+  Exclude:
+    - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
+
+# 1 offense
+Lint/UriEscapeUnescape:
+  Exclude:
+    - 'lib/qa/authorities/geonames.rb'

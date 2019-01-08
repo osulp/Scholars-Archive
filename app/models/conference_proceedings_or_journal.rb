@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work ConferenceProceedingsOrJournal`
 class ConferenceProceedingsOrJournal < ActiveFedora::Base
@@ -15,10 +17,11 @@ class ConferenceProceedingsOrJournal < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
-  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
+  validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
+
   def set_defaults
     self.peerreviewed ||= 'FALSE'
   end

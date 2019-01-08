@@ -209,16 +209,17 @@ module ScholarsArchive
     def ordered_metadata(csv, handle, solr_doc, solr_field, ordered_field_name)
       csv_metadata = ordered_csv_metadata(csv, handle)
       solr_metadata = solr_doc[solr_field] || []
-      if csv_metadata.empty?
-        combined = solr_metadata
-      else
-        combined = csv_metadata.concat(solr_metadata_not_in_csv(csv_metadata, solr_metadata))
-      end
+      combined = if csv_metadata.empty?
+                   solr_metadata
+                 else
+                   csv_metadata.concat(solr_metadata_not_in_csv(csv_metadata, solr_metadata))
+                 end
       combined.map.with_index { |obj, i| { index: i.to_s, ordered_field_name.to_sym => obj } }
     end
 
     def ordered_csv_metadata(csv, handle)
       return [] if handle.nil?
+
       # In the target CSV, find the rows that have a matching handle column,
       # then sort and map those rows in order.
       #
@@ -229,7 +230,7 @@ module ScholarsArchive
     end
 
     ##
-    # Find any metadata values in the solr_metdata that aren't in the CSV metadata, case-insensitive and 
+    # Find any metadata values in the solr_metdata that aren't in the CSV metadata, case-insensitive and
     # without any bogus whitespace characters. Any still found in SOLR will be appended.
     def solr_metadata_not_in_csv(csv_metadata, solr_metadata)
       not_in_csv = solr_metadata.reject { |s| csv_metadata.any? { |c| c.casecmp(s.strip).zero? } }

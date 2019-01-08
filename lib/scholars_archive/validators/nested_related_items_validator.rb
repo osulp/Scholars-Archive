@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Validators
   class NestedRelatedItemsValidator < ActiveModel::Validator
     def validate(record)
       error_counter = 0
 
-      if nested_related_items_present? (record)
-        error_counter += validate_nested_fields record, error_counter
-      end
+      error_counter += validate_nested_fields record, error_counter if nested_related_items_present? record
 
-      return
+      nil
     end
 
     def validate_nested_fields(record, error_counter = 0)
@@ -17,10 +17,10 @@ module ScholarsArchive::Validators
         validate_related_item(item, record)
       end
 
-      return error_counter
+      error_counter
     end
 
-    def nested_related_items_present? (record)
+    def nested_related_items_present?(record)
       record.nested_related_items.present?
     end
 
@@ -29,12 +29,12 @@ module ScholarsArchive::Validators
       unless item.label.first.blank? && item.related_url.first.blank?
         # check if label is present
         if item.label.first.blank? && item._destroy == false
-          add_error_message(record,:related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
+          add_error_message(record, :related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
           error_counter += 1
         end
         # check if related_url is present
         if item.related_url.first.blank? && item._destroy == false
-          add_error_message(record,:related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
+          add_error_message(record, :related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
           error_counter += 1
         end
 
@@ -47,7 +47,7 @@ module ScholarsArchive::Validators
         end
       end
 
-      (error_counter > 0) ? false : true
+      error_counter <= 0
     end
 
     private

@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
-  let(:current_user) { User.new(email: 'test@example.com',guest: false) }
+  let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     Default.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::DefaultForm.new(work, ability, controller)
   end
@@ -26,25 +28,25 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
     allow(view).to receive(:can?).and_return(true)
   end
 
-  context "for a persisted object nested related items" do
+  context 'for a persisted object nested related items' do
     let(:test_label) { 'Oregon Digital' }
     let(:test_url) { 'https://oregondigital.org/catalog/' }
     let(:test_item) do
       {
-          label: test_label,
-          related_url: test_url
+        label: test_label,
+        related_url: test_url
       }
     end
 
-    let(:attributes) {
+    let(:attributes) do
       {
-          title: ["test"],
-          creator: ["Blah"],
-          rights_statement: ["blah.blah"],
-          resource_type: ["blah"],
-          nested_related_items_attributes: [test_item]
+        title: ['test'],
+        creator: ['Blah'],
+        rights_statement: ['blah.blah'],
+        resource_type: ['blah'],
+        nested_related_items_attributes: [test_item]
       }
-    }
+    end
 
     before do
       assign(:curation_concern, work)
@@ -54,21 +56,20 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
       render inline: form_template
     end
 
-    it "draws the page" do
+    it 'draws the page' do
       expect(rendered).to have_content('Related Items')
     end
 
-    it "drows the input label" do
-      expect(rendered).to have_selector('input[value="'+test_label+'"]', visible: true)
+    it 'drows the input label' do
+      expect(rendered).to have_selector('input[value="' + test_label + '"]', visible: true)
     end
 
-    it "draws the input url" do
-      expect(rendered).to have_selector('input[value="'+test_url+'"]', visible: true)
+    it 'draws the input url' do
+      expect(rendered).to have_selector('input[value="' + test_url + '"]', visible: true)
     end
-
   end
 
-  context "for a new object" do
+  context 'for a new object' do
     let(:work) { Default.new }
 
     before do
@@ -77,9 +78,8 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
       render inline: form_template
     end
 
-    it "draws the page" do
+    it 'draws the page' do
       expect(rendered).to have_selector('input.nested-field.multi-text-field', visible: true)
     end
   end
-
 end

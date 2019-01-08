@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class PeerreviewedService < Hyrax::QaSelectService
     def initialize
