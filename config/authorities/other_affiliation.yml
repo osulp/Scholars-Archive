@@ -131,3 +131,9 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/CenterForSmallFarmsAndCommunityFoodSystems"
   term: "Center for Small Farms and Community Food Systems"
   active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityLouisStokesAcademyforMinorityParticipation"
+  term: "Louis Stokes Academy for Minority Participation"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityOpenlyPublishedEnvironmentalSensingLab"
+  term: "Openly Published Environmental Sensing Lab"
+  active: true
