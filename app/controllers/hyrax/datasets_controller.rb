@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work Dataset`
 
 module Hyrax
+  # dataset controller
   class DatasetsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

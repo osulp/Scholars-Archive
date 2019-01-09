@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # behavior for nested propeerties
   module NestedBehavior
     extend ActiveSupport::Concern
 

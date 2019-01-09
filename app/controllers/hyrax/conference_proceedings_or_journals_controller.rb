@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work ConferenceProceedingsOrJournal`
 
 module Hyrax
+  # conference proceedings controller
   class ConferenceProceedingsOrJournalsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

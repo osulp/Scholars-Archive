@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # checks peer reviewed 
   class PeerreviewedService < Hyrax::QaSelectService
     def initialize
       super('peerreviewed')

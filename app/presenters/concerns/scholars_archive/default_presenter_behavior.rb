@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # presenter behavior for default
   module DefaultPresenterBehavior
     extend ActiveSupport::Concern
     included do

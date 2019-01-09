@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work Default`
 module Hyrax
+  # form object for default work
   class DefaultForm < Hyrax::Forms::WorkForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::DefaultWorkFormBehavior

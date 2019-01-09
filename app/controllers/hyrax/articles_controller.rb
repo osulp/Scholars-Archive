@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work Article`
 
 module Hyrax
+  # article controller
   class ArticlesController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

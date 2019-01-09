@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# builds set for oai
 class OaiSet < BlacklightOaiProvider::Set
   class << self
     # The Solr repository object (optional)

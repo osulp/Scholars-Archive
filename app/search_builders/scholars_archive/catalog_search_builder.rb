@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# builds searches for search result page
 class ScholarsArchive::CatalogSearchBuilder < Hyrax::CatalogSearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder

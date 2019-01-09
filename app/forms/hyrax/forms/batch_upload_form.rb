@@ -2,6 +2,7 @@
 
 module Hyrax
   module Forms
+    # form object for batch uploads
     class BatchUploadForm < Hyrax::Forms::WorkForm
       include ScholarsArchive::DefaultWorkFormBehavior
       include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm

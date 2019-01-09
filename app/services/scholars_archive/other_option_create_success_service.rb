@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Create other option
   class OtherOptionCreateSuccessService < Hyrax::AbstractMessageService
     include ActionView::Helpers::UrlHelper
     attr_reader :depositor, :curation_concern, :metadata_field, :new_entries, :work_id, :work_title

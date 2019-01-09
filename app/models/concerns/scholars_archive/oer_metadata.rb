@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # oer metadata
   module OerMetadata
     extend ActiveSupport::Concern
 

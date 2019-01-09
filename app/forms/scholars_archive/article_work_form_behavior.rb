@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Form behavior for article
   module ArticleWorkFormBehavior
     extend ActiveSupport::Concern
     included do

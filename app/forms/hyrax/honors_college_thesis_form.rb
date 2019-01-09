@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work HonorsCollegeThesis`
 module Hyrax
+  # form object for honors college thesis
   class HonorsCollegeThesisForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::EtdWorkFormBehavior

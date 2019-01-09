@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive::Validators
+  # Grad year validation
   class GraduationYearValidator < ActiveModel::Validator
     def validate(record)
       return if !record.graduation_year.present? || valid_value(record)

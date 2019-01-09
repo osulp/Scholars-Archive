@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # excluded licenses
   module ExcludedEtdLicenses
     extend ActiveSupport::Concern
 

@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work TechnicalReport`
 
 module Hyrax
+  # technical report controller
   class TechnicalReportsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

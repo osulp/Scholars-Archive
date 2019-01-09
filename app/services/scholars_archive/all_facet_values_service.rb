@@ -3,6 +3,7 @@
 require 'rsolr'
 
 module ScholarsArchive
+  # Grabs all facet values
   class AllFacetValuesService
     ##
     # Query all values for a facet making use of the CatalogSearchBuilder to apply the

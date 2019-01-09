@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# indexes etd metadata
 class EtdIndexer < DefaultWorkIndexer
   self.stored_and_facetable_fields += %i[contributor_advisor contributor_committeemember degree_discipline degree_grantors graduation_year]
 

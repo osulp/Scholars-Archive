@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Translate feature class
   class FeatureClassUriToLabel
     def uri_to_label(uri)
       { 'http://www.geonames.org/ontology#A' => 'Administrative Boundary',

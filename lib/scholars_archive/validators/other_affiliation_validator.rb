@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive::Validators
+  # Other affiliation validator
   class OtherAffiliationValidator < ActiveModel::Validator
     def validate(record)
       error_counter = 0

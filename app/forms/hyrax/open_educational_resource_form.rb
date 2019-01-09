@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work OpenEducationalResource`
 module Hyrax
+  # form object for oer
   class OpenEducationalResourceForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::OerWorkFormBehavior

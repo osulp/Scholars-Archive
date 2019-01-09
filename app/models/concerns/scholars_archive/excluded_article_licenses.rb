@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # excluded article licenses
   module ExcludedArticleLicenses
     extend ActiveSupport::Concern
 

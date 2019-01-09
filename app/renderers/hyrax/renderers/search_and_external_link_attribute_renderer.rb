@@ -2,6 +2,7 @@
 
 module Hyrax
   module Renderers
+    # renders search and external link on show page
     class SearchAndExternalLinkAttributeRenderer < AttributeRenderer
       include ApplicationHelper
       private

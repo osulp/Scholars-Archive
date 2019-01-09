@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Multi value ordered input
 class MultiValueOrderedInput < MultiValueInput
   def input_type
     'multi_value'.freeze

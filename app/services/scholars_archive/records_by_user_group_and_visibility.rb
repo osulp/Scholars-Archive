@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Sorted records
   class RecordsByUserGroupAndVisibility
     def call(current_user, facet)
       return facets(public_search(facet, 'public'), facet.key) unless current_user

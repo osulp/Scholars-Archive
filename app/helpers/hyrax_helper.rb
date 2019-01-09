@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# hyrax helper
 module HyraxHelper
   include ::BlacklightHelper
   include Hyrax::BlacklightOverride

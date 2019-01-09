@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # builds search string for facet pagination
   class FacetModalSearchBuilder
     def admin_records(facet_string)
       clauses = [facet_search_string(facet_string), not_filesets].join(' AND ')

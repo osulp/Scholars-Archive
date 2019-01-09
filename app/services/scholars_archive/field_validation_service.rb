@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Validates fields
   class FieldValidationService
     def self.degree_field_options(env_user)
       service = ScholarsArchive::DegreeFieldService.new

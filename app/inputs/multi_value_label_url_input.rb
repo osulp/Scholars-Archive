@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Multi value label uri input
 class MultiValueLabelUrlInput < MultiValueInput
   def input_type
     'multi_value'.freeze

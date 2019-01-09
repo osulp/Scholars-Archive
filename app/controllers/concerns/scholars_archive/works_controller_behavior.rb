@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # works controller behavior
   module WorksControllerBehavior
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior

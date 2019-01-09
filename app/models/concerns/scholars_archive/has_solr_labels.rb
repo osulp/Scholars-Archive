@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # solr label ops
   module HasSolrLabels
     extend ActiveSupport::Concern
 

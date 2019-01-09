@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work Dataset`
 module Hyrax
+  # form object for dataset
   class DatasetForm < Hyrax::Forms::WorkForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::DatasetFormBehavior

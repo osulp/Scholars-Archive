@@ -3,6 +3,7 @@
 require 'csv'
 
 module ScholarsArchive
+  # Migration for ordered metadata
   class MigrateOrderedMetadataService
     ##
     # Open and read CSVs into memory to prevent unnecessary IO for processing multiple works,

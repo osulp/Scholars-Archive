@@ -3,6 +3,7 @@
 require 'uri'
 
 module ScholarsArchive::TriplePoweredProperties
+  # Checks to see if url field has url
   class HasUrlValidator < ActiveModel::Validator
     ##
     # Evaluate each triple powered property value to ensure it is a valid URL

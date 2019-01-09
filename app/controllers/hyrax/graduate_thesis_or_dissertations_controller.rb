@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work GraduateThesisOrDissertation`
 
 module Hyrax
+  # grad thesis or dissertation controller
   class GraduateThesisOrDissertationsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

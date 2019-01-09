@@ -4,6 +4,7 @@ require 'faraday'
 require 'json'
 
 module ScholarsArchive
+  # OSU Api
   class OsuApiService
     attr_accessor :token, :logger, :people
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # etd presenter for show page
   module EtdPresenterBehavior
     extend ActiveSupport::Concern
     included do

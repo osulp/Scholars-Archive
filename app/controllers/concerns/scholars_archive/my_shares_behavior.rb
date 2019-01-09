@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # my shares behavior
   module MySharesBehavior
     extend ActiveSupport::Concern
 

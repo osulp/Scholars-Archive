@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Parsers
+  # parses academic units
   class AcademicUnitsParser
     def self.parse(jsonld)
       extract_and_massage_data(jsonld)

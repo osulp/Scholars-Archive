@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # analytics behavior
   module DownloadAnalyticsBehavior
     extend ActiveSupport::Concern
 

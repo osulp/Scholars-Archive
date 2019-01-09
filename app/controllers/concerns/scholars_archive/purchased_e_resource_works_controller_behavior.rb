@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # per controller behavior
   module PurchasedEResourceWorksControllerBehavior
     extend ScholarsArchive::WorksControllerBehavior
     extend ActiveSupport::Concern

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive::Validators
+  # Validate labels and presence of related item
   class NestedRelatedItemsValidator < ActiveModel::Validator
     def validate(record)
       error_counter = 0

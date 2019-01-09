@@ -3,6 +3,7 @@
 require 'triplestore_adapter'
 
 module ScholarsArchive
+  # Triple powered
   class TriplePoweredService
     def fetch_all_labels(uris)
       labels = []

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # default metadata
   module DefaultMetadata
     extend ActiveSupport::Concern
 

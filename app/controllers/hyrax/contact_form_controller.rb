@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Hyrax
+  # contact form controller
   class ContactFormController < ApplicationController
     include ContactFormRecaptchaBehavior
     before_action :build_contact_form

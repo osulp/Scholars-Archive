@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work AdministrativeReportOrPublication`
 
 module Hyrax
+  # admin report controller
   class AdministrativeReportOrPublicationsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

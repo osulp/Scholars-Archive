@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Order parser
   class OrderedParserService
     def self.parse(labels)
       labels ||= []

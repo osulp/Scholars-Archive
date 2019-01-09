@@ -2,6 +2,7 @@
 
 module ScholarsArchive
   module Workflow
+    # Received deposit
     class DepositReceivedNotification < ScholarsArchive::Workflow::AbstractNotification
       private
 

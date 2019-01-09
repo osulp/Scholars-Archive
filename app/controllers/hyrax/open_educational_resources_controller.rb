@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work OpenEducationalResource`
 
 module Hyrax
+  # oer controller
   class OpenEducationalResourcesController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

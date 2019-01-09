@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work GraduateThesisOrDissertation`
 module Hyrax
+  # form object for graduate thesis or dissertation
   class GraduateThesisOrDissertationForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::EtdWorkFormBehavior
