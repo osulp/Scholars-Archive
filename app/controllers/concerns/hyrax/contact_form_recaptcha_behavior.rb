@@ -8,7 +8,7 @@ module Hyrax
           true
         else
           flash[:error] = 'Captcha did not verify properly.'
-          flash[:error] << @contact_form.errors.full_messages.dup.map(&:to_s).dup.join(', ')
+          # flash[:error] << @contact_form.errors.full_messages.dup.map(&:to_s).dup.join(', ')
           false
         end
       else
