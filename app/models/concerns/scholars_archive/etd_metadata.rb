@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module EtdMetadata
     extend ActiveSupport::Concern
@@ -14,7 +16,7 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :degree_discipline, predicate: ::RDF::URI.new("http://http://dbpedia.org/ontology/academicDiscipline") do |index|
+      property :degree_discipline, predicate: ::RDF::URI.new('http://http://dbpedia.org/ontology/academicDiscipline') do |index|
         index.as :stored_searchable
       end
 
@@ -25,7 +27,7 @@ module ScholarsArchive
       # accessor value used by AddOtherFieldOptionActor to persist "Other" values provided by the user
       attr_accessor :degree_grantors_other
 
-      property :graduation_year, predicate: ::RDF::URI.new("http://www.rdaregistry.info/Elements/w/#P10215"), multiple: false do |index|
+      property :graduation_year, predicate: ::RDF::URI.new('http://www.rdaregistry.info/Elements/w/#P10215'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
     end

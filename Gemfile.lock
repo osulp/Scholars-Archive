@@ -171,6 +171,7 @@ GEM
     almond-rails (0.1.0)
       rails (>= 4.2, < 6)
     arel (7.1.4)
+    ast (2.4.0)
     autoprefixer-rails (9.1.4)
       execjs
     awesome_nested_set (3.1.4)
@@ -472,6 +473,7 @@ GEM
     ice_nine (0.11.2)
     iiif_manifest (0.4.0)
       activesupport (>= 4)
+    jaro_winkler (1.5.2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -622,6 +624,9 @@ GEM
       rails (> 3.2.0)
     orm_adapter (0.5.0)
     os (1.0.0)
+    parallel (1.12.1)
+    parser (2.5.3.0)
+      ast (~> 2.4.0)
     parslet (1.8.2)
     poltergeist (1.17.0)
       capybara (~> 2.1)
@@ -629,6 +634,7 @@ GEM
       websocket-driver (>= 0.2.0)
     posix-spawn (0.3.13)
     power_converter (0.1.2)
+    powerpack (0.1.2)
     public_suffix (3.0.3)
     pul_uv_rails (2.0.1)
     puma (3.11.2)
@@ -676,6 +682,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -785,6 +792,16 @@ GEM
     rspec-support (3.7.1)
     rspec_junit_formatter (0.3.0)
       rspec-core (>= 2, < 4, != 2.12.0)
+    rubocop (0.62.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.4.0)
+    rubocop-rspec (1.31.0)
+      rubocop (>= 0.60.0)
     ruby-box (1.15.0)
       addressable
       json
@@ -906,6 +923,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    unicode-display_width (1.4.1)
     validatable (1.6.7)
     warden (1.2.7)
       rack (>= 1.0)
@@ -980,6 +998,8 @@ DEPENDENCIES
   rspec-mocks
   rspec-rails
   rspec_junit_formatter
+  rubocop
+  rubocop-rspec
   ruby-debug-ide
   rubycas-client!
   rubycas-client-rails!

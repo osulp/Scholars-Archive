@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'uri'
 
 module ScholarsArchive::TriplePoweredProperties
   class HasUrlValidator < ActiveModel::Validator
-
     ##
     # Evaluate each triple powered property value to ensure it is a valid URL
     #
@@ -11,7 +12,7 @@ module ScholarsArchive::TriplePoweredProperties
       return if record.triple_powered_properties.empty?
 
       record.triple_powered_properties.each do |prop|
-        return if prop[:skip_validation] && record[prop].empty? 
+        return if prop[:skip_validation] && record[prop].empty?
         if ScholarsArchive::FormMetadataService.multiple? record.to_model.class, prop[:field]
           values = record[prop[:field]]
         else

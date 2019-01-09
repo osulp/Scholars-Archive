@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class ExtendedFileBasedAuthority < Qa::Authorities::Local::FileBasedAuthority
     def all

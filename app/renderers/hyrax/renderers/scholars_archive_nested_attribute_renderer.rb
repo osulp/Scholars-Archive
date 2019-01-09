@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   # Necessary include in Hyrax::Renderers module so that Hyrax::PresentsAttributes
   # is able to dynamically find it in #find_renderer_class

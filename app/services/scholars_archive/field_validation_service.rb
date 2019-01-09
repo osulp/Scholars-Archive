@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class FieldValidationService
     def self.degree_field_options(env_user)
@@ -21,13 +23,13 @@ module ScholarsArchive
     end
 
     def self.get_collection(field, record: nil, env_user: nil)
-      if field.to_s == "degree_level"
+      if field.to_s == 'degree_level'
         degree_level_options(env_user)
-      elsif field.to_s == "degree_grantors"
+      elsif field.to_s == 'degree_grantors'
         degree_grantors_options(record.degree_grantors, env_user)
-      elsif field.to_s == "degree_name"
+      elsif field.to_s == 'degree_name'
         degree_name_options(env_user)
-      elsif field.to_s == "degree_field"
+      elsif field.to_s == 'degree_field'
         degree_field_options(env_user)
       else
         []
@@ -110,7 +112,7 @@ module ScholarsArchive
           if other_value_in_collection? other_value: entry, collection: collection
             err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
             add_error_message(record, other_field, err_message)
-            record.send(field) << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
+            record.send(field) << [{option: 'Other', err_msg: err_message, other_entry: entry.to_s}.to_json]
             error_counter += 1
           else
             valid_values << entry.to_s
@@ -133,7 +135,7 @@ module ScholarsArchive
 
       if error_counter > 0
         valid_values.each do |entry|
-          record.send(field) << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
+          record.send(field) << [{option: 'Other', err_valid_val:true, other_entry: entry.to_s}.to_json]
         end
       end
       return error_counter

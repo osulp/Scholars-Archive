@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'net/http'
 
 module ScholarsArchive
   class CachingService
-
     def self.fetch_or_store_in_cache(uri, expires_in)
       fetch_or_cache_json_from_etag(uri, expires_in)
     end
@@ -15,7 +16,7 @@ module ScholarsArchive
         if data.nil? || data != etag
           json_response = fetch_json_and_etag(uri)
           json = json_response.body
-          etag = json_response["etag"]
+          etag = json_response['etag']
           cache_json(uri, json, expires_in)
           cache_etag(uri, etag, expires_in)
         else
@@ -25,15 +26,15 @@ module ScholarsArchive
       end
 
       def self.fetch_etag(uri)
-        fetch(uri, Net::HTTP::Head, "etag")
+        fetch(uri, Net::HTTP::Head, 'etag')
       end
 
       def self.fetch_json_and_etag(uri)
-        fetch(uri, Net::HTTP::Get, "full response")
+        fetch(uri, Net::HTTP::Get, 'full response')
       end
 
       def self.read_etag_from_cache(uri)
-        read(uri+"_etag")
+        read(uri+'_etag')
       end
 
       def self.read_json_from_cache(uri)
@@ -41,7 +42,7 @@ module ScholarsArchive
       end
 
       def self.cache_etag(uri, payload, expires_in)
-        cache(uri+"_etag", payload, expires_in)
+        cache(uri+'_etag', payload, expires_in)
       end
 
       def self.cache_json(uri, payload, expires_in)
@@ -55,8 +56,8 @@ module ScholarsArchive
         res = Net::HTTP.start(url.host, url.port) do |http|
           http.request(req)
         end
-        payload = res["etag"] if payload_type == "etag"
-        payload = res if payload_type == "full response"
+        payload = res['etag'] if payload_type == 'etag'
+        payload = res if payload_type == 'full response'
         payload
       end
 

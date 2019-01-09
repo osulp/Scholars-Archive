@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'faraday'
 require 'json'
 
@@ -18,7 +20,7 @@ module ScholarsArchive
       header = authorization_header
       @logger.debug("OsuApiService#get_person : fetching user : #{url} with params #{params}")
       response = get(url, params, header)
-      @logger.debug("OsuApiService#get_person : returned user") if response.status == 200
+      @logger.debug('OsuApiService#get_person : returned user') if response.status == 200
       @logger.error("OsuApiService#get_person(#{onid}) failed : #{response.status} : #{response.reason_phrase}") unless response.status == 200
       if response.status == 200
         o = JSON.parse(response.body)

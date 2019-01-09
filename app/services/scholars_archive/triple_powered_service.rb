@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'triplestore_adapter'
 
 module ScholarsArchive
   class TriplePoweredService
-
     def fetch_all_labels(uris)
       labels = []
       uris.each do |uri|
         graph = fetch_from_store(uri)
-        labels << predicate_labels(graph).values.flatten.compact.collect{ |label| label + "$" + uri.to_s }
+        labels << predicate_labels(graph).values.flatten.compact.collect{ |label| label + '$' + uri.to_s }
       end
       labels.flatten.compact
     end
@@ -18,9 +19,9 @@ module ScholarsArchive
         graph = fetch_from_store(uri)
         values = predicate_label_dates(graph).values.flatten.compact
         if values.size > 0
-          labels << values.collect{ |label_date| label_date + "$" + uri.to_s }
+          labels << values.collect{ |label_date| label_date + '$' + uri.to_s }
         else
-          labels << predicate_labels(graph).values.flatten.compact.collect{ |label| label + "$" + uri.to_s }
+          labels << predicate_labels(graph).values.flatten.compact.collect{ |label| label + '$' + uri.to_s }
         end
       end
       labels.flatten.compact
@@ -88,8 +89,8 @@ module ScholarsArchive
     def fetch_from_store(uri)
       unless uri.blank?
         begin
-          @triplestore ||= TriplestoreAdapter::Triplestore.new(TriplestoreAdapter::Client.new(ENV["SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE"] || "blazegraph",
-                                                                                              ENV["SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL"] || 'http://localhost:9999/blazegraph/namespace/development/sparql'))
+          @triplestore ||= TriplestoreAdapter::Triplestore.new(TriplestoreAdapter::Client.new(ENV['SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE'] || 'blazegraph',
+                                                                                              ENV['SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL'] || 'http://localhost:9999/blazegraph/namespace/development/sparql'))
           @triplestore.fetch(uri, from_remote: true)
         rescue TriplestoreAdapter::TriplestoreException => e
           Rails.logger.warn e.message

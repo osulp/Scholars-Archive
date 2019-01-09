@@ -229,7 +229,7 @@ module ScholarsArchive
     end
 
     ##
-    # Find any metadata values in the solr_metdata that aren't in the CSV metadata, case-insensitive and 
+    # Find any metadata values in the solr_metdata that aren't in the CSV metadata, case-insensitive and
     # without any bogus whitespace characters. Any still found in SOLR will be appended.
     def solr_metadata_not_in_csv(csv_metadata, solr_metadata)
       not_in_csv = solr_metadata.reject { |s| csv_metadata.any? { |c| c.casecmp(s.strip).zero? } }

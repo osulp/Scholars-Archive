@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rsolr'
 
 module ScholarsArchive
@@ -41,8 +43,8 @@ module ScholarsArchive
     def facet_params(facet_field, params)
       params[:rows] = 0
       params[:facet] = 'on'
-      params["facet.field"] = facet_field
-      params["facet.limit"] = 100000
+      params['facet.field'] = facet_field
+      params['facet.limit'] = 100000
       params["f.#{facet_field}.facet.limit"] = 100000
       params
     end

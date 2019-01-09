@@ -92,6 +92,8 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.2.2'
 
+gem 'rubocop'
+gem 'rubocop-rspec'
 
 group :staging, :production do
   gem 'ddtrace'

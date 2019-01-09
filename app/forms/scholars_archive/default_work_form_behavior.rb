@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module DefaultWorkFormBehavior
     extend ActiveSupport::Concern
@@ -70,7 +72,6 @@ module ScholarsArchive
           }
         ]
       end
-
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for the degree_grantors field
   class DegreeGrantorsService < Hyrax::QaSelectService

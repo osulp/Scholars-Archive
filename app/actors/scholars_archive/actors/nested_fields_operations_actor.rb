@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module Actors
     # The Hyrax::NestedFieldsOperationsActor responds to two primary actions:
@@ -26,13 +28,13 @@ module ScholarsArchive
       def set_geo_coordinates (env)
         if env.attributes['nested_geo_attributes']
           env.attributes['nested_geo_attributes'].each do |box, value|
-            if [value["label"], value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]].none? { |f| !f.present? }
-              bbox = [value["bbox_lat_north"], value["bbox_lon_west"], value["bbox_lat_south"], value["bbox_lon_east"]]
-              value["bbox"] = bbox.join(',')
+            if [value['label'], value['bbox_lat_north'], value['bbox_lon_west'], value['bbox_lat_south'], value['bbox_lon_east']].none? { |f| !f.present? }
+              bbox = [value['bbox_lat_north'], value['bbox_lon_west'], value['bbox_lat_south'], value['bbox_lon_east']]
+              value['bbox'] = bbox.join(',')
             end
-            if [value["label"], value["point_lat"], value["point_lon"]].none? { |f| !f.present? }
-              point = [value["point_lat"], value["point_lon"]]
-              value["point"] = point.join(',')
+            if [value['label'], value['point_lat'], value['point_lon']].none? { |f| !f.present? }
+              point = [value['point_lat'], value['point_lon']]
+              value['point'] = point.join(',')
             end
           end
           clean_up_nested_attributes(env)
@@ -73,7 +75,6 @@ module ScholarsArchive
           v.delete('bbox_lon_east')
         end
       end
-
     end
   end
 end

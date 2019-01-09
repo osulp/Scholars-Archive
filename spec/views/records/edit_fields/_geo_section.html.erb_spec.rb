@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
@@ -26,7 +28,7 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
     allow(view).to receive(:can?).and_return(true)
   end
 
-  context "for a persisted object nested geo points" do
+  context 'for a persisted object nested geo points' do
     let(:test_point) do
       {
           label: 'point1',
@@ -36,10 +38,10 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
 
     let(:attributes) {
       {
-          title: ["test"],
-          creator: ["Blah"],
-          rights_statement: ["blah.blah"],
-          resource_type: ["blah"],
+          title: ['test'],
+          creator: ['Blah'],
+          rights_statement: ['blah.blah'],
+          resource_type: ['blah'],
           nested_geo_attributes: [test_point]
       }
     }
@@ -52,21 +54,20 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
       render inline: form_template
     end
 
-    it "draws the page" do
-      expect(rendered).to have_selector("select#new_geo_type option", count: 2)
+    it 'draws the page' do
+      expect(rendered).to have_selector('select#new_geo_type option', count: 2)
     end
 
-    it "drows the point label" do
+    it 'drows the point label' do
       expect(rendered).to have_selector('input[value="point1"]', visible: true)
     end
 
-    it "draws the point value" do
+    it 'draws the point value' do
       expect(rendered).to have_selector('input.hidden[value="point1 ([121.1, 121.2])"]', visible: false)
     end
-
   end
 
-  context "for a persisted object nested geo bbox" do
+  context 'for a persisted object nested geo bbox' do
     let(:test_box) do
       {
           label: 'box1',
@@ -76,7 +77,7 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
 
     let(:attributes) {
       {
-          title: ["test"],
+          title: ['test'],
           nested_geo_attributes: [test_box]
       }
     }
@@ -89,20 +90,20 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
       render inline: form_template
     end
 
-    it "draws the page" do
-      expect(rendered).to have_selector("select#new_geo_type option", count: 2)
+    it 'draws the page' do
+      expect(rendered).to have_selector('select#new_geo_type option', count: 2)
     end
 
-    it "drows the bbox label" do
+    it 'drows the bbox label' do
       expect(rendered).to have_selector('input[value="box1"]', visible: true)
     end
 
-    it "draws the bbox value" do
+    it 'draws the bbox value' do
       expect(rendered).to have_selector('input.hidden[value="box1 ([121.1, 121.2, 44.1, 44.2])"]', visible: false)
     end
   end
 
-  context "for a new object" do
+  context 'for a new object' do
     let(:work) { Default.new }
 
     before do
@@ -111,9 +112,8 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
       render inline: form_template
     end
 
-    it "draws the page" do
-      expect(rendered).to have_selector("select#new_geo_type option", count: 3)
+    it 'draws the page' do
+      expect(rendered).to have_selector('select#new_geo_type option', count: 3)
     end
   end
-
 end

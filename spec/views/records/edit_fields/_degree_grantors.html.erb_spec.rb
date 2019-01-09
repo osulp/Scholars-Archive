@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_grantors.html.erb', type: :view do
@@ -27,8 +29,8 @@ RSpec.describe 'records/edit_fields/_degree_grantors.html.erb', type: :view do
   end
 
   context "for a work with degree grantors where 'Other' was selected and there is an OtherOption record for that work" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_grantors: "Other" } }
-    let(:degree_grantors_other_option_test) {"testing degree grantors other option"}
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_grantors: 'Other' } }
+    let(:degree_grantors_other_option_test) {'testing degree grantors other option'}
 
     before do
       OtherOption.find_or_create_by(name: degree_grantors_other_option_test, work_id: work.id)
@@ -47,7 +49,7 @@ RSpec.describe 'records/edit_fields/_degree_grantors.html.erb', type: :view do
   end
 
   context "for a work with degree grantors where 'Other' was not selected" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_grantors: "test" } }
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_grantors: 'test' } }
 
     before do
       assign(:form, form)

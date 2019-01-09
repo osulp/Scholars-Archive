@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Forms
     class BatchUploadForm < Hyrax::Forms::WorkForm
@@ -65,12 +67,11 @@ module Hyrax
       class Name < ActiveModel::Name
         def initialize(klass, namespace = nil, name = nil)
           super
-          @route_key          = "batch_uploads"
+          @route_key          = 'batch_uploads'
           @singular_route_key = ActiveSupport::Inflector.singularize(@route_key)
-          @route_key << "_index" if @plural == @singular
+          @route_key << '_index' if @plural == @singular
         end
       end
     end
   end
 end
-

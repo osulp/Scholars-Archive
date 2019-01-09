@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
 WebMock.disable_net_connect!(allow_localhost: true, allow: ['blazegraph:8080', 'fcrepo:8080', 'solr:8983', 'opaquenamespace.org'])

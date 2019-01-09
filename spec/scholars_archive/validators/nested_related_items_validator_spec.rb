@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
-  describe "#validate" do
+  describe '#validate' do
     let(:validator) { described_class.new }
     let(:record) do
       GraduateThesisOrDissertation.new do |work|
@@ -24,7 +26,7 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
 
     let(:attributes) {
       {
-          title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"],
+          title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
           depositor: depositor.username,
           nested_related_items_attributes: [test_item]
       }
@@ -46,25 +48,25 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
       let(:test_item) do
         {
             label: test_label,
-            related_url: ""
+            related_url: ''
         }
       end
 
-      it "raises error that the item is missing a url" do
-        expect(record.errors[:related_items].first).to eq "One or more items are missing label/related url values. Please provide both label and url values for each related item entered."
+      it 'raises error that the item is missing a url' do
+        expect(record.errors[:related_items].first).to eq 'One or more items are missing label/related url values. Please provide both label and url values for each related item entered.'
       end
     end
 
     context 'with a related item with no label' do
       let(:test_item) do
         {
-            label: "",
+            label: '',
             related_url: test_url
         }
       end
 
-      it "raises error that the item is missing the label" do
-        expect(record.errors[:related_items].first).to eq "One or more items are missing label/related url values. Please provide both label and url values for each related item entered."
+      it 'raises error that the item is missing the label' do
+        expect(record.errors[:related_items].first).to eq 'One or more items are missing label/related url values. Please provide both label and url values for each related item entered.'
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work Dataset`
 class Dataset < ActiveFedora::Base
@@ -8,7 +10,6 @@ class Dataset < ActiveFedora::Base
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedDefaultLicenses
   include ScholarsArchive::HasNestedOrderedProperties
-
 
   self.indexer = DefaultWorkIndexer
   # Change this to restrict which works can be added as a child.

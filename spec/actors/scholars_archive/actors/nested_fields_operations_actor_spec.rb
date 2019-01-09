@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'spec_helper'
 RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
@@ -14,31 +16,31 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   let(:terminator) { Hyrax::Actors::Terminator.new }
   let(:attributes) {
         {
-            title: ["test"],
-            creator: ["Blah"],
-            rights_statement: ["blah.blah"],
-            resource_type: ["blah"],
+            title: ['test'],
+            creator: ['Blah'],
+            rights_statement: ['blah.blah'],
+            resource_type: ['blah'],
         }
       }
   let(:nested_geo_attributes) {
     {
-        "2" => {
-            "id"=>"http://127.0.0.1:8984/rest/dev/pz/50/gw/08/pz50gw084#nested_geog70269864184480",
-            "_destroy"=>"false",
-            "bbox_lat_north"=>"1",
-            "bbox_lon_west"=>"2",
-            "bbox_lat_south"=>"3",
-            "bbox_lon_east"=>"4",
-            "label"=>"test bbox1",
-            "bbox"=>""
+        '2' => {
+            'id'=>'http://127.0.0.1:8984/rest/dev/pz/50/gw/08/pz50gw084#nested_geog70269864184480',
+            '_destroy'=>'false',
+            'bbox_lat_north'=>'1',
+            'bbox_lon_west'=>'2',
+            'bbox_lat_south'=>'3',
+            'bbox_lon_east'=>'4',
+            'label'=>'test bbox1',
+            'bbox'=>''
         },
-        "4" => {
-            "id"=>"http://127.0.0.1:8984/rest/dev/pz/50/gw/08/pz50gw084#nested_geog70269621263140",
-            "_destroy"=>"false",
-            "point_lat"=>"a",
-            "point_lon"=>"b",
-            "label"=>"test point1",
-            "point"=>""
+        '4' => {
+            'id'=>'http://127.0.0.1:8984/rest/dev/pz/50/gw/08/pz50gw084#nested_geog70269621263140',
+            '_destroy'=>'false',
+            'point_lat'=>'a',
+            'point_lon'=>'b',
+            'label'=>'test point1',
+            'point'=>''
         }
     }
   }

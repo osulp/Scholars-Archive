@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
@@ -22,27 +24,27 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
 
   let(:test_sorted_all_options) do
     [
-        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
-        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'],
     ]
   end
 
   let(:test_sorted_all_options_truncated_values) do
     [
-        "Adult Education",
-        "Animal Breeding"
+        'Adult Education',
+        'Animal Breeding'
     ]
   end
 
   let(:test_sorted_current_options) do
     [
-        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
     ]
   end
 
   let(:test_sorted_current_options_truncated_values) do
     [
-        "Adult Education",
+        'Adult Education',
     ]
   end
 
@@ -54,8 +56,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return(test_sorted_current_options)
   end
 
-  context "when user is admin" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"] } }
+  context 'when user is admin' do
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'] } }
 
     before do
       allow(current_user).to receive(:admin?).and_return(true)
@@ -68,8 +70,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     end
   end
 
-  context "when user is not an admin" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"] } }
+  context 'when user is not an admin' do
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'] } }
 
     before do
       allow(current_user).to receive(:admin?).and_return(false)
@@ -83,8 +85,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   end
 
   context "for a work with degree field where 'Other' was selected and there is an OtherOption record in the database" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field: ["Other"] } }
-    let(:degree_field_other_option_test) {"testing degree field other option"}
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field: ['Other'] } }
+    let(:degree_field_other_option_test) {'testing degree field other option'}
 
     before do
       allow(current_user).to receive(:admin?).and_return(true)
@@ -106,10 +108,9 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   end
 
   context "for a work with degree field where 'Other' was not selected" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_field:
-        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"]
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field:
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
     } }
-
 
     before do
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])

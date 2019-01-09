@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
   subject { Nokogiri::HTML(renderer.render) }
   let(:expected) { Nokogiri::HTML(tr_content) }
-  let(:label) { "test label" }
-  describe "#attribute_to_html" do
+  let(:label) { 'test label' }
+  describe '#attribute_to_html' do
     let(:field) { :sholars_archive_nested }
-    context "render url itemprop" do
-      let(:uri) { "http://test.org/ns/TestSubject/TestLabel" }
+    context 'render url itemprop' do
+      let(:uri) { 'http://test.org/ns/TestSubject/TestLabel' }
       let(:label_uris) { {'label' => label, 'uri' => uri}}
-      let(:label_q) { "test+label" }
+      let(:label_q) { 'test+label' }
       let(:renderer) { described_class.new(field, [label_uris.to_s], search_field: 'nested_related_items_label_ssim', itemprop_option: 'url') }
       let(:tr_content) do
         %(
@@ -28,10 +30,10 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
         expect(subject).to be_equivalent_to(expected)
       }
     end
-    context "render geo itemprop" do
-      let(:uri) { "http://test.org/ns/TestSubject/TestLabel" }
-      let(:label_geo) { "point1 (a,b)" }
-      let(:label_geo_q) { "point1+%28a%2Cb%29" }
+    context 'render geo itemprop' do
+      let(:uri) { 'http://test.org/ns/TestSubject/TestLabel' }
+      let(:label_geo) { 'point1 (a,b)' }
+      let(:label_geo_q) { 'point1+%28a%2Cb%29' }
       let(:renderer) { described_class.new(field, [label_geo.to_s], search_field: 'nested_geo_label_ssim', itemprop_option: 'geo') }
       let(:tr_content) do
         %(

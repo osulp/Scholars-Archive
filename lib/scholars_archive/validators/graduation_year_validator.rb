@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Validators
   class GraduationYearValidator < ActiveModel::Validator
     def validate(record)
@@ -9,7 +11,7 @@ module ScholarsArchive::Validators
     private
 
     def valid_value(record)
-      grad_year = DateTime.strptime(record.graduation_year.to_i.to_s, "%Y").year
+      grad_year = DateTime.strptime(record.graduation_year.to_i.to_s, '%Y').year
       valid_date_string(record.graduation_year) && valid_date_range(grad_year)
     end
 
@@ -24,7 +26,7 @@ module ScholarsArchive::Validators
     end
 
     def add_error_message(record)
-      record.errors["graduation_year"] << I18n.t("hyrax.errors.graduation_year_error")
+      record.errors['graduation_year'] << I18n.t('hyrax.errors.graduation_year_error')
     end
   end
 end

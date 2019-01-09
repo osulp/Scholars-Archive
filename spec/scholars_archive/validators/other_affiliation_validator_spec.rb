@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
-  describe "#validate" do
+  describe '#validate' do
     let(:validator) { described_class.new }
     let(:record) do
       GraduateThesisOrDissertation.new do |work|
@@ -15,13 +17,13 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
 
     let(:attributes) {
       {
-          title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"],
-          other_affiliation: ["Other"],
+          title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+          other_affiliation: ['Other'],
           depositor: depositor.username
       }
     }
 
-    let(:test_other_affiliation_other) { [ "test entry one", "test entry two"] }
+    let(:test_other_affiliation_other) { [ 'test entry one', 'test entry two'] }
 
     before do
       allow_any_instance_of(User).to receive(:admin?).and_return(true)
@@ -37,9 +39,9 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
     end
 
     context 'with invalid other values selected for degree_field and degree_level' do
-      let(:test_other_affiliation_other) { [ "Oregon State University Bioenergy Minor Program"] }
+      let(:test_other_affiliation_other) { [ 'Oregon State University Bioenergy Minor Program'] }
 
-      it "raises error if the other_affiliation entry already exists" do
+      it 'raises error if the other_affiliation entry already exists' do
         expect(record.errors[:other_affiliation_other].first).to eq "This 'Other' value: \"Oregon State University Bioenergy Minor Program\" already exists, please select from the list."
       end
     end

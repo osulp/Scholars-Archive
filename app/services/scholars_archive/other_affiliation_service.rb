@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for other_affiliation field
   class OtherAffiliationService < Hyrax::QaSelectService
