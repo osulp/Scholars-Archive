@@ -92,9 +92,6 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.2.2'
 
-gem 'rubocop'
-gem 'rubocop-rspec'
-
 group :staging, :production do
   gem 'ddtrace'
 end
@@ -116,6 +113,8 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :test do
