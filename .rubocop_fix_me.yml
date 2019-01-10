@@ -455,18 +455,6 @@ Lint/UselessAssignment:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
 
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    - 'app/indexers/default_work_indexer.rb'
-    - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
-    - 'app/models/concerns/scholars_archive/has_nested_ordered_properties.rb'
-    - 'app/services/scholars_archive/triple_powered_service.rb'
-    - 'app/services/scholars_archive/label_and_ordered_parser_service.rb'
-    - 'app/services/scholars_archive/ordered_parser_service.rb'
-    - 'spec/models/default_spec.rb'
-    - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
-    - 'spec/services/scholars_archive/parent_query_service_spec.rb'
-
 Style/ConditionalAssignment:
   Exclude:
     - 'app/indexers/default_work_indexer.rb'

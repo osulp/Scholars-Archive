@@ -258,7 +258,7 @@ RSpec.describe Default do
     ]
     g.nested_ordered_title_attributes = nested_ordered_title_attributes
     expect(g.nested_geo.length).to eq 2
-    expect(g.nested_geo.map{ |x| x.label.first }).to contain_exactly('1','2')
+    expect(g.nested_geo.map { |x| x.label.first }).to contain_exactly('1','2')
   end
 
   describe '#nested_ordered_creator_attributes' do
@@ -368,8 +368,8 @@ RSpec.describe Default do
         }
     ]
     expect(g.nested_ordered_creator.length).to eq 2
-    expect(g.nested_ordered_creator.map{ |x| x.index.first }).to contain_exactly('0','1')
-    expect(g.nested_ordered_creator.map{ |x| x.creator.first }).to contain_exactly('Creator1','Creator2')
+    expect(g.nested_ordered_creator.map { |x| x.index.first }).to contain_exactly('0','1')
+    expect(g.nested_ordered_creator.map { |x| x.creator.first }).to contain_exactly('Creator1','Creator2')
   end
   # Test sort is happening on id as integer, especially for more than 10 items, see Issue #1773
   it 'should return multiple nested ordered creators in correct order' do
@@ -474,9 +474,9 @@ RSpec.describe Default do
         }
     ]
     expect(g.nested_related_items.length).to eq 2
-    expect(g.nested_related_items.map{ |x| x.index.first }).to contain_exactly('0','1')
-    expect(g.nested_related_items.map{ |x| x.related_url.first }).to contain_exactly('ItemUrl1','ItemUrl2')
-    expect(g.nested_related_items.map{ |x| x.label.first }).to contain_exactly('Label1','Label2')
+    expect(g.nested_related_items.map { |x| x.index.first }).to contain_exactly('0','1')
+    expect(g.nested_related_items.map { |x| x.related_url.first }).to contain_exactly('ItemUrl1','ItemUrl2')
+    expect(g.nested_related_items.map { |x| x.label.first }).to contain_exactly('Label1','Label2')
   end
 
   describe '#nested_ordered_title_attributes' do
@@ -579,8 +579,8 @@ RSpec.describe Default do
       }
     ]
     expect(g.nested_ordered_title.length).to eq 2
-    expect(g.nested_ordered_title.map{ |x| x.index.first }).to contain_exactly('0','1')
-    expect(g.nested_ordered_title.map{ |x| x.title.first }).to contain_exactly('Title1','Title2')
+    expect(g.nested_ordered_title.map { |x| x.index.first }).to contain_exactly('0','1')
+    expect(g.nested_ordered_title.map { |x| x.title.first }).to contain_exactly('Title1','Title2')
   end
 
   describe '#nested_ordered_contributor_attributes' do
