@@ -36,7 +36,7 @@ def process_csv(path)
   logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-update-csv-#{datetime_today}.log")
   logger.info "Processing bulk update to works in csv: #{path}"
 
-  csv = CSV.table(path)
+  csv = CSV.table(path, converters: nil)
   csv.each do |row|
     update_work(logger, row)
   end
@@ -57,7 +57,7 @@ def update_property(logger, work, row)
   end
 
   if property.is_a?(String)
-    work[row[:property]] = row[:to]
+    work[row[:property]] = row[:to]&.to_s || ''
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif property.is_a?(ActiveTriples::Relation)
     work = if row[:from].casecmp('+').zero?
@@ -68,21 +68,23 @@ def update_property(logger, work, row)
              process_if_found_row(logger, work, row, property)
            end
   else
-    work[row[:property]] = [row[:to].split('|')].flatten
+    work[row[:property]] = [row[:to].to_s.split('|')].flatten
     logger.info("#{work.class} #{row[:id]} #{row[:property]} set to \"#{row[:to]}\"")
   end
   work
 end
 
 def overwrite_multivalue_row(logger, work, row, property)
-  work[row[:property]] = [row[:to].split('|')].flatten
-  logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{row[:to]}\"")
+  to_value = row[:to].to_s || ''
+  work[row[:property]] = [to_value.split('|')].flatten
+  logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{to_value}\"")
   work
 end
 
 def add_to_multivalue_row(logger, work, row, property)
-  work[row[:property]] += [row[:to].split('|')].flatten
-  logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{row[:to]}\"")
+  to_value = row[:to].to_s || ''
+  work[row[:property]] += [to_value.split('|')].flatten
+  logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{to_value}\"")
   work
 end
 
@@ -91,7 +93,7 @@ def process_if_found_row(logger, work, row, property)
   if found_row
     work[row[:property]] = nil if work[row[:property]].length == 1
     work[row[:property]].delete(found_row) if work[row[:property]].length > 1
-    work[row[:property]] += [row[:to].split('|')].flatten unless row[:to].blank?
+    work[row[:property]] += [row[:to].to_s.split('|')].flatten unless row[:to].blank?
     logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{work[row[:property]]}\"")
     work
   else
