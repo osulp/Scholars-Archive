@@ -110,6 +110,7 @@ module ScholarsArchive
         other_field = "#{field.to_s}_other"
 
         return all_new_entries if env.attributes[other_field].blank?
+
         env.attributes[other_field].each do |entry|
           puts 'entry check'
           unless all_current_entries.include? entry

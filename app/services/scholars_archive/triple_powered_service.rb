@@ -40,6 +40,7 @@ module ScholarsArchive
     def predicate_label_dates(graph)
       label_dates = {}
       return label_dates if graph.nil?
+
       rdf_label_predicates.each do |predicate|
         label_dates[predicate.to_s] = []
         label_dates[predicate.to_s] << label_dates_query(graph, predicate)

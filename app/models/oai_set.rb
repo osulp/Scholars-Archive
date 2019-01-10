@@ -24,6 +24,7 @@ class OaiSet < BlacklightOaiProvider::Set
     def from_spec(spec)
       parts = spec.split(':')
       raise OAI::ArgumentException unless parts.count == 2 && Array(@fields).include?(parts[0])
+
       parts.join(':')
     end
 

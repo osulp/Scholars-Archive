@@ -108,6 +108,7 @@ module Hyrax
 
       def thumbnail_title
         return unless model.thumbnail
+
         model.thumbnail.title.first
       end
 

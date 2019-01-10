@@ -46,6 +46,7 @@ module Hyrax
 
       def contact_form_params
         return {} unless params.key?(:contact_form)
+
         params.require(:contact_form).permit(:contact_method, :category, :name, :email, :subject, :message)
       end
   end

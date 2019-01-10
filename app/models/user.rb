@@ -60,6 +60,7 @@ class User < ApplicationRecord
   # in Banner.
   def employee?
     return self.api_person_type.casecmp('employee').zero? if self.api_person_type
+
     true
   end
 
@@ -68,6 +69,7 @@ class User < ApplicationRecord
   # in Banner.
   def student?
     return self.api_person_type.casecmp('student').zero? if self.api_person_type
+
     true
   end
 end

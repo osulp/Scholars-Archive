@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
   # and to verify that the http request in question is providing legit credentials.
   def http_header_auth?
     return false unless request.headers.key?('HTTP_API_AUTHENTICATION')
+
     credentials = api_credentials(request.headers)
     credentials[:header][:token] == credentials[:config][:token] && credentials[:header][:username] == credentials[:config][:username]
   end
@@ -71,6 +72,7 @@ class ApplicationController < ActionController::Base
     token = ENV.fetch('HTTP_API_AUTHENTICATION_TOKEN', nil)
     username = ENV.fetch('HTTP_API_AUTHENTICATION_USERNAME', nil)
     raise 'Invalid or missing configurations for HTTP API authentication' unless token && username
+
     {
       header: {
         username: headers['HTTP_API_AUTHENTICATION'].split('|')[0],
