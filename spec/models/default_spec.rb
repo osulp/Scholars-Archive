@@ -73,19 +73,19 @@ RSpec.describe Default do
       context 'when is a range of dates YYYY-mm-dd/YYY-mm-dd' do
         let(:date) { '1925-12-01/1927-01-01' }
         it 'should have years in that range' do
-          expect(facet).to eq [1925,1926,1927]
+          expect(facet).to eq [1925, 1926, 1927]
         end
       end
       context 'when is a range of years only YYYY/YYYY' do
         let(:date) { '2014/2017' }
         it 'should have years in that range' do
-          expect(facet).to eq [2014,2015,2016,2017]
+          expect(facet).to eq [2014, 2015, 2016, 2017]
         end
       end
       context 'when is a range of year and month only YYYY-mm/YYY-mm' do
         let(:date) { '2017-12/2018-01' }
         it 'should have years in that range' do
-          expect(facet).to eq [2017,2018]
+          expect(facet).to eq [2017, 2018]
         end
       end
     end
@@ -258,7 +258,7 @@ RSpec.describe Default do
     ]
     g.nested_ordered_title_attributes = nested_ordered_title_attributes
     expect(g.nested_geo.length).to eq 2
-    expect(g.nested_geo.map { |x| x.label.first }).to contain_exactly('1','2')
+    expect(g.nested_geo.map { |x| x.label.first }).to contain_exactly('1', '2')
   end
 
   describe '#nested_ordered_creator_attributes' do
@@ -368,8 +368,8 @@ RSpec.describe Default do
         }
     ]
     expect(g.nested_ordered_creator.length).to eq 2
-    expect(g.nested_ordered_creator.map { |x| x.index.first }).to contain_exactly('0','1')
-    expect(g.nested_ordered_creator.map { |x| x.creator.first }).to contain_exactly('Creator1','Creator2')
+    expect(g.nested_ordered_creator.map { |x| x.index.first }).to contain_exactly('0', '1')
+    expect(g.nested_ordered_creator.map { |x| x.creator.first }).to contain_exactly('Creator1', 'Creator2')
   end
   # Test sort is happening on id as integer, especially for more than 10 items, see Issue #1773
   it 'should return multiple nested ordered creators in correct order' do
@@ -474,9 +474,9 @@ RSpec.describe Default do
         }
     ]
     expect(g.nested_related_items.length).to eq 2
-    expect(g.nested_related_items.map { |x| x.index.first }).to contain_exactly('0','1')
-    expect(g.nested_related_items.map { |x| x.related_url.first }).to contain_exactly('ItemUrl1','ItemUrl2')
-    expect(g.nested_related_items.map { |x| x.label.first }).to contain_exactly('Label1','Label2')
+    expect(g.nested_related_items.map { |x| x.index.first }).to contain_exactly('0', '1')
+    expect(g.nested_related_items.map { |x| x.related_url.first }).to contain_exactly('ItemUrl1', 'ItemUrl2')
+    expect(g.nested_related_items.map { |x| x.label.first }).to contain_exactly('Label1', 'Label2')
   end
 
   describe '#nested_ordered_title_attributes' do
@@ -579,8 +579,8 @@ RSpec.describe Default do
       }
     ]
     expect(g.nested_ordered_title.length).to eq 2
-    expect(g.nested_ordered_title.map { |x| x.index.first }).to contain_exactly('0','1')
-    expect(g.nested_ordered_title.map { |x| x.title.first }).to contain_exactly('Title1','Title2')
+    expect(g.nested_ordered_title.map { |x| x.index.first }).to contain_exactly('0', '1')
+    expect(g.nested_ordered_title.map { |x| x.title.first }).to contain_exactly('Title1', 'Title2')
   end
 
   describe '#nested_ordered_contributor_attributes' do

@@ -113,7 +113,7 @@ RSpec.describe SolrDocument do
     context 'when there are only core metadata titles' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'title_tesim' => ['title2','title1']
+                                           'title_tesim' => ['title2', 'title1']
                                        })
         expect(document.title).to eq ['title2', 'title1']
       end
@@ -121,7 +121,7 @@ RSpec.describe SolrDocument do
     context 'when there are both core metadata titles and ordered titles' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'title_tesim' => ['title1','title2'],
+                                           'title_tesim' => ['title1', 'title2'],
                                            'nested_ordered_title_label_ssim' => ['title3$0', 'title4$1'],
                                        })
         expect(document.title).to eq ['title3', 'title4']
@@ -149,7 +149,7 @@ RSpec.describe SolrDocument do
     context 'when there are only core metadata creators' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'creator_tesim' => ['creatorB','creatorA']
+                                           'creator_tesim' => ['creatorB', 'creatorA']
                                        })
         expect(document.creator).to eq ['creatorB', 'creatorA']
       end
@@ -157,7 +157,7 @@ RSpec.describe SolrDocument do
     context 'when there are both core metadata creators and ordered creators' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'creator_tesim' => ['creatorA','creatorB'],
+                                           'creator_tesim' => ['creatorA', 'creatorB'],
                                            'nested_ordered_creator_label_ssim' => ['creatorC$0', 'creatorD$1'],
                                        })
         expect(document.creator).to eq ['creatorC', 'creatorD']
@@ -185,7 +185,7 @@ RSpec.describe SolrDocument do
     context 'when there are only old abstracts' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'abstract_tesim' => ['abstractB','abstractA']
+                                           'abstract_tesim' => ['abstractB', 'abstractA']
                                        })
         expect(document.abstract).to eq ['abstractB', 'abstractA']
       end
@@ -193,7 +193,7 @@ RSpec.describe SolrDocument do
     context 'when there are both old and ordered abstracts' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'abstract_tesim' => ['abstractA','abstractB'],
+                                           'abstract_tesim' => ['abstractA', 'abstractB'],
                                            'nested_ordered_abstract_label_ssim' => ['abstractC$0', 'abstractD$1'],
                                        })
         expect(document.abstract).to eq ['abstractC', 'abstractD']
@@ -221,7 +221,7 @@ RSpec.describe SolrDocument do
     context 'when there are only core metadata additional_informations' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'additional_information_tesim' => ['additional_informationB','additional_informationA']
+                                           'additional_information_tesim' => ['additional_informationB', 'additional_informationA']
                                        })
         expect(document.additional_information).to eq ['additional_informationB', 'additional_informationA']
       end
@@ -229,7 +229,7 @@ RSpec.describe SolrDocument do
     context 'when there are both core metadata creators and ordered additional_informations' do
       it 'should return their labels' do
         document = described_class.new({
-                                           'additional_information_ssim' => ['additional_informationA','additional_informationB'],
+                                           'additional_information_ssim' => ['additional_informationA', 'additional_informationB'],
                                            'nested_ordered_additional_information_label_ssim' => ['additional_informationC$0', 'additional_informationD$1'],
                                        })
         expect(document.additional_information).to eq ['additional_informationC', 'additional_informationD']

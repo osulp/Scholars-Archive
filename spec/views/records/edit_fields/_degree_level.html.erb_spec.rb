@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
-  let(:current_user) { User.new(email: 'test@example.com',guest: false) }
+  let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
   let(:work) {
     GraduateThesisOrDissertation.new do |work|

@@ -68,7 +68,7 @@ module ScholarsArchive
       end
 
       def clean_up_nested_attributes (env)
-        env.attributes['nested_geo_attributes'].each do |k,v|
+        env.attributes['nested_geo_attributes'].each do |k, v|
           v.delete('point_lon')
           v.delete('point_lat')
           v.delete('bbox_lat_north')

@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
-  let(:current_user) { User.new(email: 'test@example.com',guest: false) }
+  let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
   let(:work) {
     GraduateThesisOrDissertation.new do |work|

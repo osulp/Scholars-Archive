@@ -34,7 +34,7 @@ module ScholarsArchive
     end
 
     def entries_text
-      if ScholarsArchive::FormMetadataService.multiple? curation_concern.to_model.class,metadata_field.to_sym
+      if ScholarsArchive::FormMetadataService.multiple? curation_concern.to_model.class, metadata_field.to_sym
         new_entries.to_a.join(', ')
       else
         new_entries.to_s

@@ -113,7 +113,7 @@ class MultiValueOrderedInput < MultiValueInput
     "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
   end
 
-  def build_nested_item(value,index)
+  def build_nested_item(value, index)
     index_options = build_index_options(value, index)
     input_index = @builder.text_field(:index, index_options)
 

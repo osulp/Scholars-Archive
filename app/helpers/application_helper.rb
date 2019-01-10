@@ -90,7 +90,7 @@ module ApplicationHelper
   end
 
   def facet_desc_sort!(items=[])
-    items.sort! { |a,b| b.value.downcase <=> a.value.downcase }
+    items.sort! { |a, b| b.value.downcase <=> a.value.downcase }
     items
   end
 
@@ -103,7 +103,7 @@ module ApplicationHelper
   end
 
   def embargo_select_options
-    [['6 Months',6.months.from_now], ['1 year',1.year.from_now],['2 Years',2.years.from_now], ['Other...', 'other']]
+    [['6 Months', 6.months.from_now], ['1 year', 1.year.from_now], ['2 Years', 2.years.from_now], ['Other...', 'other']]
   end
 
   def selected_embargo(release_date, options)

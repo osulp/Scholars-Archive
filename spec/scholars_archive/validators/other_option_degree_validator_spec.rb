@@ -35,11 +35,11 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
 
     before do
       allow(depositor).to receive(:admin?).and_return(true)
-      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['Certificate','Certificate']])
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other'],['Zoology','Zoology']])
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['Zoology','Zoology']])
-      allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['Master of Arts (M.A.)','Master of Arts (M.A.)']])
-      allow_any_instance_of(ScholarsArchive::DegreeGrantorsService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['http://id.loc.gov/authorities/names/n80017721','Oregon State University']])
+      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'], ['Certificate', 'Certificate']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other'], ['Zoology', 'Zoology']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'], ['Zoology', 'Zoology']])
+      allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'], ['Master of Arts (M.A.)', 'Master of Arts (M.A.)']])
+      allow_any_instance_of(ScholarsArchive::DegreeGrantorsService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'], ['http://id.loc.gov/authorities/names/n80017721', 'Oregon State University']])
       record.degree_field_other = test_degree_field_other
       record.degree_level_other = test_degree_level_other
       record.degree_name_other = test_degree_name_other

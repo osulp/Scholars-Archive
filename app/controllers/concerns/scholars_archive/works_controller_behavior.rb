@@ -96,7 +96,7 @@ module ScholarsArchive
       curation_concern.nested_geo.each do |geo|
         if geo.bbox.present?
           # bbox is stored as a string array of lat/long string arrays like: '["121.1", "121.2", "44.1", "44.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2","44.1","44.2"]
-          box_array = geo.bbox.to_a.first.tr('[]" ','').split(',')
+          box_array = geo.bbox.to_a.first.tr('[]" ', '').split(',')
           geo.bbox_lat_north = box_array[0]
           geo.bbox_lon_west = box_array[1]
           geo.bbox_lat_south = box_array[2]
@@ -105,7 +105,7 @@ module ScholarsArchive
         end
         if geo.point.present?
           # point is stored as a string array of lat/long string arrays like: '["121.1", "121.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2"]
-          point_array = geo.point.to_a.first.tr('[]" ','').split(',')
+          point_array = geo.point.to_a.first.tr('[]" ', '').split(',')
           geo.point_lat = point_array[0]
           geo.point_lon = point_array[1]
           geo.type = :point.to_s

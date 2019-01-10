@@ -6,7 +6,7 @@ describe ScholarsArchive::EdtfDateCompareService do
   let(:active_option) {  ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'] }
 
   before do
-    allow(Date).to receive(:today).and_return Date.new(2017,10,8)
+    allow(Date).to receive(:today).and_return Date.new(2017, 10, 8)
   end
 
   describe '#includes_open_dates?' do
