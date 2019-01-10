@@ -35,7 +35,7 @@ class CatalogController < ApplicationController
       }
     }
 
-    config.view.gallery.partials = [:index_header, :index]
+    config.view.gallery.partials = %i[index_header index]
     config.view.masonry.partials = [:index]
     config.view.slideshow.partials = [:index]
 
@@ -44,7 +44,7 @@ class CatalogController < ApplicationController
     config.search_builder_class = ScholarsArchive::CatalogSearchBuilder
 
     # Show gallery view
-    config.view.gallery.partials = [:index_header, :index]
+    config.view.gallery.partials = %i[index_header index]
     config.view.slideshow.partials = [:index]
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params

@@ -177,7 +177,7 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def prop_with_labels
-    [:label, :related_url]
+    %i[label related_url]
   end
 
   def nested_field_name(property, index)

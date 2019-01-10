@@ -15,7 +15,7 @@ RSpec.describe Hyrax::OpenEducationalResourceForm do
   end
 
   it 'responds to terms with the proper list of terms' do
-    expect(described_class.terms).to include *[:resource_type, :is_based_on_url, :interactivity_type, :learning_resource_type, :typical_age_range, :time_required, :duration]
+    expect(described_class.terms).to include *%i[resource_type is_based_on_url interactivity_type learning_resource_type typical_age_range time_required duration]
   end
 
   it 'responds to date_terms' do

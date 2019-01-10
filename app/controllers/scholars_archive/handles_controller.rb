@@ -2,8 +2,8 @@
 
 module ScholarsArchive
   class HandlesController < ApplicationController
-    before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
-    before_action :handle_redirects, only: [:handle_show, :handle_download]
+    before_action :verify_handle_prefix, only: %i[handle_show handle_download]
+    before_action :handle_redirects, only: %i[handle_show handle_download]
 
     def handle_file_404
     end

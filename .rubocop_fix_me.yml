@@ -570,35 +570,6 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Style/SymbolArray:
-  Exclude:
-    - 'app/forms/scholars_archive/dataset_form_behavior.rb'
-    - 'app/forms/scholars_archive/etd_work_form_behavior.rb'
-    - 'app/forms/scholars_archive/article_work_form_behavior.rb'
-    - 'app/forms/scholars_archive/oer_work_form_behavior.rb'
-    - 'app/forms/scholars_archive/default_work_form_behavior.rb'
-    - 'app/forms/hyrax/forms/batch_upload_form.rb'
-    - 'app/forms/hyrax/forms/collection_form.rb'
-    - 'app/forms/hyrax/honors_college_thesis_form.rb'
-    - 'app/forms/hyrax/purchased_e_resource_form.rb'
-    - 'app/search_builders/scholars_archive/catalog_search_builder.rb'
-    - 'app/models/search_builder.rb'
-    - 'app/controllers/scholars_archive/handles_controller.rb'
-    - 'app/controllers/catalog_controller.rb'
-    - 'app/inputs/multi_value_ordered_input.rb'
-    - 'spec/forms/hyrax/eesc_publication_form_spec.rb'
-    - 'spec/forms/hyrax/open_educational_resource_form_spec.rb'
-    - 'spec/forms/hyrax/default_form_spec.rb'
-    - 'spec/forms/hyrax/purchased_e_resource_form_spec.rb'
-    - 'spec/forms/hyrax/administrative_report_or_publication_form_spec.rb'
-    - 'spec/forms/hyrax/conference_proceedings_or_journal_form_spec.rb'
-    - 'spec/forms/hyrax/technical_report_form_spec.rb'
-    - 'spec/forms/hyrax/undergraduate_thesis_or_project_form_spec.rb'
-    - 'spec/forms/hyrax/dataset_form_spec.rb'
-    - 'spec/forms/hyrax/graduate_project_form_spec.rb'
-    - 'spec/forms/hyrax/graduate_thesis_or_dissertation_form_spec.rb'
-    - 'lib/scholars_archive/document/qualified_dublin_core.rb'
-
 Style/TrailingCommaInArrayLiteral:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'

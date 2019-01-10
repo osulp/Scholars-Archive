@@ -25,10 +25,10 @@ module Hyrax
       delegate :blacklight_config, to: Hyrax::CollectionsController
 
       #OVERRIDE HERE
-      self.terms = [:title, :creator, :contributor, :description,
-                    :date_created, :subject, :language,
-                    :representative_id, :thumbnail_id, :based_near,
-                    :related_url, :visibility, :collection_type_gid]
+      self.terms = %i[title creator contributor description
+                    date_created subject language
+                    representative_id thumbnail_id based_near
+                    related_url visibility collection_type_gid]
 
       self.required_fields = [:title]
 
@@ -60,19 +60,19 @@ module Hyrax
 
       # Terms that appear above the accordion
       def primary_terms
-        [:title, :description]
+        %i[title description]
       end
 
       # Terms that appear within the accordion
       #OVERRIDE HERE
       def secondary_terms
-        [:creator,
-         :contributor,
-         :date_created,
-         :subject,
-         :language,
-         :based_near,
-         :related_url]
+        %i[creator
+         contributor
+         date_created
+         subject
+         language
+         based_near
+         related_url]
       end
 
       def banner_info

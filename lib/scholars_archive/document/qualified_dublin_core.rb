@@ -15,7 +15,7 @@ module ScholarsArchive::Document::QualifiedDublinCore
   end
 
   def qualified_dublin_core_field_names
-    [:contributor, :coverage, :creator, :date, :description, :format, :identifier, :language, :publisher, :relation, :rights, :source, :subject, :title, :type]
+    %i[contributor coverage creator date description format identifier language publisher relation rights source subject title type]
   end
 
   # qualified dublin core elements are mapped against the #qualified_dublin_core_field_names whitelist.
