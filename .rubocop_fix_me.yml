@@ -570,22 +570,6 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Style/TrailingCommaInArrayLiteral:
-  Exclude:
-    - 'app/forms/scholars_archive/dataset_form_behavior.rb'
-    - 'app/forms/scholars_archive/default_work_form_behavior.rb'
-    - 'spec/features/create_graduate_thesis_or_dissertation_spec.rb'
-    - 'spec/features/create_administrative_report_or_publication_spec.rb'
-    - 'spec/features/create_graduate_project_spec.rb'
-    - 'spec/features/create_conference_proceedings_or_journal_spec.rb'
-    - 'spec/features/create_honors_college_thesis_spec.rb'
-    - 'spec/features/create_technical_report_spec.rb'
-    - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
-    - 'spec/views/records/edit_fields/_degree_field.html.erb_spec.rb'
-    - 'spec/views/records/edit_fields/_academic_affiliation.html.erb_spec.rb'
-    - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
-    - 'spec/views/hyrax/base/_form_instructions_spec.rb'
-
 Style/RedundantSelf:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'

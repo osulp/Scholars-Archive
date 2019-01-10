@@ -34,12 +34,12 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
   let(:test_sorted_all_options) do
     [
         ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
-        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'],
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
     ]
   end
   let(:test_sorted_current_options) do
     [
-        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi']
     ]
   end
   let(:page) { Capybara::Node::Simple.new(rendered) }
