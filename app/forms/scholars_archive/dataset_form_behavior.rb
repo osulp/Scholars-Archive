@@ -48,17 +48,17 @@ module ScholarsArchive
       def self.build_permitted_params
         super + date_terms + [:embargo_reason] + [
           {
-            :nested_geo_attributes => %i[id _destroy point_lat point_lon bbox_lat_north bbox_lon_west bbox_lat_south bbox_lon_east label point bbox],
-            :nested_ordered_creator_attributes => %i[id _destroy index creator],
-            :nested_ordered_title_attributes => %i[id _destroy index title],
-            :nested_ordered_contributor_attributes => %i[id _destroy index contributor],
-            :nested_ordered_abstract_attributes => %i[id _destroy index abstract],
-            :nested_ordered_additional_information_attributes => %i[id _destroy index additional_information],
-            :nested_related_items_attributes => %i[id _destroy label related_url index]
+            nested_geo_attributes: %i[id _destroy point_lat point_lon bbox_lat_north bbox_lon_west bbox_lat_south bbox_lon_east label point bbox],
+            nested_ordered_creator_attributes: %i[id _destroy index creator],
+            nested_ordered_title_attributes: %i[id _destroy index title],
+            nested_ordered_contributor_attributes: %i[id _destroy index contributor],
+            nested_ordered_abstract_attributes: %i[id _destroy index abstract],
+            nested_ordered_additional_information_attributes: %i[id _destroy index additional_information],
+            nested_related_items_attributes: %i[id _destroy label related_url index]
           }
         ] + [
             {
-                :other_affiliation_other => []
+                other_affiliation_other: []
             }
         ]
       end

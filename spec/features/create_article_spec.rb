@@ -46,7 +46,7 @@ RSpec.feature 'Create a Article', skip: true, type: :feature do
       fill_in 'Title', with: 'Test Article'
       fill_in 'Creator', with: 'Test Article Creator'
       fill_in 'Keyword', with: 'Test Article Keyword'
-      select 'In Copyright', :from => 'etd_rights_statement'
+      select 'In Copyright', from: 'etd_rights_statement'
       check 'agreement'
 
       click_link 'Files' # switch tab

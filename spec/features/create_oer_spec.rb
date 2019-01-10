@@ -48,7 +48,7 @@ RSpec.feature 'Create a Oer', skip: true, type: :feature do
       fill_in 'Title', with: 'Test Oer'
       fill_in 'Creator', with: 'Test Oer Creator'
       fill_in 'Keyword', with: 'Test Oer Keyword'
-      select 'In Copyright', :from => 'etd_rights_statement'
+      select 'In Copyright', from: 'etd_rights_statement'
       check 'agreement'
 
       click_link 'Files' # switch tab

@@ -63,7 +63,7 @@ RSpec.feature 'Create a Technical Report', js: false do
       ENV['SCHOLARSARCHIVE_DEFAULT_ADMIN_SET'] = 'Test Default Admin Set'
 
       @ticket = CASClient::ServiceTicket.new('ST-test', nil)
-      @ticket.extra_attributes = {:id => 10, :email => 'admin@example.com'}
+      @ticket.extra_attributes = {id: 10, email: 'admin@example.com'}
       @ticket.success = true
       @ticket.user = 'admin'
 
@@ -82,10 +82,10 @@ RSpec.feature 'Create a Technical Report', js: false do
       creator_input = find(:css, 'input.nested-field.technical_report_nested_ordered_creator')
       fill_in creator_input[:id], with: 'Test Technical Report Creator'
 
-      select 'In Copyright', :from => 'technical_report_rights_statement'
+      select 'In Copyright', from: 'technical_report_rights_statement'
       find('body').click
 
-      select 'Dissertation', :from => 'technical_report_resource_type'
+      select 'Dissertation', from: 'technical_report_resource_type'
       find('body').click
 
       check 'agreement'

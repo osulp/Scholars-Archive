@@ -10,8 +10,8 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => 'TestTitle',
-        :index => '0'
+        title: 'TestTitle',
+        index: '0'
       }
     ]
   end

@@ -63,7 +63,7 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
       ENV['SCHOLARSARCHIVE_DEFAULT_ADMIN_SET'] = 'Test Default Admin Set'
 
       @ticket = CASClient::ServiceTicket.new('ST-test', nil)
-      @ticket.extra_attributes = {:id => 10, :email => 'admin@example.com'}
+      @ticket.extra_attributes = {id: 10, email: 'admin@example.com'}
       @ticket.success = true
       @ticket.user = 'admin'
 
@@ -83,19 +83,19 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
 
       fill_in 'Commencement Year', with: '2018'
 
-      select 'In Copyright', :from => 'undergraduate_thesis_or_project_rights_statement'
+      select 'In Copyright', from: 'undergraduate_thesis_or_project_rights_statement'
       find('body').click
 
-      select 'Dissertation', :from => 'undergraduate_thesis_or_project_resource_type'
+      select 'Dissertation', from: 'undergraduate_thesis_or_project_resource_type'
       find('body').click
 
-      select "Bachelor's", :from => 'undergraduate_thesis_or_project_degree_level'
+      select "Bachelor's", from: 'undergraduate_thesis_or_project_degree_level'
       find('body').click
 
-      select 'Master of Arts (M.A.)', :from => 'undergraduate_thesis_or_project_degree_name'
+      select 'Master of Arts (M.A.)', from: 'undergraduate_thesis_or_project_degree_name'
       find('body').click
 
-      select 'Zoology', :from => 'undergraduate_thesis_or_project_degree_field'
+      select 'Zoology', from: 'undergraduate_thesis_or_project_degree_field'
       find('body').click
 
       check 'agreement'

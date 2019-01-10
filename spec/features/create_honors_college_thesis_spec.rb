@@ -62,7 +62,7 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       ENV['SCHOLARSARCHIVE_DEFAULT_ADMIN_SET'] = 'Test Default Admin Set'
       ENV['OSU_API_PERSON_REFRESH_SECONDS'] = '123456'
       @ticket = CASClient::ServiceTicket.new('ST-test', nil)
-      @ticket.extra_attributes = {:id => 10, :email => 'admin@example.com'}
+      @ticket.extra_attributes = {id: 10, email: 'admin@example.com'}
       @ticket.success = true
       @ticket.user = 'admin'
 
@@ -83,13 +83,13 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       fill_in 'Commencement Year', with: '2018'
       fill_in 'Mentor', with: 'Test Mentor'
 
-      select 'In Copyright', :from => 'honors_college_thesis_rights_statement'
+      select 'In Copyright', from: 'honors_college_thesis_rights_statement'
       check 'agreement'
 
-      select 'Zoology', :from => 'honors_college_thesis_degree_field'
+      select 'Zoology', from: 'honors_college_thesis_degree_field'
       find('body').click
 
-      select 'Master of Arts (M.A.)', :from => 'honors_college_thesis_degree_name'
+      select 'Master of Arts (M.A.)', from: 'honors_college_thesis_degree_name'
       find('body').click
 
       click_link 'Files' # switch tab

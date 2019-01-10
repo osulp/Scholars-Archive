@@ -148,11 +148,11 @@ module ScholarsArchive
 
       def query_solr_for_work(handle)
         #Query solr
-        ActiveFedora::SolrService.query("replaces_ssim:#{handle}", :rows => 1000000)
+        ActiveFedora::SolrService.query("replaces_ssim:#{handle}", rows: 1000000)
       end
 
       def query_solr_for_filesets(label)
-        ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", :rows => 10000)
+        ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", rows: 10000)
       end
   end
 end

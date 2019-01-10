@@ -46,7 +46,7 @@ RSpec.feature 'Create a Default', skip: true, type: :feature do
       fill_in 'Title', with: 'Test Default'
       fill_in 'Creator', with: 'Test Default Creator'
       fill_in 'Keyword', with: 'Test Default Keyword'
-      select 'In Copyright', :from => 'etd_rights_statement'
+      select 'In Copyright', from: 'etd_rights_statement'
       check 'agreement'
 
       click_link 'Files' # switch tab

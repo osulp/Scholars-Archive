@@ -11,10 +11,10 @@ module ApplicationHelper
         data_field = render_edit_field_partial(term, f: f)
       else
         options << { term.to_s.titleize => term.to_s } if f.object.send(term).blank?
-        data_field = render partial: 'scholars_archive/base/form_date_field', :locals => { term: term, f: f }
+        data_field = render partial: 'scholars_archive/base/form_date_field', locals: { term: term, f: f }
       end
 
-      data_range_widget = render partial: 'scholars_archive/base/form_date_range_widget', :locals => { term: term }
+      data_range_widget = render partial: 'scholars_archive/base/form_date_range_widget', locals: { term: term }
 
       data_fields << { term => data_field }
       data_fields << { 'range_'+term.to_s => data_range_widget }
@@ -49,9 +49,9 @@ module ApplicationHelper
     new_geo_point = [f.object.model.nested_geo.build]
     new_geo_point.first.type = :point.to_s
     data_geo_point = f.fields_for :nested_geo, new_geo_point, child_index: new_geo_point.object_id do |a|
-      render partial: 'scholars_archive/base/geo_point', :locals => { a: a }
+      render partial: 'scholars_archive/base/geo_point', locals: { a: a }
     end
-    data_geo_points = render partial: 'scholars_archive/base/nested_geo_points', :locals => { f: f, coordinates_group: new_geo_point }
+    data_geo_points = render partial: 'scholars_archive/base/nested_geo_points', locals: { f: f, coordinates_group: new_geo_point }
     data_fields << { nested_geo_points: data_geo_points }
     data_fields << { new_geo_point: data_geo_point }
     data_fields << { new_geo_point_id: new_geo_point.object_id }
@@ -59,9 +59,9 @@ module ApplicationHelper
     new_geo_bbox = [f.object.model.nested_geo.build]
     new_geo_bbox.first.type = :bbox.to_s
     data_geo_bbox = f.fields_for :nested_geo, new_geo_bbox, child_index: new_geo_bbox.object_id do |a|
-      render partial: 'scholars_archive/base/geo_bbox', :locals => { a: a }
+      render partial: 'scholars_archive/base/geo_bbox', locals: { a: a }
     end
-    data_geo_boxes = render partial: 'scholars_archive/base/nested_geo_bbox', :locals => { f: f, coordinates_group: new_geo_bbox }
+    data_geo_boxes = render partial: 'scholars_archive/base/nested_geo_bbox', locals: { f: f, coordinates_group: new_geo_bbox }
     data_fields << { nested_geo_bbox: data_geo_boxes }
     data_fields << { new_geo_box: data_geo_bbox }
     data_fields << { new_geo_box_id: new_geo_bbox.object_id }
@@ -85,7 +85,7 @@ module ApplicationHelper
   end
 
   def link_to_sa_field(field, query)
-    search_path = Rails.application.class.routes.url_helpers.search_catalog_path(:f => {field => [query]})
+    search_path = Rails.application.class.routes.url_helpers.search_catalog_path(f: {field => [query]})
     link_to(query, search_path)
   end
 

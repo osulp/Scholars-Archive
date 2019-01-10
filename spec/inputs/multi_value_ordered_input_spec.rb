@@ -5,7 +5,7 @@ require 'rails_helper'
 
 describe 'MultiValueOrderedInput', type: :input do
   class FooBar < ActiveFedora::Base
-    property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator
+    property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, class_name: NestedOrderedCreator
     accepts_nested_attributes_for :nested_ordered_creator
   end
 

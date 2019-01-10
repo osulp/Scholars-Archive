@@ -46,7 +46,7 @@ RSpec.feature 'Create a DefaultWork', skip: true, type: :feature do
       fill_in 'Title', with: 'Test DefaultWork'
       fill_in 'Creator', with: 'Test Default Creator'
       fill_in 'Keyword', with: 'Test Default Keyword'
-      select 'In Copyright', :from => 'default_work_rights_statement'
+      select 'In Copyright', from: 'default_work_rights_statement'
       check 'agreement'
 
       click_link 'Files' # switch tab

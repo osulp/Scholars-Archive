@@ -518,7 +518,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('nested_geo_label') do |field|
       field.label = 'Geographic Coordinates'
-      field.solr_parameters = { :"spellcheck.dictionary" => 'nested_geo_label' }
+      field.solr_parameters = { "spellcheck.dictionary": 'nested_geo_label' }
       field.include_in_advanced_search = false
       solr_name = solr_name('nested_geo_label', :stored_searchable)
       field.solr_local_parameters = {

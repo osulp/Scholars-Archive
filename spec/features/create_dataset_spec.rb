@@ -46,7 +46,7 @@ RSpec.feature 'Create a Dataset', skip: true, type: :feature do
       fill_in 'Title', with: 'Test Dataset'
       fill_in 'Creator', with: 'Test Dataset Creator'
       fill_in 'Keyword', with: 'Test Dataset Keyword'
-      select 'In Copyright', :from => 'etd_rights_statement'
+      select 'In Copyright', from: 'etd_rights_statement'
       check 'agreement'
 
       click_link 'Files' # switch tab

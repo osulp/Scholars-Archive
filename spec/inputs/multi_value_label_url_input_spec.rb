@@ -6,7 +6,7 @@ require 'rails_helper'
 describe 'MultiValueLabelUrlInput', type: :input do
   class Foo < ActiveFedora::Base
     # property :bar, predicate: ::RDF::URI('http://example.com/bar')
-    property :bar, predicate: ::RDF::Vocab::DC.references, :class_name => NestedRelatedItems
+    property :bar, predicate: ::RDF::Vocab::DC.references, class_name: NestedRelatedItems
     accepts_nested_attributes_for :bar
   end
 
