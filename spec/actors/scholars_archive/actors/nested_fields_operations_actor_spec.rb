@@ -57,8 +57,8 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   describe '#create' do
     context 'with nested geo attributes' do
       before do
-        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
-        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other]])
         allow(user).to receive(:admin?).and_return(true)
         allow(terminator).to receive(:create).with(Hyrax::Actors::Environment).and_return(true)
         env.attributes['nested_geo_attributes'] = nested_geo_attributes
@@ -81,8 +81,8 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   describe '#update' do
     context 'with nested geo attributes' do
       before do
-        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
-        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
+        allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other]])
         allow(user).to receive(:admin?).and_return(true)
         allow(terminator).to receive(:update).with(Hyrax::Actors::Environment).and_return(true)
         env.attributes['nested_geo_attributes'] = nested_geo_attributes

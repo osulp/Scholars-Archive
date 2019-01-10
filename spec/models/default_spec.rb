@@ -383,7 +383,7 @@ RSpec.describe Default do
         { 'index' => '2', 'creator' => 'Creator2'},
         { 'index' => '3', 'creator' => 'Creator3'}
     ]
-    expect(g.creator).to eq ['Creator0', 'Creator1', 'Creator2', 'Creator3', 'Creator10', 'Creator21']
+    expect(g.creator).to eq %w[Creator0 Creator1 Creator2 Creator3 Creator10 Creator21]
   end
 
   describe '#nested_related_items_attributes' do

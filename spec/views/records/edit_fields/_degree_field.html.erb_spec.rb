@@ -90,8 +90,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
 
     before do
       allow(current_user).to receive(:admin?).and_return(true)
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other]])
       work.degree_field_other = degree_field_other_option_test
       assign(:degree_field_other_options, [OtherOption.find_or_create_by(name: degree_field_other_option_test, work_id: work.id)])
       assign(:form, form)
@@ -113,8 +113,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     } }
 
     before do
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other]])
       assign(:form, form)
       render inline: form_template
     end

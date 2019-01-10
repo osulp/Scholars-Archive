@@ -33,7 +33,7 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
     let(:degree_name_other_option_test) { 'testing degree name other option' }
 
     before do
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
       work.degree_name_other = degree_name_other_option_test
       assign(:degree_name_other_options, [OtherOption.find_or_create_by(name: degree_name_other_option_test, work_id: work.id)])
       assign(:form, form)
@@ -53,7 +53,7 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_name: ['test'] } }
 
     before do
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
       assign(:form, form)
       render inline: form_template
     end

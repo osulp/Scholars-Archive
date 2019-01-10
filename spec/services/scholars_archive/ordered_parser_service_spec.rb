@@ -7,7 +7,7 @@ describe ScholarsArchive::OrderedParserService do
 
   describe '#parse' do
     it 'returns labels ordered by index' do
-      expect(described_class.parse(labels)).to eq ['ordered_creator_1', 'ordered_creator_2', 'ordered_creator_3', 'ordered_creator_10', 'ordered_creator_11']
+      expect(described_class.parse(labels)).to eq %w[ordered_creator_1 ordered_creator_2 ordered_creator_3 ordered_creator_10 ordered_creator_11]
     end
     context 'when label includes a special character $' do
       let(:labels) { ['label1 the cost is $200.00$0', '$100.00$1'] }
