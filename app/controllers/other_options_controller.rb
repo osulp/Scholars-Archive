@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OtherOptionsController < ApplicationController
   def destroy
     @other_option = OtherOption.destroy(params[:id])

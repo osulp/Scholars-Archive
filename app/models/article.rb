@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work Article`
 class Article < ActiveFedora::Base
@@ -9,7 +11,6 @@ class Article < ActiveFedora::Base
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedArticleLicenses
   include ScholarsArchive::HasNestedOrderedProperties
-
 
   self.indexer = ArticleIndexer
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Validators
   class NestedRelatedItemsValidator < ActiveModel::Validator
     def validate(record)

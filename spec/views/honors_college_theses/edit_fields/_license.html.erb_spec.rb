@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'honors_college_theses/edit_fields/_license.html.erb', type: :view do
@@ -26,7 +28,7 @@ RSpec.describe 'honors_college_theses/edit_fields/_license.html.erb', type: :vie
     allow(view).to receive(:can?).and_return(true)
   end
 
-  context "for a new object" do
+  context 'for a new object' do
     let(:work) { HonorsCollegeThesis.new }
 
     before do
@@ -34,15 +36,15 @@ RSpec.describe 'honors_college_theses/edit_fields/_license.html.erb', type: :vie
       render inline: form_template
     end
 
-    it "draws the page" do
+    it 'draws the page' do
       expect(rendered).to have_selector("form[action='/concern/honors_college_theses']")
     end
 
-    it "only renders CC4 licenses" do
+    it 'only renders CC4 licenses' do
       expect(rendered).to have_selector("select#honors_college_thesis_license option[value$='/4.0/']", count: 6)
       expect(rendered).to have_selector("select#honors_college_thesis_license option[value$='rr-r.html']", count: 1)
     end
-    it "does not render unneeded licenses" do
+    it 'does not render unneeded licenses' do
       expect(rendered).not_to have_selector("select#honors_college_thesis_license option[value$='zero/1.0/']")
       expect(rendered).not_to have_selector("select#honors_college_thesis_license option[value$='mark/1.0/']")
     end

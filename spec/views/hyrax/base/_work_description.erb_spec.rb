@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'spec_helper'
 RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
-  let(:url) { "http://example.com" }
+  let(:url) { 'http://example.com' }
   let(:rights_statement_uri) { 'http://rightsstatements.org/vocab/InC/1.0/' }
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => "TestTitle",
-        :index => "0"
+        :title => 'TestTitle',
+        :index => '0'
       }
     ]
   end
@@ -31,13 +33,13 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
 
   let(:test_sorted_all_options) do
     [
-        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
-        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'],
     ]
   end
   let(:test_sorted_current_options) do
     [
-        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
     ]
   end
   let(:page) { Capybara::Node::Simple.new(rendered) }
@@ -58,5 +60,4 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
     expect(page).to have_content 'Citeable URL'
     expect(page).to have_content 'https://test.host/concern/defaults/'+presenter.id
   end
-
 end

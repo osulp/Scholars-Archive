@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class CacheBasedAuthority < Qa::Authorities::Local::FileBasedAuthority
     private
@@ -7,7 +9,7 @@ module ScholarsArchive
         uri = authority_yaml.with_indifferent_access.dig(@subauthority, :uri)
         expiration = authority_yaml.with_indifferent_access.dig(@subauthority, :cache_expires_in_hours)
         raise "#{@subauthority} uri configuration not found. " unless uri
-        raise "#cache_expires_in configuration not found. " unless expiration
+        raise '#cache_expires_in configuration not found. ' unless expiration
         result = ScholarsArchive::CachingService.fetch_or_store_in_cache(uri, expiration)
         parser = authority_yaml.with_indifferent_access.dig(@subauthority, :parser)
         raise "#{@subauthority} Parser configuration not found. " unless parser
@@ -16,7 +18,7 @@ module ScholarsArchive
       end
 
       def subauthority_filename
-        File.join(Rails.root, "config/authorities.yml")
+        File.join(Rails.root, 'config/authorities.yml')
       end
   end
 end

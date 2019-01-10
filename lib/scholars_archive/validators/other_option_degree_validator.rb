@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Validators
   class OtherOptionDegreeValidator < ActiveModel::Validator
-
     def degree_present? (record)
       record.respond_to?(:degree_field) && record.respond_to?(:degree_level) && record.respond_to?(:degree_name)
     end

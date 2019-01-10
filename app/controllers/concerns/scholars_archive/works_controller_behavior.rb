@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module WorksControllerBehavior
     extend ActiveSupport::Concern
@@ -14,9 +16,9 @@ module ScholarsArchive
     end
 
     def new
-      curation_concern.publisher = ["Oregon State University"]
-      curation_concern.rights_statement = ["http://rightsstatements.org/vocab/InC/1.0/"]
-      curation_concern.degree_grantors = "http://id.loc.gov/authorities/names/n80017721" if curation_concern.respond_to?(:degree_grantors)
+      curation_concern.publisher = ['Oregon State University']
+      curation_concern.rights_statement = ['http://rightsstatements.org/vocab/InC/1.0/']
+      curation_concern.degree_grantors = 'http://id.loc.gov/authorities/names/n80017721' if curation_concern.respond_to?(:degree_grantors)
       super
     end
 
@@ -43,7 +45,7 @@ module ScholarsArchive
 
     def mutate_embargo_date
       translated_date = date_string.split.first.to_i.send(date_string.split.second.to_sym).from_now.to_date
-      params[hash_key_for_curation_concern]["embargo_release_date"] = Date.parse(translated_date.to_date.to_s).strftime("%Y-%m-%d")
+      params[hash_key_for_curation_concern]['embargo_release_date'] = Date.parse(translated_date.to_date.to_s).strftime('%Y-%m-%d')
     end
 
     def set_other_option_values

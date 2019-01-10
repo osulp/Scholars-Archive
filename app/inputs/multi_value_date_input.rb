@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MultiValueDateInput < MultiValueInput
   def input_type
     'multi_value'.freeze
@@ -130,7 +132,7 @@ class MultiValueDateInput < MultiValueInput
     options[:type] = 'button'
     options[:name] = 'calendar_end'
     options[:class] = ['calendar_end']
-    options['aria-label'.to_sym] = "Calendar End"
+    options['aria-label'.to_sym] = 'Calendar End'
     options
   end
 
@@ -139,7 +141,7 @@ class MultiValueDateInput < MultiValueInput
     options[:type] = 'button'
     options[:name] = 'calendar_start'
     options[:class] = ['calendar_start']
-    options['aria-label'.to_sym] = "Calendar Start"
+    options['aria-label'.to_sym] = 'Calendar Start'
     options
   end
 
@@ -184,7 +186,6 @@ class MultiValueDateInput < MultiValueInput
     options
   end
 
-
   def start_date_id(index)
     "timepicker_start_#{attribute_name}_#{index}"
   end
@@ -192,5 +193,4 @@ class MultiValueDateInput < MultiValueInput
   def end_date_id(index)
     "timepicker_end_#{attribute_name}_#{index}"
   end
-
 end

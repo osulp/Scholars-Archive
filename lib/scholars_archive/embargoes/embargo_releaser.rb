@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Embargoes
   class EmbargoReleaser
     def self.expire_embargoes
@@ -14,7 +16,7 @@ module ScholarsArchive::Embargoes
           work.embargo.save!
           work.save!(validate: false)
           if work.file_set?
-            work.visibility = work.to_solr["visibility_after_embargo_ssim"]
+            work.visibility = work.to_solr['visibility_after_embargo_ssim']
             work.save!(validate: false)
           elsif !work.file_set?
             work.copy_visibility_to_files

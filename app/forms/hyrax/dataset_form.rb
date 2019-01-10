@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work Dataset`
 module Hyrax
@@ -7,6 +9,5 @@ module Hyrax
 
     self.model_class = ::Dataset
     self.field_metadata_service = ScholarsArchive::FormMetadataService
-
   end
 end

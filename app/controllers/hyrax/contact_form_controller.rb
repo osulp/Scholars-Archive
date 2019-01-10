@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   class ContactFormController < ApplicationController
     include ContactFormRecaptchaBehavior
@@ -17,7 +19,7 @@ module Hyrax
         end
       else
         flash.now[:error] = 'Sorry, this message was not sent successfully. '
-        flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(", ")
+        flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(', ')
       end
       render :new
     rescue RuntimeError => exception

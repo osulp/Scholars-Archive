@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   class HandlesController < ApplicationController
     before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
@@ -13,13 +15,13 @@ module ScholarsArchive
       work = find_work
       if work.nil?
         ScholarsArchive::HandleErrorLoggingService.log_no_work_found_error(params)
-        render "/scholars_archive/handles/handle_work_404.html.erb", status: 404
+        render '/scholars_archive/handles/handle_work_404.html.erb', status: 404
       else
         case params[:action]
-        when "discover"
-        when "browse"
+        when 'discover'
+        when 'browse'
           redirect_to [main_app, work]
-        when "stats"
+        when 'stats'
           redirect_to app.hyrax.stats_work_path(work.id)
         else
           redirect_to [main_app, work]
@@ -32,10 +34,10 @@ module ScholarsArchive
       filesets = filesets_for_work(work) unless work.nil?
       if work.nil?
         ScholarsArchive::HandleErrorLoggingService.log_no_work_found_error(params)
-        render "/scholars_archive/handles/handle_work_404.html.erb", status: 404
+        render '/scholars_archive/handles/handle_work_404.html.erb', status: 404
       elsif filesets.empty?
         ScholarsArchive::HandleErrorLoggingService.log_no_files_found_error(params, work, construct_handle_url(params[:handle_prefix], params[:handle_localname]))
-        render "/scholars_archive/handles/handle_file_404.html.erb", status: 404, locals: { handle_uri: "#{params[:handle_prefix]}/#{params[:handle_localname]}",
+        render '/scholars_archive/handles/handle_file_404.html.erb', status: 404, locals: { handle_uri: "#{params[:handle_prefix]}/#{params[:handle_localname]}",
                                                                                             file: "#{params[:file]}.#{params[:format]}",
                                                                                             work_title: work.title,
                                                                                             work_path: "/concern/#{work.class.to_s.pluralize.underscore}/#{work.id}" }
@@ -50,45 +52,45 @@ module ScholarsArchive
     private
 
       def handle_redirects
-        new_od_path = od_redirects["handles_od_communities_collections"][params[:handle_localname]]
+        new_od_path = od_redirects['handles_od_communities_collections'][params[:handle_localname]]
         if new_od_path
           redirect_to new_od_path and return
         end
 
-        new_od_items_path = od_items_redirects["handles_od_items"][params[:handle_localname]]
+        new_od_items_path = od_items_redirects['handles_od_items'][params[:handle_localname]]
         if new_od_items_path
           redirect_to new_od_items_path and return
         end
 
-        new_ir_collections_path = ir_collections_redirects["handles_ir_communities_collections"][params[:handle_localname]]
+        new_ir_collections_path = ir_collections_redirects['handles_ir_communities_collections'][params[:handle_localname]]
         if new_ir_collections_path
           redirect_to new_ir_collections_path and return
         end
 
-        new_ir_mismatch_path = ir_mismatch_redirects["handles_mismatched_items"][params[:handle_localname]]
+        new_ir_mismatch_path = ir_mismatch_redirects['handles_mismatched_items'][params[:handle_localname]]
         if new_ir_mismatch_path
           redirect_to new_ir_mismatch_path and return
         end
       end
 
       def od_redirects
-        YAML.load(File.read("config/handles_od_communities_collections.yml"))
+        YAML.load(File.read('config/handles_od_communities_collections.yml'))
       end
 
       def od_items_redirects
-        YAML.load(File.read("config/handles_od_items.yml"))
+        YAML.load(File.read('config/handles_od_items.yml'))
       end
 
       def ir_collections_redirects
-        YAML.load(File.read("config/handles_ir_communities_collections.yml"))
+        YAML.load(File.read('config/handles_ir_communities_collections.yml'))
       end
 
       def ir_mismatch_redirects
-        YAML.load(File.read("config/handles_mismatched_items.yml"))
+        YAML.load(File.read('config/handles_mismatched_items.yml'))
       end
 
       def verify_handle_prefix
-        if params[:handle_prefix] != "1957"
+        if params[:handle_prefix] != '1957'
           ScholarsArchive::HandleErrorLoggingService.log_incorrect_handle_prefix_error(params)
           redirect_to root_path
         end
@@ -114,7 +116,7 @@ module ScholarsArchive
       def extract_all_filesets(work)
         filesets = []
         work.members.each do |member|
-          if member.class.to_s != "FileSet"
+          if member.class.to_s != 'FileSet'
             filesets << extract_all_filesets(member)
           else
             filesets << member

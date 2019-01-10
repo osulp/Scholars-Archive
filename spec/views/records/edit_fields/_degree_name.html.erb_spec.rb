@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
@@ -27,8 +29,8 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
   end
 
   context "for a work with degree name where 'Other' was selected and there is an OtherOption record for that work" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_name: ["Other"] } }
-    let(:degree_name_other_option_test) {"testing degree name other option"}
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_name: ['Other'] } }
+    let(:degree_name_other_option_test) {'testing degree name other option'}
 
     before do
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
@@ -45,11 +47,10 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
     it 'has the "other" value listed in the table' do
       expect(rendered).to have_content(degree_name_other_option_test)
     end
-
   end
 
   context "for a work with degree name where 'Other' was not selected" do
-    let(:attributes) { { title: ["test"], creator: ["Blah"], rights_statement: ["blah.blah"], resource_type: ["blah"], degree_name: ["test"] } }
+    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_name: ['test'] } }
 
     before do
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])

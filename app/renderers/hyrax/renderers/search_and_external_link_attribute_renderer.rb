@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Renderers
     class SearchAndExternalLinkAttributeRenderer < AttributeRenderer
@@ -19,9 +21,9 @@ module Hyrax
             query_hash = JSON.parse(query.to_s.gsub('=>', ':'))
             label = query_hash['label']
             uri = query_hash['uri']
-          elsif query.include?("$")
-            label = query.split("$").first
-            uri = query.split("$").second
+          elsif query.include?('$')
+            label = query.split('$').first
+            uri = query.split('$').second
           else
             label = query
             uri = case field
@@ -31,7 +33,7 @@ module Hyrax
             end
           end
           links << link_to(label, search_path_for(label)) unless label.blank?
-          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, uri, 'aria-label' => "Open link in new window", class: 'btn', target: '_blank') unless uri.blank?
+          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, uri, 'aria-label' => 'Open link in new window', class: 'btn', target: '_blank') unless uri.blank?
         end
 
         links.join('')

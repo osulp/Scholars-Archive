@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hyrax
   module ControlledVocabularies
     class Location < ActiveTriples::Resource
@@ -7,7 +9,6 @@ module Hyrax
       property :parentCountry, :predicate => RDF::URI('http://www.geonames.org/ontology#parentCountry'), :class_name => 'Hyrax::ControlledVocabularies::Location'
       property :featureCode, :predicate => RDF::URI('http://www.geonames.org/ontology#featureCode')
       property :featureClass, :predicate => RDF::URI('http://www.geonames.org/ontology#featureClass')
-
 
       # Return a tuple of url & label
       def solrize
@@ -25,8 +26,8 @@ module Hyrax
           parent_label = (parentFeature.first.kind_of? ActiveTriples::Resource) ? parentFeature.first.rdf_label.first : []
           return label if parent_label.empty? or RDF::URI(parent_label).valid? or parent_label.starts_with? '_:'
           fc_label = ScholarsArchive::FeatureClassUriToLabel.new.uri_to_label(featureClass.first.id.to_s) unless featureClass.blank?
-          label = "#{label.first} , #{parent_label} (#{fc_label}) " unless parent_label.include?("(")
-          label = "#{label.first} , #{parent_label}".gsub(/\((.*)\)/, " (#{fc_label}) " ) if parent_label.include?("(")
+          label = "#{label.first} , #{parent_label} (#{fc_label}) " unless parent_label.include?('(')
+          label = "#{label.first} , #{parent_label}".gsub(/\((.*)\)/, " (#{fc_label}) " ) if parent_label.include?('(')
         end
         Array(label)
       end

@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module ScholarsArchive::Validators
   class OtherAffiliationValidator < ActiveModel::Validator
-
     def validate(record)
       error_counter = 0
 
@@ -40,7 +41,7 @@ module ScholarsArchive::Validators
           if other_value_in_collection? other_value: entry, collection: collection
             err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
             add_error_message(record, other_field, err_message)
-            record.send(field) << [{option: "Other", err_msg: err_message, other_entry: entry.to_s}.to_json]
+            record.send(field) << [{option: 'Other', err_msg: err_message, other_entry: entry.to_s}.to_json]
             error_counter += 1
           else
             valid_values << entry.to_s
@@ -48,16 +49,16 @@ module ScholarsArchive::Validators
         end
       else
         if record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
-          err_message = I18n.t("simple_form.actor_validation.other_value_missing")
+          err_message = I18n.t('simple_form.actor_validation.other_value_missing')
           add_error_message(record, other_field, err_message)
-          record.send(field) << [{option: "Other", err_msg: err_message}.to_json]
+          record.send(field) << [{option: 'Other', err_msg: err_message}.to_json]
           error_counter += 1
         end
       end
 
       if error_counter > 0
         valid_values.each do |entry|
-          record.send(field) << [{option: "Other", err_valid_val:true, other_entry: entry.to_s}.to_json]
+          record.send(field) << [{option: 'Other', err_valid_val:true, other_entry: entry.to_s}.to_json]
         end
       end
       return error_counter

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
@@ -30,27 +32,27 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
     render 'shared/select_work_type_modal', create_work_presenter: presenter
   end
 
-  context "as an employee" do
+  context 'as an employee' do
     let(:api_person_type) { 'Employee' }
     let(:work_type_titles) { ['Graduate Students', 'Undergrad Students', 'Faculty Article Deposits', 'Other Scholarly Content', 'Administrator Only'] }
 
-    it "shows all work types" do
+    it 'shows all work types' do
       work_type_titles.each do |title|
         expect(rendered).to have_content(title)
       end
     end
   end
-  context "as a student" do
+  context 'as a student' do
     let(:api_person_type) { 'Student' }
     let(:work_type_titles) { ['Graduate Students', 'Undergrad Students', 'Other Scholarly Content'] }
     let(:hidden_work_type_titles) { ['Faculty Article Deposits', 'Administrator Only'] }
 
-    it "shows specific work types" do
+    it 'shows specific work types' do
       work_type_titles.each do |title|
         expect(rendered).to have_content(title)
       end
     end
-    it "does not show hidden work types" do
+    it 'does not show hidden work types' do
       hidden_work_type_titles.each do |title|
         expect(rendered).not_to have_content(title)
       end

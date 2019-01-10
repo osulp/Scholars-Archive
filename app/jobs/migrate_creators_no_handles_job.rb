@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MigrateCreatorsNoHandlesJob < ScholarsArchive::ApplicationJob
   queue_as :default
 
@@ -12,11 +14,11 @@ class MigrateCreatorsNoHandlesJob < ScholarsArchive::ApplicationJob
     # Iterate over all docs
     docs.each do |doc|
       # Find work based on ID
-      unless doc["nested_ordered_creator_label_ssim"].present?
+      unless doc['nested_ordered_creator_label_ssim'].present?
 
         begin
           # Find work based on ID
-          work = ActiveFedora::Base.find(doc["id"])
+          work = ActiveFedora::Base.find(doc['id'])
           update_work(work, logger)
         rescue => e
           logger.info "\t\t failed to update work id #{doc["id"]}, error found:"
@@ -24,17 +26,15 @@ class MigrateCreatorsNoHandlesJob < ScholarsArchive::ApplicationJob
         end
       end
     end
-    logger.info "DONE"
-
+    logger.info 'DONE'
   end
 
   def update_work(work, logger)
     ordered_creators = []
 
-    if work.respond_to?(:nested_ordered_creator_attributes=) && work.respond_to?(:nested_ordered_creator) 
+    if work.respond_to?(:nested_ordered_creator_attributes=) && work.respond_to?(:nested_ordered_creator)
       # Iterate over the creators
       work.creator.each_with_index do |creator, i|
-
         # Translate creators over to nested ordered creators
         ordered_creators << {
           :index => i.to_s,

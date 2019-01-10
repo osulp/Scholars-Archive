@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copied from blacklight_advanced_search plugin, changed to remove filter adjustments
 #
 # Need to sub-class CatalogController so we get all other plugins behavior

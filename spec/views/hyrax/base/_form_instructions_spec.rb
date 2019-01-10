@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'hyrax/base/_form.erb', type: :view do
@@ -8,25 +10,25 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
   end
   let(:academic_unit_sorted_all_options) do
     [
-        ["Accounting - 1979/1992, 2009/open", "http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG"],
-        ["Animal Sciences - 1984/2013", "http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp"],
+        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'],
     ]
   end
   let(:academic_unit_sorted_current_options) do
     [
-        ["Accounting - 1979/1992, 2009/open", "http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG"],
-        ["Animal Sciences - 1984/2013", "http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp"],
+        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'],
     ]
   end
   let(:test_sorted_all_options) do
     [
-        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
-        ["Animal Breeding - 1952", "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz"],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'],
     ]
   end
   let(:test_sorted_current_options) do
     [
-        ["Adult Education - {1989..1990,1995,2001,2016}", "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi"],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
     ]
   end
   let(:work) {
@@ -48,18 +50,17 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     allow_any_instance_of(ScholarsArchive::OtherAffiliationService).to receive(:select_sorted_all_options).and_return([['Other', 'Other'],['http://opaquenamespace.org/ns/subject/OregonStateUniversityBioenergyMinorProgram', 'Oregon State University Bioenergy Minor Program']])
     allow(Hyrax::AdminSetOptionsPresenter).to receive(:new).and_return(options_presenter)
     stub_template('hyrax/base/_form_progress.html.erb' => 'Progress')
-    stub_template('hyrax/base/_form_relationships.html.erb' => "Relationships")
+    stub_template('hyrax/base/_form_relationships.html.erb' => 'Relationships')
     allow(work).to receive(:new_record?).and_return(true)
     allow(work).to receive(:member_ids).and_return([1, 2])
     allow_any_instance_of(User).to receive(:admin?).and_return(true)
-    allow(work).to receive(:current_username).and_return("admin")
+    allow(work).to receive(:current_username).and_return('admin')
     allow(ability).to receive(:current_user).and_return(current_user)
     allow(curation_concern.model_name).to receive(:name).and_return('default')
     allow(controller).to receive(:current_user).and_return(current_user)
     assign(:form, form)
     allow(controller).to receive(:controller_name).and_return('batch_uploads')
     allow(controller).to receive(:action_name).and_return('new')
-
   end
 
   context 'batch upload off' do

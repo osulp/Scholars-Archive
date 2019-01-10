@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MultiValueOrderedInput < MultiValueInput
   def input_type
     'multi_value'.freeze
@@ -54,7 +56,7 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def is_text_area?(value)
-    value.is_a?(NestedOrderedAbstract) || value.is_a?(NestedOrderedAdditionalInformation) 
+    value.is_a?(NestedOrderedAbstract) || value.is_a?(NestedOrderedAdditionalInformation)
   end
 
   def outer_wrapper
@@ -150,7 +152,7 @@ class MultiValueOrderedInput < MultiValueInput
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:_destroy.to_s, index)
     options[:id] = nested_field_id(:_destroy.to_s, index)
-    options[:value] = "1"
+    options[:value] = '1'
     options
   end
 
@@ -168,7 +170,7 @@ class MultiValueOrderedInput < MultiValueInput
     options = build_field_options(index_value, index)
     options[:name] = nested_field_name(:index.to_s, index)
     options[:id] = nested_field_id(:index.to_s, index)
-    options[:class] << "index"
+    options[:class] << 'index'
     options[:placeholder] = 'Index'
     options[:type] = ['hidden']
     options

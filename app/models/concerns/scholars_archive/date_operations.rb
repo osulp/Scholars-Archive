@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module DateOperations
     extend ActiveSupport::Concern
 
     def to_solr(solr_doc={})
       solr_doc = super
-      solr_doc = solr_doc.merge({"date_decades_ssim" => decades})
-      solr_doc = solr_doc.merge({"date_facet_yearly_ssim" => date_facet_yearly})
+      solr_doc = solr_doc.merge({'date_decades_ssim' => decades})
+      solr_doc = solr_doc.merge({'date_facet_yearly_ssim' => date_facet_yearly})
       solr_doc
     end
 
@@ -86,11 +88,11 @@ module ScholarsArchive
 
     def clean_datetime
       if date_value =~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/ # YYYY-MM-DD
-        DateTime.strptime(date_value, "%Y-%m-%d")
+        DateTime.strptime(date_value, '%Y-%m-%d')
       elsif date_value  =~ /^[0-9]{4}-[0-9]{2}$/ # YYYY-MM
-        DateTime.strptime(date_value, "%Y-%m")
+        DateTime.strptime(date_value, '%Y-%m')
       elsif date_value =~ /^[0-9]{4}/ # YYYY
-        DateTime.strptime(date_value.split("-").first, "%Y")
+        DateTime.strptime(date_value.split('-').first, '%Y')
       else
         Rails.logger.warn "Invalid date_value: #{date_value}. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY."
         return nil
@@ -148,7 +150,7 @@ module ScholarsArchive
       end
 
       def dates
-        @dates ||= date.to_s.split("-").map(&:to_i)
+        @dates ||= date.to_s.split('-').map(&:to_i)
       end
 
       def decades

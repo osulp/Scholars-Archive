@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MultiValueLabelUrlInput < MultiValueInput
   def input_type
     'multi_value'.freeze
@@ -89,7 +91,7 @@ class MultiValueLabelUrlInput < MultiValueInput
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:_destroy.to_s, index)
     options[:id] = nested_field_id(:_destroy.to_s, index)
-    options[:value] = "1"
+    options[:value] = '1'
     options
   end
 

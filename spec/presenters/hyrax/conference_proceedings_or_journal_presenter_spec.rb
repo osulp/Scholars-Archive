@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ConferenceProceedingsOrJournalPresenter do
   let(:solr_document) { SolrDocument.new(attributes) }
-  let(:ability) { double "Ability" }
+  let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
   let(:attributes) { file.to_solr }
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => "TestTitle",
-        :index => "0"
+        :title => 'TestTitle',
+        :index => '0'
       }
     ]
   end
@@ -18,14 +20,14 @@ RSpec.describe ConferenceProceedingsOrJournalPresenter do
           id: '123abc',
           nested_ordered_title_attributes: nested_ordered_title_attributes,
           depositor: user.user_key,
-          label: "filename.tif")
+          label: 'filename.tif')
   end
   let(:user) { double(user_key: 'sarah')}
   let(:solr_properties) do
-    ["resource_type", "editor", "has_volume", "has_number", "conference_location", "conference_name", "conference_section", "has_journal", "is_referenced_by", "isbn"]
+    ['resource_type', 'editor', 'has_volume', 'has_number', 'conference_location', 'conference_name', 'conference_section', 'has_journal', 'is_referenced_by', 'isbn']
   end
   subject { presenter }
-  it "delegates to the solr_document" do
+  it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(solr_document).to receive(property.to_sym)
       presenter.send(property)

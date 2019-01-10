@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module HasTriplePoweredProperties
     extend ActiveSupport::Concern
 
     included do
-
       self.validates_with ScholarsArchive::TriplePoweredProperties::HasUrlValidator
 
       class_attribute :triple_powered_properties

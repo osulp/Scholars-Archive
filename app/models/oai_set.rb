@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OaiSet < BlacklightOaiProvider::Set
   class << self
     # The Solr repository object (optional)
@@ -50,6 +52,6 @@ class OaiSet < BlacklightOaiProvider::Set
 
   def name_from_spec
     spec_id = @spec.split(':').last
-    ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{spec_id}", :rows => 1).first["title_tesim"].first
+    ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{spec_id}", :rows => 1).first['title_tesim'].first
   end
 end

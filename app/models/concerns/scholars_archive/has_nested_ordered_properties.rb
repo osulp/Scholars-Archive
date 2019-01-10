@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module HasNestedOrderedProperties
     extend ActiveSupport::Concern
 
     included do
-
       def title
         nested_ordered_title.present? ? ordered_titles : super
       end

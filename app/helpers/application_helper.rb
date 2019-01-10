@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def select_tag_dates(name, f)
     options = []
     data_fields = [{ id: 'dates_fields_data' }]
 
     f.object.date_terms.each do |term|
-
       if f.object.multiple? term
         options << { term.to_s.titleize => term.to_s } if f.object.send(term).first.blank?
         data_field = render_edit_field_partial(term, f: f)
@@ -21,7 +22,7 @@ module ApplicationHelper
 
     data_fields << { 'work_type' => f.object.model_name.singular }
 
-    default_option = {"Select a date type" => "default_option"}
+    default_option = {'Select a date type' => 'default_option'}
     date_options = Hash[options.blank? ? [] : options.reduce(:merge).sort]
     date_options = default_option.merge(date_options)
 
@@ -67,7 +68,7 @@ module ApplicationHelper
 
     f.object.model.nested_geo = coordinates
 
-    default_option = {"Select a geographic coordinate type" => "default_option"}
+    default_option = {'Select a geographic coordinate type' => 'default_option'}
     geo_options = Hash[options.blank? ? [] : options.reduce(:merge).sort]
     geo_options = default_option.merge(geo_options)
 
@@ -102,7 +103,7 @@ module ApplicationHelper
   end
 
   def embargo_select_options
-    [["6 Months",6.months.from_now], ["1 year",1.year.from_now],["2 Years",2.years.from_now], ["Other...", "other"]]
+    [['6 Months',6.months.from_now], ['1 year',1.year.from_now],['2 Years',2.years.from_now], ['Other...', 'other']]
   end
 
   def selected_embargo(release_date, options)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work Oer`
 require 'rails_helper'
@@ -15,9 +17,9 @@ RSpec.feature 'Create a Oer', skip: true, type: :feature do
         AdminSet.find('blah')
       rescue ActiveFedora::ObjectNotFoundError
         AdminSet.create(id: 'blah',
-                        title: ["title"],
-                        description: ["A substantial description"],
-                        edit_users: ["admin"])
+                        title: ['title'],
+                        description: ['A substantial description'],
+                        edit_users: ['admin'])
       end
     end
 
@@ -33,12 +35,12 @@ RSpec.feature 'Create a Oer', skip: true, type: :feature do
       Hyrax::PermissionTemplateAccess.create(permission_template: permission_template, agent_type: 'user', agent_id: user.user_key, access: 'deposit')
       Sipity::WorkflowAction.create(id: 4, name: 'show', workflow_id: workflow.id)
 
-      ENV["OSU_API_PERSON_REFRESH_SECONDS"] = '123456'
+      ENV['OSU_API_PERSON_REFRESH_SECONDS'] = '123456'
       login_as user
     end
 
     it do
-      allow_any_instance_of(ApplicationHelper).to receive(:select_tag_dates).and_return("")
+      allow_any_instance_of(ApplicationHelper).to receive(:select_tag_dates).and_return('')
       allow_any_instance_of(Hyrax::DefaultWorkForm).to receive(:date_terms).and_return([])
       visit new_hyrax_etd_path
       choose 'Oer works'
@@ -46,10 +48,10 @@ RSpec.feature 'Create a Oer', skip: true, type: :feature do
       fill_in 'Title', with: 'Test Oer'
       fill_in 'Creator', with: 'Test Oer Creator'
       fill_in 'Keyword', with: 'Test Oer Keyword'
-      select "In Copyright", :from => "etd_rights_statement"
+      select 'In Copyright', :from => 'etd_rights_statement'
       check 'agreement'
 
-      click_link "Files" # switch tab
+      click_link 'Files' # switch tab
       attach_file('files[]', File.join(Rails.root, '/spec/fixtures/files/world.png'))
       click_button 'Save'
       expect(page).to have_content 'Your files are being processed by Hyrax'

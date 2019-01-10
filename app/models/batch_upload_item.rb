@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This stands in for an object to be created from the BatchUploadForm.
 # It should never actually be persisted in the repository.
 # The properties on this form should be copied to a real work type.
@@ -12,9 +14,7 @@ class BatchUploadItem < ActiveFedora::Base
   include ScholarsArchive::ExcludedDefaultLicenses
   include ScholarsArchive::HasNestedOrderedProperties
 
-
   self.indexer = DefaultWorkIndexer
-
 
   attr_accessor :payload_concern # a Class name: what is this a batch of?
 
@@ -24,9 +24,9 @@ class BatchUploadItem < ActiveFedora::Base
   end
 
   def create_or_update
-    raise "This is a read only record"
+    raise 'This is a read only record'
   end
-  
+
   private
     def set_defaults
     end

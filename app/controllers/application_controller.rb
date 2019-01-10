@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   helper Openseadragon::OpenseadragonHelper
   # Adds a few additional behaviors into the application controller
@@ -27,7 +29,7 @@ class ApplicationController < ActionController::Base
         current_user.update_from_person_api
       rescue
         # Don't fail hard when the API queries fail
-        logger.error("Failed accessing OSU API, unable to synchronize user details.")
+        logger.error('Failed accessing OSU API, unable to synchronize user details.')
       end
     end
   end
@@ -84,7 +86,7 @@ class ApplicationController < ActionController::Base
   ##
   # Force https for production
   def default_url_options
-    if Rails.env == "production"
+    if Rails.env == 'production'
       super.merge(protocol: :https) if Rails.env == 'production'
     else
       super

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Parsers::AcademicUnitsParser do
-  let(:invalid_jsonld) { 
+  let(:invalid_jsonld) {
   '{
   "@context": {
     "dc": "http://purl.org/dc/terms/",
@@ -47,7 +49,7 @@ RSpec.describe Parsers::AcademicUnitsParser do
       }
     }]}'
   }
-  let(:jsonld) { 
+  let(:jsonld) {
   '{
   "@context": {
     "dc": "http://purl.org/dc/terms/",
@@ -93,15 +95,15 @@ RSpec.describe Parsers::AcademicUnitsParser do
       }
     }]}'
   }
-  describe "#parse" do
-    context "When givin JSONLD without a graph" do
-      it "should raise the proper error" do
-        expect(described_class.parse(invalid_jsonld)).to eq [{ id: "invalid", term: "invalid", active: true }]
+  describe '#parse' do
+    context 'When givin JSONLD without a graph' do
+      it 'should raise the proper error' do
+        expect(described_class.parse(invalid_jsonld)).to eq [{ id: 'invalid', term: 'invalid', active: true }]
       end
     end
-    context "When givin JSONLD without a graph" do
-      it "should raise the proper error" do
-        expect(described_class.parse(jsonld)).to eq [{id: "http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm", term: "Forestry - 1904/1905, 1907/1919", active: true}]
+    context 'When givin JSONLD without a graph' do
+      it 'should raise the proper error' do
+        expect(described_class.parse(jsonld)).to eq [{id: 'http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm', term: 'Forestry - 1904/1905, 1907/1919', active: true}]
       end
     end
   end

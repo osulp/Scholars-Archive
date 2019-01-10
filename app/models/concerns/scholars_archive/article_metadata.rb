@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   module ArticleMetadata
     extend ActiveSupport::Concern
@@ -10,15 +12,15 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :has_journal, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasJournal"), multiple: false do |index|
+      property :has_journal, predicate: ::RDF::URI.new('http://purl.org/net/nknouf/ns/bibtex#hasJournal'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
-      property :has_number, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasNumber"), multiple: false do |index|
+      property :has_number, predicate: ::RDF::URI.new('http://purl.org/net/nknouf/ns/bibtex#hasNumber'), multiple: false do |index|
         index.as :stored_searchable
       end
 
-      property :has_volume, predicate: ::RDF::URI.new("http://purl.org/net/nknouf/ns/bibtex#hasVolume"), multiple: false do |index|
+      property :has_volume, predicate: ::RDF::URI.new('http://purl.org/net/nknouf/ns/bibtex#hasVolume'), multiple: false do |index|
         index.as :stored_searchable
       end
 
@@ -26,7 +28,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :web_of_science_uid, predicate: ::RDF::URI.new("http://opaquenamespace.org/ns/webOfScienceUid"), multiple: false do |index|
+      property :web_of_science_uid, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/webOfScienceUid'), multiple: false do |index|
         index.as :stored_searchable
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Generated via
 #  `rails generate hyrax:work HonorsCollegeThesis`
 class HonorsCollegeThesis < ActiveFedora::Base
@@ -22,9 +24,9 @@ class HonorsCollegeThesis < ActiveFedora::Base
 
   private
   def set_defaults
-    self.resource_type = ["Honors College Thesis"] if self.resource_type.empty?
-    self.other_affiliation = ["http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege"] if self.other_affiliation.empty?
+    self.resource_type = ['Honors College Thesis'] if self.resource_type.empty?
+    self.other_affiliation = ['http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege'] if self.other_affiliation.empty?
     self.degree_level ||= "Bachelor's"
-    self.peerreviewed ||= "FALSE"
+    self.peerreviewed ||= 'FALSE'
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for the copyright status (edm:rights) field
   class LicenseService < Hyrax::QaSelectService
@@ -6,7 +8,7 @@ module ScholarsArchive
     end
 
     def all_labels(values)
-      authority.all.select { |r| values.include?(r[:id]) }.map { |hash| hash["label"] }
+      authority.all.select { |r| values.include?(r[:id]) }.map { |hash| hash['label'] }
     end
 
     def select_active_options_from_model(f)

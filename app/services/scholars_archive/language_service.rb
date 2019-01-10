@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
   # Provide select options for the license (dcterms:rights) field
   class LanguageService < Hyrax::QaSelectService
