@@ -11,7 +11,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        super - self.date_terms + [:duration]
+        super - date_terms + [:duration]
       end
     end
   end

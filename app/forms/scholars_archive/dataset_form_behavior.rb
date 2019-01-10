@@ -46,7 +46,7 @@ module ScholarsArchive
       end
 
       def self.build_permitted_params
-        super + self.date_terms + [:embargo_reason] + [
+        super + date_terms + [:embargo_reason] + [
           {
             :nested_geo_attributes => %i[id _destroy point_lat point_lon bbox_lat_north bbox_lon_west bbox_lat_south bbox_lon_east label point bbox],
             :nested_ordered_creator_attributes => %i[id _destroy index creator],

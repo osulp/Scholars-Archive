@@ -11,7 +11,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        t = super - self.date_terms - %i[conference_location conference_name conference_section]
+        t = super - date_terms - %i[conference_location conference_name conference_section]
         t << :web_of_science_uid if current_ability.current_user.admin?
         t
       end

@@ -50,7 +50,7 @@ module ScholarsArchive
       end
 
       def self.build_permitted_params
-        super + self.date_terms + [
+        super + date_terms + [
           :degree_level,
           :degree_name,
           :degree_field,

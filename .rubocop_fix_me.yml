@@ -570,32 +570,6 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Style/RedundantSelf:
-  Exclude:
-    - 'app/forms/scholars_archive/dataset_form_behavior.rb'
-    - 'app/forms/scholars_archive/etd_work_form_behavior.rb'
-    - 'app/forms/scholars_archive/article_work_form_behavior.rb'
-    - 'app/forms/scholars_archive/oer_work_form_behavior.rb'
-    - 'app/forms/scholars_archive/default_work_form_behavior.rb'
-    - 'app/models/article.rb'
-    - 'app/models/eesc_publication.rb'
-    - 'app/models/technical_report.rb'
-    - 'app/models/administrative_report_or_publication.rb'
-    - 'app/models/graduate_thesis_or_dissertation.rb'
-    - 'app/models/default.rb'
-    - 'app/models/undergraduate_thesis_or_project.rb'
-    - 'app/models/open_educational_resource.rb'
-    - 'app/models/graduate_project.rb'
-    - 'app/models/dataset.rb'
-    - 'app/models/purchased_e_resource.rb'
-    - 'app/models/honors_college_thesis.rb'
-    - 'app/models/conference_proceedings_or_journal.rb'
-    - 'app/models/concerns/scholars_archive/has_etd_triple_powered_properties.rb'
-    - 'app/models/concerns/scholars_archive/has_triple_powered_properties.rb'
-    - 'app/models/user.rb'
-    - 'app/jobs/reindex_everything_job.rb'
-    - 'lib/scholars_archive/triple_powered_properties/triple_powered_form.rb'
-
 Style/HashSyntax:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
