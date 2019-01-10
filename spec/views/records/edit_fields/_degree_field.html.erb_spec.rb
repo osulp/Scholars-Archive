@@ -86,7 +86,7 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
 
   context "for a work with degree field where 'Other' was selected and there is an OtherOption record in the database" do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field: ['Other'] } }
-    let(:degree_field_other_option_test) {'testing degree field other option'}
+    let(:degree_field_other_option_test) { 'testing degree field other option' }
 
     before do
       allow(current_user).to receive(:admin?).and_return(true)

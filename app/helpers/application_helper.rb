@@ -96,7 +96,7 @@ module ApplicationHelper
 
   def fixed_work_type_order(items=[])
     model_list = []
-    items.each {|item| model_list.push(item) }
+    items.each { |item| model_list.push(item) }
     lookup = {}
     model_list.each { |item| lookup[item.concern] = item }
     lookup

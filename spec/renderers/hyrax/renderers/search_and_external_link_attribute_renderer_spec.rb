@@ -10,7 +10,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
     let(:field) { :search_and_external_link }
     let(:uri) { 'http://test.org/ns/TestSubject/TestLabel' }
     let(:label) { 'test label' }
-    let(:label_uris) { {'label' => label, 'uri' => uri}}
+    let(:label_uris) { {'label' => label, 'uri' => uri} }
     let(:label_q) { 'test+label' }
     let(:renderer) { described_class.new(field, [label_uris.to_s], search_field: 'academic_affiliation_label') }
     let(:tr_content) do

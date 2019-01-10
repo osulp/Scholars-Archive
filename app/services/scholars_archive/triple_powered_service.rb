@@ -44,7 +44,7 @@ module ScholarsArchive
         label_dates[predicate.to_s] = []
         label_dates[predicate.to_s] << label_dates_query(graph, predicate)
           .select { |statement| !statement.is_a?(Array) }
-          .map { |statement| "#{statement.label.to_s} - #{statement.date.to_s}"}
+          .map { |statement| "#{statement.label.to_s} - #{statement.date.to_s}" }
         label_dates[predicate.to_s].flatten!.compact!
       end
       label_dates

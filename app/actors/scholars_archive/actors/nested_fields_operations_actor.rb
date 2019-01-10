@@ -61,7 +61,7 @@ module ScholarsArchive
         # text values provided by the user for these "Other" entries. Here we are just removing/cleaning up the
         # selection before getting to the ModelActor, which is where the attributes appears to be persisted in fedora
         if env.attributes['other_affiliation']
-          env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other'}
+          env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other' }
         end
       end
 

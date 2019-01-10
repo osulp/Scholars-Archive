@@ -36,7 +36,7 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
       w.title = ['test']
     end
   }
-  let(:curation_concern) {work}
+  let(:curation_concern) { work }
   let(:options_presenter) { double(select_options: []) }
 
   before do

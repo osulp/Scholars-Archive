@@ -22,7 +22,7 @@ RSpec.describe ConferenceProceedingsOrJournalPresenter do
           depositor: user.user_key,
           label: 'filename.tif')
   end
-  let(:user) { double(user_key: 'sarah')}
+  let(:user) { double(user_key: 'sarah') }
   let(:solr_properties) do
     ['resource_type', 'editor', 'has_volume', 'has_number', 'conference_location', 'conference_name', 'conference_section', 'has_journal', 'is_referenced_by', 'isbn']
   end

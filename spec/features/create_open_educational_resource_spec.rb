@@ -9,7 +9,7 @@ include Warden::Test::Helpers
 RSpec.feature 'Create a Open Educational Resource', skip: true, type: :feature do
   context 'a logged in user' do
     let(:user) do
-      User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false)}
+      User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false) }
     end
 
     let(:admin_set) do

@@ -22,7 +22,7 @@ RSpec.describe OtherOptionsController, type: :controller do
   }
 
   let(:user) do
-    User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}
+    User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
 
   describe 'DELETE #destroy' do

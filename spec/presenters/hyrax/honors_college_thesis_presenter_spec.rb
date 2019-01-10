@@ -20,7 +20,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
                             nested_ordered_title_attributes: nested_ordered_title_attributes,
                             depositor: user.user_key, label: 'filename.tif')
   end
-  let(:user) { double(user_key: 'sarah')}
+  let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
     ['contributor_advisor', 'contributor_committeemember', 'degree_discipline', 'degree_field', 'degree_grantors', 'degree_level', 'degree_name', 'graduation_year']

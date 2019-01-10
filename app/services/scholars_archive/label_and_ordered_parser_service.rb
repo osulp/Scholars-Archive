@@ -4,7 +4,7 @@ module ScholarsArchive
   class LabelAndOrderedParserService
     def self.parse(labels)
       labels ||= []
-      labels.map{ |label| parse_index(label)}
+      labels.map{ |label| parse_index(label) }
             .sort_by{ |array| array[1].to_i }
             .map{ |array| array[0] }
     end
