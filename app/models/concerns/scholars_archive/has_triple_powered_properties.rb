@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # triple powered properties
   module HasTriplePoweredProperties
     extend ActiveSupport::Concern
 

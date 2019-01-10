@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Multi valued date input
 class MultiValueDateInput < MultiValueInput
   def input_type
     'multi_value'.freeze

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Extended file based authority
   class ExtendedFileBasedAuthority < Qa::Authorities::Local::FileBasedAuthority
     def all
       terms.map do |res|

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Multi value select other input
 class MultiValueSelectOtherInput < MultiValueSelectInput
   # Overriding so that we can handle the "Other" option with an input
   def input_type

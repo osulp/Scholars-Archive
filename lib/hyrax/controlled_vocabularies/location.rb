@@ -2,6 +2,7 @@
 
 module Hyrax
   module ControlledVocabularies
+    # Location object
     class Location < ActiveTriples::Resource
       configure rdf_label: ::RDF::Vocab::GEONAMES.name
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # nested ordered property ops
   module HasNestedOrderedProperties
     extend ActiveSupport::Concern
 

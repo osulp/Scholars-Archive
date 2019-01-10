@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Qa::Authorities
+  # Geonames authority
   class Geonames < Base
     include WebServiceBase
 

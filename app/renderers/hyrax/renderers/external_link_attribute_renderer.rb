@@ -2,6 +2,7 @@
 
 module Hyrax
   module Renderers
+    # renders external link on show page
     class ExternalLinkAttributeRenderer < AttributeRenderer
       private
 

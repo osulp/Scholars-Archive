@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # triple powered resource for PER
   module HasPurchasedEResourceTriplePoweredProperties
     extend ActiveSupport::Concern
     extend ScholarsArchive::HasEtdTriplePoweredProperties

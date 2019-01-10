@@ -2,6 +2,7 @@
 
 module ScholarsArchive
   module Workflow
+    # Changes required
     class ChangesRequiredNotification < ScholarsArchive::Workflow::AbstractNotification
       private
 

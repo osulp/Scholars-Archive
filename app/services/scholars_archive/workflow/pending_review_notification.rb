@@ -2,6 +2,7 @@
 
 module ScholarsArchive
   module Workflow
+    # Pending review
     class PendingReviewNotification < ScholarsArchive::Workflow::AbstractNotification
       private
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # etd metadata
   module EtdMetadata
     extend ActiveSupport::Concern
 

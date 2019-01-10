@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Cache based authority for QA
   class CacheBasedAuthority < Qa::Authorities::Local::FileBasedAuthority
     private
 

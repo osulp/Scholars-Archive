@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work AdministrativeReportOrPublication`
 module Hyrax
+  # form object for administrative report or publication
   class AdministrativeReportOrPublicationForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
 

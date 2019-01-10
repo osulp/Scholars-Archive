@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # date ops for form
   module DateOperations
     extend ActiveSupport::Concern
 

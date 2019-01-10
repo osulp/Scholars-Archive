@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Migrates creators without handles
 class MigrateCreatorsNoHandlesJob < ScholarsArchive::ApplicationJob
   queue_as :default
 

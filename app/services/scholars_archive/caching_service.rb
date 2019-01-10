@@ -3,6 +3,7 @@
 require 'net/http'
 
 module ScholarsArchive
+  # Caches using rails cache
   class CachingService
     def self.fetch_or_store_in_cache(uri, expires_in)
       fetch_or_cache_json_from_etag(uri, expires_in)

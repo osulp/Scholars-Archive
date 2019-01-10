@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # oer presenter behavior for show page
   module OerPresenterBehavior
     extend ActiveSupport::Concern
     included do

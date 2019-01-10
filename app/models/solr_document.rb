@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# solr document object
 class SolrDocument
   include Blacklight::Solr::Document
   include BlacklightOaiProvider::SolrDocumentBehavior

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# reindexes everything
 class ReindexEverythingJob < ScholarsArchive::ApplicationJob
   queue_as :default
 

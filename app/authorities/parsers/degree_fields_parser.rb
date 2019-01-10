@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Parsers
+  # parses degree fields
   class DegreeFieldsParser
     def self.parse(jsonld)
       extract_and_massage_data(jsonld)

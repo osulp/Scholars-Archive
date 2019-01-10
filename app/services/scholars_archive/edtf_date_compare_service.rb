@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # EDTF Comparison object
   class EdtfDateCompareService
     def self.includes_last_five_years?(active_option)
       last_five_years_include?(active_option)

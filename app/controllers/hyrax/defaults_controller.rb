@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work Default`
 
 module Hyrax
+  # default controller
   class DefaultsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

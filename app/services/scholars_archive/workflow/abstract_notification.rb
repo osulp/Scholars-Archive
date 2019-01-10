@@ -2,6 +2,7 @@
 
 module ScholarsArchive
   module Workflow
+    # Notifications
     class AbstractNotification < Hyrax::Workflow::AbstractNotification
       private
 

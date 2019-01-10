@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Admin set select service
   class AdminSetSelectService
     #This method selects an admin set based on a model type. By passing in the
     #model and the select options, the method can look at the configuration and

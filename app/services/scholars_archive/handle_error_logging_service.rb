@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Handle errors
   class HandleErrorLoggingService
     def self.log_no_files_found_error(handle_params, work, handle_url)
       logger = Logger.new("#{Rails.root}/log/handle_errors.log" )

@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work PurchasedEResource`
 
 module Hyrax
+  # per controller
   class PurchasedEResourcesController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::PurchasedEResourceWorksControllerBehavior

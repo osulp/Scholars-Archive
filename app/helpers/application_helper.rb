@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# application helper
 module ApplicationHelper
   def select_tag_dates(name, f)
     options = []

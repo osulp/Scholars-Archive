@@ -4,6 +4,7 @@
 #  `rails generate hyrax:work EescPublication`
 
 module Hyrax
+  # eesc publication controller
   class EescPublicationsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior

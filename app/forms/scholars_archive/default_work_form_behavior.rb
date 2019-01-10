@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Form behavior for default work
   module DefaultWorkFormBehavior
     extend ActiveSupport::Concern
     included do

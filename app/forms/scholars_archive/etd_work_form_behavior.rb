@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # form behavior for etd
   module EtdWorkFormBehavior
     extend ActiveSupport::Concern
     included do

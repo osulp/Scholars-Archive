@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive::TriplePoweredProperties
+  # Makes form triple powered
   module TriplePoweredForm
 
     ##

@@ -3,6 +3,7 @@
 # Generated via
 #  `rails generate hyrax:work EescPublication`
 module Hyrax
+  # form object for eecs publication
   class EescPublicationForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
 

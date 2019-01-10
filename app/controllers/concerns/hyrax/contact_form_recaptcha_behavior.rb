@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Hyrax
+  # contact form behavior
   module ContactFormRecaptchaBehavior
     def check_recaptcha
       if is_recaptcha?

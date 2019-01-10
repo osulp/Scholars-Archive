@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # handles controller
   class HandlesController < ApplicationController
     before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
     before_action :handle_redirects, only: [:handle_show, :handle_download]

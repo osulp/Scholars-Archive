@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # form behavior for oer
   module OerWorkFormBehavior
     extend ActiveSupport::Concern
     included do

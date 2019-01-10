@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Label and order service
   class LabelAndOrderedParserService
     def self.parse(labels)
       labels ||= []
