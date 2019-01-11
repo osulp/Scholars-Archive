@@ -3,6 +3,7 @@
 module Hyrax
   module Forms
     # rubocop:disable Metrics/ClassLength
+    # Collection form
     class CollectionForm
       # OVERRIDDEN FROM https://github.com/samvera/hyrax/blob/master/app/forms/hyrax/forms/collection_form.rb
       # Since hyrax doesnt create new models and simply uses this one, we need to override the model to alter the fields on the form
@@ -26,9 +27,9 @@ module Hyrax
 
       #OVERRIDE HERE
       self.terms = %i[title creator contributor description
-                    date_created subject language
-                    representative_id thumbnail_id based_near
-                    related_url visibility collection_type_gid]
+                      date_created subject language
+                      representative_id thumbnail_id based_near
+                      related_url visibility collection_type_gid]
 
       self.required_fields = [:title]
 
