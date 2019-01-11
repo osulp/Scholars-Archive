@@ -26,10 +26,7 @@ module Hyrax
       delegate :blacklight_config, to: Hyrax::CollectionsController
 
       #OVERRIDE HERE
-      self.terms = %i[title creator contributor description
-                      date_created subject language
-                      representative_id thumbnail_id based_near
-                      related_url visibility collection_type_gid]
+      self.terms = %i[title creator contributor description date_created subject language representative_id thumbnail_id based_near related_url visibility collection_type_gid]
 
       self.required_fields = [:title]
 
