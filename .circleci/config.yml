@@ -41,6 +41,9 @@ jobs:
           name: Start FCREPO
           command: fcrepo_wrapper -p 8986 --no-jms
           background: true
+      - run:
+          name: Run Rubocop
+          command: bundle exec rubocop
       - save_cache:
           key: gemfile-{{ checksum "Gemfile.lock" }}
           paths:

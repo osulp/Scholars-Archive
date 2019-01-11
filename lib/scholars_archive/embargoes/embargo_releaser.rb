@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive::Embargoes
+  # Embargo Releaser
   class EmbargoReleaser
     def self.expire_embargoes
       file_name = "#{Date.today}-embargo-release.log"

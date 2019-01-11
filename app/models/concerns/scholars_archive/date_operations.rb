@@ -103,6 +103,7 @@ module ScholarsArchive
       end
     end
 
+    # Date decorator
     class DecadeDecorator
       attr_accessor :year
       def initialize(year)
