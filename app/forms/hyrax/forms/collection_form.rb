@@ -65,12 +65,12 @@ module Hyrax
       #OVERRIDE HERE
       def secondary_terms
         %i[creator
-         contributor
-         date_created
-         subject
-         language
-         based_near
-         related_url]
+           contributor
+           date_created
+           subject
+           language
+           based_near
+           related_url]
       end
 
       def banner_info
