@@ -23,6 +23,7 @@ module ScholarsArchive
         academic_date = parse_date(active_option)
         normalized_date = '{' + academic_date + '}' unless academic_date.include?('{')
         return parse_academic_affiliation(normalized_date) unless normalized_date.nil? || !normalized_date.include?('/')
+
         date_in_past_five_years?(normalized_date, academic_date) if !academic_date.include?('/')
       end
 
@@ -33,6 +34,7 @@ module ScholarsArchive
       def self.parse_academic_affiliation(normalized_date)
         normalized_date.gsub!('/', '..')
         return true if normalized_date.include?('open')
+
         date_in_past_five_years?(normalized_date, nil)
       end
 

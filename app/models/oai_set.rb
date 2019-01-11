@@ -25,6 +25,7 @@ class OaiSet < BlacklightOaiProvider::Set
     def from_spec(spec)
       parts = spec.split(':')
       raise OAI::ArgumentException unless parts.count == 2 && Array(@fields).include?(parts[0])
+
       parts.join(':')
     end
 
@@ -53,6 +54,6 @@ class OaiSet < BlacklightOaiProvider::Set
 
   def name_from_spec
     spec_id = @spec.split(':').last
-    ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{spec_id}", :rows => 1).first['title_tesim'].first
+    ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{spec_id}", rows: 1).first['title_tesim'].first
   end
 end

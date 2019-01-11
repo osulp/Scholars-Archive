@@ -100,7 +100,7 @@ module ScholarsArchive
       end
 
       def other_value_in_collection? (other_value: nil, collection: [])
-        !collection.select {|option| option.include? other_value}.empty? ? true : false
+        !collection.select { |option| option.include? other_value }.empty? ? true : false
       end
 
       def persist_multiple_other_entries(env, field)
@@ -110,6 +110,7 @@ module ScholarsArchive
         other_field = "#{field.to_s}_other"
 
         return all_new_entries if env.attributes[other_field].blank?
+
         env.attributes[other_field].each do |entry|
           puts 'entry check'
           unless all_current_entries.include? entry

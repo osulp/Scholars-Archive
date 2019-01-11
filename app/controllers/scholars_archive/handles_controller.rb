@@ -3,8 +3,8 @@
 module ScholarsArchive
   # handles controller
   class HandlesController < ApplicationController
-    before_action :verify_handle_prefix, only: [:handle_show, :handle_download]
-    before_action :handle_redirects, only: [:handle_show, :handle_download]
+    before_action :verify_handle_prefix, only: %i[handle_show handle_download]
+    before_action :handle_redirects, only: %i[handle_show handle_download]
 
     def handle_file_404
     end
@@ -140,7 +140,7 @@ module ScholarsArchive
       # This method aims to make spaces, %20, +, and _ into wildcards to aid in SOLR queries for the FileSets
       def construct_fileset_querystring(file, format)
         escaped = RSolr.solr_escape(file)
-        "#{escaped.gsub(' ','*').gsub('%20','*').gsub('_','*').gsub('+','*')}.#{format}"
+        "#{escaped.gsub(' ', '*').gsub('%20', '*').gsub('_', '*').gsub('+', '*')}.#{format}"
       end
 
       def query_fedora_for_work(id, work_type)
@@ -149,11 +149,11 @@ module ScholarsArchive
 
       def query_solr_for_work(handle)
         #Query solr
-        ActiveFedora::SolrService.query("replaces_ssim:#{handle}", :rows => 1000000)
+        ActiveFedora::SolrService.query("replaces_ssim:#{handle}", rows: 1000000)
       end
 
       def query_solr_for_filesets(label)
-        ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", :rows => 10000)
+        ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", rows: 10000)
       end
   end
 end

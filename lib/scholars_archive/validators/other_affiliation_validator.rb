@@ -66,7 +66,7 @@ module ScholarsArchive::Validators
     end
 
     def other_value_in_collection? (other_value: nil, collection: [])
-      !collection.select {|option| option.include? other_value}.empty? ? true : false
+      !collection.select { |option| option.include? other_value }.empty? ? true : false
     end
 
     private

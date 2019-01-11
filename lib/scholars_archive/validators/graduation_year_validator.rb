@@ -5,6 +5,7 @@ module ScholarsArchive::Validators
   class GraduationYearValidator < ActiveModel::Validator
     def validate(record)
       return if !record.graduation_year.present? || valid_value(record)
+
       add_error_message(record)
       return
     end
@@ -18,11 +19,13 @@ module ScholarsArchive::Validators
 
     def valid_date_string(date)
       return true if date.length == 4
+
       false
     end
 
     def valid_date_range(grad_year)
       return true if grad_year >= 1868 && grad_year <= (Date.today.year + 5)
+
       false
     end
 

@@ -220,6 +220,7 @@ module ScholarsArchive
 
     def ordered_csv_metadata(csv, handle)
       return [] if handle.nil?
+
       # In the target CSV, find the rows that have a matching handle column,
       # then sort and map those rows in order.
       #

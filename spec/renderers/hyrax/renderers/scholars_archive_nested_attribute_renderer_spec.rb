@@ -10,7 +10,7 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
     let(:field) { :sholars_archive_nested }
     context 'render url itemprop' do
       let(:uri) { 'http://test.org/ns/TestSubject/TestLabel' }
-      let(:label_uris) { {'label' => label, 'uri' => uri}}
+      let(:label_uris) { {'label' => label, 'uri' => uri} }
       let(:label_q) { 'test+label' }
       let(:renderer) { described_class.new(field, [label_uris.to_s], search_field: 'nested_related_items_label_ssim', itemprop_option: 'url') }
       let(:tr_content) do

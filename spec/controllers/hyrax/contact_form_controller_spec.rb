@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::ContactFormController, type: :controller do
-  let(:user) {User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false)}}
+  let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
   routes { Hyrax::Engine.routes }
   let(:required_params) do
     {
@@ -14,7 +14,7 @@ RSpec.describe Hyrax::ContactFormController, type: :controller do
       message: 'Run.'
     }
   end
-  let(:contact_form) {Hyrax::ContactForm.new(required_params)}
+  let(:contact_form) { Hyrax::ContactForm.new(required_params) }
 
   before { sign_in(user) }
 

@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
-  let(:current_user) { User.new(email: 'test@example.com',guest: false) }
+  let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
   let(:work) {
     GraduateThesisOrDissertation.new do |work|
@@ -25,7 +25,7 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   let(:test_sorted_all_options) do
     [
         ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
-        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'],
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
     ]
   end
 
@@ -38,13 +38,13 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
 
   let(:test_sorted_current_options) do
     [
-        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
+        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi']
     ]
   end
 
   let(:test_sorted_current_options_truncated_values) do
     [
-        'Adult Education',
+        'Adult Education'
     ]
   end
 
@@ -86,12 +86,12 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
 
   context "for a work with degree field where 'Other' was selected and there is an OtherOption record in the database" do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field: ['Other'] } }
-    let(:degree_field_other_option_test) {'testing degree field other option'}
+    let(:degree_field_other_option_test) { 'testing degree field other option' }
 
     before do
       allow(current_user).to receive(:admin?).and_return(true)
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other]])
       work.degree_field_other = degree_field_other_option_test
       assign(:degree_field_other_options, [OtherOption.find_or_create_by(name: degree_field_other_option_test, work_id: work.id)])
       assign(:form, form)
@@ -113,8 +113,8 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
     } }
 
     before do
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([['Other', 'Other']])
-      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([['Other', 'Other']])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])
+      allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other]])
       assign(:form, form)
       render inline: form_template
     end

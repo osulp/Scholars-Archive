@@ -32,12 +32,12 @@ module ScholarsArchive::Validators
       unless item.label.first.blank? && item.related_url.first.blank?
         # check if label is present
         if item.label.first.blank? && item._destroy == false
-          add_error_message(record,:related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
+          add_error_message(record, :related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
           error_counter += 1
         end
         # check if related_url is present
         if item.related_url.first.blank? && item._destroy == false
-          add_error_message(record,:related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
+          add_error_message(record, :related_items, I18n.translate(:"simple_form.actor_validation.nested_related_items_value_missing"))
           error_counter += 1
         end
 

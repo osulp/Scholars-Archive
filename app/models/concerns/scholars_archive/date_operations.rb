@@ -18,6 +18,7 @@ module ScholarsArchive
     # If given date_value = invalid date, i.e. "typo_here2011-12-01", we will get nil
     def date_facet_yearly
       return nil if yearly_dates.empty?
+
       yearly_dates
     rescue ArgumentError => e
       Rails.logger.warn e.message
@@ -36,6 +37,7 @@ module ScholarsArchive
     #  g) given date_value = invalid date, i.e. "typo_here2011-12-01", we will get nil
     def decades
       return nil if decade_dates.empty?
+
       decade_dates.map(&:decade)
     rescue ArgumentError => e
       Rails.logger.warn e.message
@@ -78,6 +80,7 @@ module ScholarsArchive
 
     def decade_dates
       return [] unless date_value
+
       dates = DateDecadeConverter.new(date_value).run
       dates ||= Array.wrap(DecadeDecorator.new(parsed_year)) if parsed_year
       dates ? dates : []
@@ -131,6 +134,7 @@ module ScholarsArchive
 
       def run
         return unless valid_date_range?
+
         decades.times.map do |decade|
           DecadeDecorator.new(earliest_date + 10*decade)
         end

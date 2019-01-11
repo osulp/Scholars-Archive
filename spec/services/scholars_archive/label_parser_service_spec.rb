@@ -7,7 +7,7 @@ describe ScholarsArchive::LabelParserService do
 
   describe '#parse' do
     it 'returns labels from a uri$label pair' do
-      expect(described_class.parse(labels)).to eq ['label1', 'label2']
+      expect(described_class.parse(labels)).to eq %w[label1 label2]
     end
   end
 

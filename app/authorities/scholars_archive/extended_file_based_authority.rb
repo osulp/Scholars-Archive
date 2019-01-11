@@ -10,7 +10,7 @@ module ScholarsArchive
         active = res.delete(:active) || true
 
         h = { id: id, label: label, active: active }.with_indifferent_access
-        res.each_pair { |k,v| h[k.to_sym] = v }
+        res.each_pair { |k, v| h[k.to_sym] = v }
         h
       end
     end

@@ -5,7 +5,7 @@ class ReindexEverythingJob < ScholarsArchive::ApplicationJob
   queue_as :default
 
   def perform
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-reindex-everything-jid-#{self.job_id}.log")
+    logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-reindex-everything-jid-#{job_id}.log")
     admin_set_map = YAML.load(File.read('config/admin_set_map.yml'))
     logger.info 'Reindex Everything'
     counter = 0

@@ -17,15 +17,15 @@ class HonorsCollegeThesis < ActiveFedora::Base
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
 
-  self.validates_with ScholarsArchive::Validators::GraduationYearValidator
-  self.validates_with ScholarsArchive::Validators::OtherOptionDegreeValidator
-  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
-  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
+  validates_with ScholarsArchive::Validators::GraduationYearValidator
+  validates_with ScholarsArchive::Validators::OtherOptionDegreeValidator
+  validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
   def set_defaults
-    self.resource_type = ['Honors College Thesis'] if self.resource_type.empty?
-    self.other_affiliation = ['http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege'] if self.other_affiliation.empty?
+    self.resource_type = ['Honors College Thesis'] if resource_type.empty?
+    self.other_affiliation = ['http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege'] if other_affiliation.empty?
     self.degree_level ||= "Bachelor's"
     self.peerreviewed ||= 'FALSE'
   end

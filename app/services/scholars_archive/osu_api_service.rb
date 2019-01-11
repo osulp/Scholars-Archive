@@ -16,6 +16,7 @@ module ScholarsArchive
 
     def get_person(onid)
       return @people[onid] if @people[onid]
+
       url = "#{ENV['OSU_API_HOST']}/v1/directory"
       params = {q: onid}
       header = authorization_header

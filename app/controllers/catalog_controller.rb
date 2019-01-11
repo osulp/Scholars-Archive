@@ -36,7 +36,7 @@ class CatalogController < ApplicationController
       }
     }
 
-    config.view.gallery.partials = [:index_header, :index]
+    config.view.gallery.partials = %i[index_header index]
     config.view.masonry.partials = [:index]
     config.view.slideshow.partials = [:index]
 
@@ -45,7 +45,7 @@ class CatalogController < ApplicationController
     config.search_builder_class = ScholarsArchive::CatalogSearchBuilder
 
     # Show gallery view
-    config.view.gallery.partials = [:index_header, :index]
+    config.view.gallery.partials = %i[index_header index]
     config.view.slideshow.partials = [:index]
 
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -519,7 +519,7 @@ class CatalogController < ApplicationController
 
     config.add_search_field('nested_geo_label') do |field|
       field.label = 'Geographic Coordinates'
-      field.solr_parameters = { :"spellcheck.dictionary" => 'nested_geo_label' }
+      field.solr_parameters = { "spellcheck.dictionary": 'nested_geo_label' }
       field.include_in_advanced_search = false
       solr_name = solr_name('nested_geo_label', :stored_searchable)
       field.solr_local_parameters = {

@@ -14,8 +14,8 @@ class AdministrativeReportOrPublication < ActiveFedora::Base
   self.indexer = DefaultWorkIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
-  self.validates_with ScholarsArchive::Validators::OtherAffiliationValidator
-  self.validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
+  validates_with ScholarsArchive::Validators::OtherAffiliationValidator
+  validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
   def set_defaults

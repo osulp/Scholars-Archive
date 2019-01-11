@@ -195,6 +195,7 @@ class SolrDocument
   # Override SolrDocument hash access for certain virtual fields
   def [](key)
     return send(key) if %w[oai_academic_affiliation_label oai_other_affiliation_label oai_rights oai_identifier oai_nested_related_items_label].include?(key)
+
     super
   end
 

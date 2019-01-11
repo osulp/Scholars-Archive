@@ -5,7 +5,7 @@ require 'rails_helper'
 
 describe 'MultiValueOrderedInput', type: :input do
   class FooBar < ActiveFedora::Base
-    property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, :class_name => NestedOrderedCreator
+    property :nested_ordered_creator, predicate: ::RDF::Vocab::DC11.creator, class_name: NestedOrderedCreator
     accepts_nested_attributes_for :nested_ordered_creator
   end
 
@@ -52,7 +52,7 @@ describe 'MultiValueOrderedInput', type: :input do
       expect(subject).to receive(:build_field).with(creator4, Integer)
       expect(subject).to receive(:build_field).with(creator5, Integer)
       expect(subject).to receive(:build_field).with(creator6, Integer)
-      expect(subject.send(:collection).map {|c| c.creator.first}).to eq (['creator0', 'creator1', 'creator2', 'creator3', 'creator10', 'creator21'])
+      expect(subject.send(:collection).map { |c| c.creator.first }).to eq (%w[creator0 creator1 creator2 creator3 creator10 creator21])
       subject.input({})
     end
   end

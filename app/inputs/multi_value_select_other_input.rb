@@ -11,7 +11,7 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
 
   def build_field(value, index)
     render_options = select_options
-    if ['err_msg', 'err_valid_val'].any? { |msg| value.include? msg }
+    if %w[err_msg err_valid_val].any? { |msg| value.include? msg }
       error = JSON.parse(value)
       value = error['option']
       other_entry_value = error['other_entry']

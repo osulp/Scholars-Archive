@@ -44,6 +44,7 @@ module ScholarsArchive
       def save_nested_elements(env)
         clean_up_fields(env)
         return true unless nested_geo_present? (env)
+
         set_geo_coordinates(env)
         return true
       end
@@ -51,6 +52,7 @@ module ScholarsArchive
       def update_nested_elements(env)
         clean_up_fields(env)
         return true unless nested_geo_present? (env)
+
         set_geo_coordinates(env)
         return true
       end
@@ -61,12 +63,12 @@ module ScholarsArchive
         # text values provided by the user for these "Other" entries. Here we are just removing/cleaning up the
         # selection before getting to the ModelActor, which is where the attributes appears to be persisted in fedora
         if env.attributes['other_affiliation']
-          env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other'}
+          env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other' }
         end
       end
 
       def clean_up_nested_attributes (env)
-        env.attributes['nested_geo_attributes'].each do |k,v|
+        env.attributes['nested_geo_attributes'].each do |k, v|
           v.delete('point_lon')
           v.delete('point_lat')
           v.delete('bbox_lat_north')

@@ -14,7 +14,7 @@ RSpec.describe ScholarsArchive::CacheBasedAuthority  do
     end
     context 'When terms is called' do
       it 'should return an array of the properly formatted terms' do
-        expect(authority.all).to eq [{'id'=>'http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm','label'=>'Forestry','active'=>true}]
+        expect(authority.all).to eq [{'id'=>'http://opaquenamespace.org/ns/osuAcademicUnits/0Ct5bACm', 'label'=>'Forestry', 'active'=>true}]
       end
     end
   end

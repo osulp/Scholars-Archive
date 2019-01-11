@@ -9,7 +9,7 @@ module ScholarsArchive::TriplePoweredProperties
     # @param property [Symbol] the models property to be evaluated
     # @return [Boolean] true if the models triple_powered_properties includes the property
     def has_triple_powered_property?(property)
-      self.model.triple_powered_properties.include?(property[:field])
+      model.triple_powered_properties.include?(property[:field])
     end
   end
 end

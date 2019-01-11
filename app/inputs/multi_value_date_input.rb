@@ -168,7 +168,7 @@ class MultiValueDateInput < MultiValueInput
   end
 
   def start_date_options(index)
-    options = build_field_options('',index)
+    options = build_field_options('', index)
     options[:placeholder] = 'Start date'
     options[:class] = ['form-control', 'timepicker_start']
     options[:type] = ['text']

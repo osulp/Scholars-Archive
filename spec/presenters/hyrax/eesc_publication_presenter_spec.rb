@@ -10,8 +10,8 @@ RSpec.describe EescPublicationPresenter do
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => 'TestTitle',
-        :index => '0'
+        title: 'TestTitle',
+        index: '0'
       }
     ]
   end
@@ -22,10 +22,10 @@ RSpec.describe EescPublicationPresenter do
           depositor: user.user_key,
           label: 'filename.tif')
   end
-  let(:user) { double(user_key: 'sarah')}
+  let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
-    ['doi', 'abstract', 'alt_title', 'license', 'based_near_linked', 'resource_type', 'date_available', 'date_copyright', 'date_issued', 'date_collected', 'date_reviewed', 'date_valid', 'date_accepted', 'replaces', 'hydrologic_unit_code', 'funding_body', 'funding_statement', 'in_series', 'tableofcontents', 'bibliographic_citation', 'peerreviewed_label', 'digitization_spec', 'file_extent', 'file_format', 'dspace_community', 'dspace_collection']
+    %w[doi abstract alt_title license based_near_linked resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed_label digitization_spec file_extent file_format dspace_community dspace_collection]
   end
   subject { presenter }
   it 'delegates to the solr_document' do

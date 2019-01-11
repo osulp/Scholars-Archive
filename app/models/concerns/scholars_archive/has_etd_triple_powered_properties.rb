@@ -6,7 +6,7 @@ module ScholarsArchive
     extend ActiveSupport::Concern
 
     included do
-      self.validates_with ScholarsArchive::TriplePoweredProperties::HasUrlValidator
+      validates_with ScholarsArchive::TriplePoweredProperties::HasUrlValidator
 
       class_attribute :triple_powered_properties
 

@@ -12,7 +12,7 @@ module ScholarsArchive
     end
 
     def other_option
-      ['Other', 'Other']
+      %w[Other Other]
     end
 
     def select_sorted_all_options

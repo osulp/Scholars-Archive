@@ -9,8 +9,8 @@ RSpec.describe Default do
   let(:nested_ordered_title_attributes) do
     [
       {
-        :title => 'TestTitle',
-        :index => '0'
+        title: 'TestTitle',
+        index: '0'
       }
     ]
   end
@@ -18,8 +18,8 @@ RSpec.describe Default do
     let(:asset) {
       g = described_class.new(keyword: ['test'])
       g.attributes = {
-        :date_created => date,
-        :nested_ordered_title_attributes => nested_ordered_title_attributes
+        date_created: date,
+        nested_ordered_title_attributes: nested_ordered_title_attributes
       }
       g
     }
@@ -31,8 +31,8 @@ RSpec.describe Default do
       let(:asset) do
         g = described_class.new(keyword: ['test'])
         g.attributes = {
-            :date_created => nil,
-            :nested_ordered_title_attributes => nested_ordered_title_attributes
+            date_created: nil,
+            nested_ordered_title_attributes: nested_ordered_title_attributes
         }
         g
       end
@@ -44,11 +44,11 @@ RSpec.describe Default do
       let(:asset) do
         g = described_class.new(keyword: ['test'])
         g.attributes = {
-            :date_created => 'typo2011-01-01',
-            :nested_ordered_title_attributes => [
+            date_created: 'typo2011-01-01',
+            nested_ordered_title_attributes: [
               {
-                :title => 'TestTitle',
-                :index => '0'
+                title: 'TestTitle',
+                index: '0'
               }
             ]
         }
@@ -73,19 +73,19 @@ RSpec.describe Default do
       context 'when is a range of dates YYYY-mm-dd/YYY-mm-dd' do
         let(:date) { '1925-12-01/1927-01-01' }
         it 'should have years in that range' do
-          expect(facet).to eq [1925,1926,1927]
+          expect(facet).to eq [1925, 1926, 1927]
         end
       end
       context 'when is a range of years only YYYY/YYYY' do
         let(:date) { '2014/2017' }
         it 'should have years in that range' do
-          expect(facet).to eq [2014,2015,2016,2017]
+          expect(facet).to eq [2014, 2015, 2016, 2017]
         end
       end
       context 'when is a range of year and month only YYYY-mm/YYY-mm' do
         let(:date) { '2017-12/2018-01' }
         it 'should have years in that range' do
-          expect(facet).to eq [2017,2018]
+          expect(facet).to eq [2017, 2018]
         end
       end
     end
@@ -94,8 +94,8 @@ RSpec.describe Default do
     let(:asset) {
       g = described_class.new(keyword: ['test'])
       g.attributes = {
-          :date_created => date,
-          :nested_ordered_title_attributes => nested_ordered_title_attributes
+          date_created: date,
+          nested_ordered_title_attributes: nested_ordered_title_attributes
       }
       g
     }
@@ -106,8 +106,8 @@ RSpec.describe Default do
         let(:asset) do
           g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_created => nil,
-              :nested_ordered_title_attributes => nested_ordered_title_attributes
+              date_created: nil,
+              nested_ordered_title_attributes: nested_ordered_title_attributes
           }
           g
         end
@@ -119,8 +119,8 @@ RSpec.describe Default do
         let(:asset) do
           g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_created => date_created,
-              :nested_ordered_title_attributes => nested_ordered_title_attributes
+              date_created: date_created,
+              nested_ordered_title_attributes: nested_ordered_title_attributes
 
           }
           g
@@ -134,8 +134,8 @@ RSpec.describe Default do
         let(:asset) do
           g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_copyright => date_copyright,
-              :nested_ordered_title_attributes => nested_ordered_title_attributes
+              date_copyright: date_copyright,
+              nested_ordered_title_attributes: nested_ordered_title_attributes
           }
           g
         end
@@ -148,8 +148,8 @@ RSpec.describe Default do
         let(:asset) do
           g = described_class.new(keyword: ['test'])
           g.attributes = {
-              :date_issued => date_issued,
-              :nested_ordered_title_attributes => nested_ordered_title_attributes
+              date_issued: date_issued,
+              nested_ordered_title_attributes: nested_ordered_title_attributes
           }
           g
         end
@@ -194,8 +194,8 @@ RSpec.describe Default do
   describe '#nested_geo_attributes' do
     let(:attributes) do
       [{
-           :label => 'Salem',
-           :point => '[44.9430556,-123.0338889]'
+           label: 'Salem',
+           point: '[44.9430556,-123.0338889]'
        }]
     end
     it 'should be able to delete items' do
@@ -203,11 +203,11 @@ RSpec.describe Default do
       g.nested_geo_attributes = attributes
       g.nested_geo_attributes = [
           {
-              :id => g.nested_geo.first.id,
-              :_destroy => true
+              id: g.nested_geo.first.id,
+              _destroy: true
           },
           {
-              :label => 'Banana'
+              label: 'Banana'
           }
       ]
 
@@ -238,8 +238,8 @@ RSpec.describe Default do
       g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = [
           {
-              :label => '',
-              :point => '',
+              label: '',
+              point: '',
           }
       ]
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
@@ -258,14 +258,14 @@ RSpec.describe Default do
     ]
     g.nested_ordered_title_attributes = nested_ordered_title_attributes
     expect(g.nested_geo.length).to eq 2
-    expect(g.nested_geo.map{|x| x.label.first}).to contain_exactly('1','2')
+    expect(g.nested_geo.map { |x| x.label.first }).to contain_exactly('1', '2')
   end
 
   describe '#nested_ordered_creator_attributes' do
     let(:attributes) do
       [{
-           :index => '0',
-           :creator => 'CreatorA'
+           index: '0',
+           creator: 'CreatorA'
        }]
     end
 
@@ -275,12 +275,12 @@ RSpec.describe Default do
       g.nested_ordered_creator_attributes = attributes
       g.nested_ordered_creator_attributes = [
           {
-              :id => g.nested_ordered_creator.first.id,
-              :_destroy => true
+              id: g.nested_ordered_creator.first.id,
+              _destroy: true
           },
           {
-              :index => '1',
-              :creator => 'CreatorB'
+              index: '1',
+              creator: 'CreatorB'
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 1
@@ -291,12 +291,12 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
-              :index => '',
-              :creator => ''
+              index: '',
+              creator: ''
           },
           {
-              :index => '',
-              :creator => ''
+              index: '',
+              creator: ''
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 0
@@ -306,8 +306,8 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
-              :index => '1',
-              :creator => ''
+              index: '1',
+              creator: ''
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 0
@@ -317,8 +317,8 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
-              :index => '',
-              :creator => 'CreatorA'
+              index: '',
+              creator: 'CreatorA'
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 1
@@ -346,8 +346,8 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
           {
-              :index => '',
-              :creator => '',
+              index: '',
+              creator: '',
           }
       ]
       expect(g.nested_ordered_creator.length).to eq 0
@@ -368,8 +368,8 @@ RSpec.describe Default do
         }
     ]
     expect(g.nested_ordered_creator.length).to eq 2
-    expect(g.nested_ordered_creator.map{|x| x.index.first}).to contain_exactly('0','1')
-    expect(g.nested_ordered_creator.map{|x| x.creator.first}).to contain_exactly('Creator1','Creator2')
+    expect(g.nested_ordered_creator.map { |x| x.index.first }).to contain_exactly('0', '1')
+    expect(g.nested_ordered_creator.map { |x| x.creator.first }).to contain_exactly('Creator1', 'Creator2')
   end
   # Test sort is happening on id as integer, especially for more than 10 items, see Issue #1773
   it 'should return multiple nested ordered creators in correct order' do
@@ -383,15 +383,15 @@ RSpec.describe Default do
         { 'index' => '2', 'creator' => 'Creator2'},
         { 'index' => '3', 'creator' => 'Creator3'}
     ]
-    expect(g.creator).to eq ['Creator0', 'Creator1', 'Creator2', 'Creator3', 'Creator10', 'Creator21']
+    expect(g.creator).to eq %w[Creator0 Creator1 Creator2 Creator3 Creator10 Creator21]
   end
 
   describe '#nested_related_items_attributes' do
     let(:attributes) do
       [{
-           :index => '0',
-           :label => 'LabelA',
-           :related_url => 'UrlA'
+           index: '0',
+           label: 'LabelA',
+           related_url: 'UrlA'
        }]
     end
 
@@ -400,13 +400,13 @@ RSpec.describe Default do
       g.nested_related_items_attributes = attributes
       g.nested_related_items_attributes = [
           {
-              :id => g.nested_related_items.first.id,
-              :_destroy => true
+              id: g.nested_related_items.first.id,
+              _destroy: true
           },
           {
-              :index => '1',
-              :label => 'LabelB',
-              :related_url => 'UrlB'
+              index: '1',
+              label: 'LabelB',
+              related_url: 'UrlB'
           }
       ]
       expect(g.nested_related_items.length).to eq 1
@@ -417,14 +417,14 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = attributes
       g.nested_related_items_attributes = [
           {
-              :index => '',
-              :label => '',
-              :related_url => ''
+              index: '',
+              label: '',
+              related_url: ''
           },
           {
-              :index => '',
-              :label => '',
-              :related_url => ''
+              index: '',
+              label: '',
+              related_url: ''
           }
       ]
       expect(g.nested_related_items.length).to eq 0
@@ -450,9 +450,9 @@ RSpec.describe Default do
       g = described_class.new(keyword: ['test'])
       g.nested_related_items_attributes = [
           {
-              :index => '',
-              :label => '',
-              :related_url => ''
+              index: '',
+              label: '',
+              related_url: ''
           }
       ]
       expect(g.nested_related_items.length).to eq 0
@@ -474,16 +474,16 @@ RSpec.describe Default do
         }
     ]
     expect(g.nested_related_items.length).to eq 2
-    expect(g.nested_related_items.map{|x| x.index.first}).to contain_exactly('0','1')
-    expect(g.nested_related_items.map{|x| x.related_url.first}).to contain_exactly('ItemUrl1','ItemUrl2')
-    expect(g.nested_related_items.map{|x| x.label.first}).to contain_exactly('Label1','Label2')
+    expect(g.nested_related_items.map { |x| x.index.first }).to contain_exactly('0', '1')
+    expect(g.nested_related_items.map { |x| x.related_url.first }).to contain_exactly('ItemUrl1', 'ItemUrl2')
+    expect(g.nested_related_items.map { |x| x.label.first }).to contain_exactly('Label1', 'Label2')
   end
 
   describe '#nested_ordered_title_attributes' do
     let(:attributes) do
       [{
-        :index => '0',
-        :title => 'TitleA'
+        index: '0',
+        title: 'TitleA'
       }]
     end
     it 'should be able to delete items' do
@@ -491,12 +491,12 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = attributes
       g.nested_ordered_title_attributes = [
         {
-          :id => g.nested_ordered_title.first.id,
-          :_destroy => true
+          id: g.nested_ordered_title.first.id,
+          _destroy: true
         },
         {
-          :index => '1',
-          :title => 'TitleB'
+          index: '1',
+          title: 'TitleB'
         }
       ]
       expect(g.nested_ordered_title.length).to eq 1
@@ -506,12 +506,12 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_title_attributes = [
         {
-          :index => '',
-          :title => ''
+          index: '',
+          title: ''
         },
         {
-          :index => '',
-          :title => ''
+          index: '',
+          title: ''
         }
       ]
       expect(g.nested_ordered_title.length).to eq 0
@@ -521,8 +521,8 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_title_attributes = [
           {
-              :index => '1',
-              :title => ''
+              index: '1',
+              title: ''
           }
       ]
       expect(g.nested_ordered_title.length).to eq 0
@@ -531,8 +531,8 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_title_attributes = [
           {
-              :index => '',
-              :title => 'TitleA'
+              index: '',
+              title: 'TitleA'
           }
       ]
       expect(g.nested_ordered_title.length).to eq 1
@@ -558,8 +558,8 @@ RSpec.describe Default do
       g = described_class.new(keyword: ['test'])
       g.nested_ordered_title_attributes = [
         {
-          :index => '',
-          :title => '',
+          index: '',
+          title: '',
         }
       ]
       expect(g.nested_ordered_title.length).to eq 0
@@ -579,15 +579,15 @@ RSpec.describe Default do
       }
     ]
     expect(g.nested_ordered_title.length).to eq 2
-    expect(g.nested_ordered_title.map{|x| x.index.first}).to contain_exactly('0','1')
-    expect(g.nested_ordered_title.map{|x| x.title.first}).to contain_exactly('Title1','Title2')
+    expect(g.nested_ordered_title.map { |x| x.index.first }).to contain_exactly('0', '1')
+    expect(g.nested_ordered_title.map { |x| x.title.first }).to contain_exactly('Title1', 'Title2')
   end
 
   describe '#nested_ordered_contributor_attributes' do
     let(:attributes) do
       [{
-        :index => '0',
-        :contributor => 'ContributorA'
+        index: '0',
+        contributor: 'ContributorA'
       }]
     end
 
@@ -597,12 +597,12 @@ RSpec.describe Default do
       g.nested_ordered_contributor_attributes = attributes
       g.nested_ordered_contributor_attributes = [
         {
-          :id => g.nested_ordered_contributor.first.id,
-          :_destroy => true
+          id: g.nested_ordered_contributor.first.id,
+          _destroy: true
         },
         {
-          :index => '1',
-          :contributor => 'ContributorB'
+          index: '1',
+          contributor: 'ContributorB'
         }
       ]
       expect(g.nested_ordered_contributor.length).to eq 1
@@ -613,12 +613,12 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = [
         {
-          :index => '',
-          :contributor => ''
+          index: '',
+          contributor: ''
         },
         {
-          :index => '',
-          :contributor => ''
+          index: '',
+          contributor: ''
         }
       ]
       expect(g.nested_ordered_contributor.length).to eq 0
@@ -628,8 +628,8 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_contributor_attributes = [
           {
-              :index => '1',
-              :contributor => ''
+              index: '1',
+              contributor: ''
           }
       ]
       expect(g.nested_ordered_contributor.length).to eq 0
@@ -638,8 +638,8 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_contributor_attributes = [
           {
-              :index => '',
-              :contributor => 'ContributorA'
+              index: '',
+              contributor: 'ContributorA'
           }
       ]
       expect(g.nested_ordered_contributor.length).to eq 1
@@ -668,8 +668,8 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = [
         {
-          :index => '',
-          :contributor => '',
+          index: '',
+          contributor: '',
         }
       ]
       expect(g.nested_ordered_contributor.length).to eq 0
@@ -679,8 +679,8 @@ RSpec.describe Default do
   describe '#nested_ordered_abstract_attributes' do
     let(:attributes) do
       [{
-        :index => '0',
-        :abstract => 'AbstractA'
+        index: '0',
+        abstract: 'AbstractA'
       }]
     end
 
@@ -690,12 +690,12 @@ RSpec.describe Default do
       g.nested_ordered_abstract_attributes = attributes
       g.nested_ordered_abstract_attributes = [
         {
-          :id => g.nested_ordered_abstract.first.id,
-          :_destroy => true
+          id: g.nested_ordered_abstract.first.id,
+          _destroy: true
         },
         {
-          :index => '1',
-          :abstract => 'AbstractB'
+          index: '1',
+          abstract: 'AbstractB'
         }
       ]
       expect(g.nested_ordered_abstract.length).to eq 1
@@ -706,12 +706,12 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = [
         {
-          :index => '',
-          :abstract => ''
+          index: '',
+          abstract: ''
         },
         {
-          :index => '',
-          :abstract => ''
+          index: '',
+          abstract: ''
         }
       ]
       expect(g.nested_ordered_abstract.length).to eq 0
@@ -721,8 +721,8 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_abstract_attributes = [
           {
-              :index => '1',
-              :abstract => ''
+              index: '1',
+              abstract: ''
           }
       ]
       expect(g.nested_ordered_abstract.length).to eq 0
@@ -732,8 +732,8 @@ RSpec.describe Default do
       g = described_class.new()
       g.nested_ordered_abstract_attributes = [
           {
-              :index => '',
-              :abstract => 'AbstractA'
+              index: '',
+              abstract: 'AbstractA'
           }
       ]
       expect(g.nested_ordered_abstract.length).to eq 1
@@ -762,8 +762,8 @@ RSpec.describe Default do
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = [
         {
-          :index => '',
-          :abstract => '',
+          index: '',
+          abstract: '',
         }
       ]
       expect(g.nested_ordered_abstract.length).to eq 0
@@ -775,10 +775,10 @@ RSpec.describe Default do
       g = described_class.new(keyword: ['test'])
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.attributes = {
-        :nested_geo_attributes => [
+        nested_geo_attributes: [
           {
-            :label => 'Salem',
-            :point => '[44.9430556,-123.0338889]'
+            label: 'Salem',
+            point: '[44.9430556,-123.0338889]'
           }
         ]
       }
