@@ -27,7 +27,26 @@ module ScholarsArchive
     def solr_facets(facet_field, params)
       solr_connection = RSolr.connect(url: ActiveFedora.solr_config[:url])
       response = solr_connection.get 'select', params: facet_params(facet_field, params)
-      Hash[*response['facet_counts']['facet_fields'][facet_field]]
+      build_facet_hashes(response['facet_counts']['facet_fields'][facet_field])
+    end
+
+    ##
+    # Build a hash in the form {"Author A" => 1, "Author B" => 2}
+    # @param all_facets [Array] in the form ["Author A", 1, "Author B", 2]
+    # @returns [Hash] in the form {"Author A" => 1, "Author B" => 2}
+    def build_facet_hashes(all_facets)
+      hashes = all_facets.each_slice(slice_count(all_facets.count)).map { |a| Hash[*a] }
+      hashes.inject(&:merge)
+    end
+
+    ##
+    # Calculate proper slice count
+    # @param all_facets_count [Int] the total facets count
+    # @returns [Int] an integer value that represents a total number of facet
+    # groups
+    def slice_count(all_facets_count)
+      sub_facets_count = all_facets_count / 2
+      sub_facets_count.odd? ? sub_facets_count - 1 : sub_facets_count
     end
 
     ##
