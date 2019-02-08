@@ -56,7 +56,7 @@ def update_property(logger, work, row)
     return nil
   end
 
-  if property.is_a?(String)
+  if property.is_a?(String) || is_property_multiple?(work, row) == false
     work[row[:property]] = row[:to]&.to_s || ''
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif property.is_a?(ActiveTriples::Relation)
@@ -72,6 +72,11 @@ def update_property(logger, work, row)
     logger.info("#{work.class} #{row[:id]} #{row[:property]} set to \"#{row[:to]}\"")
   end
   work
+end
+
+def is_property_multiple?(work, row)
+  class_model = work.has_model.first.constantize
+  Hyrax::FormMetadataService.multiple?(class_model,row[:property])
 end
 
 def overwrite_multivalue_row(logger, work, row, property)
