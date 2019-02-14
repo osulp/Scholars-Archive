@@ -11,7 +11,7 @@ https://github.com/samvera/hyrax/blob/v2.3.0/app/assets/javascripts/hyrax/browse
 //= require jquery.treetable
 //= require browse_everything/behavior
 
-$(document).on('turbolinks:load', function() {
+Blacklight.onLoad( function() {
   if ($('#browse-btn').length > 0) {
     $('#browse-btn').browseEverything()
       .done(function(data) {
@@ -22,5 +22,5 @@ $(document).on('turbolinks:load', function() {
   }
   $('#browse-btn').browseEverything()
     .done(function(data) { $('#status').html(data.length.toString() + " items selected") })
-    .cancel(function()   { window.alert('Canceled!') });
+    .cancel(function() { window.alert('Canceled!') });
 });
