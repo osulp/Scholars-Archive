@@ -57,7 +57,7 @@ def update_property(logger, work, row)
   end
 
   if property.is_a?(String) || is_property_multiple?(work, row) == false
-    work[row[:property]] = row[:to]&.to_s || ''
+    work[row[:property]] = row[:to]&.to_s
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif property.is_a?(ActiveTriples::Relation)
     work = if row[:from].casecmp('+').zero?
@@ -80,15 +80,15 @@ def is_property_multiple?(work, row)
 end
 
 def overwrite_multivalue_row(logger, work, row, property)
-  to_value = row[:to].to_s || ''
-  work[row[:property]] = [to_value.split('|')].flatten
+  to_value = row[:to]&.to_s
+  work[row[:property]] = [to_value&.split('|')].flatten
   logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{to_value}\"")
   work
 end
 
 def add_to_multivalue_row(logger, work, row, property)
-  to_value = row[:to].to_s || ''
-  work[row[:property]] += [to_value.split('|')].flatten
+  to_value = row[:to]&.to_s
+  work[row[:property]] += [to_value&.split('|')].flatten
   logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{to_value}\"")
   work
 end
