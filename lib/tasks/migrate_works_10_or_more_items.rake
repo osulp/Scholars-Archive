@@ -60,9 +60,9 @@ namespace :scholars_archive do
   # running the migration last year so that we can skip those before running Task 1. Also, generate another one with works to be fixed.
   desc "Generate a CSV with handles containing unclean creators, but exclude works without the unknown symbol (already fixed)"
   task :get_json_of_handles_to_be_fixed_excluding_works_manually_fixed do
-    handles_with_unclean_creators = '/data/tmp/handles_with_unclean_creators_test.csv'
-    handles_with_unclean_creators_fixed = '/data/tmp/handles_with_unclean_creators_fixed_test.json'
-    handles_with_unclean_creators_to_be_fixed = '/data/tmp/handles_with_unclean_creators_to_be_fixed_test.json'
+    handles_with_unclean_creators = '/data/tmp/handles_with_unclean_creators.csv'
+    handles_with_unclean_creators_fixed = '/data/tmp/handles_with_unclean_creators_fixed.json'
+    handles_with_unclean_creators_to_be_fixed = '/data/tmp/handles_with_unclean_creators_to_be_fixed.json'
     unknown_symbol = [239, 191, 189].pack('C*').force_encoding('utf-8')
 
     manually_fixed_hash = {}
