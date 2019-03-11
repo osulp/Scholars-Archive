@@ -4,6 +4,11 @@ namespace :scholars_archive do
     custom_query_and_process_csv('creator_tesim', 'migrated_works_10_or_more_creator.csv')
   end
 
+  desc "Get works with handles where creator has 10 or more items"
+  task :migrated_works_10_or_more_creator_json => :environment do
+    custom_query_and_process_json('creator_tesim', 'migrated_works_10_or_more_creator.json')
+  end
+
   desc "Get works with handles where title has 10 or more items"
   task :migrated_works_10_or_more_title => :environment do
     custom_query_and_process_csv('title_tesim', 'migrated_works_10_or_more_title.csv')
@@ -32,16 +37,15 @@ namespace :scholars_archive do
   # Task 1: Reduce dspace_creator_order_clean.csv to include only works where creators have the incorrect symbols
   # and also include those where the handles are found match those works in migrated_works_10_or_more_creator_with_handles.
   desc "Migrate dspace creator order with proper symbols, including works with 10+ creators"
-  task :migrate_dspace_creator_order_and_char_cleanup do
-    dspace_creator_order_clean_csv_path = '/data/tmp/dspace_creator_order_clean.csv'
-    dspace_creator_order_unclean_csv_path = '/data/tmp/dspace_creator_order_unclean.csv'
-    handles_with_10_or_more_creators_csv_path = '/data/tmp/migrated_works_10_or_more_creator_with_only_handles.csv'
-
-    # 1. Parse csv to get an array with all handles associated with works with 10+ creators
-    handles_with_10_or_more_creators = CSV.read(handles_with_10_or_more_creators_csv_path).map { |h| h.first }
+  task :migrate_dspace_creator_order_and_char_cleanup => :environment do
+    dspace_creator_order_clean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_clean.csv')
+    dspace_creator_order_unclean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_unclean.csv')
 
     # 2. Iterate over dspace_creator_order_clean, and collect lines where creators don't match those in the unclean version
     creators_clean = CSV.read(dspace_creator_order_clean_csv_path)
+
+    migrator = ScholarsArchive::MigrateOrderedMetadataService.new(creator_csv_path: dspace_creator_order_clean_csv_path,title_csv_path: 'tmp/title_migration.csv',contributor_csv_path: 'tmp/contributor_migration.csv')
+
     CSV.foreach(dspace_creator_order_unclean_csv_path).with_index(1) do |row,i|
       creator_unclean = row[2]
       creator_clean = creators_clean[i-1][2]
@@ -59,10 +63,10 @@ namespace :scholars_archive do
   # Task 2: Generate a Json with works that were already fixed manually, or those that were updated before
   # running the migration last year so that we can skip those before running Task 1. Also, generate another one with works to be fixed.
   desc "Generate a CSV with handles containing unclean creators, but exclude works without the unknown symbol (already fixed)"
-  task :get_json_of_handles_to_be_fixed_excluding_works_manually_fixed do
-    handles_with_unclean_creators = File.join(Rails.root, 'tmp', 'handles_with_unclean_creators.csv')
-    handles_with_unclean_creators_fixed = File.join(Rails.root, 'tmp', 'handles_with_unclean_creators_fixed.json')
-    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'handles_with_unclean_creators_to_be_fixed.json')
+  task :get_json_of_handles_to_be_fixed_excluding_works_manually_fixed => :environment do
+    handles_with_unclean_creators = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators.csv')
+    handles_with_unclean_creators_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_fixed.json')
+    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
 
     unknown_symbol = [239, 191, 189].pack('C*').force_encoding('utf-8')
 
@@ -93,13 +97,103 @@ namespace :scholars_archive do
     end
   end
 
+  # Task 3: Get a final list of handles that need to be fixed.
+  desc "Filter the list of handles with unclean creators and exclude those already fixed, then merge with handles with the 10+ creators issue"
+  task :filter_handles_to_only_fix_those_needed => :environment do
+    # X = Get all handles from handles_with_unclean_creators_fixed
+    handles_with_unclean_creators_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_fixed.json')
+    # handles_x = ...
+
+    # Y = Get all handles from handles_with_unclean_creators_to_be_fixed
+    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
+    # handles_y = ...
+
+    # Z = Get all handles from handles_with_10_or_more_creators
+    # handles_with_10_or_more_creators = File.join(Rails.root, 'tmp', 'creator_cleanup', 'migrated_works_10_or_more_creator_with_only_handles.csv')
+    handles_z = CSV.read(handles_with_10_or_more_creators_csv_path).map { |h| h.first }
+
+    # W1 = Get all handles from handles_with_additional_changes_1
+
+    # W2 = Get all handles from handles_with_additional_changes_2
+
+    # W = W1 + W2
+
+    # Run 1 (R1) fixes unknown characteres issue
+
+    # R1 = Y - X - W
+
+    # Run 2 (R2) fixes fix 10+ creators issue
+
+    # Run 2 (R2) = Z - X - Y - W
+
+  end
+
+  # Task 4: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
+  # able to predict the right order due to migration issues
+  desc "Do a compare to find handles that got creators added/removed from the field after migration."
+  task :find_creators_with_additional_changes_w1 => :environment do
+    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
+
+    handles_with_additional_changes_1 = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_1.json')
+
+    get_handles_to_be_manually_fixed(handles_with_unclean_creators_to_be_fixed, handles_with_additional_changes)
+  end
+
+  # Task 5: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
+  # able to predict the right order due to migration issues
+  desc "Do a compare to find handles that got creators added/removed from the field after migration."
+  task :find_creators_with_additional_changes_w2 => :environment do
+
+    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
+
+    handles_with_additional_changes_2 = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_2.json')
+
+    get_handles_to_be_manually_fixed(handles_with_additional_changes_2)
+  end
+
+  def get_handles_to_be_manually_fixed(to_be_fixed_json, output_json)
+    dspace_creator_order_clean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_clean.csv')
+
+    migrator = ScholarsArchive::MigrateOrderedMetadataService.new(creator_csv_path: dspace_creator_order_clean_csv_path,title_csv_path: 'tmp/title_migration.csv',contributor_csv_path: 'tmp/contributor_migration.csv')
+
+    # Iterate over each handle in handles_with_unclean_creators_to_be_fixed:
+    handles_to_be_fixed = File.read(to_be_fixed_json)
+    handles_to_be_fixed_hash = JSON.parse(handles_to_be_fixed)
+
+    to_be_manually_fixed_hash = {}
+
+    handles_to_be_fixed_hash.each do |handle, creators|
+      # (A) get creators from unclean version
+      unclean_creators = creators.map {|c| c['creator'] }
+
+      # (B) get creators from clean version and
+      handle_key = handle.remove("http://hdl.handle.net/")
+      clean_creators = migrator.ordered_csv_metadata(migrator.creator_csv, handle_key)
+
+      # (C) remove creators containing unknown symbols in unclean version A
+      unknown_symbol = [239, 191, 189].pack('C*').force_encoding('utf-8')
+      tmp_unclean = unclean_creators.select { |str| !str.include?(unknown_symbol) }
+
+      # Compare creators in (B) and (C), but sort first
+      unless clean_creators.sort == tmp_unclean.sort
+        to_be_manually_fixed_hash[handle] = creators
+      end
+    end
+
+    puts "to be manually fixed: #{to_be_manually_fixed_hash.count}"
+    if to_be_manually_fixed_hash.count > 0
+      File.open(output_json,"w") do |f|
+        f.write(to_be_manually_fixed_hash.to_json)
+      end
+    end
+  end
+
   # Force migration from a given CSV in the same format expected in https://github.com/osulp/Scholars-Archive/blob/master/lib/scholars_archive/migrate_ordered_metadata_service.rb#L221
   #
   # @param: clean_creator_path (String). CSV path. Example: '/data/tmp/dspace_creator_order_clean.csv'
   # @param: handle (String). Example: '1957/49001'
   # @returns [Boolean] True if the work save is successful.
-  def force_migrator_for_order_and_cleanup(clean_creator_path, handle)
-    migrator = ScholarsArchive::MigrateOrderedMetadataService.new(creator_csv_path:clean_creator_path,title_csv_path:'tmp/title_migration.csv',contributor_csv_path:'tmp/contributor_migration.csv')
+  def force_migrator_for_order_and_cleanup(migrator, handle)
 
     uri = RSolr.solr_escape("http://hdl.handle.net/#{handle}")
 
@@ -117,6 +211,26 @@ namespace :scholars_archive do
     # w.nested_ordered_creator = []
     # w.nested_ordered_creator_attributes = csv_creators
     # w.save!
+  end
+
+  def custom_query_and_process_json(field, json_name)
+    query = "#{field}:[* TO *] AND -has_model_ssim:FileSet AND replaces_tesim:[* TO *]"
+    response = ActiveFedora::SolrService.query(query, fl: "id,#{field},has_model_ssim,replaces_tesim", rows: 60000)
+    results = response.select { |w| w[field].count > 9 }
+
+    output_hash = {}
+    results.each do |work|
+      output_hash[work['replaces_tesim'].first] = work['creator_tesim'].map.with_index { |obj, i| { index: i.to_s, creator: obj } }
+    end
+
+    output_path = File.join(Rails.root, 'tmp', 'creator_cleanup', json_name)
+
+    puts "total works with 10+ creators: #{output_hash.count}"
+    if output_hash.count > 0
+      File.open(output_path,"w") do |f|
+        f.write(output_hash.to_json)
+      end
+    end
   end
 
   def custom_query_and_process_csv(field, csv_name)
