@@ -98,33 +98,52 @@ namespace :scholars_archive do
   end
 
   # Task 3: Get a final list of handles that need to be fixed.
-  desc "Filter the list of handles with unclean creators and exclude those already fixed, then merge with handles with the 10+ creators issue"
-  task :filter_handles_to_only_fix_those_needed => :environment do
+  desc "Get all handles that will need to be fixed, both to be manually fixed or automatically fixed."
+  task :get_all_handles_to_be_fixed => :environment do
     # X = Get all handles from handles_with_unclean_creators_fixed
-    handles_with_unclean_creators_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_fixed.json')
-    # handles_x = ...
+    handles_x = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_fixed.json')
+    handles_x_json = File.read(handles_x)
+    handles_x_hash = JSON.parse(handles_x_json)
 
     # Y = Get all handles from handles_with_unclean_creators_to_be_fixed
-    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
-    # handles_y = ...
+    handles_y = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
+    handles_y_json = File.read(handles_y)
+    handles_y_hash = JSON.parse(handles_y_json)
 
-    # Z = Get all handles from handles_with_10_or_more_creators
-    # handles_with_10_or_more_creators = File.join(Rails.root, 'tmp', 'creator_cleanup', 'migrated_works_10_or_more_creator_with_only_handles.csv')
-    handles_z = CSV.read(handles_with_10_or_more_creators_csv_path).map { |h| h.first }
+    # Z = Get all handles from migrated_works_10_or_more_creator
+    handles_z = File.join(Rails.root, 'tmp', 'creator_cleanup', 'migrated_works_10_or_more_creator.json')
+    handles_z_json = File.read(handles_z)
+    handles_z_hash = JSON.parse(handles_z_json)
 
     # W1 = Get all handles from handles_with_additional_changes_1
+    w1_json_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes.json')
+    w1_json = File.read(w1_json_path)
+    w1_hash = JSON.parse(w1_json)
 
     # W2 = Get all handles from handles_with_additional_changes_2
+    w2_json_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_2.json')
+    w2_json = File.read(w2_json_path)
+    w2_hash = JSON.parse(w2_json)
 
     # W = W1 + W2
+    w_keys = w1_hash.keys + w2_hash.keys
 
-    # Run 1 (R1) fixes unknown characteres issue
+    # Handles for Run 1 (R1) fixes mainly the unknown characteres issue
+    # R1 = Y - (X + W)
+    tmp_keys_x_w = handles_x_hash.keys + w_keys
+    r1_handles = handles_y_hash.keys.uniq - tmp_keys_x_w.uniq
+    save_to_csv(r1_handles, 'r1_handles.csv')
 
-    # R1 = Y - X - W
+    # Handles for Run 2 (R2) fixes mainly the 10+ creators issue
+    # R2 = Z - (X + Y + W)
+    tmp_keys_x_y_w = handles_x_hash.keys + handles_y_hash.keys + w_keys
+    r2_handles = handles_z_hash.keys.uniq - tmp_keys_x_y_w.uniq
+    save_to_csv(r2_handles, 'r2_handles.csv')
 
-    # Run 2 (R2) fixes fix 10+ creators issue
-
-    # Run 2 (R2) = Z - X - Y - W
+    # Get to be fixed manual:
+    w_temp = handles_x_hash.keys.uniq & w_keys.uniq
+    manual = w_keys.uniq - w_temp.uniq
+    save_to_csv(manual, 'manual_w.csv')
 
   end
 
@@ -143,12 +162,11 @@ namespace :scholars_archive do
   # able to predict the right order due to migration issues
   desc "Do a compare to find handles that got creators added/removed from the field after migration."
   task :find_creators_with_additional_changes_w2 => :environment do
-
-    handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
+    handles_with_10_or_more_creators_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'migrated_works_10_or_more_creator.json')
 
     handles_with_additional_changes_2 = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_2.json')
 
-    get_handles_to_be_manually_fixed(handles_with_additional_changes_2)
+    get_handles_to_be_manually_fixed(handles_with_10_or_more_creators_json, handles_with_additional_changes_2)
   end
 
   def get_handles_to_be_manually_fixed(to_be_fixed_json, output_json)
@@ -249,4 +267,15 @@ namespace :scholars_archive do
     end
   end
 
+  def save_to_csv(items, csv_name)
+    require 'csv'
+
+    output_path = File.join(Rails.root, 'tmp', 'creator_cleanup', csv_name)
+
+    CSV.open(output_path, 'w') do |csv|
+      items.each do |item|
+        csv << [item]
+      end
+    end
+  end
 end
