@@ -34,30 +34,16 @@ namespace :scholars_archive do
     custom_query_and_process_csv('nested_ordered_abstract_tesim', 'migrated_works_10_or_more_abstract.csv')
   end
 
-  # Task 1: Reduce dspace_creator_order_clean.csv to include only works where creators have the incorrect symbols
-  # and also include those where the handles are found match those works in migrated_works_10_or_more_creator_with_handles.
-  desc "Migrate dspace creator order with proper symbols, including works with 10+ creators"
-  task :migrate_dspace_creator_order_and_char_cleanup => :environment do
-    dspace_creator_order_clean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_clean.csv')
-    dspace_creator_order_unclean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_unclean.csv')
+  # Task 1 (R1): Migrate works with creators that have the incorrect symbols
+  desc "Migrate dspace creator with proper special characters"
+  task :migrate_dspace_creator_char_cleanup => :environment do
+    force_migrator_for_order_and_cleanup('r1_handles.csv')
+  end
 
-    # 2. Iterate over dspace_creator_order_clean, and collect lines where creators don't match those in the unclean version
-    creators_clean = CSV.read(dspace_creator_order_clean_csv_path)
-
-    migrator = ScholarsArchive::MigrateOrderedMetadataService.new(creator_csv_path: dspace_creator_order_clean_csv_path,title_csv_path: 'tmp/title_migration.csv',contributor_csv_path: 'tmp/contributor_migration.csv')
-
-    CSV.foreach(dspace_creator_order_unclean_csv_path).with_index(1) do |row,i|
-      creator_unclean = row[2]
-      creator_clean = creators_clean[i-1][2]
-      handle = row[4]
-
-      if creator_clean != creator_unclean
-        # TODO: Use force_migrator_for_order_and_cleanup to force migration on a given (clean -- correct order and chars) CSV
-
-        # 3. Iterate over dspace_creator_order_clean.csv
-        # TODO Iterate over creators_clean and collect lines where handles match those found in handles_with_10_or_more_creators_csv_path
-      end
-    end
+  # Task 1 (R2): Migrate works with creators that have the incorrect order for including works with 10+ creators
+  desc "Migrate dspace creator order with 10+ items"
+  task :migrate_dspace_creator_order_cleanup => :environment do
+    force_migrator_for_order_and_cleanup('r2_handles.csv')
   end
 
   # Task 2: Generate a Json with works that were already fixed manually, or those that were updated before
@@ -149,7 +135,7 @@ namespace :scholars_archive do
 
   # Task 4: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
   # able to predict the right order due to migration issues
-  desc "Do a compare to find handles that got creators added/removed from the field after migration."
+  desc "Do a compare to find handles that got creators added/removed from the field after migration (w1)"
   task :find_creators_with_additional_changes_w1 => :environment do
     handles_with_unclean_creators_to_be_fixed = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_to_be_fixed.json')
 
@@ -160,7 +146,7 @@ namespace :scholars_archive do
 
   # Task 5: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
   # able to predict the right order due to migration issues
-  desc "Do a compare to find handles that got creators added/removed from the field after migration."
+  desc "Do a compare to find handles that got creators added/removed from the field after migration (w2)"
   task :find_creators_with_additional_changes_w2 => :environment do
     handles_with_10_or_more_creators_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'migrated_works_10_or_more_creator.json')
 
@@ -206,29 +192,59 @@ namespace :scholars_archive do
     end
   end
 
-  # Force migration from a given CSV in the same format expected in https://github.com/osulp/Scholars-Archive/blob/master/lib/scholars_archive/migrate_ordered_metadata_service.rb#L221
+  # Force migration for a given handle
   #
-  # @param: clean_creator_path (String). CSV path. Example: '/data/tmp/dspace_creator_order_clean.csv'
-  # @param: handle (String). Example: '1957/49001'
-  # @returns [Boolean] True if the work save is successful.
-  def force_migrator_for_order_and_cleanup(migrator, handle)
+  # @param: migrator [ScholarsArchive::MigrateOrderedMetadataService].
+  # @param: handle_url [String]. Example: 'http://hdl.handle.net/1957/49001'
+  def force_dspace_order_metadata_for_handle(migrator, handle_url)
+    log_file_name = "#{Date.today}-force-handles-ordered-metadata-migration.log"
+    logger = Logger.new(File.join(Rails.root, 'log', log_file_name))
 
-    uri = RSolr.solr_escape("http://hdl.handle.net/#{handle}")
+    logger.debug("Processing migration for #{handle_url}")
+
+    uri = RSolr.solr_escape(handle_url)
 
     doc = ActiveFedora::SolrService.query("replaces_tesim:#{uri}", :rows => 1).first
 
     w = ActiveFedora::Base.find(doc.id) if doc.respond_to?('id')
 
-    csv_metadata = migrator.ordered_csv_metadata(migrator.creator_csv, handle)
+    handle_key = handle_url.remove("http://hdl.handle.net/")
+
+    csv_metadata = migrator.ordered_csv_metadata(migrator.creator_csv, handle_key)
 
     csv_creators = csv_metadata.map.with_index { |obj, i| { index: i.to_s, :creator => obj } }
 
-    # TODO: These lines will reset to the input csv for creators. Uncomment when we are ready
-    # to run the migrator only on those that we are sure can be reset.
-    #
-    # w.nested_ordered_creator = []
-    # w.nested_ordered_creator_attributes = csv_creators
-    # w.save!
+    # log info before resetting
+    logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [solr]: nested_ordered_creator_tesim: #{doc['nested_ordered_creator_tesim']}")
+    logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [fedora]: work.nested_ordered_creator: #{w.nested_ordered_creator.to_json} work.creator: #{w.creator.to_json}")
+    logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [csv/solr]: #{csv_creators}")
+
+    # reset creators
+    w.nested_ordered_creator = []
+    w.nested_ordered_creator_attributes = csv_creators
+    if w.save!
+      logger.debug("#{handle_key} #{doc['id']} successful migration ")
+    else
+      logger.debug("#{w} failed during migration")
+    end
+  rescue StandardError => e
+      trace = e.backtrace.join("\n")
+      msg = "MigrateOrderedMetadataService(handle:#{handle_url}, work:#{doc['id']}) : Error migrating work; #{e.message}\n#{trace}"
+      Rails.logger.error(msg)
+      logger.error(msg)
+      false
+  end
+
+  def force_migrator_for_order_and_cleanup(handles_csv_name)
+    handles_csv = File.join(Rails.root, 'tmp', 'creator_cleanup', handles_csv_name)
+
+    dspace_creator_order_clean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_clean.csv')
+
+    migrator = ScholarsArchive::MigrateOrderedMetadataService.new(creator_csv_path: dspace_creator_order_clean_csv_path,title_csv_path: 'tmp/title_migration.csv',contributor_csv_path: 'tmp/contributor_migration.csv')
+
+    CSV.foreach(handles_csv) do |handle_url|
+      force_dspace_order_metadata_for_handle(migrator, handle_url.first)
+    end
   end
 
   def custom_query_and_process_json(field, json_name)
