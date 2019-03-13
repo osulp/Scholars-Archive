@@ -5,6 +5,7 @@ require 'csv'
 module ScholarsArchive
   # Migration for ordered metadata
   class MigrateOrderedMetadataService
+    attr_reader :creator_csv
     ##
     # Open and read CSVs into memory to prevent unnecessary IO for processing multiple works,
     # then provide methods for querying, ordering, and migrating a work based on CSV data and/or
