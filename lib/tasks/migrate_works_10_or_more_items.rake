@@ -244,7 +244,7 @@ namespace :scholars_archive do
     # migrate child works (members) if any
     work_id = work.present? ? work.id : nil
     work.members.reject { |m| m.class.to_s == 'FileSet' }.each do |child|
-    log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
+    log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
 
     unless creators.empty?
       log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [solr]: child nested_ordered_creator_label_ssim: #{doc['nested_ordered_creator_label_ssim']}")
