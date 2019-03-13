@@ -214,25 +214,50 @@ namespace :scholars_archive do
 
     csv_creators = csv_metadata.map.with_index { |obj, i| { index: i.to_s, :creator => obj } }
 
-    # log info before resetting
-    logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [solr]: nested_ordered_creator_tesim: #{doc['nested_ordered_creator_tesim']}")
-    logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [fedora]: work.nested_ordered_creator: #{w.nested_ordered_creator.to_json} work.creator: #{w.creator.to_json}")
-    logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [csv/solr]: #{csv_creators}")
+    unless csv_creators.empty?
+      # log info before resetting
+      logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [solr]: nested_ordered_creator_label_ssim: #{doc['nested_ordered_creator_label_ssim']}")
+      logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [fedora]: work.nested_ordered_creator: #{w.nested_ordered_creator.to_json} work.creator: #{w.creator.to_json}")
+      logger.debug("Restart migration for work: #{w.id}) : #{doc['id']} : Attempting to migrate creators [csv]: #{csv_creators}")
 
-    # reset creators
-    w.nested_ordered_creator = []
-    w.nested_ordered_creator_attributes = csv_creators
-    if w.save!
-      logger.debug("#{handle_key} #{doc['id']} successful migration ")
-    else
-      logger.debug("#{w} failed during migration")
+      # reset creators
+      w.nested_ordered_creator = []
+      w.nested_ordered_creator_attributes = csv_creators
+      if w.save!
+        logger.debug("#{handle_key} #{doc['id']} successful migration ")
+      else
+        logger.debug("#{w} failed during migration")
+      end
+
+      force_dspace_order_metadata_for_members(w, doc, handle_key, csv_creators)
     end
+  end
   rescue StandardError => e
       trace = e.backtrace.join("\n")
       msg = "MigrateOrderedMetadataService(handle:#{handle_url}, work:#{doc['id']}) : Error migrating work; #{e.message}\n#{trace}"
       Rails.logger.error(msg)
       logger.error(msg)
       false
+  end
+
+  def force_dspace_order_metadata_for_members(work, doc, handle, creators)
+    # migrate child works (members) if any
+    work_id = work.present? ? work.id : nil
+    work.members.reject { |m| m.class.to_s == 'FileSet' }.each do |child|
+    log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
+
+    unless creators.empty?
+      log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [solr]: child nested_ordered_creator_label_ssim: #{doc['nested_ordered_creator_label_ssim']}")
+      log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [fedora]: child.nested_ordered_creator: #{child.nested_ordered_creator.to_json} child.creator: #{child.creator.to_json}")
+      log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [csv]: #{creators}")
+      child.nested_ordered_creator = []
+      child.nested_ordered_creator_attributes = creators
+    end
+    if child.save!
+      logger.debug("#{handle} parent_work: #{doc['id']} child_work: #{child.id} successful migration")
+    else
+      logger.debug("#{handle} parent_work: #{doc['id']} child_work: #{child} failed during migration")
+    end
   end
 
   def force_migrator_for_order_and_cleanup(handles_csv_name)

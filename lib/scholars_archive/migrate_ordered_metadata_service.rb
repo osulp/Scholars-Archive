@@ -227,7 +227,7 @@ module ScholarsArchive
       #
       # ie. [ 'Ross, Bob', 'Ross, Steve' ]
       csv.select { |l| l[4].casecmp(handle).zero? }
-         .sort_by! { |obj| obj[3] }
+         .sort_by! { |obj| obj[3].to_i }
          .map { |obj| obj[2] }
     end
 
