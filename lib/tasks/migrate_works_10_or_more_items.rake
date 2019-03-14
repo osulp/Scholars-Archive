@@ -196,10 +196,7 @@ namespace :scholars_archive do
   #
   # @param: migrator [ScholarsArchive::MigrateOrderedMetadataService].
   # @param: handle_url [String]. Example: 'http://hdl.handle.net/1957/49001'
-  def force_dspace_order_metadata_for_handle(migrator, handle_url)
-    log_file_name = "#{Date.today}-force-handles-ordered-metadata-migration.log"
-    logger = Logger.new(File.join(Rails.root, 'log', log_file_name))
-
+  def force_dspace_order_metadata_for_handle(migrator, handle_url, logger)
     logger.debug("Processing migration for #{handle_url}")
 
     uri = RSolr.solr_escape(handle_url)
@@ -229,34 +226,29 @@ namespace :scholars_archive do
         logger.debug("#{w} failed during migration")
       end
 
-      force_dspace_order_metadata_for_members(w, doc, handle_key, csv_creators)
+      force_dspace_order_metadata_for_members(w, doc, handle_key, csv_creators, logger)
     end
   end
-  rescue StandardError => e
-      trace = e.backtrace.join("\n")
-      msg = "MigrateOrderedMetadataService(handle:#{handle_url}, work:#{doc['id']}) : Error migrating work; #{e.message}\n#{trace}"
-      Rails.logger.error(msg)
-      logger.error(msg)
-      false
-  end
 
-  def force_dspace_order_metadata_for_members(work, doc, handle, creators)
+  def force_dspace_order_metadata_for_members(work, doc, handle, creators, logger)
     # migrate child works (members) if any
     work_id = work.present? ? work.id : nil
     work.members.reject { |m| m.class.to_s == 'FileSet' }.each do |child|
-    log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
 
-    unless creators.empty?
-      log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [solr]: child nested_ordered_creator_label_ssim: #{doc['nested_ordered_creator_label_ssim']}")
-      log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [fedora]: child.nested_ordered_creator: #{child.nested_ordered_creator.to_json} child.creator: #{child.creator.to_json}")
-      log("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [csv]: #{creators}")
-      child.nested_ordered_creator = []
-      child.nested_ordered_creator_attributes = creators
-    end
-    if child.save!
-      logger.debug("#{handle} parent_work: #{doc['id']} child_work: #{child.id} successful migration")
-    else
-      logger.debug("#{handle} parent_work: #{doc['id']} child_work: #{child} failed during migration")
+      logger.debug("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
+
+      unless creators.empty?
+        logger.debug("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [solr]: child nested_ordered_creator_label_ssim: #{doc['nested_ordered_creator_label_ssim']}")
+        logger.debug("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [fedora]: child.nested_ordered_creator: #{child.nested_ordered_creator.to_json} child.creator: #{child.creator.to_json}")
+        logger.debug("MigrateOrderedMetadataService(handle:#{handle}, parent_work:#{work_id}) : child_work:#{child.id} : Attempting to migrate creators [csv]: #{creators}")
+        child.nested_ordered_creator = []
+        child.nested_ordered_creator_attributes = creators
+      end
+      if child.save!
+        logger.debug("#{handle} parent_work: #{doc['id']} child_work: #{child.id} successful migration")
+      else
+        logger.debug("#{handle} parent_work: #{doc['id']} child_work: #{child} failed during migration")
+      end
     end
   end
 
@@ -267,8 +259,18 @@ namespace :scholars_archive do
 
     migrator = ScholarsArchive::MigrateOrderedMetadataService.new(creator_csv_path: dspace_creator_order_clean_csv_path,title_csv_path: 'tmp/title_migration.csv',contributor_csv_path: 'tmp/contributor_migration.csv')
 
+    log_file_name = "#{Date.today}-force-handles-ordered-metadata-migration.log"
+    logger = Logger.new(File.join(Rails.root, 'log', log_file_name))
+
     CSV.foreach(handles_csv) do |handle_url|
-      force_dspace_order_metadata_for_handle(migrator, handle_url.first)
+      begin
+        force_dspace_order_metadata_for_handle(migrator, handle_url.first, logger)
+      rescue StandardError => e
+        trace = e.backtrace.join("\n")
+        msg = "MigrateOrderedMetadataService(handle:#{handle_url.first}) : Error migrating work; #{e.message}\n#{trace}"
+        Rails.logger.error(msg)
+        logger.error(msg)
+      end
     end
   end
 
