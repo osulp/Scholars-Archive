@@ -46,6 +46,12 @@ namespace :scholars_archive do
     force_migrator_for_order_and_cleanup('r2_handles.csv')
   end
 
+  # Task 1 (R3): Migrate works with creators with child members
+  desc "Migrate dspace creator order and char for child members missed during manual cleanup"
+  task :migrate_dspace_creator_member_cleanup => :environment do
+    force_migrator_for_order_and_cleanup('r3_handles.csv')
+  end
+
   # Task 2: Generate a Json with works that were already fixed manually, or those that were updated before
   # running the migration last year so that we can skip those before running Task 1. Also, generate another one with works to be fixed.
   desc "Generate a CSV with handles containing unclean creators, but exclude works without the unknown symbol (already fixed)"
