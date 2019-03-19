@@ -310,7 +310,7 @@ namespace :scholars_archive do
 
   def get_work_members(doc)
     work = ActiveFedora::Base.find(doc.id) if doc.respond_to?('id')
-    work.members.reject { |m| m.class.to_s == 'FileSet' }.map {|c| {membed_id: c.id, member_creators: c.creator, member_model: c.has_model.first.underscore.pluralize}}
+    work.members.reject { |m| m.class.to_s == 'FileSet' }.map {|c| {member_id: c.id, member_creators: c.creator, member_model: c.has_model.first.underscore.pluralize}}
   end
 
   def force_dspace_order_metadata_for_members(work, doc, handle, creators, logger)
