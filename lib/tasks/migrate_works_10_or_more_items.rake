@@ -46,6 +46,12 @@ namespace :scholars_archive do
     force_migrator_for_order_and_cleanup('r2_handles.csv')
   end
 
+  # Task 1 (R3): Migrate works with creators with child members
+  desc "Migrate dspace creator order and char for child members missed during manual cleanup"
+  task :migrate_dspace_creator_member_cleanup => :environment do
+    force_migrator_for_order_and_cleanup('r3_handles.csv')
+  end
+
   # Task 2: Generate a Json with works that were already fixed manually, or those that were updated before
   # running the migration last year so that we can skip those before running Task 1. Also, generate another one with works to be fixed.
   desc "Generate a CSV with handles containing unclean creators, but exclude works without the unknown symbol (already fixed)"
@@ -82,6 +88,46 @@ namespace :scholars_archive do
       end
     end
   end
+
+  # Task 2 (a): Generate a Json with works that were already fixed manually, but
+  # contain child works
+  desc "Generate a Json with handles containing unclean creators already fixed manually and include children info"
+  task :get_json_of_handles_x_with_creators_and_children => :environment do
+    handles_x = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_unclean_creators_fixed.json')
+    handles_x_json = File.read(handles_x)
+    handles_x_hash = JSON.parse(handles_x_json)
+
+    handles_x_with_children_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_x_with_children.json')
+    handles_x_with_children_creators_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_x_with_children_creators.json')
+
+    to_be_fixed_with_children_hash = {}
+    to_be_fixed_with_children_creators_hash = {}
+
+    handles_x_hash.each do |h|
+      handle_uri =  RSolr.solr_escape(h[0])
+      doc = ActiveFedora::SolrService.query("replaces_tesim:#{handle_uri}", :rows => 1).first
+
+      child_works = get_work_members(doc)
+
+      if child_works.count > 0
+        creators = doc['creator_tesim'].map.with_index { |obj, i| { index: i.to_s, creator: obj } }
+        to_be_fixed_with_children_creators_hash[doc['replaces_tesim'].first] = creators
+        to_be_fixed_with_children_hash[doc['replaces_tesim'].first] = child_works
+      end
+    end
+
+    if to_be_fixed_with_children_hash.count > 0
+      File.open(handles_x_with_children_json,"w") do |f|
+        f.write(to_be_fixed_with_children_hash.to_json)
+      end
+    end
+    if to_be_fixed_with_children_creators_hash.count > 0
+      File.open(handles_x_with_children_creators_json,"w") do |f|
+        f.write(to_be_fixed_with_children_creators_hash.to_json)
+      end
+    end
+  end
+
 
   # Task 3: Get a final list of handles that need to be fixed.
   desc "Get all handles that will need to be fixed, both to be manually fixed or automatically fixed."
@@ -121,7 +167,7 @@ namespace :scholars_archive do
     save_to_csv(r1_handles, 'r1_handles.csv')
 
     # Handles for Run 2 (R2) fixes mainly the 10+ creators issue
-    # R2 = Z - (X + Y + W)
+    # R2 = Z - (X + Y + W)
     tmp_keys_x_y_w = handles_x_hash.keys + handles_y_hash.keys + w_keys
     r2_handles = handles_z_hash.keys.uniq - tmp_keys_x_y_w.uniq
     save_to_csv(r2_handles, 'r2_handles.csv')
@@ -133,6 +179,26 @@ namespace :scholars_archive do
 
   end
 
+  # Task 3 (a): Get a final list of handles that need to be fixed.
+  desc "Get all handles that were already fixed at the parent level but missed child works."
+  task :get_all_handles_to_be_fixed_for_x => :environment do
+    # X_with_children = Get all handles from handles_with_unclean_creators_fixed
+    handles_x_with_children = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_x_with_children.json')
+    handles_x_with_children_json = File.read(handles_x_with_children)
+    handles_x_with_children_hash = JSON.parse(handles_x_with_children_json)
+
+    # W3 = Get all handles from handles_with_additional_changes_3
+    w3_json_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_3.json')
+    w3_json = File.read(w3_json_path)
+    w3_hash = JSON.parse(w3_json)
+
+    # Handles for Run 3 (R3) fixes child works in group X_with_children except
+    # those that don't match what we have in dspace
+    # R3 = X_with_children - W3
+    r3_handles = handles_x_with_children_hash.keys.uniq - w3_hash.keys.uniq
+    save_to_csv(r3_handles, 'r3_handles.csv')
+  end
+
   # Task 4: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
   # able to predict the right order due to migration issues
   desc "Do a compare to find handles that got creators added/removed from the field after migration (w1)"
@@ -141,7 +207,7 @@ namespace :scholars_archive do
 
     handles_with_additional_changes_1 = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_1.json')
 
-    get_handles_to_be_manually_fixed(handles_with_unclean_creators_to_be_fixed, handles_with_additional_changes)
+    get_handles_to_be_manually_fixed(handles_with_unclean_creators_to_be_fixed, handles_with_additional_changes_1)
   end
 
   # Task 5: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
@@ -154,6 +220,18 @@ namespace :scholars_archive do
 
     get_handles_to_be_manually_fixed(handles_with_10_or_more_creators_json, handles_with_additional_changes_2)
   end
+
+  # Task 6: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
+  # able to predict the right order due to migration issues
+  desc "Do a compare to find handles that got creators added/removed during manual cleanup (w2)"
+  task :find_creators_with_additional_changes_w3 => :environment do
+    handles_x_with_children_creators_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_x_with_children_creators.json')
+
+    handles_with_additional_changes_3 = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_with_additional_changes_3.json')
+
+    get_handles_to_be_manually_fixed(handles_x_with_children_creators_json, handles_with_additional_changes_3)
+  end
+
 
   def get_handles_to_be_manually_fixed(to_be_fixed_json, output_json)
     dspace_creator_order_clean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_clean.csv')
@@ -228,6 +306,11 @@ namespace :scholars_archive do
 
       force_dspace_order_metadata_for_members(w, doc, handle_key, csv_creators, logger)
     end
+  end
+
+  def get_work_members(doc)
+    work = ActiveFedora::Base.find(doc.id) if doc.respond_to?('id')
+    work.members.reject { |m| m.class.to_s == 'FileSet' }.map {|c| {member_id: c.id, member_creators: c.creator, member_model: c.has_model.first.underscore.pluralize}}
   end
 
   def force_dspace_order_metadata_for_members(work, doc, handle, creators, logger)
