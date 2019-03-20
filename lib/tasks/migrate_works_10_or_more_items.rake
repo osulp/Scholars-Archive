@@ -306,6 +306,8 @@ namespace :scholars_archive do
     log_file_name = "#{Date.today}-qa-handles-with-unclean-creators.log"
     logger = Logger.new(File.join(Rails.root, 'log', log_file_name))
 
+    logger.debug("#{Date.today} starting qa to look for missed unclean creators")
+
     output_parents_hash = {}
     output_members_hash = {}
 
@@ -346,6 +348,7 @@ namespace :scholars_archive do
         f.write(output_members_hash.to_json)
       end
     end
+    logger.debug("#{Date.today} qa done")
   end
 
   # Force migration for a given handle
