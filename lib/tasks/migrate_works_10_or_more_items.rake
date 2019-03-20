@@ -52,6 +52,12 @@ namespace :scholars_archive do
     force_migrator_for_order_and_cleanup('r3_handles.csv')
   end
 
+  # QA Task 1
+  desc "QA for unclean creators (parents and members)"
+  task :qa_for_unclean_creators => :environment do
+    custom_query_for_qa_and_process_json('creator_tesim', 'qa_for_unclean_creators')
+  end
+
   # Task 2: Generate a Json with works that were already fixed manually, or those that were updated before
   # running the migration last year so that we can skip those before running Task 1. Also, generate another one with works to be fixed.
   desc "Generate a CSV with handles containing unclean creators, but exclude works without the unknown symbol (already fixed)"
@@ -128,6 +134,31 @@ namespace :scholars_archive do
     end
   end
 
+  # Task 2 (b): Generate a Json with works that were already fixed manually, but
+  # contain child works
+  desc "Generate a Json with handles containing unclean creators already fixed manually and include children info"
+  task :get_json_of_handles_manual_with_creators_and_children => :environment do
+    handles_manual = File.join(Rails.root, 'tmp', 'creator_cleanup', 'manual_w.csv')
+
+    handles_manual_with_children_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_manual_with_children.json')
+    to_be_fixed_manual_with_children_hash = {}
+
+    CSV.foreach(handles_manual) do |row|
+      handle_uri =  RSolr.solr_escape(row[0])
+      doc = ActiveFedora::SolrService.query("replaces_tesim:#{handle_uri}", :rows => 1).first
+      child_works = get_work_members(doc)
+
+      if child_works.count > 0
+        to_be_fixed_manual_with_children_hash[doc['replaces_tesim'].first] = child_works
+      end
+    end
+
+    if to_be_fixed_manual_with_children_hash.count > 0
+      File.open(handles_manual_with_children_json,"w") do |f|
+        f.write(to_be_fixed_manual_with_children_hash.to_json)
+      end
+    end
+  end
 
   # Task 3: Get a final list of handles that need to be fixed.
   desc "Get all handles that will need to be fixed, both to be manually fixed or automatically fixed."
@@ -223,7 +254,7 @@ namespace :scholars_archive do
 
   # Task 6: Inspect the works to be handled. These works would be a special case and might need to be fixed manually since we wouldn't be
   # able to predict the right order due to migration issues
-  desc "Do a compare to find handles that got creators added/removed during manual cleanup (w2)"
+  desc "Do a compare to find handles that got creators added/removed during manual cleanup (w3)"
   task :find_creators_with_additional_changes_w3 => :environment do
     handles_x_with_children_creators_json = File.join(Rails.root, 'tmp', 'creator_cleanup', 'handles_x_with_children_creators.json')
 
@@ -231,7 +262,6 @@ namespace :scholars_archive do
 
     get_handles_to_be_manually_fixed(handles_x_with_children_creators_json, handles_with_additional_changes_3)
   end
-
 
   def get_handles_to_be_manually_fixed(to_be_fixed_json, output_json)
     dspace_creator_order_clean_csv_path = File.join(Rails.root, 'tmp', 'creator_cleanup', 'dspace_creator_order_clean.csv')
@@ -268,6 +298,57 @@ namespace :scholars_archive do
         f.write(to_be_manually_fixed_hash.to_json)
       end
     end
+  end
+
+  def custom_query_for_qa_and_process_json(field, json_name)
+    query = "#{field}:[* TO *] AND -has_model_ssim:FileSet AND replaces_tesim:[* TO *]"
+    response = ActiveFedora::SolrService.query(query, fl: "id,#{field},has_model_ssim,replaces_tesim", rows: 60000)
+    log_file_name = "#{Date.today}-qa-handles-with-unclean-creators.log"
+    logger = Logger.new(File.join(Rails.root, 'log', log_file_name))
+
+    logger.debug("#{Date.today} starting qa to look for missed unclean creators")
+
+    output_parents_hash = {}
+    output_members_hash = {}
+
+    unknown_symbol = [239, 191, 189].pack('C*').force_encoding('utf-8')
+
+    response.each do |doc|
+
+      # (1) look for invalid characters
+      unclean_creators = doc['creator_tesim'].select { |str| str.include?(unknown_symbol) }
+      if unclean_creators.count > 0
+        output_parents_hash[work['replaces_tesim'].first] = unclean_creators
+      end
+
+      # (2) look for invalid characters in child members
+      child_works = get_work_members(doc)
+
+      unclean_child_works = child_works.select { |child| child[:member_creators].select { |str| str.include?(unknown_symbol) }.count > 0 }
+
+      if unclean_child_works.count > 0
+        output_members_hash[doc['replaces_tesim'].first] = unclean_child_works
+      end
+    end
+
+    logger.debug("total parent works with unclean creators: #{output_parents_hash.count}")
+    logger.debug("total child works with unclean creators: #{output_members_hash.count}")
+
+    output_parents_path = File.join(Rails.root, 'tmp', 'creator_cleanup', "#{json_name}_parents.json")
+    output_members_path = File.join(Rails.root, 'tmp', 'creator_cleanup', "#{json_name}_members.json")
+
+    if output_parents_hash.count > 0
+      File.open(output_parents_path,"w") do |f|
+        f.write(output_parents_hash.to_json)
+      end
+    end
+
+    if output_members_hash.count > 0
+      File.open(output_members_path,"w") do |f|
+        f.write(output_members_hash.to_json)
+      end
+    end
+    logger.debug("#{Date.today} qa done")
   end
 
   # Force migration for a given handle
