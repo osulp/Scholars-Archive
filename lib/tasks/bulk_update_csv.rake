@@ -64,6 +64,8 @@ def update_property(logger, work, row)
              add_to_multivalue_row(logger, work, row, property)
            elsif row[:from].casecmp('*').zero?
              overwrite_multivalue_row(logger, work, row, property)
+           elsif row[:from].casecmp('-').zero?
+             remove_from_multivalue_row(logger, work, row, property)
            else
              process_if_found_row(logger, work, row, property)
            end
@@ -90,6 +92,13 @@ def add_to_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
   work[row[:property]] += [to_value&.split('|')].flatten
   logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{to_value}\"")
+  work
+end
+
+def remove_from_multivalue_row(logger, work, row, property)
+  to_value = row[:to]&.to_s
+  work[row[:property]] = work[row[:property]].to_a - [to_value&.split('|')].flatten
+  logger.info("#{work.class} #{row[:id]} #{property.property} row removed \"#{to_value}\"")
   work
 end
 
