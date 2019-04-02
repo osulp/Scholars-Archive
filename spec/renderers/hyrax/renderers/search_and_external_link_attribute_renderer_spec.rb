@@ -58,7 +58,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       let(:doi_uri) { 'http://dx.doi.org/10.1577/1548-8446(2007)32[540:DOASDD]2.0.CO;2' }
       let(:renderer) { described_class.new(field, [doi_uri], label: 'DOI') }
       let(:expected) { Nokogiri::HTML(tr_content) }
-      let(:doi_uri_q) { CGI::escape(doi_uri) }
+      let(:doi_uri_q) { CGI.escape(doi_uri) }
       let(:doi_uri_link) { Addressable::URI.escape(doi_uri) }
       let(:tr_content) do
         %(
