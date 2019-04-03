@@ -49,7 +49,7 @@ module Hyrax
       end
 
       def maybe_uri(s)
-        URI.extract(s, %w[http https]).first || ''
+        URI.extract(Addressable::URI.escape(s), %w[http https]).first || ''
       end
 
       def maybe_license_uri(term)

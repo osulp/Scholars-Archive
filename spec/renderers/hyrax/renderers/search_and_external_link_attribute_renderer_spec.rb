@@ -53,6 +53,29 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       }
     end
 
+    context 'with a URI and special characters' do
+      let(:field) { :doi }
+      let(:doi_uri) { 'http://dx.doi.org/10.1577/1548-8446(2007)32[540:DOASDD]2.0.CO;2' }
+      let(:renderer) { described_class.new(field, [doi_uri], label: 'DOI') }
+      let(:expected) { Nokogiri::HTML(tr_content) }
+      let(:doi_uri_q) { CGI.escape(doi_uri) }
+      let(:doi_uri_link) { Addressable::URI.escape(doi_uri) }
+      let(:tr_content) do
+        %(
+      <tr>
+       <th>DOI</th>
+       <td><ul class="tabular"><li class="attribute attribute-doi">
+       <a href="/catalog?q=#{doi_uri_q}&amp;search_field=doi">#{doi_uri}</a><a aria-label="Open link in new window" class="btn"
+target="_blank" href="#{doi_uri_link}"><span class="glyphicon glyphicon-new-window"></span></a>
+       </li></ul></td>
+       </tr>
+        )
+      end
+      it {
+        expect(subject).to be_equivalent_to(expected)
+      }
+    end
+
     context 'with a non-URI label' do
       let(:label) { 'Bob Ross' }
       let(:label_uris) { label }
