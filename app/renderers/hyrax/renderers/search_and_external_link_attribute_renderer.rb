@@ -50,7 +50,7 @@ module Hyrax
 
       def maybe_uri(s)
         s = Addressable::URI.escape(s) if %w[http https].any? { |p| s.include? p }
-        URI.extract(Addressable::URI.escape(s), %w[http https]).first || ''
+        URI.extract(s, %w[http https]).first || ''
       end
 
       def maybe_license_uri(term)
