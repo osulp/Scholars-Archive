@@ -83,7 +83,7 @@ end
 
 def overwrite_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
-  work[row[:property]] = [to_value&.split('|')].flatten
+  work[row[:property]] = to_value.blank? ? nil : [to_value&.split('|')].flatten
   logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{to_value}\"")
   work
 end
