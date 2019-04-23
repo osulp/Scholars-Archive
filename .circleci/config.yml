@@ -9,7 +9,6 @@ jobs:
                   SCHOLARSARCHIVE_DB_PORT: '3306'
                   SCHOLARSARCHIVE_DB_USERNAME: root
                   SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
-                  SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8986
             - image: circleci/mysql:5.7.22
               environment:
                   MYSQL_DATABASE: sa_test

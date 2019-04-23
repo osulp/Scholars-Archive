@@ -36,7 +36,7 @@ services:
     <<: *app
     environment:
       - RAILS_ENV=${RAILS_ENV}
-      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080
+      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
       - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
