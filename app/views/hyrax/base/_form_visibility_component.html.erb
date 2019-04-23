@@ -16,6 +16,7 @@
             </div>
           </label>
         </li>
+        <% if option_visible_to_depositor?(f.object.model, current_user) %>
         <li class="radio">
           <label>
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_AUTHENTICATED %>
@@ -23,6 +24,7 @@
             <%= t('hyrax.visibility.authenticated.note_html', institution: institution_name) %>
           </label>
         </li>
+        <% end %>
         <li class="radio">
           <label>
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_EMBARGO, data: { 'target': '#collapseEmbargo' } %>
@@ -63,6 +65,8 @@
             </div>
           </label>
         </li>
+
+        <% if option_visible_to_depositor?(f.object.model, current_user) %>
         <li class="radio">
           <label>
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE %>
@@ -70,6 +74,7 @@
             <%= t('hyrax.visibility.restricted.note_html') %>
           </label>
         </li>
+        <% end %>
       </ul>
     </fieldset>
 <% end %>
