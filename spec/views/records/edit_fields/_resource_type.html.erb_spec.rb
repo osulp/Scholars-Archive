@@ -5,6 +5,13 @@ require 'rails_helper'
 RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
+  let(:form_template) do
+    %(
+      <%= simple_form_for [main_app, @form] do |f| %>
+        <%= render "records/edit_fields/degree_name", f: f, key: 'degree_name' %>
+      <% end %>
+    )
+  end
 
   context 'when the work is a graduate thesis' do
     let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: [''], degree_name: ['test'] } }
@@ -26,7 +33,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
     end
 
     it 'displays the proper select options' do
-      render
+      render inline: form_template
 
       expect(rendered).to have_content('Dissertation')
       expect(rendered).not_to have_content('Honors College Thesis')
@@ -53,7 +60,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
     end
 
     it 'displays the proper select options' do
-      render
+      render inline: form_template
 
       expect(rendered).to have_content('Honors College Thesis')
       expect(rendered).not_to have_content('Dissertation')
