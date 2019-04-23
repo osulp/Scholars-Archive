@@ -1,4 +1,4 @@
-version: '2.3'
+version: '3'
 
 volumes:
   app:
@@ -7,6 +7,7 @@ volumes:
   fcrepo:
   redis:
   solr:
+  bundled:
 
 networks:
   external:
@@ -14,15 +15,76 @@ networks:
 
 services:
   ##
-  # Run blazegraph and persist data across sessions.
-  blazegraph:
-    image: lyrasis/blazegraph:2.1.4
-    expose:
-      - 8080
+  # Basic image for the rails application server, see Dockerfile
+  app: &app
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - blazegraph:/var/lib/jetty
+      - .:/data
+      - app:/data/tmp/uploads
+      - bundled:/usr/local/bundle
+    tmpfs:
+      - /data/log
     networks:
       internal:
+      external:
+
+  ##
+  # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
+  web: &web
+    <<: *app
+    environment:
+      - RAILS_ENV=${RAILS_ENV}
+      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
+      - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
+      - SCHOLARSARCHIVE_REDIS_HOST=redis
+      - SCHOLARSARCHIVE_REDIS_PORT='6379'
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/development/sparql
+    # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
+    # have been run already have been run and if so it just starts the server without the first three commands
+    # taking time to run.
+    command: >
+      bash -c "./build/entrypoint.sh &&
+      bundle exec puma -C config/puma/development.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000 &&
+      tail -f log/development.log"
+    depends_on:
+      - db
+      - db_test
+      - solr
+      - fcrepo
+      - redis
+      - memcache
+      - blazegraph
+    expose:
+      - 3000
+
+  # Runs sidekiq to process background jobs
+  workers:
+    <<: *web
+    command: bundle exec sidekiq
+    depends_on:
+      - db
+      - db_test
+      - solr
+      - fcrepo
+      - redis
+      - blazegraph
+
+  ##
+  # Fedora repository server
+  blazegraph-image: &blazegraph-image
+    image: lyrasis/blazegraph:2.1.5
+    expose:
+      - 8080
+    networks:
+      internal:
+    command: bash -c "chmod a+wx /data && ./entrypoint.sh"
+  blazegraph:
+    <<: *blazegraph-image
+    volumes:
+      - blazegraph:/data
+      - ./config/blazegraph/RWStore.properties:/RWStore.properties
 
   ##
   # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
@@ -41,23 +103,22 @@ services:
       internal:
 
   ##
-  # Run Fedora repository, persisting data in a volume across sessions.
-  fcrepo:
-    image: nulib/fcrepo4
-    expose:
-      - 8080
-    volumes:
-      - fcrepo:/data
+  # Fedora repository server
+  fcrepo-image: &fcrepo-image
+    image: ualbertalib/docker-fcrepo4:4.7
     environment:
       - JAVA_OPTS=${JAVA_OPTS} -Dfcrepo.modeshape.configuration="classpath:/config/file-simple/repository.json" -Dfcrepo.object.directory="/data/objects" -Dfcrepo.binary.directory="/data/binaries"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/rest"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
+    expose:
+      - 8080
     networks:
       internal:
+  fcrepo:
+    <<: *fcrepo-image
+    volumes:
+      - fcrepo:/data
+  fcrepo-test:
+    <<: *fcrepo-image
+    tmpfs: /data
 
   ##
   # Run an instance of MySQL with a database named 'development' for running specs. See config/database.yml
@@ -88,110 +149,6 @@ services:
       - ./config/mysql/mysqld.cnf:/etc/mysql/conf.d/custom.cnf
     networks:
       internal:
-
-  ##
-  # Basic image for the rails application server, see Dockerfile
-  app:
-    build: .
-    environment:
-      - RAILS_ENV=${RAILS_ENV}
-    volumes:
-      - .:/data
-      - app:/data/tmp/uploads
-    networks:
-      internal:
-
-  ##
-  # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
-  web:
-    extends: app
-    # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
-    # have been run already have been run and if so it just starts the server without the first three commands
-    # taking time to run.
-    command: >
-      bash -c "bundle exec rails hyrax:default_admin_set:create
-      && bundle exec rails hyrax:default_collection_types:create
-      && bundle exec rails hyrax:workflow:load
-      && rm -f tmp/pids/server.pid
-      && bundle exec rails server -p 3000 -b '0.0.0.0' -e ${RAILS_ENV}"
-    depends_on:
-      db:
-        condition: service_started
-      db_test:
-        condition: service_started
-      solr:
-        condition: service_started
-      fcrepo:
-        condition: service_healthy
-      redis:
-        condition: service_started
-      memcache:
-        condition: service_started
-      initialize_blazegraph:
-        condition: service_started
-      db_migrate:
-        condition: service_started
-    expose:
-      - 3000
-    links:
-      - db
-      - db_test
-      - fcrepo
-      - solr
-      - redis
-
-  ##
-  # Runs sidekiq to process background jobs
-  workers:
-    extends: app
-    command: bundle exec sidekiq
-    depends_on:
-      - db
-      - db_test
-      - solr
-      - fcrepo
-      - redis
-      - initialize_blazegraph
-      - db_migrate
-    links:
-      - db
-      - db_test
-      - fcrepo
-      - solr
-      - redis
-
-  ##
-  # Could be used to bootstrap some data or the application state before running
-  #initialize_app:
-  #  extends: app
-  #  restart: on-failure
-  #  command: echo 'not used'
-
-  ##
-  # Using the app image (because it has BASH), ensure that the blazegraph namespaces for test and development exist
-  initialize_blazegraph:
-    extends: app
-    restart: on-failure
-    depends_on:
-      - blazegraph
-    links:
-      - blazegraph
-    command: >
-      bash -c "curl -v -X POST -d 'com.bigdata.rdf.sail.namespace=test' --header 'Content-Type:text/plain' http://blazegraph:8080/bigdata/namespace
-      && curl -v -X POST -d 'com.bigdata.rdf.sail.namespace=development' --header 'Content-Type:text/plain' http://blazegraph:8080/bigdata/namespace"
-
-  ##
-  # Ensure that the database migrations are run on the appropriate database related to the RAILS_ENV running
-  db_migrate:
-    extends: app
-    restart: on-failure
-    command: bundle exec rails db:migrate RAILS_ENV=${RAILS_ENV}
-    depends_on:
-      - db
-      - db_test
-    links:
-      - db
-      - db_test
 
   ##
   # Load balancer, although not strictly necessary.. would allow the app to work with regular port 80
