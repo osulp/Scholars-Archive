@@ -64,7 +64,6 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
 gem 'dalli'
-
 # CAS Authentication gems
 gem 'rubycas-client', git: 'https://github.com/osulp/rubycas-client'
 gem 'rubycas-client-rails', git: 'https://github.com/osulp/rubycas-client-rails'
@@ -115,6 +114,10 @@ group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'rubocop'
   gem 'rubocop-rspec'
+end
+
+group :staging, :production do 
+  gem 'clamav'
 end
 
 group :test do
