@@ -16,7 +16,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
     let(:f) do
       Hyrax::GraduateThesisOrDissertationForm.new(work, ability, controller)
     end
-    
+
     before do
       allow(view).to receive(:signed_in?).and_return(true)
       allow(view).to receive(:current_user).and_return(current_user)
@@ -42,7 +42,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
     end
     let(:f) do
       Hyrax::HonorsCollegeThesisForm.new(work, ability, controller)
-    end 
+    end
 
     before do
       allow(view).to receive(:signed_in?).and_return(true)
