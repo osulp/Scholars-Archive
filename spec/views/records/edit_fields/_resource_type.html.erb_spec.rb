@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
-  let(:work) { GraduateThesisOrDissertation.new }
-  let(:form) { Hyrax::GraduateThesisOrDissertationForm.new(work, nil, controller) }
   let(:form_template) do
     %(
       <%= simple_form_for [main_app, @form] do |f| %>
@@ -16,7 +14,18 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
     render inline: form_template
   end
 
-  it 'has url for autocomplete service' do
-    expect(rendered).to have_selector('input[data-autocomplete-url="/authorities/search/geonames"][data-autocomplete="based_near"]')
+  context 'when rendering a GTD' do
+    let(:work) { GraduateThesisOrDissertation.new }
+    let(:form) { Hyrax::GraduateThesisOrDissertationForm.new(work, nil, controller) }
+
+    it { expect(rendered).to have_selector('option[value="Dissertation"]') }
+    it { expect(rendered).to have_selector('option[value="Masters Thesis"]') }
+  end
+
+  context 'when rendering a HCT' do
+    let(:work) { HonorsCollegeThesis.new }
+    let(:form) { Hyrax::HonorsCollegeThesisForm.new(work, nil, controller) }
+
+    it { expect(rendered).to have_selector('option[value="Honors College Thesis"]') }
   end
 end

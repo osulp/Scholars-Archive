@@ -23,8 +23,8 @@ module Hyrax
         flash.now[:error] << @contact_form.errors.full_messages.map(&:to_s).join(', ')
       end
       render :new
-    rescue RuntimeError => exception
-      handle_create_exception(exception)
+    rescue RuntimeError => e
+      handle_create_exception(e)
     end
 
     def handle_create_exception(exception)
