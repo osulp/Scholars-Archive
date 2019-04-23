@@ -8,7 +8,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
   let(:form_template) do
     %(
       <%= simple_form_for [main_app, @form] do |f| %>
-        <%= render "records/edit_fields/degree_name", f: f, key: 'degree_name' %>
+        <%= render "records/edit_fields/resource_type", f: f, key: 'resource_type' %>
       <% end %>
     )
   end
