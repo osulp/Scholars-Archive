@@ -24,5 +24,6 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   private
   def set_defaults
     self.peerreviewed ||= 'FALSE'
+    self.rights_statement ||= ['In Copyright']
   end
 end
