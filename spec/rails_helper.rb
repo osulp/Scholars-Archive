@@ -7,7 +7,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
-WebMock.disable_net_connect!(allow_localhost: true, allow: ['blazegraph:8080', 'fcrepo:8080', 'solr:8983', 'opaquenamespace.org'])
+WebMock.disable_net_connect!(allow_localhost: true, allow: ['blazegraph:8080', 'fcrepo:8080', 'solr:8983', 'fcrepo-test:8080', 'solr-test:8983', 'opaquenamespace.org'])
 
 require 'triplestore_adapter'
 require 'shoulda/matchers'
