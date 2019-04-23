@@ -22,7 +22,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
       allow(view).to receive(:current_user).and_return(current_user)
       allow(view).to receive(:can?).and_return(true)
       allow(Hyrax::ResourceTypesService).to receive(:select_options).and_return([['Honors College Thesis'], ['Dissertation'], ['Masters Thesis']])
-      assign(:f, f)
+      assign(:form, f)
     end
 
     it 'displays the proper select options' do
@@ -49,7 +49,7 @@ RSpec.describe 'records/edit_fields/_resource_type.html.erb', type: :view do
       allow(view).to receive(:current_user).and_return(current_user)
       allow(view).to receive(:can?).and_return(true)
       allow(Hyrax::ResourceTypesService).to receive(:select_options).and_return([['Honors College Thesis'], ['Dissertation'], ['Masters Thesis']])
-      assign(:f, f)
+      assign(:form, f)
     end
 
     it 'displays the proper select options' do
