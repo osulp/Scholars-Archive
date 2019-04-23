@@ -36,6 +36,7 @@ services:
     <<: *app
     environment:
       - RAILS_ENV=${RAILS_ENV}
+      - SCHOLARSARCHIVE_DB_HOST=db
       - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
       - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
@@ -72,6 +73,32 @@ services:
       - blazegraph
 
   ##
+  # Test environment for application
+  test: &test
+    <<: *web
+    environment:
+      - RAILS_ENV=test
+      - SCHOLARSARCHIVE_DB_HOST=db_test
+      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo
+      - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
+      - SCHOLARSARCHIVE_REDIS_HOST=redis
+      - SCHOLARSARCHIVE_REDIS_PORT='6379'
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/development/sparql
+    depends_on:
+      - db_test
+      - solr-test
+      - fcrepo-test
+      - redis
+      - memcache
+      - blazegraph
+    command: >
+      bash -c "./build/entrypoint.sh &&
+      puma -b tcp://0.0.0.0:3001 -e test -d &&
+      tail -f log/test.log"
+    expose:
+      - 3001
+
+  ##
   # Fedora repository server
   blazegraph-image: &blazegraph-image
     image: lyrasis/blazegraph:2.1.5
@@ -88,7 +115,7 @@ services:
 
   ##
   # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
-  solr:
+  solr: &solr
     image: solr:alpine
     expose:
       - 8983
@@ -101,6 +128,15 @@ services:
       - hydra-${RAILS_ENV}
     networks:
       internal:
+
+  ##
+  # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
+  solr-test:
+    <<: *solr
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - hydra-test
 
   ##
   # Fedora repository server

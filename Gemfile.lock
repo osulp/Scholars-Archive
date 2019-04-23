@@ -283,6 +283,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    clamav (0.4.1)
     clipboard-rails (1.7.1)
     cliver (0.3.2)
     coffee-rails (4.2.2)
@@ -965,6 +966,7 @@ DEPENDENCIES
   capistrano-rbenv
   capistrano3-puma
   capybara
+  clamav
   coffee-rails (~> 4.2)
   coveralls (~> 0.8)
   dalli
