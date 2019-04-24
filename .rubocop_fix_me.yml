@@ -171,6 +171,7 @@ Metrics/LineLength:
     - 'spec/views/records/edit_fields/_dates_section.html.erb_spec.rb'
     - 'spec/views/records/edit_fields/_geo_section.html.erb_spec.rb'
     - 'spec/views/records/edit_fields/_academic_affiliation.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_resource_type.html.erb_spec.rb'
     - 'spec/views/shared/_select_work_type_modal.html.erb_spec.rb'
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
     - 'spec/views/hyrax/base/_form_instructions_spec.rb'
