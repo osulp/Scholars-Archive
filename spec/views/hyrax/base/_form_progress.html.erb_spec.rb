@@ -7,11 +7,7 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
   let(:form) do
     Hyrax::DefaultForm.new(work, nil, controller)
   end
-  let(:work) do
-    Default.new do |w|
-      w.title = ['test']
-    end
-  end
+  let(:work) { Default.new }
   let(:page) do
     view.simple_form_for form do |f|
       render 'hyrax/base/form_progress', f: f
@@ -58,11 +54,7 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
     let(:form) do
       Hyrax::GraduateThesisOrDissertationForm.new(work, nil, controller)
     end
-    let(:work) do
-      GraduateThesisOrDissertation.new do |w|
-        w.title = ['test']
-      end
-    end
+    let(:work) { GraduateThesisOrDissertation.new }
     let(:model_name) { 'graduate_thesis_or_dissertation' }
 
     context 'when for admin users' do
@@ -92,11 +84,7 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
     let(:form) do
       Hyrax::GraduateProjectForm.new(work, nil, controller)
     end
-    let(:work) do
-      GraduateProject.new do |w|
-        w.title = ['test']
-      end
-    end
+    let(:work) { GraduateProject.new }
     let(:model_name) { 'graduate_project' }
 
     context 'when admin users' do
@@ -126,11 +114,7 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
     let(:form) do
       Hyrax::ArticleForm.new(work, nil, controller)
     end
-    let(:work) do
-      Article.new do |w|
-        w.title = ['test']
-      end
-    end
+    let(:work) { Article.new }
     let(:model_name) { 'article' }
 
     context 'when admin users' do
