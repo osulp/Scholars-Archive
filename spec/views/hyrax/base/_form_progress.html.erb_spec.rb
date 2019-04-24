@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
   let(:user) do
     User.new(username: 'admin', email: 'test@example.com', guest: false)
@@ -38,18 +36,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(true)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
 
     context 'when non admin users' do
@@ -57,18 +47,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(false)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
   end
 
@@ -88,18 +70,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(true)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does not show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does not show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
 
     context 'when non-admin users' do
@@ -107,18 +81,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(false)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does not show private visibility option' do
-        expect(page).not_to have_selector(restricted_option_id)
-      end
-      it 'does not show institution visibility option' do
-        expect(page).not_to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).not_to have_selector(restricted_option_id) }
+      it { expect(page).not_to have_selector(authenticated_option_id) }
     end
   end
 
@@ -138,18 +104,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(true)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
 
     context 'when non-admin users' do
@@ -157,18 +115,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(false)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
   end
 
@@ -188,18 +138,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(true)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
 
     context 'when non admin users' do
@@ -207,18 +149,10 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
         allow(user).to receive(:admin?).and_return(false)
       end
 
-      it 'shows public visibility option' do
-        expect(page).to have_selector(open_option_id)
-      end
-      it 'shows embargo visibility option' do
-        expect(page).to have_selector(embargo_option_id)
-      end
-      it 'does show private visibility option' do
-        expect(page).to have_selector(restricted_option_id)
-      end
-      it 'does show institution visibility option' do
-        expect(page).to have_selector(authenticated_option_id)
-      end
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
     end
   end
 end
