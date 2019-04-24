@@ -12,6 +12,8 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   include ScholarsArchive::ExcludedEtdLicenses
   include ScholarsArchive::HasNestedOrderedProperties
 
+  before_save :strip_whitespace
+
   self.indexer = EtdIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
@@ -24,5 +26,27 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   private
   def set_defaults
     self.peerreviewed ||= 'FALSE'
+  end
+
+  def strip_whitespace
+    attributes.each_pair do |attr, values|
+      if values.respond_to?(:map)
+        Rails.logger.info attributes
+        Rails.logger.info values
+        
+        values.map do |value| 
+          if value.responds_to?(:map)
+
+          else
+            value.strip unless value.nil? || value.frozen? 
+          end
+        end
+      elsif values.is_a? String
+        Rails.logger.info attributes
+        Rails.logger.info values
+        values.strip! unless values.nil? || values.frozen?
+      elsif
+      end
+    end
   end
 end
