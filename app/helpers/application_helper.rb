@@ -132,4 +132,8 @@ module ApplicationHelper
     facet_values = ScholarsArchive::AllFacetValuesService.new.call(facet_object, controller)
     (facet_values.length.to_f / pagination_object.limit.to_f).ceil
   end
+
+  def option_visible_to_depositor?(model, user)
+    user.admin? == false && model.class == GraduateThesisOrDissertation ? false : true
+  end
 end
