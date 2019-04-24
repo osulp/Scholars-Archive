@@ -92,9 +92,9 @@ def overwrite_multivalue_row(logger, work, row, property)
     when 'creator'
       work.nested_ordered_creator_attributes = overwrite_ordered_property_value(work, 'ordered_creators', 'creator', to_value)
     when 'abstract'
-      work.nested_ordered_abstract_attributes = overwrite_ordered_property_value(work, 'ordered_abstracts', 'creator', to_value)
+      work.nested_ordered_abstract_attributes = overwrite_ordered_property_value(work, 'ordered_abstracts', 'abstract', to_value)
     when 'contributor'
-      work.nested_ordered_contributor_attributes = overwrite_ordered_property_value(work, 'ordered_contributors', 'creator', to_value)
+      work.nested_ordered_contributor_attributes = overwrite_ordered_property_value(work, 'ordered_contributors', 'contributor', to_value)
     when 'additional_information'
       work.nested_ordered_additional_information_attributes = overwrite_ordered_property_value(work, 'ordered_info', 'additional_information', to_value)
     else
@@ -118,9 +118,9 @@ def add_to_multivalue_row(logger, work, row, property)
     when 'creator'
       work.nested_ordered_creator_attributes = add_ordered_property_value(work, 'ordered_creators', 'creator', to_value)
     when 'abstract'
-      work.nested_ordered_abstract_attributes = add_ordered_property_value(work, 'ordered_abstracts', 'creator', to_value)
+      work.nested_ordered_abstract_attributes = add_ordered_property_value(work, 'ordered_abstracts', 'abstract', to_value)
     when 'contributor'
-      work.nested_ordered_contributor_attributes = add_ordered_property_value(work, 'ordered_contributors', 'creator', to_value)
+      work.nested_ordered_contributor_attributes = add_ordered_property_value(work, 'ordered_contributors', 'contributor', to_value)
     when 'additional_information'
       work.nested_ordered_additional_information_attributes = add_ordered_property_value(work, 'ordered_info', 'additional_information', to_value)
     else
@@ -144,9 +144,9 @@ def remove_from_multivalue_row(logger, work, row, property)
     when 'creator'
       work.nested_ordered_creator_attributes = remove_ordered_property_value(work, 'ordered_creators', 'creator', to_value)
     when 'abstract'
-      work.nested_ordered_abstract_attributes = remove_ordered_property_value(work, 'ordered_abstracts', 'creator', to_value)
+      work.nested_ordered_abstract_attributes = remove_ordered_property_value(work, 'ordered_abstracts', 'abstract', to_value)
     when 'contributor'
-      work.nested_ordered_contributor_attributes = remove_ordered_property_value(work, 'ordered_contributors', 'creator', to_value)
+      work.nested_ordered_contributor_attributes = remove_ordered_property_value(work, 'ordered_contributors', 'contributor', to_value)
     when 'additional_information'
       work.nested_ordered_additional_information_attributes = remove_ordered_property_value(work, 'ordered_info', 'additional_information', to_value)
     else
