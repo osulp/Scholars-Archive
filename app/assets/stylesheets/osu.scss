@@ -448,7 +448,7 @@ ol.dd-list.dd-dragel {
       position: inherit;
     }
 
-    input textarea{
+    input textarea {
       font-size: initial;
       padding-left: 5px;
     }
@@ -471,7 +471,7 @@ ol.dd-list.dd-dragel {
   .text-area-nested-field {
     width: 78px !important;
     height: 68px;
-    
+
     button.down-arrow {
       float: right;
       top: 34px;
@@ -512,7 +512,6 @@ textarea.nested-field {
     z-index: 1;
   }
   .multi-input-nested-item {
-    
     button.down-arrow {
       float: right;
     }
@@ -520,7 +519,7 @@ textarea.nested-field {
   .text-area-nested-field {
     width: 78px !important;
     height: 68px;
-    
+
     button.down-arrow {
       float: right;
       top: 34px;
@@ -543,4 +542,14 @@ textarea.nested-field {
     //   right: 11px;
     // }
   }
+}
+
+dt.preformatted {
+  white-space: pre-wrap;
+  padding-left: 10px;
+}
+
+li:not(:last-child) > dt.preformatted {
+  padding-bottom: 5px;
+  border-bottom: solid 1px #eee;
 }

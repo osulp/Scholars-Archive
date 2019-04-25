@@ -1,0 +1,34 @@
+<div class="col-md-6">
+  <div class="metadata">
+    <dl class="dl-horizontal">
+    <% doc_presenter = index_presenter(document) %>
+    <% index_fields(document).each do |field_name, field| -%>
+      <% if should_render_index_field? document, field %>
+          <dt><%= render_index_field_label document, field: field_name %></dt>
+          <%# OVERRIDE of https://github.com/samvera/hyrax/blob/master/app/views/catalog/_index_list_default.html.erb, per
+              ticket https://github.com/osulp/Scholars-Archive/issues/1807
+          %>
+          <% if field_name == 'abstract_tesim' %>
+            <div class='preformatted'><%= doc_presenter.field_value field %></div>
+          <% else %>
+            <dd><%= doc_presenter.field_value field %></dd>
+          <% end %>
+          <%# END %>
+      <% end %>
+    <% end %>
+    </dl>
+  </div>
+</div>
+<% if document.collection? %>
+<% collection_presenter = Hyrax::CollectionPresenter.new(document, current_ability) %>
+<div class="col-md-4">
+  <div class="collection-counts-wrapper">
+    <div class="collection-counts-item">
+      <span><%= collection_presenter.total_viewable_collections %></span>Collections
+    </div>
+    <div class="collection-counts-item">
+      <span><%= collection_presenter.total_viewable_works %></span>Works
+    </div>
+  </div>
+</div>
+<% end %>

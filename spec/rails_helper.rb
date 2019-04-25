@@ -11,6 +11,9 @@ WebMock.disable_net_connect!(allow_localhost: true, allow: ['blazegraph:8080', '
 
 require 'triplestore_adapter'
 require 'shoulda/matchers'
+
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -51,6 +54,12 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
 
   config.include Capybara::RSpecMatchers, type: :view
+
+  config.include ControllerLevelHelpers, type: :view
+  config.before(:each, type: :view) do
+    initialize_controller_helpers(view)
+  end
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
