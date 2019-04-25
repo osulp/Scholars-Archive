@@ -52,14 +52,14 @@ def update_property(logger, work, row)
   property = work[row[:property]]
 
   if row[:from].blank?
-    logger.error("#{work.class} #{row[:id]} #{property.property} missing 'from' value in CSV, unable to process work.")
+    logger.error("#{work.class} #{row[:id]} #{row[:property]} missing 'from' value in CSV, unable to process work.")
     return nil
   end
 
   if property.is_a?(String) || is_property_multiple?(work, row) == false
     work[row[:property]] = row[:to]&.to_s
     logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
-  elsif property.is_a?(ActiveTriples::Relation)
+  elsif property.is_a?(ActiveTriples::Relation) || ordered_property?(row[:property])
     work = if row[:from].casecmp('+').zero?
              add_to_multivalue_row(logger, work, row, property)
            elsif row[:from].casecmp('*').zero?
@@ -86,24 +86,11 @@ def overwrite_multivalue_row(logger, work, row, property)
   return work if to_value.blank?
 
   if ordered_property? row[:property]
-    values = case row[:property]
-    when 'title'
-      work.nested_ordered_title_attributes = overwrite_ordered_property_value(work, 'ordered_titles', 'title', to_value)
-    when 'creator'
-      work.nested_ordered_creator_attributes = overwrite_ordered_property_value(work, 'ordered_creators', 'creator', to_value)
-    when 'abstract'
-      work.nested_ordered_abstract_attributes = overwrite_ordered_property_value(work, 'ordered_abstracts', 'abstract', to_value)
-    when 'contributor'
-      work.nested_ordered_contributor_attributes = overwrite_ordered_property_value(work, 'ordered_contributors', 'contributor', to_value)
-    when 'additional_information'
-      work.nested_ordered_additional_information_attributes = overwrite_ordered_property_value(work, 'ordered_info', 'additional_information', to_value)
-    else
-      logger.error("#{work.class} #{row[:id]} #{property.property} unable to handle this type of ordered_*, rake task requires work to process these updates.")
-    end
+    handle_ordered_property(work, 'overwrite_ordered_property_value', to_value, row)
   else
     work[row[:property]] = to_value.blank? ? nil : [to_value&.split('|')].flatten
   end
-  logger.info("#{work.class} #{row[:id]} #{property.property} row overwritten with \"#{to_value}\"")
+  logger.info("#{work.class} #{row[:id]} #{row[:property]} row overwritten with \"#{to_value}\"")
   work
 end
 
@@ -112,24 +99,11 @@ def add_to_multivalue_row(logger, work, row, property)
   return work if to_value.blank?
 
   if ordered_property? row[:property]
-    values = case row[:property]
-    when 'title'
-      work.nested_ordered_title_attributes = add_ordered_property_value(work, 'ordered_titles', 'title', to_value)
-    when 'creator'
-      work.nested_ordered_creator_attributes = add_ordered_property_value(work, 'ordered_creators', 'creator', to_value)
-    when 'abstract'
-      work.nested_ordered_abstract_attributes = add_ordered_property_value(work, 'ordered_abstracts', 'abstract', to_value)
-    when 'contributor'
-      work.nested_ordered_contributor_attributes = add_ordered_property_value(work, 'ordered_contributors', 'contributor', to_value)
-    when 'additional_information'
-      work.nested_ordered_additional_information_attributes = add_ordered_property_value(work, 'ordered_info', 'additional_information', to_value)
-    else
-      logger.error("#{work.class} #{row[:id]} #{property.property} unable to handle this type of ordered_*, rake task requires work to process these updates.")
-    end
+    handle_ordered_property(work, 'add_ordered_property_value', to_value, row)
   else
     work[row[:property]] += [to_value&.split('|')].flatten
   end
-  logger.info("#{work.class} #{row[:id]} #{property.property} row added \"#{to_value}\"")
+  logger.info("#{work.class} #{row[:id]} #{row[:property]} row added \"#{to_value}\"")
   work
 end
 
@@ -138,24 +112,11 @@ def remove_from_multivalue_row(logger, work, row, property)
   return work if to_value.blank?
 
   if ordered_property? row[:property]
-    values = case row[:property]
-    when 'title'
-      work.nested_ordered_title_attributes = remove_ordered_property_value(work, 'ordered_titles', 'title', to_value)
-    when 'creator'
-      work.nested_ordered_creator_attributes = remove_ordered_property_value(work, 'ordered_creators', 'creator', to_value)
-    when 'abstract'
-      work.nested_ordered_abstract_attributes = remove_ordered_property_value(work, 'ordered_abstracts', 'abstract', to_value)
-    when 'contributor'
-      work.nested_ordered_contributor_attributes = remove_ordered_property_value(work, 'ordered_contributors', 'contributor', to_value)
-    when 'additional_information'
-      work.nested_ordered_additional_information_attributes = remove_ordered_property_value(work, 'ordered_info', 'additional_information', to_value)
-    else
-      logger.error("#{work.class} #{row[:id]} #{property.property} unable to handle this type of ordered_*, rake task requires work to process these updates.")
-    end
+    handle_ordered_property(work, 'remove_ordered_property_value', to_value, row)
   else
     work[row[:property]] = work[row[:property]].to_a - [to_value&.split('|')].flatten
   end
-  logger.info("#{work.class} #{row[:id]} #{property.property} row removed \"#{to_value}\"")
+  logger.info("#{work.class} #{row[:id]} #{row[:property]} row removed \"#{to_value}\"")
   work
 end
 
@@ -165,23 +126,49 @@ def process_if_found_row(logger, work, row, property)
     work[row[:property]] = nil if work[row[:property]].length == 1
     work[row[:property]].delete(found_row) if work[row[:property]].length > 1
     work[row[:property]] += [row[:to].to_s.split('|')].flatten unless row[:to].blank?
-    logger.info("#{work.class} #{row[:id]} #{property.property} changed from \"#{found_row}\" to \"#{work[row[:property]]}\"")
+    logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{found_row}\" to \"#{work[row[:property]]}\"")
     work
   else
-    logger.info("#{work.class} #{row[:id]} #{property.property} value \"#{row[:from]}\" not found, skipping update.")
+    logger.info("#{work.class} #{row[:id]} #{row[:property]} value \"#{row[:from]}\" not found, skipping update.")
     nil
   end
 end
 
+def handle_ordered_property(work, method, value, row)
+  case row[:property]
+  when 'title'
+    original_values = work.send(:ordered_titles)
+    work.nested_ordered_title = nil
+    work.nested_ordered_title_attributes = self.method(method).call(original_values, 'title', value)
+  when 'creator'
+    original_values = work.send(:ordered_creators)
+    work.nested_ordered_creator = nil
+    work.nested_ordered_creator_attributes = self.method(method).call(original_values, 'creator', value)
+  when 'abstract'
+    original_values = work.send(:ordered_abstracts)
+    work.nested_ordered_abstract = nil
+    work.nested_ordered_abstract_attributes = self.method(method).call(original_values, 'abstract', value)
+  when 'contributor'
+    original_values = work.send(:ordered_contributors)
+    work.nested_ordered_contributor = nil
+    work.nested_ordered_contributor_attributes = self.method(method).call(original_values, 'contributor', value)
+  when 'additional_information'
+    original_values = work.send(:ordered_info)
+    work.nested_ordered_additional_information = nil
+    work.nested_ordered_additional_information_attributes = self.method(method).call(original_values, 'additional_information', value)
+  else
+    logger.error("#{work.class} #{row[:id]} #{row[:property]} unable to handle this type of ordered_*, rake task requires work to process these updates.")
+  end
+end
+
 ## Add new value(s) to properly shaped data for an ordered property
-# @param [ActiveFedora::Base] work : The work with metadata
-# @param [String] method : The method name providing the currently ordered metadata values
+# @param [Array<String>] original_values : The original metadata values in the field
 # @param [String] value_field : The ordered properties value field to be paired with its ordered 'index'
 # @param [String] new_value : The new value(s), can be pipe-delimited to add to the end of the ordered metadata
 # @return [Array<Hash<String,String>>] an array of {"index":, "#{value_field}":} shaped data
 #         example: [{ "index": "0", "title": "title 1"}, { "index": "1", "title": "title 2"}]
-def add_ordered_property_value(work, method, value_field, new_value)
-  indexed_values = work.send(method.to_sym).map.with_index { |v,i| { "index" => i, value_field.to_s => v } }
+def add_ordered_property_value(original_values, value_field, new_value)
+  indexed_values = original_values.map.with_index { |v,i| { "index" => i, value_field.to_s => v } }
   new_value.split('|').each do |v|
     indexed_values << { "index" => indexed_values.last['index'] + 1, value_field.to_s => v }
   end
@@ -189,24 +176,22 @@ def add_ordered_property_value(work, method, value_field, new_value)
 end
 
 ## Remove an existing value from an ordered property
-# @param [ActiveFedora::Base] work : The work with metadata
-# @param [String] method : The method name providing the currently ordered metadata values
+# @param [Array<String>] original_values : The original metadata values in the field
 # @param [String] value_field : The ordered properties value field to be paired with its ordered 'index'
-# @param [String] new_value : The value to be removed from the ordered metadata
+# @param [String] value : The value to be removed from the ordered metadata
 # @return [Array<Hash<String,String>>] an array of {"index":, "#{value_field}":} shaped data
 #         example: [{ "index": "0", "title": "title 1"}]
-def remove_ordered_property_value(work, method, value_field, value)
-  work.send(method.to_sym).reject { |v| v == value}.map.with_index { |v,i| { "index" => i.to_s, value_field.to_s => v } }
+def remove_ordered_property_value(original_values, value_field, value)
+  original_values.reject { |v| v == value}.map.with_index { |v,i| { "index" => i.to_s, value_field.to_s => v } }
 end
 
 ## Overwrite all existing values to properly shaped data for an ordered property
-# @param [ActiveFedora::Base] work : The work with metadata
-# @param [String] method : The method name providing the currently ordered metadata values
+# @param [Array<String>] original_values : The original metadata values in the field
 # @param [String] value_field : The ordered properties value field to be paired with its ordered 'index'
 # @param [String] new_value : The new value(s) to replace all existing ordered metadata, can be pipe-delimited to add to the end of the ordered metadata
 # @return [Array<Hash<String,String>>] an array of {"index":, "#{value_field}":} shaped data
 #         example: [{ "index": "0", "title": "title 1"}, { "index": "1", "title": "title 2"}]
-def overwrite_ordered_property_value(work, method, value_field, new_value)
+def overwrite_ordered_property_value(original_values, value_field, new_value)
   new_value.split('|').map.with_index { |v,i| { "index" => i.to_s, value_field.to_s => v } }
 end
 
