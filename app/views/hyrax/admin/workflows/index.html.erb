@@ -42,7 +42,7 @@
                           <%= safe_join(document.creator, tag(:br)) %>
                         </td>
                         <td>
-                          <%= document.date_modified %>
+                          <%= DateTime.parse(document['date_modified_dtsi']).try(:to_formatted_s, :db) %>
                         </td>
                         <td>
                           <span class="state state-pending"><%= document.workflow_state %></span>
@@ -82,7 +82,7 @@
                           <%= safe_join(document.creator, tag(:br)) %>
                         </td>
                         <td>
-                          <%= document.date_modified %>
+                          <%= DateTime.parse(document['date_modified_dtsi']).try(:to_formatted_s, :db) %>
                         </td>
                         <td>
                           <span class="state state-pending"><%= document.workflow_state %></span>
