@@ -29,24 +29,6 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   end
 
   def strip_whitespace
-    attributes.each_pair do |attr, values|
-      if values.respond_to?(:map)
-        Rails.logger.info attributes
-        Rails.logger.info values
-        
-        values.map do |value| 
-          if value.responds_to?(:map)
-
-          else
-            value.strip unless value.nil? || value.frozen? 
-          end
-        end
-      elsif values.is_a? String
-        Rails.logger.info attributes
-        Rails.logger.info values
-        values.strip! unless values.nil? || values.frozen?
-      elsif
-      end
-    end
+    
   end
 end
