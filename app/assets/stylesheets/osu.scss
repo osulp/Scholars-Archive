@@ -544,12 +544,11 @@ textarea.nested-field {
   }
 }
 
-dt.preformatted {
+dd.preformatted {
   white-space: pre-wrap;
-  padding-left: 10px;
 }
 
-li:not(:last-child) > dt.preformatted {
+li:not(:last-child) > dd.preformatted {
   padding-bottom: 5px;
   border-bottom: solid 1px #eee;
 }

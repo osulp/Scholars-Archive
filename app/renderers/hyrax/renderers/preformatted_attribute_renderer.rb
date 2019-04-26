@@ -14,9 +14,9 @@ module Hyrax
 
       def attribute_value_to_html(value)
         if microdata_value_attributes(field).present?
-          "<dt class='preformatted' #{html_attributes(microdata_value_attributes(field))}>#{li_value(value)}</dt>"
+          "<dd class='preformatted' #{html_attributes(microdata_value_attributes(field))}>#{li_value(value)}</dd>"
         else
-          "<dt class='preformatted'>#{li_value(value)}</dt>"
+          "<dd class='preformatted'>#{li_value(value)}</dd>"
         end
       end
     end
