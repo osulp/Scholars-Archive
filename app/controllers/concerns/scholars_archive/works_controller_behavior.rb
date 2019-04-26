@@ -10,9 +10,7 @@ module ScholarsArchive
 
       def redirect_mismatched_work
         curation_concern = ActiveFedora::Base.find(params[:id])
-        if curation_concern.class != _curation_concern_type
-          redirect_to(main_app.polymorphic_path(curation_concern), status: :moved_permanently) and return
-        end
+        redirect_to(main_app.polymorphic_path(curation_concern), status: :moved_permanently) and return if curation_concern.class != _curation_concern_type
       end
     end
 
@@ -54,42 +52,26 @@ module ScholarsArchive
       # value in the input shown when selecting this option, these custom values would be assigned to the
       # "degree_field_other" and "degree_level_other" attribute accessors so that they can be accessed by
       # AddOtherFieldOptionActor. This actor will persist them in the database for reviewing later by an admin user
-      if params[hash_key_for_curation_concern]['degree_field'] == 'Other' && params[hash_key_for_curation_concern]['degree_field_other'].present?
-        curation_concern.degree_field_other = params[hash_key_for_curation_concern]['degree_field_other']
-      end
+      curation_concern.degree_field_other = params[hash_key_for_curation_concern]['degree_field_other'] if params[hash_key_for_curation_concern]['degree_field'] == 'Other' && params[hash_key_for_curation_concern]['degree_field_other'].present?
 
-      if params[hash_key_for_curation_concern]['degree_level'] == 'Other' && params[hash_key_for_curation_concern]['degree_level_other'].present?
-        curation_concern.degree_level_other = params[hash_key_for_curation_concern]['degree_level_other']
-      end
+      curation_concern.degree_level_other = params[hash_key_for_curation_concern]['degree_level_other'] if params[hash_key_for_curation_concern]['degree_level'] == 'Other' && params[hash_key_for_curation_concern]['degree_level_other'].present?
 
-      if params[hash_key_for_curation_concern]['degree_name'] == 'Other' && params[hash_key_for_curation_concern]['degree_name_other'].present?
-        curation_concern.degree_name_other = params[hash_key_for_curation_concern]['degree_name_other']
-      end
+      curation_concern.degree_name_other = params[hash_key_for_curation_concern]['degree_name_other'] if params[hash_key_for_curation_concern]['degree_name'] == 'Other' && params[hash_key_for_curation_concern]['degree_name_other'].present?
 
-      if params[hash_key_for_curation_concern]['degree_grantors'] == 'Other' && params[hash_key_for_curation_concern]['degree_grantors_other'].present?
-        curation_concern.degree_grantors_other = params[hash_key_for_curation_concern]['degree_grantors_other']
-      end
+      curation_concern.degree_grantors_other = params[hash_key_for_curation_concern]['degree_grantors_other'] if params[hash_key_for_curation_concern]['degree_grantors'] == 'Other' && params[hash_key_for_curation_concern]['degree_grantors_other'].present?
 
       curation_concern.current_username = current_user.username
     end
 
     def get_other_option_values
       @degree_field_other_options = get_all_other_options('degree_field')
-      if @degree_field_other_options.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
-          curation_concern.degree_field_other = degree_field_other_option.name
-      end
+      curation_concern.degree_field_other = degree_field_other_option.name if @degree_field_other_options.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
       @degree_name_other_options = get_all_other_options('degree_name')
-      if @degree_name_other_options.present? && curation_concern.degree_name.present? && curation_concern.degree_name == 'Other'
-          curation_concern.degree_name_other = degree_name_other_option.name
-      end
+      curation_concern.degree_name_other = degree_name_other_option.name if @degree_name_other_options.present? && curation_concern.degree_name.present? && curation_concern.degree_name == 'Other'
       degree_level_other_option = get_other_options('degree_level')
-      if degree_level_other_option.present? && curation_concern.degree_level.present? && curation_concern.degree_level == 'Other'
-        curation_concern.degree_level_other = degree_level_other_option.name
-      end
+      curation_concern.degree_level_other = degree_level_other_option.name if degree_level_other_option.present? && curation_concern.degree_level.present? && curation_concern.degree_level == 'Other'
       degree_grantors_other_option = get_other_options('degree_grantors')
-      if degree_grantors_other_option.present? && curation_concern.degree_grantors.present? && curation_concern.degree_grantors == 'Other'
-        curation_concern.degree_grantors_other = degree_grantors_other_option.name
-      end
+      curation_concern.degree_grantors_other = degree_grantors_other_option.name if degree_grantors_other_option.present? && curation_concern.degree_grantors.present? && curation_concern.degree_grantors == 'Other'
       @other_affiliation_other_options = get_all_other_options('other_affiliation')
     end
 

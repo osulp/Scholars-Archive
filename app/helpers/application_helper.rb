@@ -39,13 +39,9 @@ module ApplicationHelper
 
     coordinates = f.object.model.nested_geo.to_a
 
-    if coordinates.none? { |h| h.type == :bbox.to_s }
-      options << { t('simple_form.labels.defaults.nested_geo_bbox').pluralize => :nested_geo_bbox.to_s }
-    end
+    options << { t('simple_form.labels.defaults.nested_geo_bbox').pluralize => :nested_geo_bbox.to_s } if coordinates.none? { |h| h.type == :bbox.to_s }
 
-    if coordinates.none? { |h| h.type == :point.to_s }
-      options << { t('simple_form.labels.defaults.nested_geo_points').pluralize => :nested_geo_points.to_s }
-    end
+    options << { t('simple_form.labels.defaults.nested_geo_points').pluralize => :nested_geo_points.to_s } if coordinates.none? { |h| h.type == :point.to_s }
 
     new_geo_point = [f.object.model.nested_geo.build]
     new_geo_point.first.type = :point.to_s

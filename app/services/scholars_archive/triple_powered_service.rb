@@ -19,11 +19,11 @@ module ScholarsArchive
       uris.each do |uri|
         graph = fetch_from_store(uri)
         values = predicate_label_dates(graph).values.flatten.compact
-        if values.size > 0
-          labels << values.collect { |label_date| label_date + '$' + uri.to_s }
-        else
-          labels << predicate_labels(graph).values.flatten.compact.collect { |label| label + '$' + uri.to_s }
-        end
+        labels << if values.size > 0
+                    values.collect { |label_date| label_date + '$' + uri.to_s }
+                  else
+                    predicate_labels(graph).values.flatten.compact.collect { |label| label + '$' + uri.to_s }
+                  end
       end
       labels.flatten.compact
     end

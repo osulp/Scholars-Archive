@@ -19,9 +19,7 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
     end
 
     html_options = build_field_options(value)
-    if options[:item_helper]
-      (render_options, html_options) = options[:item_helper].call(value, index, render_options, html_options)
-    end
+    (render_options, html_options) = options[:item_helper].call(value, index, render_options, html_options) if options[:item_helper]
     select_input = template.select_tag(attribute_name, template.options_for_select(render_options, value), html_options)
 
     other_input_op = other_input_options(index, other_entry_value, value)
