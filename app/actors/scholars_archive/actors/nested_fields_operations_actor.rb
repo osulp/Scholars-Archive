@@ -62,9 +62,7 @@ module ScholarsArchive
         # for the model and only keep valid uri values. add_other_field_option_actor is responsible for persisting the
         # text values provided by the user for these "Other" entries. Here we are just removing/cleaning up the
         # selection before getting to the ModelActor, which is where the attributes appears to be persisted in fedora
-        if env.attributes['other_affiliation']
-          env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other' }
-        end
+        env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other' } if env.attributes['other_affiliation']
       end
 
       def clean_up_nested_attributes (env)

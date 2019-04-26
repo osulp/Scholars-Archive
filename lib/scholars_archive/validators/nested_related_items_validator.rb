@@ -6,9 +6,7 @@ module ScholarsArchive::Validators
     def validate(record)
       error_counter = 0
 
-      if nested_related_items_present? (record)
-        error_counter += validate_nested_fields record, error_counter
-      end
+      error_counter += validate_nested_fields record, error_counter if nested_related_items_present? (record)
 
       return
     end
@@ -44,9 +42,7 @@ module ScholarsArchive::Validators
         # process item before returning so that they can be updated in the form
         if error_counter > 0 && item._destroy == false
           related_item = record.nested_related_items.to_a.find { |i| i.label.first == item.label.first && i.related_url.first == item.related_url.first }
-          if related_item.present?
-            related_item.validation_msg = I18n.translate(:"simple_form.actor_validation.nested_related_item_value_missing")
-          end
+          related_item.validation_msg = I18n.translate(:"simple_form.actor_validation.nested_related_item_value_missing") if related_item.present?
         end
       end
 

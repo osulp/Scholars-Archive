@@ -91,9 +91,7 @@ module ScholarsArchive
         error_counter = 0
         if other_value.present?
           other_value.each do |entry|
-            if other_value_in_collection? other_value: entry, collection: collection
-              error_counter += 1
-            end
+            error_counter += 1 if other_value_in_collection? other_value: entry, collection: collection
           end
         end
         (error_counter > 0) ? false : true
