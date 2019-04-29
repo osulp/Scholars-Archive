@@ -5,21 +5,20 @@ module ScholarsArchive
   class ParamScrubber
     def self.scrub(params, hash_key)
       params[hash_key].each_pair do |attr, value|
-        # If value is an array
         if value.is_a?(Array)
           value.map do |v|
             # Removes spaces from array based values
-            strip_value(params[hash_key][attr.to_s], v)
+            v.strip unless v.nil? || v.frozen?
           end
-        # If value is a string
-        elsif value.is_a? Hash
+        # If value is a Hash
+        elsif value.is_a? ActionController::Parameters
           # Recursively digs into hashes until proper value is found
-          extract_hash_values(value)
+          params[hash_key][attr.to_s] = extract_hash_values(value.to_hash).to_hash
         elsif value.is_a? String
           # Remove spaces from the params for single value fields
-          strip_value(params[hash_key][attr.to_s], value)
+          params[hash_key][attr.to_s] = value.strip unless value.nil? || value.frozen?
         end
-      end 
+      end
     end
 
     private
@@ -27,15 +26,11 @@ module ScholarsArchive
     def self.extract_hash_values(hash)
       hash.each_pair do |key, value|
         if value.respond_to?(:strip)
-          return strip_value(hash[key], value)
+          return hash[key] = value.strip unless value.nil? || value.frozen?
         else
           extract_hash_values(value)
         end
       end
-    end
-
-    def self.strip_value(attribute, value)
-      attribute = value.strip unless value.nil? || value.frozen?
     end
   end
 end
