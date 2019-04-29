@@ -7,7 +7,7 @@ module ScholarsArchive
     include Hyrax::WorksControllerBehavior
     included do
       before_action :redirect_mismatched_work, only: [:show]
-      before_action :scrub_params, only: [:update, :create]
+      before_action :scrub_params, only: %i[update create]
 
       def redirect_mismatched_work
         curation_concern = ActiveFedora::Base.find(params[:id])
@@ -43,8 +43,7 @@ module ScholarsArchive
     private
 
     def scrub_params
-      new_params = ScholarsArchive::ParamScrubber.scrub(params, hash_key_for_curation_concern)
-      params = new_params
+      ScholarsArchive::ParamScrubber.scrub(params, hash_key_for_curation_concern)
     end
 
     def set_embargo_release_date
