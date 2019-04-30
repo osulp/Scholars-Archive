@@ -22,6 +22,7 @@ module ScholarsArchive
 
     def self.extract_hash_values(hash)
       hash.each_pair do |key, value|
+        Rails.logger.info value
         return strip_and_set(hash, key, value) if value.respond_to?(:strip)
 
         extract_hash_values(value)
