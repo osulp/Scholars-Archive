@@ -17,6 +17,12 @@ AllCops:
     - 'config/**/*'
     - 'sa_scripts/**/*'
 
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods: ['included']
+
 Style/AsciiComments:
   Enabled: false
 
@@ -51,7 +57,6 @@ RSpec/MessageSpies:
 
 RSpec/AnyInstance:
   Enabled: false
-
 # FactoryBot 5 will require dynamic definition, so we should allow it.
 # FactoryBot/StaticAttributeDefinedDynamically:
 #   Enabled: false

@@ -68,13 +68,9 @@ module ScholarsArchive
       error_counter = 0
       collection = get_collection(field, record: record, env_user: env_user)
       if other_value.present?
-        if other_value_in_collection? other_value: other_value, collection: collection
-          error_counter += 1
-        end
+        error_counter += 1 if other_value_in_collection? other_value: other_value, collection: collection
       else
-        if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s] == 'Other'
-          error_counter += 1
-        end
+        error_counter += 1 if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s] == 'Other'
       end
       (error_counter > 0) ? false : true
     end
@@ -87,14 +83,10 @@ module ScholarsArchive
 
       if other_value.present?
         other_value.each do |entry|
-          if other_value_in_collection? other_value: entry, collection: collection
-            error_counter += 1
-          end
+          error_counter += 1 if other_value_in_collection? other_value: entry, collection: collection
         end
       else
-        if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
-          error_counter += 1
-        end
+        error_counter += 1 if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
       end
       (error_counter > 0) ? false : true
     end

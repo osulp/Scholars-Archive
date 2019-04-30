@@ -23,7 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'mini_racer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails' 
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -109,6 +109,7 @@ group :development, :test do
   gem 'debase'
   gem 'debase-ruby_core_source'
   gem 'fcrepo_wrapper'
+  gem 'pry-rails'
   gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
@@ -116,7 +117,7 @@ group :development, :test do
   gem 'rubocop-rspec'
 end
 
-group :staging, :production do 
+group :staging, :production do
   gem 'clamav'
 end
 

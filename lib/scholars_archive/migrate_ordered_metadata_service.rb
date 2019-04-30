@@ -211,11 +211,11 @@ module ScholarsArchive
     def ordered_metadata(csv, handle, solr_doc, solr_field, ordered_field_name)
       csv_metadata = ordered_csv_metadata(csv, handle)
       solr_metadata = solr_doc[solr_field] || []
-      if csv_metadata.empty?
-        combined = solr_metadata
-      else
-        combined = csv_metadata.concat(solr_metadata_not_in_csv(csv_metadata, solr_metadata))
-      end
+      combined = if csv_metadata.empty?
+                   solr_metadata
+                 else
+                   csv_metadata.concat(solr_metadata_not_in_csv(csv_metadata, solr_metadata))
+                 end
       combined.map.with_index { |obj, i| { index: i.to_s, ordered_field_name.to_sym => obj } }
     end
 
