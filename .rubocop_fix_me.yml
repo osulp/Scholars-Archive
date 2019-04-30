@@ -91,6 +91,7 @@ Metrics/LineLength:
     - 'app/services/scholars_archive/rights_statement_service.rb'
     - 'app/services/scholars_archive/peerreviewed_service.rb'
     - 'app/services/scholars_archive/license_service.rb'
+    - 'app/services/scholars_archive/param_scrubber.rb'
     - 'app/inputs/multi_value_select_other_input.rb'
     - 'app/inputs/multi_value_label_url_input.rb'
     - 'app/inputs/multi_value_date_input.rb'

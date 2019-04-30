@@ -6,34 +6,31 @@ module ScholarsArchive
     def self.scrub(params, hash_key)
       params[hash_key].each_pair do |attr, value|
         if value.is_a?(Array)
-        # Set the mapped array on the params hash
+          # Set the mapped array on the params hash
           set_values(params, hash_key, attr, mapped_values(value))
-        # If value is a Hash
+          # If value is a Hash
         elsif value.is_a? ActionController::Parameters
-          # Recursively dig into the hashes to find the raw value and set them on the params hash
+          # Recursively dig into the hashes
+          # find the raw value and set them on the params hash
           set_values(params, hash_key, attr, extract_hash_values(value.to_hash).to_hash)
         elsif value.is_a? String
-          # set the stripped string on the params 
+          # set the stripped string on the params
           set_params(params, hash_key, attr, value)
         end
       end
     end
 
-    private
-
     def self.extract_hash_values(hash)
       hash.each_pair do |key, value|
-        if value.respond_to?(:strip)
-          return strip_and_set(hash, key, value)
-        else
-          extract_hash_values(value)
-        end
+        return strip_and_set(hash, key, value) if value.respond_to?(:strip)
+
+        extract_hash_values(value)
       end
     end
 
     # Map and strip the values on the array
     def self.mapped_values(value)
-      value.map { |v| v.strip unless v.nil? || v.frozen? } 
+      value.map { |v| v.strip unless v.nil? || v.frozen? }
     end
 
     # Three different ways to set properties
