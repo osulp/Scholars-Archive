@@ -6,44 +6,50 @@ module ScholarsArchive
     def self.scrub(params, hash_key)
       params[hash_key].each_pair do |attr, value|
         if value.is_a?(Array)
-          set_param_array(params, hash_key, attr, map_array(value))
+        # Set the mapped array on the params hash
+          set_values(params, hash_key, attr, mapped_values(value))
         # If value is a Hash
         elsif value.is_a? ActionController::Parameters
-          # Recursively digs into hashes until proper value is found
-          # set_param_value(params[hash_key][attr.to_s], extract_hash_values(value.to_hash).to_hash)
-          extract_hash_values(params, hash_key, attr, value.to_hash).to_hash
+          # Recursively dig into the hashes to find the raw value and set them on the params hash
+          set_values(params, hash_key, attr, extract_hash_values(value.to_hash).to_hash)
         elsif value.is_a? String
-          # Remove spaces from the params for single value fields
-          set_param_value(params, hash_key, attr, value)
+          # set the stripped string on the params 
+          set_params(params, hash_key, attr, value)
         end
       end
     end
 
     private
 
-    def self.extract_hash_values(params, hash_key, attr, hash)
+    def self.extract_hash_values(hash)
       hash.each_pair do |key, value|
         if value.respond_to?(:strip)
-          return set_param_value(params, hash_key, attr, value)
+          return strip_and_set(hash, key, value)
         else
-          extract_hash_values(params, hash_key, attr, value)
+          extract_hash_values(value)
         end
       end
     end
 
-    def self.set_param_value(params, hash_key, attr, value)
-      params[hash_key][attr.to_s] = value.strip unless value.nil? || value.frozen? 
+    # Map and strip the values on the array
+    def self.mapped_values(value)
+      value.map { |v| v.strip unless v.nil? || v.frozen? } 
     end
 
-    def self.set_param_array(params, hash_key, attr, value)
-      params[hash_key][attr.to_s] = value 
+    # Three different ways to set properties
+    # First is a stripped value on the params object
+    def self.set_params(params, hash_key, attr, value)
+      params[hash_key][attr.to_s] = value.strip unless value.nil? || value.frozen?
     end
 
-    def self.map_array(value)
-      value.map do |v|
-        # Removes spaces from array based values
-        v.strip unless v.nil? || v.frozen?
-      end 
+    # Second is a hash within the parmas object
+    def self.strip_and_set(hash, key, value)
+      hash[key] = value.strip unless value.nil? || value.frozen?
+    end
+
+    # Last is setting a raw value on the params object
+    def self.set_values(params, hash_key, attr, value)
+      params[hash_key][attr.to_s] = value
     end
   end
 end
