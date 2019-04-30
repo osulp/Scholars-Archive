@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+Blacklight.onLoad(function() {
     review_table_selector = '#under-review.tab-pane .datatable'
     if ( $.fn.dataTable.isDataTable(review_table_selector) ) {
         review_table = $(review_table_selector).DataTable();
