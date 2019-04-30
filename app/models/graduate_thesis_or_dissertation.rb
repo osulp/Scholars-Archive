@@ -12,8 +12,6 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   include ScholarsArchive::ExcludedEtdLicenses
   include ScholarsArchive::HasNestedOrderedProperties
 
-  before_save :strip_whitespace
-
   self.indexer = EtdIndexer
   # Change this to restrict which works can be added as a child.
   # self.valid_child_concerns = []
@@ -26,9 +24,5 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   private
   def set_defaults
     self.peerreviewed ||= 'FALSE'
-  end
-
-  def strip_whitespace
-    
   end
 end
