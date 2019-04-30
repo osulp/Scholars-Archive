@@ -1,3 +1,5 @@
+<!-- OVERRIDDEN from hyrax app/views/hyrax/my/works/index.html.erb -->
+
 <% provide :page_title, t("hyrax.admin.sidebar.works") %>
 
 <% provide :head do %>
@@ -16,6 +18,8 @@
   <% if current_ability.can_create_any_work? %>
     <div class="pull-right">
       <% if @create_work_presenter.many? %>
+        <!-- OVERRIDE to check for admin status -->
+
         <% if Flipflop.batch_upload? && current_user && current_user.admin? %>
           <%= link_to(
                 t(:'helpers.action.batch.new'),
@@ -31,6 +35,7 @@
               class: 'btn btn-primary'
             ) %>
       <% else # simple link to the first work type %>
+        <!-- OVERRIDE to check for admin status -->
         <% if Flipflop.batch_upload? && current_user && current_user.admin? %>
           <%= link_to(
               t(:'helpers.action.batch.new'),
