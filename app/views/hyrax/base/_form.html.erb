@@ -19,13 +19,13 @@
       <p class='deposit-help'><%= I18n.t("simple_form.instructions.deposit_help").html_safe %></p>
     <% end %>
 
-    <% if Flipflop.batch_upload? && f.object.new_record? %>
+    <% if Flipflop.batch_upload? && f.object.new_record? && current_user.admin? %>
         <% provide :metadata_tab do %>
             <!-- ScholarsArchive Note: After testing out the link 'Batch upload', found that it was missing the -->
             <!-- payload_concern argument, which refers to the class name of the corresponding work type. Updated the  -->
             <!-- new_batch_upload_path below so that we can prevent this error: -->
             <!-- https://github.com/samvera/hyrax/blob/master/app/controllers/hyrax/batch_uploads_controller.rb#L54 -->
-            <p class="switch-upload-type">To create a separate work for each of the files, go to <%= link_to "Batch upload", hyrax.new_batch_upload_path(payload_concern: curation_concern.model_name.name) %></p>
+            <p class="switch-upload-type">To create a separate work for each of the files, go to <%= link_to "Batch upload", hyrax.new_batch_upload_path(payload_concern: f.object.model.model_name.name) %></p>
         <% end %>
     <% end %>
     <%= render 'hyrax/base/guts4form', f: f %>
