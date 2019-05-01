@@ -988,6 +988,8 @@ RSpec/VerifiedDoubles:
     - 'spec/views/shared/_select_work_type_modal.html.erb_spec.rb'
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
     - 'spec/views/hyrax/base/_form_instructions_spec.rb'
+    - 'spec/views/hyrax/base/_form.html.erb_spec.rb'
+    - 'spec/views/hyrax/my/works/index.html.erb_spec.rb'
     - 'spec/views/honors_college_theses/edit_fields/_license.html.erb_spec.rb'
     - 'spec/services/scholars_archive/all_facet_values_service_spec.rb'
     - 'spec/inputs/multi_value_date_input_spec.rb'

@@ -19,8 +19,8 @@
     <div class="pull-right">
       <% if @create_work_presenter.many? %>
         <!-- OVERRIDE to check for admin status -->
-
-        <% if Flipflop.batch_upload? && current_user && current_user.admin? %>
+        <% Rails.logger.info current_ability.current_user.admin? %>
+        <% if Flipflop.batch_upload? && current_ability.current_user.admin? %>
           <%= link_to(
                 t(:'helpers.action.batch.new'),
                 '#',
@@ -36,7 +36,7 @@
             ) %>
       <% else # simple link to the first work type %>
         <!-- OVERRIDE to check for admin status -->
-        <% if Flipflop.batch_upload? && current_user && current_user.admin? %>
+        <% if Flipflop.batch_upload? && current_ability.current_user.admin? %>
           <%= link_to(
               t(:'helpers.action.batch.new'),
               hyrax.new_batch_upload_path(payload_concern: @create_work_presenter.first_model),
