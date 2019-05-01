@@ -117,9 +117,9 @@ group :development, :test do
   gem 'rubocop-rspec'
 end
 
-group :staging, :production do
-  gem 'clamav'
-end
+#group :staging, :production do
+#  gem 'clamav'
+#end
 
 group :test do
   gem 'capybara'
