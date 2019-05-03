@@ -1,4 +1,4 @@
-$(document).on('ready turbolinks:load', function() {
+Blacklight.onLoad(function() {
   $('#embargo_reason_select').change(function() {
     var val = $("#embargo_reason_select option:selected").val();
     if (val == 'Other...') {

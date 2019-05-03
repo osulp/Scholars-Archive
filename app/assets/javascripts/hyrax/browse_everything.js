@@ -2,10 +2,8 @@
 OVERRIDE: This files overrides browse_everything.js so that browseEverything 
 can be loaded properly. It seems to be a known issue in hyrax. See issue 169:
 https://github.com/samvera/browse-everything/issues/169
-
 Base file:
 https://github.com/samvera/hyrax/blob/v2.3.0/app/assets/javascripts/hyrax/browse_everything.js
-
 */
 
 //= require jquery.treetable
