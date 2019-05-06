@@ -5,4 +5,4 @@ en:
     select_type:
       default:
         name:               "Other Scholarly Content"
-        description:        "Content that does not fit the other categories. This includes undergraduate classwork, books, faculty presentations and posters, videos, etc."
+        description:        "Content that does not fit the other categories. This includes scholarly conference proceedings, undergraduate classwork, books, faculty presentations and posters, videos, etc."
