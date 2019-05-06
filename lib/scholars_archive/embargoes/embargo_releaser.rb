@@ -10,6 +10,8 @@ module ScholarsArchive::Embargoes
       expired_embargoes = Hyrax::EmbargoService.assets_with_expired_embargoes
       expired_embargoes.each do |embargo|
         work = ActiveFedora::Base.find(embargo.solr_document[:id])
+        next if work.under_embargo?
+
         logger.warn("Processing work id: #{work.id}")
         begin
           work.embargo_visibility!
