@@ -1,5 +1,5 @@
 namespace :scholars_archive do
-  desc "Enqueue a job to resolrize the repository objects"
+  desc "Remve abstract and title data from all graphs"
   task remove_abstract_and_title_data: :environment do
     all_records = ActiveFedora::Base.all
     all_records.each do |record|
