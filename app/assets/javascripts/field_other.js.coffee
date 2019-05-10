@@ -12,8 +12,36 @@
       $(class_selector).find('input').removeClass("hidden")
       $(class_selector).find('input').attr('required', 'required')
 
-    load_default_values = () ->
+    set_single_value_validation = (class_selector) ->
+      options = $(class_selector).prev().find('select option')
+      values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
+      $(class_selector).find('input').change ->
+        constraint = new RegExp('^(?!'+values.join('|')+')(.*)$', "")
+        if constraint.test(this.value)
+          this.setCustomValidity('')
+        else
+          this.setCustomValidity('\"' + this.value + '\" already exists, please select from the list.')
 
+    set_multi_value_validation = (class_selector) ->
+      options = $(class_selector).prev()[0].options
+      values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
+      $(class_selector).find('input').change ->
+        constraint = new RegExp('^(?!'+values.join('|')+')(.*)$', "")
+        if constraint.test(this.value)
+          this.setCustomValidity('')
+        else
+          this.setCustomValidity('\"' + this.value + '\" already exists, please select from the list.')
+
+    escape_special_chars = (input_str) ->
+      return input_str.replace(/\./g, '\\.').replace(/\(/g, '\\(').replace(/\)/g, '\\)')
+
+    append_end_of_str = (input_str) ->
+      if input_str.length > 0
+        return escape_special_chars(input_str) + '$'
+      else
+        return input_str
+
+    load_default_values = () ->
       default_degree_level = $('select.degree-level-selector :selected').val()
       if default_degree_level == "Other"
         show_field('.degree-level-other')
@@ -40,6 +68,7 @@
       $('.degree-level-other').find('input').val("")
       if selected == "Other"
         show_field('.degree-level-other')
+        set_single_value_validation('.degree-level-other')
       else
         hide_field('.degree-level-other')
 
@@ -48,6 +77,7 @@
       $('.degree-grantors-other').find('input').val("")
       if selected == "Other"
         show_field('.degree-grantors-other')
+        set_single_value_validation('.degree-grantors-other')
       else
         hide_field('.degree-grantors-other')
 
@@ -57,6 +87,7 @@
       $(selected_li).find('input').val("")
       if selected.val() == "Other"
         show_field(selected_li)
+        set_multi_value_validation(selected_li)
       else
         hide_field(selected_li)
     )
@@ -67,6 +98,7 @@
       $(selected_li).find('input').val("")
       if selected.val() == "Other"
         show_field(selected_li)
+        set_multi_value_validation(selected_li)
       else
         hide_field(selected_li)
     )
@@ -77,6 +109,7 @@
       $(selected_li).find('input').val("")
       if selected.val() == "Other"
         show_field(selected_li)
+        set_multi_value_validation(selected_li)
       else
         hide_field(selected_li)
     )
