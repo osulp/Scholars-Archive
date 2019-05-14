@@ -46,9 +46,8 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
   end
 
   def other_input_options(index, other_value, value)
+    show_hide_element = show_hide_class(other_value, value)
     options = build_field_options('')
-    show_hide_element = (other_value.present? || value == 'Other')? [] : ['hidden']
-    index_new = DateTime.now.to_i
     options[:value] = other_value if other_value.present?
     options[:placeholder] = 'Other value'
     options[:class] = ['form-control'] + show_hide_element
@@ -57,6 +56,10 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
     options[:name] = other_option_name
     options[:id] = index.zero? ? other_option_id : ''
     options
+  end
+
+  def show_hide_class(element, value)
+    (element.present? || value == 'Other')? [] : ['hidden']
   end
 
   def other_option_name
