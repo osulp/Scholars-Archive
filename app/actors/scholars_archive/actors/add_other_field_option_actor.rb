@@ -65,7 +65,7 @@ module ScholarsArchive
         env.attributes.delete('degree_field_other') if env.attributes['degree_field']
         env.attributes.delete('degree_name_other') if env.attributes['degree_name']
         env.attributes.delete('degree_grantors_other') if env.attributes['degree_grantors']
-        env.attributes.delete('degree_level_other') if env.attributes['degree_grantors']
+        env.attributes.delete('degree_level_other') if env.attributes['degree_level']
       end
 
       def other_affiliation_other_present? (env)
