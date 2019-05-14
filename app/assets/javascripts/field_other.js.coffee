@@ -14,16 +14,13 @@
 
     set_single_value_validation = (class_selector) ->
       options = $(class_selector).prev().find('select option')
-      values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
-      $(class_selector).find('input').change ->
-        constraint = new RegExp('^(?!'+values.join('|')+')(.*)$', "")
-        if constraint.test(this.value)
-          this.setCustomValidity('')
-        else
-          this.setCustomValidity('\"' + this.value + '\" already exists, please select from the list.')
+      set_validation(options, class_selector)
 
     set_multi_value_validation = (class_selector) ->
       options = $(class_selector).prev()[0].options
+      set_validation(options, class_selector)
+
+    set_validation = (options, class_selector) ->
       values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
       $(class_selector).find('input').change ->
         constraint = new RegExp('^(?!'+values.join('|')+')(.*)$', "")
@@ -60,6 +57,16 @@
           show_field(default_other_affiliation)
         else
           hide_field(default_other_affiliation)
+
+      $('select.degree-field-selector').each (i, element) =>
+        degree_field = $(element.closest('li')).find('.degree_field_other')
+        if $(element).val() == "Other"
+          set_multi_value_validation(degree_field)
+
+      $('select.degree-name-selector').each (i, element) =>
+        degree_name = $(element.closest('li')).find('.degree_name_other')
+        if $(element).val() == "Other"
+          set_multi_value_validation(degree_name)
 
     load_default_values()
 

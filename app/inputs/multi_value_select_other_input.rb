@@ -53,6 +53,7 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
     options[:placeholder] = 'Other value'
     options[:class] = ['form-control'] + show_hide_element
     options[:type] = (show_hide_element.include? 'hidden')? show_hide_element : ['text']
+    options[:required] = 'required' if show_hide_element.empty?
     options[:name] = other_option_name
     options[:id] = index.zero? ? other_option_id : ''
     options
