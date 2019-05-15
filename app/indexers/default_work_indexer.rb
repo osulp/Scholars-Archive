@@ -54,6 +54,14 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       else
         solr_doc['title_ssi'] = object.title.first
       end
+
+      # Check if embargo is active
+      if object.embargo && object.embargo.active?
+        solr_doc['embargo_date_range_ssim'] = "#{object.embargo.create_date.to_date.to_s} - #{object.embargo.embargo_release_date.to_date.to_s}"
+      elsif object.embargo && !object.embargo.active? 
+        solr_doc['embargo_date_range_ssim'] = "#{object.embargo.create_date.to_date.to_s} - #{object.embargo.embargo_history.first.split(".").first.split(" ").last}"
+      else
+      end
     end
   end
 end
