@@ -42,11 +42,11 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     end
   end
 
-  def self.embargo_date_range_string(solr_doc, start_date, end_date)
+  def embargo_date_range_string(solr_doc, start_date, end_date)
     solr_doc['embargo_date_range_ssim'] = "#{start_date} to #{end_date}"
   end
 
-  def self.title_for_solr_doc(object)
+  def title_for_solr_doc(object)
     if object.nested_ordered_title.first.present?
       solr_doc['title_ssi'] = object.nested_ordered_title.first.title.first
     else
@@ -54,7 +54,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     end
   end
 
-  def self.triple_powered_properties_for_solr_doc(object)
+  def triple_powered_properties_for_solr_doc(object)
     object.triple_powered_properties.each do |o|
       labels = []
       if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
