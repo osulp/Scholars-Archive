@@ -19,7 +19,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       license_labels = ScholarsArchive::LicenseService.new.all_labels(object.license)
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
-      triple_powered_properties_for_solr_doc(object)
+      triple_powered_properties_for_solr_doc(object, solr_doc)
       solr_doc['based_near_linked_ssim'] = object.based_near.each.map { |location| location.solrize.second[:label] }
       solr_doc['based_near_linked_tesim'] = object.based_near.each.map { |location| location.solrize.second[:label] }
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
@@ -31,7 +31,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['peerreviewed_label_ssim'] = peerreviewed_label
       solr_doc['peerreviewed_label_tesim'] = peerreviewed_label
       solr_doc['replaces_ssim'] = object.replaces
-      title_for_solr_doc(object)
+      title_for_solr_doc(object, solr_doc)
 
       # Check if embargo is active
       if object&.embargo && object.embargo.active?
@@ -46,7 +46,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     solr_doc['embargo_date_range_ssim'] = "#{start_date} to #{end_date}"
   end
 
-  def title_for_solr_doc(object)
+  def title_for_solr_doc(object, solr_doc)
     if object.nested_ordered_title.first.present?
       solr_doc['title_ssi'] = object.nested_ordered_title.first.title.first
     else
@@ -54,7 +54,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     end
   end
 
-  def triple_powered_properties_for_solr_doc(object)
+  def triple_powered_properties_for_solr_doc(object, solr_doc)
     object.triple_powered_properties.each do |o|
       labels = []
       if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
