@@ -44,7 +44,6 @@
       return false
 
     clear_error = (class_selector) ->
-      $('.multi_value.form-group').manage_fields()
       $(class_selector).find('input').parent().removeClass('has-error')
       $(class_selector).find('.help-block').text('')
 
