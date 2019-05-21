@@ -8,6 +8,7 @@ module ScholarsArchive
         if value.is_a?(Array)
           # Set the mapped array on the params hash
           set_values(params, hash_key, attr, mapped_values(value))
+
           # If value is a Hash
         elsif value.is_a? ActionController::Parameters
           # Recursively dig into the hashes
@@ -30,7 +31,7 @@ module ScholarsArchive
 
     # Map and strip the values on the array
     def self.mapped_values(value)
-      return value.map { |val| extract_hash_values(val) } if value.first.is_a? ActionController::Parameters
+      return value.map { |val| val.each_pair { |k, v| strip_and_set(val, k, v) } } if value.first.is_a? ActionController::Parameters
 
       value.map { |v| v.strip unless v.nil? || v.frozen? }
     end
