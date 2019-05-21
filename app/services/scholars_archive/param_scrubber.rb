@@ -30,7 +30,11 @@ module ScholarsArchive
 
     # Map and strip the values on the array
     def self.mapped_values(value)
-      value.map { |v| v.strip unless v.nil? || v.frozen? }
+      if value.first.is_a? Hash
+        value.map{ |val| extract_hash_values(hash) }
+      else
+        value.map { |v| v.strip unless v.nil? || v.frozen? }
+      end
     end
 
     # Three different ways to set properties
