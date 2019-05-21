@@ -30,11 +30,13 @@ module ScholarsArchive
 
     # Map and strip the values on the array
     def self.mapped_values(value)
+      new_values = []
       if value.first.is_a? ActionController::Parameters
-        value.map { |val| extract_hash_values(val) }
+        new_values = value.map { |val| extract_hash_values(val) }
       else
-        value.map { |v| v.strip unless v.nil? || v.frozen? }
+        new_values = value.map { |v| v.strip unless v.nil? || v.frozen? }
       end
+      new_values
     end
 
     # Three different ways to set properties
