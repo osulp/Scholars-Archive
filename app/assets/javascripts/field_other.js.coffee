@@ -2,11 +2,9 @@
   Blacklight.onLoad ->
     hide_field = (class_selector) ->
       $(class_selector).addClass("hidden")
-      $(class_selector).removeClass('required')
       $(class_selector).find('input').attr("type", "hidden")
       $(class_selector).find('input').addClass("hidden")
       $(class_selector).find('input').removeAttr('required')
-      $(class_selector).find('input').removeClass('required')
       $(class_selector).find('input').parent().removeClass('has-error')
       $(class_selector).find('.help-block').text('')
 
@@ -29,18 +27,32 @@
       input = $(class_selector).find('input')[0]
       display = (e) ->
         values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
+        prepend_help_block(class_selector)
         constraint = new RegExp('^(?!'+values.join('|')+')(.*)$', "")
-        unless constraint.test(input.value)
-          e.preventDefault()
-          e.stopPropagation()
-          $("#form-progress .panel-footer:first").removeClass("hidden").find("input.btn-primary").attr("disabled", false)
-          $("#form-progress .panel-footer:last").addClass("hidden")
-          prepend_help_block(class_selector)
-          $(class_selector).find('input').parent().addClass('has-error')
-          $(class_selector).find('.help-block').text('"'+ input.value + '" already exists, please select from the list.')
-          $(class_selector).closest('.form-group')[0].scrollIntoView(true)
-          return false
+        if constraint.test(input.value)
+          clear_error(class_selector)
+        else
+          set_error(e, input.value, class_selector)
+
       form.addEventListener 'submit', display, false
+
+    set_error = (e, input_value, class_selector) ->
+      cancel_save(e)
+      $(class_selector).find('input').parent().addClass('has-error')
+      $(class_selector).find('.help-block').text('"'+ input_value + '" already exists, please select from the list.')
+      $(class_selector).closest('.form-group')[0].scrollIntoView(true)
+      return false
+
+    clear_error = (class_selector) ->
+      $('.multi_value.form-group').manage_fields()
+      $(class_selector).find('input').parent().removeClass('has-error')
+      $(class_selector).find('.help-block').text('')
+
+    cancel_save = (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      $("#form-progress .panel-footer:first").removeClass("hidden").find("input.btn-primary").attr("disabled", false)
+      $("#form-progress .panel-footer:last").addClass("hidden")
 
     escape_special_chars = (input_str) ->
       return input_str.replace(/\./g, '\\.').replace(/\(/g, '\\(').replace(/\)/g, '\\)')
