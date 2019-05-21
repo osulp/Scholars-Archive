@@ -21,8 +21,8 @@ describe ScholarsArchive::ParamScrubber do
   let(:ed2_params) do
     {
       default: {
-        array_hash: [ActionController::Parameters.new({value: +'        Spaces   '}.with_indifferent_access)]
-      }.with_indifferent_access,
+        array_hash: [ActionController::Parameters.new({ value: +'        Spaces   ' }.with_indifferent_access)]
+      }.with_indifferent_access
     }.with_indifferent_access
   end
 
