@@ -3,25 +3,7 @@
 require 'csv'
 STDOUT.sync = true
 
-##
-# Expects a CSV in the format of id,from,to,property to change the value of a property for a specific ID. The
-# CSV needs to include the header row.
-#
-# Single value metadata WILL ALWAYS REPLACE existing metadata with the new value in the 'to' column, regardless
-# of which valid value is in the 'from' column. For multi-value metadata, the CSV 'from' column requires some
-# sort of operation or value to complete, see following details:
-# -------------------------------------------------------------------------
-# * = all/any value should be replaced with value in the 'to' column
-# + = add value in the 'to' column to existing metadata values
-# [String] = replace the existing metadata value with the value in the 'to' column
-# --------------------------------------------------------------------------
-#
-# Execute like so: $bundle exec rails scholars_archive:bulk_update_csv csv=/full/path/to/spreadsheet.csv
-#
-# See below for example csv:
-# -----------------------
-# id,from,to,property
-# n296x1347,http://rightsstatements.org/vocab/CNE/1.0/,http://rightsstatements.org/vocab/InC/1.0/,rights_statement
+# GENERIC DESCRIPTION
 namespace :scholars_archive do
   desc "Bulk ingest works based on a simple CSV"
   task bulk_update_csv: :environment do
@@ -52,6 +34,11 @@ def ingest_work(logger, row)
   # Set properties
   work = set_work_properties(logger, work, row)
   work&.save
+
+  # TODO GENERATE FILE SET BASED ON row['link to file'] AND ADD FILE SET TO WORK
+
+
+  # TODO ADD WORK TO COLLECTION
 end
 
 def set_work_properties(logger, work, row)
