@@ -6,7 +6,7 @@ STDOUT.sync = true
 # GENERIC DESCRIPTION
 namespace :scholars_archive do
   desc "Bulk ingest works based on a simple CSV"
-  task bulk_update_csv: :environment do
+  task bulk_ingest_csv: :environment do
     csv_file = ENV['csv']
     process_csv(csv_file)
   end
