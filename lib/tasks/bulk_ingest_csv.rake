@@ -35,8 +35,12 @@ def ingest_work(logger, row)
   work = set_work_properties(logger, work, row)
   work&.save
 
-  # TODO GENERATE FILE SET BASED ON row['link to file'] AND ADD FILE SET TO WORK
-
+  # Generates uploaded file for work and attaches said file to that work
+  f = File.open("/data/tmp/bulk-ingest/#{row['filename']}")
+  u = User.first
+  uploaded = Hyrax::UploadedFile.create(user: u, file_set_uri: "file:///data/tmp/bulk-ingest/#{row['filename']}", file: f)
+  actor_env = Hyrax::Actors::Environment.new(work, u.ability, {"uploaded_files"=>[uploaded.id]})
+  Hyrax::CurationConcern.actor.update(actor_env)
 
   # Adds the work to the collection
   collection.add_member_objects([work.id])
