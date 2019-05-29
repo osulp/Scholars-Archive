@@ -26,6 +26,7 @@ end
 
 def ingest_work(logger, row)
   # Get work type
+
   work_type = row['worktype'.to_sym].gsub(' ', '').constantize
   # Get collection
   collection = Collection.find(row['collection_id'.to_sym])
