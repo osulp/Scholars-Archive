@@ -12,7 +12,7 @@ namespace :scholars_archive do
   end
 end
 
-def process_csv(path)
+def process_ingest_csv(path)
   # Create logger
   datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
   logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-ingest-csv-#{datetime_today}.log")
@@ -26,9 +26,9 @@ end
 
 def ingest_work(logger, row)
   # Get work type
-  work_type = row['worktype'].gsub(' ', '').constantize
+  work_type = row['worktype'.to_sym].gsub(' ', '').constantize
   # Get collection
-  collection = ActiveFedora::Base.find(row['collection id'])
+  collection = Collection.find(row['collection_id'.to_sym])
   # Generate work based on work type
   work = work_type.new
   # Set properties
@@ -56,11 +56,11 @@ def set_work_properties(logger, work, row)
   nested_ordered_additional_information_attributes = []
 
   # Iterate over csv row
-  row.except('worktype', 'filename', 'link to file', 'collection id').each_pair do |property, value|
+  row.each do |property, value|
     # Check if field is an ordered field
     if ordered_properties.include? property.split(' ').first
       # Grab field name and build attributes
-      case property.split(' ').first 
+      case property.to_s.split(' ').first 
       when 'title'
         nested_ordered_title_attributes << process_ordered_field(propery, value) unless value.empty?
       when 'creator'
@@ -74,7 +74,7 @@ def set_work_properties(logger, work, row)
       else
       end
     # Check multiplicity
-    elsif Hyrax::FormMetadataService.multiple?(c, row[property])
+    elsif Hyrax::FormMetadataService.multiple?(work, row[property])
       # If no value exists, set to array
       if work[property].empty?
         work[property] = [value] 
@@ -107,4 +107,8 @@ end
 
 def ordered_properties
   %w[title creator abstract contributor additional_information]
+end
+
+def skip_props
+  %i[worktype filename link_to_file collection_id]
 end
