@@ -38,7 +38,8 @@ def ingest_work(logger, row)
   # TODO GENERATE FILE SET BASED ON row['link to file'] AND ADD FILE SET TO WORK
 
 
-  # TODO ADD WORK TO COLLECTION
+  # Adds the work to the collection
+  collection.add_member_objects([work.id])
 end
 
 def set_work_properties(logger, work, row)
