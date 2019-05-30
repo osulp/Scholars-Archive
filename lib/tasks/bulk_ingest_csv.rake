@@ -8,11 +8,12 @@ namespace :scholars_archive do
   desc "Bulk ingest works based on a simple CSV"
   task bulk_ingest_csv: :environment do
     csv_file = ENV['csv']
-    process_csv(csv_file)
+    path = ENV['path']
+    process_ingest_csv(csv_file, path)
   end
 end
 
-def process_ingest_csv(path)
+def process_ingest_csv(path, file_path)
   # Create logger
   datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
   logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-ingest-csv-#{datetime_today}.log")
@@ -20,26 +21,26 @@ def process_ingest_csv(path)
 
   csv = CSV.table(path, converters: nil)
   csv.each do |row|
-    ingest_work(logger, row)
+    ingest_work(logger, row, file_path)
   end
 end
 
-def ingest_work(logger, row)
+def ingest_work(logger, row, file_path)
   # Get work type
-
   work_type = row['worktype'.to_sym].gsub(' ', '').constantize
   # Get collection
   collection = Collection.find(row['collection_id'.to_sym])
   # Generate work based on work type
   work = work_type.new
+  u = User.find_by_username("scholarsarchive")
   # Set properties
   work = set_work_properties(logger, work, row)
+  work.depositor = u.username
   work&.save
 
   # Generates uploaded file for work and attaches said file to that work
-  f = File.open("/data/tmp/bulk-ingest/#{row['filename']}")
-  u = User.first
-  uploaded = Hyrax::UploadedFile.create(user: u, file_set_uri: "file:///data/tmp/bulk-ingest/#{row['filename']}", file: f)
+  f = File.open("#{file_path}/#{ row[:filename] }")
+  uploaded = Hyrax::UploadedFile.create(user: u, file_set_uri: "file://#{file_path}/#{row[:filename]}", file: f)
   actor_env = Hyrax::Actors::Environment.new(work, u.ability, {"uploaded_files"=>[uploaded.id]})
   Hyrax::CurationConcern.actor.update(actor_env)
 
@@ -49,7 +50,6 @@ end
 
 def set_work_properties(logger, work, row)
   # Grab the class model for multiplicity checks
-  class_model = work.has_model.first.constantize
   nested_ordered_title_attributes = []
   nested_ordered_creator_attributes = []
   nested_ordered_abstract_attributes = []
@@ -58,34 +58,36 @@ def set_work_properties(logger, work, row)
 
   # Iterate over csv row
   row.each do |property, value|
+    next if skip_props.include? property
+
     # Check if field is an ordered field
-    if ordered_properties.include? property.split(' ').first
-      # Grab field name and build attributes
-      case property.to_s.split(' ').first 
+    if ordered_properties.include? property.to_s.split('_').first
+    # Grab field name and build attributes
+      case property.to_s.split('_').first
       when 'title'
-        nested_ordered_title_attributes << process_ordered_field(propery, value) unless value.empty?
+        nested_ordered_title_attributes << process_ordered_field(property, row[property]) unless row[property].nil?
       when 'creator'
-        nested_ordered_creator_attributes << process_ordered_field(propery, value) unless value.empty?
+        nested_ordered_creator_attributes << process_ordered_field(property, row[property]) unless row[property].nil?
       when 'abstract'
-        nested_ordered_abstract_attributes << process_ordered_field(propery, value) unless value.empty?
+        nested_ordered_abstract_attributes << process_ordered_field(property, row[property]) unless row[property].nil?
       when 'contributor'
-        nested_ordered_contributor_attributes << process_ordered_field(propery, value) unless value.empty?
+        nested_ordered_contributor_attributes << process_ordered_field(property, row[property]) unless row[property].nil?
       when 'additional_information'
-        nested_ordered_additional_information_attributes << process_ordered_field(propery, value) unless value.empty?
+        nested_ordered_additional_information_attributes << process_ordered_field(property, row[property]) unless row[property].nil?
       else
       end
     # Check multiplicity
-    elsif Hyrax::FormMetadataService.multiple?(work, row[property])
+    elsif Hyrax::FormMetadataService.multiple?(work.class, property) || property.to_s == "rights_statement"
       # If no value exists, set to array
       if work[property].empty?
-        work[property] = [value] 
+        work[property] = [row[property]]
       # If value exists, add value to existing values
       else
-        work[property] << value 
+        work[property] << row[property]
       end
     # Non Multiple field
     else
-      work[property] = value
+      work[property] = row[property]
     end
   end
 
@@ -95,14 +97,15 @@ def set_work_properties(logger, work, row)
   work.nested_ordered_abstract_attributes = nested_ordered_abstract_attributes
   work.nested_ordered_contributor_attributes = nested_ordered_contributor_attributes
   work.nested_ordered_additional_information_attributes = nested_ordered_additional_information_attributes
+  work
 end
 
 def process_ordered_field(property, value)
   # Grab the property name
-  if property.split(' ').second.nil?
-    return { index: 0, property.split(' ').first.to_s => value }
+  if property.to_s.split('_').second.nil?
+    return { index: 0, property.to_s.split('_').first => value }
   else
-    return { index: property.split(' ').second.to_i, property.split(' ').first.to_s => value }
+    return { index: property.to_s.split('_').second.to_i, property.to_s.split('_').first => value }
   end
 end
 
