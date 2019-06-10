@@ -95,6 +95,11 @@ group :staging, :production do
   gem 'ddtrace'
 end
 
+# Honeycomb
+gem 'sequel'
+gem 'honeycomb-beeline'
+gem 'rack-honeycomb', '~> 0.5.0'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
