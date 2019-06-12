@@ -42,7 +42,7 @@
                           <%= safe_join(document.creator, tag(:br)) %>
                         </td>
                         <td>
-                          <%= DateTime.parse(document['date_modified_dtsi']).try(:to_formatted_s, :db) %>
+                          <%= local_time_from_utc(document['date_modified_dtsi']) %>
                         </td>
                         <td>
                           <span class="state state-pending"><%= document.workflow_state %></span>
