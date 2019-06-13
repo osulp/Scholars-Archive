@@ -77,6 +77,8 @@ def update_property(logger, work, row)
 end
 
 def is_property_multiple?(work, row)
+  # rights_statement is stored in a multi-valued field even though it's considered a single value.
+  return true if row[:property] == 'rights_statement'
   class_model = work.has_model.first.constantize
   Hyrax::FormMetadataService.multiple?(class_model,row[:property])
 end
