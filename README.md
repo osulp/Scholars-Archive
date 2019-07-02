@@ -15,12 +15,12 @@ The details provided assume that the official Docker daemon is running in the ba
 ## Build the base application container
 **Important:** Rebuilding the docker container is required whenever Gemfile or Dockerfile updates affect the application.
 
-`$ docker-compose build`
+`$ docker-compose build web`
 
 ## Start all of the services
 
-- `$ docker-compose up` : Start the containers in the foreground
-- `$ docker-compose up -d` : Start the containers in the background
+- `$ docker-compose up web` : Start the containers in the foreground
+- `$ docker-compose up -d web` : Start the containers in the background
 
 ## Create an administrator
 
