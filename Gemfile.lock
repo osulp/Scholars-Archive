@@ -158,6 +158,8 @@ GEM
       activemodel (= 5.0.7.2)
       activesupport (= 5.0.7.2)
       arel (~> 7.0)
+    activerecord-honeycomb (0.5.1)
+      libhoney
     activerecord-import (1.0.2)
       activerecord (>= 3.2)
     activesupport (5.0.7.2)
@@ -863,6 +865,7 @@ GEM
       rake
     select2-rails (3.5.10)
       thor (~> 0.14)
+    sequel (5.22.0)
     shex (0.5.2)
       ebnf (~> 1.1)
       json-ld (>= 2.2, < 4.0)
@@ -1024,6 +1027,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   puma_worker_killer
+  rack-honeycomb (~> 0.5.0)
   rails (~> 5.0.2)
   rails-controller-testing
   recaptcha
@@ -1042,6 +1046,7 @@ DEPENDENCIES
   rubycas-client-rails!
   rubyzip (~> 1.2.2)
   sass-rails (~> 5.0)
+  sequel
   shoulda-matchers!
   sidekiq (= 5.0.2)
   simple_form (~> 3.2, <= 3.5.0)

@@ -7,7 +7,7 @@ services:
       - 80
     ports:
       - 80:80
-  web:
+  server:
     # Uncomment the following line to run the web application ready for a debugger (RubyMine, VSCode) to attach
     #command: bash -c "rm -f tmp/pids/server.pid && bundle exec rdebug-ide --host 0.0.0.0 --port 1234 -- bin/rails server -p 3000 -b 0.0.0.0"
     ports:
