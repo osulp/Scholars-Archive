@@ -137,3 +137,6 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityOpenlyPublishedEnvironmentalSensingLab"
   term: "Openly Published Environmental Sensing Lab"
   active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityMarineMammalInstitute"
+  term: "Marine Mammal Institute"
+  active: true
