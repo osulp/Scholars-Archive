@@ -226,8 +226,8 @@ GEM
       openseadragon (>= 0.2.0)
       rails
     blacklight_advanced_search (6.3.1)
-      blacklight (~> 6.0, >= 6.0.1)
       blacklight (>= 6.0.2)
+      blacklight (~> 6.0, >= 6.0.1)
       jquery-rails
       parslet
       rails (>= 3.0)
@@ -615,7 +615,7 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
-    mini_magick (4.9.3)
+    mini_magick (4.9.5)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     mini_racer (0.2.4)
