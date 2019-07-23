@@ -1,4 +1,4 @@
-FROM ruby:2.5.1 as builder
+FROM ruby:2.5.5 as builder
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -12,11 +12,11 @@ RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
 RUN gem install bundler
 
 RUN apt-get update -qq && apt-get upgrade -y && \
-  apt-get install -y build-essential libpq-dev mysql-client nodejs libreoffice imagemagick unzip ghostscript yarn
+  apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript yarn
 
 # install clamav for antivirus
 # fetch clamav local database
-RUN apt-get install -y clamav-freshclam clamav-daemon libclamav-dev
+RUN apt-get install -y clamav-freshclam clamav-daemon libclamav-dev clamav-base
 RUN mkdir -p /var/lib/clamav && \
   wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
   wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
