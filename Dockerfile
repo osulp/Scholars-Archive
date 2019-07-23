@@ -16,12 +16,12 @@ RUN apt-get update -qq && apt-get upgrade -y && \
 
 # install clamav for antivirus
 # fetch clamav local database
-RUN apt-get install -y clamav-freshclam clamav-daemon libclamav-dev clamav-base
-RUN mkdir -p /var/lib/clamav && \
-  wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
-  wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
-  wget -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
-  chown clamav:clamav /var/lib/clamav/*.cvd
+# RUN apt-get install -y clamav-freshclam clamav-daemon libclamav-dev clamav-base
+# RUN mkdir -p /var/lib/clamav && \
+#   wget -O /var/lib/clamav/main.cvd http://database.clamav.net/main.cvd && \
+#   wget -O /var/lib/clamav/daily.cvd http://database.clamav.net/daily.cvd && \
+#   wget -O /var/lib/clamav/bytecode.cvd http://database.clamav.net/bytecode.cvd && \
+#   chown clamav:clamav /var/lib/clamav/*.cvd
 
 RUN mkdir -p /opt/fits && \
   curl -fSL -o /opt/fits-1.0.5.zip http://projects.iq.harvard.edu/files/fits/files/fits-1.0.5.zip && \
