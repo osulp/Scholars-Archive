@@ -42,7 +42,7 @@ gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
 gem 'blacklight_advanced_search'
 
 # MySQL for staging/production servers
-gem 'mysql2', '~> 0.3.18'
+gem 'mysql2', '~> 0.5.1'
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.8.0'
 gem 'capistrano-passenger'
@@ -123,7 +123,7 @@ group :development, :test do
 end
 
 group :staging, :production do
- gem 'clamav'
+#  gem 'clamav'
 end
 
 group :test do
