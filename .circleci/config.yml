@@ -29,7 +29,7 @@ jobs:
                   key: gemfile-{{ checksum "Gemfile.lock" }}
             - run:
                   name: Update Bundler 
-                  command: sudo gem install bundler
+                  command: sudo gem install --force bundler
             - run:
                   name: Install Ruby Dependencies
                   command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
