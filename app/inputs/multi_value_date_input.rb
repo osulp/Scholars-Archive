@@ -163,14 +163,14 @@ class MultiValueDateInput < MultiValueInput
     options['data-id'.to_sym] = "#{attribute_name}_#{index}"
     options['data-index'.to_sym] = index
     options['data-term'.to_sym] = attribute_name
-    options[:class] = ['form-check-multiple-input', 'toggle_date_range']
+    options[:class] = %w[form-check-multiple-input toggle_date_range]
     options
   end
 
   def start_date_options(index)
     options = build_field_options('', index)
     options[:placeholder] = 'Start date'
-    options[:class] = ['form-control', 'timepicker_start']
+    options[:class] = %w[form-control timepicker_start]
     options[:type] = ['text']
     options[:name] = start_date_id(index)
     options[:id] = start_date_id(index)
@@ -180,7 +180,7 @@ class MultiValueDateInput < MultiValueInput
   def end_date_options(index)
     options = build_field_options('', index)
     options[:placeholder] = 'End date'
-    options[:class] = ['form-control', 'timepicker_end']
+    options[:class] = %w[form-control timepicker_end]
     options[:type] = ['text']
     options[:name] = end_date_id(index)
     options[:id] = end_date_id(index)

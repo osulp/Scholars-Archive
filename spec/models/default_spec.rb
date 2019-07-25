@@ -180,7 +180,7 @@ RSpec.describe Default do
       context 'which spans decades' do
         let(:date) { '1910-1920' }
         it 'should have two entries' do
-          expect(facet).to eq ['1910-1919', '1920-1929']
+          expect(facet).to eq %w[1910-1919 1920-1929]
         end
         context 'which is more than 30 years' do
           let(:date) { '1900-1940' }

@@ -8,13 +8,13 @@ describe ScholarsArchive::AdminSetSelectService do
   describe '#select' do
     context 'When only one select_option exists' do
       it 'returns an admin set' do
-        expect(service.select('Article', [['Article', 'Article-ID']])).to eq ['Article', 'Article-ID']
+        expect(service.select('Article', [%w[Article Article-ID]])).to eq %w[Article Article-ID]
       end
     end
 
     context 'When multiple select_options exist' do
       it 'returns the right one' do
-        expect(service.select('Article', [['Blah', 'Blah-ID'], ['Article', 'Article-ID']])).to eq ['Article', 'Article-ID']
+        expect(service.select('Article', [%w[Blah Blah-ID], %w[Article Article-ID]])).to eq %w[Article Article-ID]
       end
     end
 
@@ -23,7 +23,7 @@ describe ScholarsArchive::AdminSetSelectService do
         allow(ENV).to receive(:[]).with('SCHOLARSARCHIVE_DEFAULT_ADMIN_SET').and_return('Default Admin Set')
       end
       it 'returns the right one' do
-        expect(service.select('Article', [['Blah', 'Blah-ID'], ['Blahblah', 'Blahblah-ID'], ['Default Admin Set', 'Default0ID']])).to eq ['Default Admin Set', 'Default0ID']
+        expect(service.select('Article', [%w[Blah Blah-ID], %w[Blahblah Blahblah-ID], ['Default Admin Set', 'Default0ID']])).to eq ['Default Admin Set', 'Default0ID']
       end
     end
   end
