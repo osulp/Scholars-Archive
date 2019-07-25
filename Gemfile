@@ -96,9 +96,7 @@ group :staging, :production do
 end
 
 # Honeycomb
-#gem 'sequel'
 gem 'honeycomb-beeline', '>= 1.0.0'
-#gem 'rack-honeycomb', '~> 0.5.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
