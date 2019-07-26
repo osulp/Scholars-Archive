@@ -15,6 +15,6 @@ RSpec.describe 'hyrax/base/_social_media.html.erb', type: :view do
     expect(page).to have_link '', href: 'https://twitter.com/intent/tweet/?text=Example&url=http%3A%2F%2Fexample.com%2F'
   end
   it 'renders Copy Share Link button' do
-    expect(page).to have_link 'Copy Share Link'
+    expect(page).to have_button 'Copy Share Link'
   end
 end
