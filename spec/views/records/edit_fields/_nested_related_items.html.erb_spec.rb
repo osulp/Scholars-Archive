@@ -33,18 +33,18 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
     let(:test_url) { 'https://oregondigital.org/catalog/' }
     let(:test_item) do
       {
-          label: test_label,
-          related_url: test_url
+        label: test_label,
+        related_url: test_url
       }
     end
 
     let(:attributes) {
       {
-          title: ['test'],
-          creator: ['Blah'],
-          rights_statement: ['blah.blah'],
-          resource_type: ['blah'],
-          nested_related_items_attributes: [test_item]
+        title: ['test'],
+        creator: ['Blah'],
+        rights_statement: ['blah.blah'],
+        resource_type: ['blah'],
+        nested_related_items_attributes: [test_item]
       }
     }
 

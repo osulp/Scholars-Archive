@@ -17,10 +17,10 @@ RSpec.describe ConferenceProceedingsOrJournalPresenter do
   end
   let(:file) do
     ConferenceProceedingsOrJournal.new(
-          id: '123abc',
-          nested_ordered_title_attributes: nested_ordered_title_attributes,
-          depositor: user.user_key,
-          label: 'filename.tif')
+      id: '123abc',
+      nested_ordered_title_attributes: nested_ordered_title_attributes,
+      depositor: user.user_key,
+      label: 'filename.tif')
   end
   let(:user) { double(user_key: 'sarah') }
   let(:solr_properties) do

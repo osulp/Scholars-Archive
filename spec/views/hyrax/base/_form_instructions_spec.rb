@@ -10,25 +10,25 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
   end
   let(:academic_unit_sorted_all_options) do
     [
-        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
+      ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+      ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
     ]
   end
   let(:academic_unit_sorted_current_options) do
     [
-        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
+      ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+      ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
     ]
   end
   let(:test_sorted_all_options) do
     [
-        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
-        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
+      ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi'],
+      ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
     ]
   end
   let(:test_sorted_current_options) do
     [
-        ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi']
+      ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi']
     ]
   end
   let(:work) {

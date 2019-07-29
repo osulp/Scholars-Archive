@@ -54,10 +54,10 @@ module ScholarsArchive
 
     def label_dates_query(graph, label_predicate)
       patterns = {
-          label_date: {
-              label_predicate => :label,
-              RDF::Vocab::DC.date => :date
-          }
+        label_date: {
+          label_predicate => :label,
+          RDF::Vocab::DC.date => :date
+        }
       }
       query = RDF::Query.new(patterns)
       query.execute(graph).to_a
