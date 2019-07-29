@@ -1185,6 +1185,12 @@ RSpec/DescribedClass:
     - 'spec/inputs/multi_value_label_url_input_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
 
+RSpec/LeakyConstantDeclaration:
+  Exclude:
+    -  'spec/inputs/multi_value_date_input_spec.rb'
+    -  'spec/inputs/multi_value_label_url_input_spec.rb'
+    -  'spec/inputs/multi_value_ordered_input_spec.rb'
+
 RSpec/EmptyExampleGroup:
   Exclude:
     - 'spec/models/search_builder_spec.rb'

@@ -126,7 +126,7 @@ module ApplicationHelper
 
   def max_page_number(facet_object, pagination_object, controller)
     facet_values = ScholarsArchive::AllFacetValuesService.new.call(facet_object, controller)
-    (facet_values.length.to_f / pagination_object.limit.to_f).ceil
+    (facet_values.length.to_f / pagination_object.limit).ceil
   end
 
   def option_visible_to_depositor?(model, user)
