@@ -11,8 +11,4 @@ Honeycomb.configure do |config|
     send_data.action_controller
     deliver.action_mailer
   ].freeze
-
-  if %w[test].include? Rails.env
-    ENV[HONEYCOMB_DEBUG] = true
-  end
 end
