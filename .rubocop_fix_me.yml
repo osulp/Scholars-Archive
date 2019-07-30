@@ -218,7 +218,7 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'spec/features/create_graduate_thesis_or_dissertation_spec.rb'
@@ -234,7 +234,7 @@ Layout/IndentArray:
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
     - 'spec/views/hyrax/base/_form_instructions_spec.rb'
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'app/controllers/catalog_controller.rb'
@@ -1185,6 +1185,12 @@ RSpec/DescribedClass:
     - 'spec/inputs/multi_value_label_url_input_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
 
+RSpec/LeakyConstantDeclaration:
+  Exclude:
+    -  'spec/inputs/multi_value_date_input_spec.rb'
+    -  'spec/inputs/multi_value_label_url_input_spec.rb'
+    -  'spec/inputs/multi_value_ordered_input_spec.rb'
+
 RSpec/EmptyExampleGroup:
   Exclude:
     - 'spec/models/search_builder_spec.rb'
@@ -1226,7 +1232,7 @@ Style/TrailingCommaInHashLiteral:
     - 'spec/models/solr_document_spec.rb'
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
 
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   Exclude:
     - 'spec/presenters/hyrax/purchased_e_resource_presenter_spec.rb'
     - 'spec/presenters/hyrax/default_presenter_spec.rb'

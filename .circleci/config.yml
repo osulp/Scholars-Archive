@@ -9,6 +9,7 @@ jobs:
                   SCHOLARSARCHIVE_DB_PORT: '3306'
                   SCHOLARSARCHIVE_DB_USERNAME: root
                   SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
+                  HONEYCOMB_DEBUG: true
             - image: circleci/mysql:5.7.22
               environment:
                   MYSQL_DATABASE: sa_test
@@ -27,6 +28,9 @@ jobs:
             - checkout
             - restore_cache:
                   key: gemfile-{{ checksum "Gemfile.lock" }}
+            - run:
+                  name: Update Bundler 
+                  command: sudo gem install --force bundler
             - run:
                   name: Install Ruby Dependencies
                   command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3

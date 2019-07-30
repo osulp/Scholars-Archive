@@ -10,12 +10,12 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   end
   let(:attributes) {
     {
-        title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
-        degree_field: ['Other'],
-        degree_level: 'Other',
-        degree_name: ['Other'],
-        degree_grantors: 'Other',
-        other_affiliation: ['Other']
+      title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+      degree_field: ['Other'],
+      degree_level: 'Other',
+      degree_name: ['Other'],
+      degree_grantors: 'Other',
+      other_affiliation: ['Other']
     }
   }
   let!(:user) do
@@ -62,17 +62,17 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
 
       let(:attributes) {
         {
-            title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
-            degree_field: ['Other'],
-            degree_level: 'Other',
-            degree_name: ['Other'],
-            degree_grantors: 'Other',
-            other_affiliation: ['Other'],
-            degree_field_other: test_degree_field_other,
-            degree_level_other: test_degree_level_other,
-            degree_name_other: test_degree_name_other,
-            degree_grantors_other: test_degree_grantors_other,
-            other_affiliation_other: test_other_affiliation_other
+          title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+          degree_field: ['Other'],
+          degree_level: 'Other',
+          degree_name: ['Other'],
+          degree_grantors: 'Other',
+          other_affiliation: ['Other'],
+          degree_field_other: test_degree_field_other,
+          degree_level_other: test_degree_level_other,
+          degree_name_other: test_degree_name_other,
+          degree_grantors_other: test_degree_grantors_other,
+          other_affiliation_other: test_other_affiliation_other
         }
       }
 
@@ -118,17 +118,17 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
 
       let(:attributes) {
         {
-            title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
-            degree_field: ['Other'],
-            degree_level: 'Other',
-            degree_name: ['Other'],
-            degree_grantors: 'Other',
-            other_affiliation: ['Other'],
-            degree_field_other: test_degree_field_other,
-            degree_level_other: test_degree_level_other,
-            degree_name_other: test_degree_name_other,
-            degree_grantors_other: test_degree_grantors_other,
-            other_affiliation_other: test_other_affiliation_other
+          title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+          degree_field: ['Other'],
+          degree_level: 'Other',
+          degree_name: ['Other'],
+          degree_grantors: 'Other',
+          other_affiliation: ['Other'],
+          degree_field_other: test_degree_field_other,
+          degree_level_other: test_degree_level_other,
+          degree_name_other: test_degree_name_other,
+          degree_grantors_other: test_degree_grantors_other,
+          other_affiliation_other: test_other_affiliation_other
         }
       }
 

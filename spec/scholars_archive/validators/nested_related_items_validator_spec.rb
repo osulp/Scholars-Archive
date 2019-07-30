@@ -19,16 +19,16 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
     let(:test_url) { 'https://oregondigital.org/catalog/' }
     let(:test_item) do
       {
-          label: test_label,
-          related_url: test_url
+        label: test_label,
+        related_url: test_url
       }
     end
 
     let(:attributes) {
       {
-          title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
-          depositor: depositor.username,
-          nested_related_items_attributes: [test_item]
+        title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+        depositor: depositor.username,
+        nested_related_items_attributes: [test_item]
       }
     }
 
@@ -47,8 +47,8 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
     context 'with a related item with no url' do
       let(:test_item) do
         {
-            label: test_label,
-            related_url: ''
+          label: test_label,
+          related_url: ''
         }
       end
 
@@ -60,8 +60,8 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
     context 'with a related item with no label' do
       let(:test_item) do
         {
-            label: '',
-            related_url: test_url
+          label: '',
+          related_url: test_url
         }
       end
 

@@ -77,7 +77,7 @@ class MultiValueLabelUrlInput < MultiValueInput
 
   def build_id_options(value, index)
     options = build_field_options(value, index)
-    options[:class] = ['form-control', 'hidden']
+    options[:class] = %w[form-control hidden]
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:id.to_s, index)
     options[:id] = nested_field_id(:id.to_s, index)

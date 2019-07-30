@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:user) do
-    User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+    described_class.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
 
   it 'has an email' do

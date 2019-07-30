@@ -238,7 +238,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_related_items_label', :stored_searchable)
       field.label = 'Related Items'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -247,7 +247,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_creator_label', :stored_searchable)
       field.label = 'Creator'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -255,7 +255,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_additional_information_label', :stored_searchable)
       field.label = 'Description'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -263,7 +263,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_title_label', :stored_searchable)
       field.label = 'Title'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -271,7 +271,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_contributor_label', :stored_searchable)
       field.label = 'Contributor'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -279,7 +279,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_abstract_label', :stored_searchable)
       field.label = 'Abstract'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -351,7 +351,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('degree_grantors_label', :stored_searchable)
       field.include_in_advanced_search = false
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end

@@ -7,17 +7,17 @@ include Warden::Test::Helpers
 RSpec.describe OtherOptionsController, type: :controller do
   let(:valid_attributes) {
     {
-        name: 'test',
-        work_id: 'test123abc',
-        property_name: 'other_affiliation'
+      name: 'test',
+      work_id: 'test123abc',
+      property_name: 'other_affiliation'
     }
   }
 
   let(:invalid_attributes) {
     {
-        name: nil,
-        work_id: nil,
-        property_name: nil
+      name: nil,
+      work_id: nil,
+      property_name: nil
     }
   }
 

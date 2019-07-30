@@ -34,14 +34,14 @@ RSpec.feature 'Create a Technical Report', js: false do
 
     let(:academic_unit_sorted_all_options) do
       [
-          ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-          ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
+        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
       ]
     end
     let(:degree_field_sorted_all_options) do
       [
-          ['Biological and Organic Chemistry - 1944', 'http://opaquenamespace.org/ns/osuDegreeFields/0ARiezTD'],
-          ['Biochemistry - 1941, 1944/1952, 1965', 'http://opaquenamespace.org/ns/osuDegreeFields/0Kamj8EG']
+        ['Biological and Organic Chemistry - 1944', 'http://opaquenamespace.org/ns/osuDegreeFields/0ARiezTD'],
+        ['Biochemistry - 1941, 1944/1952, 1965', 'http://opaquenamespace.org/ns/osuDegreeFields/0Kamj8EG']
       ]
     end
 
