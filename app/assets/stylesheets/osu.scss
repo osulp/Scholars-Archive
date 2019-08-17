@@ -22,6 +22,10 @@
 
 .image-masthead .background-container {
   background-image: image-url("SA-Mast-Head.png") !important;
+
+  // Override Hyrax masthead blur setting
+  -webkit-filter: blur(0px) !important;
+  filter: blur(0px) !important;
 }
 
 #masthead {
