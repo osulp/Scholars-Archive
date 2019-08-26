@@ -5,6 +5,8 @@
       $(class_selector).find('input').attr("type", "hidden")
       $(class_selector).find('input').addClass("hidden")
       $(class_selector).find('input').removeAttr('required')
+      $(class_selector).find('input').parent().removeClass('has-error')
+      $(class_selector).find('.help-block').text('')
 
     show_field = (class_selector) ->
       $(class_selector).removeClass("hidden")
@@ -21,16 +23,42 @@
       set_validation(options, class_selector)
 
     set_validation = (options, class_selector) ->
-      values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
-      $(class_selector).find('input').change ->
+      form  = document.getElementsByTagName('form')[0]
+      input = $(class_selector).find('input')[0]
+      display = (e) ->
+        values = (append_end_of_str(item.text) for item in options).filter (item) -> item.length > 0
+        prepend_help_block(class_selector)
         constraint = new RegExp('^(?!'+values.join('|')+')(.*)$', "")
-        if constraint.test(this.value)
-          this.setCustomValidity('')
+        if constraint.test(input.value)
+          clear_error(class_selector)
         else
-          this.setCustomValidity('\"' + this.value + '\" already exists, please select from the list.')
+          set_error(e, input.value, class_selector)
+
+      form.addEventListener 'submit', display, false
+
+    set_error = (e, input_value, class_selector) ->
+      cancel_save(e)
+      $(class_selector).find('input').parent().addClass('has-error')
+      $(class_selector).find('.help-block').text('"'+ input_value + '" already exists, please select from the list.')
+      $(class_selector).closest('.form-group')[0].scrollIntoView(true)
+      return false
+
+    clear_error = (class_selector) ->
+      $(class_selector).find('input').parent().removeClass('has-error')
+      $(class_selector).find('.help-block').text('')
+
+    cancel_save = (e) ->
+      e.preventDefault()
+      e.stopPropagation()
+      $("#form-progress .panel-footer:first").removeClass("hidden").find("input.btn-primary").attr("disabled", false)
+      $("#form-progress .panel-footer:last").addClass("hidden")
 
     escape_special_chars = (input_str) ->
       return input_str.replace(/\./g, '\\.').replace(/\(/g, '\\(').replace(/\)/g, '\\)')
+
+    prepend_help_block = (class_selector) ->
+      $(class_selector).find('.help-block').remove() if $(class_selector).find('.help-block').length > 0
+      $(class_selector).prepend('<div class="help-block"></div>')
 
     append_end_of_str = (input_str) ->
       if input_str.length > 0
@@ -57,16 +85,6 @@
           show_field(default_other_affiliation)
         else
           hide_field(default_other_affiliation)
-
-      $('select.degree-field-selector').each (i, element) =>
-        degree_field = $(element.closest('li')).find('.degree_field_other')
-        if $(element).val() == "Other"
-          set_multi_value_validation(degree_field)
-
-      $('select.degree-name-selector').each (i, element) =>
-        degree_name = $(element.closest('li')).find('.degree_name_other')
-        if $(element).val() == "Other"
-          set_multi_value_validation(degree_name)
 
     load_default_values()
 
