@@ -85,9 +85,8 @@ end
 
 def overwrite_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
-  return work if to_value.blank?
-
-  if ordered_property? row[:property]
+  
+  if ordered_property? row[:property] && to_value.present?
     handle_ordered_property(work, 'overwrite_ordered_property_value', to_value, row)
   else
     work[row[:property]] = to_value.blank? ? nil : [to_value&.split('|')].flatten

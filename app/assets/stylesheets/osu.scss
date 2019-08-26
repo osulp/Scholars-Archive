@@ -20,6 +20,12 @@
   position: relative !important;
 }
 
+.image-masthead .background-container {
+  // Override Hyrax masthead blur setting
+  -webkit-filter: blur(0px) !important;
+  filter: blur(0px) !important;
+}
+
 #masthead {
   margin-bottom: 0px;
 }
