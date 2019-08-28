@@ -1,7 +1,7 @@
 Blacklight.onLoad(function() {
   var search_options = {
     placement: 'top',
-    title: 'Search for this term in SA@OSU'
+    title: 'Visit external link'
   };
   var more_information = {
     placement: 'top',
