@@ -91,10 +91,6 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.2.2'
 
-group :staging, :production do
-  gem 'ddtrace'
-end
-
 # Honeycomb
 gem 'honeycomb-beeline', '>= 1.0.0'
 
