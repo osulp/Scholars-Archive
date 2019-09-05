@@ -1,13 +1,18 @@
 Blacklight.onLoad(function() {
   var search_options = {
     placement: 'top',
-    title: 'Visit external link'
+    title: 'Search SA@OSU'
+  };
+  var mailto_options = {
+    placement: 'top',
+    title: 'Compose an email'
   };
   var more_information = {
     placement: 'top',
-    title: 'More information about this item'
+    title: 'Visit External Link'
   };
 
+  $('li.attribute a[href^="mailto"]').tooltip(mailto_options);
   $('.metadata > .table a').not('.btn').tooltip(search_options);
   $('li.attribute a').not('.btn').not('[href^="http"]').tooltip(search_options);
   $('li.attribute a.btn').tooltip(more_information);
