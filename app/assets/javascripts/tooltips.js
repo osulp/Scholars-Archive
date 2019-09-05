@@ -13,7 +13,7 @@ Blacklight.onLoad(function() {
   };
   var external_information = {
     placement: 'top',
-    title: 'Visit External Link'
+    title: 'Visit external link'
   };
 
   $('li.attribute a[href^="mailto"]').tooltip(mailto_options);
