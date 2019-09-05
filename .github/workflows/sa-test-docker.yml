@@ -3,17 +3,14 @@ name: Publish Docker
 on: [push]
 
 jobs:
-
-  build:
- 
+  build: 
     runs-on: ubuntu-latest
- 
     steps:
     - uses: actions/checkout@master
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: scholars-archive_web
+        name: registry.library.oregonstate.edu/scholars-archive_web
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: registry.library.oregonstate.edu
