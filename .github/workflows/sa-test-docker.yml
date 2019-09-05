@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@master
+    - name: Publish to Beavernetes Registry
+      uses: osulp/Publish-Docker-Github-Action@master
       with:
         name: registry.library.oregonstate.edu/scholars-archive_web
         username: ${{ secrets.DOCKER_USERNAME }}
