@@ -15,4 +15,3 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: registry.library.oregonstate.edu
         snapshot: true
-        cache: true
