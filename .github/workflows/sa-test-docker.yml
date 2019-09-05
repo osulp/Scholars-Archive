@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Beavernetes Registry
+    - name: Publish to Beavernetes Container Registry
       uses: osulp/Publish-Docker-Github-Action@master
       with:
         name: registry.library.oregonstate.edu/scholars-archive_web
