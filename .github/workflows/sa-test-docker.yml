@@ -13,6 +13,5 @@ jobs:
         name: registry.library.oregonstate.edu/scholars-archive_web
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        registry: registry.library.oregonstate.edu
-        cache: true
+        registry: registry.library.oregonstate.edu       
         snapshot: true
