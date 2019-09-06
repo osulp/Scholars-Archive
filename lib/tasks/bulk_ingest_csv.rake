@@ -32,7 +32,15 @@ def ingest_work(logger, row, file_path)
   collection = Collection.find(row['collection_id'.to_sym])
   # Generate work based on work type
   work = work_type.new
-  u = User.find_by_username("scholarsarchive")
+
+  ######################################
+  # TODO: UPDATE USERNAME TO BE CONFIGURABLE
+  #
+  u = User.find_by_username("straleyb")
+  #
+  #
+  ######################################
+
   # Set properties
   work = set_work_properties(logger, work, row)
   work.depositor = u.username
