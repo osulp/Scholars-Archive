@@ -126,3 +126,4 @@ $ docker-compose run server bundle exec rspec
     Following this fix, run the workflow load rake task:
 
     `$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+
