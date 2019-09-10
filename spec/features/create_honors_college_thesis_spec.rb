@@ -92,6 +92,9 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       select 'Master of Arts (M.A.)', from: 'honors_college_thesis_degree_name'
       find('body').click
 
+      select "Master's", from: 'graduate_project_degree_level'
+      find('body').click
+
       click_link 'Files' # switch tab
       expect(page).to have_content 'Add files'
       within('#addfiles') do
