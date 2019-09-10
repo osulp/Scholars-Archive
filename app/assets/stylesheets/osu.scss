@@ -554,3 +554,14 @@ li:not(:last-child) > dd.preformatted {
   padding-bottom: 5px;
   border-bottom: solid 1px #eee;
 }
+
+button.copy-single-use-link {
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-top: 10px;
+}
+
+// Added so Bootstrap buttons in Mac Chrome don't have a white fill color
+button.btn {
+  -webkit-appearance: none!important;
+}
