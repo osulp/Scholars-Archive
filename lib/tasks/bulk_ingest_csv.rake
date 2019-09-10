@@ -9,11 +9,12 @@ namespace :scholars_archive do
   task bulk_ingest_csv: :environment do
     csv_file = ENV['csv']
     path = ENV['path']
-    process_ingest_csv(csv_file, path)
+    user = ENV['user']
+    process_ingest_csv(csv_file, path, user)
   end
 end
 
-def process_ingest_csv(path, file_path)
+def process_ingest_csv(path, file_path, user)
   # Create logger
   datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
   logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-ingest-csv-#{datetime_today}.log")
@@ -21,22 +22,30 @@ def process_ingest_csv(path, file_path)
 
   csv = CSV.table(path, converters: nil)
   csv.each do |row|
-    ingest_work(logger, row, file_path)
+    ingest_work(logger, row, file_path, user)
   end
 end
 
-def ingest_work(logger, row, file_path)
+def ingest_work(logger, row, file_path, user)
   # Get work type
   work_type = row['worktype'.to_sym].gsub(' ', '').constantize
   # Get collection
   collection = Collection.find(row['collection_id'.to_sym])
   # Generate work based on work type
   work = work_type.new
-  u = User.find_by_username("scholarsarchive")
+
+  u = User.find_by_username(user)
+
   # Set properties
   work = set_work_properties(logger, work, row)
   work.depositor = u.username
   work&.save
+
+  # Set Workflow entity and deposited
+  se = Sipity::Entity.new(proxy_for_global_id: work.to_global_id)
+  se.workflow_id = 218
+  se.workflow_state_id = 659
+  se.save
 
   # Generates uploaded file for work and attaches said file to that work
   f = File.open("#{file_path}/#{ row[:filename] }")
