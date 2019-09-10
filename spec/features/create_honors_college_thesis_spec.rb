@@ -92,9 +92,6 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       select 'Master of Arts (M.A.)', from: 'honors_college_thesis_degree_name'
       find('body').click
 
-      select "Master's", from: 'graduate_project_degree_level'
-      find('body').click
-
       click_link 'Files' # switch tab
       expect(page).to have_content 'Add files'
       within('#addfiles') do
@@ -112,9 +109,6 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       end
       it 'default degree grantors' do
         expect(page).to have_select('honors_college_thesis_degree_grantors', selected: 'Oregon State University')
-      end
-      it 'default degree level' do
-        expect(page).to have_select('honors_college_thesis_degree_level', selected: "Master's")
       end
       it 'default non-academic affiliation' do
         expect(page).to have_select('honors_college_thesis_other_affiliation', selected: 'Honors College')
