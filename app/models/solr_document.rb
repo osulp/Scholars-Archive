@@ -77,10 +77,6 @@ class SolrDocument
     self['based_near_linked_ssim']
   end
 
-  def embargo_date_range
-    self['embargo_date_range_ssim']
-  end
-
   def nested_geo
     self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
   end

@@ -29,7 +29,6 @@ module ScholarsArchive
                :dspace_collection,
                :dspace_community,
                :embargo_reason,
-               :embargo_date_range,
                :file_extent,
                :file_format,
                :funding_body,

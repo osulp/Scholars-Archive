@@ -10,7 +10,7 @@ gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 3.0'
 gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
@@ -90,6 +90,10 @@ gem 'riiif', '~> 1.1'
 
 # Security update
 gem 'rubyzip', '~> 1.2.2'
+
+group :staging, :production do
+  gem 'ddtrace'
+end
 
 # Honeycomb
 gem 'honeycomb-beeline', '>= 1.0.0'

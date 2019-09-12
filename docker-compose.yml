@@ -32,7 +32,7 @@ services:
 
   ##
   # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
-  server: &server
+  web: &web
     <<: *app
     environment:
       - RAILS_ENV=${RAILS_ENV}
@@ -62,7 +62,7 @@ services:
 
   # Runs sidekiq to process background jobs
   workers:
-    <<: *server
+    <<: *web
     command: bundle exec sidekiq
     depends_on:
       - db
@@ -75,7 +75,7 @@ services:
   ##
   # Test environment for application
   test: &test
-    <<: *server
+    <<: *web
     environment:
       - RAILS_ENV=test
       - SCHOLARSARCHIVE_DB_HOST=db_test
@@ -191,7 +191,7 @@ services:
   lb:
     image: dockercloud/haproxy:1.5.3
     links:
-      - server
+      - web
     environment:
       - DOCKER_TLS_VERIFY
       - DOCKER_HOST

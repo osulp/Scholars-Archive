@@ -25,17 +25,6 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe '#embargo_date_range' do
-    context 'when an embargo_date_range is indexed' do
-      document = described_class.new({
-                                       'embargo_date_range_ssim' => 'first_date to second_date'
-                                     })
-      it 'should return the range' do
-        expect(document.embargo_date_range).to eq 'first_date to second_date'
-      end
-    end
-  end
-
   describe '#degree_grantors_label' do
     context 'when degree_grantors_label is indexed' do
       document = described_class.new({

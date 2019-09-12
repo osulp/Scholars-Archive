@@ -52,7 +52,7 @@ RSpec.feature 'Create a Graduate Project', js: false do
       allow_any_instance_of(Hyrax::DefaultForm).to receive(:date_terms).and_return([])
       allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_all_options).and_return(academic_unit_sorted_all_options)
       allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_current_options).and_return(academic_unit_sorted_all_options)
-      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ["Master's", "Master's"]])
+      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ["Bachelor's", "Bachelor's"]])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other], ['Zoology', 'http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l']])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ['Zoology', 'http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l']])
       allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ['Master of Arts (M.A.)', 'Master of Arts (M.A.)']])
@@ -89,7 +89,7 @@ RSpec.feature 'Create a Graduate Project', js: false do
       select 'Dissertation', from: 'graduate_project_resource_type'
       find('body').click
 
-      select "Master's", from: 'graduate_project_degree_level'
+      select "Bachelor's", from: 'graduate_project_degree_level'
       find('body').click
 
       select 'Master of Arts (M.A.)', from: 'graduate_project_degree_name'

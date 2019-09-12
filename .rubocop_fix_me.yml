@@ -41,7 +41,6 @@ Metrics/AbcSize:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
-    - 'app/services/scholars_archive/degree_level_service.rb'
 
 Metrics/MethodLength:
   Exclude:
@@ -78,7 +77,6 @@ Metrics/MethodLength:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
-    - 'app/services/scholars_archive/degree_level_service.rb'
 
 Metrics/BlockLength:
   ExcludedMethods: ['included']
@@ -186,7 +184,6 @@ Metrics/CyclomaticComplexity:
     - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
-    - 'app/services/scholars_archive/degree_level_service.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:

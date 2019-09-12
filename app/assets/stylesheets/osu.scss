@@ -21,9 +21,7 @@
 }
 
 .image-masthead .background-container {
-  // Override Hyrax masthead blur setting
-  -webkit-filter: blur(0px) !important;
-  filter: blur(0px) !important;
+  background-image: image-url("SA-Mast-Head.png") !important;
 }
 
 #masthead {
@@ -553,15 +551,4 @@ dd.preformatted {
 li:not(:last-child) > dd.preformatted {
   padding-bottom: 5px;
   border-bottom: solid 1px #eee;
-}
-
-button.copy-single-use-link {
-  padding-left: 14px;
-  padding-right: 14px;
-  margin-top: 10px;
-}
-
-// Added so Bootstrap buttons in Mac Chrome don't have a white fill color
-button.btn-secondary {
-  -webkit-appearance: none!important;
 }

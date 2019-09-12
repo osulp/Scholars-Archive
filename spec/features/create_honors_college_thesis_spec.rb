@@ -52,7 +52,7 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       allow_any_instance_of(Hyrax::DefaultForm).to receive(:date_terms).and_return([])
       allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_all_options).and_return(academic_unit_sorted_all_options)
       allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_current_options).and_return(academic_unit_sorted_all_options)
-      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ["Master's", "Master's"]])
+      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ["Bachelor's", "Bachelor's"]])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other], ['Zoology', 'http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l']])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ['Zoology', 'http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l']])
       allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ['Master of Arts (M.A.)', 'Master of Arts (M.A.)']])
@@ -109,6 +109,9 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       end
       it 'default degree grantors' do
         expect(page).to have_select('honors_college_thesis_degree_grantors', selected: 'Oregon State University')
+      end
+      it 'default degree level' do
+        expect(page).to have_select('honors_college_thesis_degree_level', selected: "Bachelor's")
       end
       it 'default non-academic affiliation' do
         expect(page).to have_select('honors_college_thesis_other_affiliation', selected: 'Honors College')
