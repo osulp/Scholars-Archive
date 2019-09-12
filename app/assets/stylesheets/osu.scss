@@ -2,6 +2,10 @@
 
 /* Temporary override to disable 'Explore Collections' tab */
 
+body {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 #content-wrapper
   > div
   > div.row.home-content
