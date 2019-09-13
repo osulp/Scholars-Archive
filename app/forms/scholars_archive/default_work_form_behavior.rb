@@ -17,14 +17,14 @@ module ScholarsArchive
       attr_accessor :degree_field_other
       attr_accessor :degree_name_other
 
-      self.terms += %i[nested_related_items nested_ordered_creator nested_ordered_title nested_ordered_abstract nested_ordered_additional_information nested_ordered_contributor date_uploaded date_modified doi other_affiliation academic_affiliation alt_title license resource_type date_available date_copyright date_issued date_collected date_valid date_reviewed date_accepted degree_level degree_name degree_field replaces nested_geo hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed digitization_spec file_extent file_format dspace_community dspace_collection isbn issn embargo_reason conference_name conference_section conference_location]
+      self.terms += %i[nested_related_items nested_ordered_creator nested_ordered_title nested_ordered_abstract nested_ordered_additional_information nested_ordered_contributor date_uploaded date_modified doi other_affiliation academic_affiliation alt_title license resource_type date_available date_copyright date_issued date_collected date_valid date_reviewed date_accepted degree_level degree_name degree_field replaces nested_geo hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed digitization_spec file_extent file_format dspace_community dspace_collection isbn issn embargo_reason conference_name conference_section conference_location contributor_advisor]
 
       self.terms -= %i[creator title]
       self.required_fields += %i[resource_type nested_ordered_creator nested_ordered_title]
       self.required_fields -= %i[keyword creator title contributor]
 
       def primary_terms
-        %i[nested_ordered_title alt_title nested_ordered_creator nested_ordered_contributor nested_ordered_abstract license resource_type doi dates_section degree_level degree_name degree_field bibliographic_citation academic_affiliation other_affiliation in_series subject tableofcontents rights_statement] | super
+        %i[nested_ordered_title alt_title nested_ordered_creator nested_ordered_contributor contributor_advisor nested_ordered_abstract license resource_type doi dates_section degree_level degree_name degree_field bibliographic_citation academic_affiliation other_affiliation in_series subject tableofcontents rights_statement] | super
       end
 
       def secondary_terms
