@@ -5,8 +5,7 @@ module ScholarsArchive
   module EtdPresenterBehavior
     extend ActiveSupport::Concern
     included do
-      delegate :contributor_advisor,
-               :contributor_committeemember,
+      delegate :contributor_committeemember,
                :degree_discipline,
                :degree_field,
                :degree_field_label,

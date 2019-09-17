@@ -13,6 +13,7 @@ module ScholarsArchive
                :conference_name,
                :conference_section,
                :conference_location,
+               :contributor_advisor,
                :date_accepted,
                :date_available,
                :date_collected,
