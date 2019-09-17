@@ -988,7 +988,7 @@ DEPENDENCIES
   capistrano-passenger
   capistrano-rails
   capistrano-rbenv
-  capistrano3-puma (~> 3.1.1)
+  capistrano3-puma
   capybara
   coffee-rails (~> 4.2)
   coveralls (~> 0.8)
@@ -1018,7 +1018,7 @@ DEPENDENCIES
   net-http-persistent (~> 2.9)
   poltergeist
   pry-rails
-  puma (~> 3.12.1)
+  puma
   puma_worker_killer
   rails (~> 5.0.2)
   rails-controller-testing
