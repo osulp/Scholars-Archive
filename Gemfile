@@ -10,7 +10,7 @@ gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma'
+gem 'puma', '~> 3.12.1'
 gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
@@ -48,7 +48,7 @@ gem 'capistrano', '~> 3.8.0'
 gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
-gem 'capistrano3-puma'
+gem 'capistrano3-puma', '~> 3.1.1'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
