@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-12">
+    <fieldset id="representative-media">
+      <label class="control-label optional">
+        <%= t("hyrax.base.form_representative.legend_html") %>
+      </label>
+      <p><%= t("hyrax.base.form_representative.help_html") %></p>
+      <%= f.select :representative_id, @form.select_files, {}, { class: 'form-control' } %>
+    </fieldset>
+  </div>
+</div>
