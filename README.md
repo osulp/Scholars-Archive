@@ -51,7 +51,7 @@ When you do anything that changes the filesystem (rake tasks or otherwise), you 
 
 Ohmyzsh with the docker-compose plugin makes executing these types of commands easier:
 
-`$ dce server bundle exec rails c` : Equivilent for docker-compose exec ...
+`$ dce server bundle exec rails c` : Equivalent for docker-compose exec ...
 
 # Local development
 Use Docker to expose the app to localhost (so you can just visit http://localhost instead of finding the app's IP address assigned by Docker), do this:
