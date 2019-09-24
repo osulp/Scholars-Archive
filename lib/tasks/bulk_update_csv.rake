@@ -43,9 +43,14 @@ def process_csv(path)
 end
 
 def update_work(logger, row)
-  work = ActiveFedora::Base.find(row[:id].to_s.delete("'"))
-  work = update_property(logger, work, row)
-  work&.save
+  begin
+    work = ActiveFedora::Base.find(row[:id].to_s.delete("'"))
+    work = update_property(logger, work, row)
+    work&.save
+  rescue StandardError => e
+    logger.error "Error saving: #{row[:id]} : #{e.backtrace}"
+    return nil
+  end
 end
 
 def update_property(logger, work, row)
