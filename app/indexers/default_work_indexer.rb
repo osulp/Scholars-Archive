@@ -36,7 +36,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       # Check if embargo is active
       if object&.embargo && object.embargo.active?
         embargo_date_range_string(solr_doc, object.embargo.create_date.to_date, object.embargo.embargo_release_date.to_date)
-      elsif object&.embargo && !object.embargo.active?
+      elsif object&.embargo && !object.embargo.active? && object&.embargo&.embargo_history.present?
         embargo_date_range_string(solr_doc, object.embargo.create_date.to_date, object.embargo.embargo_history.first.split('.').first.split(' ').last)
       end
     end
