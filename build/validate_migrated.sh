@@ -9,5 +9,6 @@ echo "Checking ${RAILS_ENV} database migration status and auto-migrating if nece
 # If the migration status can't be read or is not fully migrated
 # then update the database with latest migrations
 if bundle exec rails db:migrate:status &> /dev/null; then
+  bundle exec rails hyrax:install:migrations
   bundle exec rails db:migrate
 fi

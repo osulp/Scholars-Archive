@@ -59,7 +59,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
 gem 'faraday'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.5.1'
+gem 'hyrax', '3.0.0-rc1'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
@@ -76,7 +76,7 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
-gem 'simple_form', '~> 3.2', '<= 3.5.0'
+gem 'simple_form'
 
 # Gem vulnerability fix
 gem 'rest-client', '~> 2.0'

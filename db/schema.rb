@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180529220525) do
+ActiveRecord::Schema.define(version: 20191018201312) do
 
   create_table "bookmarks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id",                     null: false
@@ -312,12 +312,12 @@ ActiveRecord::Schema.define(version: 20180529220525) do
   end
 
   create_table "single_use_links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "downloadKey"
+    t.string   "download_key"
     t.string   "path"
-    t.string   "itemId"
+    t.string   "item_id"
     t.datetime "expires"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "sipity_agents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
