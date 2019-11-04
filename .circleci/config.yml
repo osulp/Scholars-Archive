@@ -1,5 +1,38 @@
-version: 2
+version: 2.1
+orbs:
+    samvera: samvera/circleci-orb@0
 jobs:
+    samvera_orb_build:
+        parameters:
+            ruby_version:
+                type: string
+                default: 2.5.5
+            bundler_version:
+                type: string
+                default: 2.0.2
+        executor:
+            name: samvera/ruby_fcrepo_solr_redis
+            ruby_version: << parameters.ruby_version >>
+        working_directory: ~/app
+        parallelism: 4
+        docker:
+            - image: circleci/mysql:5.7.22
+        environment:
+            MYSQL_DATABASE: sa_test
+            RAILS_ENV: test
+            SCHOLARSARCHIVE_DB_PASSWORD: ''
+            SCHOLARSARCHIVE_DB_PORT: '3306'
+            SCHOLARSARCHIVE_DB_USERNAME: root
+            SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
+            HONEYCOMB_DEBUG: true
+        steps:
+            - samvera/cached_checkout
+            - samvera/bundle:
+                  ruby_version: << parameters.ruby_version >>
+                  bundler_version: << parameters.bundler_version >>
+            - samvera/rubocop
+            - samvera/install_solr_core
+            - samvera/parallel_rspec
     build:
         docker:
             - image: circleci/ruby:2.5
@@ -75,3 +108,12 @@ jobs:
                   destination: coverage
             - store_test_results:
                   path: /tmp/circle-junit
+
+workflows:
+    version: 2
+    ci:
+        jobs:
+            - build:
+                name: 'ruby2-5-3'
+            - samvera_orb_build:
+                name: 'orb-ruby2-5-5'
