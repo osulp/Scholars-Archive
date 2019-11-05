@@ -1,9 +1,6 @@
 <div id="date_wrapper" class="form-group">
   <div class="row">
-    <legend class="legend-edit-work">Dates</legend>
-    <div class="date_hint">
-      <%= t('simple_form.hints.admin_set.date') %>
-    </div>
+    <label class="legend-edit-work control-label optional">Date</label>
     <div class="warning-anchor"></div>
     <div class="col-sm-12">
       <%= select_tag_dates(:new_date_type, f)  %>
@@ -14,7 +11,7 @@
       <table class="table">
         <thead>
         <tr>
-          <th>Dates</th>
+          <th></th>
           <th>Remove</th>
         </tr>
         </thead>
