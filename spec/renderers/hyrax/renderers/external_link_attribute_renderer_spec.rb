@@ -21,9 +21,9 @@ RSpec.describe Hyrax::Renderers::ExternalLinkAttributeRenderer do
 
     it do
       expect(subject).to be_equivalent_to(
-       '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html><body><tr>
-       <th>Name</th><td><ul class="tabular"><li class="attribute attribute-name">
-       <a href="&lt;a%20href=%22http://example.com%22&gt;http://example.com&lt;/a&gt;">http://example.com</a>  <span class="glyphicon glyphicon-new-window"></span></li></ul></td></tr></body></html>'
+        '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"><html><body><tr>
+        <th>Name</th><td><ul class="tabular"><li class="attribute attribute-name">
+        <a href="&lt;a%20href=%22http://example.com%22&gt;http://example.com&lt;/a&gt;">http://example.com</a>  <span class="glyphicon glyphicon-new-window"></span></li></ul></td></tr></body></html>'
       )
     end
   end
