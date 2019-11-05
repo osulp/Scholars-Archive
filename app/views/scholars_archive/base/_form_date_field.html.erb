@@ -25,8 +25,8 @@
     </div>
   </td>
   <td>
-    <button class="btn btn-danger remove_date_type <%= date_range?(term, f) ? 'date-range' : 'date-default' %>" data-id="<%= term.to_s %>">
-      <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
+    <button class="btn btn-date-remove remove remove_date_type <%= date_range?(term, f) ? 'date-range' : 'date-default' %>" data-id="<%= term.to_s %>">
+      <span class="glyphicon glyphicon-remove"></span><span class="controls-remove-text">Remove</span>
     </button>
   </td>
 </tr>
