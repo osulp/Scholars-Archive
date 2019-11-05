@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Publish to Beavernetes Container Registry
-      uses: osulp/Scholars-Archive-gha-build@master
+      uses: osulp/Scholars-Archive-gha-build@releases/v1
       with:
         name: registry.library.oregonstate.edu/scholars-archive_web
         username: ${{ secrets.DOCKER_USERNAME }}
