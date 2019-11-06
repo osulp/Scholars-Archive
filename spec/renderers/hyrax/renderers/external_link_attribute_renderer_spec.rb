@@ -14,7 +14,7 @@ RSpec.describe Hyrax::Renderers::ExternalLinkAttributeRenderer do
       "<tr><th>Name</th>\n" \
       '<td><ul class="tabular">' \
       '<li class="attribute attribute-name">'\
-      '<a href="&lt;a%20href=%22http://example.com%22&gt;http://example.com&lt;/a&gt;">'\
+      '<a href="http://example.com">'\
       'http://example.com</a>  <span class="glyphicon glyphicon-new-window"></span></li>'\
       '</ul></td></tr>'
     end
