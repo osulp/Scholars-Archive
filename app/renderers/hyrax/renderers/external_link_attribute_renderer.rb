@@ -7,7 +7,7 @@ module Hyrax
       private
 
         def li_value(value)
-          normalized_link = value.include?('http://') ? value : "http://#{value}"
+          normalized_link = value.include?('http://') || value.include?('https://') ? value : "http://#{value}"
           "<a href='#{normalized_link}'>#{value}</a>  <span class='glyphicon glyphicon-new-window'></span>"
         end
     end
