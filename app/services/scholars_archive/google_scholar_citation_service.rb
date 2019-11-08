@@ -8,11 +8,7 @@ module ScholarsArchive
     attr_reader :input_date
 
     def self.call(input_date)
-      new(input_date).call
-    end
-
-    def call
-      format_date
+      new(input_date).format_date
     end
 
     private
