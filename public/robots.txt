@@ -10,3 +10,8 @@ Crawl-delay: 8
 Disallow: /catalog
 Disallow: /files/*/stats
 Disallow: /oai
+
+User-agent: Googlebot
+Allow: /catalog
+Disallow: /files/*/stats
+Disallow: /oai
