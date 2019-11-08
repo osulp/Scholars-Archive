@@ -11,6 +11,16 @@ module ScholarsArchive
       new(input_date).format_date
     end
 
+    def format_date
+      if @edtf_value.instance_of? EDTF::Interval
+        @edtf_value.to_s
+      elsif @edtf_value.present?
+        date_from_edtf(@edtf_value)
+      else
+        @edtf_value.to_s
+      end
+    end
+
     private
 
     def initialize(input_date)
@@ -28,16 +38,6 @@ module ScholarsArchive
     rescue StandardError => e
       Rails.logger.warn "GoogleScholarCitationService #{e.message}"
       nil
-    end
-
-    def format_date
-      if @edtf_value.instance_of? EDTF::Interval
-        @edtf_value.to_s
-      elsif @edtf_value.present?
-        date_from_edtf(@edtf_value)
-      else
-        @edtf_value.to_s
-      end
     end
 
     def date_from_edtf(date)
