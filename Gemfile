@@ -89,7 +89,7 @@ gem 'lograge'
 gem 'riiif', '~> 1.1'
 
 # Security update
-gem 'rubyzip', '~> 1.2.2'
+gem 'rubyzip', '~> 1.3.0'
 
 # Honeycomb
 gem 'honeycomb-beeline', '>= 1.0.0'
