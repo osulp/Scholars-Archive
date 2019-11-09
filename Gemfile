@@ -76,7 +76,7 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
-gem 'simple_form', '~> 3.2', '<= 3.5.0'
+gem 'simple_form', '~> 5.0'
 
 # Gem vulnerability fix
 gem 'rest-client', '~> 2.0'
