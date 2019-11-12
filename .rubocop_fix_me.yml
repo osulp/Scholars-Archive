@@ -1119,6 +1119,7 @@ RSpec/ExampleLength:
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
+    - 'spec/renderers/hyrax/renderers/external_link_attribute_renderer_spec.rb'
 
 RSpec/MultipleExpectations:
   Exclude:

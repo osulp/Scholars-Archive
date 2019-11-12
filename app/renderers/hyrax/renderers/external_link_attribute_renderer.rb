@@ -7,9 +7,8 @@ module Hyrax
       private
 
         def li_value(value)
-          auto_link(value) do |link|
-            "#{link}&nbsp;&nbsp;<span class='glyphicon glyphicon-new-window'></span>"
-          end
+          normalized_link = value.include?('http://') || value.include?('https://') ? value : "http://#{value}"
+          "<a href='#{normalized_link}'>#{value}</a>"
         end
     end
   end
