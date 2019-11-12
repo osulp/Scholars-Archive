@@ -1,4 +1,5 @@
-<%- search_fields_for_advanced_search.sort.each do |key, field_def| -%>
+<!-- OVERRIDE FROM https://github.com/projectblacklight/blacklight_advanced_search/blob/master/app/views/advanced/_advanced_search_fields.html.erb-->
+<%- search_fields_for_advanced_search.sort_by{ |k,v| v.label }.each do |key, field_def| -%>
   <div class="form-group advanced-search-field">
       <%= label_tag key, "#{field_def.label }", :class => "col-sm-3 control-label" %>
       <div class="col-sm-9">
