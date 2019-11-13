@@ -20,7 +20,7 @@ module ScholarsArchive
       when 'GraduateThesisOrDissertation'
         select_all_options.sort.select! { |opt| opt.first.include?('Doctoral') || opt.first.include?('Master\'s') }
       when 'HonorsCollegeThesis'
-        select_all_options.sort.select! { |opt| opt.first.include?('Doctoral') || opt.first.include?('Master\'s') }
+        select_all_options.sort.select! { |opt| opt.first.include?('Bachelor\'s') }
       when 'PurchasedEResource'
         select_all_options.sort.select! { |opt| opt.first.include?('Doctoral') || opt.first.include?('Master\'s') }
       else
