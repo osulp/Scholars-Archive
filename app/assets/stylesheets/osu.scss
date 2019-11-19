@@ -162,12 +162,12 @@ div#geo_wrapper {
 }
 
 .controlled_vocabulary .listing {
-  max-width: 46.5em !important;
+  max-width: 81em !important;
 }
 
 .multi_value .listing,
 .controlled_vocabulary .listing {
-  max-width: 53em !important;
+  max-width: 81em !important;
 }
 
 .input-group-addon,
@@ -580,4 +580,16 @@ button.btn-secondary {
 
 .search-result-wrapper > .col-md-6 {
   width: 80% !important;
+}
+
+.form-control {
+  width: 99% !important;
+}
+
+.form-control.nested-field {
+  width: 100% !important;
+}
+
+.form-control.multi-text-field {
+  width: 100% !important;
 }
