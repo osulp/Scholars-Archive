@@ -590,14 +590,22 @@ button.btn-secondary {
   width: 80% !important;
 }
 
-.form-control {
-  width: 99% !important;
-}
-
-.form-control.nested-field {
+.form-control.select {
   width: 100% !important;
 }
 
-.form-control.multi-text-field {
+.form-control.string {
   width: 100% !important;
+}
+
+#new_date_type {
+  width: 100% !important;
+}
+
+.form-control.multi_value {
+  width: 100% !important;
+}
+
+.input-group-btn .field-controls {
+  padding: 0 0 0 0 !important;
 }
