@@ -599,13 +599,13 @@ button.btn-secondary {
 }
 
 #new_date_type {
-  width: 100% !important;
+  width: 99% !important;
 }
 
 .form-control.multi_value {
   width: 100% !important;
 }
 
-.input-group-btn .field-controls {
-  padding: 0 0 0 0 !important;
+.form-control:not(.multi_value) {
+ width: 99% !important; 
 }
