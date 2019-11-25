@@ -4,9 +4,9 @@ require 'rails_helper'
 require 'spec_helper'
 RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   let(:curation_concern) do
-      Default.new do |work|
-        work.attributes = attributes
-      end
+    Default.new do |work|
+      work.attributes = attributes
+    end
   end
   let(:user) do
     User.new(email: 'test@example.com', guest: false)

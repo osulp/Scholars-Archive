@@ -113,30 +113,30 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-config.before do |example|
-  if example.metadata[:type] == :feature && Capybara.current_driver != :rack_test
-    DatabaseCleaner.strategy = :truncation
-  else
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.start
-  end
+  config.before do |example|
+    if example.metadata[:type] == :feature && Capybara.current_driver != :rack_test
+      DatabaseCleaner.strategy = :truncation
+    else
+      DatabaseCleaner.strategy = :transaction
+      DatabaseCleaner.start
+    end
 
-  # using :workflow is preferable to :clean_repo, use the former if possible
-  # It's important that this comes after DatabaseCleaner.start
-  ensure_deposit_available_for(user) if example.metadata[:workflow]
-  if example.metadata[:clean_repo]
-    ActiveFedora::Cleaner.clean!
-    # The JS is executed in a different thread, so that other thread
-    # may think the root path has already been created:
-    ActiveFedora.fedora.connection.send(:init_base_path) if example.metadata[:js]
-  end
-  Hyrax.config.nested_relationship_reindexer = if example.metadata[:with_nested_reindexing]
-                                                 # Use the default relationship reindexer (and the cascading reindexing of child documents)
-                                                 Hyrax.config.default_nested_relationship_reindexer
-                                               else
-                                                 # Don't use the nested relationship reindexer. This slows everything down quite a bit.
-                                                 ->(id:, extent:) {}
-                                               end
+    # using :workflow is preferable to :clean_repo, use the former if possible
+    # It's important that this comes after DatabaseCleaner.start
+    ensure_deposit_available_for(user) if example.metadata[:workflow]
+    if example.metadata[:clean_repo]
+      ActiveFedora::Cleaner.clean!
+      # The JS is executed in a different thread, so that other thread
+      # may think the root path has already been created:
+      ActiveFedora.fedora.connection.send(:init_base_path) if example.metadata[:js]
+    end
+    Hyrax.config.nested_relationship_reindexer = if example.metadata[:with_nested_reindexing]
+                                                   # Use the default relationship reindexer (and the cascading reindexing of child documents)
+                                                   Hyrax.config.default_nested_relationship_reindexer
+                                                 else
+                                                   # Don't use the nested relationship reindexer. This slows everything down quite a bit.
+                                                   ->(id:, extent:) {}
+                                                 end
   end
 
   config.before(:all, type: :feature) do

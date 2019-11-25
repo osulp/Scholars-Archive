@@ -21,6 +21,7 @@ class Article < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::OtherAffiliationValidator
 
   private
+
   def set_defaults
   end
 end

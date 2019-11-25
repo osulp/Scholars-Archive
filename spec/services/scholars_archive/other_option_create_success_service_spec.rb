@@ -8,9 +8,9 @@ describe ScholarsArchive::OtherOptionCreateSuccessService do
   end
   let(:inbox) { user.mailbox.inbox }
   let(:curation_concern) do
-      GraduateThesisOrDissertation.new do |work|
-        work.attributes = attributes
-      end
+    GraduateThesisOrDissertation.new do |work|
+      work.attributes = attributes
+    end
   end
   let(:attributes) {
     {

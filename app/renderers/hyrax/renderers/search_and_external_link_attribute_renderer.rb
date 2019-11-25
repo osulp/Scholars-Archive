@@ -5,6 +5,7 @@ module Hyrax
     # renders search and external link on show page
     class SearchAndExternalLinkAttributeRenderer < AttributeRenderer
       include ApplicationHelper
+
       private
 
       def li_value(value)

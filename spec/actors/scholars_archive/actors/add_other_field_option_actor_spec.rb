@@ -4,9 +4,9 @@ require 'rails_helper'
 require 'spec_helper'
 RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   let(:curation_concern) do
-      GraduateThesisOrDissertation.new do |work|
-        work.attributes = attributes
-      end
+    GraduateThesisOrDissertation.new do |work|
+      work.attributes = attributes
+    end
   end
   let(:attributes) {
     {
