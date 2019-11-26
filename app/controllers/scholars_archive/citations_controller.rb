@@ -16,4 +16,3 @@ module ScholarsArchive
     end
   end
 end
-
