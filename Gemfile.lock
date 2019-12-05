@@ -669,7 +669,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.1)
     pul_uv_rails (2.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
@@ -1023,7 +1023,7 @@ DEPENDENCIES
   net-http-persistent (~> 2.9)
   poltergeist
   pry-rails
-  puma (~> 3.12.1)
+  puma (~> 3.12.2)
   puma_worker_killer
   rails (~> 5.0.2)
   rails-controller-testing
