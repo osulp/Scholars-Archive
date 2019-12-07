@@ -68,6 +68,9 @@ jobs:
           name: Update bundler
           command: gem install --force bundler
       - run:
+          name: Bundle update
+          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
+      - run:
           name: Install Rubocop
           command: gem install rubocop
       - run: 
