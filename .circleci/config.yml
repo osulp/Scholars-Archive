@@ -65,6 +65,9 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: Update bundler
+          command: gem install --force bundler
+      - run:
           name: Install Rubocop
           command: gem install rubocop
       - run: 
