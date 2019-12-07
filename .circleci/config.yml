@@ -136,6 +136,12 @@ jobs:
       - run:
           name: Wait for Redis
           command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      - run:
+          name: Update bundler srsly again
+          command: gem install --force bundler
+      - run:
+          name: Bundle update srsly again
+          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
       - run: bundle exec rake db:create db:schema:load --trace
       - run:
           name: Run Tests
