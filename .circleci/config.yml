@@ -90,7 +90,7 @@ jobs:
           RAILS_ENV: test
           REDIS_HOST: localhost
           REDIS_PORT: '6379'
-          SCHOLARSARCHIVE_DB_PASSWORD: ''
+          SCHOLARSARCHIVE_DB_PASSWORD: 'monkeys'
           SCHOLARSARCHIVE_DB_PORT: '3306'
           SCHOLARSARCHIVE_DB_USERNAME: root
           SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
@@ -99,7 +99,10 @@ jobs:
           TRIPLESTORE_ADAPTER_TYPE: blazegraph
           TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
-        environment: 
+        environment:
+          MYSQL_ROOT_PASSWORD: monkeys
+          MYSQL_USER: monkeys
+          MYSQL_PASSWORD: monkeys
           MYSQL_DATABASE: sa_test
       - image: circleci/redis:4
       - image: ualbertalib/docker-fcrepo4:4.7
