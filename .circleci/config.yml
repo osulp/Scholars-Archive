@@ -99,10 +99,7 @@ jobs:
           TRIPLESTORE_ADAPTER_TYPE: blazegraph
           TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
-        environment:
-          MYSQL_ROOT_PASSWORD: 
-          MYSQL_USER: root
-          MYSQL_PASSWORD: 
+        environment: 
           MYSQL_DATABASE: sa_test
       - image: circleci/redis:4
       - image: ualbertalib/docker-fcrepo4:4.7
