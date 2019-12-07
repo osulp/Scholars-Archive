@@ -64,7 +64,12 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - run: bundle exec rubocop
+      - run:
+          name: Install Rubocop
+          command: bundle install rubocop
+      - run: 
+          name: Run Rubocop
+          command: bundle exec rubocop
   test:
     docker:
       - image: circleci/ruby:2.5-stretch-node-browsers
