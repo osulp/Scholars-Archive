@@ -44,7 +44,7 @@ jobs:
           command: gem install bundler -v 1.17.2
       - run:
           name: Install dependencies
-          command: bundle check || bundle install
+          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
       - save_cache:
           name: Save bundle cache
           key: v2-bundle-{{ checksum "Gemfile.lock" }}
