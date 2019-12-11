@@ -95,7 +95,7 @@ jobs:
           SCHOLARSARCHIVE_DB_USERNAME: root
           SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
           SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
-          SOLR_URL: http://localhost:8986/solr/hydra-test
+          SOLR_URL: http://localhost:8985/solr/hydra-test
           TRIPLESTORE_ADAPTER_TYPE: blazegraph
           TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
@@ -109,7 +109,7 @@ jobs:
         environment:
           CATALINA_OPTS: '-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx1024m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC'
       - image: solr:6-alpine
-        command: bin/solr -cloud -noprompt -f -p 8986
+        command: bin/solr -cloud -noprompt -f -p 8985
     working_directory: ~/app
     steps:
       - attach_workspace:
@@ -125,15 +125,14 @@ jobs:
             sudo apt-get install -y imagemagick graphicsmagick libopenjp2-tools
       - run:
           name: Wait for SOLR
-          command: dockerize -wait tcp://localhost:8986 -timeout 1m
+          command: dockerize -wait tcp://localhost:8985 -timeout 1m
       - run:
           name: Load config into SolrCloud
           command: |
             cd ./solr/config
             zip -1 -r solr_hyrax_config.zip ./*
-            curl -H "Content-type:application/octet-stream" --data-binary @solr_hyrax_config.zip "http://localhost:8986/solr/admin/configs?action=UPLOAD&name=hyrax"
-            #curl -H 'Content-type: application/json' http://localhost:8986/solr/admin/collections/ -d '{create: {name: hydra-test, config: hyrax, numShards: 1}}'
-            curl 'http://localhost:8986/solr/admin/collections?action=CREATE&name=hydra-test&config=hyrax&numShards=1&replicationFactor=1&wt=xml'
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_hyrax_config.zip "http://localhost:8985/solr/admin/configs?action=UPLOAD&name=hyrax"
+            curl 'http://localhost:8985/solr/admin/collections?action=CREATE&name=hydra-test&config=hyrax&numShards=1&replicationFactor=1&wt=xml'
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
