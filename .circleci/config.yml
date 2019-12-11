@@ -124,11 +124,15 @@ jobs:
             sudo apt-get install -y openjdk-8-jre openjdk-8-jdk openjdk-8-jdk-headless
             sudo apt-get install -y imagemagick graphicsmagick libopenjp2-tools
       - run:
+          name: Wait for SOLR
+          command: dockerize -wait tcp://localhost:8986 -timeout 1m
+      - run:
           name: Load config into SolrCloud
           command: |
             cd ./solr/config
             zip -1 -r solr_hyrax_config.zip ./*
             curl -H "Content-type:application/octet-stream" --data-binary @solr_hyrax_config.zip "http://localhost:8986/solr/admin/configs?action=UPLOAD&name=hyrax"
+            curl -H 'Content-type: application/json' http://localhost:8986/api/collections/ -d '{create: {name: hydra-test, config: hyrax, numShards: 1}}'
             curl -H 'Content-type: application/json' http://localhost:8986/api/collections/ -d '{create: {name: hydra-test, config: hyrax, numShards: 1}}'
       - run:
           name: Wait for DB
@@ -136,9 +140,6 @@ jobs:
       - run:
           name: Wait for Redis
           command: dockerize -wait tcp://localhost:6379 -timeout 1m
-      - run:
-          name: Wait for SOLR
-          command: dockerize -wait tcp://localhost:8986 -timeout 1m
       - run:
           name: Update bundler srsly again
           command: gem install --force bundler
