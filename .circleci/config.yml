@@ -159,7 +159,7 @@ jobs:
           command: bundle exec rails hyrax:workflow:load
       - run:
           name: Create admin role
-          command: bundle exec rails runner 'Role.create(name: "admin")'
+          command: bundle exec rails runner Role.create(name: "admin")
       - run:
           name: Run Tests
           command: |
