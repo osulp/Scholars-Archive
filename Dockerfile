@@ -12,7 +12,7 @@ RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
 RUN gem install bundler
 
 RUN apt-get update -qq && apt-get upgrade -y && \
-  apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript yarn
+  apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript vim yarn
 
 # install clamav for antivirus
 # fetch clamav local database
