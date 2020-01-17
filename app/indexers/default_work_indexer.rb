@@ -20,8 +20,8 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
       triple_powered_properties_for_solr_doc(object, solr_doc)
-      solr_doc['based_near_linked_ssim'] = object.based_near.each.map { |location| location.solrize.second[:label] }
-      solr_doc['based_near_linked_tesim'] = object.based_near.each.map { |location| location.solrize.second[:label] }
+      solr_doc['based_near_linked_ssim'] = object.based_near.each.map { |location| location.solrize.second[:label] if location.solrize.count > 1 }
+      solr_doc['based_near_linked_tesim'] = object.based_near.each.map { |location| location.solrize.second[:label] if location.solrize.count > 1 }
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
       solr_doc['rights_statement_label_tesim'] = rights_statement_labels
       solr_doc['license_label_ssim'] = license_labels
