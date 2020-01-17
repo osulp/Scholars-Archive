@@ -5,5 +5,7 @@ module ScholarsArchive
   # SA deep indexing service
   class SaDeepIndexingService < Hyrax::DeepIndexingService
     self.stored_fields = stored_fields - [:related_url]
+
+    def fetch_values(value); end
   end
 end

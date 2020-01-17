@@ -20,6 +20,11 @@ class Default < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::OtherAffiliationValidator
   validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
+  def update_index
+    super
+    FetchGraphWorker.perform_async(id)
+  end
+
   private
   def set_defaults
   end
