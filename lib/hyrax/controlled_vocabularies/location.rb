@@ -6,10 +6,10 @@ module Hyrax
     class Location < ActiveTriples::Resource
       configure rdf_label: ::RDF::Vocab::GEONAMES.name
 
-      property :parentFeature, predicate: RDF::URI('https://www.geonames.org/ontology#parentFeature'), class_name: 'Hyrax::ControlledVocabularies::Location'
-      property :parentCountry, predicate: RDF::URI('https://www.geonames.org/ontology#parentCountry'), class_name: 'Hyrax::ControlledVocabularies::Location'
-      property :featureCode, predicate: RDF::URI('https://www.geonames.org/ontology#featureCode')
-      property :featureClass, predicate: RDF::URI('https://www.geonames.org/ontology#featureClass')
+      property :parentFeature, predicate: RDF::URI('http://www.geonames.org/ontology#parentFeature'), class_name: 'Hyrax::ControlledVocabularies::Location'
+      property :parentCountry, predicate: RDF::URI('http://www.geonames.org/ontology#parentCountry'), class_name: 'Hyrax::ControlledVocabularies::Location'
+      property :featureCode, predicate: RDF::URI('http://www.geonames.org/ontology#featureCode')
+      property :featureClass, predicate: RDF::URI('http://www.geonames.org/ontology#featureClass')
 
       # Return a tuple of url & label
       def solrize
@@ -60,7 +60,7 @@ module Hyrax
 
       def top_level_element?
         featureCode = self.featureCode.first
-        top_level_codes = [RDF::URI('https://www.geonames.org/ontology#A.PCLI')]
+        top_level_codes = [RDF::URI('http://www.geonames.org/ontology#A.PCLI')]
         featureCode.respond_to?(:rdf_subject) && top_level_codes.include?(featureCode.rdf_subject)
       end
     end

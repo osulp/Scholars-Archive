@@ -33,7 +33,7 @@ module Qa::Authorities
     end
 
     def find_url(id)
-      "https://www.geonames.org/getJSON?geonameId=#{id}&username=#{username}"
+      "http://www.geonames.org/getJSON?geonameId=#{id}&username=#{username}"
     end
 
     private
