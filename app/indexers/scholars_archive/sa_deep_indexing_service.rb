@@ -5,7 +5,7 @@ module ScholarsArchive
   # SA deep indexing service
   class SaDeepIndexingService < Hyrax::DeepIndexingService
     self.stored_fields = stored_fields - [:related_url]
-    
+
     private
 
     # OVERRIDEN FROM HYRAX TO BYPASS THE FETCHING OF CONTROLLED VOCABULARIES
