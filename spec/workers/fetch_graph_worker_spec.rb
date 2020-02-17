@@ -5,7 +5,7 @@ RSpec.describe FetchGraphWorker, type: :worker do
   let(:worker) { described_class.new }
   let(:uri) { 'http://my.queryuri.com' }
   let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
-  let(:model) { Default.new(title: ['foo'], based_near: [controlled_val], depositor: user.email, id: 123) }
+  let(:model) { Default.new(title: ['foo'], based_near: [controlled_val], depositor: user.email) }
   let(:controlled_val) { Hyrax::ControlledVocabularies::Location.new('http://opaquenamespace.org/ns/creator/ChabreWayne') }
   let(:work) { model }
 
