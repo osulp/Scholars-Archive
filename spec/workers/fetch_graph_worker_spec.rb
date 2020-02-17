@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.describe FetchGraphWorker, type: :worker do
   let(:worker) { described_class.new }
   let(:uri) { 'http://my.queryuri.com' }
-  let(:user) { build(:user) }
+  let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
   let(:model) { create(:generic, title: ['foo'], based_near: [controlled_val], depositor: user.email, id: 123) }
   let(:controlled_val) { Hyrax::ControlledVocabularies::Location.new('http://opaquenamespace.org/ns/creator/ChabreWayne') }
   let(:work) { model }
