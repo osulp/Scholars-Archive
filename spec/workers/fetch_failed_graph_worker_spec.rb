@@ -23,7 +23,7 @@ RSpec.describe FetchFailedGraphWorker, type: :worker do
 
       it 'fetches a work and indexes its linked data labels' do
         worker.perform(work.id, controlled_val, controlled_prop)
-        expect(SolrDocument.find(work.id)['creator_label_tesim'].first).to eq 'Chabre, Wayne'
+        expect(SolrDocument.find(work.id)['based_near_linked_tesim'].first).to eq 'Chabre, Wayne'
       end
     end
 

@@ -21,33 +21,26 @@ class FetchGraphWorker
     solr_doc['_version_'] = 0
 
     # Iterate over Controller Props values
-    work.controlled_properties.each do |controlled_prop|
-      work.attributes[controlled_prop.to_s].each do |val|
-        val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
-        # Fetch labels
-        if val.respond_to?(:fetch)
-          begin
-            val.fetch(headers: { 'Accept' => default_accept_header })
-          rescue TriplestoreAdapter::TriplestoreException
-            fetch_failed_graph(pid, val, controlled_prop)
-            next
-          end
-          val.persist!
+    work.based_near.each do |val|
+      val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
+      # Fetch labels
+      if val.respond_to?(:fetch)
+        begin
+          val.fetch(headers: { 'Accept' => default_accept_header })
+        rescue TriplestoreAdapter::TriplestoreException
+          fetch_failed_graph(pid, val, controlled_prop)
+          next
         end
+        val.persist!
+      end
 
-        # For each behavior
-        work.class.index_config[controlled_prop].behaviors.each do |behavior|
-          # Insert into SolrDocument
-          if val.is_a?(String)
-            Solrizer.insert_field(solr_doc, "#{controlled_prop}_label", val, behavior)
-          else
-            extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
-            Solrizer.insert_field(solr_doc, "#{controlled_prop}_label", [extractred_val], behavior)
-          end
-        end
+      # For each behavior
+      work.class.index_config[:based_near].behaviors.each do |behavior|
+        # Insert into SolrDocument
+        extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
+        Solrizer.insert_field(solr_doc, "based_near_linked_tesim", [extractred_val], behavior)
       end
     end
-
     # Commit Changes
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
