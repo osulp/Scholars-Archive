@@ -18,12 +18,10 @@ class FetchFailedGraphWorker
       val.persist!
     end
 
-    # For each behavior
-    work.class.index_config[controlled_prop].behaviors.each do |behavior|
-      # Insert into SolrDocument
-      extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
-      Solrizer.insert_field(solr_doc, 'based_near_linked', extractred_val, behavior)
-    end
+    extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
+    Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :stored_searchable)
+    Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :facetable)
+    Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :symbol)
 
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
