@@ -21,16 +21,8 @@ class FetchFailedGraphWorker
     # For each behavior
     work.class.index_config[controlled_prop].behaviors.each do |behavior|
       # Insert into SolrDocument
-      if val.is_a?(String)
-        Solrizer.insert_field(solr_doc, "#{controlled_prop}_label", val, behavior)
-      else
-        extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
-        if controlled_prop == :based_near
-          Solrizer.insert_field(solr_doc, 'location_label', [extractred_val], behavior)
-        else
-          Solrizer.insert_field(solr_doc, "#{controlled_prop}_label", [extractred_val], behavior)
-        end
-      end
+      extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
+      Solrizer.insert_field(solr_doc, 'based_near_linked', extractred_val, behavior)
     end
 
     ActiveFedora::SolrService.add(solr_doc)

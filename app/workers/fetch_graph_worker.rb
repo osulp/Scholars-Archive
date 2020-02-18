@@ -21,16 +21,20 @@ class FetchGraphWorker
     solr_doc['_version_'] = 0
 
     # Iterate over Controller Props values
-    work.based_near.each do |val|
+    work.attributes['based_near'].each do |val|
       val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
       # Fetch labels
       if val.respond_to?(:fetch)
         begin
           val.fetch(headers: { 'Accept' => default_accept_header })
-        rescue TriplestoreAdapter::TriplestoreException
-          fetch_failed_graph(pid, val, controlled_prop)
+        # Since ActiveTriples doesnt actually raise a specific error class, we cant so we need to ignore this
+        # rubocop:disable Style/RescueStandardError
+        rescue => e
+          Rails.logger.info "Failed #{e}"
+          fetch_failed_graph(pid, val, :based_near)
           next
         end
+        # rubocop:enable Style/RescueStandardError
         val.persist!
       end
 
@@ -38,7 +42,7 @@ class FetchGraphWorker
       work.class.index_config[:based_near].behaviors.each do |behavior|
         # Insert into SolrDocument
         extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
-        Solrizer.insert_field(solr_doc, "based_near_linked_tesim", [extractred_val], behavior)
+        Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], behavior)
       end
     end
     # Commit Changes
