@@ -20,7 +20,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
       triple_powered_properties_for_solr_doc(object, solr_doc)
-      based_near_for_solr_doc(object, solr_doc)
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
       solr_doc['rights_statement_label_tesim'] = rights_statement_labels
       solr_doc['license_label_ssim'] = license_labels
@@ -43,11 +42,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
 
   def embargo_date_range_string(solr_doc, start_date, end_date)
     solr_doc['embargo_date_range_ssim'] = "#{start_date} to #{end_date}"
-  end
-
-  def based_near_for_solr_doc(object, solr_doc)
-    solr_doc['based_near_linked_ssim'] = object.based_near.each.map { |location| location.solrize.second[:label] if location.solrize.count > 1 }
-    solr_doc['based_near_linked_tesim'] = object.based_near.each.map { |location| location.solrize.second[:label] if location.solrize.count > 1 }
   end
 
   def title_for_solr_doc(object, solr_doc)
