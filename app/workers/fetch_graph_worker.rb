@@ -38,7 +38,7 @@ class FetchGraphWorker
         val.persist!
       end
 
-        # Insert into SolrDocument
+      # Insert into SolrDocument
       extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
       Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :stored_searchable)
       Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :facetable)

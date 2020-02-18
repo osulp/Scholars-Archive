@@ -8,9 +8,8 @@ class FetchFailedGraphWorker
   # JOBS TEND TOWARD BEING LARGE. DISABLED BECAUSE FETCHING IS HEAVY HANDED.
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
-  def perform(pid, val, controlled_prop)
+  def perform(pid, val, _controlled_prop)
     # Fetch the work and the solr_doc
-    work = ActiveFedora::Base.find(pid)
     solr_doc = SolrDocument.find(pid)
 
     if val.respond_to?(:fetch)
