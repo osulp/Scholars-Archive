@@ -57,13 +57,14 @@ services:
       - redis
       - memcache
       - blazegraph
+      - workers
     expose:
       - 3000
 
   # Runs sidekiq to process background jobs
   workers:
     <<: *server
-    command: bundle exec sidekiq
+    command: bash -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
       - db_test
@@ -71,6 +72,7 @@ services:
       - fcrepo
       - redis
       - blazegraph
+      - memcache
 
   ##
   # Test environment for application
