@@ -8,8 +8,8 @@ RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
   let(:cc_user) { User.create(email: 'test2@example.com', password: 'password', password_confirmation: 'password') }
   let(:work) { Article.create(title: ['New Article']) }
   let(:admin_set) do
-    AdminSet.create(title: ["article admin set"],
-                    description: ["some description"],
+    AdminSet.create(title: ['article admin set'],
+                    description: ['some description'],
                     edit_users: [depositor.user_key])
   end
   let(:permission_template) do
@@ -23,7 +23,7 @@ RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
   let(:comment) { double("comment", comment: 'A pleasant read') }
   let(:recipients) { { 'to' => [depositor], 'cc' => [cc_user] } }
 
-  describe ".send_notification" do
+  describe '.send_notification' do
     it 'sends a message to all users' do
       expect(approver).to receive(:send_message)
                               .with(anything,

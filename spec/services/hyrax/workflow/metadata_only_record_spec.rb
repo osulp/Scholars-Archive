@@ -8,8 +8,8 @@ RSpec.describe Hyrax::Workflow::MetadataOnlyRecord do
   let(:file_set) { FileSet.new }
   let(:file_set_actor) { Hyrax::Actors::FileSetActor.new(file_set, user) }
   let(:admin_set) do
-    AdminSet.create(title: ["article admin set"],
-                    description: ["some description"],
+    AdminSet.create(title: ['article admin set'],
+                    description: ['some description'],
                     edit_users: [depositor.user_key])
   end
   let(:permission_template) do
@@ -26,8 +26,8 @@ RSpec.describe Hyrax::Workflow::MetadataOnlyRecord do
     file_set_actor.attach_to_work(work)
   end
 
-  describe ".call" do
-    it "makes file sets private" do
+  describe '.call' do
+    it 'makes file sets private' do
       expect { described_class.call(target: work, user: user) }
           .to change { work.file_sets[0].visibility }
                   .from(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC)
