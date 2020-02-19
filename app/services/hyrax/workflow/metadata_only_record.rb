@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # add method to make files private and change the owner to the admin group
 module Hyrax
   module Workflow

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Workflow
+    # Notifies User of pending deletion
     class PendingDeletionNotification < AbstractNotification
       private
 

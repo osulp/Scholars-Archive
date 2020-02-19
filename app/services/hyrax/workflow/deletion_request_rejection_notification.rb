@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 module Hyrax
   module Workflow
+    # Rejected Deleting Notification
     class DeletionRequestRejectionNotification < AbstractNotification
       private
 
