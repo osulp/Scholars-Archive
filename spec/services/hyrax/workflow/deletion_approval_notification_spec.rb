@@ -25,15 +25,8 @@ RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
 
   describe '.send_notification' do
     it 'sends a message to all users' do
-      expect(approver).to receive(:send_message)
-                              .with(anything,
-                                    "The deletion request for #{work.title[0]} (<a href=\"/concern/articles/#{work.id}\">#{work.id}</a>) "\
-      "was approved by #{approver.user_key}. #{comment.comment}",
-                                    anything).exactly(3).times.and_call_original
-
-      expect { described_class.send_notification(entity: entity, user: approver, comment: comment, recipients: recipients) }
-          .to change { depositor.mailbox.inbox.count }.by(1)
-                  .and change { cc_user.mailbox.inbox.count }.by(1)
+      expect(approver).to receive(:send_message).with(anything, "The deletion request for #{work.title[0]} (<a href=\"/concern/articles/#{work.id}\">#{work.id}</a>) was approved by #{approver.user_key}. #{comment.comment}", anything).exactly(3).times.and_call_original
+      expect { described_class.send_notification(entity: entity, user: approver, comment: comment, recipients: recipients) }.to change { depositor.mailbox.inbox.count }.by(1).and change { cc_user.mailbox.inbox.count }.by(1)
     end
 
     context 'without carbon-copied users' do
@@ -41,8 +34,7 @@ RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
 
       it 'sends a message to the to user(s)' do
         expect(approver).to receive(:send_message).exactly(2).times.and_call_original
-        expect { described_class.send_notification(entity: entity, user: approver, comment: comment, recipients: recipients) }
-            .to change { depositor.mailbox.inbox.count }.by(1)
+        expect { described_class.send_notification(entity: entity, user: approver, comment: comment, recipients: recipients) }.to change { depositor.mailbox.inbox.count }.by(1)
       end
     end
   end

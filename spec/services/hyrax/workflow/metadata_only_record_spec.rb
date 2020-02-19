@@ -28,10 +28,7 @@ RSpec.describe Hyrax::Workflow::MetadataOnlyRecord do
 
   describe '.call' do
     it 'makes file sets private' do
-      expect { described_class.call(target: work, user: user) }
-          .to change { work.file_sets[0].visibility }
-                  .from(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC)
-                  .to(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
+      expect { described_class.call(target: work, user: user) }.to change { work.file_sets[0].visibility }.from(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC).to(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
     end
   end
 end

@@ -25,15 +25,8 @@ RSpec.describe Hyrax::Workflow::PendingDeletionNotification do
 
   describe '.send_notification' do
     it 'sends a message to all users' do
-      expect(depositor).to receive(:send_message)
-                              .with(anything,
-                                    "A deletion request for #{work.title[0]} (<a href=\"/concern/articles/#{work.id}\">#{work.id}</a>) "\
-      "was made by #{depositor.user_key} and is awaiting approval with the following comments: #{comment.comment}",
-                                    anything).exactly(3).times.and_call_original
-
-      expect { described_class.send_notification(entity: entity, user: depositor, comment: comment, recipients: recipients) }
-          .to change { approver.mailbox.inbox.count }.by(1)
-                  .and change { cc_user.mailbox.inbox.count }.by(1)
+      expect(depositor).to receive(:send_message).with(anything, "A deletion request for #{work.title[0]} (<a href=\"/concern/articles/#{work.id}\">#{work.id}</a>) was made by #{depositor.user_key} and is awaiting approval with the following comments: #{comment.comment}", anything).exactly(3).times.and_call_original
+      expect { described_class.send_notification(entity: entity, user: depositor, comment: comment, recipients: recipients) }.to change { approver.mailbox.inbox.count }.by(1).and change { cc_user.mailbox.inbox.count }.by(1)
     end
 
     context 'without carbon-copied users' do
@@ -41,8 +34,7 @@ RSpec.describe Hyrax::Workflow::PendingDeletionNotification do
 
       it 'sends a message to the to user(s)' do
         expect(depositor).to receive(:send_message).exactly(2).times.and_call_original
-        expect { described_class.send_notification(entity: entity, user: depositor, comment: comment, recipients: recipients) }
-            .to change { approver.mailbox.inbox.count }.by(1)
+        expect { described_class.send_notification(entity: entity, user: depositor, comment: comment, recipients: recipients) }.to change { approver.mailbox.inbox.count }.by(1)
       end
     end
   end
