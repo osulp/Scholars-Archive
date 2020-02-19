@@ -20,7 +20,7 @@ RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
                             permission_template_id: permission_template.id)
   end
   let(:entity) { Sipity::Entity.create(proxy_for_global_id: work.to_global_id.to_s, workflow_id: workflow.id) }
-  let(:comment) { double("comment", comment: 'A pleasant read') }
+  let(:comment) { double('comment', comment: 'A pleasant read') }
   let(:recipients) { { 'to' => [depositor], 'cc' => [cc_user] } }
 
   describe '.send_notification' do
@@ -33,7 +33,7 @@ RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
       let(:recipients) { { 'to' => [depositor] } }
 
       it 'sends a message to the to user(s)' do
-        expect(approver).to receive(:send_message).exactly(2).times.and_call_original
+        expect(approver).to receive(:send_message).twice.and_call_original
         expect { described_class.send_notification(entity: entity, user: approver, comment: comment, recipients: recipients) }.to change { depositor.mailbox.inbox.count }.by(1)
       end
     end
