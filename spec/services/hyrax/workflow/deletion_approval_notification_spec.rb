@@ -3,9 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe Hyrax::Workflow::DeletionApprovalNotification do
-  let(:approver) { User.find_by_user_key('admin@example.com') }
-  let(:depositor) { User.create(email: 'test@example.com', password: 'password', password_confirmation: 'password') }
-  let(:cc_user) { User.create(email: 'test2@example.com', password: 'password', password_confirmation: 'password') }
+  let(:approver) do
+    User.create(email: 'admin@example.com', guest: false) { |u| u.save!(validate: false) }
+  end
+  let(:depositor) do
+    User.create(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+  end
+  let(:cc_user) do
+    User.create(email: 'test2@example.com', guest: false) { |u| u.save!(validate: false) }
+  end
   let(:work) { Article.create(title: ['New Article']) }
   let(:admin_set) do
     AdminSet.create(title: ['article admin set'],
