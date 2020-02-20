@@ -14,12 +14,17 @@ RSpec.describe Hyrax::Workflow::PendingDeletionNotification do
   end
   let(:work) { Article.create(title: ['New Article']) }
   let(:admin_set) do
-    AdminSet.create(title: ['article admin set'],
-                    description: ['some description'],
-                    edit_users: [depositor.email])
+    begin
+      AdminSet.find('blah')
+    rescue ActiveFedora::ObjectNotFoundError
+      AdminSet.create(id: 'blah',
+                      title: ['title'],
+                      description: ['A substantial description'],
+                      edit_users: [depositor.username])
+    end
   end
   let(:permission_template) do
-    Hyrax::PermissionTemplate.create!(admin_set_id: admin_set.id)
+    Hyrax::PermissionTemplate.create!(source_id: admin_set.id)
   end
   let(:workflow) do
     Sipity::Workflow.create(name: 'test', allows_access_grant: true, active: true,
