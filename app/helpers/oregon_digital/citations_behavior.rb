@@ -3,7 +3,6 @@
 module OregonDigital
   # Used to export citations
   module CitationsBehavior
-
     def export_as_apa_citation(work)
       OregonDigital::CitationsBehaviors::Formatters::ApaFormatter.new(self).format(work)
     end
