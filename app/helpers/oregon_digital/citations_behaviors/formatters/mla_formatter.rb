@@ -1,0 +1,17 @@
+module OregonDigital
+  module CitationsBehaviors
+    module Formatters
+      class MlaFormatter < Hyrax::CitationsBehaviors::Formatters::MlaFormatter
+        def setup_pub_date(work)
+          first_date = work.solr_document.date_issued.first if work.solr_document.date_issued
+          if first_date.present?
+            first_date = CGI.escapeHTML(first_date)
+            date_value = first_date.gsub(/[^0-9|n\.d\.]/, "")[0, 4]
+            return nil if date_value.nil?
+          end
+          clean_end_punctuation(date_value) if date_value
+        end
+      end
+    end
+  end
+end
