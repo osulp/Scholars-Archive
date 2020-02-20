@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module OregonDigital
+  # Used to export citations
   module CitationsBehavior
 
     def export_as_apa_citation(work)
