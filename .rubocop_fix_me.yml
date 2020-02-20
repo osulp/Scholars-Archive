@@ -1097,6 +1097,9 @@ Style/RedundantBegin:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_approval_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/pending_deletion_notification_spec.rb'
     - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
 
 RSpec/ExampleLength:
