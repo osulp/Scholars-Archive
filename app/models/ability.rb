@@ -20,5 +20,13 @@ class Ability
     # if user_groups.include? 'special_group'
     #   can [:create], ActiveFedora::Base
     # end
+
+    can(%i[edit update], SolrDocument) do |solr_doc| 
+      solr_doc.depositor == current_user.username
+    end
+
+    can(%i[edit update], ActiveFedora::Base) do |solr_doc| 
+      solr_doc.depositor == current_user.username
+    end
   end
 end
