@@ -14,7 +14,6 @@ module Hyrax
     # Use this line if you want to use a custom presenter
     self.show_presenter = GraduateThesisOrDissertationPresenter
 
-    
     before_action :ensure_admin!, only: :destroy
 
     private
