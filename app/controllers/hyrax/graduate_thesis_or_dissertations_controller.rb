@@ -14,6 +14,22 @@ module Hyrax
     # Use this line if you want to use a custom presenter
     self.show_presenter = GraduateThesisOrDissertationPresenter
 
+    # OVERRIDE FROM HYRAX TO INSERT SOLR DOCUMENT INTO DOCUMENT LIST IF THE WORK WAS INGESTED BY THE CURRENT USER
+    def search_result_document(search_params)
+      _, document_list = search_results(search_params)
+      solr_doc = ::SolrDocument.find(params[:id])
+      document_list << solr_doc if solr_doc.depositor == current_user.username
+      return document_list.first unless document_list.empty?
+      document_not_found!
+    end
+
+    def document_not_found!
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      doc = ::SolrDocument.find(params[:id])
+      raise WorkflowAuthorizationException if doc.suppressed? && current_ability.can?(:read, doc)
+      raise CanCan::AccessDenied.new(nil, :show)
+    end
+
     before_action :ensure_admin!, only: :destroy
 
     private

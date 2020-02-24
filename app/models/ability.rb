@@ -20,25 +20,5 @@ class Ability
     # if user_groups.include? 'special_group'
     #   can [:create], ActiveFedora::Base
     # end
-
-    can(%i[read], SolrDocument, visibility: 'restricted') do |solr_doc| 
-      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      solr_doc.depositor == current_user.username
-    end
-
-    can(%i[read], ActiveFedora::Base, visibility: 'restricted') do |record| 
-      Rails.logger.info "2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      record.depositor == current_user.username
-    end
-
-    can(%i[show], SolrDocument, visibility: 'restricted') do |solr_doc| 
-      Rails.logger.info "3!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      solr_doc.depositor == current_user.username
-    end
-
-    can(%i[show], ActiveFedora::Base, visibility: 'restricted') do |record| 
-      Rails.logger.info "4!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      record.depositor == current_user.username
-    end
   end
 end
