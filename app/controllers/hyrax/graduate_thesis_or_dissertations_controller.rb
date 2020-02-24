@@ -23,13 +23,6 @@ module Hyrax
       document_not_found!
     end
 
-    def document_not_found!
-      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      doc = ::SolrDocument.find(params[:id])
-      raise WorkflowAuthorizationException if doc.suppressed? && current_ability.can?(:read, doc)
-      raise CanCan::AccessDenied.new(nil, :show)
-    end
-
     before_action :ensure_admin!, only: :destroy
 
     private
