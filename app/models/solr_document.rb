@@ -33,21 +33,28 @@ class SolrDocument
     end
   end
 
-  def self.solrized_methods_parsed(property_name)
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/PerceivedComplexity
+  def self.solrized_methods_parsed(property_names)
     property_names.each do |property_name|
       define_method property_name.to_sym do
-        case property_name
-        when property_name.include?('ordered')
-          values = ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name(property_name, :symbol)]) || []
-        when property_name.include?('related_items')
-          values = ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)]) || []
-        when property_name.include?('degree') || property_name.include?('affiliation')
-          values = ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)])
+        values = self[Solrizer.solr_name(property_name, :symbol)]
+        if property_name.include?('ordered')
+          ScholarsArchive::OrderedParserService.parse(values) || []
+        elsif property_name.include?('related_items')
+          ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(values) || []
+        elsif property_name.include?('degree') || property_name.include?('affiliation')
+          ScholarsArchive::LabelParserService.parse_label_uris(values)
         else
-          self[Solrizer.solr_name(property_name, :symbol)
+          values
+        end
       end
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def nested_geo
     self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
@@ -198,7 +205,7 @@ class SolrDocument
     oa_labels
   end
 
-  # Only return License if present, otherwise Rights
+  # Only return License when present, otherwise Rights
   def oai_rights
     license_label || rights_statement_label
   end
