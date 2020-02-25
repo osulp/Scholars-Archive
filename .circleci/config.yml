@@ -82,21 +82,20 @@ jobs:
         environment:
           BUNDLE_PATH: vendor/bundle
           CAPYBARA_APP_HOST: http://test:3001
-          FEDORA_URL: http://localhost:8080/fcrepo/rest
-          SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8080/fcrepo/rest
           HONEYCOMB_DATASET: sa-rails-test
           HONEYCOMB_DEBUG: 'true'
           HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
           HONEYCOMB_SERVICE: sa-rails-test
           RAILS_ENV: test
-          REDIS_HOST: localhost
-          REDIS_PORT: '6379'
+          SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8080/fcrepo/rest
+          SCHOLARSARCHIVE_REDIS_HOST: localhost
+          SCHOLARSARCHIVE_REDIS_PORT: '6379'
           SCHOLARSARCHIVE_DB_PASSWORD: 'monkeys'
           SCHOLARSARCHIVE_DB_PORT: '3306'
           SCHOLARSARCHIVE_DB_USERNAME: root
           SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
           SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
-          SOLR_URL: http://localhost:8985/solr/hydra-test
+          SCHOLARSARCHIVE_SOLR_URL: http://localhost:8985/solr/hydra-test
           TRIPLESTORE_ADAPTER_TYPE: blazegraph
           TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
