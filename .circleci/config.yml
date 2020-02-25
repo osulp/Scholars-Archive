@@ -233,5 +233,4 @@ workflows:
           name: Build and push application image to Beavernetes image repository
           requires:
             - test
-          filters:
           repo: sa_web
