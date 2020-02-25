@@ -42,7 +42,7 @@ class SolrDocument
         when property_name.include?('related_items')
           values = ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)]) || []
         when property_name.include?('degree') || property_name.include?('affiliation')
-          values = ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)]])
+          values = ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)])
         else
           self[Solrizer.solr_name(property_name, :symbol)
         end
