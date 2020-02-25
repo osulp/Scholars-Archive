@@ -234,6 +234,4 @@ workflows:
           requires:
             - test
           filters:
-            branches:
-              only: master
           repo: sa_web
