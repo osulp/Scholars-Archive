@@ -95,7 +95,7 @@ class SolrDocument
     language_label
     based_near_linked
     embargo_date_range
-    peer_reviewed_label
+    peerreviewed_label
     license_label
   ]
 
