@@ -27,16 +27,4 @@ class NestedGeo < NestedOrderedResource
     end
     super
   end
-
-  def final_parent
-    parent
-  end
-
-  def new_record?
-    id.start_with?('#')
-  end
-
-  def _destroy
-    false
-  end
 end
