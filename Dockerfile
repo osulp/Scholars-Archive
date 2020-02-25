@@ -32,7 +32,7 @@ ADD Gemfile /data/Gemfile
 ADD Gemfile.lock /data/Gemfile.lock
 RUN mkdir /data/build
 
-ARG RAILS_ENV=development
+#ARG RAILS_ENV=development
 ENV RAILS_ENV=${RAILS_ENV}
 
 ADD ./build/install_gems.sh /data/build
