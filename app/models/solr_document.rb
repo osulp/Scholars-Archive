@@ -72,10 +72,6 @@ class SolrDocument
      nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)] || []
   end
 
-  def abstract
-     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
-  end
-
   def system_created
     Time.parse self['system_create_dtsi']
   end
@@ -216,5 +212,9 @@ class SolrDocument
     else
       Rails.application.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url], controller: "hyrax/#{self['has_model_ssim'].first.to_s.underscore.pluralize}", id: id)
     end
+  end
+
+  def abstract
+     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
   end
 end
