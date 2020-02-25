@@ -45,7 +45,6 @@ class SolrDocument
           values = ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)])
         else
           self[Solrizer.solr_name(property_name, :symbol)
-        end
       end
     end
   end
