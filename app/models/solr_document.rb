@@ -5,11 +5,7 @@ class SolrDocument
   include Blacklight::Solr::Document
   include BlacklightOaiProvider::SolrDocumentBehavior
   include Blacklight::Gallery::OpenseadragonSolrDocument
-
-  # Adds Hyrax behaviors to the SolrDocument.
   include Hyrax::SolrDocumentBehavior
-
-  # .unique_key = 'id'
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(Blacklight::Document::Email)
@@ -19,13 +15,9 @@ class SolrDocument
 
   # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
   # Semantic mappings of solr stored fields. Fields may be multi or
-  # single valued. See Blacklight::Document::SemanticFields#field_semantics
-  # and Blacklight::Document::SemanticFields#to_semantic_values
-  # Recommendation: Use field names from Dublin Core
+  # single valued.
   use_extension(Blacklight::Document::DublinCore)
   use_extension(ScholarsArchive::Document::QualifiedDublinCore)
-
-  # Do content negotiation for AF models.
   use_extension(Hydra::ContentNegotiation)
 
   def self.solrized_methods(property_names)
@@ -41,60 +33,25 @@ class SolrDocument
     end
   end
 
-  def peerreviewed_label
-    self['peerreviewed_label_ssim']
-  end
-
-  def license_label
-    self['license_label_ssim']
-  end
-
-  def academic_affiliation_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['academic_affiliation_label_ssim'])
-  end
-
-  def degree_field_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['degree_field_label_ssim'])
-  end
-
-  def degree_grantors_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['degree_grantors_label_ssim'])
-  end
-
-  def other_affiliation_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['other_affiliation_label_ssim'])
-  end
-
-  def rights_statement_label
-    self['rights_statement_label_ssim']
-  end
-
-  def language_label
-    self['language_label_ssim']
-  end
-
-  def based_near_linked
-    self['based_near_linked_ssim']
-  end
-
-  def embargo_date_range
-    self['embargo_date_range_ssim']
+  def self.solrized_methods_parsed(property_name)
+    property_names.each do |property_name|
+      define_method property_name.to_sym do
+        case property_name
+        when property_name.include?('ordered')
+          values = ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name(property_name, :symbol)]) || []
+        when property_name.include?('related_items')
+          values = ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)]) || []
+        when property_name.include?('degree') || property_name.include?('affiliation')
+          values = ScholarsArchive::LabelParserService.parse_label_uris(self[Solrizer.solr_name(property_name, :symbol)]])
+        else
+          self[Solrizer.solr_name(property_name, :symbol)
+        end
+      end
+    end
   end
 
   def nested_geo
     self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
-  end
-
-  def nested_related_items_label
-    ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
-  end
-
-  def nested_ordered_creator_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)]) || []
-  end
-
-  def nested_ordered_title_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_title_label', :symbol)]) || []
   end
 
   def title
@@ -109,21 +66,32 @@ class SolrDocument
      nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)] || []
   end
 
-  def nested_ordered_abstract_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)]) || []
-  end
-
-  def nested_ordered_contributor_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)]) || []
-  end
-
-  def nested_ordered_additional_information_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_additional_information_label', :symbol)]) || []
+  def abstract
+     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
   end
 
   def system_created
     Time.parse self['system_create_dtsi']
   end
+
+  solrized_methods_parsed %w[
+    nested_ordered_additional_information_label
+    nested_ordered_contributor_label
+    nested_ordered_abstract_label
+    nested_related_items_label
+    nested_ordered_creator_label
+    nested_ordered_title_label
+    academic_affiliation_label
+    other_affiliation_label
+    degree_field_label
+    degree_grantors_label
+    rights_statement_label
+    language_label
+    based_near_linked
+    embargo_date_range
+    peer_reviewed_label
+    license_label
+  ]
 
   solrized_methods %w[
     abstract
@@ -242,9 +210,5 @@ class SolrDocument
     else
       Rails.application.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url], controller: "hyrax/#{self['has_model_ssim'].first.to_s.underscore.pluralize}", id: id)
     end
-  end
-
-  def abstract
-     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
   end
 end
