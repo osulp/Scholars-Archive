@@ -197,10 +197,10 @@ jobs:
       - run:
           name: Generate deployed version
           command: |
-            export APP_VERSION=$(cat lib/oregon_digital/version.rb | grep VERSION | cut -d "=" -f 2 | sed "s/['\" ]//g")
+            #export APP_VERSION=$(cat lib/oregon_digital/version.rb | grep VERSION | cut -d "=" -f 2 | sed "s/['\" ]//g")
             export GIT_SHORT_HASH=$(git rev-parse --short HEAD)
             export DATETIME=$(date "+%Y%m%d%H%M%S")
-            echo export TAG="$DATETIME-$APP_VERSION-$GIT_SHORT_HASH" >> $BASH_ENV
+            echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
       - setup_remote_docker
       - docker-publish/check:
@@ -230,7 +230,7 @@ workflows:
             branches:
               ignore: master
       - build_and_push_beavernetes:
-          name: Build and push application image to Beavernetes image repository
+          name: build_and_push_beavernetes
           requires:
             - test
           repo: sa_web
