@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 # nested ordered contributor object
-class NestedOrderedContributor < ActiveTriples::Resource
+class NestedOrderedContributor < NestedOrderedResource
   # Usage notes and expectations can be found in the Metadata Application Profile:
   #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
   property :index, predicate: ::RDF::URI('http://purl.org/ontology/olo/core#index')
   property :contributor, predicate: ::RDF::Vocab::DC.contributor
-
-  attr_accessor :destroy_item # true/false
-  attr_accessor :validation_msg # string
 
   def initialize(uri=RDF::Node.new, parent=nil)
     if uri.try(:node?)
@@ -18,17 +15,5 @@ class NestedOrderedContributor < ActiveTriples::Resource
       uri = RDF::URI(uri)
     end
     super
-  end
-
-  def final_parent
-    parent
-  end
-
-  def new_record?
-    id.start_with?('#')
-  end
-
-  def _destroy
-    false
   end
 end
