@@ -7,10 +7,8 @@ module Hyrax
     module MetadataOnlyRecord
       def self.call(user:, target:, **)
         target.file_sets.each do |file_set|
-          Hyrax::Actors::FileSetActor.new(file_set, user).update_metadata(visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
+          file_set.destroy
         end
-        target.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
-        target.save
       end
     end
   end
