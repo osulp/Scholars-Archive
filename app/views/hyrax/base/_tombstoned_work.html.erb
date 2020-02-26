@@ -1,0 +1,14 @@
+<% @content_block = ContentBlock.find_or_create_by(name: "tombstone-#{@presenter.solr_document.id}") %>
+<% @content_block.update(value: 'Default') unless @content_block.value.present? %>
+<%= displayable_content_block @content_block, class: 'col-sm-offset-2 col-sm-9 col-md-offset-1 home_marketing_text' %>
+<%= simple_form_for @content_block, url: hyrax.content_block_path(@content_block), html: { class: 'nav-safety' } do |f| %>
+  <div class="panel-body">
+    <div class="field form-group">
+      <%= f.text_area "tombstone-#{@presenter.solr_document.id}".to_sym, value: f.object.value, class: 'form-control tinymce', rows: 20, cols: 120 %>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <%= link_to t(:'hyrax.pages.cancel'), hyrax.admin_admin_sets_path, class: 'btn btn-default pull-right' %>
+    <%= f.button :submit, class: 'btn btn-primary pull-right' %>
+  </div>
+<% end %>

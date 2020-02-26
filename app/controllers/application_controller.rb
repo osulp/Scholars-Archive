@@ -3,6 +3,7 @@
 # Application controller
 class ApplicationController < ActionController::Base
   helper Openseadragon::OpenseadragonHelper
+  helper Hyrax::Engine.helpers
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
   include Hydra::Controller::ControllerBehavior
