@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
+  # Controller for updating content blocks for tombstones
   class ContentBlocksController < ApplicationController
     def update
       @content_block = ContentBlock.find_by(name: params[:name])

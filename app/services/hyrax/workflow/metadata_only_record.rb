@@ -6,8 +6,7 @@ module Hyrax
     # Sets the work and filesets to private
     module MetadataOnlyRecord
       def self.call(user:, target:, **)
-        target.file_sets.each do |file_set|
-          file_set.destroy
+        target.file_sets.each(&:destroy)
         end
       end
     end
