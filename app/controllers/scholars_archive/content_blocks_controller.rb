@@ -5,7 +5,8 @@ module ScholarsArchive
     def update
       @content_block = ContentBlock.find_by(name: params[:name])
       @content_block.update(value: params[:content_block][:content])
-      redirect_to root_path
+      @work = ActiveFedora::Base.find(@content_block.name.split('-').last)
+      redirect_to polymorphic_path(@work)
     end
   end
 end
