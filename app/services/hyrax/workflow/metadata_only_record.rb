@@ -5,10 +5,11 @@ module Hyrax
   module Workflow
     # Sets the work and filesets to private
     module MetadataOnlyRecord
-      def self.call(user:, target:, **)
+      # rubocop:disable Lint/UnusedMethodArgument
+      def self.call(user: _user, target:, **)
         target.file_sets.each(&:destroy)
-        end
       end
+      # rubocop:enable Lint/UnusedMethodArgument
     end
   end
 end
