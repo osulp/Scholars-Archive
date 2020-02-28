@@ -85,7 +85,7 @@ en:
 
     works:
       create:
-        after_create_html: "ScholarsArchive@OSU has received your upload. Your file is currently being processed. Thank you for your deposit."
+        after_create_html: "ScholarsArchive@OSU has received your deposit. Your file is currently being processed; some fields may take a few minutes to display."
 
     homepage:
       featured_works:
