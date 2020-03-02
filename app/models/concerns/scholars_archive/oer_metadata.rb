@@ -70,7 +70,7 @@ module ScholarsArchive
         in_series subject
         tableofcontents
         rights_statement
-      ]
+      ].freeze
     end
   end
 end
