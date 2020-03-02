@@ -13,7 +13,7 @@ module ScholarsArchive
       attr_accessor :geo_section
       attr_accessor :other_affiliation_other
 
-      self.terms += Default::DATASET_TERMS
+      self.terms += ::Default::DATASET_TERMS
       self.required_fields += %i[resource_type nested_ordered_creator nested_ordered_title]
       self.required_fields -= %i[keyword creator title]
 
@@ -39,7 +39,7 @@ module ScholarsArchive
       end
 
       def default_dataset_terms
-        Default::DATASET_PRIMARY_TERMS | super
+        ::Default::DATASET_PRIMARY_TERMS | super
       end
 
       def date_terms

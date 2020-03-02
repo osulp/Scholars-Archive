@@ -5,10 +5,10 @@ module ScholarsArchive
   module OerWorkFormBehavior
     extend ActiveSupport::Concern
     included do
-      self.terms += Default::OER_TERMS
+      self.terms += ::Default::OER_TERMS
 
       def primary_terms
-        Default::OER_PRIMARY_TERMS | super - %i[degree_level degree_name degree_field contributor_advisor]
+        ::Default::OER_PRIMARY_TERMS | super - %i[degree_level degree_name degree_field contributor_advisor]
       end
 
       def secondary_terms

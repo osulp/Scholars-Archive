@@ -16,17 +16,17 @@ module ScholarsArchive
       attr_accessor :degree_field_other
       attr_accessor :degree_name_other
 
-      self.terms += Default.default_properties
+      self.terms += ::Default.default_properties
       self.terms -= %i[creator title]
       self.required_fields += %i[resource_type nested_ordered_creator nested_ordered_title]
       self.required_fields -= %i[keyword creator title contributor]
 
       def primary_terms
-        Default::DEFAULT_PRIMARY_TERMS | super
+        ::Default::DEFAULT_PRIMARY_TERMS | super
       end
 
       def secondary_terms
-        current_ability.current_user.admin? ? Default.DEFAULT_SECONDARY_ADMIN_TERMS : Default::DEFAULT_SECONDARY_TERMS
+        current_ability.current_user.admin? ? ::Default::DEFAULT_SECONDARY_ADMIN_TERMS : ::Default::DEFAULT_SECONDARY_TERMS
       end
 
       def self.date_terms
