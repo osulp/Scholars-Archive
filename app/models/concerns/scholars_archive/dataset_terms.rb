@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
+  # Includes dataset terms as singletons
   module DatasetTerms
     extend ActiveSupport::Concern
     included do

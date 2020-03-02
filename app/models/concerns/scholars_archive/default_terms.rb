@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
+  # Includes term singletons on default
   module DefaultTerms
     extend ActiveSupport::Concern
     included do
@@ -45,7 +48,7 @@ module ScholarsArchive
         issn
       ].freeze
 
-      DEFAULT_SECONDARY_ADMIN_TERMS =  %i[
+      DEFAULT_SECONDARY_ADMIN_TERMS = %i[
         keyword
         source
         funding_body
