@@ -18,7 +18,7 @@ module ScholarsArchive
       self.required_fields -= %i[keyword creator title]
 
       def primary_terms
-        current_ability.current_user.admin? ? (Default::DATASET_PRIMARY_TERMS | super) << :description : (Default::DATASET_PRIMARY_TERMS | super)
+        current_ability.current_user.admin? ? default_dataset_terms + :description : default_dataset_terms
       end
 
       def secondary_terms
@@ -36,6 +36,10 @@ module ScholarsArchive
           date_reviewed
           date_accepted
         ]
+      end
+
+      def default_dataset_terms
+        Default::DATASET_PRIMARY_TERMS | super
       end
 
       def date_terms
