@@ -63,7 +63,7 @@ module ScholarsArchive
         subject
         tableofcontents
         rights_statement
-      ]
+      ].freeze
     end
   end
 end

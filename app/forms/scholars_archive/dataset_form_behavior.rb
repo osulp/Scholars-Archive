@@ -13,14 +13,12 @@ module ScholarsArchive
       attr_accessor :geo_section
       attr_accessor :other_affiliation_other
 
-      self.terms += Default::DATASET_PRIMARY_TERMS
+      self.terms += Default::DATASET_TERMS
       self.required_fields += %i[resource_type nested_ordered_creator nested_ordered_title]
       self.required_fields -= %i[keyword creator title]
 
       def primary_terms
-        t =  | super
-        t << [:description] if current_ability.current_user.admin?
-        t.flatten
+        current_ability.current_user.admin? ? (Default::DATASET_PRIMARY_TERMS | super) << :description : Default::DATASET_PRIMARY_TERMS | super
       end
 
       def secondary_terms

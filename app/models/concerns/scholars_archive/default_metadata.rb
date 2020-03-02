@@ -308,8 +308,6 @@ module ScholarsArchive
       define_singleton_method :default_properties do
         (properties - initial_properties)
       end
-
-      
     end
   end
 end

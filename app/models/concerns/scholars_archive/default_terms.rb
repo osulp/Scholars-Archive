@@ -1,5 +1,5 @@
 module ScholarsArchive
-  module SetDefaultTermBehavior
+  module DefaultTerms
     extend ActiveSupport::Concern
     included do
       DEFAULT_PRIMARY_TERMS = %i[
@@ -23,7 +23,7 @@ module ScholarsArchive
         subject
         tableofcontents
         rights_statement
-      ]
+      ].freeze
 
       DEFAULT_SECONDARY_TERMS = %i[
         nested_related_items
@@ -43,7 +43,7 @@ module ScholarsArchive
         nested_ordered_additional_information
         isbn
         issn
-      ]
+      ].freeze
 
       DEFAULT_SECONDARY_ADMIN_TERMS =  %i[
         keyword
@@ -53,7 +53,7 @@ module ScholarsArchive
         dspace_collection
         description
         identifier
-      ]
+      ].freeze
     end
   end
 end
