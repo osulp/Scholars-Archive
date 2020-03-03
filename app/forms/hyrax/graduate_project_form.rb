@@ -5,9 +5,9 @@
 module Hyrax
   # form object for graduate project
   class GraduateProjectForm < DefaultForm
+    self.model_class = ::GraduateProject
+
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::EtdWorkFormBehavior
-
-    self.model_class = ::GraduateProject
   end
 end
