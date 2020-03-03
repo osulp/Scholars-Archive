@@ -5,7 +5,7 @@ module ScholarsArchive
   module ArticleWorkFormBehavior
     extend ActiveSupport::Concern
     included do
-      self.terms += Article.article_properties
+      self.terms += ::Article::ARTICLE_PRIMARY_TERMS
 
       def primary_terms
         ::Article::ARTICLE_PRIMARY_TERMS | super - %i[degree_level degree_name degree_field contributor_advisor]

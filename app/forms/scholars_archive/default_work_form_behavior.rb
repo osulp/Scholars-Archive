@@ -16,7 +16,7 @@ module ScholarsArchive
       attr_accessor :degree_field_other
       attr_accessor :degree_name_other
 
-      self.terms += ::Default.default_properties
+      self.terms += ::Default::DEFAULT_TERMS
       self.terms -= %i[creator title]
       self.required_fields += %i[resource_type nested_ordered_creator nested_ordered_title]
       self.required_fields -= %i[keyword creator title contributor]
