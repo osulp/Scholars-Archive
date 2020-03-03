@@ -35,7 +35,7 @@ module ScholarsArchive
       end
 
       define_singleton_method :article_properties do
-        (properties - initial_properties)
+        (properties.keys - initial_properties)
       end
 
       ARTICLE_PRIMARY_TERMS = %i[

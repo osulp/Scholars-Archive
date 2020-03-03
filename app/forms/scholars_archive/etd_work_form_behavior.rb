@@ -8,11 +8,11 @@ module ScholarsArchive
       include ScholarsArchive::DefaultWorkFormBehavior
       attr_accessor :degree_grantors_other
 
-      self.terms += ::Etd.etd_properties
+      self.terms += self.model_class.etd_properties
       self.required_fields += %i[degree_level degree_name degree_field degree_grantors graduation_year]
 
       def primary_terms
-        Etd::ETD_PRIMARY_TERMS
+        self.model_class::ETD_PRIMARY_TERMS
       end
 
       def secondary_terms

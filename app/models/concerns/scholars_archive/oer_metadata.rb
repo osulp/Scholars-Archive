@@ -36,7 +36,7 @@ module ScholarsArchive
       end
 
       define_singleton_method :oer_properties do
-        (properties - initial_properties)
+        (properties.keys - initial_properties)
       end
 
       OER_TERMS = %i[

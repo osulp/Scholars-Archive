@@ -30,10 +30,10 @@ module ScholarsArchive
       end
 
       define_singleton_method :etd_properties do
-        (properties - initial_properties)
+        (properties.keys - initial_properties)
       end
 
-      ETD_PRIMARTY_TERMS = %i[
+      ETD_PRIMARY_TERMS = %i[
         nested_ordered_title
         alt_title
         nested_ordered_creator

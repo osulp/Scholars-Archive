@@ -306,7 +306,7 @@ module ScholarsArchive
       accepts_nested_attributes_for :nested_ordered_additional_information, allow_destroy: true, reject_if: proc { |attributes| attributes[:additional_information].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
 
       define_singleton_method :default_properties do
-        (properties - initial_properties)
+        (properties.keys - initial_properties)
       end
     end
   end
