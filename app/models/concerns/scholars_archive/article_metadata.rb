@@ -38,6 +38,19 @@ module ScholarsArchive
         (properties.keys - initial_properties)
       end
 
+      ARTICLE_TERMS = %i[
+        resource_type
+        editor
+        has_volume
+        has_number
+        conference_location
+        conference_name
+        conference_section
+        has_journal
+        is_referenced_by
+        web_of_science_uid
+      ]
+
       ARTICLE_PRIMARY_TERMS = %i[
         nested_ordered_title
         alt_title
