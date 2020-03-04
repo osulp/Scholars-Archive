@@ -48,7 +48,7 @@ module ScholarsArchive
         conference_section
         conference_location
         contributor_advisor
-      ]
+      ].freeze
 
       DEFAULT_PRIMARY_TERMS = %i[
         nested_ordered_title
