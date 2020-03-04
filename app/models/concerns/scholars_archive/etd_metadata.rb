@@ -33,6 +33,13 @@ module ScholarsArchive
         (properties.keys - initial_properties)
       end
 
+      ETD_TERMS = %i[
+        degree_grantors
+        contributor_committeemember
+        graduation_year
+        degree_discipline
+      ]
+
       ETD_PRIMARY_TERMS = %i[
         nested_ordered_title
         alt_title
