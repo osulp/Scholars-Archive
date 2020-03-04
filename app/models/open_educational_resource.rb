@@ -11,6 +11,7 @@ class OpenEducationalResource < ActiveFedora::Base
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedOerLicenses
   include ScholarsArchive::HasNestedOrderedProperties
+  include ScholarsArchive::OerTerms
 
   self.indexer = OerIndexer
   # Change this to restrict which works can be added as a child.

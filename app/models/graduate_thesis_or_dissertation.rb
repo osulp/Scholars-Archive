@@ -11,6 +11,7 @@ class GraduateThesisOrDissertation < ActiveFedora::Base
   include ScholarsArchive::HasEtdTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
   include ScholarsArchive::HasNestedOrderedProperties
+  include ScholarsArchive::EtdTerms
 
   self.indexer = EtdIndexer
   # Change this to restrict which works can be added as a child.
