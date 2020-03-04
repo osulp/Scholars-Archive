@@ -40,7 +40,7 @@ module ScholarsArchive
       end
 
       def default_dataset_terms(super_terms)
-        ::Default::DATASET_PRIMARY_TERMS | super_terms
+        ::Dataset::DATASET_PRIMARY_TERMS | super_terms
       end
 
       def date_terms
