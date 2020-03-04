@@ -38,7 +38,7 @@ module ScholarsArchive
         contributor_committeemember
         graduation_year
         degree_discipline
-      ]
+      ].freeze
 
       ETD_PRIMARY_TERMS = %i[
         nested_ordered_title

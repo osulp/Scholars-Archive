@@ -5,7 +5,6 @@ module ScholarsArchive
   module DatasetTerms
     extend ActiveSupport::Concern
     included do
-
       DATASET_TERMS = %i[
         nested_related_items
         date_uploaded
