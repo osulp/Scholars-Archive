@@ -49,7 +49,7 @@ module ScholarsArchive
         has_journal
         is_referenced_by
         web_of_science_uid
-      ]
+      ].freeze
 
       ARTICLE_PRIMARY_TERMS = %i[
         nested_ordered_title
