@@ -12,7 +12,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        current_ability.current_user.admin? ? super - removed_secondary_terms + :web_of_science_uid : super - removed_secondary_terms
+        current_ability.current_user.admin? ? super - removed_secondary_terms + [:web_of_science_uid] : super - removed_secondary_terms
       end
 
       def removed_secondary_terms

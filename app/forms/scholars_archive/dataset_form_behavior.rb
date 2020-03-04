@@ -19,7 +19,7 @@ module ScholarsArchive
 
       def primary_terms
         super_terms = super
-        current_ability.current_user.admin? ? default_dataset_terms(super_terms) + :description : default_dataset_terms(super_terms)
+        current_ability.current_user.admin? ? default_dataset_terms(super_terms) + [:description] : default_dataset_terms(super_terms)
       end
 
       def secondary_terms
