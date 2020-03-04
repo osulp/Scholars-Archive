@@ -11,6 +11,7 @@ class UndergraduateThesisOrProject < ActiveFedora::Base
   include ScholarsArchive::HasEtdTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
   include ScholarsArchive::HasNestedOrderedProperties
+  include ScholarsArchive::EtdTerms
 
   self.indexer = EtdIndexer
 

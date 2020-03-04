@@ -18,6 +18,8 @@ module ScholarsArchive
       # Provide each model a hook to set property defaults
       after_initialize :set_defaults, unless: :persisted?
 
+      initial_properties = properties.keys
+
       property :nested_ordered_abstract, predicate: ::RDF::Vocab::BIBO.abstract, class_name: NestedOrderedAbstract do |index|
         index.as :stored_searchable
       end
@@ -302,6 +304,10 @@ module ScholarsArchive
       accepts_nested_attributes_for :nested_ordered_abstract, allow_destroy: true, reject_if: proc { |attributes| attributes[:abstract].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
       accepts_nested_attributes_for :nested_ordered_contributor, allow_destroy: true, reject_if: proc { |attributes| attributes[:contributor].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
       accepts_nested_attributes_for :nested_ordered_additional_information, allow_destroy: true, reject_if: proc { |attributes| attributes[:additional_information].blank? || attributes.all? { |key, value| key == '_destroy' || value.blank? } }
+
+      define_singleton_method :default_properties do
+        (properties.keys - initial_properties)
+      end
     end
   end
 end

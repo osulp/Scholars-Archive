@@ -10,6 +10,7 @@ class Default < ActiveFedora::Base
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedDefaultLicenses
   include ScholarsArchive::HasNestedOrderedProperties
+  include ScholarsArchive::DefaultTerms
 
   self.indexer = DefaultWorkIndexer
 
