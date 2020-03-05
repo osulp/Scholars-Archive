@@ -1,7 +1,7 @@
 <% @content_block = ContentBlock.find_or_create_by(name: "tombstone-#{@presenter.solr_document.id}") %>
 <% @content_block.update(value: 'Default') unless @content_block.value.present? %>
-<%= displayable_content_block @content_block, class: 'col-sm-offset-2 col-sm-9 col-md-offset-1' %>
-<%= @presenter.admin_set.first %>
+<% @content = displayable_content_block @content_block, class: 'col-sm-offset-2 col-sm-9 col-md-offset-1' %>
+<%= raw @content %>
 <% if can?(:manage, @presenter.admin_set.first) %>
   <%= simple_form_for @content_block, url: "/contentblock/update/#{@content_block.name}", html: { class: 'nav-safety' } do |f| %>
     <div class="panel-body">
