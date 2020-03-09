@@ -12,9 +12,7 @@ module Hyrax
     # Adds thumbnail indexing to the solr document
     def generate_solr_document
       super.tap do |solr_doc|
-        Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        Rails.logger.info solr_doc
-        index_thumbnails(solr_doc) unless object.file_sets.blank?
+        index_thumbnails(solr_doc) unless object.thumbnail_id.blank?
       end
     end
 
