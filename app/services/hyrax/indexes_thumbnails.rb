@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Hyrax
+  # Indexes thumbnail info
   module IndexesThumbnails
     extend ActiveSupport::Concern
 
@@ -12,7 +15,9 @@ module Hyrax
     # Adds thumbnail indexing to the solr document
     def generate_solr_document
       super.tap do |solr_doc|
+        # OVERRIDE HERE TO CHECK THUMBNAIL ID
         index_thumbnails(solr_doc) unless object.thumbnail_id.blank?
+        # END OVERRIDE
       end
     end
 
