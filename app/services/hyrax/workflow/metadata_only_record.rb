@@ -8,6 +8,7 @@ module Hyrax
       # rubocop:disable Lint/UnusedMethodArgument
       def self.call(user: _user, target:, **)
         target.file_sets.each(&:destroy)
+        target.thumbnail_id = ''
       end
       # rubocop:enable Lint/UnusedMethodArgument
     end

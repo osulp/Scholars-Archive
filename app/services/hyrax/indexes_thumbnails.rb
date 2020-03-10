@@ -1,0 +1,35 @@
+# frozen_string_literal: true
+
+module Hyrax
+  # Indexes thumbnail info
+  module IndexesThumbnails
+    extend ActiveSupport::Concern
+
+    included do
+      class_attribute :thumbnail_path_service
+      self.thumbnail_path_service = ThumbnailPathService
+      class_attribute :thumbnail_field
+      self.thumbnail_field = 'thumbnail_path_ss'
+    end
+
+    # Adds thumbnail indexing to the solr document
+    def generate_solr_document
+      super.tap do |solr_doc|
+        # OVERRIDE HERE TO CHECK THUMBNAIL ID
+        index_thumbnails(solr_doc) unless object.thumbnail_id.blank?
+        # END OVERRIDE
+      end
+    end
+
+    # Write the thumbnail paths into the solr_document
+    # @param [Hash] solr_document the solr document to add the field to
+    def index_thumbnails(solr_document)
+      solr_document[thumbnail_field] = thumbnail_path
+    end
+
+    # Returns the value for the thumbnail path to put into the solr document
+    def thumbnail_path
+      self.class.thumbnail_path_service.call(object)
+    end
+  end
+end
