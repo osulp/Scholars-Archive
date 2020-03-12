@@ -11,6 +11,63 @@
                 "Hyrax::Workflow::GrantEditToDepositor",
                 "Hyrax::Workflow::ActivateObject"
             ]
+        }, {
+            "name": "tombstone",
+            "from_states": [{"names": ["deposited"], "roles": ["approving"]}],
+            "transition_to": "tombstoned",
+            "notifications": [
+                {
+                    "notification_type": "email",
+                    "name": "Hyrax::Workflow::DeletionApprovalNotification",
+                    "to": ["depositing"]
+                }
+            ],
+            "methods": [
+                "Hyrax::Workflow::MetadataOnlyRecord"
+            ]
+        }, {
+            "name": "request_deletion",
+            "from_states": [{"names": ["deposited"], "roles": ["approving", "depositing"]}],
+            "transition_to": "pending_deletion",
+            "notifications": [
+                {
+                    "notification_type": "email",
+                    "name": "Hyrax::Workflow::PendingDeletionNotification",
+                    "to": ["approving"]
+                }
+            ],
+            "methods": [
+                "Hyrax::Workflow::RevokeEditFromDepositor"
+            ]
+        }, {
+            "name": "approve_deletion",
+            "from_states": [{"names": ["pending_deletion"], "roles": ["approving"]}],
+            "transition_to": "tombstoned",
+            "notifications": [
+                {
+                    "notification_type": "email",
+                    "name": "Hyrax::Workflow::DeletionApprovalNotification",
+                    "to": ["depositing"]
+                }
+            ],
+            "methods": [
+                "Hyrax::Workflow::MetadataOnlyRecord"
+            ]
+        }, {
+            "name": "republish",
+            "from_states": [{"names": ["pending_deletion"], "roles": ["approving"]}],
+            "transition_to": "deposited",
+            "notifications": [
+                {
+                    "notification_type": "email",
+                    "name": "Hyrax::Workflow::DeletionRequestRejectionNotification",
+                    "to": ["depositing"]
+                }
+            ],
+            "methods": [
+                "Hyrax::Workflow::GrantEditToDepositor",
+                "Hyrax::Workflow::ActivateObject"
+            ]
         }]
     }]
 }
