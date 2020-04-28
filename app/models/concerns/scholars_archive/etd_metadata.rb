@@ -9,7 +9,6 @@ module ScholarsArchive
     #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
     included do
-      initial_properties = properties.keys
       property :contributor_committeemember, predicate: ::RDF::Vocab::MARCRelators.dgs do |index|
         index.as :stored_searchable, :facetable
       end
@@ -27,10 +26,6 @@ module ScholarsArchive
 
       property :graduation_year, predicate: ::RDF::URI.new('http://www.rdaregistry.info/Elements/w/#P10215'), multiple: false do |index|
         index.as :stored_searchable, :facetable
-      end
-
-      define_singleton_method :etd_properties do
-        (properties.keys - initial_properties)
       end
     end
   end

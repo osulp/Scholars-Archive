@@ -11,7 +11,6 @@ class Article < ActiveFedora::Base
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedArticleLicenses
   include ScholarsArchive::HasNestedOrderedProperties
-  include ScholarsArchive::ArticleTerms
 
   self.indexer = ArticleIndexer
 

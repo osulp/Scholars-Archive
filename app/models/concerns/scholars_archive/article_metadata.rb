@@ -9,7 +9,6 @@ module ScholarsArchive
     #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
     included do
-      initial_properties = properties.keys
       property :editor, predicate: ::RDF::Vocab::BIBO.editor do |index|
         index.as :stored_searchable
       end
@@ -32,10 +31,6 @@ module ScholarsArchive
 
       property :web_of_science_uid, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/webOfScienceUid'), multiple: false do |index|
         index.as :stored_searchable
-      end
-
-      define_singleton_method :article_properties do
-        (properties.keys - initial_properties)
       end
     end
   end

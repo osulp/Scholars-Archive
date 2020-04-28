@@ -12,8 +12,6 @@ class PurchasedEResource < ActiveFedora::Base
   include ScholarsArchive::HasPurchasedEResourceTriplePoweredProperties
   include ScholarsArchive::ExcludedEtdLicenses
   include ScholarsArchive::HasNestedOrderedProperties
-  include ScholarsArchive::EtdTerms
-  include ScholarsArchive::ArticleTerms
 
   self.indexer = PurchasedEResourceIndexer
   # Change this to restrict which works can be added as a child.
