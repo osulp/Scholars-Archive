@@ -1,7 +1,6 @@
 <% @content_block = ContentBlock.find_or_create_by(name: "tombstone-#{@presenter.solr_document.id}") %>
 <% @content_block.update(value: 'Default') unless @content_block.value.present? %>
-<% @content = displayable_content_block @content_block, class: 'col-sm-offset-2 col-sm-9 col-md-offset-1' %>
-<%= raw @content %>
+<%= displayable_content_block @content_block, class: 'col-sm-offset-2 col-sm-9 col-md-offset-1' %>
 <br>
 <br>
 <p>MLA Citation: <%= export_as_mla_citation(@presenter) %></p>
