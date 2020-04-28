@@ -520,7 +520,6 @@ Layout/MultilineMethodCallIndentation:
 Metrics/ModuleLength:
   Exclude:
     - 'app/models/concerns/scholars_archive/default_metadata.rb'
-    - 'app/models/concerns/scholars_archive/default_terms.rb'
     - 'app/helpers/application_helper.rb'
 
 Style/GuardClause:
