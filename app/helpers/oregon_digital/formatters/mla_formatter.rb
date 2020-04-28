@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module ScholarsArchive
+module OregonDigital
   module CitationsBehaviors
     module Formatters
       # OVERRIDES SETUP PUB DATE TO USE DATE ISSUED
-      class ChicagoFormatter < Hyrax::CitationsBehaviors::Formatters::ChicagoFormatter
+      class MlaFormatter < Hyrax::CitationsBehaviors::Formatters::MlaFormatter
         def setup_pub_date(work)
           # OVERRIDE HERE
           first_date = work.solr_document.date_issued.first if work.solr_document.date_issued
