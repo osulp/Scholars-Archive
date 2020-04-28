@@ -94,23 +94,6 @@ module ScholarsArchive
       ].freeze
 
       DEFAULT_SECONDARY_ADMIN_TERMS = %i[
-        nested_related_items
-        hydrologic_unit_code
-        geo_section
-        funding_statement
-        publisher
-        peerreviewed
-        conference_name
-        conference_section
-        conference_location
-        language
-        file_format
-        file_extent
-        digitization_spec
-        replaces
-        nested_ordered_additional_information
-        isbn
-        issn
         keyword
         source
         funding_body
