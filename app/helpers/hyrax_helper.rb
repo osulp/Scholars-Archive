@@ -5,7 +5,7 @@ module HyraxHelper
   include ::BlacklightHelper
   include Hyrax::BlacklightOverride
   include Hyrax::HyraxHelperBehavior
-  include ScholarsArchive::CitationsBehavior
+  include OregonDigital::CitationsBehavior
 
   def human_readable_date_edtf(options)
     value = options[:value].first

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ScholarsArchive
+module OregonDigital
   module CitationsBehaviors
     module Formatters
       # OVERRIDES SETUP PUB DATE TO USE DATE ISSUED
