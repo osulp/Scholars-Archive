@@ -5,9 +5,9 @@
 module Hyrax
   # form object for graduate thesis or dissertation
   class GraduateThesisOrDissertationForm < DefaultForm
-    self.model_class = ::GraduateThesisOrDissertation
-
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
     include ScholarsArchive::EtdWorkFormBehavior
+
+    self.model_class = ::GraduateThesisOrDissertation
   end
 end

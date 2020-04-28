@@ -10,7 +10,6 @@ class Dataset < ActiveFedora::Base
   include ScholarsArchive::HasTriplePoweredProperties
   include ScholarsArchive::ExcludedDefaultLicenses
   include ScholarsArchive::HasNestedOrderedProperties
-  include ScholarsArchive::DatasetTerms
 
   self.indexer = DefaultWorkIndexer
   # Change this to restrict which works can be added as a child.
