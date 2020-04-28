@@ -48,8 +48,6 @@ en:
       subject_new: "ScholarsArchive@OSU Message: %{subject}"
       subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
-    tombstone:
-      confirmation: 'Are you sure you want to tombstone this item?'
     product_name:           "ScholarsArchive@OSU"
     product_twitter_handle: ""
     institution_name:       "Oregon State University"
