@@ -11,13 +11,5 @@ module Hyrax
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = ::PurchasedEResource
     self.show_presenter = PurchasedEResourcePresenter
-
-    before_action :ensure_admin!, only: :destroy
-
-    private
-
-    def ensure_admin!
-      authorize! :read, :admin_dashboard
-    end
   end
 end
