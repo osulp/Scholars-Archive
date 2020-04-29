@@ -5,11 +5,13 @@ module Hyrax
   module Workflow
     # Sets the work and filesets to private
     module MetadataOnlyRecord
-      # rubocop:disable Lint/UnusedMethodArgument
-      def self.call(user: _user, target:, **)
-        target.file_sets.each(&:destroy)
+      def self.call(user:, target:, **)
+        target.file_sets.each do |file_set|
+          Hyrax::Actors::FileSetActor.new(file_set, user).update_metadata(visibility: Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE)
+        end
+        target.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PRIVATE
+        target.save
       end
-      # rubocop:enable Lint/UnusedMethodArgument
     end
   end
 end
