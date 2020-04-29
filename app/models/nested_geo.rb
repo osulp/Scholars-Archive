@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # nested geo object
-class NestedGeo < NestedOrderedResource
+class NestedGeo < ActiveTriples::Resource
   # Usage notes and expectations can be found in the Metadata Application Profile:
   #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
@@ -26,5 +26,17 @@ class NestedGeo < NestedOrderedResource
       uri = RDF::URI(uri)
     end
     super
+  end
+
+  def final_parent
+    parent
+  end
+
+  def new_record?
+    id.start_with?('#')
+  end
+
+  def _destroy
+    false
   end
 end
