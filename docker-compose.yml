@@ -95,7 +95,7 @@ services:
       - blazegraph
     command: >
       bash -c "./build/entrypoint.sh &&
-      bundle exec puma -b tcp://0.0.0.0:3001 -e test -d &&
+      puma -b tcp://0.0.0.0:3001 -e test -d &&
       tail -f log/test.log"
     expose:
       - 3001
