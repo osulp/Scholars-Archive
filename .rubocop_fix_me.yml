@@ -42,6 +42,7 @@ Metrics/AbcSize:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
     - 'app/services/scholars_archive/degree_level_service.rb'
+    - 'app/models/ability.rb'
 
 Metrics/MethodLength:
   Exclude:
