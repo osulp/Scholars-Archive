@@ -92,7 +92,7 @@ gem 'riiif', '~> 1.1'
 gem 'rubyzip', '~> 1.3.0'
 
 # Honeycomb
-gem 'honeycomb-beeline', '>= 1.0.0'
+gem 'honeycomb-beeline', '>= 2.0.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
