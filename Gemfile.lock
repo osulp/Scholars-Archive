@@ -686,7 +686,7 @@ GEM
       nokogiri (~> 1.6)
       rails (~> 5.0)
       rdf
-    rack (2.2.2)
+    rack (2.2.3)
     rack-protection (2.0.5)
       rack
     rack-test (0.6.3)
