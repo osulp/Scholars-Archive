@@ -403,6 +403,9 @@ GEM
     fcrepo_wrapper (0.9.0)
       ruby-progressbar
     ffi (1.9.25)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     flipflop (2.6.0)
       activesupport (>= 4.0)
     flot-rails (0.0.7)
@@ -439,19 +442,20 @@ GEM
       concurrent-ruby (~> 1.0)
     hashdiff (1.0.0)
     hiredis (0.6.3)
-    honeycomb-beeline (1.0.0)
-      libhoney (~> 1.8)
+    honeycomb-beeline (2.0.0)
+      libhoney (~> 1.14, >= 1.14.2)
     htmlentities (4.3.4)
-    http (4.1.1)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.0)
-      http_parser.rb (~> 0.6.0)
+      http-form_data (~> 2.2)
+      http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (2.1.1)
+    http-form_data (2.3.0)
+    http-parser (1.2.1)
+      ffi-compiler (>= 1.0, < 2.0)
     http_logger (0.6.0)
-    http_parser.rb (0.6.0)
     httpclient (2.8.3)
     hydra-access-controls (10.7.0)
       active-fedora (>= 10.0.0)
@@ -566,7 +570,7 @@ GEM
       slop
     legato (0.7.0)
       multi_json
-    libhoney (1.13.0)
+    libhoney (1.14.4)
       addressable (~> 2.0)
       http (>= 2.0, < 5.0)
     libv8 (7.3.492.27.1)
@@ -1016,7 +1020,7 @@ DEPENDENCIES
   fcrepo_wrapper
   ffi (~> 1.9.24)
   haml
-  honeycomb-beeline (>= 1.0.0)
+  honeycomb-beeline (>= 2.0.0)
   hydra-role-management
   hyrax!
   jbuilder (~> 2.5)
@@ -1066,4 +1070,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.0.2
+   2.1.4
