@@ -18,7 +18,7 @@ module ScholarsArchive
       def search_result_document(search_params)
         _, document_list = search_results(search_params)
         solr_doc = ::SolrDocument.find(params[:id])
-        document_list << solr_doc if solr_doc.depositor == current_user.username
+        document_list << solr_doc if current_user && solr_doc.depositor == current_user.try(:username)
         return document_list.first unless document_list.empty?
 
         document_not_found!
