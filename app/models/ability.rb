@@ -20,5 +20,13 @@ class Ability
     # if user_groups.include? 'special_group'
     #   can [:create], ActiveFedora::Base
     # end
+
+    can %i[edit update], SolrDocument do |solr_doc|
+      AdminSet.where(title: solr_doc.admin_set).first.edit_users.include?(current_user.username)
+    end
+
+    can %i[edit update], ActiveFedora::Base do |record|
+      record.admin_set.edit_users.include?(current_user.username)
+    end
   end
 end
