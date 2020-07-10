@@ -118,7 +118,7 @@ services:
   ##
   # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
   solr: &solr
-    image: solr:alpine
+    image: solr:6-slim
     expose:
       - 8983
     volumes:
