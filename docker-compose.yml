@@ -57,13 +57,14 @@ services:
       - redis
       - memcache
       - blazegraph
+      - workers
     expose:
       - 3000
 
   # Runs sidekiq to process background jobs
   workers:
     <<: *server
-    command: bundle exec sidekiq
+    command: bash -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
       - db_test
@@ -71,6 +72,7 @@ services:
       - fcrepo
       - redis
       - blazegraph
+      - memcache
 
   ##
   # Test environment for application
@@ -116,7 +118,7 @@ services:
   ##
   # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
   solr: &solr
-    image: solr:alpine
+    image: solr:6-slim
     expose:
       - 8983
     volumes:

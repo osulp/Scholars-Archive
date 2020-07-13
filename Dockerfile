@@ -6,11 +6,11 @@ ENV LC_ALL C.UTF-8
 
 # add nodejs and yarn dependencies for the frontend
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && apt-key adv --refresh-keys && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN gem install bundler
 RUN apt-get update -qq && apt-get upgrade -y && \
-  apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript yarn
+  apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript vim yarn
 
 # install clamav for antivirus
 # fetch clamav local database

@@ -10,7 +10,7 @@ gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.12.1'
+gem 'puma', '~> 3.12.6'
 gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
@@ -59,7 +59,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
 gem 'faraday'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.6.0'
+gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.7.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
@@ -92,7 +92,7 @@ gem 'riiif', '~> 1.1'
 gem 'rubyzip', '~> 1.3.0'
 
 # Honeycomb
-gem 'honeycomb-beeline', '>= 1.0.0'
+gem 'honeycomb-beeline', '>= 2.0.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
