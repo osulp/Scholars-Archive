@@ -225,9 +225,6 @@ workflows:
       - test:
           requires:
             - lint
-          filters:
-            branches:
-              ignore: master
       - build_and_push_beavernetes:
           name: build_and_push_beavernetes
           requires:
