@@ -22,6 +22,10 @@ The details provided assume that the official Docker daemon is running in the ba
 - `$ docker-compose up server` : Start the containers in the foreground
 - `$ docker-compose up -d server` : Start the containers in the background
 
+## Optional: create admin set and collection types, load workflows, create admin role
+
+`$ docker-compose exec server bundle exec ./build/firstrun.sh`
+
 ## Create an administrator
 
 - Visit the site and login with OSU credentials to create a user account. (http://test.library.oregonstate.edu:3000)
@@ -99,19 +103,19 @@ $ docker-compose run server bundle exec rspec
 
 # Help? Something is broken.
 
-1. ### There are no workflows in the system.
-    This can happen if the rake task fails to load because there are no permission templates in the database to match those in Fedora. At minimum, the Default Admin Set must exist and can be created manually in the Rails console;
+## There are no workflows in the system.
+This can happen if the rake task fails to load because there are no permission templates in the database to match those in Fedora. At minimum, the Default Admin Set must exist and can be created manually in the Rails console;
 
-    `Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)`
+`Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)`
 
-    Following this fix, run the workflow load rake task:
+Following this fix, run the workflow load rake task:
 
-    `$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+`$ docker-compose exec server bundle exec rails hyrax:workflow:load`
 
-2. ### The server container logged **ERROR: Default admin set exists but it does not have an associated permission template.**
+## The server container logged **ERROR: Default admin set exists but it does not have an associated permission template.**
 
-    This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
-    ```
+This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
+```
     This may happen if you cleared your database but you did not clear out Fedora and Solr.
 
     You could manually create the permission template in the rails console (non-destructive):
@@ -122,8 +126,12 @@ $ docker-compose run server bundle exec rspec
 
       require 'active_fedora/cleaner'
       ActiveFedora::Cleaner.clean!
-    ```
-    Following this fix, run the workflow load rake task:
+```
+Following this fix, run the workflow load rake task:
 
-    `$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+`$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+
+## Fedora reports 403 Unauthorized error
+
+This is likely due to the Fedora repo address passed to the Rails app being incorrect. Earlier local standards used `local_env.yml` which overrode ENV variables passed in. If Fedora is running and the Rails app can't interact with it, check the ENV value that is passed to Rails. From the console, run `ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL')`
 
