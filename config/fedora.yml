@@ -6,7 +6,7 @@ development:
 test:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL', 'http://localhost:8986') %>/rest
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL', 'http://localhost:8080') %>/rest
   base_path: /test
 production:
   user: fedoraAdmin

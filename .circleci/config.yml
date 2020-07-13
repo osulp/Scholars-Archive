@@ -1,77 +1,238 @@
-version: 2
+version: 2.1
+orbs:
+  docker-publish: circleci/docker-publish@0.1.7
 jobs:
-    build:
-        docker:
-            - image: circleci/ruby:2.5
-              environment:
-                  RAILS_ENV: test
-                  SCHOLARSARCHIVE_DB_PASSWORD: ''
-                  SCHOLARSARCHIVE_DB_PORT: '3306'
-                  SCHOLARSARCHIVE_DB_USERNAME: root
-                  SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
-                  HONEYCOMB_DEBUG: true
-            - image: circleci/mysql:5.7.22
-              environment:
-                  MYSQL_DATABASE: sa_test
-        working_directory: ~/app
-        steps:
-            - run:
-                  name: Update Debian Packages
-                  command: |
-                      echo "deb http://http.debian.net/debian stretch main" | sudo tee -a /etc/apt/sources.list
-                      sudo apt-get update -qq
-                      sudo apt-get upgrade -qq
-                      sudo apt-get install -y -f software-properties-common build-essential default-libmysqlclient-dev mariadb-client nodejs make apt-utils
-                      sudo apt-get install -t stretch -y openjdk-8-jre-headless ca-certificates-java
-                      sudo apt-get install -y openjdk-8-jre openjdk-8-jdk openjdk-8-jdk-headless
-                      sudo update-alternatives --config java
-            - checkout
-            - restore_cache:
-                  key: gemfile-{{ checksum "Gemfile.lock" }}
-            - run:
-                  name: Update Bundler 
-                  command: sudo gem install --force bundler
-            - run:
-                  name: Install Ruby Dependencies
-                  command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
-            - run: |
-                  sudo gem install fcrepo_wrapper
-                  sudo gem install solr_wrapper
-            - run:
-                  name: Start SOLR
-                  command: solr_wrapper -n hydra-test -p 8985 --version 6.6.1
-                  background: true
-            - run:
-                  name: Start FCREPO
-                  command: fcrepo_wrapper -p 8986 --no-jms
-                  background: true
-            - run:
-                  name: Run Rubocop
-                  command: bundle exec rubocop
-            - save_cache:
-                  key: gemfile-{{ checksum "Gemfile.lock" }}
-                  paths:
-                      - vendor/bundle
-                      - tmp/zips
-            - run:
-                  name: Giving SOLR and FCREPO time to spin up
-                  command: sleep 10
-            - run:
-                  name: Wait for DB
-                  command: dockerize -wait tcp://localhost:3306 -timeout 1m
-            - run:
-                  name: Create DB
-                  command: bundle exec rake db:create db:schema:load --trace
-            - run:
-                  name: Run Tests
-                  command: |
-                      bundle exec rspec --profile 10 \
-                                        --format RspecJunitFormatter \
-                                        --out /tmp/test-results/rspec.xml \
-                                        --format progress \
-                                        $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            - store_artifacts:
-                  path: coverage
-                  destination: coverage
-            - store_test_results:
-                  path: /tmp/circle-junit
+  checkout_code:
+    docker:
+      - image: circleci/ruby:2.5
+    working_directory: ~/app
+    steps:
+      - restore_cache:
+          name: Restore code from cache
+          keys:
+            - v1-source-{{ .Branch }}-{{ .Revision }}
+      - checkout
+      - save_cache:
+          name: Save code cache
+          key: v1-source-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - '.git'
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - app/*
+            - app/**/*
+  bundle:
+    docker:
+      - image: circleci/ruby:2.5-stretch-node-browsers
+    environment:
+      BUNDLE_PATH: vendor/bundle
+    working_directory: ~/app
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Update Debian Packages for ClamAV
+          command: |
+            sudo apt-get install -y software-properties-common build-essential make apt-utils
+      - restore_cache:
+          name: Restore bundle from cache
+          keys:
+            - v2-bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Update bundler
+          command: gem install bundler -v 2.0.2
+      - run:
+          name: Install dependencies
+          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
+      - save_cache:
+          name: Save bundle cache
+          key: v2-bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/app/vendor/bundle
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - app/*
+            - app/**/*
+  lint:
+    docker:
+      - image: circleci/ruby:2.5-stretch-node-browsers
+    environment:
+      BUNDLE_PATH: vendor/bundle
+    working_directory: ~/app
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Update bundler
+          command: gem install --force bundler
+      - run:
+          name: Bundle update
+          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
+      - run:
+          name: Install Rubocop
+          command: gem install rubocop
+      - run: 
+          name: Run Rubocop
+          command: bundle exec rubocop
+  test:
+    docker:
+      - image: circleci/ruby:2.5-stretch-node-browsers
+        environment:
+          BUNDLE_PATH: vendor/bundle
+          CAPYBARA_APP_HOST: http://test:3001
+          HONEYCOMB_DATASET: sa-rails-test
+          HONEYCOMB_DEBUG: 'true'
+          HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
+          HONEYCOMB_SERVICE: sa-rails-test
+          RAILS_ENV: test
+          SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8080/fcrepo/rest
+          SCHOLARSARCHIVE_REDIS_HOST: localhost
+          SCHOLARSARCHIVE_REDIS_PORT: '6379'
+          SCHOLARSARCHIVE_DB_PASSWORD: 'monkeys'
+          SCHOLARSARCHIVE_DB_PORT: '3306'
+          SCHOLARSARCHIVE_DB_USERNAME: root
+          SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
+          SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
+          SCHOLARSARCHIVE_SOLR_URL: http://localhost:8985
+          TRIPLESTORE_ADAPTER_TYPE: blazegraph
+          TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
+      - image: circleci/mysql:5.7.22
+        environment:
+          MYSQL_ROOT_PASSWORD: monkeys
+          MYSQL_USER: monkeys
+          MYSQL_PASSWORD: monkeys
+          MYSQL_DATABASE: sa_test
+      - image: circleci/redis:4
+      - image: ualbertalib/docker-fcrepo4:4.7
+        environment:
+          CATALINA_OPTS: '-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx1024m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC'
+      - image: solr:6-slim
+        command: bin/solr -cloud -noprompt -f -p 8985
+    working_directory: ~/app
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Update Debian Packages
+          command: |
+            sudo apt-get update -qq
+            sudo apt-get upgrade -qq
+            sudo apt-get install -y -f software-properties-common build-essential nodejs make apt-utils ffmpeg
+            sudo apt-get install -y openjdk-8-jre-headless ca-certificates-java
+            sudo apt-get install -y openjdk-8-jre openjdk-8-jdk openjdk-8-jdk-headless
+            sudo apt-get install -y imagemagick graphicsmagick libopenjp2-tools
+      - run:
+          name: Wait for SOLR
+          command: dockerize -wait tcp://localhost:8985 -timeout 1m
+      - run:
+          name: Load config into SolrCloud
+          command: |
+            cd ./solr/conf
+            zip -1 -r solr_hyrax_config.zip ./*
+            curl -H "Content-type:application/octet-stream" --data-binary @solr_hyrax_config.zip "http://localhost:8985/solr/admin/configs?action=UPLOAD&name=hyrax"
+            curl 'http://localhost:8985/solr/admin/collections?action=CREATE&name=hydra-test&config=hyrax&numShards=1&replicationFactor=1&wt=xml'
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+      - run:
+          name: Wait for Redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
+      - run:
+          name: Wait for Fedora
+          command: dockerize -wait http://localhost:8080 -timeout 1m
+      - run:
+          name: Update bundler srsly again
+          command: gem install --force bundler
+      - run:
+          name: Bundle update srsly again
+          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
+      - run: 
+          name: Create and load MySQL data
+          command: bundle exec rake db:create db:schema:load --trace
+      - run:
+          name: Create default admin set
+          command: bundle exec rails hyrax:default_admin_set:create
+      - run:
+          name: Create default collection
+          command: bundle exec rails hyrax:default_collection_types:create
+      - run:
+          name: Load workflows
+          command: bundle exec rails hyrax:workflow:load
+      - run:
+          name: Run Tests
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out /tmp/test-results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+      - store_artifacts:
+          path: ./tmp/screenshots
+      - store_artifacts:
+          path: ./tmp/capybara
+  build_and_push_beavernetes:
+    parameters:
+      repo:
+        type: string
+        default: ''
+      environment:
+        type: string
+        default: 'production'
+    executor:
+      name: 'docker-publish/docker'
+    environment:
+      DOCKER_LOGIN: admin
+      DOCKER_PASSWORD: admin
+    working_directory: ~/app
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Generate deployed version
+          command: |
+            export GIT_SHORT_HASH=$(git rev-parse --short HEAD)
+            export DATETIME=$(date "+%Y%m%d%H%M%S")
+            echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
+            echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
+      - setup_remote_docker
+      - docker-publish/check:
+          registry: registry.library.oregonstate.edu
+      - docker-publish/build:
+          registry: registry.library.oregonstate.edu
+          image: sa_web
+          tag: $TAG
+          extra_build_args: --build-arg RAILS_ENV=<< parameters.environment >> --build-arg DEPLOYED_VERSION=$DEPLOYED_VERSION
+      - docker-publish/deploy:
+          registry: registry.library.oregonstate.edu
+          image: sa_web
+workflows:
+  ci:
+    jobs:
+      - checkout_code
+      - bundle:
+          requires:
+            - checkout_code
+      - lint:
+          requires:
+            - bundle
+      - test:
+          requires:
+            - lint
+          filters:
+            branches:
+              ignore: master
+      - build_and_push_beavernetes:
+          name: build_and_push_beavernetes
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
+          repo: sa_web

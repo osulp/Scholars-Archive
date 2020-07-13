@@ -8,9 +8,7 @@ ENV LC_ALL C.UTF-8
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && apt-key adv --refresh-keys && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
 RUN gem install bundler
-
 RUN apt-get update -qq && apt-get upgrade -y && \
   apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript vim yarn
 
@@ -34,12 +32,11 @@ ADD Gemfile /data/Gemfile
 ADD Gemfile.lock /data/Gemfile.lock
 RUN mkdir /data/build
 
-ARG RAILS_ENV=development
+#ARG RAILS_ENV=development
 ENV RAILS_ENV=${RAILS_ENV}
 
 ADD ./build/install_gems.sh /data/build
 RUN ./build/install_gems.sh
-
 ADD . /data
 
 FROM builder
