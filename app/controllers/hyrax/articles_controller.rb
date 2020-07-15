@@ -11,5 +11,13 @@ module Hyrax
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = Article
     self.show_presenter = ArticlePresenter
+
+    before_action :ensure_admin!, only: :destroy
+
+    private
+
+    def ensure_admin!
+      authorize! :read, :admin_dashboard
+    end
   end
 end
