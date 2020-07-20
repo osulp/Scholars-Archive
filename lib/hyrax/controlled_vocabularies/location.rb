@@ -76,7 +76,8 @@ module Hyrax
         !@label.first.downcase.include?('county')
       end
 
-      # Administrative hierarchy values
+      # Administrative hierarchy values (based from work in
+      # https://github.com/OregonDigital/OD2/issues/1124)
       def parent_hierarchy
         [
           parentADM4,
