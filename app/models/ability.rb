@@ -26,7 +26,7 @@ class Ability
     end
 
     can %i[edit update], ActiveFedora::Base do |record|
-      record.admin_set.edit_users.include?(current_user.username) || current_user.admin?
+      (record.admin_set.edit_users.include?(current_user.username) if record.respond_to?(:admin_set)) || current_user.admin?
     end
   end
 end
