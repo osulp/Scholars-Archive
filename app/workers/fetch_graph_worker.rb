@@ -39,15 +39,32 @@ class FetchGraphWorker
       end
 
       # Insert into SolrDocument
-      extractred_val = val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first
-      Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :stored_searchable)
-      Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :facetable)
-      Solrizer.insert_field(solr_doc, 'based_near_linked', [extractred_val], :symbol)
+      label_and_uri = extracted_label(val.solrize, onlylabel: false)
+      label_only = extracted_label(val.solrize, onlylabel: true)
+
+      # Add based_near_linked for location links
+      Solrizer.insert_field(solr_doc, 'based_near_linked', [label_and_uri], :stored_searchable)
+      Solrizer.insert_field(solr_doc, 'based_near_linked', [label_and_uri], :facetable)
+      Solrizer.insert_field(solr_doc, 'based_near_linked', [label_and_uri], :symbol)
+
+      # Add to based_near_label to enable search and facets
+      Solrizer.insert_field(solr_doc, 'based_near_label', [label_only], :stored_searchable)
+      Solrizer.insert_field(solr_doc, 'based_near_label', [label_only], :facetable)
     end
     # Commit Changes
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
   end
+
+  def extracted_label(input, onlylabel: false)
+    return input.last if input.last.is_a?(String)
+
+    label_obj = input.last[:label]
+    return label_obj.split('$').first if onlylabel
+
+    label_obj
+  end
+
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
