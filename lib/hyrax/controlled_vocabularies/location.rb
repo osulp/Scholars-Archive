@@ -31,7 +31,7 @@ module Hyrax
 
           @label = @label.first
           parent_hierarchy.each do |p|
-            @label = "#{@label} >> #{p.first.rdf_label.first}"
+            @label = "#{@label.strip}, #{p.first.rdf_label.first}"
           end
         end
         Array(@label)

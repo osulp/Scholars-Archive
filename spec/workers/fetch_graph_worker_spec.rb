@@ -23,7 +23,12 @@ RSpec.describe FetchGraphWorker, type: :worker do
 
       it 'fetches a work and indexes its linked data labels' do
         worker.perform(work.id, work.depositor)
-        expect(SolrDocument.find(work.id)['based_near_linked_tesim'].first).to eq 'Chabre, Wayne'
+        expect(SolrDocument.find(work.id)['based_near_linked_tesim'].first).to eq 'Chabre, Wayne$https://sws.geonames.org/5761960/'
+      end
+
+      it 'fetches a work and indexes its linked data label for search' do
+        worker.perform(work.id, work.depositor)
+        expect(SolrDocument.find(work.id)['based_near_label_tesim'].first).to eq 'Chabre, Wayne'
       end
     end
 
