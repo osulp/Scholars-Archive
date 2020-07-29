@@ -130,6 +130,6 @@ module ApplicationHelper
   end
 
   def option_visible_to_depositor?(model, user)
-    user.admin? == false && model.class == GraduateThesisOrDissertation ? false : true
+    user.admin? == false && [GraduateThesisOrDissertation, HonorsCollegeThesis, GraduateProject, UndergraduateThesisOrProject].include?(model.class) ? false : true
   end
 end
