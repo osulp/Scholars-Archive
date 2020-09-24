@@ -1243,7 +1243,7 @@ Style/TrailingCommaInHashLiteral:
     - 'spec/models/solr_document_spec.rb'
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
 
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   Exclude:
     - 'spec/presenters/hyrax/purchased_e_resource_presenter_spec.rb'
     - 'spec/presenters/hyrax/default_presenter_spec.rb'
