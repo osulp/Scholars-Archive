@@ -440,7 +440,7 @@ Style/UnneededInterpolation:
     - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
     - 'app/inputs/multi_value_ordered_input.rb'
 
-Layout/AlignArray:
+Layout/ArrayAlignment:
   Exclude:
     - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
 
