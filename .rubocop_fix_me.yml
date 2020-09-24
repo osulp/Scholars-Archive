@@ -376,7 +376,7 @@ Metrics/ClassLength:
     - 'app/inputs/multi_value_ordered_input.rb'
     - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Exclude:
     - 'app/models/solr_document.rb'
     - 'app/controllers/catalog_controller.rb'
