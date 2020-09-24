@@ -223,7 +223,7 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'spec/features/create_graduate_thesis_or_dissertation_spec.rb'
