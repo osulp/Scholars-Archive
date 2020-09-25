@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.2.4.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -59,7 +59,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
 gem 'faraday'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.7.0'
+gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.9.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
@@ -71,7 +71,7 @@ gem 'sitemap_generator'
 
 # Used for integration of Blazegraph backend and required API
 # net-http-persistent 3.0 changes cause triplestore-adapter to break, awaiting fix for that
-gem 'net-http-persistent', '~> 2.9'
+gem 'net-http-persistent'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
