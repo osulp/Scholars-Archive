@@ -72,7 +72,7 @@ gem 'sitemap_generator'
 # Used for integration of Blazegraph backend and required API
 # net-http-persistent 3.0 changes cause triplestore-adapter to break, awaiting fix for that
 gem 'net-http-persistent'
-gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
+gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: 'master'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
