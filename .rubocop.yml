@@ -17,7 +17,7 @@ AllCops:
     - 'config/**/*'
     - 'sa_scripts/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 Metrics/BlockLength:
@@ -38,12 +38,6 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/SingleLineBlockParams:
-  Enabled: false
-
-Rails/ApplicationJob:
-  Enabled: false
-
-Rails/ApplicationRecord:
   Enabled: false
 
 RSpec/LetSetup:

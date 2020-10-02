@@ -484,10 +484,6 @@ Style/SafeNavigation:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
     - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
 
-Performance/RegexpMatch:
-  Exclude:
-    - 'app/models/concerns/scholars_archive/date_operations.rb'
-
 Layout/ExtraSpacing:
   Exclude:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
@@ -496,10 +492,6 @@ Layout/ExtraSpacing:
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
     - 'spec/services/scholars_archive/edtf_date_compare_service_spec.rb'
     - 'lib/scholars_archive/document/qualified_dublin_core.rb'
-
-Performance/TimesMap:
-  Exclude:
-    - 'app/models/concerns/scholars_archive/date_operations.rb'
 
 Layout/MultilineMethodCallIndentation:
   Exclude:
@@ -663,10 +655,6 @@ Style/AndOr:
     - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
     - 'app/controllers/concerns/scholars_archive/my_shares_behavior.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
-
-Performance/StringReplacement:
-  Exclude:
-    - 'app/controllers/scholars_archive/handles_controller.rb'
 
 Layout/CommentIndentation:
   Exclude:
