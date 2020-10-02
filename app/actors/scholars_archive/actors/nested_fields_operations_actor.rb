@@ -46,7 +46,7 @@ module ScholarsArchive
         return true unless nested_geo_present? (env)
 
         set_geo_coordinates(env)
-        return true
+        true
       end
 
       def update_nested_elements(env)
@@ -54,7 +54,7 @@ module ScholarsArchive
         return true unless nested_geo_present? (env)
 
         set_geo_coordinates(env)
-        return true
+        true
       end
 
       def clean_up_fields (env)

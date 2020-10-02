@@ -54,3 +54,12 @@ RSpec/AnyInstance:
 # FactoryBot 5 will require dynamic definition, so we should allow it.
 # FactoryBot/StaticAttributeDefinedDynamically:
 #   Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false

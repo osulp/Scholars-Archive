@@ -11,7 +11,7 @@ module ScholarsArchive::Validators
         error_counter += validate_other_value_multiple? record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record))
       end
 
-      return
+      nil
     end
 
     def other_affiliation_other_present? (record)
@@ -62,7 +62,7 @@ module ScholarsArchive::Validators
           record.send(field) << [{option: 'Other', err_valid_val:true, other_entry: entry.to_s}.to_json]
         end
       end
-      return error_counter
+      error_counter
     end
 
     def other_value_in_collection? (other_value: nil, collection: [])

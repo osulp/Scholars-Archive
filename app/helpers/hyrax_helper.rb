@@ -17,7 +17,7 @@ module HyraxHelper
     else
       output = value
     end
-    return output
+    output
   end
 
   ##

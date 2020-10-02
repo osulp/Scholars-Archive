@@ -8,7 +8,7 @@ module ScholarsArchive::Validators
 
       error_counter += validate_nested_fields record, error_counter if nested_related_items_present? (record)
 
-      return
+      nil
     end
 
     def validate_nested_fields(record, error_counter = 0)
@@ -18,7 +18,7 @@ module ScholarsArchive::Validators
         validate_related_item(item, record)
       end
 
-      return error_counter
+      error_counter
     end
 
     def nested_related_items_present? (record)

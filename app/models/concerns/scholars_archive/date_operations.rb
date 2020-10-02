@@ -22,7 +22,7 @@ module ScholarsArchive
       yearly_dates
     rescue ArgumentError => e
       Rails.logger.warn e.message
-      return nil
+      nil
     end
 
     # decades is intended to be used for date_decades_ssim, which is used by the decade facet
@@ -41,7 +41,7 @@ module ScholarsArchive
       decade_dates.map(&:decade)
     rescue ArgumentError => e
       Rails.logger.warn e.message
-      return nil
+      nil
     end
 
     # Determine the date value to use for Decades facet and date facet yearly processing.
@@ -99,7 +99,7 @@ module ScholarsArchive
         DateTime.strptime(date_value.split('-').first, '%Y')
       else
         Rails.logger.warn "Invalid date_value: #{date_value}. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY."
-        return nil
+        nil
       end
     end
 

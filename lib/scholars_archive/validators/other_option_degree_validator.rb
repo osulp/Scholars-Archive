@@ -38,7 +38,7 @@ module ScholarsArchive::Validators
                                                                                        env_user: current_user_editor(record)
       end
 
-      return
+      nil
     end
 
     def current_user_editor(record)

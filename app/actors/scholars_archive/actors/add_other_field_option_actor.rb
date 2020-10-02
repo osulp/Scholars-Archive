@@ -58,7 +58,7 @@ module ScholarsArchive
         end
 
         clean_up_fields(env)
-        return true
+        true
       end
 
       def clean_up_fields (env)
@@ -116,7 +116,7 @@ module ScholarsArchive
             all_new_entries << entry.to_s
           end
         end
-        return all_new_entries
+        all_new_entries
       end
 
       def update_custom_option(env)
@@ -160,7 +160,7 @@ module ScholarsArchive
         end
 
         clean_up_fields(env)
-        return true
+        true
       end
 
       def degree_grantors_present? (record)

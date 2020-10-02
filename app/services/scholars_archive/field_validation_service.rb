@@ -59,7 +59,7 @@ module ScholarsArchive
         #   error_counter += 1
         # end
       end
-      return error_counter
+      error_counter
     end
 
     def self.is_valid_other_field?(record, field: nil, env_user: nil)
@@ -131,7 +131,7 @@ module ScholarsArchive
           record.send(field) << [{option: 'Other', err_valid_val:true, other_entry: entry.to_s}.to_json]
         end
       end
-      return error_counter
+      error_counter
     end
 
     def self.other_value_in_collection? (other_value: nil, collection: [])

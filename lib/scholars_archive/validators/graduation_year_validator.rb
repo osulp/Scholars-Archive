@@ -7,7 +7,7 @@ module ScholarsArchive::Validators
       return if !record.graduation_year.present? || valid_value(record)
 
       add_error_message(record)
-      return
+      nil
     end
 
     private
