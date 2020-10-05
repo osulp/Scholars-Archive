@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222227)
-class CreateProxyDepositRequests < ActiveRecord::Migration
+class CreateProxyDepositRequests < ActiveRecord::Migration[4.2]
   def change
     create_table :proxy_deposit_requests do |t|
       t.string :generic_file_id, null: false
