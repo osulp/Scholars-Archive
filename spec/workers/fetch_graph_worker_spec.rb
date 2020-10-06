@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 RSpec.describe FetchGraphWorker, type: :worker do
-  let(:worker) { described_class.new }:when
+  let(:worker) { described_class.new }
   let(:uri) { 'http://my.queryuri.com' }
   let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
   let(:model) { Default.create(title: ['foo'], based_near: [controlled_val], depositor: user.email) }
