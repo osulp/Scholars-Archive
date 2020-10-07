@@ -552,7 +552,7 @@ handles_ir_communities_collections:
 # Bibliographic Series (Forest Research Laboratory) 
   "10767": "https://ir.library.oregonstate.edu/catalog?q=Bibliographic%20Series%20(Forest%20Research%20Laboratory)&search_field=dspace_collection"
 # Biennial Conference on University Education in Natural Resources. (7th : 2008, Corvallis, OR) 
-  "7138": "https://ir.library.oregonstate.edu/catalog?q=Biennial%20Conference%20on%20University%20Education%20in%20Natural%20Resources.%20(7th%20%3A%202008%2C%20Corvallis%2C%20OR)&search_field=dspace_collection"
+  "7138": "https://ir.library.oregonstate.edu/catalog?q=%22Biennial%20Conference%20on%20University%20Education%20in%20Natural%20Resources.%20(7th%20%3A%202008%2C%20Corvallis%2C%20OR)%22&search_field=dspace_collection"
 # Bioenergy Minor Program 
   "55786": "https://ir.library.oregonstate.edu/catalog?q=Bioenergy%20Minor%20Program&search_field=dspace_collection"
 # Brief Series, Books and Pamphlets 
