@@ -189,6 +189,11 @@ Metrics/CyclomaticComplexity:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
     - 'app/services/scholars_archive/degree_level_service.rb'
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/models/concerns/scholars_archive/has_nested_ordered_properties.rb'
+    - 'lib/scholars_archive/noise_cancelling_sampler.rb'
+    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -204,6 +209,11 @@ Metrics/PerceivedComplexity:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
+    - 'app/indexers/default_work_indexer.rb'
+    - 'app/inputs/multi_value_label_url_input.rb'
+    - 'app/models/concerns/scholars_archive/has_nested_ordered_properties.rb'
+    - 'app/services/scholars_archive/degree_level_service.rb'
+    - 'lib/scholars_archive/noise_cancelling_sampler.rb'
 
 Layout/CaseIndentation:
   Exclude:
@@ -213,7 +223,7 @@ Layout/EndAlignment:
   Exclude:
     - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Exclude:
     - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
     - 'app/authorities/parsers/academic_units_parser.rb'
@@ -223,7 +233,7 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'spec/features/create_graduate_thesis_or_dissertation_spec.rb'
@@ -239,7 +249,7 @@ Layout/IndentFirstArrayElement:
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
     - 'spec/views/hyrax/base/_form_instructions_spec.rb'
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'app/controllers/catalog_controller.rb'
@@ -294,18 +304,6 @@ Layout/SpaceInsideHashLiteralBraces:
     - 'spec/services/scholars_archive/osu_api_service_spec.rb'
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
 
-Style/BracesAroundHashParameters:
-  Exclude:
-    - 'app/forms/scholars_archive/nested_behavior.rb'
-    - 'app/models/concerns/scholars_archive/date_operations.rb'
-    - 'app/jobs/migrate_creators_no_handles_job.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/services/scholars_archive/osu_api_service.rb'
-    - 'spec/scholars_archive/triple_powered_properties/triple_powered_form_spec.rb'
-    - 'spec/models/solr_document_spec.rb'
-    - 'spec/authorities/scholars_archive/cache_based_authority_spec.rb'
-    - 'spec/services/scholars_archive/triple_powered_service_spec.rb'
-
 Layout/SpaceAfterColon:
   Exclude:
     - 'app/forms/scholars_archive/nested_behavior.rb'
@@ -334,7 +332,7 @@ Layout/LeadingCommentSpace:
     - 'app/services/scholars_archive/edtf_date_compare_service.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
 
-Lint/UnneededCopEnableDirective:
+Lint/RedundantCopEnableDirective:
   Exclude:
     - 'app/forms/hyrax/forms/collection_form.rb'
 
@@ -376,7 +374,7 @@ Metrics/ClassLength:
     - 'app/inputs/multi_value_ordered_input.rb'
     - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Exclude:
     - 'app/models/solr_document.rb'
     - 'app/controllers/catalog_controller.rb'
@@ -435,12 +433,12 @@ Style/TernaryParentheses:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
 
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Exclude:
     - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
     - 'app/inputs/multi_value_ordered_input.rb'
 
-Layout/AlignArray:
+Layout/ArrayAlignment:
   Exclude:
     - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
 
@@ -469,6 +467,8 @@ Style/RedundantReturn:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+    - 'app/controllers/concerns/scholars_archive/download_analytics_behavior.rb'
+    - 'app/services/scholars_archive/triple_powered_service.rb'
 
 Style/MultilineIfThen:
   Exclude:
@@ -486,7 +486,7 @@ Style/RedundantParentheses:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
 
-Style/UnneededCondition:
+Style/RedundantCondition:
   Exclude:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
     - 'app/helpers/application_helper.rb'
@@ -496,10 +496,6 @@ Style/SafeNavigation:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
     - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
 
-Performance/RegexpMatch:
-  Exclude:
-    - 'app/models/concerns/scholars_archive/date_operations.rb'
-
 Layout/ExtraSpacing:
   Exclude:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
@@ -508,10 +504,6 @@ Layout/ExtraSpacing:
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
     - 'spec/services/scholars_archive/edtf_date_compare_service_spec.rb'
     - 'lib/scholars_archive/document/qualified_dublin_core.rb'
-
-Performance/TimesMap:
-  Exclude:
-    - 'app/models/concerns/scholars_archive/date_operations.rb'
 
 Layout/MultilineMethodCallIndentation:
   Exclude:
@@ -576,7 +568,7 @@ Style/NumericPredicate:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
 
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Exclude:
     - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
     - 'app/jobs/migrate_creators_no_handles_job.rb'
@@ -675,10 +667,6 @@ Style/AndOr:
     - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
     - 'app/controllers/concerns/scholars_archive/my_shares_behavior.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
-
-Performance/StringReplacement:
-  Exclude:
-    - 'app/controllers/scholars_archive/handles_controller.rb'
 
 Layout/CommentIndentation:
   Exclude:
@@ -1014,7 +1002,7 @@ Lint/AmbiguousOperator:
     - 'spec/forms/hyrax/graduate_project_form_spec.rb'
     - 'spec/forms/hyrax/graduate_thesis_or_dissertation_form_spec.rb'
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Exclude:
     - 'spec/forms/hyrax/eesc_publication_form_spec.rb'
     - 'spec/forms/hyrax/open_educational_resource_form_spec.rb'
@@ -1205,6 +1193,8 @@ RSpec/LeakyConstantDeclaration:
 RSpec/EmptyExampleGroup:
   Exclude:
     - 'spec/models/search_builder_spec.rb'
+    - 'spec/models/qa/local_authority_entry_spec.rb'
+    - 'spec/models/qa/local_authority_spec.rb'
 
 Style/EmptyLiteral:
   Exclude:
@@ -1243,7 +1233,7 @@ Style/TrailingCommaInHashLiteral:
     - 'spec/models/solr_document_spec.rb'
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
 
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   Exclude:
     - 'spec/presenters/hyrax/purchased_e_resource_presenter_spec.rb'
     - 'spec/presenters/hyrax/default_presenter_spec.rb'
@@ -1359,3 +1349,109 @@ Style/MethodDefParentheses:
 Lint/UriEscapeUnescape:
   Exclude:
     - 'lib/qa/authorities/geonames.rb'
+
+Migration/DepartmentName:
+  Exclude:
+    - 'app/forms/hyrax/forms/collection_form.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+    - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
+    - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
+    - 'spec/features/create_administrative_report_or_publication_spec.rb'
+    - 'spec/features/create_conference_proceedings_or_journal_spec.rb'
+    - 'spec/features/create_graduate_project_spec.rb'
+    - 'spec/features/create_graduate_thesis_or_dissertation_spec.rb'
+    - 'spec/features/create_honors_college_thesis_spec.rb'
+    - 'spec/features/create_technical_report_spec.rb'
+    - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/inputs/multi_value_ordered_input_spec.rb'
+    - 'spec/presenters/hyrax/administrative_report_or_publication_presenter_spec.rb'
+    - 'spec/presenters/hyrax/article_presenter_spec.rb'
+    - 'spec/presenters/hyrax/conference_proceedings_or_journal_presenter_spec.rb'
+    - 'spec/presenters/hyrax/dataset_presenter_spec.rb'
+    - 'spec/presenters/hyrax/default_presenter_spec.rb'
+    - 'spec/presenters/hyrax/eesc_publication_presenter_spec.rb'
+    - 'spec/presenters/hyrax/graduate_project_presenter_spec.rb'
+    - 'spec/presenters/hyrax/graduate_thesis_or_dissertation_presenter_spec.rb'
+    - 'spec/presenters/hyrax/honors_college_thesis_presenter_spec.rb'
+    - 'spec/presenters/hyrax/open_educational_resource_presenter_spec.rb'
+    - 'spec/presenters/hyrax/purchased_e_resource_presenter_spec.rb'
+    - 'spec/presenters/hyrax/technical_report_presenter_spec.rb'
+    - 'spec/presenters/hyrax/undergraduate_thesis_or_project_presenter_spec.rb'
+    - 'spec/renderers/hyrax/renderers/scholars_archive_nested_attribute_renderer_spec.rb'
+    - 'spec/renderers/hyrax/renderers/search_and_external_link_attribute_renderer_spec.rb'
+    - 'spec/scholars_archive/validators/nested_related_items_validator_spec.rb'
+    - 'spec/scholars_archive/validators/other_option_degree_validator_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_approval_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/pending_deletion_notification_spec.rb'
+    - 'spec/services/scholars_archive/osu_api_service_spec.rb'
+    - 'spec/services/scholars_archive/other_option_create_success_service_spec.rb'
+    - 'spec/views/hyrax/base/_form_instructions_spec.rb'
+    - 'spec/views/hyrax/base/_form_progress.html.erb_spec.rb'
+    - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_academic_affiliation.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_dates_section.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_field.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_grantors.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_level.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_name.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_geo_section.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_nested_related_items.html.erb_spec.rb'
+    - 'spec/views/shared/_select_work_type_modal.html.erb_spec.rb'
+    - 'spec/workers/fetch_failed_graph_worker_spec.rb'
+    - 'spec/workers/fetch_graph_worker_spec.rb'
+
+RSpec/EmptyLineAfterExample:
+  Exclude:
+    - 'spec/authorities/parsers/degree_fields_parser_spec.rb'
+    - 'spec/controllers/scholars_archive/downloads_controller_spec.rb'
+    - 'spec/features/create_honors_college_thesis_spec.rb'
+    - 'spec/forms/hyrax/graduate_project_form_spec.rb'
+    - 'spec/forms/hyrax/graduate_thesis_or_dissertation_form_spec.rb'
+    - 'spec/hyrax/controlled_vocabularies/location_spec.rb'
+    - 'spec/models/default_spec.rb'
+    - 'spec/models/other_option_spec.rb'
+    - 'spec/presenters/hyrax/administrative_report_or_publication_presenter_spec.rb'
+    - 'spec/presenters/hyrax/dataset_presenter_spec.rb'
+    - 'spec/presenters/hyrax/default_presenter_spec.rb'
+    - 'spec/presenters/hyrax/eesc_publication_presenter_spec.rb'
+    - 'spec/presenters/hyrax/technical_report_presenter_spec.rb'
+    - 'spec/requests/scholars_archive/handles_request_spec.rb'
+    - 'spec/scholars_archive/triple_powered_properties/triple_powered_form_spec.rb'
+    - 'spec/scholars_archive/validators/other_option_degree_validator_spec.rb'
+    - 'spec/services/scholars_archive/degree_grantors_service_spec.rb'
+    - 'spec/services/scholars_archive/google_scholar_citation_service_spec.rb'
+    - 'spec/services/scholars_archive/ordered_parser_service_spec.rb'
+    - 'spec/services/scholars_archive/osu_api_service_spec.rb'
+    - 'spec/views/graduate_thesis_or_dissertations/edit_fields/_license.html.erb_spec.rb'
+    - 'spec/views/honors_college_theses/edit_fields/_license.html.erb_spec.rb'
+    - 'spec/views/hyrax/base/_social_media.html.erb_spec.rb'
+    - 'spec/views/shared/_select_work_type_modal.html.erb_spec.rb'
+
+RSpec/ContextMethod:
+  Exclude:
+    - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
+
+RSpec/RepeatedExampleGroupDescription:
+  Exclude:
+    - 'spec/models/default_spec.rb'
+    - 'spec/scholars_archive/validators/graduation_year_validator_spec.rb'
+
+Lint/NonDeterministicRequireOrder:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+RSpec/EmptyHook:
+  Exclude:
+    - 'spec/scholars_archive/validators/other_option_degree_validator_spec.rb'
+
+Capybara/VisibilityMatcher:
+  Exclude:
+    - 'spec/views/records/edit_fields/_degree_field.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_grantors.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_level.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_degree_name.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_geo_section.html.erb_spec.rb'
+    - 'spec/views/records/edit_fields/_nested_related_items.html.erb_spec.rb'
