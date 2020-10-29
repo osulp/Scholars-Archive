@@ -10,9 +10,6 @@
         <li class="active">
           <a href="#under-review" role="tab" data-toggle="tab"><%= t('.tabs.under_review') %></a>
         </li>
-        <li>
-          <a href="#published" role="tab" data-toggle="tab"><%= t('.tabs.published') %></a>
-        </li>
       </ul>
       <div class="tab-content">
         <div id="under-review" class="tab-pane active">
@@ -43,46 +40,6 @@
                         </td>
                         <td>
                           <%= local_time_from_utc(document['date_modified_dtsi']) %>
-                        </td>
-                        <td>
-                          <span class="state state-pending"><%= document.workflow_state %></span>
-                        </td>
-                      </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="published" class="tab-pane">
-          <div class="panel panel-default labels">
-            <div class="panel-body">
-              <div class="table-responsive">
-                <table class="table table-condensed table-striped datatable">
-                  <thead>
-                  <tr>
-                    <th width="40%">Work</th>
-                    <th width="15%">Depositor</th>
-                    <th width="15%">Creator</th>
-                    <th width="15%">Submission Date</th>
-                    <th width="15%">Status</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% @published_list.each do |document| %>
-                      <tr>
-                        <td>
-                          <%= link_to document, [main_app, document] %>
-                        </td>
-                        <td>
-                          <%= document.depositor %>
-                        </td>
-                        <td>
-                          <%= safe_join(document.creator, tag(:br)) %>
-                        </td>
-                        <td>
-                          <%= DateTime.parse(document['date_modified_dtsi']).try(:to_formatted_s, :db) %>
                         </td>
                         <td>
                           <span class="state state-pending"><%= document.workflow_state %></span>
