@@ -267,6 +267,8 @@ Hyrax.config do |config|
   end
 end
 
+Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
+
 Date::DATE_FORMATS[:standard] = '%m/%d/%Y'
 
 Qa::Authorities::Local.register_subauthority('subjects', 'Qa::Authorities::Local::TableBasedAuthority')
