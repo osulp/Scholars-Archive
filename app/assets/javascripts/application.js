@@ -27,5 +27,5 @@
 //= require browse_everything
 //= require tinymce
 //= require ordered_creator
-//= require_tree .
+//= require_directory .
 //= require hyrax
