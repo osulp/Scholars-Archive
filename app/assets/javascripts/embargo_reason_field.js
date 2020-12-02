@@ -12,4 +12,9 @@ Blacklight.onLoad(function() {
   $('input[type="radio"][id$=visibility_embargo]').on('change', function(e) {
     $('#embargo_reason_select').val("Intellectual Property (patent, etc.)").trigger('change');
   });
+  $('input[type="radio"][name$="[visibility]"]').on('change', function(e) {
+    // Set embargo options disabled if we're not on embargo, enabled if we are
+    $('[name$="[embargo_release_date]"').prop('disabled', $(this).val() != 'embargo')
+    $('[name$="[embargo_reason]"').prop('disabled', $(this).val() != 'embargo')
+  });
 });
