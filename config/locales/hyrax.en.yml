@@ -88,6 +88,9 @@ en:
     works:
       create:
         after_create_html: "ScholarsArchive@OSU has received your deposit. Your file is currently being processed; some fields may take a few minutes to display."
+      request_delete_form:
+        title: Request Deletion
+        body: Are you sure you want to send a request to delete this work? Your request will be reviewed and you will receive an email when it's processed.
 
     homepage:
       featured_works:
