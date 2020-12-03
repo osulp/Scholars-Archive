@@ -14,7 +14,7 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <% if @presenter.solr_document['workflow_state_name_ssim'].first == 'tombstoned' %>
+          <% if @presenter.solr_document['workflow_state_name_ssim'] && @presenter.solr_document['workflow_state_name_ssim'].first == 'tombstoned' %>
             <%= render 'tombstoned_work', presenter: @presenter%>
           <% else %>
             <%= render 'workflow_actions_widget', presenter: @presenter %>
