@@ -13,7 +13,13 @@ module ScholarsArchive
     ].freeze
 
     NOISY_TYPES = [
-      'SCHEMA'
+      'SCHEMA',
+      'CACHE'
+    ].freeze
+
+    NOISY_QUERIES = [
+      'BEGIN',
+      'COMMIT'
     ].freeze
 
     NOISY_PREFIXES = [
@@ -35,13 +41,15 @@ module ScholarsArchive
     # rubocop:disable Metrics/AbcSize
     def self.sample(fields)
       if (NOISY_COMMANDS & [fields['redis.command'], fields['sql.active_record.sql']]).any?
-        [should_sample(100, fields['trace.trace_id']), 100]
+        [should_sample(1000, fields['trace.trace_id']), 1000]
       elsif fields['redis.command']&.start_with?('BRPOP')
-        [should_sample(1000, fields['trace.trace_id']), 1000]
+        [should_sample(10000, fields['trace.trace_id']), 10000]
       elsif fields['redis.command']&.start_with?(*NOISY_PREFIXES)
-        [should_sample(100, fields['trace.trace_id']), 100]
-      elsif fields['sql.active_record.name']&.start_with?(*NOISY_TYPES)
         [should_sample(1000, fields['trace.trace_id']), 1000]
+      elsif fields['sql.active_record.name']&.start_with?(*NOISY_TYPES)
+        [should_sample(10000, fields['trace.trace_id']), 10000]
+      elsif fields['sql.active_record.sql']&.start_with?(*NOISY_QUERIES)
+        [should_sample(100000, fields['trace.trace_id']), 100000]
       else
         [true, 1]
       end
