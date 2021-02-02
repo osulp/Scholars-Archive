@@ -10,12 +10,12 @@ module ScholarsArchive
       'TIME',
     ].freeze
 
-    NOISY_TYPES = %w[
+    NOISY_TYPES = [
       'SCHEMA',
       'CACHE'
     ].freeze
 
-    NOISY_QUERIES = %w[
+    NOISY_QUERIES = [
       'BEGIN',
       'COMMIT'
     ].freeze
@@ -34,9 +34,12 @@ module ScholarsArchive
     #     since they are happening constantly and are almost entirely
     #     uninteresting
     #   Database operations named SCHEMA
+    #   Database operations named CACHE
+    #   Database queries BEGIN and COMMIT
     #   Other redis commands
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Style/WordArray
     def self.sample(fields)
       if (NOISY_COMMANDS & [fields['redis.command'], fields['sql.active_record.sql']]).any?
         [should_sample(1000, fields['trace.trace_id']), 1000]
@@ -54,5 +57,6 @@ module ScholarsArchive
     end
     # rubocop:enable Metrics/MethodLength
     # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Style/WordArray
   end
 end
