@@ -8,16 +8,14 @@ module ScholarsArchive
     NOISY_COMMANDS = [
       'GET rails-settings-cached/v1',
       'TIME',
-      'BEGIN',
-      'COMMIT'
     ].freeze
 
-    NOISY_TYPES = [
+    NOISY_TYPES = %w[
       'SCHEMA',
       'CACHE'
     ].freeze
 
-    NOISY_QUERIES = [
+    NOISY_QUERIES = %w[
       'BEGIN',
       'COMMIT'
     ].freeze
@@ -43,13 +41,13 @@ module ScholarsArchive
       if (NOISY_COMMANDS & [fields['redis.command'], fields['sql.active_record.sql']]).any?
         [should_sample(1000, fields['trace.trace_id']), 1000]
       elsif fields['redis.command']&.start_with?('BRPOP')
-        [should_sample(10000, fields['trace.trace_id']), 10000]
+        [should_sample(10_000, fields['trace.trace_id']), 10_000]
       elsif fields['redis.command']&.start_with?(*NOISY_PREFIXES)
         [should_sample(1000, fields['trace.trace_id']), 1000]
       elsif fields['sql.active_record.name']&.start_with?(*NOISY_TYPES)
-        [should_sample(10000, fields['trace.trace_id']), 10000]
+        [should_sample(10_000, fields['trace.trace_id']), 10_000]
       elsif fields['sql.active_record.sql']&.start_with?(*NOISY_QUERIES)
-        [should_sample(100000, fields['trace.trace_id']), 100000]
+        [should_sample(100_000, fields['trace.trace_id']), 100_000]
       else
         [true, 1]
       end
