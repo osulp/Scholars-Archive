@@ -5,6 +5,7 @@ module ScholarsArchive
   class NoiseCancellingSampler
     extend Honeycomb::DeterministicSampler
 
+    # rubocop:disable Style/WordArray
     NOISY_COMMANDS = [
       'GET rails-settings-cached/v1',
       'TIME',
@@ -28,6 +29,15 @@ module ScholarsArchive
       'GET views/shell'
     ].freeze
 
+    NOISY_ENDPOINTS = [
+      '/solr/hydra-prod',
+      '/fcrepo/rest/prod'
+    ].freeze
+
+    NOISY_METHODS = [
+      'HEAD'
+    ].freeze
+
     # Determine the sample rate based on the contents of the event
     #   Noisy events and events with SQL queries
     #   Redis BRPOP commands should get sampled into relative obscurity
@@ -39,7 +49,6 @@ module ScholarsArchive
     #   Other redis commands
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Metrics/AbcSize
-    # rubocop:disable Style/WordArray
     def self.sample(fields)
       if (NOISY_COMMANDS & [fields['redis.command'], fields['sql.active_record.sql']]).any?
         [should_sample(1000, fields['trace.trace_id']), 1000]
@@ -51,6 +60,10 @@ module ScholarsArchive
         [should_sample(10_000, fields['trace.trace_id']), 10_000]
       elsif fields['sql.active_record.sql']&.start_with?(*NOISY_QUERIES)
         [should_sample(100_000, fields['trace.trace_id']), 100_000]
+      elsif fields['request.method']&.start_with?(*NOISY_METHODS)
+        [should_sample(1_000_000, fields['trace.trace_id']), 1_000_000]
+      elsif fields['request.path']&.start_with?(*NOISY_ENDPOINTS)
+        [should_sample(1000, fields['trace.trace_id']), 1000]
       else
         [true, 1]
       end
