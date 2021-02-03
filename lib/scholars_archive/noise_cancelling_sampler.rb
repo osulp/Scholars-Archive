@@ -8,7 +8,7 @@ module ScholarsArchive
     # rubocop:disable Style/WordArray
     NOISY_COMMANDS = [
       'GET rails-settings-cached/v1',
-      'TIME',
+      'TIME'
     ].freeze
 
     NOISY_TYPES = [
@@ -49,6 +49,8 @@ module ScholarsArchive
     #   Other redis commands
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
     def self.sample(fields)
       if (NOISY_COMMANDS & [fields['redis.command'], fields['sql.active_record.sql']]).any?
         [should_sample(1000, fields['trace.trace_id']), 1000]
@@ -71,5 +73,7 @@ module ScholarsArchive
     # rubocop:enable Metrics/MethodLength
     # rubocop:enable Metrics/AbcSize
     # rubocop:enable Style/WordArray
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
   end
 end
