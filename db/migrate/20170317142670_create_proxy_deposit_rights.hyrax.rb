@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222226)
-class CreateProxyDepositRights < ActiveRecord::Migration[4.2]
+class CreateProxyDepositRights < ActiveRecord::Migration
   def change
     create_table :proxy_deposit_rights do |t|
       t.references :grantor

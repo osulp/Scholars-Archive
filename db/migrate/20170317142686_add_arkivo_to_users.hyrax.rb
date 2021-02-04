@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160516190435)
-class AddArkivoToUsers < ActiveRecord::Migration[4.2]
+class AddArkivoToUsers < ActiveRecord::Migration
   def change
     add_column :users, :arkivo_token, :string
     add_column :users, :arkivo_subscription, :string

@@ -13,7 +13,7 @@ module ScholarsArchive
         elsif value.is_a? ActionController::Parameters
           # Recursively dig into the hashes
           # find the raw value and set them on the params hash
-          set_values(params, hash_key, attr, extract_hash_values(value.to_enum.to_h).to_hash)
+          set_values(params, hash_key, attr, extract_hash_values(value.to_hash).to_hash)
         elsif value.is_a? String
           # set the stripped string on the params
           set_params(params, hash_key, attr, value)

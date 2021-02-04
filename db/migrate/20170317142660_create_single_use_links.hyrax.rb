@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222154)
-class CreateSingleUseLinks < ActiveRecord::Migration[4.2]
+class CreateSingleUseLinks < ActiveRecord::Migration
   def change
     create_table :single_use_links do |t|
       t.string :downloadKey
