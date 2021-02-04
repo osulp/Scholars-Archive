@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20161012182404)
-class CreateSipityWorkflowMethods < ActiveRecord::Migration[4.2]
+class CreateSipityWorkflowMethods < ActiveRecord::Migration
   def change
     create_table :sipity_workflow_methods do |t|
       t.string   "service_name",                    null: false

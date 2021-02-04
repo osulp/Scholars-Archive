@@ -1,6 +1,6 @@
 # This migration comes from active_fedora_noid_engine (originally 20160610010003)
 # frozen_string_literal: true
-class CreateMinterStates < ActiveRecord::Migration[4.2]
+class CreateMinterStates < ActiveRecord::Migration
   def change
     create_table :minter_states do |t|
       t.string :namespace, null: false, default: 'default'

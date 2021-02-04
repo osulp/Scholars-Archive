@@ -1,4 +1,4 @@
-class AddDeviseGuestsToUsers < ActiveRecord::Migration[4.2]
+class AddDeviseGuestsToUsers < ActiveRecord::Migration
   def self.up
     change_table(:users) do |t|
       ## Database authenticatable
