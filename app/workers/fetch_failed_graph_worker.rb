@@ -9,8 +9,9 @@ class FetchFailedGraphWorker
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def perform(pid, val, _controlled_prop)
-    # Fetch the work and the solr_doc
-    solr_doc = SolrDocument.find(pid)
+    # Fetch Work and SolrDoc
+    work = ActiveFedora::Base.find(pid)
+    solr_doc = work.to_solr
 
     if val.respond_to?(:fetch)
       val.fetch(headers: { 'Accept' => default_accept_header })
