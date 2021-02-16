@@ -1065,12 +1065,13 @@ DEPENDENCIES
   fcrepo_wrapper
   ffi (~> 1.9.24)
   haml
-  honeycomb-beeline (>= 2.0.0)
+  honeycomb-beeline (>= 2.3.0)
   hydra-role-management
   hyrax!
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
+  libhoney (>= 1.16.0)
   libv8 (= 7.3.492.27.1)
   listen (~> 3.0.5)
   lograge
