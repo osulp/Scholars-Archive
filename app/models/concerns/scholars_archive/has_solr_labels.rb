@@ -29,6 +29,7 @@ module ScholarsArchive
           ordered_title_labels = nested_ordered_title.map { |i| (i.instance_of? NestedOrderedTitle) ? "#{i.title.first}$#{i.index.first}" : i }.select(&:present?)
           ordered_abstract_labels = nested_ordered_abstract.map { |i| (i.instance_of? NestedOrderedAbstract) ? "#{i.abstract.first}$#{i.index.first}" : i }.select(&:present?)
           ordered_contributor_labels = nested_ordered_contributor.map { |i| (i.instance_of? NestedOrderedContributor) ? "#{i.contributor.first}$#{i.index.first}" : i }.select(&:present?)
+          contributor_labels = nested_ordered_contributor.map { |i| (i.instance_of? NestedOrderedContributor) ? "#{i.contributor.first}" : i }.select(&:present?).uniq
           ordered_additional_information_labels = nested_ordered_additional_information.map { |i| (i.instance_of? NestedOrderedAdditionalInformation) ? "#{i.additional_information.first}$#{i.index.first}" : i }.select(&:present?)
 
           labels = [{label: 'nested_geo_label', data: labels },
@@ -53,6 +54,7 @@ module ScholarsArchive
           doc[ActiveFedora.index_field_mapper.solr_name('rights_statement', :facetable)] = rights_statement.first
           doc[ActiveFedora.index_field_mapper.solr_name('license', :facetable)] = license.first
           doc['creator_sim'] = creator_labels
+          doc['contributor_sim'] = contributor_labels
         end
       end
     end
