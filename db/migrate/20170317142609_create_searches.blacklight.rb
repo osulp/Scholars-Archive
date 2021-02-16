@@ -1,6 +1,6 @@
 # This migration comes from blacklight (originally 20140202020201)
 # frozen_string_literal: true
-class CreateSearches < ActiveRecord::Migration[4.2]
+class CreateSearches < ActiveRecord::Migration
   def self.up
     create_table :searches do |t|
       t.binary  :query_params

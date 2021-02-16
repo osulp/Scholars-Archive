@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222163)
-class CreateTinymceAssets < ActiveRecord::Migration[4.2]
+class CreateTinymceAssets < ActiveRecord::Migration
   def change
     create_table :tinymce_assets do |t|
       t.string :file

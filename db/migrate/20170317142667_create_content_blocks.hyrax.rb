@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222164)
-class CreateContentBlocks < ActiveRecord::Migration[4.2]
+class CreateContentBlocks < ActiveRecord::Migration
   def change
     create_table :content_blocks do |t|
       t.string :name

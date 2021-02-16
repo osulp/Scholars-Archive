@@ -140,3 +140,6 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityMarineMammalInstitute"
   term: "Marine Mammal Institute"
   active: true
+- id: "http://id.loc.gov/authorities/names/n85130350"
+  term: "Cooperative Institute for Marine Resource Studies"
+  active: true

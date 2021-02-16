@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.4'
+gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -20,8 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'mini_racer', '= 0.2.6', platforms: :ruby
-gem 'libv8', '= 7.3.492.27.1'
+gem 'mini_racer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -60,7 +59,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
 gem 'faraday'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.9.1'
+gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.7.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
@@ -72,8 +71,8 @@ gem 'sitemap_generator'
 
 # Used for integration of Blazegraph backend and required API
 # net-http-persistent 3.0 changes cause triplestore-adapter to break, awaiting fix for that
-gem 'net-http-persistent'
-gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: 'master'
+gem 'net-http-persistent', '~> 2.9'
+gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
@@ -114,8 +113,8 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
-  gem 'rubocop', '= 0.73.0'
-  gem 'rubocop-rspec', '= 1.34.0'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :staging, :production do
