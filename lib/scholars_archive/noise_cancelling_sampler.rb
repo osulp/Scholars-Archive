@@ -5,15 +5,20 @@ module ScholarsArchive
   class NoiseCancellingSampler
     extend Honeycomb::DeterministicSampler
 
+    # rubocop:disable Style/WordArray
     NOISY_COMMANDS = [
       'GET rails-settings-cached/v1',
-      'TIME',
-      'BEGIN',
-      'COMMIT'
+      'TIME'
     ].freeze
 
     NOISY_TYPES = [
-      'SCHEMA'
+      'SCHEMA',
+      'CACHE'
+    ].freeze
+
+    NOISY_QUERIES = [
+      'BEGIN',
+      'COMMIT'
     ].freeze
 
     NOISY_PREFIXES = [
@@ -24,23 +29,42 @@ module ScholarsArchive
       'GET views/shell'
     ].freeze
 
+    NOISY_ENDPOINTS = [
+      '/solr/hydra-prod',
+      '/fcrepo/rest/prod'
+    ].freeze
+
+    NOISY_METHODS = [
+      'HEAD'
+    ].freeze
+
     # Determine the sample rate based on the contents of the event
     #   Noisy events and events with SQL queries
     #   Redis BRPOP commands should get sampled into relative obscurity
     #     since they are happening constantly and are almost entirely
     #     uninteresting
     #   Database operations named SCHEMA
+    #   Database operations named CACHE
+    #   Database queries BEGIN and COMMIT
     #   Other redis commands
     # rubocop:disable Metrics/MethodLength
     # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/PerceivedComplexity
     def self.sample(fields)
       if (NOISY_COMMANDS & [fields['redis.command'], fields['sql.active_record.sql']]).any?
-        [should_sample(100, fields['trace.trace_id']), 100]
-      elsif fields['redis.command']&.start_with?('BRPOP')
         [should_sample(1000, fields['trace.trace_id']), 1000]
+      elsif fields['redis.command']&.start_with?('BRPOP')
+        [should_sample(10_000, fields['trace.trace_id']), 10_000]
       elsif fields['redis.command']&.start_with?(*NOISY_PREFIXES)
-        [should_sample(100, fields['trace.trace_id']), 100]
+        [should_sample(1000, fields['trace.trace_id']), 1000]
       elsif fields['sql.active_record.name']&.start_with?(*NOISY_TYPES)
+        [should_sample(10_000, fields['trace.trace_id']), 10_000]
+      elsif fields['sql.active_record.sql']&.start_with?(*NOISY_QUERIES)
+        [should_sample(100_000, fields['trace.trace_id']), 100_000]
+      elsif fields['request.method']&.start_with?(*NOISY_METHODS)
+        [should_sample(1_000_000, fields['trace.trace_id']), 1_000_000]
+      elsif fields['request.path']&.start_with?(*NOISY_ENDPOINTS)
         [should_sample(1000, fields['trace.trace_id']), 1000]
       else
         [true, 1]
@@ -48,5 +72,8 @@ module ScholarsArchive
     end
     # rubocop:enable Metrics/MethodLength
     # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Style/WordArray
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
   end
 end
