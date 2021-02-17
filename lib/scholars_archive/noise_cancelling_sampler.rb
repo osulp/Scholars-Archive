@@ -35,7 +35,7 @@ module ScholarsArchive
     ].freeze
 
     NOISY_METHODS = [
-      'HEAD'
+      :HEAD
     ].freeze
 
     # Determine the sample rate based on the contents of the event
@@ -62,7 +62,7 @@ module ScholarsArchive
         [should_sample(10_000, fields['trace.trace_id']), 10_000]
       elsif fields['sql.active_record.sql']&.start_with?(*NOISY_QUERIES)
         [should_sample(100_000, fields['trace.trace_id']), 100_000]
-      elsif fields['request.method']&.start_with?(*NOISY_METHODS)
+      elsif NOISY_METHODS.include?(fields['request.method'])
         [should_sample(1_000_000, fields['trace.trace_id']), 1_000_000]
       elsif fields['request.path']&.start_with?(*NOISY_ENDPOINTS)
         [should_sample(1000, fields['trace.trace_id']), 1000]
