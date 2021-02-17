@@ -17,7 +17,7 @@ class CatalogController < ApplicationController
   end
 
   def self.title_field
-    solr_name('nested_ordered_title_label', :stored_sortable)
+    solr_name('title', :stored_sortable)
   end
 
   def self.modified_field
