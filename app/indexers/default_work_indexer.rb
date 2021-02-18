@@ -11,6 +11,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   # Fetch remote labels for based_near. You can remove this if you don't want
   # this behavior
   include ScholarsArchive::IndexesLinkedMetadata
+  include ScholarsArchive::IndexesCombinedSortDate
 
   # Uncomment this block if you want to add custom indexing behavior:
   def generate_solr_document
@@ -30,6 +31,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['peerreviewed_label_tesim'] = peerreviewed_label
       solr_doc['replaces_ssim'] = object.replaces
       title_for_solr_doc(object, solr_doc)
+      index_combined_date_field(object, solr_doc)
 
       # Check if embargo is active
       if object&.embargo && object.embargo.active?

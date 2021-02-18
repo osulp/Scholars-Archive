@@ -17,11 +17,11 @@ class CatalogController < ApplicationController
   end
 
   def self.title_field
-    solr_name('nested_ordered_title_label', :stored_sortable)
+    solr_name('title', :stored_sortable)
   end
 
   def self.modified_field
-    solr_name('date_created', :stored_sortable, type: :date)
+    solr_name('date_sort_combined', :stored_sortable, type: :date)
   end
 
   configure_blacklight do |config|
@@ -597,10 +597,10 @@ class CatalogController < ApplicationController
     config.add_sort_field "score desc, #{uploaded_field} desc", label: 'relevance'
     config.add_sort_field "#{title_field} asc", label: 'Title [A-Z]'
     config.add_sort_field "#{title_field} desc", label: 'Title [Z-A]'
+    config.add_sort_field "#{modified_field} desc", label: "date created \u25BC"
+    config.add_sort_field "#{modified_field} asc", label: "date created \u25B2"
     config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
     config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
-    config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"
-    config.add_sort_field "#{modified_field} asc", label: "date modified \u25B2"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
