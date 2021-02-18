@@ -2,7 +2,6 @@
 
 # indexes collection metadata
 class CollectionIndexer < Hyrax::CollectionWithBasicMetadataIndexer
-
   include ScholarsArchive::IndexesCombinedSortDate
 
   # Uncomment this block if you want to add custom indexing behavior:

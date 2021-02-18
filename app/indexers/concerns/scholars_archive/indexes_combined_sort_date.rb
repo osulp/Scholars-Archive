@@ -5,20 +5,16 @@ module ScholarsArchive
   module IndexesCombinedSortDate
     def index_combined_date_field(object, solr_doc)
       # Figure out which date to use
-      date = nil
-      if object&.date_issued.present? then
-        date = object.date_issued
-      elsif object&.date_created.present? then
-        date = object.date_created
-      elsif object&.date_copyright.present? then
-        date = object.date_copyright
-      end
+      date = if object&.date_issued.present?
+               Date.edtf(object.date_issued)
+             elsif object&.date_created.present?
+               Date.edtf(object.date_created)
+             elsif object&.date_copyright.present?
+               Date.edtf(object.date_copyright)
+             end
 
-      # Convert date to EDTF format and grap the first value if it's a range
-      date = Date.edtf(date)
-      if date.instance_of? EDTF::Interval
-        date = date.first
-      end
+      # Grab the first value if it's a range
+      date = date.first if date.instance_of? EDTF::Interval
 
       # Add date to index
       solr_doc['date_sort_combined_dtsi'] = date
