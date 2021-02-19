@@ -11,14 +11,9 @@ class FetchGraphWorker
   def perform(pid, _user_key)
     # Fetch Work and SolrDoc
     work = ActiveFedora::Base.find(pid)
-    solr_doc = SolrDocument.find(pid)
+    solr_doc = work.to_solr
     # TODO: ADD BACK IN WHEN SETTING UP EMAIL
     # user = User.where(email: user_key).first
-
-    # Use 0 for version to tell Solr that the document just needs to exist to be updated
-    # Versions dont need to match
-    solr_doc.response['response']['docs'].first['_version_'] = 0
-    solr_doc['_version_'] = 0
 
     # Iterate over Controller Props values
     work.attributes['based_near'].each do |val|
