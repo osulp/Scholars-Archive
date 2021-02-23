@@ -71,6 +71,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :contributor_advisor, predicate: ::RDF::Vocab::MARCRelators.ths do |index|
+        index.as :stored_searchable, :facetable
+      end
+
       property :creator, predicate: ::RDF::Vocab::DC11.creator do |index|
         index.as :stored_searchable, :facetable
       end

@@ -6,13 +6,13 @@
         <% end %>
     <% end %>
 
-    <%= a.input :label, label: false, aria: { label: 'Label' }, placeholder: "Label", input_html: {value: a.object.label.first}, :wrapper_html => {:class => "col-xs-12 bbox_field"} %>
-    <%= a.input :bbox, as: :hidden, label: false, aria: { label: 'Bounding Box' }, placeholder: "Bounding Box", input_html: {value: a.object.bbox.first}, :wrapper_html => {:class => "col-xs-12 bbox_field"} %>
+    <%= a.input :label, label: false, aria: { label: 'Label' }, placeholder: "Label", input_html: {value: a.object.label.first, class: 'bbox_nested'}, :wrapper_html => {:class => "col-xs-12 bbox_field"} %>
+    <%= a.input :bbox, as: :hidden, label: false, aria: { label: 'Bounding Box' }, placeholder: "Bounding Box", input_html: {value: a.object.bbox.first, class: 'nested_field'}, :wrapper_html => {:class => "col-xs-12 bbox_field"} %>
 
-    <%= a.input :bbox_lat_north, label: false, aria: { label: 'Latitude North' }, :placeholder => "Latitude North", :wrapper_html => {:class => "col-xs-6"} %>
-    <%= a.input :bbox_lon_west, label: false, aria: { label: 'Longitude West' }, :placeholder => "Longitude West", :wrapper_html => {:class => "col-xs-6"} %>
-    <%= a.input :bbox_lat_south, label: false, aria: { label: 'Longitude South' }, :placeholder => "Latitude South", :wrapper_html => {:class => "col-xs-6"} %>
-    <%= a.input :bbox_lon_east, label: false, aria: { label: 'Longitude East' }, :placeholder => "Longitude East", :wrapper_html => {:class => "col-xs-6"} %>
+    <%= a.input :bbox_lat_north, label: false, aria: { label: 'Latitude North' }, :placeholder => "Latitude North", input_html: {class: 'bbox_nested'}, :wrapper_html => {:class => "col-xs-6"} %>
+    <%= a.input :bbox_lon_west, label: false, aria: { label: 'Longitude West' }, :placeholder => "Longitude West", input_html: {class: 'bbox_nested'}, :wrapper_html => {:class => "col-xs-6"} %>
+    <%= a.input :bbox_lat_south, label: false, aria: { label: 'Longitude South' }, :placeholder => "Latitude South", input_html: {class: 'bbox_nested'}, :wrapper_html => {:class => "col-xs-6"} %>
+    <%= a.input :bbox_lon_east, label: false, aria: { label: 'Longitude East' }, :placeholder => "Longitude East", input_html: {class: 'bbox_nested'}, :wrapper_html => {:class => "col-xs-6"} %>
 
     <span class="input-group-btn field-controls">
       <% unless a.object.new_record? %>

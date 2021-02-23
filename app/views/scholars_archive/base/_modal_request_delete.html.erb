@@ -1,0 +1,18 @@
+<%# Request work deletion modal #%>
+<div role="dialog" class="modal deletion-request-modal fade" id="deletion-request-modal" tabindex="-1" aria-labelledby="req_delete_title">
+  <div class="modal-dialog text-left">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <span class="modal-title" id="req_delete_title"><%= t('hyrax.works.request_delete_form.title') %></span>
+        </div>
+        <div class="modal-body">
+          <p><%= t('hyrax.works.request_delete_form.body') %></p>
+          <%= form_tag main_app.hyrax_workflow_action_path(@presenter), method: :put do %>
+            <%= hidden_field_tag 'workflow_action[name]', 'request_deletion' %>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+          <% end %>
+        </div><!-- /.modal-body -->
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

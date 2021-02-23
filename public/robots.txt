@@ -4,9 +4,14 @@
 # User-agent: *
 # Disallow: /
 # Load the sitemap
-Sitemap: https://ir.library.oregonstate.edu/sitemap/sitemap.xml.gz
+Sitemap: https://ir.library.oregonstate.edu/sitemap/sitemap.xml
 User-agent: *
 Crawl-delay: 8
 Disallow: /catalog
+Disallow: /files/*/stats
+Disallow: /oai
+
+User-agent: Googlebot
+Allow: /catalog
 Disallow: /files/*/stats
 Disallow: /oai

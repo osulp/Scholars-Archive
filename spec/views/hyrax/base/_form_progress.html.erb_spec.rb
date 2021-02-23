@@ -105,8 +105,68 @@ RSpec.describe 'hyrax/base/_form_progress.html.erb', type: :view do
 
       it { expect(page).to have_selector(open_option_id) }
       it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).not_to have_selector(restricted_option_id) }
+      it { expect(page).not_to have_selector(authenticated_option_id) }
+    end
+  end
+
+  context 'with visibility options on honors_college_thesis' do
+    let(:form) do
+      Hyrax::HonorsCollegeThesisForm.new(work, nil, controller)
+    end
+    let(:work) { HonorsCollegeThesis.new }
+    let(:model_name) { 'honors_college_thesis' }
+
+    context 'when admin users' do
+      before do
+        allow(user).to receive(:admin?).and_return(true)
+      end
+
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
       it { expect(page).to have_selector(restricted_option_id) }
       it { expect(page).to have_selector(authenticated_option_id) }
+    end
+
+    context 'when non-admin users' do
+      before do
+        allow(user).to receive(:admin?).and_return(false)
+      end
+
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).not_to have_selector(restricted_option_id) }
+      it { expect(page).not_to have_selector(authenticated_option_id) }
+    end
+  end
+
+  context 'with visibility options on undergraduate_thesis_or_project' do
+    let(:form) do
+      Hyrax::UndergraduateThesisOrProjectForm.new(work, nil, controller)
+    end
+    let(:work) { UndergraduateThesisOrProject.new }
+    let(:model_name) { 'undergraduate_thesis_or_project' }
+
+    context 'when admin users' do
+      before do
+        allow(user).to receive(:admin?).and_return(true)
+      end
+
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).to have_selector(restricted_option_id) }
+      it { expect(page).to have_selector(authenticated_option_id) }
+    end
+
+    context 'when non-admin users' do
+      before do
+        allow(user).to receive(:admin?).and_return(false)
+      end
+
+      it { expect(page).to have_selector(open_option_id) }
+      it { expect(page).to have_selector(embargo_option_id) }
+      it { expect(page).not_to have_selector(restricted_option_id) }
+      it { expect(page).not_to have_selector(authenticated_option_id) }
     end
   end
 

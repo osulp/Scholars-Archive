@@ -7,7 +7,7 @@
 <%#= presenter.attribute_to_html(:abstract, label: t('simple_form.labels.defaults.abstract')) %>
 <%= presenter.attribute_to_html(:license_label, render_as: :search_and_external_link, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label')) %>
 <%= presenter.attribute_to_html(:resource_type, render_as: :faceted, label: t('simple_form.labels.defaults.resource_type')) %>
-<%= presenter.attribute_to_html(:doi, render_as: :search_and_external_link, label: t('simple_form.labels.defaults.doi')) %>
+<%= presenter.attribute_to_html(:doi, render_as: :external_link, label: t('simple_form.labels.defaults.doi')) %>
 <%= presenter.attribute_to_html(:identifier, render_as: :search_and_external_link, search_field: 'identifier_tesim') %>
 <%= presenter.attribute_to_html(:date_accepted, render_as: :edtf, search_field: 'date_accepted_sim') %>
 <%= presenter.attribute_to_html(:date_available, render_as: :edtf, search_field: 'date_available_sim') %>
@@ -60,6 +60,7 @@
 <%= presenter.attribute_to_html(:based_near_linked, render_as: :search_and_external_link, label: "Location", search_field: 'based_near_label') %>
 <%= presenter.attribute_to_html(:funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body')) %>
 <%= presenter.attribute_to_html(:embargo_reason) %>
+<%= presenter.attribute_to_html(:embargo_date_range) %>
 <%= presenter.attribute_to_html(:duration, label: t('simple_form.labels.defaults.duration')) %>
 <%= presenter.attribute_to_html(:isbn, label: t('simple_form.labels.defaults.isbn')) %>
 <%= presenter.attribute_to_html(:issn, label: t('simple_form.labels.defaults.issn')) %>

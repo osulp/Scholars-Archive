@@ -58,9 +58,9 @@ module ScholarsArchive
             nested_related_items_attributes: %i[id _destroy label related_url index]
           }
         ] + [
-            {
-                other_affiliation_other: []
-            }
+          {
+            other_affiliation_other: []
+          }
         ]
       end
     end

@@ -51,18 +51,18 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
 
     let(:attributes) {
       {
-          title: ['test'],
-          creator: ['Blah'],
-          rights_statement: ['blah.blah'],
-          resource_type: ['blah'],
-          date_available: date_range,
-          date_copyright: date_range,
-          date_accepted: date_range,
-          date_collected: [date],
-          date_reviewed: [date],
-          date_created: date,
-          date_issued: date,
-          date_valid: date
+        title: ['test'],
+        creator: ['Blah'],
+        rights_statement: ['blah.blah'],
+        resource_type: ['blah'],
+        date_available: date_range,
+        date_copyright: date_range,
+        date_accepted: date_range,
+        date_collected: [date],
+        date_reviewed: [date],
+        date_created: date,
+        date_issued: date,
+        date_valid: date
       }
     }
 

@@ -2,6 +2,10 @@
 
 /* Temporary override to disable 'Explore Collections' tab */
 
+body {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 #content-wrapper
   > div
   > div.row.home-content
@@ -21,7 +25,9 @@
 }
 
 .image-masthead .background-container {
-  background-image: image-url("SA-Mast-Head.png") !important;
+  // Override Hyrax masthead blur setting
+  -webkit-filter: blur(0px) !important;
+  filter: blur(0px) !important;
 }
 
 #masthead {
@@ -156,12 +162,12 @@ div#geo_wrapper {
 }
 
 .controlled_vocabulary .listing {
-  max-width: 46.5em !important;
+  max-width: 100% !important;
 }
 
 .multi_value .listing,
 .controlled_vocabulary .listing {
-  max-width: 53em !important;
+  max-width: 100% !important;
 }
 
 .input-group-addon,
@@ -547,8 +553,67 @@ textarea.nested-field {
 dd.preformatted {
   white-space: pre-wrap;
 }
+.dl-horizontal dd.preformatted::before, .dl-horizontal dd.preformatted::after {
+  display: unset;
+  content: unset;
+}
 
 li:not(:last-child) > dd.preformatted {
   padding-bottom: 5px;
   border-bottom: solid 1px #eee;
+}
+
+button.copy-single-use-link {
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-top: 10px;
+}
+
+// Added so Bootstrap buttons in Mac Chrome don't have a white fill color
+button.btn-secondary {
+  -webkit-appearance: none!important;
+}
+
+.public-collapse > p {
+  margin-bottom: 0px;
+}
+
+.btn-date-remove {
+  color: #d9534f;
+}
+
+.nested-field {
+  border-radius: 4px !important;
+}
+
+.bbox_nested {
+  border-radius: 4px !important;
+}
+
+.search-result-wrapper > .col-md-6 {
+  width: 80% !important;
+}
+
+.form-control.select {
+  width: 100% !important;
+}
+
+.form-control.string {
+  width: 100% !important;
+}
+
+#new_date_type {
+  width: 99% !important;
+}
+
+.form-control.multi_value {
+  width: 100% !important;
+}
+
+.form-control:not(.multi_value) {
+ width: 99% !important;
+}
+
+.tombstone-text {
+  word-wrap: break-word;
 }

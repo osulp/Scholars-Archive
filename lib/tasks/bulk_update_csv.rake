@@ -43,9 +43,14 @@ def process_csv(path)
 end
 
 def update_work(logger, row)
-  work = ActiveFedora::Base.find(row[:id].to_s.delete("'"))
-  work = update_property(logger, work, row)
-  work&.save
+  begin
+    work = ActiveFedora::Base.find(row[:id].to_s.delete("'"))
+    work = update_property(logger, work, row)
+    work&.save
+  rescue StandardError => e
+    logger.error "Error saving: #{row[:id]} : #{e.backtrace}"
+    return nil
+  end
 end
 
 def update_property(logger, work, row)
@@ -77,15 +82,16 @@ def update_property(logger, work, row)
 end
 
 def is_property_multiple?(work, row)
+  # rights_statement is stored in a multi-valued field even though it's considered a single value.
+  return true if row[:property] == 'rights_statement'
   class_model = work.has_model.first.constantize
   Hyrax::FormMetadataService.multiple?(class_model,row[:property])
 end
 
 def overwrite_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
-  return work if to_value.blank?
-
-  if ordered_property? row[:property]
+  
+  if ordered_property? row[:property] && to_value.present?
     handle_ordered_property(work, 'overwrite_ordered_property_value', to_value, row)
   else
     work[row[:property]] = to_value.blank? ? nil : [to_value&.split('|')].flatten

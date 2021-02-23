@@ -23,41 +23,41 @@ RSpec.describe 'records/edit_fields/_academic_affiliation.html.erb', type: :view
   end
   let(:test_sorted_all_options) do
     [
-        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'],
-        ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7'],
-        ['4-H Youth Development Education - 2006/2010', 'http://opaquenamespace.org/ns/osuAcademicUnits/5eh7OKFX']
+      ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+      ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'],
+      ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7'],
+      ['4-H Youth Development Education - 2006/2010', 'http://opaquenamespace.org/ns/osuAcademicUnits/5eh7OKFX']
     ]
   end
 
   let(:test_sorted_all_options_truncated_values) do
     [
-        'Accounting',
-        'Animal Sciences',
-        'Animal and Rangeland Sciences',
-        '4-H Youth Development Education'
+      'Accounting',
+      'Animal Sciences',
+      'Animal and Rangeland Sciences',
+      '4-H Youth Development Education'
     ]
   end
 
   let(:test_sorted_current_options) do
     [
-        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'],
-        ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7']
+      ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+      ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'],
+      ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7']
     ]
   end
 
   let(:test_sorted_current_open_options) do
     [
-        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-        ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7']
+      ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+      ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7']
     ]
   end
 
   let(:test_sorted_current_open_options_truncated_values) do
     [
-        'Accounting',
-        'Animal and Rangeland Sciences'
+      'Accounting',
+      'Animal and Rangeland Sciences'
     ]
   end
 

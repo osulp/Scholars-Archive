@@ -1,0 +1,4 @@
+<%# Override from Hyrax to use SA language labels service %>
+<% ScholarsArchive::LanguageService.new.all_labels(record.language).each do |lang| %>
+  <span itemprop="inLanguage"><%= lang %></span><br />
+<% end %>

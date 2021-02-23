@@ -41,6 +41,8 @@ Metrics/AbcSize:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
+    - 'app/services/scholars_archive/degree_level_service.rb'
+    - 'app/models/ability.rb'
 
 Metrics/MethodLength:
   Exclude:
@@ -77,6 +79,7 @@ Metrics/MethodLength:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
+    - 'app/services/scholars_archive/degree_level_service.rb'
 
 Metrics/BlockLength:
   ExcludedMethods: ['included']
@@ -152,6 +155,7 @@ Layout/IndentationWidth:
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
     - 'spec/authorities/parsers/academic_units_parser_spec.rb'
+    - 'spec/authorities/parsers/degree_fields_parser_spec.rb'
     - 'spec/services/scholars_archive/other_option_create_success_service_spec.rb'
     - 'lib/qa/authorities/geonames.rb'
 
@@ -184,6 +188,7 @@ Metrics/CyclomaticComplexity:
     - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
+    - 'app/services/scholars_archive/degree_level_service.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -218,7 +223,7 @@ Naming/UncommunicativeMethodParamName:
     - 'app/services/scholars_archive/license_service.rb'
     - 'lib/qa/authorities/geonames.rb'
 
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'spec/features/create_graduate_thesis_or_dissertation_spec.rb'
@@ -234,7 +239,7 @@ Layout/IndentArray:
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
     - 'spec/views/hyrax/base/_form_instructions_spec.rb'
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
   Exclude:
     - 'app/forms/scholars_archive/dataset_form_behavior.rb'
     - 'app/controllers/catalog_controller.rb'
@@ -279,7 +284,6 @@ Layout/SpaceInsideHashLiteralBraces:
     - 'spec/models/solr_document_spec.rb'
     - 'spec/authorities/scholars_archive/cache_based_authority_spec.rb'
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
-    - 'spec/authorities/parsers/academic_units_parser_spec.rb'
     - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
     - 'spec/controllers/other_options_controller_spec.rb'
     - 'spec/services/scholars_archive/label_and_ordered_parser_service_spec.rb'
@@ -777,7 +781,6 @@ RSpec/EmptyLineAfterFinalLet:
     - 'spec/presenters/hyrax/administrative_report_or_publication_presenter_spec.rb'
     - 'spec/presenters/hyrax/technical_report_presenter_spec.rb'
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
-    - 'spec/authorities/parsers/academic_units_parser_spec.rb'
     - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
     - 'spec/services/scholars_archive/label_and_ordered_parser_service_spec.rb'
@@ -797,7 +800,6 @@ RSpec/ExampleWording:
     - 'spec/models/solr_document_spec.rb'
     - 'spec/authorities/scholars_archive/cache_based_authority_spec.rb'
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
-    - 'spec/authorities/parsers/academic_units_parser_spec.rb'
     - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
     - 'spec/services/scholars_archive/edtf_date_compare_service_spec.rb'
 
@@ -811,6 +813,7 @@ Style/BlockDelimiters:
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
     - 'spec/authorities/parsers/academic_units_parser_spec.rb'
+    - 'spec/authorities/parsers/degree_fields_parser_spec.rb'
     - 'spec/controllers/other_options_controller_spec.rb'
     - 'spec/views/graduate_thesis_or_dissertations/edit_fields/_license.html.erb_spec.rb'
     - 'spec/views/records/edit_fields/_degree_field.html.erb_spec.rb'
@@ -872,7 +875,6 @@ RSpec/ContextWording:
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
     - 'spec/authorities/scholars_archive/cache_based_authority_spec.rb'
     - 'spec/authorities/scholars_archive/extended_file_based_authority_spec.rb'
-    - 'spec/authorities/parsers/academic_units_parser_spec.rb'
     - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
     - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
     - 'spec/views/graduate_thesis_or_dissertations/edit_fields/_license.html.erb_spec.rb'
@@ -894,7 +896,6 @@ RSpec/EmptyLineAfterExampleGroup:
     - 'spec/renderers/hyrax/renderers/scholars_archive_nested_attribute_renderer_spec.rb'
     - 'spec/models/default_spec.rb'
     - 'spec/models/solr_document_spec.rb'
-    - 'spec/authorities/parsers/academic_units_parser_spec.rb'
     - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
     - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
     - 'spec/views/shared/_select_work_type_modal.html.erb_spec.rb'
@@ -995,6 +996,9 @@ RSpec/VerifiedDoubles:
     - 'spec/inputs/multi_value_date_input_spec.rb'
     - 'spec/inputs/multi_value_label_url_input_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_approval_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/pending_deletion_notification_spec.rb'
 
 Lint/AmbiguousOperator:
   Exclude:
@@ -1091,6 +1095,9 @@ Style/RedundantBegin:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_approval_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/pending_deletion_notification_spec.rb'
     - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
 
 RSpec/ExampleLength:
@@ -1116,6 +1123,7 @@ RSpec/ExampleLength:
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
+    - 'spec/renderers/hyrax/renderers/external_link_attribute_renderer_spec.rb'
 
 RSpec/MultipleExpectations:
   Exclude:
@@ -1155,6 +1163,9 @@ RSpec/MultipleExpectations:
     - 'spec/inputs/multi_value_date_input_spec.rb'
     - 'spec/inputs/multi_value_label_url_input_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_approval_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb'
+    - 'spec/services/hyrax/workflow/pending_deletion_notification_spec.rb'
 
 Style/MethodCallWithoutArgsParentheses:
   Exclude:
@@ -1184,6 +1195,12 @@ RSpec/DescribedClass:
     - 'spec/inputs/multi_value_date_input_spec.rb'
     - 'spec/inputs/multi_value_label_url_input_spec.rb'
     - 'spec/inputs/multi_value_ordered_input_spec.rb'
+
+RSpec/LeakyConstantDeclaration:
+  Exclude:
+    -  'spec/inputs/multi_value_date_input_spec.rb'
+    -  'spec/inputs/multi_value_label_url_input_spec.rb'
+    -  'spec/inputs/multi_value_ordered_input_spec.rb'
 
 RSpec/EmptyExampleGroup:
   Exclude:
@@ -1226,7 +1243,7 @@ Style/TrailingCommaInHashLiteral:
     - 'spec/models/solr_document_spec.rb'
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
 
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   Exclude:
     - 'spec/presenters/hyrax/purchased_e_resource_presenter_spec.rb'
     - 'spec/presenters/hyrax/default_presenter_spec.rb'

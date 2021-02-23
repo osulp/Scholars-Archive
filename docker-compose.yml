@@ -32,16 +32,20 @@ services:
 
   ##
   # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
-  web: &web
+  server: &server
     <<: *app
     environment:
       - RAILS_ENV=${RAILS_ENV}
+      - FITS_PATH=/opt/fits-1.0.5/fits.sh
+      - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
       - SCHOLARSARCHIVE_DB_HOST=db
       - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
       - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
-      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/development/sparql
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
+      - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
+      - RAILS_CACHE_STORE_URL=memcache
     # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
     # have been run already have been run and if so it just starts the server without the first three commands
     # taking time to run.
@@ -57,13 +61,14 @@ services:
       - redis
       - memcache
       - blazegraph
+      - workers
     expose:
       - 3000
 
   # Runs sidekiq to process background jobs
   workers:
-    <<: *web
-    command: bundle exec sidekiq
+    <<: *server
+    command: bash -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
       - db_test
@@ -71,11 +76,12 @@ services:
       - fcrepo
       - redis
       - blazegraph
+      - memcache
 
   ##
   # Test environment for application
   test: &test
-    <<: *web
+    <<: *server
     environment:
       - RAILS_ENV=test
       - SCHOLARSARCHIVE_DB_HOST=db_test
@@ -83,7 +89,7 @@ services:
       - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
-      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/development/sparql
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
     depends_on:
       - db_test
       - solr-test
@@ -93,7 +99,7 @@ services:
       - blazegraph
     command: >
       bash -c "./build/entrypoint.sh &&
-      puma -b tcp://0.0.0.0:3001 -e test -d &&
+      bundle exec puma -b tcp://0.0.0.0:3001 -e test -d &&
       tail -f log/test.log"
     expose:
       - 3001
@@ -116,7 +122,7 @@ services:
   ##
   # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
   solr: &solr
-    image: solr:alpine
+    image: solr:6-slim
     expose:
       - 8983
     volumes:
@@ -191,7 +197,7 @@ services:
   lb:
     image: dockercloud/haproxy:1.5.3
     links:
-      - web
+      - server
     environment:
       - DOCKER_TLS_VERIFY
       - DOCKER_HOST

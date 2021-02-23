@@ -17,11 +17,11 @@ class CatalogController < ApplicationController
   end
 
   def self.title_field
-    solr_name('nested_ordered_title_label', :stored_sortable)
+    solr_name('title', :stored_sortable)
   end
 
   def self.modified_field
-    solr_name('date_created', :stored_sortable, type: :date)
+    solr_name('date_sort_combined', :stored_sortable, type: :date)
   end
 
   configure_blacklight do |config|
@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
     config.add_facet_field 'creator_sim', label: 'Creator', limit: 5
-    config.add_facet_field 'nested_ordered_contributor_label_ssim', label: 'Contributor', limit: 5, helper_method: :parsed_index
+    config.add_facet_field 'contributor_sim', label: 'Contributor', limit: 5
 
 #    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
     config.add_facet_field('date_facet_yearly_ssim') do |field|
@@ -238,7 +238,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_related_items_label', :stored_searchable)
       field.label = 'Related Items'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -247,7 +247,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_creator_label', :stored_searchable)
       field.label = 'Creator'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -255,7 +255,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_additional_information_label', :stored_searchable)
       field.label = 'Description'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -263,7 +263,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_title_label', :stored_searchable)
       field.label = 'Title'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -271,7 +271,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_contributor_label', :stored_searchable)
       field.label = 'Contributor'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -279,7 +279,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('nested_ordered_abstract_label', :stored_searchable)
       field.label = 'Abstract'
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -351,7 +351,7 @@ class CatalogController < ApplicationController
       solr_name = solr_name('degree_grantors_label', :stored_searchable)
       field.include_in_advanced_search = false
       field.solr_local_parameters = {
-          qf: solr_name,
+        qf: solr_name,
           pf: solr_name
       }
     end
@@ -594,13 +594,13 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     # label is key, solr field is value
-    config.add_sort_field "score desc, #{uploaded_field} desc", label: 'relevance'
+    config.add_sort_field "score desc, #{uploaded_field} desc", label: 'Relevance'
     config.add_sort_field "#{title_field} asc", label: 'Title [A-Z]'
     config.add_sort_field "#{title_field} desc", label: 'Title [Z-A]'
-    config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
-    config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
-    config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"
-    config.add_sort_field "#{modified_field} asc", label: "date modified \u25B2"
+    config.add_sort_field "#{modified_field} desc", label: "Date Created \u25BC"
+    config.add_sort_field "#{modified_field} asc", label: "Date Created \u25B2"
+    config.add_sort_field "#{uploaded_field} desc", label: "Date Uploaded \u25BC"
+    config.add_sort_field "#{uploaded_field} asc", label: "Date Uploaded \u25B2"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

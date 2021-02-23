@@ -15,19 +15,23 @@ The details provided assume that the official Docker daemon is running in the ba
 ## Build the base application container
 **Important:** Rebuilding the docker container is required whenever Gemfile or Dockerfile updates affect the application.
 
-`$ docker-compose build`
+`$ docker-compose build server`
 
 ## Start all of the services
 
-- `$ docker-compose up` : Start the containers in the foreground
-- `$ docker-compose up -d` : Start the containers in the background
+- `$ docker-compose up server` : Start the containers in the foreground
+- `$ docker-compose up -d server` : Start the containers in the background
+
+## Optional: create admin set and collection types, load workflows, create admin role
+
+`$ docker-compose exec server bundle exec ./build/firstrun.sh`
 
 ## Create an administrator
 
 - Visit the site and login with OSU credentials to create a user account. (http://test.library.oregonstate.edu:3000)
 - Create an 'admin' role and add that role to the user account.
 ```
-$ docker-compose exec web bundle exec rails c
+$ docker-compose exec server bundle exec rails c
 
 #within the Rails Console;
 Role.create(name: 'admin')
@@ -35,13 +39,13 @@ User.first.roles << Role.first
 ```
 
 ## Load Workflows
-`$ docker-compose exec web bundle exec rails hyrax:workflow:load`
-## Run any command on the web application container
-_$ docker-compose exec web [COMMAND]_
+`$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+## Run any command on the server application container
+_$ docker-compose exec server [COMMAND]_
 
-- `$ docker-compose exec web bash` : Open a terminal session on the web container
-- `$ docker-compose exec web bundle exec rails c` : Open the rails console
-- `$ docker-compose exec web bundle exec rspec` : Run the tests
+- `$ docker-compose exec server bash` : Open a terminal session on the server container
+- `$ docker-compose exec server bundle exec rails c` : Open the rails console
+- `$ docker-compose exec server bundle exec rspec` : Run the tests
 
 ### Running commands that alter the local filesystem
 When you do anything that changes the filesystem (rake tasks or otherwise), you may want to pass through your user ID so that on your local filesystem you still own the files:
@@ -51,7 +55,7 @@ When you do anything that changes the filesystem (rake tasks or otherwise), you 
 
 Ohmyzsh with the docker-compose plugin makes executing these types of commands easier:
 
-`$ dce web bundle exec rails c` : Equivilent for docker-compose exec ...
+`$ dce server bundle exec rails c` : Equivalent for docker-compose exec ...
 
 # Local development
 Use Docker to expose the app to localhost (so you can just visit http://localhost instead of finding the app's IP address assigned by Docker), do this:
@@ -93,25 +97,25 @@ $ RAILS_ENV=test docker-compose up
 
 # after the services have finished booting, in another window
 
-$ docker-compose run web bundle exec rspec
+$ docker-compose run server bundle exec rspec
 # ... watch the tests run
 ```
 
 # Help? Something is broken.
 
-1. ### There are no workflows in the system.
-    This can happen if the rake task fails to load because there are no permission templates in the database to match those in Fedora. At minimum, the Default Admin Set must exist and can be created manually in the Rails console;
+## There are no workflows in the system.
+This can happen if the rake task fails to load because there are no permission templates in the database to match those in Fedora. At minimum, the Default Admin Set must exist and can be created manually in the Rails console;
 
-    `Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)`
+`Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)`
 
-    Following this fix, run the workflow load rake task:
+Following this fix, run the workflow load rake task:
 
-    `$ docker-compose exec web bundle exec rails hyrax:workflow:load`
+`$ docker-compose exec server bundle exec rails hyrax:workflow:load`
 
-2. ### The web container logged **ERROR: Default admin set exists but it does not have an associated permission template.**
+## The server container logged **ERROR: Default admin set exists but it does not have an associated permission template.**
 
-    This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
-    ```
+This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
+```
     This may happen if you cleared your database but you did not clear out Fedora and Solr.
 
     You could manually create the permission template in the rails console (non-destructive):
@@ -122,7 +126,12 @@ $ docker-compose run web bundle exec rspec
 
       require 'active_fedora/cleaner'
       ActiveFedora::Cleaner.clean!
-    ```
-    Following this fix, run the workflow load rake task:
+```
+Following this fix, run the workflow load rake task:
 
-    `$ docker-compose exec web bundle exec rails hyrax:workflow:load`
+`$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+
+## Fedora reports 403 Unauthorized error
+
+This is likely due to the Fedora repo address passed to the Rails app being incorrect. Earlier local standards used `local_env.yml` which overrode ENV variables passed in. If Fedora is running and the Rails app can't interact with it, check the ENV value that is passed to Rails. From the console, run `ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL')`
+

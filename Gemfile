@@ -10,7 +10,7 @@ gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.12.6'
 gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
@@ -42,13 +42,13 @@ gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
 gem 'blacklight_advanced_search'
 
 # MySQL for staging/production servers
-gem 'mysql2', '~> 0.3.18'
+gem 'mysql2', '~> 0.5.1'
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.8.0'
 gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
-gem 'capistrano3-puma'
+gem 'capistrano3-puma', '~> 3.1.1'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -59,7 +59,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
 gem 'faraday'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.3.0'
+gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.7.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
@@ -76,7 +76,7 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
-gem 'simple_form', '~> 3.2', '<= 3.5.0'
+gem 'simple_form', '~> 5.0'
 
 # Gem vulnerability fix
 gem 'rest-client', '~> 2.0'
@@ -89,11 +89,11 @@ gem 'lograge'
 gem 'riiif', '~> 1.1'
 
 # Security update
-gem 'rubyzip', '~> 1.2.2'
+gem 'rubyzip', '~> 1.3.0'
 
-group :staging, :production do
-  gem 'ddtrace'
-end
+# Honeycomb
+gem 'honeycomb-beeline', '>= 2.3.0'
+gem 'libhoney', '>= 1.16.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -118,7 +118,7 @@ group :development, :test do
 end
 
 group :staging, :production do
- gem 'clamav'
+#  gem 'clamav'
 end
 
 group :test do

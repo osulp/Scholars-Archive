@@ -34,14 +34,14 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
 
     let(:academic_unit_sorted_all_options) do
       [
-          ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
-          ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
+        ['Accounting - 1979/1992, 2009/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/KMyb2rzG'],
+        ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp']
       ]
     end
     let(:degree_field_sorted_all_options) do
       [
-          ['Biological and Organic Chemistry - 1944', 'http://opaquenamespace.org/ns/osuDegreeFields/0ARiezTD'],
-          ['Biochemistry - 1941, 1944/1952, 1965', 'http://opaquenamespace.org/ns/osuDegreeFields/0Kamj8EG']
+        ['Biological and Organic Chemistry - 1944', 'http://opaquenamespace.org/ns/osuDegreeFields/0ARiezTD'],
+        ['Biochemistry - 1941, 1944/1952, 1965', 'http://opaquenamespace.org/ns/osuDegreeFields/0Kamj8EG']
       ]
     end
 
@@ -52,7 +52,7 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       allow_any_instance_of(Hyrax::DefaultForm).to receive(:date_terms).and_return([])
       allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_all_options).and_return(academic_unit_sorted_all_options)
       allow_any_instance_of(ScholarsArchive::AcademicUnitsService).to receive(:select_sorted_current_options).and_return(academic_unit_sorted_all_options)
-      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ["Bachelor's", "Bachelor's"]])
+      allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ["Master's", "Master's"]])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options).and_return([%w[Other Other], ['Zoology', 'http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l']])
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ['Zoology', 'http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l']])
       allow_any_instance_of(ScholarsArchive::DegreeNameService).to receive(:select_sorted_all_options).and_return([%w[Other Other], ['Master of Arts (M.A.)', 'Master of Arts (M.A.)']])
@@ -89,7 +89,7 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       select 'Dissertation', from: 'graduate_thesis_or_dissertation_resource_type'
       find('body').click
 
-      select "Bachelor's", from: 'graduate_thesis_or_dissertation_degree_level'
+      select "Master's", from: 'graduate_thesis_or_dissertation_degree_level'
       find('body').click
 
       select 'Master of Arts (M.A.)', from: 'graduate_thesis_or_dissertation_degree_name'

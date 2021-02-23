@@ -12,13 +12,15 @@ RSpec.describe Hyrax::Renderers::ExternalLinkAttributeRenderer do
 
     let(:tr_content) do
       "<tr><th>Name</th>\n" \
-       "<td><ul class='tabular'>" \
-       '<li class="attribute attribute-name">'\
-       '<a href="http://example.com">'\
-       "http://example.com&nbsp;&nbsp;<span class='glyphicon glyphicon-new-window'></span></a></li>"\
-       '</ul></td></tr>'
+      '<td><ul class="tabular">' \
+      '<li class="attribute attribute-name">'\
+      '<a href="http://example.com">'\
+      'http://example.com</a></li>'\
+      '</ul></td></tr>'
     end
 
-    it { expect(subject).to be_equivalent_to(expected) }
+    it do
+      expect(subject).to be_equivalent_to(expected)
+    end
   end
 end

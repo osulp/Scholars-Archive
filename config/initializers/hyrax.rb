@@ -181,7 +181,7 @@ Hyrax.config do |config|
   config.audit_user_key = 'admin'
   #
   # The banner image. Should be 5000px wide by 1000px tall
-  # config.banner_image = 'https://cloud.githubusercontent.com/assets/92044/18370978/88ecac20-75f6-11e6-8399-6536640ef695.jpg'
+  config.banner_image = '/assets/SA-Mast-Head.png'
 
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
@@ -266,6 +266,8 @@ Hyrax.config do |config|
     config.browse_everything = nil
   end
 end
+
+Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
 
 Date::DATE_FORMATS[:standard] = '%m/%d/%Y'
 

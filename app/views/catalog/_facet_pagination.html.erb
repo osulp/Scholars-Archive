@@ -8,7 +8,7 @@
       <!-- Renders the next page button on the modal -->
       <li>
         <%= link_to_previous_page @pagination, raw(t('views.pagination.previous')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], data: { ajax_modal: "preserve" } do %>
-          <span class="disabled btn btn-disabled"><%= raw(t('views.pagination.previous')) %></span>
+          <%= raw("<span class='disabled btn btn-disabled'> #{t('views.pagination.previous')} </span>") %>
         <% end %>
       </li>
 
@@ -36,7 +36,7 @@
       <!-- Renders next page button -->
       <li>
         <%= link_to_next_page @pagination, raw(t('views.pagination.next')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], class: 'btn btn-link',  data: { ajax_modal: "preserve" } do %>
-          <span class="disabled btn  btn-disabled"><%= raw(t('views.pagination.next')) %></span>
+          <%= raw("<span class='disabled btn btn-disabled'> #{t('views.pagination.next')} </span>") %>
         <% end %>
       </li>
 

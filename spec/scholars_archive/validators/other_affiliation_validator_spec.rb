@@ -17,9 +17,9 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
 
     let(:attributes) {
       {
-          title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
-          other_affiliation: ['Other'],
-          depositor: depositor.username
+        title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+        other_affiliation: ['Other'],
+        depositor: depositor.username
       }
     }
 

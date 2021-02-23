@@ -1,8 +1,14 @@
 #!/bin/sh
 
+pid_dir="/data/tmp/pids"
+
 echo "Building ${RAILS_ENV}"
 
-rm -f tmp/pids/puma.pid
+if [ ! -d "$pid_dir" ]; then
+   mkdir -p "$pid_dir"
+fi
+
+rm -f $pid_dir/puma.pid
 ./build/install_gems.sh
 
 # Do not auto-migrate for production environment

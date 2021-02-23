@@ -28,9 +28,9 @@ module ApplicationHelper
     date_options = default_option.merge(date_options)
 
     select_tag(name, options_for_select(date_options), {
-      class: 'form-control',
-      data: data_fields.reduce(:merge)
-    })
+                 class: 'form-control',
+                 data: data_fields.reduce(:merge)
+               })
   end
 
   def select_tag_geo(name, f)
@@ -70,9 +70,9 @@ module ApplicationHelper
     geo_options = default_option.merge(geo_options)
 
     select_tag(name, options_for_select(geo_options), {
-        class: 'form-control',
-        data: data_fields.reduce(:merge)
-    })
+                 class: 'form-control',
+                 data: data_fields.reduce(:merge)
+               })
   end
 
   def date_range?(term, f)
@@ -126,10 +126,10 @@ module ApplicationHelper
 
   def max_page_number(facet_object, pagination_object, controller)
     facet_values = ScholarsArchive::AllFacetValuesService.new.call(facet_object, controller)
-    (facet_values.length.to_f / pagination_object.limit.to_f).ceil
+    (facet_values.length.to_f / pagination_object.limit).ceil
   end
 
   def option_visible_to_depositor?(model, user)
-    user.admin? == false && model.class == GraduateThesisOrDissertation ? false : true
+    user.admin? == false && [GraduateThesisOrDissertation, HonorsCollegeThesis, GraduateProject, UndergraduateThesisOrProject].include?(model.class) ? false : true
   end
 end

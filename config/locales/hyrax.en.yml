@@ -48,6 +48,8 @@ en:
       subject_new: "ScholarsArchive@OSU Message: %{subject}"
       subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
+    tombstone:
+      confirmation: 'Are you sure you want to tombstone this item?'
     product_name:           "ScholarsArchive@OSU"
     product_twitter_handle: ""
     institution_name:       "Oregon State University"
@@ -85,7 +87,10 @@ en:
 
     works:
       create:
-        after_create_html: "ScholarsArchive@OSU has received your upload. Your file is currently being processed. Thank you for your deposit."
+        after_create_html: "ScholarsArchive@OSU has received your deposit. Your file is currently being processed; some fields may take a few minutes to display."
+      request_delete_form:
+        title: Request Deletion
+        body: Are you sure you want to send a request to delete this work? Your request will be reviewed and you will receive an email when it's processed.
 
     homepage:
       featured_works:

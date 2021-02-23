@@ -56,8 +56,8 @@ terms:
 - id: "Master of Science in Environmental Sciences (M.S.E.S.)"
   term: "Master of Science in Environmental Sciences (M.S.E.S.)"
   active: true
-- id: "Professional Science Masters in Environmental Sciences"
-  term: "Professional Science Masters in Environmental Sciences"
+- id: "Professional Science Masters (P.S.M.)"
+  term: "Professional Science Masters (P.S.M.)"
   active: true
 - id: "Master of Forestry (M.F.)"
   term: "Master of Forestry (M.F.)"
@@ -67,4 +67,7 @@ terms:
   active: true
 - id: "Other"
   term: "Other"
+  active: true
+- id: "Doctor of Veterinary Medicine"
+  term: "Doctor of Veterinary Medicine"
   active: true

@@ -9,10 +9,6 @@ module ScholarsArchive
     #   https://docs.google.com/spreadsheets/d/1koKjV7bjn7v4r5a3gsowEimljHiAwbwuOgjHe7FEtuw/edit?usp=sharing
 
     included do
-      property :contributor_advisor, predicate: ::RDF::Vocab::MARCRelators.ths do |index|
-        index.as :stored_searchable, :facetable
-      end
-
       property :contributor_committeemember, predicate: ::RDF::Vocab::MARCRelators.dgs do |index|
         index.as :stored_searchable, :facetable
       end

@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Use Sidekiq for background jobs like ingest
-  #config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_adapter = ENV.fetch('ACTIVE_JOB_QUEUE_ADAPTER', 'inline').to_sym
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -18,13 +18,14 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
-
+    config.cache_store = :mem_cache_store, ENV.fetch('RAILS_CACHE_STORE_URL', 'localhost')
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
+  else
+    config.action_controller.perform_caching = false
+    config.cache_store = :null_store
   end
-
-  config.cache_store = :mem_cache_store, ENV.fetch('RAILS_CACHE_STORE_URL', 'localhost')
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -32,6 +33,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   config.action_mailer.perform_caching = false
+
+  # Don't actually send emails in development
+  config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -63,4 +67,6 @@ Rails.application.configure do
   end
 
   config.log_formatter = ::Logger::Formatter.new
+
+  config.web_console.whitelisted_ips = ['172.0.0.0/8', '192.0.0.0/8']
 end

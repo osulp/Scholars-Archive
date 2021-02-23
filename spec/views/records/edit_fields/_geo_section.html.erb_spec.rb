@@ -31,18 +31,18 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
   context 'for a persisted object nested geo points' do
     let(:test_point) do
       {
-          label: 'point1',
-          point: '[121.1, 121.2]'
+        label: 'point1',
+        point: '[121.1, 121.2]'
       }
     end
 
     let(:attributes) {
       {
-          title: ['test'],
-          creator: ['Blah'],
-          rights_statement: ['blah.blah'],
-          resource_type: ['blah'],
-          nested_geo_attributes: [test_point]
+        title: ['test'],
+        creator: ['Blah'],
+        rights_statement: ['blah.blah'],
+        resource_type: ['blah'],
+        nested_geo_attributes: [test_point]
       }
     }
 
@@ -70,15 +70,15 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
   context 'for a persisted object nested geo bbox' do
     let(:test_box) do
       {
-          label: 'box1',
-          bbox: '[121.1, 121.2, 44.1, 44.2]'
+        label: 'box1',
+        bbox: '[121.1, 121.2, 44.1, 44.2]'
       }
     end
 
     let(:attributes) {
       {
-          title: ['test'],
-          nested_geo_attributes: [test_box]
+        title: ['test'],
+        nested_geo_attributes: [test_box]
       }
     }
 

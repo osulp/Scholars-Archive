@@ -59,6 +59,12 @@ Rails.application.routes.draw do
   get '/dspace/bitstream/:handle_prefix/:handle_localname/:sequence_id/:file(.:format)', to: 'scholars_archive/handles#handle_download', as: 'handle_download_dspace', file: /.*?/, format: /[^.]+/
   get '/dspace/*path', to: 'hyrax/homepage#index'
 
+  get '/mla/:id', to: 'scholars_archive/citations#mla', as: 'mla'
+  get '/apa/:id', to: 'scholars_archive/citations#apa', as: 'apa'
+  get '/chicago/:id', to: 'scholars_archive/citations#chicago', as: 'chicago'
+
+  patch '/contentblock/update/:name', to: 'scholars_archive/content_blocks#update', as: 'update_content_blocks'
+
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
     concerns :exportable
   end

@@ -11,7 +11,7 @@
             <%= f.radio_button :visibility, Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC, data: { 'target': '#collapsePublic' }  %>
             <%= visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC) %>
             <%= t('hyrax.visibility.open.note_html', type: f.object.human_readable_type) %>
-            <div class="collapse" id="collapsePublic">
+            <div class="collapse public-collapse" id="collapsePublic">
               <%= t('hyrax.visibility.open.warning_html', label: visibility_badge(Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC)) %>
             </div>
           </label>
@@ -56,8 +56,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-3">
-                  <%= f.input :embargo_reason, collection: [["Intellectual Property (patent, etc.)"], ["Pending Publication", "Ongoing Research"], ["Existing Confidentiality Agreement"], ["Other..."]], :prompt => "Please choose a reason for the embargo", label: "Reason For Embargo", wrapper: :inline, input_html: {id: 'embargo_reason_select' } %>
-                  <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'hidden'}, input_html: { class: 'hidden other_field fill_column'}, wrapper_html: {class: 'fill_embargo_column'}, placeholder: "Please input the embargo reason" %>
+                      <%= f.input :embargo_reason, :collection => {"Intellectual Property (patent, etc.)" => "Intellectual Property (patent, etc.)", "Pending Publication" => "Pending Publication", "Ongoing Research" => "Ongoing Research", "Existing Confidentiality Agreement" => "Existing Confidentiality Agreement", "Other..." => "Other..."}, :prompt => "Please choose a reason for the embargo", label: "Reason For Embargo", wrapper: :inline, input_html: {id: 'embargo_reason_select' } %>
+                      <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'hidden'}, input_html: { class: 'hidden other_field fill_column'}, wrapper_html: {class: 'fill_embargo_column'}, placeholder: "Please input the embargo reason" %>
                     </div>
                   </div>
                 </div>

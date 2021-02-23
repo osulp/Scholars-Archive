@@ -14,11 +14,11 @@ describe ScholarsArchive::OtherOptionCreateSuccessService do
   end
   let(:attributes) {
     {
-        title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
-        degree_field: ['Other'],
-        degree_level: 'Other',
-        degree_name: ['Other'],
-        other_affiliation: ['Other']
+      title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
+      degree_field: ['Other'],
+      degree_level: 'Other',
+      degree_name: ['Other'],
+      other_affiliation: ['Other']
     }
   }
 

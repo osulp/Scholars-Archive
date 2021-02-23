@@ -107,8 +107,8 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityWritingIntensiveCurriculum"
   term: "Writing Intensive Curriculum"
   active: true
-- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityCenterForResearchOnLifelongSTEMLearning"
-  term: "Center for Research on Lifelong STEM Learning"
+- id: "http://opaquenamespace.org/ns/creator/STEMResearchCenter"
+  term: "STEM Research Center"
   active: true
 - id: "http://opaquenamespace.org/ns/subject/URAP"
   term: "Undergraduate Research Apprenticeship Program (URAP)"
@@ -136,4 +136,10 @@ terms:
   active: true
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityOpenlyPublishedEnvironmentalSensingLab"
   term: "Openly Published Environmental Sensing Lab"
+  active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityMarineMammalInstitute"
+  term: "Marine Mammal Institute"
+  active: true
+- id: "http://id.loc.gov/authorities/names/n85130350"
+  term: "Cooperative Institute for Marine Resource Studies"
   active: true
