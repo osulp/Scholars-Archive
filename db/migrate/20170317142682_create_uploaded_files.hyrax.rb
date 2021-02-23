@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160401142419)
-class CreateUploadedFiles < ActiveRecord::Migration
+class CreateUploadedFiles < ActiveRecord::Migration[4.2]
   def change
     create_table :uploaded_files do |t|
       t.string :file

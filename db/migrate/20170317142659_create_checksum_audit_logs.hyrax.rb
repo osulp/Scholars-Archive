@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222153)
-class CreateChecksumAuditLogs < ActiveRecord::Migration
+class CreateChecksumAuditLogs < ActiveRecord::Migration[4.2]
   def self.up
     create_table :checksum_audit_logs do |t|
       t.string :file_set_id

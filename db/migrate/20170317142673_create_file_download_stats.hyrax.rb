@@ -1,5 +1,5 @@
 # This migration comes from hyrax (originally 20160328222229)
-class CreateFileDownloadStats < ActiveRecord::Migration
+class CreateFileDownloadStats < ActiveRecord::Migration[4.2]
   def change
     create_table :file_download_stats do |t|
       t.datetime :date
