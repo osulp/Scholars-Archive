@@ -189,6 +189,7 @@ Metrics/CyclomaticComplexity:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
     - 'app/services/scholars_archive/degree_level_service.rb'
+    - 'app/indexers/default_work_indexer.rb'
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -204,6 +205,7 @@ Metrics/PerceivedComplexity:
     - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/hyrax/controlled_vocabularies/location.rb'
+    - 'app/indexers/default_work_indexer.rb'
 
 Layout/CaseIndentation:
   Exclude:
