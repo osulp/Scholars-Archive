@@ -30,6 +30,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['peerreviewed_label_ssim'] = peerreviewed_label
       solr_doc['peerreviewed_label_tesim'] = peerreviewed_label
       solr_doc['replaces_ssim'] = object.replaces
+      solr_doc['all_text_tsimv'] = object.file_sets.map { |file_set| file_set.to_solr['all_text_timv'] unless file_set.to_solr['all_text_timv'].nil? }
       title_for_solr_doc(object, solr_doc)
       index_combined_date_field(object, solr_doc)
 
