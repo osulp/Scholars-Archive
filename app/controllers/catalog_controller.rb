@@ -126,6 +126,12 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name('abstract', :stored_searchable), label: 'Abstract', itemprop: 'abstract', helper_method: :truncated_summary
     config.add_index_field solr_name('resource_type', :stored_searchable), label: 'Resource Type', link_to_search: solr_name('resource_type', :facetable)
     config.add_index_field solr_name('date_created', :stored_searchable), label: 'Date Created', itemprop: 'dateCreated', helper_method: :human_readable_date_edtf, field_name: 'date_created'
+    config.add_index_field 'all_text_tsimv', label: 'Full Text', highlight: true, if: lambda { |_context, _field_config, document|
+      # Only try to display full text if a highlight is hit
+      document.response['highlighting'][document.id].keys.include?('all_text_tsimv')
+    }
+
+    config.add_field_configuration_to_solr_request!('all_text_tsimv')
 
     # Disabling these from the search results view as required in issue #669 on GitHub,
     #   uncomment to enable them again as needed:
@@ -199,7 +205,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(' ')
       title_name = solr_name('nested_ordered_title_label', :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} title_tesim alt_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_timv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
+        qf: "#{all_names} title_tesim alt_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_tsimv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
         pf: title_name.to_s
       }
     end
