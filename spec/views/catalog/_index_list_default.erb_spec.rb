@@ -11,6 +11,7 @@ RSpec.describe 'catalog/_index_list_default.html.erb', type: :view do
   before do
     allow(view).to receive(:index_presenter).and_return(presenter)
     allow(presenter).to receive(:field_value) { |field| "Testing\n#{field.field}" }
+    allow(document).to receive(:response).and_return('highlighting' => { document.id => {} })
     render 'catalog/index_list_default', document: document
   end
 
