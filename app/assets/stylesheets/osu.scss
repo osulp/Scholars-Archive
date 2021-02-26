@@ -557,6 +557,9 @@ dd.preformatted {
   display: unset;
   content: unset;
 }
+div.metadata dd em {
+  background-color: $highlight-yellow;
+}
 
 li:not(:last-child) > dd.preformatted {
   padding-bottom: 5px;
