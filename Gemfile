@@ -116,6 +116,9 @@ group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'rubocop', '= 0.73.0'
   gem 'rubocop-rspec', '= 1.34.0'
+
+  # Pin nokogiri down because staging doesn't have a new enough version of glibc
+  gem 'nokogiri', '~> 1.10.10'
 end
 
 group :staging, :production do
