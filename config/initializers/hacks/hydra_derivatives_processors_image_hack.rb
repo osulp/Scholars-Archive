@@ -9,7 +9,7 @@ Hydra::Derivatives::Processors::Image.class_eval do
         # This is a fix as described in https://github.com/osulp/Scholars-Archive/issues/2143
         xfrm.combine_options do |x|
           x.flatten
-          x.alpha('flatten')
+          x.alpha('remove')
           x.type('TrueColor')
           x.resize(size)
         end
