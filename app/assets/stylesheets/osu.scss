@@ -620,3 +620,17 @@ button.btn-secondary {
 .tombstone-text {
   word-wrap: break-word;
 }
+
+/* Override Hyrax CSS so that first multivalue input can be removed */
+.form-group.multi_value .listing li:first-of-type .remove,
+.form-group.controlled_vocabulary .listing li:first-of-type .remove {
+  display: unset;
+}
+.form-group.multi_value .listing li:only-of-type .remove,
+.form-group.controlled_vocabulary .listing li:only-of-type .remove {
+  display: none;
+}
+.form-group.multi_value .listing li:first-of-type,
+.form-group.controlled_vocabulary .listing li:first-of-type {
+  width: 100%;
+}
