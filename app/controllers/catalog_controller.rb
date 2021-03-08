@@ -453,6 +453,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('in_series') do |field|
+      solr_name = solr_name('in_series', :stored_searchable)
+      field.solr_local_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
     config.add_search_field('subject') do |field|
       solr_name = solr_name('subject', :stored_searchable)
       field.solr_local_parameters = {
