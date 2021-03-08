@@ -25,9 +25,12 @@ namespace :scholars_archive do
     all_records.each do |works|
       works.each do |record|
         title_statement = [record.resource.rdf_subject, RDF::Vocab::DC.title, nil]
+        nested_title_statement = [record.resource.rdf_subject, RDF::Vocab::DC11.title, nil]
         abstract_statement = [record.resource.rdf_subject, RDF::Vocab::DC.abstract, nil]
+        nested_abstract_statement = [record.resource.rdf_subject, RDF::Vocab::BIBO.abstract, nil]
 
-        unless record.resource.graph.query(title_statement).statements.empty?
+        # Unless no unordered title to delete OR no ordered title to fall back on
+        unless record.resource.graph.query(title_statement).statements.empty? || record.resource.graph.query(nested_title_statement).statements.empty?
           logger.info ""
           logger.info "Work found #{record.id}. Updating title. Pulling graph from fedora"
           orm = Ldp::Orm.new(record.ldp_source)
@@ -48,7 +51,8 @@ namespace :scholars_archive do
           end
         end
 
-        unless record.resource.graph.query(abstract_statement).statements.empty?
+        # Unless no unordered abstract to delete OR no ordered abstract to fall back on
+        unless record.resource.graph.query(abstract_statement).statements.empty? || record.resource.graph.query(nested_abstract_statement).statements.empty?
           logger.info ""
           logger.info "Work found #{record.id}. Updating abstract. Pulling graph from fedora"
           orm = Ldp::Orm.new(record.ldp_source)
