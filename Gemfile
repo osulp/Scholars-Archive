@@ -118,7 +118,7 @@ group :development, :test do
   gem 'rubocop-rspec', '= 1.34.0'
 
   # Pin nokogiri down because staging doesn't have a new enough version of glibc
-  gem 'nokogiri', '~> 1.10.10'
+  gem 'nokogiri', '~> 1.11.0'
 end
 
 group :staging, :production do
