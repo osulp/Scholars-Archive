@@ -30,7 +30,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['peerreviewed_label_ssim'] = peerreviewed_label
       solr_doc['peerreviewed_label_tesim'] = peerreviewed_label
       solr_doc['replaces_ssim'] = object.replaces
-      solr_doc['all_text_tsimv'] = object.file_sets.map { |file_set| file_set.to_solr['all_text_timv'] unless file_set.to_solr['all_text_timv'].nil? }
+      file_set_text_extraction(object, solr_doc)
       title_for_solr_doc(object, solr_doc)
       index_combined_date_field(object, solr_doc)
 
@@ -75,5 +75,13 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc[o[:field].to_s + '_label_tesim'] = labels
     end
     solr_doc
+  end
+
+  def file_set_text_extraction(object, solr_doc)
+    solr_doc['all_text_tsimv'] = object.file_sets.map { |file_set| file_set.to_solr['all_text_timv'] unless file_set.to_solr['all_text_timv'].nil? }
+  rescue ActiveTriples::UndefinedPropertyError => e
+    # If the work hasn't finished saving or populating the first time on initial deposit, #file_sets may not be ready.
+    # Skip saving extracted text this time and wait for the work to save again during deposit.
+    nil
   end
 end
