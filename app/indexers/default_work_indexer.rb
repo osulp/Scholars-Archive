@@ -53,6 +53,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     else
       solr_doc['title_ssi'] = object.title.first
     end
+    solr_doc['title_ssort'] = solr_doc['title_ssi']
   end
 
   def triple_powered_properties_for_solr_doc(object, solr_doc)
