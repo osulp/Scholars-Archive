@@ -125,6 +125,23 @@ class SolrDocument
     Time.parse self['system_create_dtsi']
   end
 
+  # Dates & Times are stored in Solr as UTC but need to be displayed in local timezone
+  def modified_date
+    Time.parse(self['system_modified_dtsi']).in_time_zone.to_date
+  end
+
+  def create_date
+    Time.parse(self['system_create_dtsi']).in_time_zone.to_date
+  end
+
+  def date_uploaded
+    Time.parse(self['date_uploaded_dtsi']).in_time_zone.to_date
+  end
+
+  def date_modified
+    Time.parse(self['date_modified_dtsi']).in_time_zone.to_date
+  end
+
   solrized_methods %w[
     abstract
     academic_affiliation
