@@ -53,9 +53,6 @@ terms:
 - id: "Master of Natural Resources (M.N.R.)"
   term: "Master of Natural Resources (M.N.R.)"
   active: true
-- id: "Master of Science in Environmental Sciences (M.S.E.S.)"
-  term: "Master of Science in Environmental Sciences (M.S.E.S.)"
-  active: true
 - id: "Professional Science Masters (P.S.M.)"
   term: "Professional Science Masters (P.S.M.)"
   active: true
@@ -68,6 +65,9 @@ terms:
 - id: "Other"
   term: "Other"
   active: true
-- id: "Doctor of Veterinary Medicine"
-  term: "Doctor of Veterinary Medicine"
+- id: "Doctor of Veterinary Medicine (D.V.M.)"
+  term: "Doctor of Veterinary Medicine (D.V.M.)"
+  active: true
+- id: "Graduate Certificate (CERT)"
+  term: "Graduate Certificate (CERT)"
   active: true
