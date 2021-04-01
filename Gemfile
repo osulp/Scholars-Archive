@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4.4'
+gem 'rails', '~> 5.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -128,7 +128,7 @@ end
 group :test do
   gem 'capybara'
   gem 'coveralls', '~> 0.8'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '~> 1.8.5'
   gem 'equivalent-xml'
   gem 'poltergeist'
   gem 'rails-controller-testing'
