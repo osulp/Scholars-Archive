@@ -71,3 +71,6 @@ terms:
 - id: "Graduate Certificate (CERT)"
   term: "Graduate Certificate (CERT)"
   active: true
+- id: "Bachelor of Fine Arts (B.F.A.)"
+  term: "Bachelor of Fine Arts (B.F.A.)"
+  active: true
