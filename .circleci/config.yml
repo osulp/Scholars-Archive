@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  docker-publish: circleci/docker@1.5.0
+  docker: circleci/docker@1.5.0
 jobs:
   checkout_code:
     docker:
@@ -180,7 +180,7 @@ jobs:
         type: string
         default: 'production'
     executor:
-      name: 'docker-publish/docker'
+      name: 'docker/docker'
     environment:
       DOCKER_LOGIN: admin
       DOCKER_PASSWORD: admin
