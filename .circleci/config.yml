@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  docker-publish: circleci/docker-publish@0.1.7
+  docker: circleci/docker@1.5.0
 jobs:
   checkout_code:
     docker:
@@ -41,10 +41,10 @@ jobs:
             - v2-bundle-{{ checksum "Gemfile.lock" }}
       - run:
           name: Update bundler
-          command: gem install bundler -v 2.0.2
+          command: gem install bundler -v 2.1.4
       - run:
           name: Install dependencies
-          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
       - save_cache:
           name: Save bundle cache
           key: v2-bundle-{{ checksum "Gemfile.lock" }}
@@ -66,14 +66,8 @@ jobs:
           at: ~/
       - run:
           name: Update bundler
-          command: gem install --force bundler
+          command: gem install bundler -v 2.1.4
       - run:
-          name: Bundle update
-          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
-      - run:
-          name: Install Rubocop
-          command: gem install rubocop
-      - run: 
           name: Run Rubocop
           command: bundle exec rubocop
   test:
@@ -148,7 +142,7 @@ jobs:
       - run:
           name: Bundle update srsly again
           command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
-      - run: 
+      - run:
           name: Create and load MySQL data
           command: bundle exec rake db:create db:schema:load --trace
       - run:
@@ -186,7 +180,7 @@ jobs:
         type: string
         default: 'production'
     executor:
-      name: 'docker-publish/docker'
+      name: 'docker/docker'
     environment:
       DOCKER_LOGIN: admin
       DOCKER_PASSWORD: admin
@@ -202,16 +196,17 @@ jobs:
             echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
       - setup_remote_docker
-      - docker-publish/check:
+      - docker/check:
           registry: registry.library.oregonstate.edu
-      - docker-publish/build:
+      - docker/build:
           registry: registry.library.oregonstate.edu
           image: sa_web
           tag: $TAG
           extra_build_args: --build-arg RAILS_ENV=<< parameters.environment >> --build-arg DEPLOYED_VERSION=$DEPLOYED_VERSION
-      - docker-publish/deploy:
+      - docker/push:
           registry: registry.library.oregonstate.edu
           image: sa_web
+          tag: $TAG
 workflows:
   ci:
     jobs:
