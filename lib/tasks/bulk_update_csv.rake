@@ -91,7 +91,7 @@ end
 def overwrite_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
   
-  if ordered_property? row[:property] && to_value.present?
+  if ordered_property?(row[:property]) && to_value.present?
     handle_ordered_property(work, 'overwrite_ordered_property_value', to_value, row)
   else
     work[row[:property]] = to_value.blank? ? nil : [to_value&.split('|')].flatten
@@ -104,7 +104,7 @@ def add_to_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
   return work if to_value.blank?
 
-  if ordered_property? row[:property]
+  if ordered_property?(row[:property])
     handle_ordered_property(work, 'add_ordered_property_value', to_value, row)
   else
     work[row[:property]] += [to_value&.split('|')].flatten
@@ -117,7 +117,7 @@ def remove_from_multivalue_row(logger, work, row, property)
   to_value = row[:to]&.to_s
   return work if to_value.blank?
 
-  if ordered_property? row[:property]
+  if ordered_property?(row[:property])
     handle_ordered_property(work, 'remove_ordered_property_value', to_value, row)
   else
     work[row[:property]] = work[row[:property]].to_a - [to_value&.split('|')].flatten
