@@ -38,6 +38,7 @@ def ingest_work(logger, row, file_path, user)
 
   # Set properties
   work = set_work_properties(logger, work, row)
+  work.date_uploaded = Hyrax::TimeService.time_in_utc
   work.depositor = u.username
   work&.save
 
