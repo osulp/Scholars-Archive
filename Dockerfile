@@ -1,4 +1,4 @@
-FROM ruby:2.5.5 as builder
+FROM ruby:2.5 as builder
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
