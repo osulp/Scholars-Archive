@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # builds set for oai
-class OaiSet < BlacklightOaiProvider::Set
+class OaiSet < BlacklightOaiProvider::SolrSet
   class << self
     # The Solr repository object (optional)
     attr_accessor :repository
@@ -11,15 +11,6 @@ class OaiSet < BlacklightOaiProvider::Set
 
     # The Solr fields to map to OAI sets. Must be indexed (optional)
     attr_accessor :fields
-
-    # Return an array of all sets, or nil if sets are not supported
-    def all
-      return if @fields.nil?
-
-      params = { rows: 0, facet: true, 'facet.field' => @fields }
-      response = @repository.search @search_builder.merge(params)
-      sets_from_facets(response.facet_fields) if response.facet_fields
-    end
 
     # Return a Solr filter query given a set spec
     def from_spec(spec)

@@ -635,8 +635,11 @@ class CatalogController < ApplicationController
         limit: 50,
         timestamp_field: 'system_create_dtsi',
         timestamp_method: 'system_created',
-        set_fields: 'isPartOf_ssim',
-        set_class: '::OaiSet'
+        set_fields: [
+          { 'label': 'title_tesim',
+            'solr_field': 'isPartOf_ssim' }
+        ],
+        set_model: ::OaiSet
       }
     }
   end
