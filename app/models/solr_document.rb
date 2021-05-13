@@ -3,7 +3,7 @@
 # solr document object
 class SolrDocument
   include Blacklight::Solr::Document
-  include BlacklightOaiProvider::SolrDocumentBehavior
+  include BlacklightOaiProvider::SolrDocument
   include Blacklight::Gallery::OpenseadragonSolrDocument
 
   # Adds Hyrax behaviors to the SolrDocument.
