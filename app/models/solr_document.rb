@@ -197,11 +197,11 @@ class SolrDocument
 
   field_semantics.merge!(
     contributor:  %w[contributor_tesim editor_tesim contributor_advisor_tesim contributor_committeemember_tesim oai_academic_affiliation_label oai_other_affiliation_label],
-    coverage:     %w['based_near_label_tesim conferenceLocation_tesim],
+    coverage:     %w[based_near_label_tesim conferenceLocation_tesim],
     creator:      'creator_tesim',
     date:         'date_created_tesim',
-    description:  %w['description_tesim abstract_tesim],
-    format:       %w['file_extent_tesim file_format_tesim],
+    description:  %w[description_tesim abstract_tesim],
+    format:       %w[file_extent_tesim file_format_tesim],
     identifier:   'oai_identifier',
     language:     'language_label_tesim',
     publisher:    'publisher_tesim',
@@ -221,7 +221,7 @@ class SolrDocument
   end
 
   def sets
-    fetch('isPartOf', []).map { |m| BlacklightOaiProvider::Set.new("isPartOf_ssim:#{m}") }
+    fetch('isPartOf', []).map { |m| ::OaiSet.new("isPartOf_ssim:#{m}") }
   end
 
   def oai_nested_related_items_label
