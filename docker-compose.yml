@@ -50,9 +50,8 @@ services:
     # have been run already have been run and if so it just starts the server without the first three commands
     # taking time to run.
     command: >
-      bash -c "./build/entrypoint.sh &&
-      bundle exec puma -C config/puma/development.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000 &&
-      tail -f log/development.log"
+      sh -c "./build/entrypoint.sh &&
+      bundle exec puma -C config/puma/production.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000"
     depends_on:
       - db
       - db_test
@@ -68,7 +67,7 @@ services:
   # Runs sidekiq to process background jobs
   workers:
     <<: *server
-    command: bash -c "./build/install_gems.sh && bundle exec sidekiq"
+    command: sh -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
       - db_test
@@ -98,7 +97,7 @@ services:
       - memcache
       - blazegraph
     command: >
-      bash -c "./build/entrypoint.sh &&
+      sh -c "./build/entrypoint.sh &&
       bundle exec puma -b tcp://0.0.0.0:3001 -e test -d &&
       tail -f log/test.log"
     expose:
@@ -112,7 +111,7 @@ services:
       - 8080
     networks:
       internal:
-    command: bash -c "chmod a+wx /data && ./entrypoint.sh"
+    command: sh -c "chmod a+wx /data && ./entrypoint.sh"
   blazegraph:
     <<: *blazegraph-image
     volumes:
@@ -170,7 +169,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=12341234
       - MYSQL_PASSWORD=12341234
-      - MYSQL_DATABASE=development
+      - MYSQL_DATABASE=sa_development
     volumes:
       - db:/var/lib/mysql
       - ./config/mysql/mysqld.cnf:/etc/mysql/conf.d/custom.cnf
