@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :other_options, only: [:destroy]
 
-  concern :oai_provider, BlacklightOaiProvider::Routes::Provider.new
+  concern :oai_provider, BlacklightOaiProvider::Routes.new
 
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   get '/downloads/:id(.:format)', to: 'scholars_archive/downloads#show', as: 'download'
