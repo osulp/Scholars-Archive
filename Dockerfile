@@ -1,16 +1,26 @@
-FROM ruby:2.5 as builder
+FROM ruby:2.5-alpine3.12 as builder
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-# add nodejs and yarn dependencies for the frontend
-RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apk --no-cache upgrade && \
+  apk add --no-cache alpine-sdk nodejs imagemagick unzip ghostscript vim yarn \
+  git sqlite sqlite-dev mysql mysql-client mysql-dev libressl libressl-dev \
+  curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo
+
+# install libffi 3.2.1
+# https://github.com/libffi/libffi/archive/refs/tags/v3.2.1.tar.gz
+# https://codeload.github.com/libffi/libffi/tar.gz/refs/tags/v3.2.1
+# apk add autoconf aclocal automake libtool
+# tar -xvzpf libffi-3.2.1.tar.gz
+# ./configure --prefix=/usr/local
+RUN mkdir -p /tmp/ffi && \
+  curl -sL https://codeload.github.com/libffi/libffi/tar.gz/refs/tags/v3.2.1 \
+  | tar -xz -C /tmp/ffi && cd /tmp/ffi/libffi-3.2.1 && ./autogen.sh &&\
+  ./configure --prefix=/usr/local && make && make install && rm -rf /tmp/ffi
+
 RUN gem install bundler
-RUN apt-get update -qq && apt-get upgrade -y && \
-  apt-get install -y build-essential libpq-dev mariadb-client nodejs libreoffice imagemagick unzip ghostscript vim yarn
 
 # install clamav for antivirus
 # fetch clamav local database
