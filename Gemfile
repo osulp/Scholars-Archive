@@ -20,8 +20,10 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'mini_racer', '= 0.2.6', platforms: :ruby
+#gem 'mini_racer', '= 0.2.6', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 gem 'libv8', '= 7.3.492.27.1'
+#gem 'libv8-alpine'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -93,7 +95,7 @@ gem 'riiif', '~> 1.1'
 gem 'rubyzip', '~> 1.3.0'
 
 # Honeycomb
-gem 'honeycomb-beeline', '>= 2.3.0'
+gem 'honeycomb-beeline', '>= 2.4.0'
 gem 'libhoney', '>= 1.16.0'
 
 group :development do
@@ -107,7 +109,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'debase'
+  gem 'debase', '>= 0.2.5.beta2'
   gem 'debase-ruby_core_source'
   gem 'fcrepo_wrapper'
   gem 'pry-rails'
@@ -121,9 +123,9 @@ group :development, :test do
   gem 'nokogiri', '~> 1.10.10'
 end
 
-group :staging, :production do
+#group :staging, :production do
 #  gem 'clamav'
-end
+#end
 
 group :test do
   gem 'capybara'
