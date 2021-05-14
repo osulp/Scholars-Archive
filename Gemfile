@@ -96,6 +96,9 @@ gem 'rubyzip', '~> 1.3.0'
 gem 'honeycomb-beeline', '>= 2.3.0'
 gem 'libhoney', '>= 1.16.0'
 
+# Pin nokogiri down because staging doesn't have a new enough version of glibc
+gem 'nokogiri', '~> 1.10.10'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -116,9 +119,6 @@ group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'rubocop', '= 0.73.0'
   gem 'rubocop-rspec', '= 1.34.0'
-
-  # Pin nokogiri down because staging doesn't have a new enough version of glibc
-  gem 'nokogiri', '~> 1.10.10'
 end
 
 group :staging, :production do
