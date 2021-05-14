@@ -97,7 +97,7 @@ gem 'honeycomb-beeline', '>= 2.3.0'
 gem 'libhoney', '>= 1.16.0'
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
-gem 'nokogiri', '~> 1.10.10'
+gem 'nokogiri', '~> 1.11.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'

@@ -663,7 +663,7 @@ GEM
     mime-types-data (3.2021.0225)
     mini_magick (4.11.0)
     mini_mime (1.1.0)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.1)
     mini_racer (0.2.6)
       libv8 (>= 6.9.411)
     minitest (5.14.4)
@@ -684,8 +684,9 @@ GEM
     noid-rails (3.0.3)
       actionpack (>= 5.0.0, < 7)
       noid (~> 0.9)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.0)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
     oai (1.1.0)
@@ -733,6 +734,7 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 5.0, < 6.2)
       rdf
+    racc (1.5.2)
     rack (2.2.3)
     rack-protection (2.1.0)
       rack
@@ -1085,7 +1087,7 @@ DEPENDENCIES
   mini_racer (= 0.2.6)
   mysql2 (~> 0.5.1)
   net-http-persistent
-  nokogiri (~> 1.10.10)
+  nokogiri (~> 1.11.0)
   poltergeist
   pry-rails
   puma (~> 3.12.6)
