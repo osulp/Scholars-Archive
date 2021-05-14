@@ -48,6 +48,7 @@ ENV RAILS_ENV=${RAILS_ENV}
 ADD ./build/install_gems.sh /data/build
 RUN ./build/install_gems.sh
 ADD . /data
+RUN rm -f /data/.env
 
 FROM builder
 
