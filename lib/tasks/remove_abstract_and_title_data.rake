@@ -29,8 +29,8 @@ namespace :scholars_archive do
         abstract_statement = [record.resource.rdf_subject, RDF::Vocab::DC.abstract, nil]
         nested_abstract_statement = [record.resource.rdf_subject, RDF::Vocab::BIBO.abstract, nil]
 
-        # Unless no unordered title to delete OR no ordered title to fall back on
-        unless record.resource.graph.query(title_statement).statements.empty? || record.resource.graph.query(nested_title_statement).statements.empty?
+        # if unordered title to delete exist AND ordered title to fall back on exist
+        if !record.resource.graph.query(title_statement).statements.empty? && !record.resource.graph.query(nested_title_statement).statements.empty?
           logger.info ""
           logger.info "Work found #{record.id}. Updating title. Pulling graph from fedora"
           orm = Ldp::Orm.new(record.ldp_source)
@@ -49,10 +49,15 @@ namespace :scholars_archive do
           else
             logger.error "Something went wrong with #{record.id}"
           end
+        # If unordered title to delete exist BUT there were no ordered titles
+        elsif !record.resource.graph.query(title_statement).statements.empty? && record.resource.graph.query(nested_title_statement).statements.empty?
+          logger.error "Skipping work #{record.id} because of missing ordered title data"
+          logger.error "#{record.id}: #{record.resource.graph.query(title_statement).statements.count} titles found"
+          logger.error "#{record.id}: #{record.resource.graph.query(nested_title_statement).statements.count} ordered titles found"
         end
 
-        # Unless no unordered abstract to delete OR no ordered abstract to fall back on
-        unless record.resource.graph.query(abstract_statement).statements.empty? || record.resource.graph.query(nested_abstract_statement).statements.empty?
+        # If unordered abstracts to delete exist AND ordered abstracts to fall back on exist
+        if !record.resource.graph.query(abstract_statement).statements.empty? && !record.resource.graph.query(nested_abstract_statement).statements.empty?
           logger.info ""
           logger.info "Work found #{record.id}. Updating abstract. Pulling graph from fedora"
           orm = Ldp::Orm.new(record.ldp_source)
@@ -71,6 +76,11 @@ namespace :scholars_archive do
           else
             logger.error "Something went wrong with #{record.id}"
           end
+        # If unordered abstracts to delete exist BUT there were no ordered abstracts
+        elsif !record.resource.graph.query(abstract_statement).statements.empty? && record.resource.graph.query(nested_abstract_statement).statements.empty?
+          logger.error "Skipping work #{record.id} because of missing abstract data"
+          logger.error "#{record.id}: #{record.resource.graph.query(abstract_statement).statements.count} ordered abstracts found"
+          logger.error "#{record.id}: #{record.resource.graph.query(nested_abstract_statement).statements.count} ordered abstracts found"
         end
       end
     end
