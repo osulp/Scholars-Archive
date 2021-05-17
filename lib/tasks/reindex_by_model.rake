@@ -1,10 +1,12 @@
 namespace :scholars_archive do
   desc "Enqueue a job to resolrize the repository objects"
   task reindex_by_model: :environment do
-    admin_set_map = YAML.load(File.read('config/admin_set_map.yml'))
+    # Fetch all Fedora URIs keyed on their model name
+    fetcher = ActiveFedora::Base::DescendantFetcher.new(ActiveFedora.fedora.base_uri, exclude_self: true)
+    descendants = fetcher.descendant_and_self_uris_partitioned_by_model
 
-    admin_set_map.each do |model, _desc|
-      ReindexModelJob.perform_later(model)
+    descendants.each do |model, uris|
+      ReindexModelJob.perform_later(model, uris)
     end
   end
 end

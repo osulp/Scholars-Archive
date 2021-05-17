@@ -22,6 +22,7 @@ Metrics/AbcSize:
     - 'app/authorities/scholars_archive/cache_based_authority.rb'
     - 'app/jobs/migrate_creators_no_handles_job.rb'
     - 'app/jobs/reindex_everything_job.rb'
+    - 'app/jobs/reindex_model_job.rb'
     - 'app/controllers/scholars_archive/handles_controller.rb'
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/hyrax/contact_form_controller.rb'
@@ -56,6 +57,7 @@ Metrics/MethodLength:
     - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
     - 'app/jobs/migrate_creators_no_handles_job.rb'
     - 'app/jobs/reindex_everything_job.rb'
+    - 'app/jobs/reindex_model_job.rb'
     - 'app/controllers/scholars_archive/handles_controller.rb'
     - 'app/controllers/application_controller.rb'
     - 'app/controllers/hyrax/contact_form_controller.rb'
@@ -647,6 +649,7 @@ Style/RescueStandardError:
   Exclude:
     - 'app/jobs/migrate_creators_no_handles_job.rb'
     - 'app/jobs/reindex_everything_job.rb'
+    - 'app/jobs/reindex_model_job.rb'
     - 'app/controllers/application_controller.rb'
     - 'lib/scholars_archive/triple_powered_properties/has_url_validator.rb'
     - 'lib/scholars_archive/embargoes/embargo_releaser.rb'
