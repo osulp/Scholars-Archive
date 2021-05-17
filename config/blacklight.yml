@@ -6,8 +6,8 @@ test: &test
   url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8985') %>/solr/hydra-test
 production:
   adapter: solr
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/hydra-production') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/production') %>
 staging:
   adapter: solr
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/hydra-staging') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/staging') %>
 
