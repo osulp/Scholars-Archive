@@ -1,14 +1,4 @@
 GIT
-  remote: https://github.com/UNC-Libraries/blacklight_oai_provider.git
-  revision: 4cb048bd52fe0d3ab4ae5f80fd57d7fd13f901d5
-  branch: master
-  specs:
-    blacklight_oai_provider (1.4.1)
-      blacklight (>= 6.1)
-      oai (~> 0.4.0)
-      rails (>= 4.2)
-
-GIT
   remote: https://github.com/inukshuk/edtf-ruby.git
   revision: 7ee86d81ddb7d6503d5b282a409eb43e51f27186
   branch: master
@@ -46,10 +36,10 @@ GIT
 
 GIT
   remote: https://github.com/samvera/hyrax.git
-  revision: c31ea9237375e625a61fce82654297f4097a6fa5
-  tag: v2.9.4
+  revision: a564a55f916805baa5afb10e11516290c0ff3a8b
+  tag: v2.9.5
   specs:
-    hyrax (2.9.4)
+    hyrax (2.9.5)
       active-fedora (>= 11.5.2, < 12.2)
       almond-rails (~> 0.1)
       awesome_nested_set (~> 3.1)
@@ -240,6 +230,9 @@ GEM
     blacklight_advanced_search (6.4.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
+    blacklight_oai_provider (6.1.1)
+      blacklight (~> 6.0)
+      oai (~> 1.0)
     blacklight_range_limit (7.0.0)
       blacklight
       jquery-rails
@@ -695,14 +688,14 @@ GEM
     netrc (0.11.0)
     nio4r (2.5.7)
     noid (0.9.0)
-    noid-rails (3.0.2)
+    noid-rails (3.0.3)
       actionpack (>= 5.0.0, < 7)
       noid (~> 0.9)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
-    oai (0.4.0)
+    oai (1.1.0)
       builder (>= 3.1.0)
       faraday
       faraday_middleware
@@ -965,6 +958,7 @@ GEM
     slop (4.9.0)
     solr_wrapper (3.1.2)
       http
+      faraday
       retriable
       ruby-progressbar
       rubyzip
@@ -1062,7 +1056,7 @@ PLATFORMS
 DEPENDENCIES
   bagit (~> 0.4.1)
   blacklight_advanced_search
-  blacklight_oai_provider!
+  blacklight_oai_provider
   blacklight_range_limit
   browse-everything
   byebug

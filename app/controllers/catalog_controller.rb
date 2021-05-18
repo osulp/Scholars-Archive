@@ -7,7 +7,7 @@ class CatalogController < ApplicationController
   include Hydra::Catalog
   include Hydra::Controller::ControllerBehavior
 
-  include BlacklightOaiProvider::CatalogControllerBehavior
+  include BlacklightOaiProvider::Controller
 
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
@@ -609,12 +609,8 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     # label is key, solr field is value
     config.add_sort_field "score desc, #{uploaded_field} desc", label: 'Relevance'
-    config.add_sort_field "#{title_field} asc", label: 'Title [A-Z]'
-    config.add_sort_field "#{title_field} desc", label: 'Title [Z-A]'
-    # Replace these with above title_field entries once title_ssort is indexed.
-    # See https://github.com/osulp/Scholars-Archive/issues/1809
-    # config.add_sort_field "title_ssort asc", label: 'Title [A-Z]'
-    # config.add_sort_field "title_ssort desc", label: 'Title [Z-A]'
+    config.add_sort_field 'title_ssort asc', label: 'Title [A-Z]'
+    config.add_sort_field 'title_ssort desc', label: 'Title [Z-A]'
     config.add_sort_field "#{modified_field} desc", label: "Date Created \u25BC"
     config.add_sort_field "#{modified_field} asc", label: "Date Created \u25B2"
     config.add_sort_field "#{uploaded_field} desc", label: "Date Uploaded \u25BC"
@@ -635,8 +631,11 @@ class CatalogController < ApplicationController
         limit: 50,
         timestamp_field: 'system_create_dtsi',
         timestamp_method: 'system_created',
-        set_fields: 'isPartOf_ssim',
-        set_class: '::OaiSet'
+        set_fields: [
+          { 'label': 'title_tesim',
+            'solr_field': 'isPartOf_ssim' }
+        ],
+        set_model: ::OaiSet
       }
     }
   end

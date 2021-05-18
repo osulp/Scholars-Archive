@@ -38,7 +38,7 @@ gem 'redis', '~> 3.0'
 gem 'sidekiq', '5.0.2'
 gem 'ffi', '~> 1.9.24'
 
-gem 'blacklight_oai_provider', git: 'https://github.com/UNC-Libraries/blacklight_oai_provider.git', branch: 'master'
+gem 'blacklight_oai_provider'
 gem 'blacklight_range_limit'
 gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
 
@@ -62,7 +62,7 @@ gem 'devise'
 gem 'devise-guests', '~> 0.5'
 gem 'devise_cas_authenticatable'
 gem 'faraday'
-gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.9.4'
+gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.9.5'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'rsolr'
 gem 'staccato'
@@ -98,6 +98,9 @@ gem 'rubyzip', '~> 1.3.0'
 gem 'honeycomb-beeline', '>= 2.4.0'
 gem 'libhoney', '>= 1.16.0'
 
+# Pin nokogiri down because staging doesn't have a new enough version of glibc
+gem 'nokogiri', '~> 1.10.10'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
@@ -118,9 +121,6 @@ group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'rubocop', '= 0.73.0'
   gem 'rubocop-rspec', '= 1.34.0'
-
-  # Pin nokogiri down because staging doesn't have a new enough version of glibc
-  gem 'nokogiri', '~> 1.10.10'
 end
 
 #group :staging, :production do
