@@ -14,10 +14,9 @@ class OaiSet < BlacklightOaiProvider::SolrSet
 
     # Return a Solr filter query given a set spec
     def from_spec(spec)
-      parts = spec.split(':')
-      raise OAI::ArgumentException unless parts.count == 2 && Array(@fields).find { |field| field[:solr_field] == parts[0] }
+      raise OAI::ArgumentException unless ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{spec}", rows: 1).count > 0
 
-      parts.join(':')
+      "isPartOf_ssim:#{spec}"
     end
 
     private
@@ -25,7 +24,7 @@ class OaiSet < BlacklightOaiProvider::SolrSet
     def sets_from_facets(facets)
       sets = []
       facets.each do |facet, terms|
-        sets.concat terms.each_slice(2).map { |t| new("#{facet}:#{t.first}") }
+        sets.concat terms.each_slice(2).map { |t| new(t.first) }
       end
       sets.empty? ? nil : sets
     end
@@ -44,7 +43,6 @@ class OaiSet < BlacklightOaiProvider::SolrSet
   private
 
   def name_from_spec
-    spec_id = @spec.split(':').last
-    ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{spec_id}", rows: 1).first['title_tesim'].first
+    ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{@spec}", rows: 1).first['title_tesim'].first
   end
 end
