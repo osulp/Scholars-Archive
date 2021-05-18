@@ -1,7 +1,7 @@
 #!/bin/bash
 
 build_no="$1"
-build_args="--compress --build-arg RAILS_ENV=$RAILS_ENV"
+build_args="--compress --build-arg RAILS_ENV=staging"
 
 if [ -z "$BCR_PASS" ]; then
    echo 'Please set the BCR password in $BCR_PASS'
