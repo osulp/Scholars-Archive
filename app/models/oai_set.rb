@@ -15,7 +15,7 @@ class OaiSet < BlacklightOaiProvider::SolrSet
     # Return a Solr filter query given a set spec
     def from_spec(spec)
       parts = spec.split(':')
-      raise OAI::ArgumentException unless parts.count == 2 && Array(@fields).include?(parts[0])
+      raise OAI::ArgumentException unless parts.count == 2 && Array(@fields).find { |field| field[:solr_field] == parts[0] }
 
       parts.join(':')
     end
