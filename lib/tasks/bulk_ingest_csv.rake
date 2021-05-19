@@ -51,8 +51,8 @@ def ingest_work(logger, row, file_path, user)
 
   # Generates uploaded file for work and attaches said file to that work
   f = File.open("#{file_path}/#{ row[:filename] }")
-  uploaded = Hyrax::UploadedFile.create(user: u, file_set_uri: "file://#{file_path}/#{row[:filename]}", file: f)
-  actor_env = Hyrax::Actors::Environment.new(work, u.ability, {"uploaded_files"=>[uploaded.id]})
+  uploaded = Hyrax::UploadedFile.create(user_id: u.id, file: f)
+  actor_env = Hyrax::Actors::Environment.new(work, u.ability, {"uploaded_files"=>[uploaded.id], 'visibility' => work.visibility})
   Hyrax::CurationConcern.actor.update(actor_env)
 
   # Adds the work to the collection
