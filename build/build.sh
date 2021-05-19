@@ -23,9 +23,13 @@ tag1="registry.library.oregonstate.edu/sa_web:osulp-${build_no}"
 echo "Building for tag $tag1"
 RAILS_ENV=$RAILS_ENV docker build ${build_args} . -t "$tag1"
 
-echo "Logging into BCR as admin"
-echo $BCR_PASS | docker login --password-stdin registry.library.oregonstate.edu
+if [ "$?" -eq 0 ]; then
+   echo "Logging into BCR as admin"
+   echo $BCR_PASS | docker login --password-stdin registry.library.oregonstate.edu
 
-echo "pushing: $tag1"
-docker push "$tag1"
-echo "$build_no" > .version
+   echo "pushing: $tag1"
+   docker push "$tag1"
+   if [ "$?" -eq 0 ]; then
+      echo "$build_no" > .version
+   fi
+fi
