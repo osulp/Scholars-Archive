@@ -40,6 +40,7 @@ def ingest_work(logger, row, file_path, user)
   work = set_work_properties(logger, work, row)
   work.date_uploaded = Hyrax::TimeService.time_in_utc
   work.depositor = u.username
+  work.visibility = row[:visibility] unless row[:visibility].nil?
   work&.save
 
   # Set Workflow entity and deposited
@@ -124,5 +125,5 @@ def ordered_properties
 end
 
 def skip_props
-  %i[worktype filename link_to_file collection_id]
+  %i[worktype filename link_to_file collection_id visibility]
 end
