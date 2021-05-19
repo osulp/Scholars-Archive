@@ -2,7 +2,7 @@
 SitemapGenerator::Sitemap.default_host = "https://ir.library.oregonstate.edu"
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.compress = :all_but_first
-SitemapGenerator::Sitemap.public_path = '/data0/hydra/shared/public/'
+SitemapGenerator::Sitemap.public_path = '/data/tmp/public/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemap/'
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
