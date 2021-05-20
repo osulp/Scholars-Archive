@@ -4,7 +4,7 @@ FROM ruby:2.5-alpine3.12 as builder
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-RUN apk --no-cache upgrade && \
+RUN apk --no-cache update && apk --no-cache upgrade && \
   apk add --no-cache alpine-sdk nodejs imagemagick unzip ghostscript vim yarn \
   git sqlite sqlite-dev mysql mysql-client mysql-dev libressl libressl-dev \
   curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo
@@ -42,13 +42,28 @@ ADD Gemfile /data/Gemfile
 ADD Gemfile.lock /data/Gemfile.lock
 RUN mkdir /data/build
 
-#ARG RAILS_ENV=development
+ARG RAILS_ENV=staging
 ENV RAILS_ENV=${RAILS_ENV}
 
 ADD ./build/install_gems.sh /data/build
-RUN ./build/install_gems.sh
+RUN ./build/install_gems.sh && bundle clean --force
+## End of builder
+
+# 
 ADD . /data
-RUN rm -f /data/.env
+
+# Clean up stuff not needed to run in the cluster
+RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile /data/Capfile \
+  /data/solr/conf* /data/coverage /data/config/local_env.* /data/config/mysql \
+  /data/config/solr_wrapper_test.yml /data/config/fcrepo_wrapper_test.yml \
+  /data/config/blazegraph /data/config/puma/development.rb \
+  /data/config/nginx_rewrites.conf /data/build/build.sh /data/tmp \
+  /data/public /data/.solr_wrapper /data/.solr_wrapper.yml \
+  /data/.fcrepo_wrapper /data/.version /data/.github && \
+  mkdir -p /data/tmp /data/public
+
+## End of cleanup
+  
 
 FROM builder
 
@@ -58,3 +73,5 @@ RUN if [ "${RAILS_ENV}" = "production" ]; then \
   cp public/assets/404-*.html public/404.html; \
   cp public/assets/500-*.html public/500.html; \
   fi
+
+
