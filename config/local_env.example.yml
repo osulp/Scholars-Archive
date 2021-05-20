@@ -22,14 +22,14 @@ SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
 #SCHOLARSARCHIVE_DB: development
 
 # Fedora repository server
-SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8984
+SCHOLARSARCHIVE_URL_FEDORA: http://localhost:8984
 # Docker
-#SCHOLARSARCHIVE_FEDORA_URL: http://fcrepo:8080
+#SCHOLARSARCHIVE_URL_FEDORA: http://fcrepo:8080
 
 # SOLR index server
-SCHOLARSARCHIVE_SOLR_URL: http://localhost:8983
+SCHOLARSARCHIVE_URL_SOLR: http://localhost:8983
 # Docker
-#SCHOLARSARCHIVE_SOLR_URL: http://solr:8983
+#SCHOLARSARCHIVE_URL_SOLR: http://solr:8983
 
 # Redis for background jobs and notifications
 SCHOLARSARCHIVE_REDIS_PORT: '6379'
