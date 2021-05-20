@@ -40,6 +40,7 @@ def ingest_work(logger, row, file_path, user)
   work = set_work_properties(logger, work, row)
   work.date_uploaded = Hyrax::TimeService.time_in_utc
   work.depositor = u.username
+  work.visibility = row[:visibility] unless row[:visibility].nil?
   work&.save
 
   # Set Workflow entity and deposited
@@ -50,8 +51,8 @@ def ingest_work(logger, row, file_path, user)
 
   # Generates uploaded file for work and attaches said file to that work
   f = File.open("#{file_path}/#{ row[:filename] }")
-  uploaded = Hyrax::UploadedFile.create(user: u, file_set_uri: "file://#{file_path}/#{row[:filename]}", file: f)
-  actor_env = Hyrax::Actors::Environment.new(work, u.ability, {"uploaded_files"=>[uploaded.id]})
+  uploaded = Hyrax::UploadedFile.create(user_id: u.id, file: f)
+  actor_env = Hyrax::Actors::Environment.new(work, u.ability, {"uploaded_files"=>[uploaded.id], 'visibility' => work.visibility})
   Hyrax::CurationConcern.actor.update(actor_env)
 
   # Adds the work to the collection
@@ -65,6 +66,7 @@ def set_work_properties(logger, work, row)
   nested_ordered_abstract_attributes = []
   nested_ordered_contributor_attributes = []
   nested_ordered_additional_information_attributes = []
+  nested_related_items = []
 
   # Iterate over csv row
   row.each do |property, value|
@@ -85,6 +87,11 @@ def set_work_properties(logger, work, row)
       when 'additional_information'
         nested_ordered_additional_information_attributes << process_ordered_field(property, row[property]) unless row[property].nil?
       else
+      end
+    elsif nested_property_labels.include? property.to_s
+      case property.to_s
+      when 'nested_related_items_label'
+        nested_related_items << { 'label' => value, 'related_url' => row[:nested_related_items_related_url] }
       end
     # Check multiplicity
     elsif Hyrax::FormMetadataService.multiple?(work.class, property) || property.to_s == "rights_statement"
@@ -107,6 +114,7 @@ def set_work_properties(logger, work, row)
   work.nested_ordered_abstract_attributes = nested_ordered_abstract_attributes
   work.nested_ordered_contributor_attributes = nested_ordered_contributor_attributes
   work.nested_ordered_additional_information_attributes = nested_ordered_additional_information_attributes
+  work.nested_related_items_attributes = nested_related_items
   work
 end
 
@@ -120,9 +128,17 @@ def process_ordered_field(property, value)
 end
 
 def ordered_properties
-  %w[title creator abstract contributor additional_information]
+  %w[title creator abstract contributor additional_information related_items]
+end
+
+def nested_property_labels
+  %w[nested_related_items_label]
+end
+
+def nested_property_other_values
+  %w[nested_related_items_related_url]
 end
 
 def skip_props
-  %i[worktype filename link_to_file collection_id]
+  %i[worktype filename link_to_file collection_id visibility] + nested_property_other_values.map(&:to_sym)
 end
