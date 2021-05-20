@@ -39,8 +39,8 @@ services:
       - FITS_PATH=/opt/fits-1.0.5/fits.sh
       - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
       - SCHOLARSARCHIVE_DB_HOST=db
-      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
-      - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
+      - SCHOLARSARCHIVE_URL_FEDORA=http://fcrepo:8080/fcrepo
+      - SCHOLARSARCHIVE_URL_SOLR=http://solr:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
@@ -84,8 +84,8 @@ services:
     environment:
       - RAILS_ENV=test
       - SCHOLARSARCHIVE_DB_HOST=db_test
-      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo
-      - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
+      - SCHOLARSARCHIVE_URL_FEDORA=http://fcrepo-test:8080/fcrepo
+      - SCHOLARSARCHIVE_URL_SOLR=http://solr-test:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql

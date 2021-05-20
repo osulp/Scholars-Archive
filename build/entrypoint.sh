@@ -2,16 +2,12 @@
 
 pid_dir="/data/tmp/pids"
 
-HONEYCOMB_DATASET='scholars-staging'
-HONEYCOMB_WRITEKEY='fa01b2227f761b5c1f11ae1a680f14da'
-HONEYCOMB_SERVICE='scholars_staging'
-
 timestamp=`date +'%Y-%m-%d %H:%M:%S'`
 echo "[$timestamp] Building ScholarsArchive (${RAILS_ENV})"
 echo "   RAILS_ENV:                   $RAILS_ENV"
 echo "   SCHOLARSARCHIVE_DB_HOST:     $SCHOLARSARCHIVE_DB_HOST"
-echo "   SCHOLARSARCHIVE_FEDORA_URL:  $SCHOLARSARCHIVE_FEDORA_URL"
-echo "   SCHOLARSARCHIVE_SOLR_URL:    $SCHOLARSARCHIVE_SOLR_URL"
+echo "   SCHOLARSARCHIVE_URL_FEDORA:  $SCHOLARSARCHIVE_URL_FEDORA"
+echo "   SCHOLARSARCHIVE_URL_SOLR:    $SCHOLARSARCHIVE_URL_SOLR"
 echo "   SCHOLARSARCHIVE_TRIPLESTORE: $SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL"
 echo ""
 
@@ -28,9 +24,9 @@ if [ "${RAILS_ENV}" != 'production' ]; then
 fi
 
 # Submit a marker to honeycomb marking the time the application starts booting
-if [ "${RAILS_ENV}" = 'production' ]; then
+if [ "${RAILS_ENV}" == 'production' -o "${RAILS_ENV}" == 'staging' ]; then
   echo "Creating Honeycomb deployment marker in $HONEYCOMB_DATASET"
-  curl -sL https://api.honeycomb.io/1/markers/$HONEYCOMB_DATASET -X POST -H "X-Honeycomb-Team: ${HONEYCOMB_WRITEKEY}" -d "{\"message\":\"${RAILS_ENV} - ${DEPLOYED_VERSION} - booting\", \"type\":\"deploy\"}"
+  curl -sL https://api.honeycomb.io/1/markers/$HONEYCOMB_DATASET -X POST -H "X-Honeycomb-Team: ${HONEYCOMB_WRITEKEY}" -d "{\"message\":\"${RAILS_ENV} - ${DEPLOYED_VERSION} - Rails booting\", \"type\":\"deploy\"}"
 fi
 
 timestamp=`date +'%Y-%m-%d %H:%M:%S'`
