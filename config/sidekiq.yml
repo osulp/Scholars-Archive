@@ -1,11 +1,11 @@
 ---
 :concurrency: 5
-:pidfile: tmp/pids/sidekiq.pid
-:logfile: log/sidekiq.log
+:pidfile: /data/tmp/pids/sidekiq.pid
+:logfile: /proc/self/fd/1
 staging:
-  :concurrency: 10
+  :concurrency: <%= ENV.fetch('SCHOLARSARCHIVE_SIDEKIQ_THREADS', 16) %>
 production:
-  :concurrency: 10
+  :concurrency: <%= ENV.fetch('SCHOLARSARCHIVE_SIDEKIQ_THREADS', 16) %>
 :queues:
   - default
   - [ingest, 2]
