@@ -32,7 +32,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['replaces_ssim'] = object.replaces
       file_set_text_extraction(object, solr_doc)
       title_for_solr_doc(object, solr_doc)
-      sortable_for_solr_doc(object, solr_doc)
+      sortable_for_solr_doc(solr_doc)
       index_combined_date_field(object, solr_doc)
 
       # Check if embargo is active
@@ -87,7 +87,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   end
 
   # Copy some fields into *_ssort for improved sorting
-  def sortable_for_solr_doc(object, solr_doc)
+  def sortable_for_solr_doc(solr_doc)
     solr_doc['title_ssort'] = solr_doc['title_ssi']
     solr_doc['creator_ssort'] = solr_doc['creator_tesim']
     solr_doc['contributor_ssort'] = solr_doc['contributor_tesim']
