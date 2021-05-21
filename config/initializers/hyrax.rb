@@ -54,7 +54,7 @@ Hyrax.config do |config|
   config.analytics = ENV.fetch('SCHOLARSARCHIVE_ENABLE_ANALYTICS', 'false')
 
   # Google Analytics tracking ID to gather usage statistics
-  config.google_analytics_id = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_ID', '')
+  config.google_analytics_id = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_ID', 'abc123')
 
   # Date you wish to start collecting Google Analytic statistics for
   # Leaving it blank will set the start date to when ever the file was uploaded by
@@ -135,12 +135,12 @@ Hyrax.config do |config|
   
   # Temporary paths to hold uploads before they are ingested into FCrepo
   # These must be lambdas that return a Pathname. Can be configured separately
-  config.upload_path = ->() { ENV.fetch('SCHOLARSARCHIVE_PATH_UPLOAD', '/tmp')
-  config.cache_path = ->() { ENV.fetch('SCHOLARSARCHIVE_PATH_CACHE', '/tmp')
+  config.upload_path = ->() { ENV.fetch('SCHOLARSARCHIVE_PATH_UPLOAD', '/tmp') }
+  config.cache_path = ->() { ENV.fetch('SCHOLARSARCHIVE_PATH_CACHE', '/tmp') }
 
   # Location on local file system where derivatives will be stored
   # If you use a multi-server architecture, this MUST be a shared volume
-  config.derivatives_path = ->() { ENV.fetch('SCHOLARSARCHIVE_PATH_DERIVATIVES', '/tmp')
+  config.derivatives_path = ->() { ENV.fetch('SCHOLARSARCHIVE_PATH_DERIVATIVES', '/tmp') }
 
   # Should schema.org microdata be displayed?
   # config.display_microdata = true
