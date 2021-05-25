@@ -36,7 +36,7 @@ services:
     <<: *app
     environment:
       - RAILS_ENV=${RAILS_ENV}
-      - FITS_PATH=/opt/fits-1.0.5/fits.sh
+      - FITS_PATH=/opt/fits-1.5.0/fits.sh
       - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
       - SCHOLARSARCHIVE_DB_HOST=db
       - SCHOLARSARCHIVE_URL_FEDORA=http://fcrepo:8080/fcrepo

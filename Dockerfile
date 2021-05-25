@@ -7,7 +7,8 @@ ENV LC_ALL C.UTF-8
 RUN apk --no-cache update && apk --no-cache upgrade && \
   apk add --no-cache alpine-sdk nodejs imagemagick unzip ghostscript vim yarn \
   git sqlite sqlite-dev mysql mysql-client mysql-dev libressl libressl-dev \
-  curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo
+  curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo \
+  bash bash-completion java-common openjdk11-jre-headless
 
 # install libffi 3.2.1
 # https://github.com/libffi/libffi/archive/refs/tags/v3.2.1.tar.gz
@@ -32,8 +33,9 @@ RUN gem install bundler
 #   chown clamav:clamav /var/lib/clamav/*.cvd
 
 RUN mkdir -p /opt/fits && \
-  curl -fSL -o /opt/fits-1.0.5.zip http://projects.iq.harvard.edu/files/fits/files/fits-1.0.5.zip && \
-  cd /opt && unzip fits-1.0.5.zip && chmod +X fits-1.0.5/fits.sh
+  curl -fSL -o /opt/fits-1.5.0.zip https://github.com/harvard-lts/fits/releases/download/1.5.0/fits-1.5.0.zip && \
+  cd /opt/fits && unzip /opt/fits-1.5.0.zip  && chmod +X fits.sh && \
+  rm -f /opt/fits-1.5.0.zip
 
 RUN mkdir /data
 WORKDIR /data
