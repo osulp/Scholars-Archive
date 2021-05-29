@@ -60,7 +60,7 @@ ARG RAILS_ENV=${RAILS_ENV}
 ENV RAILS_ENV=${RAILS_ENV}
 
 ADD ./build/install_gems.sh /data/build
-RUN ./build/install_gems.sh
+RUN ./build/install_gems.sh && bundle clean --force
 
 ##########################################################################
 ## Add code to the container, clean up any garbage
