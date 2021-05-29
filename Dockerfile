@@ -25,7 +25,7 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
-  echo 'America/Los_Angeles' > /etc/timezone && apk del tzdata --purge
+  echo 'America/Los_Angeles' > /etc/timezone
 
 # install libffi 3.2.1
 # https://github.com/libffi/libffi/archive/refs/tags/v3.2.1.tar.gz
