@@ -64,8 +64,8 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_facet_field 'academic_affiliation_label_ssim', label: 'Academic Affiliation', limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field solr_name('contributor_advisor', :facetable), limit: 5, label: 'Advisor'
-    # Replace above contributor_advice with below contributor_advisor_ssort when *_ssort values have been reindex to ignore diacritics
-    # config.add_facet_field 'contributor_advisor_ssort', label: 'Advisor', limit: 5
+    # Replace above contributor_advice with below contributor_advisor_sfacet when *_sfacet values have been reindex to ignore diacritics
+    # config.add_facet_field 'contributor_advisor_sfacet', label: 'Advisor', limit: 5
 
     config.add_facet_field(solr_name('graduation_year', :facetable)) do |field|
       field.label = 'Commencement Year'
@@ -77,11 +77,11 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
     config.add_facet_field 'creator_sim', label: 'Creator', limit: 5
-    # Replace above creator_sim with below creator_ssort when *_ssort values have been reindex to ignore diacritics
-    # config.add_facet_field 'creator_ssort', label: 'Creator', limit: 5
+    # Replace above creator_sim with below creator_sfacet when *_sfacet values have been reindex to ignore diacritics
+    # config.add_facet_field 'creator_sfacet', label: 'Creator', limit: 5
     config.add_facet_field 'contributor_sim', label: 'Contributor', limit: 5
-    # Replace above contributor_sim with below contributor_ssim when *_ssort values have been reindex to ignore diacritics
-    # config.add_facet_field 'contributor_ssort', label: 'Contributor', limit: 5
+    # Replace above contributor_sim with below contributor_ssim when *_sfacet values have been reindex to ignore diacritics
+    # config.add_facet_field 'contributor_sfacet', label: 'Contributor', limit: 5
 
 #    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
     config.add_facet_field('date_facet_yearly_ssim') do |field|
@@ -103,8 +103,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('file_format', :facetable), label: 'File Format', limit: 5
     config.add_facet_field solr_name('funding_body', :facetable), label: 'Funding Body', limit: 5
     config.add_facet_field solr_name('has_journal', :facetable), limit: 5, label: 'Journal Title'
-    # Replace above has_journal with below has_journal_ssort when *_ssort values have been reindex to ignore diacritics
-    # config.add_facet_field 'has_journal_ssort', limit: 5, label: 'Journal Title'
+    # Replace above has_journal with below has_journal_sfacet when *_sfacet values have been reindex to ignore diacritics
+    # config.add_facet_field 'has_journal_sfacet', limit: 5, label: 'Journal Title'
     config.add_facet_field 'language_label_ssim', label: 'Language', limit: 5
     config.add_facet_field 'license_label_ssim', label: 'License', limit: 5
     config.add_facet_field solr_name('based_near_label', :facetable), label: 'Location', limit: 5
