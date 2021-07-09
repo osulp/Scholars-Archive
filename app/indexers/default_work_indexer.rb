@@ -32,6 +32,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['replaces_ssim'] = object.replaces
       file_set_text_extraction(object, solr_doc)
       title_for_solr_doc(object, solr_doc)
+      sortable_for_solr_doc(solr_doc)
       index_combined_date_field(object, solr_doc)
 
       # Check if embargo is active
@@ -53,7 +54,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     else
       solr_doc['title_ssi'] = object.title.first
     end
-    solr_doc['title_ssort'] = solr_doc['title_ssi']
   end
 
   def triple_powered_properties_for_solr_doc(object, solr_doc)
@@ -84,5 +84,13 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     # If the work hasn't finished saving or populating the first time on initial deposit, #file_sets may not be ready.
     # Skip saving extracted text this time and wait for the work to save again during deposit.
     nil
+  end
+
+  # Copy some fields into *_ssort for improved sorting
+  def sortable_for_solr_doc(solr_doc)
+    solr_doc['title_ssort'] = solr_doc['title_ssi']
+    # solr_doc['creator_sfacet'] = solr_doc['creator_tesim']
+    # solr_doc['contributor_sfacet'] = solr_doc['contributor_tesim']
+    # solr_doc['contributor_advisor_sfacet'] = solr_doc['contributor_advisor_tesim']
   end
 end
