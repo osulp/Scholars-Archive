@@ -1,9 +1,9 @@
 # This is a sample config file that points to a solr server for each environment
 development:
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_SOLR', 'http://localhost:8983') %>/solr/hydra-development
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8983') %>/solr/hydra-development
 test:
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_SOLR', 'http://localhost:8985') %>/solr/hydra-test
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8985') %>/solr/hydra-test
 production:
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_SOLR', 'http://localhost:8080/solr/production') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/production') %>
 staging:
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_SOLR', 'http://localhost:8080/solr/staging') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_SOLR_URL', 'http://localhost:8080/solr/staging') %>

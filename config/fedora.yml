@@ -1,22 +1,22 @@
 development:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_FEDORA', 'http://localhost:8984/fcrepo/rest') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL', 'http://localhost:8984/fcrepo/rest') %>
   base_path: /dev
 test:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_FEDORA', 'http://localhost:8080/fcrepo/rest') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL', 'http://localhost:8080/fcrepo/rest') %>
   base_path: /test
 production:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_FEDORA', 'http://localhost:8080/fcrepo/rest') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL', 'http://localhost:8080/fcrepo/rest') %>
   request: { timeout: 1000, open_timeout: 1000 }
   base_path: /prod
 staging:
   user: fedoraAdmin
   password: fedoraAdmin
-  url: <%= ENV.fetch('SCHOLARSARCHIVE_URL_FEDORA', 'http://localhost:8080/fcrepo/rest/staging') %>
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL', 'http://localhost:8080/fcrepo/rest/staging') %>
   request: { timeout: 1000, open_timeout: 1000 }
   base_path: /staging

@@ -81,7 +81,7 @@ jobs:
           HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
           HONEYCOMB_SERVICE: sa-rails-test
           RAILS_ENV: test
-          SCHOLARSARCHIVE_URL_FEDORA: http://localhost:8080/fcrepo/rest
+          SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8080/fcrepo/rest
           SCHOLARSARCHIVE_REDIS_HOST: localhost
           SCHOLARSARCHIVE_REDIS_PORT: '6379'
           SCHOLARSARCHIVE_SIDEKIQ_THREADS: 4
@@ -90,7 +90,7 @@ jobs:
           SCHOLARSARCHIVE_DB_USERNAME: root
           SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
           SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
-          SCHOLARSARCHIVE_URL_SOLR: http://localhost:8985
+          SCHOLARSARCHIVE_SOLR_URL: http://localhost:8985
           TRIPLESTORE_ADAPTER_TYPE: blazegraph
           TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
