@@ -10,7 +10,8 @@ class User < ApplicationRecord
   include Hyrax::User
   include Hyrax::UserUsageStats
 
-  #attr_accessible :email, :password, :password_confirmation if Blacklight::Utils.needs_attr_accessible?
+  # set them unconditionally
+  # attr_accessible :email, :password, :password_confirmation if Blacklight::Utils.needs_attr_accessible?
   attr_accessible :email, :password, :password_confirmation
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
