@@ -4,7 +4,6 @@
 docker-compose.*
 Dockerfile
 Capfile
-solr/conf*
 coverage/
 config/local_env.*
 config/mysql/
