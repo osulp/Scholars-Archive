@@ -1,8 +1,5 @@
 .env
-.fcreop_wrapper
 .github
-.solr_wrapper
-.solr_wrapper.yml
 .version
 docker-compose.*
 Dockerfile
@@ -11,8 +8,6 @@ solr/conf*
 coverage/
 config/local_env.*
 config/mysql/
-config/solr_wrapper_test.yml
-config/fcrepo_wrapper_test.yml
 config/blazegraph/
 config/nginx_rewrites.conf
 build/build.sh
