@@ -83,11 +83,19 @@ services:
     <<: *server
     environment:
       - RAILS_ENV=test
+      - RAILS_CACHE_STORE_URL=memcache
       - SCHOLARSARCHIVE_DB_HOST=db_test
-      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo
+      - SCHOLARSARCHIVE_DB_USERNAME=root
+      - SCHOLARSARCHIVE_DB_PASSWORD=12341234
+      - SCHOLARSARCHIVE_DB_PORT=3306
+      - SCHOLARSARCHIVE_DB=test
+      - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
+      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo/rest
       - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
+      - SCHOLARSARCHIVE_SECRET_KEY_BASE=bobross1234bobross1234bobross1234bobross1234bobross1234
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE=blazegraph
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
     depends_on:
       - db_test
