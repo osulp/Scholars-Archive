@@ -90,8 +90,8 @@ jobs:
           SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
           SCHOLARSARCHIVE_SOLR_URL: http://localhost:8985
           SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
-          TRIPLESTORE_ADAPTER_TYPE: blazegraph
-          TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
+          SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: blazegraph
+          SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
         environment:
           MYSQL_ROOT_PASSWORD: monkeys
