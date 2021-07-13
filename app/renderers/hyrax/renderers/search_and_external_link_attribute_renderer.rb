@@ -33,7 +33,8 @@ module Hyrax
               else maybe_uri(query)
             end
           end
-          links << link_to(label, search_path_for(label)) unless label.blank?
+          links << label if field == 'nested_related_items_label_ssim'
+          links << link_to(label, search_path_for(label)) unless label.blank? || field == 'nested_related_items_label_ssim'
           links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, uri, 'aria-label' => 'Open link in new window', class: 'btn', target: '_blank') unless uri.blank?
         end
 
