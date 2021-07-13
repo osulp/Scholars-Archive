@@ -41,6 +41,10 @@ Hyrax.config do |config|
 
   # Text prefacing the subject entered in the contact form
   # config.subject_prefix = "Contact form:"
+  config.subject_prefix = "Scholars Archive Contact Form: "
+
+  # Configurable window size for the Facet -> More modal
+  config.pagination_links_range = 2
 
   # How many notifications should be displayed on the dashboard
   # config.max_notifications_for_dashboard = 5
