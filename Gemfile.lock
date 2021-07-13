@@ -1099,7 +1099,7 @@ DEPENDENCIES
   okcomputer
   poltergeist
   pry-rails
-  puma (>= 3.4)
+  puma (>= 3.12.1)
   puma_worker_killer
   rails (~> 5.2.5)
   rails-controller-testing
