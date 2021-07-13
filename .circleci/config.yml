@@ -74,7 +74,6 @@ jobs:
     docker:
       - image: circleci/ruby:2.5-stretch-node-browsers
         environment:
-          BROWSEEVERYTHING_FILESYSTEM_PATH: '/tmp'
           BUNDLE_PATH: vendor/bundle
           CAPYBARA_APP_HOST: http://test:3001
           HONEYCOMB_DATASET: sa-rails-test
@@ -82,20 +81,17 @@ jobs:
           HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
           HONEYCOMB_SERVICE: sa-rails-test
           RAILS_ENV: test
-          SCHOLARSARCHIVE_FEDORA_URL: 'http://localhost:8080/fcrepo/rest'
-          SCHOLARSARCHIVE_REDIS_HOST: 'localhost'
-          SCHOLARSARCHIVE_REDIS_PORT: '6379'
-          SCHOLARSARCHIVE_DB_PASSWORD: 'monkeys'
-          SCHOLARSARCHIVE_DB_PORT: '3306'
-          SCHOLARSARCHIVE_DB_USERNAME: 'root'
-          SCHOLARSARCHIVE_DB_HOST: '127.0.0.1'
-          SCHOLARSARCHIVE_PATH_UPLOAD: '/tmp'
-          SCHOLARSARCHIVE_PATH_CACHE: '/tmp'
-          SCHOLARSARCHIVE_PATH_DERIVATIVES: '/tmp'
-          SCHOLARSARCHIVE_SECRET_KEY_BASE: 'bobross1234bobross1234bobross1234bobross1234bobross1234'
-          SCHOLARSARCHIVE_SOLR_URL: 'http://localhost:8985'
-          TRIPLESTORE_ADAPTER_TYPE: 'blazegraph'
-          TRIPLESTORE_ADAPTER_URL: 'http://ci-test:8080/bigdata/namespace/rw/sparql'
+          SCHOLARSARCHIVE_FEDORA_URL: http://localhost:8080/fcrepo/rest
+          SCHOLARSARCHIVE_REDIS_HOST: localhost
+          SCHOLARSARCHIVE_REDIS_PORT: 6379
+          SCHOLARSARCHIVE_DB_PASSWORD: monkeys
+          SCHOLARSARCHIVE_DB_PORT: 3306
+          SCHOLARSARCHIVE_DB_USERNAME: root
+          SCHOLARSARCHIVE_DB_HOST: 127.0.0.1
+          SCHOLARSARCHIVE_SOLR_URL: http://localhost:8985
+          SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
+          TRIPLESTORE_ADAPTER_TYPE: blazegraph
+          TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
       - image: circleci/mysql:5.7.22
         environment:
           MYSQL_ROOT_PASSWORD: monkeys
