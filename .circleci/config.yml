@@ -82,24 +82,16 @@ jobs:
           HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
           HONEYCOMB_SERVICE: sa-rails-test
           RAILS_ENV: test
-          SCHOLARSARCHIVE_ADMIN_EMAIL: 'test@example.com'
-          SCHOLARSARCHIVE_DEFAULT_ADMIN_SET: 'Default Admin Set'
           SCHOLARSARCHIVE_FEDORA_URL: 'http://localhost:8080/fcrepo/rest'
           SCHOLARSARCHIVE_REDIS_HOST: 'localhost'
           SCHOLARSARCHIVE_REDIS_PORT: '6379'
-          SCHOLARSARCHIVE_REDIS_URL: 'redis://127.0.0.1:6379'
-          SCHOLARSARCHIVE_SIDEKIQ_THREADS: 4
           SCHOLARSARCHIVE_DB_PASSWORD: 'monkeys'
           SCHOLARSARCHIVE_DB_PORT: '3306'
           SCHOLARSARCHIVE_DB_USERNAME: 'root'
           SCHOLARSARCHIVE_DB_HOST: '127.0.0.1'
-          SCHOLARSARCHIVE_ENABLE_FFMPEG: 'true'
-          SCHOLARSARCHIVE_ENABLE_ANALYTICS: 'false'
-          SCHOLARSARCHIVE_ENABLE_IIIF_SERVER: 'false'
           SCHOLARSARCHIVE_PATH_UPLOAD: '/tmp'
           SCHOLARSARCHIVE_PATH_CACHE: '/tmp'
           SCHOLARSARCHIVE_PATH_DERIVATIVES: '/tmp'
-          FITS_PATH: 'fits.sh'
           SCHOLARSARCHIVE_SECRET_KEY_BASE: 'bobross1234bobross1234bobross1234bobross1234bobross1234'
           SCHOLARSARCHIVE_SOLR_URL: 'http://localhost:8985'
           TRIPLESTORE_ADAPTER_TYPE: 'blazegraph'
