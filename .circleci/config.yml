@@ -83,6 +83,7 @@ jobs:
           HONEYCOMB_SERVICE: sa-rails-test
           RAILS_ENV: test
           SCHOLARSARCHIVE_ADMIN_EMAIL: 'test@example.com'
+          SCHOLARSARCHIVE_DEFAULT_ADMIN_SET: 'Default Admin Set'
           SCHOLARSARCHIVE_FEDORA_URL: 'http://localhost:8080/fcrepo/rest'
           SCHOLARSARCHIVE_REDIS_HOST: 'localhost'
           SCHOLARSARCHIVE_REDIS_PORT: '6379'
