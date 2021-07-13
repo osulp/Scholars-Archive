@@ -158,6 +158,8 @@ Hyrax.config do |config|
   # If you use a multi-server architecture, this MUST be a shared volume.
   config.working_path = ENV.fetch('SCHOLARSARCHIVE_PATH_UPLOAD', '/tmp')
 
+  config.realtime_notifications = false
+
   # Should the media display partial render a download link?
   # config.display_media_download_link = true
 
