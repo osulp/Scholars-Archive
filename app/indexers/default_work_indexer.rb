@@ -89,8 +89,8 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   # Copy some fields into *_ssort for improved sorting
   def sortable_for_solr_doc(solr_doc)
     solr_doc['title_ssort'] = solr_doc['title_ssi']
-    solr_doc['creator_sfacet'] = solr_doc['creator_tesim']
-    solr_doc['contributor_sfacet'] = solr_doc['contributor_tesim']
-    solr_doc['contributor_advisor_sfacet'] = solr_doc['contributor_advisor_tesim']
+    solr_doc['creator_sfacet'] = solr_doc['creator_sim']
+    solr_doc['contributor_sfacet'] = solr_doc['contributor_sim']
+    solr_doc['contributor_advisor_sfacet'] = solr_doc['contributor_advisor_sim']
   end
 end
