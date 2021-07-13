@@ -103,3 +103,5 @@ en:
           creator_label: Creator
           subject_label: Subject
           subject_missing: no subjects specified
+      featured_researcher:
+        tab_label: "Spotlight"
