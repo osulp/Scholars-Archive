@@ -33,6 +33,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
   # rubocop:disable Layout/SpaceAroundOperators
   # rubocop:disable Style/StringLiterals
   # rubocop:disable RSpec/ExampleLength
+  # rubocop:disable RSpec/ImplicitSubject
 
   subject { presenter }
   it 'delegates to the solr_document' do
@@ -44,33 +45,42 @@ RSpec.describe HonorsCollegeThesisPresenter do
     end
   end
 
-  it { 
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:contributor_advisor).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:contributor_advisor).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:contributor_committeemember).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:contributor_committeemember).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:degree_discipline).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:degree_discipline).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:degree_field).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:degree_field).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:degree_grantors).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:degree_grantors).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:degree_level).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:degree_level).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:degree_name).to(:solr_document) }
-  it { 
+    is_expected.to delegate_method(:degree_name).to(:solr_document) 
+  }
+  it {
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: "", headers: {})
-    is_expected.to delegate_method(:graduation_year).to(:solr_document) }
+    is_expected.to delegate_method(:graduation_year).to(:solr_document) 
+  }
 
   # rubocop:enable Layout/ExtraSpacing
   # rubocop:enable Layout/SpaceAroundOperators
   # rubocop:enable Style/StringLiterals
   # rubocop:enable RSpec/ExampleLength
+  # rubocop:enable RSpec/ImplicitSubject
 end
