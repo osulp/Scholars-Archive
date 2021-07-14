@@ -1,4 +1,4 @@
-<%= presenter.attribute_to_html(:alt_title, render_as: :external_link, label: t('simple_form.labels.defaults.alt_title')) %>
+<%= presenter.attribute_to_html(:alt_title, render_as: :linked, search_field: 'alternative_title_ssim', label: t('simple_form.labels.defaults.alt_title')) %>
 <%= presenter.attribute_to_html(:nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label_ssim', itemprop_option: 'url', label: "Creator") %>
 <%#= presenter.attribute_to_html(:creator, render_as: :search_and_external_link) %>
 <%= presenter.attribute_to_html(:nested_ordered_abstract_label, label: "Abstract") %>
