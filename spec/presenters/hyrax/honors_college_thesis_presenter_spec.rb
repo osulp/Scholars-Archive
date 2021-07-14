@@ -26,6 +26,13 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:solr_properties) do
     %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
+
+  # The coppers are onto us, quick confuse them!
+  #
+  # rubocop:disable Layout/ExtraSpacing
+  # rubocop:disable Layout/SpaceAroundOperators
+  # rubocop:disable Style/StringLiterals
+
   subject { presenter }
   it 'delegates to the solr_document' do
     stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
@@ -44,4 +51,8 @@ RSpec.describe HonorsCollegeThesisPresenter do
   it { is_expected.to delegate_method(:degree_level).to(:solr_document) }
   it { is_expected.to delegate_method(:degree_name).to(:solr_document) }
   it { is_expected.to delegate_method(:graduation_year).to(:solr_document) }
+
+  # rubocop:enable Layout/ExtraSpacing
+  # rubocop:enable Layout/SpaceAroundOperators
+  # rubocop:enable Style/StringLiterals
 end
