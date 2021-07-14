@@ -28,5 +28,7 @@ es:
     directory:
       suffix:               "@example.org"
     footer:
-      copyright_html: "<strong>Copyright &copy; 2018 Universidad Estatal de Oregón</strong> bajo licencia de Apache, Version 2.0"
-      service_html: Un servicio de <a href="http://projecthydra.org/" class="navbar-link" target="_blank">Proyecto Hydra</a>.
+      contact_info_html: "121 The Valley Library<br/>Corvallis, OR 97331-4501"
+      links_html: "<a href='contact'>Contacta con nosotros</a><br/><a href='https://library.oregonstate.edu/accessibility-services' target='_blank'>Servicios para personas con discapacidades</a>"
+      copyright_html: "<strong>Copyright &copy; 2018 Universidad Estatal de Oregon</strong><br/>Con licencia de Apache License, versión 2.0"
+      service_html: Un servicio de <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Bibliotecas y Prensa de la Universidad Estatal de Oregon</a>.
