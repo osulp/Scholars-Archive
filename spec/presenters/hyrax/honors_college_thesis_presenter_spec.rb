@@ -32,6 +32,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
   # rubocop:disable Layout/ExtraSpacing
   # rubocop:disable Layout/SpaceAroundOperators
   # rubocop:disable Style/StringLiterals
+  # rubocop:disable RSpec/ExampleLength
 
   subject { presenter }
   it 'delegates to the solr_document' do
@@ -55,4 +56,5 @@ RSpec.describe HonorsCollegeThesisPresenter do
   # rubocop:enable Layout/ExtraSpacing
   # rubocop:enable Layout/SpaceAroundOperators
   # rubocop:enable Style/StringLiterals
+  # rubocop:enable RSpec/ExampleLength
 end
