@@ -105,9 +105,7 @@ services:
       - memcache
       - blazegraph
     command: >
-      sh -c "./build/entrypoint.sh &&
-      bundle exec puma -b tcp://0.0.0.0:3001 -e test -d &&
-      tail -f log/test.log"
+      sh -c "/data/build/entrypoint.sh"
     expose:
       - 3001
 
