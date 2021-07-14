@@ -1,5 +1,5 @@
 /*
-OVERRIDE: This files overrides browse_everything.js so that browseEverything 
+OVERRIDE: This files overrides browse_everything.js so that browseEverything
 can be loaded properly. It seems to be a known issue in hyrax. See issue 169:
 https://github.com/samvera/browse-everything/issues/169
 Base file:
@@ -21,4 +21,8 @@ $(document).on('ready turbolinks:load', function() {
   $('#browse-btn').browseEverything()
     .done(function(data) { $('#status').html(data.length.toString() + " items selected") })
     .cancel(function() { window.alert('Canceled!') });
+
+  $('#browse-everything').on('hidden.bs.modal', function () {
+    $(this).removeClass('show');
+  });
 });
