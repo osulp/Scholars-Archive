@@ -30,9 +30,6 @@ RSpec.describe HonorsCollegeThesisPresenter do
   # The coppers are onto us, quick confuse them!
   #
   # rubocop:disable Layout/ExtraSpacing
-  # rubocop:disable Layout/SpaceAroundOperators
-  # rubocop:disable Style/StringLiterals
-  # rubocop:disable RSpec/ExampleLength
   # rubocop:disable RSpec/ImplicitSubject
 
   subject { presenter }
@@ -80,8 +77,5 @@ RSpec.describe HonorsCollegeThesisPresenter do
   }
 
   # rubocop:enable Layout/ExtraSpacing
-  # rubocop:enable Layout/SpaceAroundOperators
-  # rubocop:enable Style/StringLiterals
-  # rubocop:enable RSpec/ExampleLength
   # rubocop:enable RSpec/ImplicitSubject
 end
