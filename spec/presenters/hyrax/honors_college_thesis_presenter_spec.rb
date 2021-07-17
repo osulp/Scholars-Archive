@@ -43,112 +43,112 @@ RSpec.describe HonorsCollegeThesisPresenter do
 
   subject { presenter }
   it 'delegates to the solr_document' do
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]",  headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]",  headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
@@ -171,112 +171,112 @@ RSpec.describe HonorsCollegeThesisPresenter do
   end
 
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
@@ -295,112 +295,112 @@ RSpec.describe HonorsCollegeThesisPresenter do
     is_expected.to delegate_method(:contributor_advisor).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
@@ -419,113 +419,113 @@ RSpec.describe HonorsCollegeThesisPresenter do
     is_expected.to delegate_method(:contributor_committeemember).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
@@ -544,212 +544,212 @@ RSpec.describe HonorsCollegeThesisPresenter do
     is_expected.to delegate_method(:degree_discipline).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     is_expected.to delegate_method(:degree_field).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
@@ -768,301 +768,301 @@ RSpec.describe HonorsCollegeThesisPresenter do
     is_expected.to delegate_method(:degree_grantors).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     is_expected.to delegate_method(:degree_level).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     is_expected.to delegate_method(:degree_name).to(:solr_document)
   }
   it {
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
-    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection' => 'keep-alive', 'Content-Type' => 'application/ld+json', 'Host' => 'ci-test:8080', 'Keep-Alive' => '30', 'User-Agent' => 'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:get, 'http://ci-test:8080/bigdata/namespace/rw/sparql?GETSTMTS&includeInferred=false&s=%3Chttp://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege%3E').with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, 'http://ci-test:8080/bigdata/namespace/rw/sparql').with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
+    stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").with(body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]", headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Connection'=>'keep-alive', 'Content-Type'=>'application/ld+json', 'Host'=>'ci-test:8080', 'Keep-Alive'=>'30', 'User-Agent'=>'Ruby' }).to_return(status: 200, body: '', headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\",\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\"\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     stub_request(:post, "http://ci-test:8080/bigdata/namespace/rw/sparql").
     with(
       body: "[\n  {\n    \"@id\": \"http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege\",\n    \"@type\": [\n      \"http://www.w3.org/2004/02/skos/core#CorporateName\",\n      \"http://www.w3.org/2000/01/rdf-schema#Resource\"\n    ],\n    \"http://www.w3.org/2000/01/rdf-schema#label\": [\n      {\n        \"@language\": \"en\",\n        \"@value\": \"Oregon State University. Honors College\"\n      }\n    ],\n    \"http://purl.org/dc/terms/modified\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-06-02\"\n      }\n    ],\n    \"http://purl.org/dc/terms/issued\": [\n      {\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#date\",\n        \"@value\": \"2017-05-23\"\n      }\n    ]\n  }\n]",
       headers: {
-  	  'Accept' => '*/*',
-  	  'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-  	  'Connection' => 'keep-alive',
-  	  'Content-Type' => 'application/ld+json',
-  	  'Host' => 'ci-test:8080',
-  	  'Keep-Alive' => '30',
-  	  'User-Agent' => 'Ruby'
+  	  'Accept'=>'*/*',
+  	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  	  'Connection'=>'keep-alive',
+  	  'Content-Type'=>'application/ld+json',
+  	  'Host'=>'ci-test:8080',
+  	  'Keep-Alive'=>'30',
+  	  'User-Agent'=>'Ruby'
       }).
     to_return(status: 200, body: "", headers: {})
     is_expected.to delegate_method(:graduation_year).to(:solr_document)
