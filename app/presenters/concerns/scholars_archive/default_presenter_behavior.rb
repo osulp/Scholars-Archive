@@ -61,7 +61,8 @@ module ScholarsArchive
                :replaces,
                :resource_type,
                :rights_statement_label,
-               :tableofcontents, to: :solr_document
+               :tableofcontents,
+               :documentation, to: :solr_document
     end
   end
 end

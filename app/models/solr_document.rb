@@ -49,6 +49,10 @@ class SolrDocument
     self['license_label_ssim']
   end
 
+  def documentation
+    self['documentation_ssim']
+  end
+
   def academic_affiliation_label
     ScholarsArchive::LabelParserService.parse_label_uris(self['academic_affiliation_label_ssim'])
   end
@@ -192,6 +196,7 @@ class SolrDocument
     tableofcontents
     time_required
     typical_age_range
+    documentation
     web_of_science_uid
   ]
 

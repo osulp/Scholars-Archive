@@ -284,7 +284,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :documentation, predicate: ::RDF::Vocab::DC.description do |index|
+      property :documentation, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#documentation') do |index|
         index.as :stored_searchable
       end
 
