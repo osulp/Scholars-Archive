@@ -30,6 +30,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
   subject { presenter }
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
+      # TODO: fix this
       # expect(presenter).to delegate_method(property).to(:solr_document)
       expect(solr_document).to receive(property.to_sym)
       presenter.send(property)
