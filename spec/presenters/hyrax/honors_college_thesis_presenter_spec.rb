@@ -6,8 +6,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
-  let(:attributes) { file.to_solr }
-  # let(:attributes) { file.attributes }
+  let(:attributes) { file.attributes }
   let(:nested_ordered_title_attributes) do
     [
       {
