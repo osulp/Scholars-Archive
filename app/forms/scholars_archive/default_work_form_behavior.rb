@@ -17,7 +17,7 @@ module ScholarsArchive
       attr_accessor :degree_field_other
       attr_accessor :degree_name_other
 
-      self.terms += %i[nested_related_items nested_ordered_creator nested_ordered_title nested_ordered_abstract nested_ordered_additional_information nested_ordered_contributor date_uploaded date_modified doi other_affiliation academic_affiliation alt_title license resource_type date_available date_copyright date_issued date_collected date_valid date_reviewed date_accepted degree_level degree_name degree_field replaces nested_geo hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed digitization_spec file_extent file_format dspace_community dspace_collection isbn issn embargo_reason conference_name conference_section conference_location contributor_advisor]
+      self.terms += %i[nested_related_items nested_ordered_creator nested_ordered_title nested_ordered_abstract nested_ordered_additional_information nested_ordered_contributor date_uploaded date_modified doi other_affiliation academic_affiliation alt_title license resource_type date_available date_copyright date_issued date_collected date_valid date_reviewed date_accepted degree_level degree_name degree_field replaces nested_geo hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed digitization_spec file_extent file_format dspace_community dspace_collection isbn issn embargo_reason conference_name conference_section conference_location contributor_advisor documentation]
 
       self.terms -= %i[creator title]
       self.required_fields += %i[resource_type nested_ordered_creator nested_ordered_title]
@@ -29,7 +29,7 @@ module ScholarsArchive
 
       def secondary_terms
         t = %i[nested_related_items hydrologic_unit_code geo_section funding_statement publisher peerreviewed conference_name conference_section conference_location language file_format file_extent digitization_spec replaces nested_ordered_additional_information isbn issn]
-        t << %i[keyword source funding_body dspace_community dspace_collection description identifier] if current_ability.current_user.admin?
+        t << %i[keyword source funding_body dspace_community dspace_collection description identifier documentation] if current_ability.current_user.admin?
         t.flatten
       end
 
@@ -59,6 +59,7 @@ module ScholarsArchive
           :degree_level_other,
           :degree_grantors_other,
           :member_of_collection_ids,
+          :documentation,
           {
             nested_geo_attributes: %i[id _destroy point_lat point_lon bbox_lat_north bbox_lon_west bbox_lat_south bbox_lon_east label point bbox],
             nested_ordered_creator_attributes: %i[id _destroy index creator],
