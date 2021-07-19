@@ -24,16 +24,13 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
-    %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
+    %i[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
 
   subject { presenter }
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
-      # TODO: fix this
-      # expect(presenter).to delegate_method(property).to(:solr_document)
-      expect(solr_document).to receive(property.to_sym)
-      presenter.send(property)
+      expect(presenter).to delegate_method(property).to(:solr_document)
     end
   end
 end
