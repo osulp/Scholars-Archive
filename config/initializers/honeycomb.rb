@@ -9,7 +9,7 @@ else
   # Honeycomb Rails integration
   Honeycomb.configure do |config|
     config.write_key = ENV.fetch('HONEYCOMB_WRITEKEY', 'hereisareallylonglookingkey')
-    config.dataset = ENV.fetch('HONEYCOMB_DATASET', 'scholars-test')
+    config.dataset = ENV.fetch('HONEYCOMB_DATASET', 'scholars-staging')
     config.notification_events = %w[
       sql.active_record
       render_template.action_view

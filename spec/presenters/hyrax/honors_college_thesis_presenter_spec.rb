@@ -6,7 +6,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
-  let(:attributes) { file.to_solr }
+  let(:attributes) { file.attributes }
   let(:nested_ordered_title_attributes) do
     [
       {
@@ -15,6 +15,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
       }
     ]
   end
+
   let(:file) do
     HonorsCollegeThesis.new(id: '123abc',
                             nested_ordered_title_attributes: nested_ordered_title_attributes,
@@ -23,22 +24,13 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
-    %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
+    %i[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
+
   subject { presenter }
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
-      expect(solr_document).to receive(property.to_sym)
-      presenter.send(property)
+      expect(presenter).to delegate_method(property).to(:solr_document)
     end
   end
-
-  it { is_expected.to delegate_method(:contributor_advisor).to(:solr_document) }
-  it { is_expected.to delegate_method(:contributor_committeemember).to(:solr_document) }
-  it { is_expected.to delegate_method(:degree_discipline).to(:solr_document) }
-  it { is_expected.to delegate_method(:degree_field).to(:solr_document) }
-  it { is_expected.to delegate_method(:degree_grantors).to(:solr_document) }
-  it { is_expected.to delegate_method(:degree_level).to(:solr_document) }
-  it { is_expected.to delegate_method(:degree_name).to(:solr_document) }
-  it { is_expected.to delegate_method(:graduation_year).to(:solr_document) }
 end

@@ -60,5 +60,3 @@ set :branch, config['branch']
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-
-

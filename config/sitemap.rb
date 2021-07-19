@@ -1,8 +1,8 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://ir.library.oregonstate.edu"
+SitemapGenerator::Sitemap.default_host = ENV.fetch('SCHOLARSARCHIVE_URL_RAILS', 'https://ir.library.oregonstate.edu')
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.compress = :all_but_first
-SitemapGenerator::Sitemap.public_path = '/data0/hydra/shared/public/'
+SitemapGenerator::Sitemap.public_path = ENV.fetch('SCHOLARSARCHIVE_PATH_PUBLIC', '/data0/hydra/shared/public/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemap/'
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.

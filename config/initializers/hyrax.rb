@@ -89,7 +89,7 @@ Hyrax.config do |config|
   # config.persistent_hostpath = 'http://localhost/files/'
 
   # If you have ffmpeg installed and want to transcode audio and video uncomment this line
-  # config.enable_ffmpeg = true
+  config.enable_ffmpeg = true
 
   # Hyrax uses NOIDs for files and collections instead of Fedora UUIDs
   # where NOID = 10-character string and UUID = 32-character string w/ hyphens
@@ -272,6 +272,7 @@ Hyrax::Engine.routes.default_url_options = Rails.application.config.action_maile
 Date::DATE_FORMATS[:standard] = '%m/%d/%Y'
 
 Qa::Authorities::Local.register_subauthority('subjects', 'Qa::Authorities::Local::TableBasedAuthority')
+Qa::Authorities::Local.register_subauthority('languages', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('genres', 'Qa::Authorities::Local::TableBasedAuthority')
 Qa::Authorities::Local.register_subauthority('academic_units', 'ScholarsArchive::CacheBasedAuthority')
 Qa::Authorities::Local.register_subauthority('degree_fields', 'ScholarsArchive::CacheBasedAuthority')

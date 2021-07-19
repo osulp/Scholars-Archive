@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 3.12.6'
+gem 'puma', '~> 5.3.2'
 gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'mini_racer', '= 0.2.6', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 gem 'libv8', '= 7.3.492.27.1'
 
 # Use jquery as the JavaScript library
@@ -49,7 +49,7 @@ gem 'capistrano', '~> 3.8.0'
 gem 'capistrano-passenger'
 gem 'capistrano-rails'
 gem 'capistrano-rbenv'
-gem 'capistrano3-puma', '~> 3.1.1'
+gem 'capistrano3-puma', '~> 5.0.4'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -92,9 +92,10 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.3.0'
 
-# Honeycomb
-gem 'honeycomb-beeline', '>= 2.3.0'
-gem 'libhoney', '>= 1.16.0'
+# Monitoring and Observability
+gem 'honeycomb-beeline', '>= 2.4.0'
+gem 'libhoney', '>= 1.18.0'
+gem 'okcomputer'
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
 gem 'nokogiri', '~> 1.10.10'
@@ -110,7 +111,7 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'debase'
+  gem 'debase', '>= 0.2.5.beta2'
   gem 'debase-ruby_core_source'
   gem 'fcrepo_wrapper'
   gem 'pry-rails'
@@ -121,9 +122,9 @@ group :development, :test do
   gem 'rubocop-rspec', '= 1.34.0'
 end
 
-group :staging, :production do
+#group :staging, :production do
 #  gem 'clamav'
-end
+#end
 
 group :test do
   gem 'capybara'

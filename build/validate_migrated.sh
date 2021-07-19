@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "${RAILS_ENV}" = 'production' ]; then
+if [ "${RAILS_ENV}" = 'production' -o "$RAILS_ENV" = 'staging' ]; then
   echo "Cannot auto-migrate ${RAILS_ENV} database, exiting"
   exit 1
 fi

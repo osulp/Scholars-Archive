@@ -1,9 +1,14 @@
+# cable.yml
 development:
   adapter: async
 
 test:
   adapter: async
 
+staging:
+  adapter: redis
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_REDIS_URL', 'redis://localhost:6379') %>/1
+
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: <%= ENV.fetch('SCHOLARSARCHIVE_REDIS_URL', 'redis://localhost:6379') %>/1

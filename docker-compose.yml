@@ -36,7 +36,7 @@ services:
     <<: *app
     environment:
       - RAILS_ENV=${RAILS_ENV}
-      - FITS_PATH=/opt/fits-1.0.5/fits.sh
+      - FITS_PATH=/opt/fits-1.5.0/fits.sh
       - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
       - SCHOLARSARCHIVE_DB_HOST=db
       - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
@@ -44,15 +44,15 @@ services:
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
+      - SCHOLARSARCHIVE_PATH_PUBLIC=./public
       - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
       - RAILS_CACHE_STORE_URL=memcache
     # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
     # have been run already have been run and if so it just starts the server without the first three commands
     # taking time to run.
     command: >
-      bash -c "./build/entrypoint.sh &&
-      bundle exec puma -C config/puma/development.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000 &&
-      tail -f log/development.log"
+      sh -c "./build/entrypoint.sh &&
+      bundle exec puma -C config/puma/production.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000"
     depends_on:
       - db
       - db_test
@@ -68,7 +68,7 @@ services:
   # Runs sidekiq to process background jobs
   workers:
     <<: *server
-    command: bash -c "./build/install_gems.sh && bundle exec sidekiq"
+    command: sh -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
       - db_test
@@ -84,11 +84,19 @@ services:
     <<: *server
     environment:
       - RAILS_ENV=test
+      - RAILS_CACHE_STORE_URL=memcache
       - SCHOLARSARCHIVE_DB_HOST=db_test
-      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo
+      - SCHOLARSARCHIVE_DB_USERNAME=root
+      - SCHOLARSARCHIVE_DB_PASSWORD=12341234
+      - SCHOLARSARCHIVE_DB_PORT=3306
+      - SCHOLARSARCHIVE_DB=test
+      - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
+      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo/rest
       - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
+      - SCHOLARSARCHIVE_SECRET_KEY_BASE=bobross1234bobross1234bobross1234bobross1234bobross1234
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE=blazegraph
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
     depends_on:
       - db_test
@@ -98,9 +106,7 @@ services:
       - memcache
       - blazegraph
     command: >
-      bash -c "./build/entrypoint.sh &&
-      bundle exec puma -b tcp://0.0.0.0:3001 -e test -d &&
-      tail -f log/test.log"
+      sh -c "/data/build/entrypoint.sh"
     expose:
       - 3001
 
@@ -112,7 +118,7 @@ services:
       - 8080
     networks:
       internal:
-    command: bash -c "chmod a+wx /data && ./entrypoint.sh"
+    command: sh -c "chmod a+wx /data && ./entrypoint.sh"
   blazegraph:
     <<: *blazegraph-image
     volumes:
@@ -170,7 +176,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=12341234
       - MYSQL_PASSWORD=12341234
-      - MYSQL_DATABASE=development
+      - MYSQL_DATABASE=sa_development
     volumes:
       - db:/var/lib/mysql
       - ./config/mysql/mysqld.cnf:/etc/mysql/conf.d/custom.cnf

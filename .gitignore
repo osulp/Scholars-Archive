@@ -39,3 +39,4 @@ docker-compose.override.yml
 
 revisions.log
 migration.csv
+.version
