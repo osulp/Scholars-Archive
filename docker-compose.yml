@@ -44,6 +44,7 @@ services:
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
+      - SCHOLARSARCHIVE_PATH_PUBLIC=./public
       - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
       - RAILS_CACHE_STORE_URL=memcache
     # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
