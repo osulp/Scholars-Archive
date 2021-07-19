@@ -133,5 +133,5 @@ Following this fix, run the workflow load rake task:
 
 ## Fedora reports 403 Unauthorized error
 
-This is likely due to the Fedora repo address passed to the Rails app being incorrect. Earlier local standards used `local_env.yml` which overrode ENV variables passed in. If Fedora is running and the Rails app can't interact with it, check the ENV value that is passed to Rails. From the console, run `ENV.fetch('SCHOLARSARCHIVE_URL_FEDORA')`
+This is likely due to the Fedora repo address passed to the Rails app being incorrect. Earlier local standards used `local_env.yml` which overrode ENV variables passed in. If Fedora is running and the Rails app can't interact with it, check the ENV value that is passed to Rails. From the console, run `ENV.fetch('SCHOLARSARCHIVE_FEDORA_URL')`
 
