@@ -85,7 +85,7 @@ RUN apk --no-cache update && apk del autoconf automake gcc g++ --purge
 ## Precompile assets
 FROM code
 
-RUN if [ "${RAILS_ENV}" = "production" ]; then \
+RUN if [ "${RAILS_ENV}" == "production" -o "$RAILS_ENV" == "staging" ]; then \
   echo "Precompiling assets with $RAILS_ENV environment"; \
   RAILS_ENV=$RAILS_ENV SECRET_KEY_BASE=temporary bundle exec rails assets:precompile; \
   cp public/assets/404-*.html public/404.html; \
