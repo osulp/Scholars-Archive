@@ -284,6 +284,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :documentation, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#documentation') do |index|
+        index.as :stored_searchable
+      end
+
       # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
       attr_accessor :geo_section
 

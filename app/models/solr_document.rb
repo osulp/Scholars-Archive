@@ -192,6 +192,7 @@ class SolrDocument
     tableofcontents
     time_required
     typical_age_range
+    documentation
     web_of_science_uid
   ]
 
