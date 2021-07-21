@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://test.library.oregonstate.edu"
+SitemapGenerator::Sitemap.default_host = "https://ir.library.oregonstate.edu"
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.compress = :all_but_first
 SitemapGenerator::Sitemap.public_path = '/data0/hydra/shared/public/'
