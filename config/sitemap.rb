@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://ir.library.oregonstate.edu"
+SitemapGenerator::Sitemap.default_host = "https://test.library.oregonstate.edu"
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.compress = :all_but_first
 SitemapGenerator::Sitemap.public_path = '/data0/hydra/shared/public/'
@@ -33,7 +33,8 @@ SitemapGenerator::Sitemap.create do
   models = admin_set_map.map { |model,desc| model }
   models << 'FileSet'
   models << 'Collection'
-  # all public docs (visibility open) for all work modoles including FileSite and Collection
+  # all public docs (visibility open) for all work modoles including FileSite and Collection and only works done with a workflow
+
   solr_query_str = "({!terms f=has_model_ssim}#{models.join(',')}) AND visibility_ssi:open"
   loop do
     response = ActiveFedora::SolrService.get(solr_query_str,
@@ -46,6 +47,8 @@ SitemapGenerator::Sitemap.create do
     response['response']['docs'].each do |doc|
       if doc['has_model_ssim'].include? 'Collection'
         add "/collections/#{doc['id']}"
+      elsif doc['has_model_ssim'].include? 'FileSet'
+        add "/concern/#{doc['has_model_ssim'].first.underscore.pluralize}/#{doc['id']}" unless FileSet.find(doc['id']).parent.to_solr['workflow_state_name_ssim'] != "Deposited"
       else
         add "/concern/#{doc['has_model_ssim'].first.underscore.pluralize}/#{doc['id']}"
       end
