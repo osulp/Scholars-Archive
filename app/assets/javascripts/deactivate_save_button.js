@@ -3,6 +3,7 @@ $(document).ready(function () {
     $(this).keyup(function(){
       if ($(this).is(":focus")&& $(this).val() == "") {
 	$('#with_files_submit').attr("disabled","disabled");
+	$('#agreement').attr('checked', false);
       }
     });
   });
