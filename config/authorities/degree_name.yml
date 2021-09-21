@@ -74,3 +74,6 @@ terms:
 - id: "Bachelor of Fine Arts (B.F.A.)"
   term: "Bachelor of Fine Arts (B.F.A.)"
   active: true
+- id: "Executive Master of Public Policy (E.M.P.P.)"
+  term: "Executive Master of Public Policy (E.M.P.P.)"
+  active: true
