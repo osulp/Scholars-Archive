@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   before_action :http_header_auth_login
   before_action :update_from_person_api
   # Check to see if we're in read_only mode
-  before_action :check_read_only, except: [:show, :index]
+  before_action :check_read_only, except: %i[show index]
 
   # What to do if read_only mode has been enabled, via FlipFlop
   # If read_only is enabled, redirect any requests that would allow
@@ -30,9 +30,10 @@ class ApplicationController < ActionController::Base
     return unless Flipflop.read_only?
     # Exempt the FlipFlop controller itself from read_only mode, so it can be turned off
     return if self.class.to_s == Hyrax::Admin::StrategiesController.to_s
+
     redirect_back(
       fallback_location: root_path,
-      alert: "This system is in read-only mode for maintenance. No submissions or edits can be made at this time."
+      alert: 'This system is in read-only mode for maintenance. No submissions or edits can be made at this time.'
     )
   end
 

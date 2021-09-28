@@ -876,6 +876,7 @@ RSpec/ContextWording:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/features/read_only_mode_spec.rb'
     - 'spec/models/default_spec.rb'
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
     - 'spec/authorities/scholars_archive/cache_based_authority_spec.rb'
@@ -1061,6 +1062,7 @@ Style/MixinUsage:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/features/read_only_mode_spec.rb'
     - 'spec/controllers/other_options_controller_spec.rb'
 
 Capybara/FeatureMethods:
@@ -1124,6 +1126,7 @@ RSpec/ExampleLength:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/features/read_only_mode_spec.rb'
     - 'spec/models/default_spec.rb'
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
     - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
@@ -1149,6 +1152,7 @@ RSpec/MultipleExpectations:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/features/read_only_mode_spec.rb'
     - 'spec/models/default_spec.rb'
     - 'spec/models/user_spec.rb'
     - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
