@@ -1083,6 +1083,7 @@ Capybara/FeatureMethods:
     - 'spec/features/create_article_spec.rb'
     - 'spec/features/create_open_educational_resource_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/features/read_only_mode_spec.rb'
 
 Style/RedundantBegin:
   Exclude:
