@@ -104,6 +104,7 @@ jobs:
           CATALINA_OPTS: '-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx1024m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC'
       - image: solr:6-slim
         command: bin/solr -cloud -noprompt -f -p 8985
+    parallelism: 2
     working_directory: ~/app
     steps:
       - attach_workspace:
@@ -157,11 +158,12 @@ jobs:
       - run:
           name: Run Tests
           command: |
+            circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings > /tmp/tests-to-run
             bundle exec rspec --profile 10 \
                               --format RspecJunitFormatter \
                               --out /tmp/test-results/rspec.xml \
                               --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+                              $(cat /tmp/tests-to-run)
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
@@ -195,7 +197,9 @@ jobs:
             export DATETIME=$(date "+%Y%m%d%H%M%S")
             echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
-      - setup_remote_docker
+      - setup_remote_docker:
+          version: 20.10.2
+          docker_layer_caching: true
       - docker/check:
           registry: registry.library.oregonstate.edu
       - docker/build:
