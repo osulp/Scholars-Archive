@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module OkComputer
   # Measure the latency of a sidekiq queue against some acceptable threshold measured in seconds
   # Latency == the difference between when the oldest job was pushed onto the queue versus the current time.
@@ -11,6 +13,7 @@ module OkComputer
     def check
       latency = Sidekiq::Queue.new(@queue_name).latency
       return unless latency > @threshold
+
       raise "Sidekiq queue #{@queue_name} has #{latency} seconds latency and expected less than #{@threshold}"
     end
   end

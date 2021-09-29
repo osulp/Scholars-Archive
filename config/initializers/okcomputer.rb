@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SmtpCheck < OkComputer::Check
   def check
     smtp = Net::SMTP.new ENV['SCHOLARSARCHIVE_SMTP_HOST'], ENV['SCHOLARSARCHIVE_SMTP_PORT']
