@@ -25,7 +25,7 @@ OkComputer::Registry.register "smtp",     SmtpCheck.new
 # Measure the latency of a sidekiq queue against some acceptable threshold measured in seconds
 # Latency == the difference between when the oldest job was pushed onto the queue versus the current time.
 # In other words, we want ingest jobs to run in < 5 minutes, and derivatives jobs to run in < 15 minutes.
-OkComputer::Registry.register 'ingest_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :ingest, threshold: 300)
-OkComputer::Registry.register 'derivatives_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :derivatives, threshold: 900)
-OkComputer::Registry.register 'default_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: Hyrax.config.ingest_queue_name.to_sym, threshold: 300)
-OkComputer::Registry.register 'batch_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :batch, threshold: 300)
+#OkComputer::Registry.register 'ingest_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :ingest, threshold: 300)
+#OkComputer::Registry.register 'derivatives_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :derivatives, threshold: 900)
+#OkComputer::Registry.register 'default_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: Hyrax.config.ingest_queue_name.to_sym, threshold: 300)
+#OkComputer::Registry.register 'batch_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :batch, threshold: 300)
