@@ -11,8 +11,8 @@
 #    mark_message "Cannot connect to SMTP"
 #  end
 #end
-
-OkComputer::Registry.register "smtp",     SmtpCheck.new
+#
+#OkComputer::Registry.register "smtp",     SmtpCheck.new
 
 # Register checks against Sidekiq queue latencies
 OkComputer::Registry.register 'ingest_queue', OkComputer::SidekiqQueueLatencyCheck.new(queue: :ingest, threshold: 300)
