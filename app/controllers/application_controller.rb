@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   before_action :http_header_auth_login
   before_action :update_from_person_api
   # Check to see if we're in read_only mode
-  before_action :check_read_only, except: %i[show index]
+  before_action :check_read_only, except: %i[show index range_limit]
 
   # What to do if read_only mode has been enabled, via FlipFlop
   # If read_only is enabled, redirect any requests that would allow
