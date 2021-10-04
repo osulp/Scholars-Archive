@@ -44,7 +44,6 @@ RSpec.describe 'Modal facet pagination', type: :feature, clean_repo: true do
   before do
     visit '/'
     allow_any_instance_of(ApplicationHelper).to receive(:max_page_number).with(anything(), anything(), anything()).and_return(2)
-    # allow_any_instance_of(SearchBuilder).to receive(:facet_limit_with_pagination).with(anything()).and_return(2)
   end
 
   describe 'when searching the catalog' do
