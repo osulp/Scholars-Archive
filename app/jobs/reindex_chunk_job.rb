@@ -10,9 +10,9 @@ class ReindexChunkJob < ScholarsArchive::ApplicationJob
 
     logger.info "Reindexing #{uris.count} URIs"
     uris.each do |uri|
-      work = ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(uri))
-      logger.info "\t reindexing #{work.id}"
       begin
+        work = ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(uri))
+        logger.info "\t reindexing #{work.id}"
         work.update_index
         counter += 1
       rescue => e
