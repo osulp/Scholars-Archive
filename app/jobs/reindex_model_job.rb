@@ -10,14 +10,13 @@ class ReindexModelJob < ScholarsArchive::ApplicationJob
 
     logger.info "Reindexing #{model_name}: #{uris.count}"
     uris.each do |uri|
-      begin
-        work = ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(uri))
-        logger.info "\t reindexing #{work.id}"
-        work.update_index
-        counter += 1
-      rescue => e
-        logger.info "Failed to reindex #{work.id}: #{e.message}"
-      end
+      work = ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(uri))
+      logger.info "\t reindexing #{work.id}"
+      work.update_index
+      counter += 1
+    rescue => e
+      logger.info "Failed to reindex #{work.id}: #{e.message}"
+      next
     end
     logger.info "Total indexed: #{counter}"
     logger.info 'Done'

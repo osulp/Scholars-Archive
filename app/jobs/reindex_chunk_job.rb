@@ -4,22 +4,26 @@
 class ReindexChunkJob < ScholarsArchive::ApplicationJob
   queue_as :default
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def perform(uris)
     counter = 0
     logger = Rails.logger
 
     logger.info "Reindexing #{uris.count} URIs"
     uris.each do |uri|
-      begin
-        work = ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(uri))
-        logger.info "\t reindexing #{work.id}"
-        work.update_index
-        counter += 1
-      rescue => e
-        logger.info "Failed to reindex #{work.id}: #{e.message}"
-      end
+      work = ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(uri))
+      logger.info "\t reindexing #{work.id}"
+      work.update_index
+      counter += 1
+    # rubocop:disable Style/RescueStandardError
+    rescue => e
+      logger.info "Failed to reindex #{work.id}: #{e.message}"
+      next
     end
+    # rubocop:enable Style/RescueStandardError
     logger.info "Total indexed: #{counter}/#{uris.count}"
-    logger.info 'Done'
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 end
