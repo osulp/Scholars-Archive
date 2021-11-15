@@ -62,6 +62,20 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'ir.library.oregonstate.edu', :protocol => 'https' }
 
+  if ENV.fetch('SCHOLARSARCHIVE_SMTP_ENABLED', '0').to_i > 0
+    config.action_mailer.delivery_method = :smtp
+  else
+    config.action_mailer.delivery_method = :test
+  end
+
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch('SCHOLARSARCHIVE_SMTP_HOST', 'localhost'),
+    port: ENV.fetch('SCHOLARSARCHIVE_SMTP_PORT', 25),
+    enable_starttls_auto: false,
+    tls: false,
+    openssl_verify_mode: 'none'
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
