@@ -4,7 +4,7 @@
 
 # File characterization
 # Docker
-#FITS_PATH: /opt/fits-1.0.5/fits.sh
+FITS_PATH: /opt/fits/fits.sh
 
 # Rails defaults
 # Docker

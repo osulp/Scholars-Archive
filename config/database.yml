@@ -21,7 +21,7 @@ development:
   # If ENV is localhost or 127.0.0.1 then it is assumed to not be running docker, so force 127.0.0.1
   host: <%= %w(localhost 127.0.0.1).include?(ENV.fetch('SCHOLARSARCHIVE_DB_HOST', '127.0.0.1')) ? '127.0.0.1' : 'db' %>
   # If ENV is localhost or 127.0.0.1 then it is assumed to not be running docker, so use a unique database name
-  database: <%= %w(localhost 127.0.0.1).include?(ENV.fetch('SCHOLARSARCHIVE_DB_HOST', '127.0.0.1')) ? 'sa_development' : 'development' %>
+  database: <%= %w(localhost 127.0.0.1).include?(ENV.fetch('SCHOLARSARCHIVE_DB_HOST', '127.0.0.1')) ? 'development' : 'sa_development' %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
