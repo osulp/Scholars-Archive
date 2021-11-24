@@ -59,7 +59,7 @@ module ScholarsArchive
       end
 
       # multiple: false, until "conference" is converted to a nested attribute so that the location, name, and section are all related/stored together
-      property :conference_section, predicate: ::RDF::URI.new('https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track'), multiple: false do |index|
+      property :conference_section, predicate: ::RDF::URI.new('https://w3id.org/scholarlydata/ontology/conference-ontology.owl#Track'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
