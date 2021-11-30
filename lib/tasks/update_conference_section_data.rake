@@ -1,6 +1,8 @@
 namespace :scholars_archive do
   desc "Update conference section preducate data from all work graphs"
-  task update_conference_section_data: :environment do
+  task :update_conference_section_data, [:chunk_size] => :environment do |t, args|
+    # Set a default value of 100 for chunk_size
+    args.with_defaults(:chunk_size => 100)
     datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
     logger = ActiveSupport::Logger.new("#{Rails.root}/log/abstract-conference-section-#{datetime_today}.log")
     logger.info "Processing bulk changes for conference section"
@@ -22,39 +24,24 @@ namespace :scholars_archive do
     all_records << ::UndergraduateThesisOrProject.all
 
     logger.info "All works found. Searching for works to be updated"
+    to_update = {}
+    old_predicate = ::RDF::URI.new('https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track')
+
     all_records.each do |works|
-      works.each do |record|
-        old_conference_section_statement = [record.resource.rdf_subject, ::RDF::URI.new('https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track'), nil]
+      works.each_with_index do |record, index|
+        old_conference_section_statement = [record.resource.rdf_subject, old_predicate, nil]
 
         # If conference section to delete exist
         if !record.resource.graph.query(old_conference_section_statement).statements.empty?
           orm = Ldp::Orm.new(record.ldp_source)
           new_value = orm.query(old_conference_section_statement).first.object.value
 
-          logger.info ""
-          logger.info "Work found #{record.id}. Updating conference section"
-
-          logger.info "Setting to previous value: #{new_value}"
-          record.conference_section = new_value
-
-          logger.info "Saving record"
-          if record.save
-            logger.info "Work saved. Removing old conference section. Pulling graph from fedora"
-
-            logger.info "Deleting conference section from graph"
-            orm.graph.delete(old_conference_section_statement)
-
-            logger.info "Saving the graph"
-            if orm.save
-              logger.info "Graph saved successfully"
-            else
-              logger.error "Something went wrong with removing old value from graph #{record.id}"
-            end
-          else
-            logger.error "Something went wrong adding previous value #{record.id}"
-          end
+          to_update.merge!({ record.id => new_value })
         end
       end
+    end
+    to_update.each_slice(args.chunk_size) do |params|
+      ReplacePredicateJob.perform_later(params, old_predicate.to_s, 'conference_section')
     end
   end
 end
