@@ -11,6 +11,8 @@ require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
 require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w[solr-test fcrepo-test])
+
 require 'equivalent-xml'
 require 'database_cleaner'
 require 'active_fedora/cleaner'
@@ -148,6 +150,12 @@ config.before do |example|
     # Precompile the assets to prevent these issues.
     visit '/assets/application.css'
     visit '/assets/application.js'
+    stub_request(:get, 'opaquenamespace.org/ns/osuDegreeFields.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+      .to_return(status: 200, body: file_fixture('osuDegreeFields.jsonld').read, headers: {})
+    stub_request(:get, 'opaquenamespace.org/ns/osuAcademicUnits.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+      .to_return(status: 200, body: file_fixture('osuAcademicUnits.jsonld').read, headers: {})
   end
 
   config.after do

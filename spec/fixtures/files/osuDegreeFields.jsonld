@@ -1,0 +1,6608 @@
+{
+  "@context": {
+    "dc": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "@type": [
+        "http://purl.org/dc/dcam/VocabularyEncodingScheme",
+        "rdfs:Resource"
+      ],
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "dc:title": {
+        "@value": "Oregon State University Degree Fields",
+        "@language": "en"
+      },
+      "rdfs:comment": {
+        "@value": "These entities and date ranges were compiled from processed electronic theses and dissertations, and may contain gaps or other errors.",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0ARiezTD",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1944",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biological and Organic Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0Kamj8EG",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1941,1944..1952,1965,1971,1973,1976,1978..1979,1981,1995,2002,2007..2008}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biochemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0RxJxQrr",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2001",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Not a degree field.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Cellular Biology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0T081zgJ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1968,1970..1971,1976,1979..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wildlife Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0TSDqTjg",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1933..1934,1936,1938,1944..1952,1954,1956..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Chemical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0U8MnVFr",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1990,1992,1995..1998}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Movement Studies for the Disabled",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0ujjmW9P",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1972..1979}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agronomic Crop Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/0w5f5ZAU",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996,2008,2011,2014,2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wildlife Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/1AWDT4tl",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2009,2014}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Electrical Engineering and Computer Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/1NNn3rBd",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2002",
+      "dc:issued": {
+        "@value": "2018-11-05",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-11-05",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Earth Information Science and Technology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/1P0WyTaa",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1935,1937,1940,1943,1949,2009}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/1aZ4CWWa",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2006",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "General Agriculture",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/1c8kdpM6",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2009",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Art",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/1l7eEOqs",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1949..1951,1954,1961,1969..1975,1977..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/2UifjgFu",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1932",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Sociology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/2j9jzFJJ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1933..1934,1942,1948,1953}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/2pqeKTSY",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934..1936,1939..1942,1947..1948,1950..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Geology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/36ndRbKj",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1982..1988,1990,1992..1993,1995..2004,2006..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Counseling",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/3KjCghJI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2014..2020}",
+      "dc:issued": "2017-11-13",
+      "dc:modified": {
+        "@value": "2020-06-02",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/3NYLAsLy",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2019",
+      "dc:issued": {
+        "@value": "2019-12-16",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2019-12-16",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fisheries and Wildlife Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/3UEPxWet",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1975..1980,1983,1988,1990}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Counseling and Guidance",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/3WyyXGbS",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1970..1972,1974}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Metallurgical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/3nyWrQgB",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1998",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-02",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Not a degree field.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Forest Engineering and Civil, Construction, and Environmental Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/3y9Jx8eo",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2008..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biological and Ecological Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4DoWDJrS",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2016",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Comparative Health Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4H55NiYU",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1948",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Chemical and Metallurgical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4JZUDEem",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1948",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "These are two separate degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Economics and Dairy Manufacturing",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4JvsGKNW",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1966..1974}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Electrical and Electronics Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4QGjGXDe",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1972",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Animal Science (Nutrition)",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4S5aorQw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1941",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Typo for \"Food Industries.\"",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Food Industry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4SfayB1O",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1996",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Health",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/4SvH50EL",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1997,1999,2001,2003..2011,2014..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "History of Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/57puPkr9",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996,2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Human Development and Family Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/59YrQd7I",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929..1931,1933..1936,1938..1943,1945..1946,1948..1951,1960..1961,1963..1991}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Foods and Nutrition",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5PD9MfWv",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996,1998}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Health and Safety Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5TrS7vqq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:issued": [
+        "2018-03-27",
+        {
+          "@value": "2018-03-27",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-03-29",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Risk and Uncertainty Quantification in Marine Science (Graduate Minor)",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5ZzHIg3o",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1910,1923,1926..1934,1940,1992..2020}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-06-02",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5hLRdgAO",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1972,1974..1991,1996,2002..2006}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Rangeland Resources",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5ifb2xho",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2009..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Water Resources Policy and Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5lxcWCm2",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2007",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural and Resource Economics and Geography",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/5pnGgj8o",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2011,2013..2015,2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Ocean, Earth, and Atmospheric Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/6C2NHu3A",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1942,1946,1950}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Hydraulic Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/6UkQ0fd4",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1992,2001,2011,2013..2017}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "BS, CRED, undergraduate minor",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Animal Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/6jJMIG5D",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1949,1951..1952,1956,1959..1961,1963..1966,1969,1974,1976..1991}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/6nhTqCfc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1933,1935..1940,1947,1953..1954}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial Arts Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/6x5jGAqI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1980,1989..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fisheries Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/7DEPCKEX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1954..1960}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fish and Game",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/7DXvzotE",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1939,1942,1952..1953,1956,1959,1961..1970,1972,1974..1975}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Range Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/7tFqOMhQ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1976..1992}",
+      "dc:issued": {
+        "@value": "2018-11-05",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-11-05",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Journalism",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/7wO25V6w",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909..1911,1994..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "English",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/87shC0Rg",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2012..2017}",
+      "dc:issued": [
+        "2018-07-17",
+        {
+          "@value": "2018-07-17",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Economics and Policy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/89lxK1cH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1963..1965,1967..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Microbiology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/8GbSst1n",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2013..2021",
+      "dc:issued": "2018-07-17",
+      "dc:modified": {
+        "@value": "2021-08-30",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Apparel Design",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/91DicYiC",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1977",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Computer programs",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/94jAfyub",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1932",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/98D7sZbX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1964",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Silviculture",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/9ZofPob7",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2012",
+      "dc:issued": {
+        "@value": "2017-11-13",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2017-11-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Geology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/9sKLJ5KI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1942,1953,1990,1992,1994,1996,1998,2000,2003..2004,2006..2009}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Plant Physiology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ADNhwD20",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2011",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Computational Physics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ADsVa0W1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1967,1969..1970}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wildlife Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/AG9bPz3i",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1941,1950..1954,1960..1990,1992,1994..1995}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/AShDcFCX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1980,1987}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Guidance and Counseling",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/AW4Mx5Us",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1951..1953,1960..1982}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Family Life",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/AYAN7U8V",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1951",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Communications",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/AioZPhTc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1933,1950..1951}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Educational Psychology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Aqu5L4jH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Speech Communication",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Bb1NRR1m",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1961..1967,1970..1972}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Microbiology and Hygiene",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/BeZkdFcx",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1940",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Chemistry and Soils",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/BgL5ZHV3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2001",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Nutrition and Health Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/BioHealthSciences",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2018-01-22",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-01-22",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "BioHealth Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/BioresourceResearch",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2017-12-11",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2017-12-11",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "BioResource Research",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/BjGuYiyq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2007",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Philosophy, Philosophy and Anthropology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/C1xz4Og0",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1932",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Institution Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/CBF8DnzJ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909,1912,1914..1917,1920..1921,1923..1924,1926,1929..1935,1937..1942,1946,1949..1950,1952,1954..1961,1963..1964,1966..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Horticulture",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/CUym1fyq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1965,1975..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Nuclear Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Cn0Tpxyq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1943..1944}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-22",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Deprecating because Foods and Nutrition is the correct term.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Food and Nutrition",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/CxTtvCAP",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1940,1966..1978}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Home Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/D3mfCUXV",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1990,1992,1994..1996,2008..2009,2011}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Radiation Health",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/D5wWgnOy",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1916,1920..1923,1925,1930,1932,1934,1936..1938,1941,1947}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Farm Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DA0Cp3tN",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1994",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Speech Communication, Speech Communication and English",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DFKfu868",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1933..1934,1938..1941,1945,1947..1952,1954..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mathematics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DG63gSrH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1951..1956,1964,1971..1973,1976,1978,1985,1991..1992}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Business Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DQ2prZae",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Electrical communications",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DUsvUU7y",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-06-21",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-06-21",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Ethnic Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DbjtMSEK",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1920,1935..1936}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Horticultural Products",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/DoqN95fe",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1953,1964}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Family Life and Home Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Ds14Er58",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1982",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Anthropology, History and Eduction",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/EM0KRcPP",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1984",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Anthropology, Resource Recreation Managment and Sociology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/EQ8Fel9a",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1941,1947..1961}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Food Technology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ESYJ3dgv",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1951",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Clothing",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/EWPo9CVB",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2010..2011,2013..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Medical Physics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/EYNrBPC3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2000..2001,2003,2005..2006,2009..2012}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Movement Studies in Disability",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Ea1pi1cX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1952,1964..1967,1970..2004}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Products",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/EesmNTHv",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1976,1979,1984}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mathematical models",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/EyJ4npVX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1931,1935,1938,1940,1942,1944,1947..1952,1954..1975,1977,1979}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/FJLwOXBw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2012",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Construction Engineering Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/FOUY0RgE",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1969..1970,1972,1974..1975}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Institution Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/FfAAhd5V",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1996",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Human Resources",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Fmcpchl8",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2012..2015,2017}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Better represented by \"Biochemistry and Biophysics.\"",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Biochemistry & Biophysics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/FoGZNnPh",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2001,2004..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Design and Human Environment",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/GDbPCXVb",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1915..1916,1926,1938..1942,1944,1946,1948,1950,1953..1959,1961..1965,1969,1992,1994}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Home Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/GJVvm6oR",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1975..1977,1979}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial and General Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/GcGMbrj8",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1938",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Food Products Industries",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Gs9zkp70",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1988",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/HBVtgibq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1958",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairy Technology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/HHErEW8g",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1934",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanics and Materials",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/HVWYADSR",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017/open",
+      "dc:issued": "2018-05-17",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Accountancy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/HngnnHhZ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1977..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/HpC6C8md",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1990,1993,1995,1999}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Health and Human Performance",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Hqb3tuLn",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-08-29",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-08-29",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Religious Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/I4BiabW6",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1970,1973..1974,1982,1994,1996,2002,2006}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Food Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/IJwm4pUX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1939,1942}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Institutional Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/IO3lm4bh",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1984",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Resource Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/IZDdsPRr",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1915..1917,1924..1925,1927..1928}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pomology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/IklyrFh8",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1908",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Literary Commerce",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/IoQIjQsc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2014..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Women, Gender, and Sexuality Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Iyd25vfm",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1973..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Electrical and Computer Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/J42tvb7d",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1940,1942,1947..1949,1951,1953..1955,1957,1960,1962..1963,1965..1968,1971..1973}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "General Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/JCs70zwq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1978",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Engineering (Hydrology)",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/JOj8WP84",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2008",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Speech Communication, Speech Communication and Women Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/JaUoFRlf",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1927,1930..1960,1962..2020}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-06-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/JjpnJhM7",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2004,2007..2008,2010}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Health and Occupational Safety Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/JlO2clFi",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2006..2018}",
+      "dc:issued": {
+        "@value": "2018-07-18",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-18",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Applied Visual Arts",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Animal Breeding",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/KhFIkND8",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Integrative Biology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Kpo76j5q",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1962..1967,1969..2002,2005..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Statistics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Ks2sqGhr",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1917..1918,1920,1923,1926..1928,1930,1932..1939,1941..1942,1946,1948..1949,1951..1973}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Farm Crops",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Kuxj7Apf",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909,1930,1933..1938,1940,1943,1946,1949..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Civil Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/L5df5cGz",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1936",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Animal Industries",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/LJ4vze6s",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2013..2015}",
+      "dc:issued": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Athletic Training",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/LadD13bk",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2010..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "PhD, MS, MA",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Applied Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/M0TlJt7v",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2006..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Rangeland Ecology and Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/M58XBehe",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2014",
+      "dc:issued": {
+        "@value": "2017-11-13",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2017-11-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Renewable Materials",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/M8VdgsM5",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934,1936,1939,1941,1944,1997,2002}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Physical Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/MJaD4lvu",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1955..1966,1971}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial Arts and Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/MNZJykks",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2010,2012,2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Electrical and Computer Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/MQ7Owpbc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1988..2004}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Health Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/MjnsYuhF",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1931,1936,1938..1939,1941..1942,1944,1946..1948,1950,1952..1953}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Organic Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/MjxCbYg4",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1928..1929,1931..1940,1942..1950}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Household Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Mv1xY8cz",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1942,1950..1953,1968,1971}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Guidance",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/MwnMSope",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1997..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Molecular and Cellular Biology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/N1ugzGRN",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934,1939,1953,1968..1972}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmacology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/N7pVqNFT",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2015",
+      "dc:issued": {
+        "@value": "2018-10-18",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-10-18",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Contemporary Hispanic Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/NDA987jA",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1993..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Public Health",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/NKyjBHvK",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1974",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Systematic Botany",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/NO50P2hJ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1950",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Communication Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/NOJubCiX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1928,1935,1941..1942,1945,1947,1950..1953,1959,1961,1965..1966,1969..1970,1974,1976..1980,1985,1988,1990,2020}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-03-26",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Veterinary Medicine",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/NX9XejCz",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1951",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Structural Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/NkxJIaa9",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1911",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Domestic Art",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/O5sXIL5K",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1987..1993}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Apparel, Interiors, and Merchandising",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1989..1990,1995,2001,2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Adult Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OTiHJYW1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1964..1966}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Family Life and Home Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OW1vFsmz",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1971,1980}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wildlife Ecology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OgEQFcs4",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2018-06-01",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-06-01",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Innovation Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OhWpZ9fL",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1908,1915,1925,1930..1932,1940..1941,1946..1960}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Animal Husbandry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OiKbQRju",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1990..2009}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Nutrition and Food Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OqVnu8DD",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1950..1953,1959,1963,1966..1967,1969..1977,1979,1981..1990,1996}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fisheries",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/OqZuxCGN",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1910",
+      "dc:issued": {
+        "@value": "2018-09-06",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-09-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Commerce",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/P1eY7zDu",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1938",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Guidance Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/PJzIxSfq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1944,1951,1954,1956,1958,1973,1989}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Physical Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/PVMesOzw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2010",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "These are two separate degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Civil Engineering and Wood Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/PaMzWtWM",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1953..1966,2018}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-06-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Natural Resources",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/PpIMQP19",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1967..1969,1974,1976..1988,1990..1992,1994..1995,1997..2000,2003..2004,2007,2011..2012,2015}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Geophysics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/QGBFl6IV",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2013..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Earth, Ocean, and Atmospheric Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/QNQ5QxZK",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1927..1928,1932,1951}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Commercial Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/QRhfvCsY",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1916",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Field Crops",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/QSuyE4pX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1973..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Computer Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/QVugGmGJ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1965..1993,1995,2003}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fisheries and Wildlife",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Qkh08a4r",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929..1931,1933,1935..1936,1938..1939,1942,1945..1950,1953,1958,1960..1984,1986,1988}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Clothing, Textiles, and Related Arts",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Qnh6TlLv",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1969,1973,1981}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmacy Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/RDjSM0NX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2000..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/S2VKuzgA",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1924,1929..1930,1933,1937,1975..1985,1987..1994}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Vocational Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/S3LgKhiC",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1962..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Oceanography",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/S4bNZ4Yu",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2020",
+      "dc:issued": {
+        "@value": "2021-03-24",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2021-03-24",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Design and Innovation Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/S5iSt4U1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2019-01-02",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2019-01-02",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Business Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/SI1eCX0d",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1908,1915,1921,1936,1943,1945,1952,1984}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agriculture",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/STHOkLrB",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2005,2009}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-08",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Deprecating because Exercise and Sport Science is the correct term.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Exercise and Sports Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Sijmh3pu",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2005",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Philosophy, Sociology and Sociology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/StlcIyXa",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1935,1937,1970,1973,2009..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Nutrition",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/SvjIdGoz",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1908,1920}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Household Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/SzK6MXFZ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934,1937,1940..1943,1946,1949..1953,1960..1961,1963,1965..1966,1968..1977,1984,1989}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Home Economics Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/T2NgrYg1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1948",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Automotive Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/TFs2K1vV",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1945,1961,1963,1965..1987,1989..1998}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "General Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ToAZQb7H",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2015..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Rangeland Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/TsB6Zk5J",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1973,1975..2017}",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies (M.A.I.S.)",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/TsGa4Gtt",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2005,2007..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/U6Bopati",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1990..2006}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Human Performance",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UCg3Lu2a",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2013..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Sustainable Forest Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UFS6fuiE",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1968..2011,2013..2014,2016..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "BS, HBS, PhD, MA, MS",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Biochemistry and Biophysics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UHms5yKI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1917,1929,1932..1934,1936,1939..1940,1942,1948,1952}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairy Manufacturing",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UOkEBcbn",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2006..2011}",
+      "dc:issued": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Economics, Policy, and Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UVi0QnUf",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Radiation Health Physics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UYw9pAJc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "International Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UZiTUqT0",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2014",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Civil and Construction Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UbASzsY5",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2014",
+      "dc:issued": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Energy Systems Engineering ",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UeU5z1Q4",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1953",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forage Breeding",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UgjXGtBh",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1992..1993,1995,2003..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Exercise and Sport Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UqNLzfuV",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1911,1954,1967,1972..1973,1981}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmaceutical Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/V1hJBrF2",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Typo - this should be \"Design and Human Environment.\"",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Design and the Human Environment",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/V5jLVULe",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1959..1960}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Soil",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/VPfkVSB4",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1951",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Engineering Materials",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/VSIWUNfp",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996,1999,2003}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Computer Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/VVLmlfR8",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1937..1940,1942,1944..1945}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Food Industries",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Vl3rhaU2",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1923,1925..1926,1929,1932..1933,1941,1947,1949..1950,1955,1957..1969,1971..1974,1976..1977,1979,1986,1992,2008,2013,2020}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-06-18",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/VlQXe2qK",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929,1931,1937,1947,2004,2015..2018}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-04",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Psychology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/VtLWmG2t",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1907..1913,1926,1931..1932,1934..1935,1939,1941..1943,1946..1956,1958..1966,1968..1970,1977,1984,1989,1992..1993,1995..1996,2004,2010}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Electrical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/W8RSyWSw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2009",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Engineering, Resources and Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/WGU9NjSo",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1978,1981..1990,1992,1999..2004,2008}",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/WLQmSVkI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996,1998,2000..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Marine Resource Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/XIgW34y1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Radio Communications",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/XOxp9oiX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2009",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Engineering Physics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/XQWC0dnB",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2018-04-06",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-04-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Ecological Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/XRUAakIE",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1970,1975..1998,2000..2013}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Atmospheric Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/XnPLuq0Z",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1931..1933,1937..1938,1940..1942,1949,1951..1953,1956,1966,1968,1982,1993,1995,1998,2003}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Plant Pathology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/YMdx5uD4",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1917..1918,1925..1927,1929..1931,1933,1935..1943,1947,1949..1972}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Soils",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/YiyzHWGi",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2005..2006,2008..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Water Resources Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/YpB9KqZG",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1908,2018}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "History",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/YtrMset3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2013..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ZAFLniob",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1954",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Nursing Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ZPdoptEv",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1928..1934,1936..1942,1944..1945,1947..1965,1969,1973}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forestry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ZSAliZ2L",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Merchandising Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ZfhfkCsy",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1962..2017}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "MS, PhD, graduate minor",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Animal Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/Zo55UpwR",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2013..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Ecosystems and Society",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ZvNZ12qf",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909,1947}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mining Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/a3yDSjqL",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909..1911,1915}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Domestic Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/aAynzoLm",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1993..1997,1999..2004}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Apparel, Interiors, Housing, and Merchandising",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/aSpY3uVU",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Bioengineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/anT08Cgv",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2004,2006,2008,2010..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "MA, MS",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Applied Ethics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/anwacuOT",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2012",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Women Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/bDPSKEm0",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1938..1942,1944,1947..1954,1959..1965}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fish and Game Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/bDjom7ab",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Home Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/bPVroNo3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2009",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Health Management and Policy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/bspzV2eK",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Finance",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/c5N0uCrh",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1983,1987,1989..1994,1997..2001,2004..2005,2007..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Veterinary Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cJCsPNPy",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929,1931..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cL3TfKTX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909,1911,1915..1917,1924,1926,1930,1933..1934,1937..1942,1947..1982,1990,1995}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "BS, CRED, undergraduate minor",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Botany",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cfTCrEf9",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "French",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cgJ1Grci",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2012..2013,2016}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-08",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Deprecating because Materials Science is the correct term.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Material Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/chwNWDmW",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1928",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Household Arts",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cigKHRCh",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1966..1968,1971,1973..1986,1988..1990,1992..1993,1995..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Geography",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cnERdrxW",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1932,1942}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Poultry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/cnkjcX55",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1999",
+      "dc:isReplacedBy": "http://opaquenamespace.org/ns/osuDegreeFields",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2018-11-06",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "This degree field is better represented using the Master of Arts in Interdisciplinary Studies (M.A.I.S.) degree name and specific degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Interdisciplinary Studies in Anthropology, Historic Preservation and Forest Resources",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/dFxwkf77",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biochemistry and Molecular Biology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/dJtIgrkd",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1977",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biological Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/dS4cz8yW",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1947,1973,1979..2017}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "MS, PhD, graduate minor, undergraduate minor",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Crop Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/dVdZCmDl",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1953",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Soil Bacteriology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/dfk0jHpi",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1985,1987..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Toxicology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/dp70nIEw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1950",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Guidance and Personnel",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/e0Wm1jOK",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Business Information Systems",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/eKgsDpbD",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Digital Communication Arts",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/eQdnz5OO",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Home Economics Extension",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/eismQVf1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2021/open",
+      "dc:issued": {
+        "@value": "2021-09-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2021-09-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Graduate Certificate",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Organic Agriculture",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/f1qpQERV",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1982..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Human Development and Family Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/f73cC9X3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1949,1951}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Sanitary Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/fF6vU1rw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1936,1939..1940,1965,1973..1975,1978..2000,2002..2014,2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/fSitNyXs",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1987..1988,1990,1994}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Educational Foundations",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/fe3pZfcI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1996,2001..2002}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Scientific and Technical Communication",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/fepZXnte",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2004..2005}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Human Development",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/g9QBs4QX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-04-10",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-04-10",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Liberal Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/gUdb1uOP",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1992",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Postsecondary and Technological Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/gX3hryUn",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-16",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/gnJUP4Rl",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2007",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Nutrition and Exercise Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/h17mdAyY",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1946,1948..1949,1956,1959}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Aeronautical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/h497cgSO",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1962,1964..1970,1972,1974..1975,1977..1994,1996,2001,2004..2005,2007,2010}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Poultry Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/hDzMHF2t",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2009",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "These are two separate degree fields.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Wood Science and Civil Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/hSmich3Z",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2015..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Robotics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/hez8JIJo",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1916,1936,1939,1947,1951,1955,1961}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Poultry Husbandry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/hqfl9clj",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2012..2013}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-01",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wood Science and Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/iES6NyvH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1991..1993,1995,2003,2008}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "BS, CRED",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Crop and Soil Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/iHHXzTkX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1955,2018}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-06-08",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Political Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/iPVxZthZ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1992,1994..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Applied Anthropology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/iQC5izmr",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1957",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairying",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/iZWdt7bT",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2007",
+      "dc:issued": {
+        "@value": "2018-07-26",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-26",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "German",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ieuQEKXL",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1991",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Counselor Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/iewiPAdC",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2018-06-08",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-06-08",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Interior Design",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/isnCMV8g",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1931..1944,1947..1951,1953..1954,1957,1972..1973,1981}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/issmogTq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929,1932..1933,1937..1938,1946,1951,1955..1956,1959..1966,1978..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmacy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ivGbnh4Y",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1978",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Study and teaching",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/j2OLpQTd",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1951",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairy Products Industries",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/j6JRppGC",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2016",
+      "dc:issued": {
+        "@value": "2018-05-21",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-21",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Sustainability",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/jNUa7tn0",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-15",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Music",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/jY9OAn0u",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1941,1952}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Inorganic Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/jcmYsmjr",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1967..1968,1970,1972,1974..1975,1977..1979,1994,2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmaceutical Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/jgtHld8z",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-16",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-16",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Spanish",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/jxY1B1Ke",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934,1936,1948,1950..1952,1961,1964,1980}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/jxaV6eEe",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1991..1992,1994,1996,2000,2008,2010}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Geosciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/k1QEWX4l",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1923,1926,1934..1935,1938..1939,1941..1945,1947..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Zoology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/kJwcPS21",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1969..1970}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanical, Industrial, and Nuclear Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/kWNi9kiI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1909,2014..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Business Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/kfG76Jz2",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2008,2011}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Applied Physics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/kg1MAW08",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929,1966..1967,1974}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmacognosy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/lJF4pafm",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1941..1942,1946,1950}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Child Development",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/lNzhf86X",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1915..1916,1921,1927,1929,1931,1939,1941,1943,1947,1949,1951,1953..1954,1956..1957,1959}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairy Husbandry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ljoW7KJ5",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1972..1977,1981..1982}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmacology and Toxicology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/m0dVUKke",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1967",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Applied Mathematics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/m1LpfXuZ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2010..2013,2015,2017}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-08",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Deprecating because Water Resources Engineering is the correct term.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Water Resource Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/mHkeL6L3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairy Bacteriology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/mOGvnHwA",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2010",
+      "dc:issued": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Health Promotion and Health Behavior",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/mPOhm0sU",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934,1944,1946..1947}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wood Products",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/mW6zKxBh",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1994..1998,2000,2002}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Comparative Veterinary Medicine",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/mWsB0oqq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1942",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Recreational Forestry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/mf748J76",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2020",
+      "dc:issued": {
+        "@value": "2021-02-01",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2021-02-01",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "History and Philosophy of Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/n4gGfLR1",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1910",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Modern Languages",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/n74DImcH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1989..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Resources",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/nHvyZi7s",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1913,1915,1918,1924..1925,1928..1939,1941..1942,1944,1946..2006,2010..2014}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Entomology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/nNMvSKhZ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1930",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial Chemistry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ng9M5ZzX",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1974,1980,1988,1990..1995}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Health",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/noqxS7gI",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1939,1946}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Logging Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/o07wFul5",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1991,1993..1994,1996..2001,2003..2017}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "MS, PhD, graduate minor, undergraduate minor",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Materials Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/o8Vpwam2",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2004",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "College Student Services",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/oFEEwUkk",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1910",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Bacteriology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/oS61A3Rb",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2016..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Public Policy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/oYojuFoU",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1932..1933}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Lumber Manufacture",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/omtRjTjb",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1929,1935..1936,1939..1942,1947..1955,1957}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial Arts",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/on81oQFO",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1913,1922,1924,1930,1934,1940,1942,1950..1961}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Bacteriology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/oz9aEH8l",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1952,1960,1965}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Plant Ecology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/pGVva2em",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1973..1974,2002..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Wood Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/pLKpSdID",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1910",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Domestic Science and Art",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/pYPsxQHg",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1981",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Vocational-Technical Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/pYr0yFkH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2016/open",
+      "dc:issued": "2018-05-29",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "BS, HBS",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/poo332U0",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1950..1951}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Clothing and Textiles",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/q6R3lPtN",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1954",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-22",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Deprecating because this is not a degree field.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Dairy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/qT5i2kys",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1960..1962}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Dairy and Animal Husbandry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/qTOVpSoV",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1960",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields"
+        }
+      ],
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-07-07",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Typo for Communication Engineering.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Communications Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/qqAex7Ui",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1965..1967}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Meteorology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/qyorwK13",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1961,1963..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Food Science and Technology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/rS6CpxMu",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1953,1966..1977,1981,1983,1985..1986,1989..1999,2001..2010}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Genetics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/rToahU2m",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2015,2017}",
+      "dc:issued": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-07-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Earth Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/rmbLfAPt",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1986..1987,1989,1991,1993,1995..2001,2003..2004,2006..2009,2012..2013,2015..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mathematics Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ru7QqFTc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1934,1941,1950}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Paleontology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/sJNzapHd",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1970,1974,1976..1977,1980..1982,1988,1991..1992,1994,1998..1999,2005..2011}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Ocean Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/sJvBNFOf",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1978..1999,2001..2005}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Family Resource Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/sLs4DrSq",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1970..1973}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanical and Nuclear Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/sNFE6MNj",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2008..2009,2011..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Water Resources Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/sVdyBCqg",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2001",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Ecology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tBpACMAj",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2002..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Creative Writing",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tBtTFZYR",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1908..1911,1921,1929,1932,1935..1943,1946..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tYBNnyLj",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1947,1950..1951,1966..1982,1984..1986,1988..1989,1991..1993,1996..2003,2005..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Science Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tcOW28Iw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1963..1965,1967..1970,1973,1975..1976,1978,1980..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-23",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "MA, MS, PhD",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Botany and Plant Pathology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tgd2Kird",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1978,1981..1987,1989,1991..1996,1998..2001,2003..2016}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "College Student Services Administration",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tkGh2Mcx",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1951,1955,1957..1959,1962,1966,1972..1979,1983..1984,1986..1990,1992,1996}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Health Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/tkxA1XNQ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2021",
+      "dc:issued": {
+        "@value": "2021-03-24",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2021-03-24",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Urban Forestry",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/u3hgeDG5",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1928,1930,1932..1933,1935..1941,1943,1947..1981,1983..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Physics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/uWcU7XNs",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1994,1998..1999,2003,2015..2021}",
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Anthropology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/urkrkTUy",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1952",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Animal Nutrition",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/usefpL66",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1987",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Trade and Industrial Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/ustgFwKe",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1959..1962,1965..1966}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Food and Dairy Technology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/vBwQByyF",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1966,1978,1986,1990,1994,1999}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Ecology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/viiMQyka",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1995",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Family Studies",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/vljObjBO",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2018-06-01",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-06-01",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Environmental Arts and Humanities",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/vq3hDs8c",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1973..1975}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanical and Metallurgical Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/vtOOSWkG",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2016..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Kinesiology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/wSFbCzAA",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1977",
+      "dc:isReplacedBy": [
+        "http://opaquenamespace.org/ns/osuDegreeFields/UFS6fuiE",
+        {
+          "@id": "http://opaquenamespace.org/ns/osuDegreeFields/UFS6fuiE"
+        }
+      ],
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2020-01-30",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Biochemistry/Biophysics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/wXevYGag",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1993",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Curriculum and Instruction",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/whlCjwts",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1968",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mathematics (Computer Science)",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/wjumKmKM",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2011,2013}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Atmospheric Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/wtcwVchw",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1915..1916}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agronomy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/wzOLMDwF",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1991..2007}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Bioresource Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/x9RZOrc2",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2018",
+      "dc:issued": {
+        "@value": "2018-06-10",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-06-10",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Fisheries and Wildlife Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/xNNuoLpc",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1983",
+      "dc:issued": {
+        "@value": "2018-11-05",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-11-05",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Resource Recreation Management",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/xQklC4xJ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1989",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Post-Secondary Education",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/xVaavcnH",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1975..2013}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Agricultural and Resource Economics",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/xsouZrPY",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1972..2017}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Soil Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/y2iLjlMs",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{2011,2014,2016}",
+      "dc:isReplacedBy": {
+        "@id": "http://opaquenamespace.org/ns/osuDegreeFields/"
+      },
+      "dc:issued": "2017-08-03",
+      "dc:modified": {
+        "@value": "2020-09-08",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "Deprecating because Water Resources Science is the correct term.",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Water Resource Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/y5swqZa3",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1963..1969}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Mechanical and Industrial Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/yByL0ezS",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1989,1991..1995,2004,2011}",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Industrial and Manufacturing Engineering",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/yPhygIqZ",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "{1990,1993,2017}",
+      "dc:issued": [
+        "2017-08-03",
+        {
+          "@value": "2017-08-03",
+          "@type": "xsd:date"
+        }
+      ],
+      "dc:modified": {
+        "@value": "2018-05-22",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Philosophy",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/yo7zxL2j",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2021/open",
+      "dc:issued": {
+        "@value": "2021-09-17",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2021-09-17",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Social Science",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/yx7BL9lj",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2016",
+      "dc:issued": {
+        "@value": "2017-11-13",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2017-11-13",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Pharmaceutical Sciences",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/zfttV2nC",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "1960",
+      "dc:issued": {
+        "@value": "2017-08-03",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Forest Entomology",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/zpOVtGva",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017",
+      "dc:issued": {
+        "@value": "2018-05-16",
+        "@type": "xsd:date"
+      },
+      "dc:modified": {
+        "@value": "2018-05-16",
+        "@type": "xsd:date"
+      },
+      "rdfs:label": {
+        "@value": "Marketing",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://opaquenamespace.org/ns/osuDegreeFields/zpSFtvkU",
+      "@type": [
+        "skos:CorporateName",
+        "rdfs:Resource"
+      ],
+      "dc:date": "2017/open",
+      "dc:issued": "2018-05-17",
+      "dc:modified": {
+        "@value": "2021-09-20",
+        "@type": "xsd:date"
+      },
+      "rdfs:comment": {
+        "@value": "EdM, EdD, PhD",
+        "@language": "en"
+      },
+      "rdfs:label": {
+        "@value": "Adult and Higher Education",
+        "@language": "en"
+      }
+    }
+  ]
+}
