@@ -139,7 +139,14 @@ config.before do |example|
                                                  # Don't use the nested relationship reindexer. This slows everything down quite a bit.
                                                  ->(id:, extent:) {}
                                                end
-  end
+
+    stub_request(:get, 'opaquenamespace.org/ns/osuDegreeFields.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+      .to_return(status: 200, body: file_fixture('osuDegreeFields.jsonld').read, headers: {})
+    stub_request(:get, 'opaquenamespace.org/ns/osuAcademicUnits.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+      .to_return(status: 200, body: file_fixture('osuAcademicUnits.jsonld').read, headers: {})
+end
 
   config.before(:all, type: :feature) do
     # Assets take a long time to compile. This causes two problems:
@@ -150,12 +157,6 @@ config.before do |example|
     # Precompile the assets to prevent these issues.
     visit '/assets/application.css'
     visit '/assets/application.js'
-    stub_request(:get, 'opaquenamespace.org/ns/osuDegreeFields.jsonld')
-      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
-      .to_return(status: 200, body: file_fixture('osuDegreeFields.jsonld').read, headers: {})
-    stub_request(:get, 'opaquenamespace.org/ns/osuAcademicUnits.jsonld')
-      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
-      .to_return(status: 200, body: file_fixture('osuAcademicUnits.jsonld').read, headers: {})
   end
 
   config.after do
