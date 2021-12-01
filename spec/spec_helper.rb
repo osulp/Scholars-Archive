@@ -11,6 +11,8 @@ require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
 require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w[solr-test fcrepo-test])
+
 require 'equivalent-xml'
 require 'database_cleaner'
 require 'active_fedora/cleaner'
@@ -137,7 +139,14 @@ config.before do |example|
                                                  # Don't use the nested relationship reindexer. This slows everything down quite a bit.
                                                  ->(id:, extent:) {}
                                                end
-  end
+
+    stub_request(:get, 'opaquenamespace.org/ns/osuDegreeFields.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+      .to_return(status: 200, body: file_fixture('osuDegreeFields.jsonld').read, headers: {})
+    stub_request(:get, 'opaquenamespace.org/ns/osuAcademicUnits.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+      .to_return(status: 200, body: file_fixture('osuAcademicUnits.jsonld').read, headers: {})
+end
 
   config.before(:all, type: :feature) do
     # Assets take a long time to compile. This causes two problems:
