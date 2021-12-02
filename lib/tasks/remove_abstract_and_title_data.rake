@@ -69,7 +69,7 @@ namespace :scholars_archive do
           if orm.save
 
             logger.info "Graph saved successfully. Setting records abstract to be empty."
-            record.title = []
+            record.abstract = []
 
             logger.info "Saving record"
             record.save
@@ -79,7 +79,7 @@ namespace :scholars_archive do
         # If unordered abstracts to delete exist BUT there were no ordered abstracts
         elsif !record.resource.graph.query(abstract_statement).statements.empty? && record.resource.graph.query(nested_abstract_statement).statements.empty?
           logger.error "Skipping work #{record.id} because of missing abstract data"
-          logger.error "#{record.id}: #{record.resource.graph.query(abstract_statement).statements.count} ordered abstracts found"
+          logger.error "#{record.id}: #{record.resource.graph.query(abstract_statement).statements.count} abstracts found"
           logger.error "#{record.id}: #{record.resource.graph.query(nested_abstract_statement).statements.count} ordered abstracts found"
         end
       end
