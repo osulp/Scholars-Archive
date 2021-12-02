@@ -1,8 +1,12 @@
 $(document).ready(function () {
-  $('.required').each(function(){
+  $('input.required').each(function(){
     $(this).keyup(function(){
-      if ($(this).is(":focus")&& $(this).val() == "") {
-	$('#with_files_submit').attr("disabled","disabled");
+      numEmpty = $('input.required').filter(function () {
+        return $.trim($(this).val()).length == 0
+      }).length
+
+      if (numEmpty > 0) {
+	      $('#with_files_submit').attr("disabled","disabled");
       }
     });
   });
