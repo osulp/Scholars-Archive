@@ -16,7 +16,7 @@ module ScholarsArchive
       when 'UndergraduateThesisOrProject'
         select_all_options.sort.select! { |opt| opt.first.include?('Bachelor\'s') }
       when 'GraduateProject'
-        select_all_options.sort.select! { |opt| opt.first.include?('Master\'s') }
+        select_all_options.sort.select! { |opt| opt.first.include?('Master\'s') || opt.first.include?('Certificate') }
       when 'GraduateThesisOrDissertation'
         select_all_options.sort.select! { |opt| opt.first.include?('Doctoral') || opt.first.include?('Master\'s') }
       when 'HonorsCollegeThesis'
