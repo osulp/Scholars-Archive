@@ -65,7 +65,6 @@ services:
       bundle exec puma -C config/puma/production.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000"
     depends_on:
       - db
-      - db_test
       - solr
       - fcrepo
       - redis
@@ -81,7 +80,6 @@ services:
     command: sh -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
-      - db_test
       - solr
       - fcrepo
       - redis
