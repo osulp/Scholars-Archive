@@ -35,18 +35,28 @@ services:
   server: &server
     <<: *app
     environment:
+      - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
+      - BROWSEEVERYTHING_FILESYSTEM_PATH='/tmp/browse-everything'
+      - FITS_PATH=/opt/fits/fits.sh
+      - RAILS_CACHE_STORE_URL=memcache
       - RAILS_ENV=${RAILS_ENV}
-      - FITS_PATH=/opt/fits-1.5.0/fits.sh
-      - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
+      - RAILS_LOG_TO_STDOUT=true
+      - SCHOLARSARCHIVE_ADMIN_EMAIL='noreply@FQDN'
+      - SCHOLARSARCHIVE_CACHE_TIMEOUT='365'
       - SCHOLARSARCHIVE_DB_HOST=db
-      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo
-      - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
+      - SCHOLARSARCHIVE_DB_PASSWORD='12341234'
+      - SCHOLARSARCHIVE_DB_PORT='3306'
+      - SCHOLARSARCHIVE_DB_USERNAME=root
+      - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
+      - SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG=/data/revisions.log
+      - SCHOLARSARCHIVE_SECRET_KEY_BASE=bobross1234bobross1234bobross1234bobross1234bobross1234
+      - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo:8080/fcrepo/rest
+      - SCHOLARSARCHIVE_PATH_PUBLIC=./public
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
-      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
-      - SCHOLARSARCHIVE_PATH_PUBLIC=./public
-      - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
-      - RAILS_CACHE_STORE_URL=memcache
+      - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/development/sparql
+      - TMPDIR=/data/tmp/tmpdir
     # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
     # have been run already have been run and if so it just starts the server without the first three commands
     # taking time to run.
@@ -83,21 +93,29 @@ services:
   test: &test
     <<: *server
     environment:
-      - RAILS_ENV=test
+      - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
+      - BROWSEEVERYTHING_FILESYSTEM_PATH='/tmp/browse-everything'
+      - FITS_PATH=/opt/fits/fits.sh
       - RAILS_CACHE_STORE_URL=memcache
+      - RAILS_ENV=test
+      - RAILS_LOG_TO_STDOUT=true
+      - SCHOLARSARCHIVE_ADMIN_EMAIL='noreply@FQDN'
+      - SCHOLARSARCHIVE_CACHE_TIMEOUT='365'
+      - SCHOLARSARCHIVE_DB=test
       - SCHOLARSARCHIVE_DB_HOST=db_test
-      - SCHOLARSARCHIVE_DB_USERNAME=root
       - SCHOLARSARCHIVE_DB_PASSWORD=12341234
       - SCHOLARSARCHIVE_DB_PORT=3306
-      - SCHOLARSARCHIVE_DB=test
+      - SCHOLARSARCHIVE_DB_USERNAME=root
       - SCHOLARSARCHIVE_DEFAULT_ADMIN_SET='Default Admin Set'
+      - SCHOLARSARCHIVE_DEPLOYED_REVISION_LOG=/data/revisions.log
       - SCHOLARSARCHIVE_FEDORA_URL=http://fcrepo-test:8080/fcrepo/rest
-      - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
       - SCHOLARSARCHIVE_SECRET_KEY_BASE=bobross1234bobross1234bobross1234bobross1234bobross1234
+      - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE=blazegraph
-      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
+      - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/test/sparql
+      - TMPDIR=/data/tmp/tmpdir
     depends_on:
       - db_test
       - solr-test
