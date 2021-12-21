@@ -28,12 +28,13 @@ module ScholarsArchive
     config.autoload_paths += %W(#{config.root}/lib)
 
     # load and inject local_env.yml key/values into ENV
-    config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'local_env.yml')
-      YAML.load(ERB.new(File.read(env_file)).result).each do |key, value|
-        ENV[key.to_s] = value
-      end if File.exists?(env_file)
-    end
+    # comment out for now, ENV shoulbe be defined in docker-compose.yml
+    # config.before_configuration do
+    #   env_file = File.join(Rails.root, 'config', 'local_env.yml')
+    #   YAML.load(ERB.new(File.read(env_file)).result).each do |key, value|
+    #     ENV[key.to_s] = value
+    #   end if File.exists?(env_file)
+    # end
 
     config.active_job.queue_adapter = ENV.fetch('ACTIVE_JOB_QUEUE_ADAPTER', 'sidekiq').to_sym
 

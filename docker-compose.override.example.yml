@@ -8,6 +8,17 @@ services:
     ports:
       - 80:80
   server:
+    environment:
+      - HTTP_API_AUTHENTICATION_TOKEN='12345678901234567890'
+      - HTTP_API_AUTHENTICATION_USERNAME='bobross@FQDN'
+      - OSU_API_HOST=https://fqdn.to.server
+      - OSU_API_CLIENT_ID=abc1234
+      - OSU_API_CLIENT_SECRET=def5678
+      - OSU_API_PERSON_REFRESH_SECONDS=2592000
+      - SCHOLARSARCHIVE_CAS_BASE_URL='https://FQDN/cas'
+      - SCHOLARSARCHIVE_CAS_VALIDATE_URL='https://FQDN/cas/samlValidate'
+      - SCHOLARSARCHIVE_RECAPTCHA_SECRET_KEY='asdfasdfasdfasdfasdfadsfasdfadfsfa'
+      - SCHOLARSARCHIVE_RECAPTCHA_SITE_KEY='asdfasdfadsfasdfasdfasdfasdfasdfad'
     # Uncomment the following line to run the web application ready for a debugger (RubyMine, VSCode) to attach
     #command: bash -c "rm -f tmp/pids/server.pid && bundle exec rdebug-ide --host 0.0.0.0 --port 1234 -- bin/rails server -p 3000 -b 0.0.0.0"
     ports:
@@ -19,3 +30,9 @@ services:
     networks:
       internal:
       external:
+  solr-dev:
+    ports:
+      - 8983:8983
+  fcrepo:
+    ports:
+      - 8080:8080
