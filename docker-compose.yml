@@ -31,7 +31,7 @@ services:
       external:
 
   ##
-  # Run the application in the currently set RAILS_ENV, set to development by default in the .env file.
+  # Run the application in RAILS_ENV=development mode
   server: &server
     <<: *app
     environment:
@@ -39,7 +39,7 @@ services:
       - BROWSEEVERYTHING_FILESYSTEM_PATH='/tmp/browse-everything'
       - FITS_PATH=/opt/fits/fits.sh
       - RAILS_CACHE_STORE_URL=memcache
-      - RAILS_ENV=${RAILS_ENV}
+      - RAILS_ENV=development
       - RAILS_LOG_TO_STDOUT=true
       - SCHOLARSARCHIVE_ADMIN_EMAIL='noreply@FQDN'
       - SCHOLARSARCHIVE_CACHE_TIMEOUT='365'
@@ -54,7 +54,7 @@ services:
       - SCHOLARSARCHIVE_PATH_PUBLIC=./public
       - SCHOLARSARCHIVE_REDIS_HOST=redis
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
-      - SCHOLARSARCHIVE_SOLR_URL=http://solr:8983
+      - SCHOLARSARCHIVE_SOLR_URL=http://solr-dev:8983
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/development/sparql
       - TMPDIR=/data/tmp/tmpdir
     # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
@@ -65,7 +65,7 @@ services:
       bundle exec puma -C config/puma/production.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000"
     depends_on:
       - db
-      - solr
+      - solr-dev
       - fcrepo
       - redis
       - memcache
@@ -80,7 +80,7 @@ services:
     command: sh -c "./build/install_gems.sh && bundle exec sidekiq"
     depends_on:
       - db
-      - solr
+      - solr-dev
       - fcrepo
       - redis
       - blazegraph
@@ -142,25 +142,29 @@ services:
       - ./config/blazegraph/RWStore.properties:/RWStore.properties
 
   ##
-  # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
+  # Run SOLR, precreating a core based on the running container, persists data across sessions in a named volume.
   solr: &solr
     image: solr:6-slim
     expose:
       - 8983
+    networks:
+      internal:
+  solr-dev:
+    <<: *solr
     volumes:
       - solr:/opt/solr/server/solr/mycores
       - ./solr/conf:/opt/solr/server/solr/configsets/_default/conf
+    environment:
+      - OOM=crash
+      - SOLR_HEAP=2g
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
-      - hydra-${RAILS_ENV}
-    networks:
-      internal:
-
-  ##
-  # Run SOLR, precreating a core related to the RAILS_ENV currently set, persists data across sessions in a named volume.
+      - hydra-development
   solr-test:
     <<: *solr
+    volumes:
+      - ./solr/conf:/opt/solr/server/solr/configsets/_default/conf
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
