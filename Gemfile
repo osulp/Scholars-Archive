@@ -14,7 +14,9 @@ gem 'puma', '~> 5.5.1'
 gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails', '~> 2.1'
+# Use Chosen.js to render type-ahead advanced search facets
+gem 'chosen-rails', '~> 1.9'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
