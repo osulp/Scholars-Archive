@@ -20,6 +20,10 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
     # We want to find the facets available for the current search, but:
     # * IGNORING current query (add in facets_for_advanced_search_form filter)
     # * IGNORING current advanced search facets (remove add_advanced_search_to_solr filter)
+    blacklight_config.facet_fields.each do |_k, v|
+      v.delete(:limit)
+    end
+
     response, _ = search_results(params) do |search_builder|
       search_builder
     end
