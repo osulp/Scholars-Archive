@@ -5,6 +5,7 @@ module Hyrax
   class ContactFormController < ApplicationController
     include ContactFormRecaptchaBehavior
     before_action :build_contact_form
+    invisible_captcha only: [:create]
     layout 'homepage'
 
     def new; end
