@@ -25,7 +25,7 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
     end
 
     response, _ = search_results(params) do |search_builder|
-      search_builder
+      search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
     end
 
     response
