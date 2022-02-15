@@ -31,7 +31,7 @@ class CatalogController < ApplicationController
       url_key: 'advanced',
       query_parser: 'dismax',
       form_solr_parameters: {
-        'facet.limit' => -1,
+        'facet.limit' => 1_000,
         'facet.sort' => 'index' # sort by byte order of values
       },
       form_facet_partial: 'advanced_search_facets_as_select'
