@@ -11,7 +11,6 @@ gem 'rails', '~> 5.2.5'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 5.5.1'
-gem 'puma_worker_killer'
 
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
