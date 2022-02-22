@@ -109,6 +109,7 @@ gem 'yabeda-prometheus'             # present metrics in prometheus format
 gem 'yabeda-puma-plugin'            # instrument Puma workers
 gem 'yabeda-rails'                  # instrument the Rails framework
 gem 'yabeda-sidekiq'                # instrument sidekiq workers and jobs
+#gem 'puma-metrics'                  # directly expose puma metrics endpoint
 
 ########################################
 
