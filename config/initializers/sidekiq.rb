@@ -18,5 +18,5 @@ Sidekiq.configure_client do |s|
 end
 
 Sidekiq.configure_server do |_config|
-  Yabeda::Prometheus::Exporter.start_metrics_server! logger: Rails.application.logger
+  Yabeda::Prometheus::Exporter.start_metrics_server! logger: Rails.logger
 end
