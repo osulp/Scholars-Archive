@@ -62,8 +62,7 @@ services:
     # have been run already have been run and if so it just starts the server without the first three commands
     # taking time to run.
     command: >
-      sh -c "./build/entrypoint.sh &&
-      bundle exec puma -C config/puma/production.rb --dir /data --pidfile /data/tmp/pids/puma.pid -b tcp://0.0.0.0:3000"
+      sh -c "/data/build/entrypoint.sh"
     depends_on:
       - db
       - solr-dev
