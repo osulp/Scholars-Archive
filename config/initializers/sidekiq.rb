@@ -16,3 +16,7 @@ end
 Sidekiq.configure_client do |s|
   s.redis = redis_conn
 end
+
+Sidekiq.configure_server do |_config|
+  Yabeda::Prometheus::Exporter.start_metrics_server! logger: Rails.application.logger
+end
