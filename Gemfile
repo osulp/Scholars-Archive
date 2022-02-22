@@ -94,10 +94,23 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.3.0'
 
-# Monitoring and Observability
-gem 'honeycomb-beeline', '>= 2.4.0'
-gem 'libhoney', '>= 1.18.0'
-gem 'okcomputer'
+########################################
+### Monitoring and Observability
+# Honeycomb
+gem 'honeycomb-beeline', '>= 2.4.0' # Honeycomb Beeline for autoinstrumenting
+                                    # rails, faraday, redis, railtie, rake,
+                                    # active_support and rack
+gem 'libhoney', '>= 1.18.0'         # low level honeycomb middleware
+
+# Yabeda
+gem 'yabeda'                        # Yabeda metrics framework
+gem 'yabeda-http_requests'          # instrument HTTP requests by path/method
+gem 'yabeda-prometheus'             # present metrics in prometheus format
+gem 'yabeda-puma-plugin'            # instrument Puma workers
+gem 'yabeda-rails'                  # instrument the Rails framework
+gem 'yabeda-sidekiq'                # instrument sidekiq workers and jobs
+
+########################################
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
 gem 'nokogiri', '~> 1.12.5'
