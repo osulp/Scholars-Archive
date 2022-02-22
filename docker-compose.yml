@@ -73,6 +73,7 @@ services:
       - workers
     expose:
       - 3000
+      - 9395
 
   # Runs sidekiq to process background jobs
   workers:
