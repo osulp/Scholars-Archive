@@ -7,3 +7,5 @@ preload_app!
 environment 'development'
 # Allow for `touch tmp/restart.txt` to force puma to restart the app
 plugin :tmp_restart
+plugin :yabeda_prometheus
+prometheus_exporter_url "tcp://0.0.0.0:9395/metrics"
