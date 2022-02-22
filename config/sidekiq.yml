@@ -6,6 +6,10 @@ staging:
   :concurrency: <%= ENV.fetch('SCHOLARSARCHIVE_SIDEKIQ_THREADS', 16) %>
   :pidfile: /tmp/sidekiq.pid
   :logfile: /proc/self/fd/1
+development:
+  :concurrency: <%= ENV.fetch('SCHOLARSARCHIVE_SIDEKIQ_THREADS', 16) %>
+  :pidfile: /tmp/sidekiq.pid
+  :logfile: /proc/self/fd/1
 production:
   :concurrency: <%= ENV.fetch('SCHOLARSARCHIVE_SIDEKIQ_THREADS', 16) %>
   :pidfile: tmp/pids/sidekiq.pid
