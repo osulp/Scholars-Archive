@@ -100,7 +100,7 @@ gem 'libhoney', '>= 1.18.0'
 gem 'okcomputer'
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
-gem 'nokogiri', '~> 1.12.5'
+gem 'nokogiri', '~> 1.13.2'
 
 group :development do
   gem 'listen', '~> 3.0.5'
