@@ -146,7 +146,7 @@ services:
   ##
   # Run SOLR, precreating a core based on the running container, persists data across sessions in a named volume.
   solr: &solr
-    image: solr:6-slim
+    image: solr:8-slim
     expose:
       - 8983
     networks:
@@ -154,7 +154,7 @@ services:
   solr-dev:
     <<: *solr
     volumes:
-      - solr:/opt/solr/server/solr/mycores
+      - solr:/var/solr/data
       - ./solr/conf:/opt/solr/server/solr/configsets/_default/conf
     environment:
       - OOM=crash
