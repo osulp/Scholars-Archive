@@ -8,13 +8,13 @@
   end
 
   def send_request_transfer_message_as_part_of_update
-	message = I18n.t('hyrax.notifications.proxy_deposit_request.transfer_on_update.message', status: status)
-	if receiver_comment.present?
-	  message += " " + I18n.t('hyrax.notifications.proxy_deposit_request.transfer_on_update.comments',
+	  message = I18n.t('hyrax.notifications.proxy_deposit_request.transfer_on_update.message', status: status)
+	  if receiver_comment.present?
+	    message += " " + I18n.t('hyrax.notifications.proxy_deposit_request.transfer_on_update.comments',
 				  receiver_comment: receiver_comment)
-	end
-	Hyrax::MessengerService.deliver(receiving_user, sending_user, message,
-					I18n.t('hyrax.notifications.proxy_deposit_request.transfer_on_update.subject',
-					       status: status))
-      end
+	  end
+	  Hyrax::MessengerService.deliver(receiving_user, sending_user, message,
+			I18n.t('hyrax.notifications.proxy_deposit_request.transfer_on_update.subject',
+					status: status))
+  end
 end
