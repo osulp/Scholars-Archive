@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-# OVERRIDE to implement the characterization fixes from: https://github.com/samvera/hyrax/pull/5475
 
+# OVERRIDE to implement the characterization fixes from: https://github.com/samvera/hyrax/pull/5475
+# From Hyrax. Characterize a file and set its metadata
 class CharacterizeJob < Hyrax::ApplicationJob
   queue_as Hyrax.config.ingest_queue_name
 
@@ -11,6 +12,7 @@ class CharacterizeJob < Hyrax::ApplicationJob
   # @param [String, NilClass] filepath the cached file within the Hyrax.config.working_path
   def perform(file_set, file_id, filepath = nil)
     raise "#{file_set.class.characterization_proxy} was not found for FileSet #{file_set.id}" unless file_set.characterization_proxy?
+
     filepath = Hyrax::WorkingDirectory.find_or_retrieve(file_id, file_set.id) unless filepath && File.exist?(filepath)
     characterize(file_set, file_id, filepath)
     CreateDerivativesJob.perform_later(file_set, file_id, filepath)

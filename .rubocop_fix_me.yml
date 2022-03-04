@@ -55,6 +55,7 @@ Metrics/MethodLength:
     - 'app/models/concerns/scholars_archive/has_solr_labels.rb'
     - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
     - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
+    - 'app/jobs/characterize_job.rb'
     - 'app/jobs/migrate_creators_no_handles_job.rb'
     - 'app/jobs/reindex_everything_job.rb'
     - 'app/jobs/reindex_model_job.rb'
