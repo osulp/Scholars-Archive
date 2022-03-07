@@ -4,6 +4,10 @@
 #  `rails generate hyrax:work OpenEducationalResource`
 class OpenEducationalResource < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
+  # Adds behaviors for hyrax-doi plugin.
+  include Hyrax::DOI::DOIBehavior
+  # Adds behaviors for DataCite DOIs via hyrax-doi plugin.
+  include Hyrax::DOI::DataCiteDOIBehavior
   include ::ScholarsArchive::OerMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::HasSolrLabels
