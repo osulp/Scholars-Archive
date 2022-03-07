@@ -46,11 +46,6 @@ gem 'blacklight_advanced_search'
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.5.1'
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.8.0'
-gem 'capistrano-passenger'
-gem 'capistrano-rails'
-gem 'capistrano-rbenv'
-gem 'capistrano3-puma', '~> 5.0.4'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
