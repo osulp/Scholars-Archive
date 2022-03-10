@@ -44,7 +44,7 @@ module HyraxHelper
     # Create a list of words to always be lowercase
     # Some more affixes could be added from here:
     #   https://en.wikipedia.org/wiki/List_of_family_name_affixes
-    force_lower = %w[de la jr jr. du del della d' van\ der von van]
+    force_lower = %w[de la las los jr jr. du del della d' van\ der von van]
     # Capitalize the first letter of each word
     value = value.titleize
     # Downcase words in our list
