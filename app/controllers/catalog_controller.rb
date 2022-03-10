@@ -61,7 +61,7 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     config.add_facet_field 'academic_affiliation_label_ssim', label: 'Academic Affiliation', limit: 5, helper_method: :parsed_label_uri
-    config.add_facet_field 'contributor_advisor_sfacet', label: 'Advisor', limit: 5
+    config.add_facet_field 'contributor_advisor_sfacet', label: 'Advisor', limit: 5, helper_method: :diacritic_facet_denorm_affixes
 
     config.add_facet_field(solr_name('graduation_year', :facetable)) do |field|
       field.label = 'Commencement Year'
@@ -72,8 +72,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('contributor_committeemember', :facetable), limit: 5, label: 'Committee Member'
     config.add_facet_field solr_name('conference_name', :facetable), limit: 5, label: 'Conference Name'
     config.add_facet_field solr_name('conference_section', :facetable), limit: 5, label: 'Conference Section/Track'
-    config.add_facet_field 'creator_sfacet', label: 'Creator', limit: 5
-    config.add_facet_field 'contributor_sfacet', label: 'Contributor', limit: 5
+    config.add_facet_field 'creator_sfacet', label: 'Creator', limit: 5, helper_method: :diacritic_facet_denorm_affixes
+    config.add_facet_field 'contributor_sfacet', label: 'Contributor', limit: 5, helper_method: :diacritic_facet_denorm_affixes
 
 #    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
     config.add_facet_field('date_facet_yearly_ssim') do |field|
