@@ -15,12 +15,12 @@ module ScholarsArchive
         if !SolrDocument.find(work_id)['resource_type_tesim'].include?('Dataset')
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n #{comment}"
         else
-          "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository.\r\n\n
-
-           Reviews typically take several days. If you have a deadline that we should know of please send a message to researchdataservices@oregonstate.edu.\r\n\n
-
-           Your temporary DOI is https://doi.org/10.7267/#{work_id} . This DOI will not be live until the dataset is approved, but it won't change.\r\n\n
-
+          "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository.<br>
+           <br>
+           Reviews typically take several days. If you have a deadline that we should know of please send a message to researchdataservices@oregonstate.edu.<br>
+           <br>
+           Your temporary DOI is https://doi.org/10.7267/#{work_id} . This DOI will not be live until the dataset is approved, but it won't change.<br>
+           <br>
            Visit https://ir.library.oregonstate.edu/ and go to your dashboard for more info.".html_safe
         end
       end
