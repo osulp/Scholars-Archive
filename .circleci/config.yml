@@ -142,7 +142,7 @@ jobs:
           command: gem install --force bundler
       - run:
           name: Bundle update srsly again
-          command: bundle check --without production staging --path=vendor/bundle || bundle install --without production staging --path=vendor/bundle --jobs=4 --retry=3
+          command: bundle check --without production --path=vendor/bundle || bundle install --without production --path=vendor/bundle --jobs=4 --retry=3
       - run:
           name: Create and load MySQL data
           command: bundle exec rake db:create db:schema:load --trace
