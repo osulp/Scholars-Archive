@@ -92,7 +92,14 @@ gem 'rubyzip', '~> 1.3.0'
 # Monitoring and Observability
 gem 'honeycomb-beeline', '>= 2.4.0'
 gem 'libhoney', '>= 1.18.0'
-gem 'okcomputer'
+
+# Yabeda
+gem 'yabeda'
+gem 'yabeda-prometheus'
+gem 'yabeda-sidekiq'
+gem 'yabeda-rails'
+gem 'yabeda-puma-plugin'
+gem 'yabeda-http_requests'
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
 gem 'nokogiri', '~> 1.12.5'
