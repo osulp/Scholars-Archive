@@ -90,8 +90,8 @@ gem 'riiif', '~> 1.1'
 gem 'rubyzip', '~> 1.3.0'
 
 # Monitoring and Observability
-gem 'honeycomb-beeline', '>= 2.4.0'
-gem 'libhoney', '>= 1.18.0'
+gem 'honeycomb-beeline', '>= 2.10.0'
+gem 'libhoney', '>= 2.2.0'
 
 # Yabeda
 gem 'yabeda'
