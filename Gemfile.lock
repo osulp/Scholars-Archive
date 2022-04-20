@@ -717,7 +717,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.6)
     pul_uv_rails (2.0.1)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     qa (5.6.0)
       activerecord-import
@@ -1114,7 +1114,7 @@ DEPENDENCIES
   nokogiri (~> 1.12.5)
   poltergeist
   pry-rails
-  puma (~> 5.6.2)
+  puma (~> 5.6.4)
   rails (~> 5.2.5)
   rails-controller-testing
   recaptcha
