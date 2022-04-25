@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
-gem 'puma', '~> 5.5.1'
+gem 'puma', '~> 5.6.2'
 
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
@@ -46,11 +46,6 @@ gem 'blacklight_advanced_search'
 # MySQL for staging/production servers
 gem 'mysql2', '~> 0.5.1'
 # Use Capistrano for deployment
-gem 'capistrano', '~> 3.8.0'
-gem 'capistrano-passenger'
-gem 'capistrano-rails'
-gem 'capistrano-rbenv'
-gem 'capistrano3-puma', '~> 5.0.4'
 gem 'hydra-role-management'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -96,9 +91,16 @@ gem 'riiif', '~> 1.1'
 gem 'rubyzip', '~> 1.3.0'
 
 # Monitoring and Observability
-gem 'honeycomb-beeline', '>= 2.4.0'
-gem 'libhoney', '>= 1.18.0'
-gem 'okcomputer'
+gem 'honeycomb-beeline', '>= 2.10.0'
+gem 'libhoney', '>= 2.2.0'
+
+# Yabeda
+gem 'yabeda'
+gem 'yabeda-prometheus'
+gem 'yabeda-sidekiq'
+gem 'yabeda-rails'
+gem 'yabeda-puma-plugin'
+gem 'yabeda-http_requests'
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
 gem 'nokogiri', '~> 1.12.5'

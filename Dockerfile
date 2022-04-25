@@ -69,7 +69,7 @@ FROM gems as code
 ADD . /data
 
 # Clean up stuff not needed to run in the cluster
-RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile /data/Capfile \
+RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile \
   /data/solr/conf* /data/coverage /data/config/local_env.* /data/config/mysql \
   /data/config/solr_wrapper_test.yml /data/config/fcrepo_wrapper_test.yml \
   /data/config/blazegraph /data/config/puma/development.rb \
