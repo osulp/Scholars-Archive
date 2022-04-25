@@ -229,7 +229,7 @@ workflows:
           name: build_and_push_beavernetes
           requires:
             - test
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master
           repo: sa_web
