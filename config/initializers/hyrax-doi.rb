@@ -9,7 +9,7 @@ Hyrax.config.identifier_registrars = { datacite: Hyrax::DOI::DataCiteRegistrar }
 
 ## For DataCite DOIs
 # Test mode will use the DataCite test environment
-Hyrax::DOI::DataCiteRegistrar.mode = :test # Possible options are [:production, :test]
-Hyrax::DOI::DataCiteRegistrar.prefix = ENV['DATACITE_PREFIX']
-Hyrax::DOI::DataCiteRegistrar.username = ENV['DATACITE_USERNAME']
-Hyrax::DOI::DataCiteRegistrar.password = ENV['DATACITE_PASSWORD']
+Hyrax::DOI::DataCiteRegistrar.mode = ENV.fetch('DATACITE_MODE', :test).to_sym # Possible options are [:production, :test]
+Hyrax::DOI::DataCiteRegistrar.prefix = ENV.fetch('DATACITE_PREFIX', '')
+Hyrax::DOI::DataCiteRegistrar.username = ENV.fetch('DATACITE_USERNAME', '')
+Hyrax::DOI::DataCiteRegistrar.password = ENV.fetch('DATACITE_PASSWORD', '')
