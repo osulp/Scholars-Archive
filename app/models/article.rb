@@ -4,10 +4,6 @@
 #  `rails generate hyrax:work Article`
 class Article < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
-  # Adds behaviors for hyrax-doi plugin.
-  include Hyrax::DOI::DOIBehavior
-  # Adds behaviors for DataCite DOIs via hyrax-doi plugin.
-  include Hyrax::DOI::DataCiteDOIBehavior
   include ::ScholarsArchive::ArticleMetadata
   include ::ScholarsArchive::DefaultMetadata
   include ScholarsArchive::HasSolrLabels
