@@ -655,8 +655,8 @@ GEM
       addressable (~> 2.0)
       excon
       http (>= 2.0, < 6.0)
-    libv8 (7.3.492.27.1-x86_64-linux)
-    libv8-node (15.14.0.1-x86_64-linux)
+    libv8 (7.3.492.27.1)
+    libv8-node (15.14.0.1)
     link_header (0.0.8)
     linkeddata (3.1.1)
       equivalent-xml (~> 0.6)
@@ -1140,7 +1140,7 @@ GEM
       yabeda (~> 0.6)
 
 PLATFORMS
-  x86_64-linux
+  ruby
 
 DEPENDENCIES
   bagit (~> 0.4.1)
