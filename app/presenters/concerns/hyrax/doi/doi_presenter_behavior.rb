@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 module Hyrax
   module DOI
+    # DOI behavior for Presenter
     module DOIPresenterBehavior
       extend ActiveSupport::Concern
 

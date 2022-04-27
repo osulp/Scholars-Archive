@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 module Hyrax
   module DOI
+    # Behavior for DOI form
     module DOIFormBehavior
       extend ActiveSupport::Concern
 

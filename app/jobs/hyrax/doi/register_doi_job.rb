@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 module Hyrax
   module DOI
+    # Job to Register DOI
     class RegisterDOIJob < ApplicationJob
       queue_as Hyrax.config.ingest_queue_name
 

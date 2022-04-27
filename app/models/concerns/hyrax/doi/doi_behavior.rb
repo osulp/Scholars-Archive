@@ -1,10 +1,12 @@
 # frozen_string_literal: true
+
 module Hyrax
   module DOI
+    # Behavior for DOI on model
     module DOIBehavior
       extend ActiveSupport::Concern
 
-      DOI_REGEX = /\A10\.\d{4,}(\.\d+)*\/[-._;():\/A-Za-z\d]+\z/.freeze
+      DOI_REGEX = %r(\A10\.\d{4,}(\.\d+)*\/[-._;():\/A-Za-z\d]+\z).freeze
 
       included do
         property :datacite_doi, predicate: ::RDF::Vocab::BIBO.doi, multiple: true do |index|
