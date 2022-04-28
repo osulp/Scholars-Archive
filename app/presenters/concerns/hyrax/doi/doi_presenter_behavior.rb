@@ -6,7 +6,7 @@ module Hyrax
     module DOIPresenterBehavior
       extend ActiveSupport::Concern
 
-      def doi
+      def datacite_doi
         solr_document.datacite_doi.present? ? "https://doi.org/#{solr_document.datacite_doi}" : nil
       end
     end
