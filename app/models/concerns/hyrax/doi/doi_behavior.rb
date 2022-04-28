@@ -31,8 +31,8 @@ module Hyrax
       private
 
       def validate_doi
-        Array(doi).each do |doi|
-          errors.add(:doi, "DOI (#{doi}) is invalid.") unless doi.match? DOI_REGEX
+        Array(datacite_doi).each do |doi|
+          errors.add(:datacite_doi, "DOI (#{doi}) is invalid.") unless doi.match? DOI_REGEX
         end
       end
     end
