@@ -20,11 +20,12 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
   git sqlite sqlite-dev mysql mysql-client mysql-dev libressl libressl-dev \
   curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo \
   bash bash-completion java-common openjdk11-jre-headless graphicsmagick \
-  ffmpeg openjpeg-dev openjpeg-tools openjpeg lcms2 lcms2-dev 
+  ffmpeg openjpeg-dev openjpeg-tools openjpeg lcms2 lcms2-dev py3-pip
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
-  echo 'America/Los_Angeles' > /etc/timezone
+  echo 'America/Los_Angeles' > /etc/timezone && \
+  pip install s3cmd
 
 # install libffi 3.2.1
 # https://github.com/libffi/libffi/archive/refs/tags/v3.2.1.tar.gz
