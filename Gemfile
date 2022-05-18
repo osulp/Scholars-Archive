@@ -102,7 +102,7 @@ gem 'yabeda-puma-plugin'
 gem 'yabeda-http_requests'
 
 # Pin nokogiri down because staging doesn't have a new enough version of glibc
-gem 'nokogiri', '~> 1.12.5'
+gem 'nokogiri', '~> 1.13.5'
 
 group :development do
   gem 'listen', '~> 3.0.5'
