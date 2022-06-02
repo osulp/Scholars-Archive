@@ -200,8 +200,10 @@ jobs:
           command: |
             export GIT_SHORT_HASH=$(git rev-parse --short HEAD)
             export DATETIME=$(date "+%Y%m%d%H%M%S")
+            export YABEDA_PROMETHEUS_PATH=/tmp/prom
             echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
+            echo export YABEDA_PROMETHEUS_PATH=/tmp/prom >> $BASH_ENV
       - setup_remote_docker:
           version: 20.10.12
           docker_layer_caching: false
