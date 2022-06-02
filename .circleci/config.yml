@@ -92,7 +92,7 @@ jobs:
           SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
           SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: blazegraph
           SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
-          YABEDA_PROMETHEUS_PATH: /app/tmp/prom
+          YABEDA_PROMETHEUS_PATH: /tmp/prom
       - image: circleci/mysql:5.7.22
         environment:
           MYSQL_ROOT_PASSWORD: monkeys
