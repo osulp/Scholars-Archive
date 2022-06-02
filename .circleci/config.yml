@@ -240,5 +240,5 @@ workflows:
             branches:
               only:
                 - master
-                - infra/*
+                - /infra\/.*/
           repo: sa_web
