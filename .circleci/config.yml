@@ -92,6 +92,7 @@ jobs:
           SECRET_KEY_BASE: bobross1234bobross1234bobross1234bobross1234bobross1234
           SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE: blazegraph
           SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL: http://ci-test:8080/bigdata/namespace/rw/sparql
+          YABEDA_PROMETHEUS_PATH: /app/tmp/prom
       - image: circleci/mysql:5.7.22
         environment:
           MYSQL_ROOT_PASSWORD: monkeys
@@ -130,7 +131,7 @@ jobs:
             curl 'http://localhost:8985/solr/admin/collections?action=CREATE&name=hydra-test&config=hyrax&numShards=1&replicationFactor=1&wt=xml'
       - run:
           name: Create Prometheus Client Data Store
-          command: mkdir -p /data/tmp/prom
+          command: mkdir -p $YABEDA_PROMETHEUS_PATH
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
