@@ -129,6 +129,9 @@ jobs:
             curl -H "Content-type:application/octet-stream" --data-binary @solr_hyrax_config.zip "http://localhost:8985/solr/admin/configs?action=UPLOAD&name=hyrax"
             curl 'http://localhost:8985/solr/admin/collections?action=CREATE&name=hydra-test&config=hyrax&numShards=1&replicationFactor=1&wt=xml'
       - run:
+          name: Create Prometheus Client Data Store
+          command: mkdir -p /data/tmp/prom
+      - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
