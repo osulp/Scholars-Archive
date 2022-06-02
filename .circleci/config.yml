@@ -238,5 +238,7 @@ workflows:
             - test
           filters:
             branches:
-              only: master infra/*
+              only:
+                - master
+                - infra/*
           repo: sa_web
