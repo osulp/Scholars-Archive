@@ -190,6 +190,7 @@ jobs:
     environment:
       DOCKER_LOGIN: admin
       DOCKER_PASSWORD: admin
+      YABEDA_PROMETHEUS_PATH: /tmp/prom
     working_directory: ~/app
     steps:
       - attach_workspace:
