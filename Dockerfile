@@ -1,7 +1,7 @@
 ##########################################################################
-## Dockerfile for SA@OSU 
+## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.5-alpine3.12 as bundler
+FROM ruby:2.6-alpine3.12 as bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -20,7 +20,7 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
   git sqlite sqlite-dev mysql mysql-client mysql-dev libressl libressl-dev \
   curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo \
   bash bash-completion java-common openjdk11-jre-headless graphicsmagick \
-  ffmpeg openjpeg-dev openjpeg-tools openjpeg lcms2 lcms2-dev py3-pip
+  ffmpeg openjpeg-dev openjpeg-tools openjpeg lcms2 lcms2-dev py3-pip gcompat
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
@@ -82,7 +82,7 @@ RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile \
 #USER root
 # Uninstall any dev tools we don't need at runtime
 RUN apk --no-cache update && apk del autoconf automake gcc g++ --purge
-  
+
 ## Precompile assets
 FROM code
 
