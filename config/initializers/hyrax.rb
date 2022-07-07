@@ -77,7 +77,7 @@ Hyrax.config do |config|
   # Leaving it blank will set the start date to when ever the file was uploaded by
   # NOTE: if you have always sent analytics to GA for downloads and page views leave this commented out
   config.analytic_start_date = DateTime.new(2017, 4, 25)
-  
+
   # Enables a link to the citations page for a work
   # Default is false
   # config.citations = false
@@ -265,6 +265,11 @@ Hyrax.config do |config|
   rescue Errno::ENOENT
     config.browse_everything = nil
   end
+end
+
+# Remove :after_fixity_check_failure messages
+Hyrax.config.callback.set(:after_fixity_check_failure) do |_file_set, _checksum_audit_log|
+  nil
 end
 
 Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
