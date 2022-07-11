@@ -20,9 +20,6 @@ gem 'chosen-rails', '~> 1.9'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'mini_racer', platforms: :ruby
-gem 'libv8', '= 7.3.492.27.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -101,8 +98,10 @@ gem 'yabeda-rails'
 gem 'yabeda-puma-plugin'
 gem 'yabeda-http_requests'
 
-# Pin nokogiri down because staging doesn't have a new enough version of glibc
-gem 'nokogiri', '~> 1.12.5'
+# Pin rdf down because Hyrax has a superclass mismatch
+# https://github.com/ruby-rdf/rdf/blob/3.2.5/lib/rdf/model/literal/datetime.rb#L7
+# https://github.com/samvera/active_fedora/blob/v12.1.1/lib/active_fedora.rb#L16
+gem 'rdf', '3.2.4'
 
 group :development do
   gem 'listen', '~> 3.0.5'
