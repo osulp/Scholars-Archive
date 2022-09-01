@@ -139,7 +139,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-mocks'
   gem 'rspec_junit_formatter'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers', '~> 4'
   gem 'simplecov', '>= 0.9'
   gem 'webmock'
 end
