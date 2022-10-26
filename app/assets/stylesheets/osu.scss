@@ -393,6 +393,12 @@ hr.deposit-help {
   .navbar-text {
     margin: 0 15px;
   }
+
+  .navbar-image {
+    margin: -10px 15px;
+    float: right;
+  }
+
   .deployed {
     color: rgba($color: #fff, $alpha: 0.2);
     font-size: 12px;
