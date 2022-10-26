@@ -22,6 +22,12 @@ module Hyrax
       super
     end
 
+    def edit
+      # The first view path is hyrax_doi, overriding our overrides. The third is also hyrax_doi, so we still get their views
+      view_context.view_paths = view_paths.drop(1)
+      super
+    end
+
     private
 
     def ensure_admin!
