@@ -91,14 +91,6 @@ GIT
       solrizer (>= 3.4, < 5)
       tinymce-rails (~> 4.1)
 
-GIT
-  remote: https://github.com/thoughtbot/shoulda-matchers.git
-  revision: 4b160bd19ecca7f97d7ac22dccd5fde9b0da5a9f
-  branch: rails-5
-  specs:
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -503,8 +495,6 @@ GEM
     haml (5.2.2)
       temple (>= 0.8.0)
       tilt
-    hamster (3.0.0)
-      concurrent-ruby (~> 1.0)
     hashdiff (1.0.1)
     hiredis (0.6.3)
     honeycomb-beeline (2.10.0)
@@ -655,8 +645,6 @@ GEM
       addressable (~> 2.0)
       excon
       http (>= 2.0, < 6.0)
-    libv8 (7.3.492.27.1)
-    libv8-node (15.14.0.1)
     link_header (0.0.8)
     linkeddata (3.1.1)
       equivalent-xml (~> 0.6)
@@ -696,7 +684,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.16.0)
+    loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -722,10 +710,9 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
-    mini_mime (1.1.2)
-    mini_racer (0.4.0)
-      libv8-node (~> 15.14.0.0)
-    minitest (5.15.0)
+    mini_mime (1.1.1)
+    mini_portile2 (2.8.0)
+    minitest (5.14.4)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -741,7 +728,8 @@ GEM
     noid-rails (3.0.3)
       actionpack (>= 5.0.0, < 7)
       noid (~> 0.9)
-    nokogiri (1.12.5-x86_64-linux)
+    nokogiri (1.13.6)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
@@ -797,8 +785,8 @@ GEM
       rails (>= 5.0, < 6.2)
       rdf
     racc (1.6.0)
-    rack (2.2.3)
-    rack-protection (2.2.0)
+    rack (2.2.3.1)
+    rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -822,7 +810,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     rails_autolink (1.1.6)
       rails (> 3.1)
@@ -837,8 +825,7 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rdf (3.1.15)
-      hamster (~> 3.0)
+    rdf (3.2.4)
       link_header (~> 0.0, >= 0.0.8)
     rdf-aggregate-repo (3.1.0)
       rdf (~> 3.1)
@@ -1001,6 +988,8 @@ GEM
       rdf-xsd (~> 3.1)
       sparql (~> 3.1)
       sxp (~> 1.1)
+    shoulda-matchers (4.5.1)
+      activesupport (>= 4.2.0)
     sidekiq (5.2.0)
       connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
@@ -1085,7 +1074,7 @@ GEM
       railties (>= 3.1)
     typhoeus (1.4.0)
       ethon (>= 0.9.0)
-    tzinfo (1.2.9)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uber (0.1.0)
     uglifier (4.2.0)
@@ -1175,18 +1164,16 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   libhoney (>= 2.2.0)
-  libv8 (= 7.3.492.27.1)
   listen (~> 3.0.5)
   lograge
-  mini_racer
   mysql2 (~> 0.5.1)
   net-http-persistent
-  nokogiri (~> 1.12.5)
   poltergeist
   pry-rails
-  puma (~> 5.6.2)
+  puma (~> 5.6.4)
   rails (~> 5.2.5)
   rails-controller-testing
+  rdf (= 3.2.4)
   recaptcha
   redis (~> 3.0)
   rest-client (~> 2.0)
@@ -1203,7 +1190,7 @@ DEPENDENCIES
   rubycas-client-rails!
   rubyzip (~> 1.3.0)
   sassc-rails (~> 2.1)
-  shoulda-matchers!
+  shoulda-matchers (~> 4)
   sidekiq (= 5.2.0)
   simple_form (~> 5.0)
   simplecov (>= 0.9)
@@ -1226,4 +1213,4 @@ DEPENDENCIES
   yabeda-sidekiq
 
 BUNDLED WITH
-   2.3.0
+   2.3.17
