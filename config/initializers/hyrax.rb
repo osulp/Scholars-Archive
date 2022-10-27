@@ -273,6 +273,7 @@ Hyrax.config.callback.set(:after_fixity_check_failure) do |_file_set, _checksum_
 end
 
 Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
+Rails.application.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
 
 Date::DATE_FORMATS[:standard] = '%m/%d/%Y'
 
