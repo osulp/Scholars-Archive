@@ -1,31 +1,22 @@
 <%# TODO: determine these from actual DataCite data instead of the intention field stored in fedora %>
 <% disable_do_not_mint = @curation_concern.doi_status_when_public != nil %>
 <% disable_draft = @curation_concern.doi_status_when_public.in?(['registered','findable']) %>
+<% disable_edits = !current_ability.can?(:update, @curation_concern) %>
 
 <div>
+  <% if disable_edits %>
+    <div class="alert alert-warning" role="alert">
+      DOI information will be provided for you once your dataset has passed review
+    </div>
+  <% end %>
+
   <%# Render DOI input as a single field even though it is stored as multivalued %>
   <%= f.input :datacite_doi, input_html: { value: @curation_concern.datacite_doi.first,
+                                  disabled: disable_edits,
                                   name: "#{f.object.model_name.param_key}[datacite_doi][]",
                                   style: "max-width: 40em" } %>
 
-  <%# Only show an actionable button if the work doesn't have a DOI already %>
-  <% if @curation_concern.doi.blank? %>
-    <%= link_to "Create draft DOI",
-                Hyrax::DOI::Engine.routes.url_helpers.create_draft_doi_path,
-                remote: true,
-                method: :get,
-                data: {
-                  disable_with: "Creating draft DOI...",
-                  params: {
-                    curation_concern: @curation_concern.class.name.underscore,
-                    attribute: 'datacite_doi'
-                  }
-                },
-                class: 'btn btn-default',
-                id: 'doi-create-draft-btn' %>
-  <% else %>
-    <div id='doi-create-draft-btn' class='btn btn-default' disabled>Create draft DOI</div>
-  <% end %>
+  <%# Removed the create draft doi button because we don't want to allow the user to draft DOIs, we create them based on the prefix/id pattern when the work saves %>
 
   <%= link_to "Autofill form",
               Hyrax::DOI::Engine.routes.url_helpers.autofill_path,
@@ -50,15 +41,15 @@
         Do not mint
       </label>
       <label class="radio" style="font-weight: normal">
-        <%= f.radio_button :doi_status_when_public, 'draft', disabled: disable_draft, style: 'margin-top: 0px;' %>
+        <%= f.radio_button :doi_status_when_public, 'draft', disabled: disable_draft || disable_edits, style: 'margin-top: 0px;' %>
         Draft
       </label>
       <label class="radio" style="font-weight: normal">
-        <%= f.radio_button :doi_status_when_public, 'registered', style: 'margin-top: 0px;' %>
+        <%= f.radio_button :doi_status_when_public, 'registered', disabled: disable_edits, style: 'margin-top: 0px;' %>
         Registered
       </label>
       <label class="radio" style="font-weight: normal">
-        <%= f.radio_button :doi_status_when_public, 'findable', style: 'margin-top: 0px;' %>
+        <%= f.radio_button :doi_status_when_public, 'findable', disabled: disable_edits, style: 'margin-top: 0px;' %>
         Findable
       </label>
     </div>
