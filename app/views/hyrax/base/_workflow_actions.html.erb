@@ -31,6 +31,8 @@
         <dl>
           <% presenter.workflow.comments.each do |comment| %>
             <dt><%= comment.name_of_commentor %></dt>
+            <%# Add in the datetime section into the comments %>
+            <p class="comment-time"><%= comment.created_at.strftime("%B %-d, %Y - %l:%M %p") %></p>
             <%# Overridden to render the comment if it includes html %>
             <dd><%= comment.comment.html_safe %></dd>
           <% end %>
