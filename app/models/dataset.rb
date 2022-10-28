@@ -3,6 +3,9 @@
 # Generated via
 #  `rails generate hyrax:work Dataset`
 class Dataset < ActiveFedora::Base
+  before_save :remove_datacite_doi
+  after_save :set_datacite_doi
+
   include ::Hyrax::WorkBehavior
   # Adds behaviors for hyrax-doi plugin.
   include Hyrax::DOI::DOIBehavior
@@ -24,5 +27,18 @@ class Dataset < ActiveFedora::Base
 
   private
   def set_defaults
+  end
+
+  def remove_datacite_doi
+    self.datacite_doi = nil unless self.persisted?
+  end
+
+  def set_datacite_doi
+    # Update datacite DOI so that it fits the prefix/ID pattern
+    self.datacite_doi = ["#{ENV.fetch('DATACITE_PREFIX', '')}/#{self.id}"]
+    # Set the datacite DOI to the regular DOI metadata if it doesn't already exist
+    self.doi ||= self.datacite_doi.first
+    # Save again if we changed anything
+    self.save if self.changed?
   end
 end
