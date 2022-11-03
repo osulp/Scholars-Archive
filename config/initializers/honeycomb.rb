@@ -39,5 +39,6 @@ if (ENV["HONEYCOMB_ENABLED"] != "false")
     end
   end
 else
-   Rails.logger.warn 'Honeycomb disabled, skipping initialization'
+  Honeycomb.configure {}
+  Rails.logger.warn 'Honeycomb disabled, skipping initialization'
 end
