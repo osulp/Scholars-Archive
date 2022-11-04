@@ -39,8 +39,6 @@ if (ENV["HONEYCOMB_ENABLED"] != "false")
     end
   end
 else
-  Honeycomb.configure {
-    config.client = Libhoney::NullClient.new
-  }
+  Honeycomb.configure { }
   Rails.logger.warn 'Honeycomb disabled, skipping initialization'
 end
