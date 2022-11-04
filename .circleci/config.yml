@@ -240,6 +240,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
                 - /infra\/.*/
           repo: sa_web
