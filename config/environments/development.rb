@@ -66,7 +66,19 @@ Rails.application.configure do
     env.register_engine '.haml', Tilt::HamlTemplate
   end
 
-  config.log_formatter = ::Logger::Formatter.new
+  #config.log_formatter = ::Logger::Formatter.new
+
+  # Add new customize
+  config.log_tags = [:request_id]
+  config.log_formatter = proc do |severity, datetime, progname, msg|
+   %Q| {
+         date: "#{datetime.to_s}",
+         log_level: "#{severity.to_s}",
+         req_id: "#{msg.split.first if msg.split.first.include?("]")}",
+         message: "#{msg.split.first.include?("]") ? msg.gsub(msg.split.first, "") : msg}",
+         service_id: "#{msg.split("Service") if msg.split.include?(": ")}"
+        }\n|
+  end
 
   config.web_console.whitelisted_ips = ['172.0.0.0/8', '192.0.0.0/8']
 end

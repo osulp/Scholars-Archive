@@ -24,8 +24,6 @@ services:
       - .:/data
       - app:/data/tmp/uploads
       - bundled:/usr/local/bundle
-    tmpfs:
-      - /data/log
     networks:
       internal:
       external:
