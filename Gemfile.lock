@@ -293,7 +293,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    dalli (2.7.11)
+    dalli (3.2.3)
     database_cleaner (1.8.5)
     debase (0.2.5.beta2)
       debase-ruby_core_source (>= 0.10.12)
