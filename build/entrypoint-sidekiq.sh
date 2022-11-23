@@ -28,12 +28,3 @@ fi
 timestamp=`date +'%Y-%m-%d %H:%M:%S'`
 echo "[$timestamp] Starting sidekiq ($RAILS_ENV)"
 RAILS_ENV=$RAILS_ENV bundle exec sidekiq -C $config_file
-
-timestamp=`date +'%Y-%m-%d %H:%M:%S'`
-echo "[$timestamp] Fell through sidekiq, starting life support systems."
-
-while `true`; do
-   timestamp=`date +'%Y-%m-%d %H:%M:%S'`
-   echo "[$timestamp] sleeping..."
-   sleep 30
-done
