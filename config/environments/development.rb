@@ -72,6 +72,9 @@ Rails.application.configure do
     -> request { request.fullpath }
   ]
 
+  # Add in setting to turn off color escape key
+  config.colorize_logging = false
+
   # Add in new formatter to the already-exist Logger
   config.log_formatter = proc do |severity, datetime, progname, msg|
     # Setup the Logger to get info out of the string and remove any info that has been fetch out
@@ -87,9 +90,9 @@ Rails.application.configure do
     %Q| {
          date: "#{datetime.to_s}",
          log_level: "#{severity.to_s}",
-         req_id: "#{vals[0]}",
+         req_id: "#{msg_vals[0]}",
+         req_uri: "#{msg_vals[1]}",
          uri: "#{URI.regexp([/https?/]).match(msg).to_s.gsub(/[\)\(]*$/, '')}",
-         req_uri: "#{vals[1]}",
          message: "#{msg}",
          service_id: "#{msg.split("Service: ").last if msg.split("Service: ").count > 1}"
         }\n|
