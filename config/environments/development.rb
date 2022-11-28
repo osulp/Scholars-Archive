@@ -81,7 +81,7 @@ Rails.application.configure do
     msg_vals = []
     item_arr = msg.split
     while item_arr[0].include?(']')
-      msg_vals << item_arr[0]
+      msg_vals << item_arr[0].gsub(/[\[\]]+/, '')
       item_arr = item_arr[1..-1]
     end
     msg = item_arr.join(' ')
