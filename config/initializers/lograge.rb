@@ -10,7 +10,6 @@ if %w[development test].include? Rails.env
         time: event.time
       }
     end
-    
     config.lograge.keep_original_rails_log = true
     config.lograge.logger = ActiveSupport::Logger.new "#{Rails.root}/log/lograge-#{Rails.env}.log"
   end

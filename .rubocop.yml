@@ -43,6 +43,9 @@ Style/SingleLineBlockParams:
 RSpec/LetSetup:
   Enabled: false
 
+RSpec/ExampleLength:
+  Enabled: false
+
 # # By default RSpec/MessageSpies has the following:
 # #   Prefer have_received for setting message expectations. Setup form as a spy using allow or instance_spy.
 # # The default assumes EnforcedStyle is 'have_received'. Most of our specs are 'receive'
