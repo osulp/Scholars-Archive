@@ -46,26 +46,30 @@ namespace :scholars_archive do
     if (failed_arr.length == 0)
       Rails.logger.info "None"
     else
-      for i in failed_arr do
-        Rails.logger.info "#{i.to_s}"
+      failed_arr.each do |f|
+        Rails.logger.info "#{f.to_s}"
       end
     end
 
+    # HASH: Create a ruby hash to store data in and make it easier to pass it into mail
+    fixity_data = {start_time: start_time,
+                   end_time: end_time,
+                   file_check: file_checked,
+                   file_pass: file_passed,
+                   file_fail: file_failed,
+                   fail_arr: failed_arr}
+
     # MAILER: Enable mailer so Fixity can send out the email now
-    # ActionMailer::Base.perform_deliveries = true
+    ActionMailer::Base.perform_deliveries = true
 
-    # DELIVER: Delivering the email to user
-    # User.find_each do |user|
-    #   ScholarsArchive::FixityMailer.with(user: user).report_email.deliver_now
-    # end
-  
-    
-    # TODO:
-    # 5. Append log to email w/ finish time
+    # CHECK: Check to make sure Scholars Archive email exist
+    if (User.where(email: 'scholarsarchive@oregonstate.edu').empty?)
+      user_email = User.first
+    else
+      user_email = User.where(email: 'scholarsarchive@oregonstate.edu')
+    end
 
-    # 6. Send out email
-
-  
-
+    # DELIVER: Delivering the email to the user
+    ScholarsArchive::FixityMailer.with(user: user_email, data: fixity_data).report_email.deliver_now
   end
 end
