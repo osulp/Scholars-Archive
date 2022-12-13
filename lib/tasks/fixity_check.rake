@@ -45,7 +45,7 @@ namespace :scholars_archive do
 
     Rails.logger.info "'No. of File Sets [IDs] that failed':"
     if (failed_arr.empty?)
-      Rails.logger.info "None"
+      Rails.logger.info "None\n"
     else
       failed_arr.each do |f|
         Rails.logger.info "#{f.to_s}"
