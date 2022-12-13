@@ -21,12 +21,13 @@ namespace :scholars_archive do
     end_time = Time.now
 
     # QUERY #1: Query data from the ChecksumAuditLog
-    file_passed = ChecksumAuditLog.where("passed = true").count
-    file_failed = ChecksumAuditLog.where("passed = false").count
-    file_checked = ChecksumAuditLog.count
+    latest_file = ChecksumAuditLog.where("updated_at >= ?", start_time)
+    file_checked = latest_file.count
+    file_passed = latest_file.where("passed = true").count
+    file_failed = latest_file.where("passed = false").count
 
     # QUERY #2: Get all the ids that failed via checking with fixity
-    ChecksumAuditLog.find_each do |c|
+    latest_file.each do |c|
       if (c.passed != true)
         failed_arr.append(c.file_set_id)
       end
@@ -43,7 +44,7 @@ namespace :scholars_archive do
     Rails.logger.info "'No. of File Sets [FAILED]': #{file_failed.to_s}\n"
 
     Rails.logger.info "'No. of File Sets [IDs] that failed':"
-    if (failed_arr.length == 0)
+    if (failed_arr.empty?)
       Rails.logger.info "None"
     else
       failed_arr.each do |f|
@@ -54,7 +55,7 @@ namespace :scholars_archive do
     # HASH: Create a ruby hash to store data in and make it easier to pass it into mail
     fixity_data = {start_time: start_time,
                    end_time: end_time,
-                   file_check: file_checked,
+                   num_file: file_checked,
                    file_pass: file_passed,
                    file_fail: file_failed,
                    fail_arr: failed_arr}
