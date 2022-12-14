@@ -18,7 +18,7 @@ def process_ingest_csv(path, file_path, user)
   # Create logger
   datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
   logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-ingest-csv-#{datetime_today}.log")
-  logger.info "Processing bulk ingest to works in csv: #{path}"
+  Rails.logger.info "Processing bulk ingest to works in csv: #{path}"
 
   csv = CSV.table(path, converters: nil)
   csv.each do |row|

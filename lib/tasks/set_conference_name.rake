@@ -73,18 +73,17 @@ namespace :scholars_archive do
   def set_conf_values
     # Create logger
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-cleanup-set-conf-name-#{datetime_today}.log")
-    logger.info "Setting conference names for known dspace collections"
+    Rails.logger.info "Setting conference names for known dspace collections"
     counter = 0
 
     # perform updates
     collection_conf_name_mapping.each do |collection, conf_name|
       solr_query_str = "dspace_collection_tesim:\"#{collection}\""
       docs = ActiveFedora::SolrService.query(solr_query_str, {:rows => 100000})
-      logger.info "work count to update for collection: \"#{collection}\": #{docs.count}"
+      Rails.logger.info "work count to update for collection: \"#{collection}\": #{docs.count}"
 
       docs.each do |doc|
-        logger.info "\t ready to update conference_name to \"#{conf_name}\" for work #{doc["id"]} in collection \"#{collection}\""
+        Rails.logger.info "\t ready to update conference_name to \"#{conf_name}\" for work #{doc["id"]} in collection \"#{collection}\""
 
         if doc["has_model_ssim"] && doc["has_model_ssim"].select(&:present?).count.positive? && ['Article', 'ConferenceProceedingsOrJournal'].include?(doc["has_model_ssim"].first)
           work_model = doc["has_model_ssim"].first.constantize
@@ -100,32 +99,32 @@ namespace :scholars_archive do
               if work.embargo && work.embargo.embargo_release_date < DateTime.now
                 validate_embargo = false
                 work.embargo.save(validate: validate_embargo)
-                logger.info "\t\t expired embargo for #{doc["id"]}"
+                Rails.logger.info "\t\t expired embargo for #{doc["id"]}"
               else
                 validate_embargo = true
               end
 
               if work.save!(validate: validate_embargo)
-                logger.info "\t\t update for work id #{doc["id"]} completed successfully"
+                Rails.logger.info "\t\t update for work id #{doc["id"]} completed successfully"
                 counter += 1
               else
-                logger.info "\t\t failed to update conference_name to \"#{conf_name}\" on work id #{doc["id"]} (#{collection}) on save"
+                Rails.logger.info "\t\t failed to update conference_name to \"#{conf_name}\" on work id #{doc["id"]} (#{collection}) on save"
               end
             else
-              logger.info "\t\t unable to update work id #{doc["id"]} has_model_ssim: #{doc["has_model_ssim"]} dspace_collection \"#{ work.dspace_collection }\" doesn't match with \"#{collection}\""
+              Rails.logger.info "\t\t unable to update work id #{doc["id"]} has_model_ssim: #{doc["has_model_ssim"]} dspace_collection \"#{ work.dspace_collection }\" doesn't match with \"#{collection}\""
             end
 
           rescue => e
-            logger.info "\t\t failed to update work id #{doc["id"]}, error found:"
-            logger.info "\t\t #{e.message}"
+            Rails.logger.info "\t\t failed to update work id #{doc["id"]}, error found:"
+            Rails.logger.info "\t\t #{e.message}"
           end
         else
-          logger.info "\t\t unable to update work id #{doc["id"]} has_model_ssim: #{doc["has_model_ssim"]}"
+          Rails.logger.info "\t\t unable to update work id #{doc["id"]} has_model_ssim: #{doc["has_model_ssim"]}"
         end
       end
     end
 
-    logger.info "Total items successfully updated: #{counter}"
-    logger.info "Done"
+    Rails.logger.info "Total items successfully updated: #{counter}"
+    Rails.logger.info "Done"
   end
 end

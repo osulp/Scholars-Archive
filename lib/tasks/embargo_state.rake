@@ -36,7 +36,7 @@ namespace :scholars_archive do
         file_set = get_fileset_info(file_doc, file_id)
         file_sets << file_set
       else
-        logger.info "no child work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
+        Rails.logger.info "no child work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
       end
     end
     file_sets
@@ -63,7 +63,7 @@ namespace :scholars_archive do
           end
         end
       else
-        logger.info "no work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
+        Rails.logger.info "no work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
       end
     end
     all_file_sets
@@ -113,7 +113,7 @@ namespace :scholars_archive do
         handle = RSolr.solr_escape(dspace_handle)
         doc = ActiveFedora::SolrService.query("replaces_ssim:#{handle}", :rows => 1000000)
 
-        logger.info "checking embargo for #{item["handle"]}"
+        Rails.logger.info "checking embargo for #{item["handle"]}"
 
         if doc.present?
           solr_work_visibility = (doc.first["visibility_ssi"].present?) ? doc.first["visibility_ssi"] : ""
@@ -146,7 +146,7 @@ namespace :scholars_archive do
           if doc.first["member_ids_ssim"]
             member_ids = doc.first["member_ids_ssim"]
           else
-            logger.info "no files associated for work #{doc.first["id"]} #{doc.first["has_model_ssim"].first.underscore.pluralize} expecting one or more bitstreams for dspace item #{item.to_s}"
+            Rails.logger.info "no files associated for work #{doc.first["id"]} #{doc.first["has_model_ssim"].first.underscore.pluralize} expecting one or more bitstreams for dspace item #{item.to_s}"
             member_ids = []
           end
 
@@ -155,7 +155,7 @@ namespace :scholars_archive do
 
           dspace_bitstream.each do |bitstream|
             handle_bitstream = "http://dspace-ir.library.oregonstate.edu/xmlui/bitstream/handle#{URI(dspace_handle).path}/#{bitstream["bitstream_name"]}"
-            logger.info "checking embargo for bitstream #{handle_bitstream}"
+            Rails.logger.info "checking embargo for bitstream #{handle_bitstream}"
 
             file_solr_doc = find_doc_by_bitstream_name(solr_file_sets, bitstream["bitstream_name"])
 
@@ -184,11 +184,11 @@ namespace :scholars_archive do
             file_counter += 1
           end
         else
-          logger.info "no work associated for dspace item #{item.to_s}"
+          Rails.logger.info "no work associated for dspace item #{item.to_s}"
         end
       end
     end
 
-    logger.info "Done. Retrieved a total of #{counter} works and #{file_counter} bitstreams."
+    Rails.logger.info "Done. Retrieved a total of #{counter} works and #{file_counter} bitstreams."
   end
 end

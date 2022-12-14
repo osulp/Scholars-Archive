@@ -4,10 +4,9 @@ namespace :scholars_archive do
     # Set a default value of 100 for chunk_size
     args.with_defaults(:chunk_size => 100)
     datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/abstract-conference-section-#{datetime_today}.log")
-    logger.info "Processing bulk changes for conference section"
+    Rails.logger.info "Processing bulk changes for conference section"
 
-    logger.info "finding all works"
+    Rails.logger.info "finding all works"
     all_records = [::AdministrativeReportOrPublication.all]
     all_records << ::Article.all
     all_records << ::BatchUploadItem.all
@@ -23,7 +22,7 @@ namespace :scholars_archive do
     all_records << ::TechnicalReport.all
     all_records << ::UndergraduateThesisOrProject.all
 
-    logger.info "All works found. Searching for works to be updated"
+    Rails.logger.info "All works found. Searching for works to be updated"
     to_update = {}
     old_predicate = ::RDF::URI.new('https://w2id.org/scholarlydata/ontology/conference-ontology.owl#Track')
 
