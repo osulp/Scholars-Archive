@@ -27,11 +27,7 @@ namespace :scholars_archive do
     file_failed = latest_file.where("passed = false").count
 
     # QUERY #2: Get all the ids that failed via checking with fixity
-    latest_file.each do |c|
-      if (c.passed != true)
-        failed_arr.append(c.file_set_id)
-      end
-    end
+    failed_arr = latest_file.where("passed = false").map(&:file_set_id)
 
     # APPEND: Display an outro message saying Fixity is done checking
     Rails.logger.info "\n[COMPLETE] All fixity checks complete!\n"
@@ -47,9 +43,7 @@ namespace :scholars_archive do
     if (failed_arr.empty?)
       Rails.logger.info "None\n"
     else
-      failed_arr.each do |f|
-        Rails.logger.info "#{f.to_s}"
-      end
+      Rails.logger.info "#{failed_arr.inspect}"
     end
 
     # HASH: Create a ruby hash to store data in and make it easier to pass it into mail

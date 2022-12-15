@@ -21,12 +21,12 @@
       <p>None</p>
     <% else %>
       <% @fixity_data[:fail_arr].each do |f| %>
-        <%= f.to_s %>
+        <%= link_to(f.to_s, main_app.hyrax_file_set_path(f)) %>
       <% end %>
     <% end %>
 
     <br><br>
     <p> - Scholars Archive Support </p>
-    <p>Report Date & Time: <%= Time.now.strftime("%B %-d, %Y - %l:%M %p") %> </p>
+    <p>Email Date & Time: <%= Time.now.strftime("%B %-d, %Y - %l:%M %p") %> </p>
   </body>
 </html>
