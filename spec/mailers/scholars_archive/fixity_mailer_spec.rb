@@ -17,7 +17,7 @@ RSpec.describe ScholarsArchive::FixityMailer do
   # TEST GROUP #1: Create couple test to see if the mailer class pass the test
   it { expect(mail.subject).to eql('Scholars Archive: Fixity Report') }
   it { expect(mail.to).to eql([user.email]) }
-  
+
   # TEST GROUP #2: Create couple test to see if the view mailer hold the exact same data
   it { expect(mail.body.encoded).to include("Start Time: #{tst_data[:start_time]}") }
   it { expect(mail.body.encoded).to include("End Time: #{tst_data[:end_time]}") }
@@ -27,7 +27,7 @@ RSpec.describe ScholarsArchive::FixityMailer do
 
   it 'looking to match each fail index pass through params' do
     tst_data[:fail_arr].each do |f_id|
-      expect(mail.body.encoded).to include("#{f_id}")
+      expect(mail.body.encoded).to include(f_id.to_s)
     end
   end
 end
