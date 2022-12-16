@@ -27,7 +27,7 @@ namespace :scholars_archive do
     file_set
   end
 
-  def get_child_file_sets_info(member_ids, item, logger)
+  def get_child_file_sets_info(member_ids, item)
     file_sets = []
     member_ids.each do |file_id|
       file_doc = ActiveFedora::SolrService.query("id:#{file_id}", :rows => 1)
@@ -42,7 +42,7 @@ namespace :scholars_archive do
     file_sets
   end
 
-  def get_all_file_sets_info(member_ids, item, logger)
+  def get_all_file_sets_info(member_ids, item)
     all_file_sets = []
     member_ids.each do |file_id|
       file_doc = ActiveFedora::SolrService.query("id:#{file_id}", :rows => 1)
@@ -57,7 +57,7 @@ namespace :scholars_archive do
           else
             child_member_ids = []
           end
-          child_file_sets = get_child_file_sets_info(child_member_ids, item, logger)
+          child_file_sets = get_child_file_sets_info(child_member_ids, item)
           child_file_sets.each do |child_file_set|
             all_file_sets << child_file_set
           end
@@ -81,7 +81,6 @@ namespace :scholars_archive do
 
   def get_embargo
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/check-embargo-state-#{datetime_today}.log")
     items_embargo = YAML.load_file('tmp/dspace_bitstream_items_embargo.yml')["dspace_bitstream_items_embargo"] || {}
     counter = 0
     file_counter = 0
@@ -151,7 +150,7 @@ namespace :scholars_archive do
           end
 
           # build hash of files to be used to map the bitstreams later...
-          solr_file_sets = get_all_file_sets_info(member_ids, item, logger)
+          solr_file_sets = get_all_file_sets_info(member_ids, item)
 
           dspace_bitstream.each do |bitstream|
             handle_bitstream = "http://dspace-ir.library.oregonstate.edu/xmlui/bitstream/handle#{URI(dspace_handle).path}/#{bitstream["bitstream_name"]}"

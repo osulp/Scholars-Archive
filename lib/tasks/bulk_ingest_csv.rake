@@ -17,16 +17,15 @@ end
 def process_ingest_csv(path, file_path, user)
   # Create logger
   datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
-  logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-ingest-csv-#{datetime_today}.log")
   Rails.logger.info "Processing bulk ingest to works in csv: #{path}"
 
   csv = CSV.table(path, converters: nil)
   csv.each do |row|
-    ingest_work(logger, row, file_path, user)
+    ingest_work(row, file_path, user)
   end
 end
 
-def ingest_work(logger, row, file_path, user)
+def ingest_work(row, file_path, user)
   # Get work type
   work_type = row['worktype'.to_sym].gsub(' ', '').constantize
   # Get collection
@@ -37,7 +36,7 @@ def ingest_work(logger, row, file_path, user)
   u = User.find_by_username(user)
 
   # Set properties
-  work = set_work_properties(logger, work, row)
+  work = set_work_properties(work, row)
   work.date_uploaded = Hyrax::TimeService.time_in_utc
   work.depositor = u.username
   work.visibility = row[:visibility] unless row[:visibility].nil?
@@ -59,7 +58,7 @@ def ingest_work(logger, row, file_path, user)
   collection.add_member_objects([work.id])
 end
 
-def set_work_properties(logger, work, row)
+def set_work_properties(work, row)
   # Grab the class model for multiplicity checks
   nested_ordered_title_attributes = []
   nested_ordered_creator_attributes = []
