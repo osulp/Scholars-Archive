@@ -80,7 +80,6 @@ gem 'rest-client', '~> 2.0'
 gem 'haml'
 
 gem 'bagit', '~>0.4.1'
-gem 'lograge'
 gem 'riiif', '~> 1.1'
 
 # Security update

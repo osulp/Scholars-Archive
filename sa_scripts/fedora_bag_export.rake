@@ -33,8 +33,7 @@ namespace :scholars_archive do
   def fedora_bag_export(bag_export_path, export_work_list, has_model_ssim)
     # Create logger
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/bag-export-#{datetime_today}.log")
-    logger.info 'Generate Bags for Preservation: '
+    Rails.logger.info 'Generate Bags for Preservation: '
     counter = 0
 
     workids_file = File.join(File.dirname(__FILE__), export_work_list)
@@ -43,12 +42,12 @@ namespace :scholars_archive do
       work_to_export.push(line.chomp.strip)
     end
     work_to_export.sort!
-    logger.info "A total of #{work_to_export.length} Fedora works to export."
+    Rails.logger.info "A total of #{work_to_export.length} Fedora works to export."
 
     # Perform export
     # to run test locally: prefix RAILS_ENV=development
     work_to_export.each do |work_id|
-      logger.info "Export work #{work_id}"
+      Rails.logger.info "Export work #{work_id}"
       # create BagIt directory
       bag_dir_path = File.join(bag_export_path, work_id)
       Dir.mkdir(bag_dir_path) unless Dir.exist?(bag_dir_path)
@@ -64,42 +63,42 @@ namespace :scholars_archive do
           download_link = 'https://ir.library.oregonstate.edu/downloads/' + fileset.id.to_s
           filename = fileset.label
           if fileset.embargo_id.present?
-            logger.warn "#{work_id}, #{fileset.id}, #{fileset} is embargoed"
+            Rails.logger.warn "#{work_id}, #{fileset.id}, #{fileset} is embargoed"
           else
             command = "curl #{download_link} -o #{bag_data_dir_path}/#{filename}"
             system(command)
-            logger.info "Download bitstream #{fileset.id}, #{filename}"
+            Rails.logger.info "Download bitstream #{fileset.id}, #{filename}"
           end
         end
         # find all children works
         childrenworks = extract_all_children(work)
         # export work metadata to bagit-info.txt
-        logger.info "Save work metadata #{work.id}"
+        Rails.logger.info "Save work metadata #{work.id}"
         info_str = "WORK_ID:#{work.id} \n"
         work.attribute_names.sort.each do |attr|
           info_str += "#{attr} + #{work.send(attr)} + \n"
         end
         File.open(baginfo_path, 'a') { |file| file.write(info_str) }
         childrenworks.each do |child|
-          logger.info "Save work metadata #{child.id}"
+          Rails.logger.info "Save work metadata #{child.id}"
           info_str = "CHILD WORK_ID:#{child.id} \n"
           child.attribute_names.sort.each do |attr|
             info_str += "#{attr} + #{child.send(attr)} + \n"
           end
           File.open(baginfo_path, 'a') { |file| file.write(info_str) }
         end
-        logger.info "Create Bag"
+        Rails.logger.info "Create Bag"
         bag = BagIt::Bag.new(bag_dir_path)
         bag.manifest!
         counter += 1
       rescue StandardError => e
-        logger.warn "failed to export Bag for work #{work.id}, error found:"
-        logger.warn "#{e.message}"
+        Rails.logger.warn "failed to export Bag for work #{work.id}, error found:"
+        Rails.logger.warn "#{e.message}"
       end
-      logger.info "Created Bags: #{counter}"
+      Rails.logger.info "Created Bags: #{counter}"
     end
-    logger.info 'DONE!'
-    logger.info "Total Created Bags: #{counter}"
+    Rails.logger.info 'DONE!'
+    Rails.logger.info "Total Created Bags: #{counter}"
   end
 
   # originally developed at https://github.com/osulp/Scholars-Archive/blob/master/app/controllers/scholars_archive/handles_controller.rb#L96

@@ -85,8 +85,7 @@ namespace :scholars_archive do
 
     # Create logger
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-cleanup-#{model_class.to_s}-#{datetime_today}.log")
-    logger.info "Cleaning up degree_field and/or degree_grantors in #{model_class.to_s}"
+    Rails.logger.info "Cleaning up degree_field and/or degree_grantors in #{model_class.to_s}"
 
     # retrieve options needed for update action
     degree_field_service = ScholarsArchive::DegreeFieldService.new
@@ -97,10 +96,10 @@ namespace :scholars_archive do
     counter = 0
 
     # perform updates
-    logger.info "work count to update: #{data["response"]["numFound"]}"
+    Rails.logger.info "work count to update: #{data["response"]["numFound"]}"
 
     data["response"]["docs"].each do |doc|
-      logger.info "cleaning up work #{doc["id"]}"
+      Rails.logger.info "cleaning up work #{doc["id"]}"
 
       if doc["has_model_ssim"] && doc["has_model_ssim"].select(&:present?).count.positive?
         work_model = model_class
@@ -121,10 +120,10 @@ namespace :scholars_archive do
             end
 
             if uri_from_label
-              logger.info "\t ready to update from \"#{work.degree_field.to_s}\" to #{uri_from_label}"
+              Rails.logger.info "\t ready to update from \"#{work.degree_field.to_s}\" to #{uri_from_label}"
               new_attributes[:degree_field] = uri_from_label
             else
-              logger.info "\t no match found for degree_field \"#{work.degree_field.to_s}\" in work with id #{doc["id"]}"
+              Rails.logger.info "\t no match found for degree_field \"#{work.degree_field.to_s}\" in work with id #{doc["id"]}"
             end
           end
 
@@ -134,21 +133,21 @@ namespace :scholars_archive do
             input_label = work.degree_grantors.to_s
             if custom_degree_grantors_mapping[input_label]
               uri_from_label = custom_degree_grantors_mapping[input_label]
-              logger.info "\t ready to update from #{input_label} to #{uri_from_label}"
+              Rails.logger.info "\t ready to update from #{input_label} to #{uri_from_label}"
               new_attributes[:degree_grantors] = uri_from_label
             else
-              logger.info "\t no match found for degree_grantor \"#{input_label}\" in work with id #{doc["id"]}"
+              Rails.logger.info "\t no match found for degree_grantor \"#{input_label}\" in work with id #{doc["id"]}"
             end
           end
 
           # log degree_fields that are already uris
           if work.degree_field.present? && (work.degree_field.start_with? "http")
-            logger.info "\t degree_field \"#{work.degree_field.to_s}\" is already a uri in work with id #{doc["id"]}"
+            Rails.logger.info "\t degree_field \"#{work.degree_field.to_s}\" is already a uri in work with id #{doc["id"]}"
           end
 
           # log degree_field that are already uris
           if work.degree_grantors.present? && (work.degree_grantors.start_with? "http")
-            logger.info "\t degree_grantor \"#{work.degree_grantors.to_s}\" is already a uri in work with id #{doc["id"]}"
+            Rails.logger.info "\t degree_grantor \"#{work.degree_grantors.to_s}\" is already a uri in work with id #{doc["id"]}"
           end
 
           # commit changes needed
@@ -160,29 +159,29 @@ namespace :scholars_archive do
             if work.embargo && work.embargo.embargo_release_date < DateTime.now
               validate_embargo = false
               work.embargo.save(validate: validate_embargo)
-              logger.info "\t expired embargo for #{doc["id"]}"
+              Rails.logger.info "\t expired embargo for #{doc["id"]}"
             else
               validate_embargo = true
             end
 
             if work.save!(validate: validate_embargo)
-              logger.info "\t update for work id #{doc["id"]} completed successfully with #{new_attributes}"
+              Rails.logger.info "\t update for work id #{doc["id"]} completed successfully with #{new_attributes}"
               counter += 1
             else
-              logger.info "\t failed to update work id #{doc["id"]} with #{new_attributes} on save"
+              Rails.logger.info "\t failed to update work id #{doc["id"]} with #{new_attributes} on save"
             end
           else
-            logger.info "\t no updates completed for work #{doc["id"]}, new_attributes set: #{new_attributes}"
+            Rails.logger.info "\t no updates completed for work #{doc["id"]}, new_attributes set: #{new_attributes}"
           end
         rescue => e
-          logger.info "\t failed to update work id #{doc["id"]} with #{new_attributes}, error found:"
-          logger.info "\t #{e.message}"
+          Rails.logger.info "\t failed to update work id #{doc["id"]} with #{new_attributes}, error found:"
+          Rails.logger.info "\t #{e.message}"
         end
       end
     end
 
-    logger.info "Total items successfully cleaned up: #{counter}"
-    logger.info "Done"
+    Rails.logger.info "Total items successfully cleaned up: #{counter}"
+    Rails.logger.info "Done"
   end
 
   def cleanup_gtds

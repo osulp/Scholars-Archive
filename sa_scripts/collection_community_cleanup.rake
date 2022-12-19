@@ -46,7 +46,6 @@ def get_json_collections(json, handle)
 end
 
 def process(csv_path, json_path, collections_path)
-  logger = ActiveSupport::Logger.new("#{Rails.root}/log/sa-community.log")
   collections = get_collection_rows(collections_path)
   handles = get_handle_rows(csv_path)
   solr = get_json_data(json_path)
@@ -78,6 +77,6 @@ def process(csv_path, json_path, collections_path)
     end
     work.save
     work.update_index
-    logger.info "updated #{work.id} - #{k}"
+    Rails.logger.info "updated #{work.id} - #{k}"
   end
 end

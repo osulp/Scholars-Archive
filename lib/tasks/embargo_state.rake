@@ -27,7 +27,7 @@ namespace :scholars_archive do
     file_set
   end
 
-  def get_child_file_sets_info(member_ids, item, logger)
+  def get_child_file_sets_info(member_ids, item)
     file_sets = []
     member_ids.each do |file_id|
       file_doc = ActiveFedora::SolrService.query("id:#{file_id}", :rows => 1)
@@ -36,13 +36,13 @@ namespace :scholars_archive do
         file_set = get_fileset_info(file_doc, file_id)
         file_sets << file_set
       else
-        logger.info "no child work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
+        Rails.logger.info "no child work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
       end
     end
     file_sets
   end
 
-  def get_all_file_sets_info(member_ids, item, logger)
+  def get_all_file_sets_info(member_ids, item)
     all_file_sets = []
     member_ids.each do |file_id|
       file_doc = ActiveFedora::SolrService.query("id:#{file_id}", :rows => 1)
@@ -57,13 +57,13 @@ namespace :scholars_archive do
           else
             child_member_ids = []
           end
-          child_file_sets = get_child_file_sets_info(child_member_ids, item, logger)
+          child_file_sets = get_child_file_sets_info(child_member_ids, item)
           child_file_sets.each do |child_file_set|
             all_file_sets << child_file_set
           end
         end
       else
-        logger.info "no work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
+        Rails.logger.info "no work or fileset found in solr that matches id #{file_id} for dspace_item #{item.to_s}"
       end
     end
     all_file_sets
@@ -81,7 +81,6 @@ namespace :scholars_archive do
 
   def get_embargo
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/check-embargo-state-#{datetime_today}.log")
     items_embargo = YAML.load_file('tmp/dspace_bitstream_items_embargo.yml')["dspace_bitstream_items_embargo"] || {}
     counter = 0
     file_counter = 0
@@ -113,7 +112,7 @@ namespace :scholars_archive do
         handle = RSolr.solr_escape(dspace_handle)
         doc = ActiveFedora::SolrService.query("replaces_ssim:#{handle}", :rows => 1000000)
 
-        logger.info "checking embargo for #{item["handle"]}"
+        Rails.logger.info "checking embargo for #{item["handle"]}"
 
         if doc.present?
           solr_work_visibility = (doc.first["visibility_ssi"].present?) ? doc.first["visibility_ssi"] : ""
@@ -146,16 +145,16 @@ namespace :scholars_archive do
           if doc.first["member_ids_ssim"]
             member_ids = doc.first["member_ids_ssim"]
           else
-            logger.info "no files associated for work #{doc.first["id"]} #{doc.first["has_model_ssim"].first.underscore.pluralize} expecting one or more bitstreams for dspace item #{item.to_s}"
+            Rails.logger.info "no files associated for work #{doc.first["id"]} #{doc.first["has_model_ssim"].first.underscore.pluralize} expecting one or more bitstreams for dspace item #{item.to_s}"
             member_ids = []
           end
 
           # build hash of files to be used to map the bitstreams later...
-          solr_file_sets = get_all_file_sets_info(member_ids, item, logger)
+          solr_file_sets = get_all_file_sets_info(member_ids, item)
 
           dspace_bitstream.each do |bitstream|
             handle_bitstream = "http://dspace-ir.library.oregonstate.edu/xmlui/bitstream/handle#{URI(dspace_handle).path}/#{bitstream["bitstream_name"]}"
-            logger.info "checking embargo for bitstream #{handle_bitstream}"
+            Rails.logger.info "checking embargo for bitstream #{handle_bitstream}"
 
             file_solr_doc = find_doc_by_bitstream_name(solr_file_sets, bitstream["bitstream_name"])
 
@@ -184,11 +183,11 @@ namespace :scholars_archive do
             file_counter += 1
           end
         else
-          logger.info "no work associated for dspace item #{item.to_s}"
+          Rails.logger.info "no work associated for dspace item #{item.to_s}"
         end
       end
     end
 
-    logger.info "Done. Retrieved a total of #{counter} works and #{file_counter} bitstreams."
+    Rails.logger.info "Done. Retrieved a total of #{counter} works and #{file_counter} bitstreams."
   end
 end
