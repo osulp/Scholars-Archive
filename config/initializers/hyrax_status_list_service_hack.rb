@@ -1,5 +1,5 @@
 Hyrax::Workflow::StatusListService.class_eval do
-  def roles_for_admin(user)
+  def roles_for_admin(user, responsibilities)
     AdminSet.all.each do |admin_set|
       available_workflows = admin_set.permission_template.available_workflows
       available_workflows.each do |workflow|
@@ -21,15 +21,15 @@ Hyrax::Workflow::StatusListService.class_eval do
     actionable_roles = roles_for_user
 
     logger.debug("Actionable roles for #{user.user_key} are #{actionable_roles}")
+    responsibilities = []
 
     if @filter_condition && @filter_condition.start_with?('-')
       # Exclude deposited and tombstoned items from the review queue
       @filter_condition = "-workflow_state_name_ssim:Deposited AND -workflow_state_name_ssim:deposited AND -workflow_state_name_ssim:tombstoned"
-      return ActiveFedora::SolrService.query(roles_for_admin(user), {:fl => '', :fq => @filter_condition, :rows => 1000, :sort => 'id asc', :method => :post}) if user.admin?
+      return ActiveFedora::SolrService.query(roles_for_admin(user, responsibilities), {:fl => '', :fq => @filter_condition, :rows => 1000, :sort => 'id asc', :method => :post}) if user.admin?
 
       return [] if actionable_roles.empty? || user.sipity_agent.workflow_responsibilities.empty?
 
-      responsibilities = []
       user.sipity_agent.workflow_responsibilities.each do |r|
         admin_set_id = r.workflow_role.workflow.permission_template.source_id
         role_name = r.workflow_role.role.name
