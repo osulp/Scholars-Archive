@@ -37,12 +37,25 @@ class OaiSet < BlacklightOaiProvider::SolrSet
   def initialize(spec, opts = {})
     @spec = spec
     @name = opts[:name] || name_from_spec
-    @description = opts[:description]
+    @description = opts[:description] || description_from_spec
   end
 
   private
 
   def name_from_spec
     ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{@spec}", rows: 1).first['title_tesim'].first
+  end
+
+  # METHOD: Add in an option to fetch the metadata description to add onto OAI
+  def description_from_spec
+    # QUERY: Use the query to get the description per collection using save navigation
+    describe_meta = ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{@spec}", rows: 1)&.first['description_tesim']&.first
+
+    # CONDITION: Check the condition to return the correct description to display on OAI
+    if (describe_meta.nil? || describe_meta == "")
+      return
+    else
+      return describe_meta
+    end
   end
 end
