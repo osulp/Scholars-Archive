@@ -52,6 +52,6 @@ class OaiSet < BlacklightOaiProvider::SolrSet
     describe_meta = ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{@spec}", rows: 1).first['description_tesim']&.first
 
     # CONDITION: Check the condition to return the correct description to display on OAI
-    return describe_meta if describe_meta != '' || describe_meta.nil?
+    return describe_meta if describe_meta.blank? == false
   end
 end
