@@ -143,3 +143,6 @@ terms:
 - id: "http://id.loc.gov/authorities/names/n85130350"
   term: "Cooperative Institute for Marine Resource Studies"
   active: true
+- id: "http://id.loc.gov/authorities/names/no2019010891"
+  term: "Oregon Climate Change Research Institute"
+  active: true
