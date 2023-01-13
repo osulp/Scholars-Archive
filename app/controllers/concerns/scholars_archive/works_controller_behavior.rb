@@ -48,7 +48,26 @@ module ScholarsArchive
       super
     end
 
+    # METHOD: Setup a method to clear all file sets
+    def destroy_all_files
+      # FETCH: Get the array of all file sets data
+      all_files = curation_concern.file_sets
+
+      # DESTROY: Loop through each file sets and destroy it
+      all_files.each do |fs|
+        file_set_actor(fs).destroy
+      end
+
+      # REDIRECT: After deletion refresh the page
+      redirect_to request.env["HTTP_REFERER"]
+    end
+
     private
+
+    # METHOD: Create a method to fetch individual file set
+    def file_set_actor(file_set)
+      Hyrax::Actors::FileSetActor.new(file_set, current_user)
+    end
 
     def scrub_params
       ScholarsArchive::ParamScrubber.scrub(params, hash_key_for_curation_concern)
