@@ -59,7 +59,7 @@ module ScholarsArchive
       end
 
       # REDIRECT: After deletion refresh the page
-      redirect_to request.env["HTTP_REFERER"]
+      redirect_to request.env['HTTP_REFERER']
     end
 
     private
