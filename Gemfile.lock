@@ -661,6 +661,8 @@ GEM
       noid (~> 0.9)
     nokogiri (1.13.9-aarch64-linux)
       racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
+      racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
     oai (1.1.0)
@@ -708,7 +710,7 @@ GEM
       rails (>= 5.0, < 6.2)
       rdf
     racc (1.6.0)
-    rack (2.2.4)
+    rack (2.2.6.2)
     rack-protection (2.1.0)
       rack
     rack-test (2.0.2)
@@ -1052,6 +1054,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  x86_64-linux
 
 DEPENDENCIES
   bagit (~> 0.4.1)
