@@ -14,6 +14,7 @@ module ScholarsArchive
     # METHOD: Check to see if the works have human data
     def check_human_data(file_check)
       # CHECK: Checking if the human data variable hold true to send email
+      # rubocop:disable Style/GuardClause
       if file_check.downcase.include?('true')
         # VARIABLE: Create a hash to pass the data into mail
         human_data_email = { title: curation_concern.title,
@@ -24,6 +25,7 @@ module ScholarsArchive
         # SEND: Send the email out and remove variable
         send_email_on_human_data(human_data_email)
       end
+      # rubocop:enable Style/GuardClause
     end
 
     # METHOD: Get the value out of the human data and remove it
@@ -39,8 +41,7 @@ module ScholarsArchive
       ActionMailer::Base.perform_deliveries = true
 
       # USER: Finding the reviewer to send out the email
-      #user_email = User.where(email: 'scholarsarchive@oregonstate.edu')
-      user_email = User.first
+      user_email = User.where(email: 'scholarsarchive@oregonstate.edu')
 
       # DELIVER: Delivering the email to the reviewer
       ScholarsArchive::HumanDataMailer.with(user: user_email, data: email_data).email_on_human_data.deliver_now
