@@ -32,3 +32,18 @@ es:
       links_html: "<a href='contact'>Contacta con nosotros</a><br/><a href='https://library.oregonstate.edu/accessibility-services' target='_blank'>Servicios para personas con discapacidades</a>"
       copyright_html: "<strong>Copyright &copy; 2018 Universidad Estatal de Oregon</strong><br/>Con licencia de Apache License, versión 2.0"
       service_html: Un servicio de <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Bibliotecas y Prensa de la Universidad Estatal de Oregon</a>.
+    base:
+      form_progress:
+        proxy_depositors: 'Depositantes apoderados: seleccione el usuario en cuyo nombre está depositando'
+        required_agreement: Comprobar el acuerdo de depósito
+        required_descriptions: Describa su trabajo
+        required_files: Añadir archivos
+        required_human_data: Seleccione una opción para los Datos de sujetos humanos
+        requirements: Requisitos
+        saving_your_work: Guardando tu trabajo. Esto puede demorar unos minutos.
+        yourself: Usted mismo
+      form_human_subject_data_component:
+        title: Datos de sujetos humanos
+        question_human: ¿Los datos presentados aquí son el parte de un estudio que fue evaluado por el Programa de Protección de Investigación Humana y la Junta de Revisión Institucional o cualquier otro Comité de Ética?
+        yes_option: "Sí"
+        no_option: "No" 

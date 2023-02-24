@@ -63,6 +63,20 @@ en:
         attribute_name_label: Attribute Name
         attribute_values_label: Values
         header: Descriptions
+      form_progress:
+        proxy_depositors: Proxy Depositors - Select the user on whose behalf you are depositing
+        required_agreement: Check deposit agreement
+        required_descriptions: Describe your work
+        required_human_data: Select an option for Human Subject data
+        required_files: Add files
+        requirements: Requirements
+        saving_your_work: Saving your work. This may take a few moments
+        yourself: Yourself
+      form_human_subject_data_component:
+        title: Human Subjects Data
+        question_human: Is the data submitted here part of a study that was evaluated by the Human Research Protection Program and Institutional Review Board (IRB) or any other Ethics Committee?
+        yes_option: "Yes"
+        no_option: "No" 
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."
@@ -84,6 +98,7 @@ en:
         text: "Embargo"
     errors:
       graduation_year_error: "Invalid value. Please ensure a year is used in this field (e.g 1908)"
+    
 
     works:
       create:

@@ -17,6 +17,10 @@
           <% if Flipflop.show_deposit_agreement? && Flipflop.active_deposit_agreement_acceptance? %>
             <li class="incomplete" id="required-agreement"><%= t('.required_agreement') %></li>
           <% end %>
+          <%# REQUIREMENT: Add in a new checking system for the human data %>
+          <% if f.object.class.to_s.include?('Dataset') && curation_concern.persisted? == false %>
+            <li class="incomplete" id="required-human-data"><%= t('.required_human_data') %></li>
+          <% end %>
         </ul>
       </fieldset>
     </div>
@@ -24,6 +28,14 @@
     <div class="set-access-controls list-group-item">
       <%= render 'form_visibility_component', f: f %>
     </div>
+
+    <%# NEW FIELD: Add in new space for the human subject data check [ONLY FOR DATASET] %>
+    <% if f.object.class.to_s.include?('Dataset') && curation_concern.persisted? == false %>
+      <div class="set-access-controls list-group-item">
+        <%= render 'form_human_subject_data_component', f: f %>
+      </div>
+    <% end %>
+
     <% if Flipflop.proxy_deposit? && current_user.can_make_deposits_for.any? %>
       <div class="list-group-item">
         <%= f.input :on_behalf_of, collection: current_user.can_make_deposits_for.map(&:user_key), prompt: "Yourself" %>
