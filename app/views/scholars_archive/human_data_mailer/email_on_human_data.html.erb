@@ -10,7 +10,7 @@
     <br>
 
     <p>Dataset Title: <%= @human_data_info[:title] %></p>
-    <p>Dataset ID: <%= @human_data_info[:dataset_id] %></p>
+    <p>Dataset ID & Link to Dataset: <%= link_to @human_data_info[:dataset_id], @human_data_info[:link_url] %></p>
     <p>Depositor: <%= @human_data_info[:creator] %></p>
 
     <br><br>
