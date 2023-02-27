@@ -12,6 +12,7 @@ module ScholarsArchive
 
       # rubocop:disable Metrics/AbcSize
       # rubocop:disable Metrics/MethodLength
+      # rubocop:disable Lint/Void
       def message
         if !SolrDocument.find(work_id)['resource_type_tesim'].include?('Dataset')
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n #{comment}"
@@ -35,6 +36,7 @@ module ScholarsArchive
       end
       # rubocop:enable Metrics/AbcSize
       # rubocop:enable Metrics/MethodLength
+      # rubocop:enable Lint/Void
 
       # Add the user who initiated this action to the list of users being notified
       def users_to_notify
