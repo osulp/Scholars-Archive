@@ -58,3 +58,18 @@ fr:
     institution_name_full: Nom de l'établissement
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
+    base:
+      form_progress:
+        proxy_depositors: Proxy Depositors - Sélectionnez l'utilisateur au nom duquel vous déposez
+        required_agreement: Contrôler l'accord de dépôt
+        required_descriptions: Décrivez votre travail
+        required_files: Ajouter des fichiers
+        required_human_data: Sélectionnez une option pour les Données de sujets humains
+        requirements: Exigences
+        saving_your_work: Sauvegarder votre travail. Ceci peut prendre un certain temps
+        yourself: Vous-même
+      form_human_subject_data_component:
+        title: Données de sujets humains
+        question_human: Les données soumises ici font-elles partie d'une étude qui a été évaluée par le Programme de protection de la Recherche humaine et le comité d'examen institutionnel (IRB) ou tout autre Comité d'éthique?
+        yes_option: "Oui"
+        no_option: "Non" 
