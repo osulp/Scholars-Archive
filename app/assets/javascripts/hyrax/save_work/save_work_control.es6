@@ -1,3 +1,4 @@
+// OVERRIDE: Adding in a new requirement over the hyrax default control
 import { RequiredFields } from './required_fields'
 import { ChecklistItem } from './checklist_item'
 import { UploadedFiles } from './uploaded_files'
@@ -185,8 +186,9 @@ export default class SaveWorkControl {
     return true
   }
 
-  // sets the human data indicator to complete/incomplete
+  // NEW METHOD: Sets the human data indicator to complete/incomplete
   validateHumanData() {
+    // CHECK: If the radio button is selected, then give it a green check mark, if not, then give it an red notice
     if ($("#required-human-data").length === 0 || $("[name$='[human_data]']:checked").length > 0) {
       this.requiredHumanData.check()
       return true
