@@ -14,7 +14,7 @@ module ScholarsArchive
       # rubocop:disable Metrics/MethodLength
       # rubocop:disable Lint/Void
       def message
-        if !SolrDocument.find(work_id)['resource_type_tesim'].include?('Dataset')
+        if !SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dataset')
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n #{comment}"
           "<br /> If the submitted dataset includes human subjects data, give the following information to the data curator:\n"
           "* A copy of the IRB approval.
