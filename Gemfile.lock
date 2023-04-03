@@ -283,7 +283,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
-    connection_pool (2.2.5)
+    connection_pool (2.4.0)
     coveralls (0.8.23)
       json (>= 1.8, < 3)
       simplecov (~> 0.16.1)
@@ -710,9 +710,7 @@ GEM
       rails (>= 5.0, < 6.2)
       rdf
     racc (1.6.2)
-    rack (2.2.6.2)
-    rack-protection (2.1.0)
-      rack
+    rack (2.2.6.4)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (5.2.6)
@@ -811,6 +809,8 @@ GEM
     redic (1.5.3)
       hiredis
     redis (3.3.5)
+    redis-client (0.14.1)
+      connection_pool
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
     redlock (1.2.2)
@@ -915,10 +915,11 @@ GEM
       sxp (~> 1.1)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
-    sidekiq (5.2.0)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+    sidekiq (7.0.7)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     signet (0.16.0)
       addressable (~> 2.8)
       faraday (>= 0.17.3, < 2.0)
@@ -1114,7 +1115,7 @@ DEPENDENCIES
   rubyzip (~> 1.3.0)
   sassc-rails (~> 2.1)
   shoulda-matchers (~> 4)
-  sidekiq (= 5.2.0)
+  sidekiq (= 7.0.7)
   simple_form (~> 5.0)
   simplecov (>= 0.9)
   sitemap_generator
