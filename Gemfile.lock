@@ -710,7 +710,7 @@ GEM
       rails (>= 5.0, < 6.2)
       rdf
     racc (1.6.2)
-    rack (2.2.6.2)
+    rack (2.2.6.4)
     rack-protection (2.1.0)
       rack
     rack-test (2.0.2)
