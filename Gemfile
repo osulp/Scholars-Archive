@@ -27,11 +27,11 @@ gem 'jquery-ui-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
-gem 'sidekiq', '5.2.0'
+gem 'sidekiq', '~>6.0'
 gem 'ffi', '~> 1.9.24'
 
 gem 'blacklight_oai_provider'
