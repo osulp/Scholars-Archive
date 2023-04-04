@@ -283,7 +283,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.10)
-    connection_pool (2.2.5)
+    connection_pool (2.4.0)
     coveralls (0.8.23)
       json (>= 1.8, < 3)
       simplecov (~> 0.16.1)
@@ -651,7 +651,7 @@ GEM
     mysql2 (0.5.3)
     nest (3.2.0)
       redic
-    net-http-persistent (4.0.1)
+    net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
     netrc (0.11.0)
     nio4r (2.5.8)
@@ -809,6 +809,8 @@ GEM
     redic (1.5.3)
       hiredis
     redis (4.8.1)
+    redis-client (0.14.1)
+      connection_pool
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
     redlock (1.2.2)
@@ -913,10 +915,11 @@ GEM
       sxp (~> 1.1)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
-    sidekiq (6.5.8)
-      connection_pool (>= 2.2.5, < 3)
-      rack (~> 2.0)
-      redis (>= 4.5.0, < 5)
+    sidekiq (7.0.7)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
     signet (0.16.0)
       addressable (~> 2.8)
       faraday (>= 0.17.3, < 2.0)
@@ -1112,7 +1115,7 @@ DEPENDENCIES
   rubyzip (~> 1.3.0)
   sassc-rails (~> 2.1)
   shoulda-matchers (~> 4)
-  sidekiq (~> 6.0)
+  sidekiq (~> 7.0)
   simple_form (~> 5.0)
   simplecov (>= 0.9)
   sitemap_generator
