@@ -663,8 +663,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
-      racc (~> 1.4)
     nokogumbo (2.0.5)
       nokogiri (~> 1.8, >= 1.8.4)
     oai (1.1.0)
@@ -713,7 +711,7 @@ GEM
       rdf
     racc (1.6.2)
     rack (2.2.6.4)
-    rack-protection (2.1.0)
+    rack-protection (3.0.5)
       rack
     rack-test (2.0.2)
       rack (>= 1.3)
@@ -812,7 +810,7 @@ GEM
       json
     redic (1.5.3)
       hiredis
-    redis (3.3.5)
+    redis (4.5.1)
     redis-namespace (1.8.1)
       redis (>= 3.0.4)
     redlock (1.2.2)
@@ -917,10 +915,11 @@ GEM
       sxp (~> 1.1)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
-    sidekiq (5.2.0)
+    sidekiq (5.2.10)
       connection_pool (~> 2.2, >= 2.2.2)
+      rack (~> 2.0)
       rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+      redis (~> 4.5, < 4.6.0)
     signet (0.16.0)
       addressable (~> 2.8)
       faraday (>= 0.17.3, < 2.0)
@@ -1100,7 +1099,7 @@ DEPENDENCIES
   rails-controller-testing
   rdf (= 3.2.4)
   recaptcha
-  redis (~> 3.0)
+  redis (~> 4.0)
   rest-client (~> 2.0)
   riiif (~> 1.1)
   rsolr
@@ -1116,7 +1115,7 @@ DEPENDENCIES
   rubyzip (~> 1.3.0)
   sassc-rails (~> 2.1)
   shoulda-matchers (~> 4)
-  sidekiq (= 5.2.0)
+  sidekiq (= 5.2.10)
   simple_form (~> 5.0)
   simplecov (>= 0.9)
   sitemap_generator
@@ -1138,4 +1137,4 @@ DEPENDENCIES
   yabeda-sidekiq
 
 BUNDLED WITH
-   2.3.24
+   2.4.10
