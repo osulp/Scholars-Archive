@@ -194,7 +194,7 @@ services:
   ##
   # Run an instance of MySQL with a database named 'development' for running specs. See config/database.yml
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=12341234
@@ -210,7 +210,7 @@ services:
   # Run an instance of MySQL with a database named 'test' for running specs. See config/database.yml. Has no volume
   # and doesn't intend on persisting data across sessions.
   db_test:
-    image: mysql:5.7
+    image: mysql:8.0
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=12341234
