@@ -1,8 +1,17 @@
 <%# OVERRIDE: Adding in custom License dropdown to automatically select the CC BY 4.0 for Dataset %>
 <% license_service = ScholarsArchive::LicenseService.new %>
-<%= f.input :license, as: :select,
+<% if f.object.license.empty? %>
+  <%= f.input :license, as: :select,
     collection: current_user.admin? ? license_service.select_sorted_all_options : license_service.select_active_options_from_model(f),
     include_blank: true,
-    selected: "http://creativecommons.org/licenses/by/4.0/",
+    selected: 'http://creativecommons.org/licenses/by/4.0/',
     item_helper: license_service.method(:include_current_value),
     input_html: { class: 'form-control' } %>
+<% else %>
+  <%= f.input :license, as: :select,
+    collection: current_user.admin? ? license_service.select_sorted_all_options : license_service.select_active_options_from_model(f),
+    include_blank: true,
+    selected: f.object.license,
+    item_helper: license_service.method(:include_current_value),
+    input_html: { class: 'form-control' } %>
+<% end %>
