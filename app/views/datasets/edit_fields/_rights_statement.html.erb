@@ -1,6 +1,6 @@
 <%# OVERRIDE: Adding in custom Copyright statement to automatically select the (No Copyright - United States) for Dataset %>
 <% rights_statements = Hyrax.config.rights_statement_service_class.new %>
-<% if curation_concern.persisted? == false %>
+<% if !curation_concern.persisted? %>
   <%= f.input :rights_statement,
       collection: rights_statements.select_active_options,
       include_blank: true,
