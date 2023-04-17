@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Fixity Report</h3>
+    <p>Hi there, below are the report on the Fixity Job that ran and the results after
+       it has finished running:
+    </p>
+
+    <br>
+
+    <p>Start Time: <%= @fixity_data[:start_time] %></p>
+    <p>End Time: <%= @fixity_data[:end_time] %></p>
+    <p>No. of Files [CHECKED]: <%= @fixity_data[:num_file] %></p>
+    <p>No. of Files [PASSED]: <%= @fixity_data[:file_pass] %></p>
+    <p>No. of Files [FAILED]: <%= @fixity_data[:file_fail] %></p>
+    <p>List of all Failed Files [IDs]: </p>
+    <% if (@fixity_data[:fail_arr].empty?) %>
+      <p>None</p>
+    <% else %>
+      <% @fixity_data[:fail_arr].each do |f| %>
+        <%= link_to(f.to_s, main_app.hyrax_file_set_path(f)) %>
+      <% end %>
+    <% end %>
+
+    <br><br>
+    <p> - Scholars Archive Support </p>
+    <p>Email Date & Time: <%= Time.now.strftime("%B %-d, %Y - %l:%M %p") %> </p>
+  </body>
+</html>

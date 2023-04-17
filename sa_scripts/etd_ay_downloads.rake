@@ -26,7 +26,6 @@ namespace :scholars_archive do
 
   def etd_ay_download(workids_list, has_model_ssim, citeable_url)
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p') # "10-27-2017-12-59-PM"
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/etd-ay-usage-#{datetime_today}.log")
     workids_file = File.join(File.dirname(__FILE__), workids_list)
     works_to_process = []
     File.readlines(workids_file).each do |line|
@@ -39,17 +38,17 @@ namespace :scholars_archive do
       csv << ["etd_id", "etd_title", "graduation_year", "degree_level", "degree_name", "degree_field",
               "academic_affiliation", "clickable_url", "total_downloads"]
       works_to_process.each do |work_id|
-        logger.info "Processing work: #{work_id}"
+        Rails.logger.info "Processing work: #{work_id}"
         work_model = has_model_ssim.constantize
         work = work_model.find(work_id)
         work_url = citeable_url + work_id
-        (degree_field, academic_affiliation) = getUriLabel(work_id, logger)
+        (degree_field, academic_affiliation) = getUriLabel(work_id)
         filesets = extract_all_filesets(work)
         work_downloads = 0
         begin
           filesets.each do |fileset|
             fileset_id = fileset.id
-            logger.info "Processing fileset: #{fileset_id}"
+            Rails.logger.info "Processing fileset: #{fileset_id}"
             stats = Hyrax::FileUsage.new(fileset_id)
             fileset_downloads = stats.total_downloads
             work_downloads += fileset_downloads
@@ -57,31 +56,31 @@ namespace :scholars_archive do
           csv << [work_id, work.title.first, work.graduation_year, work.degree_level, work.degree_name.first,
                   degree_field, academic_affiliation, work_url, work_downloads]
         rescue => e
-          logger.error "ERROR with work: #{work_id} : #{e}"
+          Rails.logger.error "ERROR with work: #{work_id} : #{e}"
         end
       end
     end
   end
 
-  def getUriLabel(work_id, logger)
+  def getUriLabel(work_id)
     etd_doc = ActiveFedora::SolrService.query("id:#{work_id}", :rows => 1)
     if etd_doc.present?
       # sample data: Integrative Biology$http://opaquenamespace.org/ns/osuDegreeFields/KhFIkND8
       if etd_doc.first["degree_field_label_ssim"].present?
         degree_field = etd_doc.first["degree_field_label_ssim"].first.split('$').first
       else
-        logger.info "degree_field not found in ETD #{work_id} in Solr"
+        Rails.logger.info "degree_field not found in ETD #{work_id} in Solr"
         degree_field = ''
       end
 
       if etd_doc.first["academic_affiliation_label_ssim"].present?
         academic_affiliation = etd_doc.first["academic_affiliation_label_ssim"].first.split('$').first
       else
-        logger.info "academic affiliation not found in ETD #{work_id} in Solr"
+        Rails.logger.info "academic affiliation not found in ETD #{work_id} in Solr"
         academic_affiliation = ''
       end
     else
-      logger.error "ETD #{work_id} not found in Solr"
+      Rails.logger.error "ETD #{work_id} not found in Solr"
     end
     [degree_field, academic_affiliation]
   end

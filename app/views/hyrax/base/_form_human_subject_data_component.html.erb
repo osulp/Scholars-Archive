@@ -1,0 +1,19 @@
+<%# CREATE: Create a new form slot to add on if the dataset has human subject data %>
+<fieldset>
+  <legend class="legend-save-work"><%= t('.title') %></legend>
+  <p class="question-text"><%= t('.question_human') %></p>
+    <ul class="human-subject-data">
+      <li class="radio">
+        <label>
+          <%= f.radio_button :human_data, true, required: true %>
+          <%= t('.yes_option') %>
+        </label>
+      </li>
+      <li class="radio">
+        <label>
+          <%= f.radio_button :human_data, false, required: true %>
+          <%= t('.no_option') %>
+        </label>
+      </li>
+    </ul>
+</fieldset>

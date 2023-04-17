@@ -67,7 +67,5 @@ Rails.application.configure do
     env.register_engine '.haml', Tilt::HamlTemplate
   end
 
-  config.log_formatter = ::Logger::Formatter.new
-
   config.web_console.whitelisted_ips = ['172.0.0.0/8', '192.0.0.0/8']
 end

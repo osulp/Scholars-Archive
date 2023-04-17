@@ -33,50 +33,49 @@ end
 def process_csv(path)
   # Create logger
   datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
-  logger = ActiveSupport::Logger.new("#{Rails.root}/log/bulk-update-csv-#{datetime_today}.log")
-  logger.info "Processing bulk update to works in csv: #{path}"
+  Rails.logger.info "Processing bulk update to works in csv: #{path}"
 
   csv = CSV.table(path, converters: nil)
   csv.each do |row|
-    update_work(logger, row)
+    update_work(row)
   end
 end
 
-def update_work(logger, row)
+def update_work(row)
   begin
     work = ActiveFedora::Base.find(row[:id].to_s.delete("'"))
-    work = update_property(logger, work, row)
+    work = update_property(work, row)
     work&.save
   rescue StandardError => e
-    logger.error "Error saving: #{row[:id]} : #{e.backtrace}"
+    Rails.logger.error "Error saving: #{row[:id]} : #{e.backtrace}"
     return nil
   end
 end
 
-def update_property(logger, work, row)
+def update_property(work, row)
   property = work[row[:property]]
 
   if row[:from].blank?
-    logger.error("#{work.class} #{row[:id]} #{row[:property]} missing 'from' value in CSV, unable to process work.")
+    Rails.logger.error("#{work.class} #{row[:id]} #{row[:property]} missing 'from' value in CSV, unable to process work.")
     return nil
   end
 
   if property.is_a?(String) || is_property_multiple?(work, row) == false
     work[row[:property]] = row[:to]&.to_s
-    logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
+    Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{row[:from]}\" to \"#{row[:to]}\"")
   elsif property.is_a?(ActiveTriples::Relation) || ordered_property?(row[:property])
     work = if row[:from].casecmp('+').zero?
-             add_to_multivalue_row(logger, work, row, property)
+             add_to_multivalue_row(work, row, property)
            elsif row[:from].casecmp('*').zero?
-             overwrite_multivalue_row(logger, work, row, property)
+             overwrite_multivalue_row(work, row, property)
            elsif row[:from].casecmp('-').zero?
-             remove_from_multivalue_row(logger, work, row, property)
+             remove_from_multivalue_row(work, row, property)
            else
-             process_if_found_row(logger, work, row, property)
+             process_if_found_row(work, row, property)
            end
   else
     work[row[:property]] = [row[:to].to_s.split('|')].flatten
-    logger.info("#{work.class} #{row[:id]} #{row[:property]} set to \"#{row[:to]}\"")
+    Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} set to \"#{row[:to]}\"")
   end
   work
 end
@@ -88,7 +87,7 @@ def is_property_multiple?(work, row)
   Hyrax::FormMetadataService.multiple?(class_model,row[:property])
 end
 
-def overwrite_multivalue_row(logger, work, row, property)
+def overwrite_multivalue_row(work, row, property)
   to_value = row[:to]&.to_s
   
   if ordered_property?(row[:property]) && to_value.present?
@@ -96,11 +95,11 @@ def overwrite_multivalue_row(logger, work, row, property)
   else
     work[row[:property]] = to_value.blank? ? nil : [to_value&.split('|')].flatten
   end
-  logger.info("#{work.class} #{row[:id]} #{row[:property]} row overwritten with \"#{to_value}\"")
+  Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} row overwritten with \"#{to_value}\"")
   work
 end
 
-def add_to_multivalue_row(logger, work, row, property)
+def add_to_multivalue_row(work, row, property)
   to_value = row[:to]&.to_s
   return work if to_value.blank?
 
@@ -109,11 +108,11 @@ def add_to_multivalue_row(logger, work, row, property)
   else
     work[row[:property]] += [to_value&.split('|')].flatten
   end
-  logger.info("#{work.class} #{row[:id]} #{row[:property]} row added \"#{to_value}\"")
+  Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} row added \"#{to_value}\"")
   work
 end
 
-def remove_from_multivalue_row(logger, work, row, property)
+def remove_from_multivalue_row(work, row, property)
   to_value = row[:to]&.to_s
   return work if to_value.blank?
 
@@ -122,20 +121,20 @@ def remove_from_multivalue_row(logger, work, row, property)
   else
     work[row[:property]] = work[row[:property]].to_a - [to_value&.split('|')].flatten
   end
-  logger.info("#{work.class} #{row[:id]} #{row[:property]} row removed \"#{to_value}\"")
+  Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} row removed \"#{to_value}\"")
   work
 end
 
-def process_if_found_row(logger, work, row, property)
+def process_if_found_row(work, row, property)
   found_row = property.find { |r| r.include?(row[:from]) }
   if found_row
     work[row[:property]] = nil if work[row[:property]].length == 1
     work[row[:property]].delete(found_row) if work[row[:property]].length > 1
     work[row[:property]] += [row[:to].to_s.split('|')].flatten unless row[:to].blank?
-    logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{found_row}\" to \"#{work[row[:property]]}\"")
+    Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} changed from \"#{found_row}\" to \"#{work[row[:property]]}\"")
     work
   else
-    logger.info("#{work.class} #{row[:id]} #{row[:property]} value \"#{row[:from]}\" not found, skipping update.")
+    Rails.logger.info("#{work.class} #{row[:id]} #{row[:property]} value \"#{row[:from]}\" not found, skipping update.")
     nil
   end
 end
@@ -163,7 +162,7 @@ def handle_ordered_property(work, method, value, row)
     work.nested_ordered_additional_information = nil
     work.nested_ordered_additional_information_attributes = self.method(method).call(original_values, 'additional_information', value)
   else
-    logger.error("#{work.class} #{row[:id]} #{row[:property]} unable to handle this type of ordered_*, rake task requires work to process these updates.")
+    Rails.logger.error("#{work.class} #{row[:id]} #{row[:property]} unable to handle this type of ordered_*, rake task requires work to process these updates.")
   end
 end
 

@@ -27,11 +27,11 @@ gem 'jquery-ui-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 3.0'
+gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
-gem 'sidekiq', '5.2.0'
+gem 'sidekiq', '5.2.10'
 gem 'ffi', '~> 1.9.24'
 
 gem 'blacklight_oai_provider'
@@ -81,7 +81,6 @@ gem 'rest-client', '~> 2.0'
 gem 'haml'
 
 gem 'bagit', '~>0.4.1'
-gem 'lograge'
 gem 'riiif', '~> 1.1'
 
 # Security update
@@ -110,6 +109,7 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  # May not be supported in Ruby 3
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 

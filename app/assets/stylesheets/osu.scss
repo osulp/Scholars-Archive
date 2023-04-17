@@ -393,6 +393,16 @@ hr.deposit-help {
   .navbar-text {
     margin: 0 15px;
   }
+
+  .navbar-image {
+    margin: -10px 15px;
+    float: right;
+  }
+    .navbar-image_image-custom {
+      height: 80px;
+      width: 80px;
+    }
+
   .deployed {
     color: rgba($color: #fff, $alpha: 0.2);
     font-size: 12px;
@@ -505,6 +515,31 @@ ol.dd-list.dd-dragel {
       float: right;
     }
   }
+}
+
+.comment-time {
+  font-size: 10px;
+  font-style: italic;
+  color: #808080;
+  margin-bottom: 0px;
+}
+
+.comment-line {
+  margin-bottom: 20px;
+}
+
+.title-line {
+  display: inline-block;
+}
+
+.btn-line {
+  float: right;
+  margin-top: 25px;
+  margin-right: 5px;
+}
+
+.question-text {
+  font-size: 13px;
 }
 
 textarea.nested-field {

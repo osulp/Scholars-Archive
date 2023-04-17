@@ -15,8 +15,7 @@ namespace :scholars_archive do
 
     # Create logger
     datetime_today = DateTime.now.strftime('%m-%d-%Y-%H-%M-%p')
-    logger = ActiveSupport::Logger.new("#{Rails.root}/log/correct-visibilityafterembargo-#{datetime_today}.log")
-    logger.info "Correcting visibility after embargo"
+    Rails.logger.info "Correcting visibility after embargo"
 
     handles_to_process.each do |handle|
       solr_query_str = "replaces_tesim:\"#{handle}\""
@@ -30,14 +29,14 @@ namespace :scholars_archive do
           work.visibility = "open"
           work.embargo.save!
           work.save!
-          logger.info "Correct visibility for handle: #{handle} to 'open', the original embargo history is #{doc['embargo_history_ssim']}"
+          Rails.logger.info "Correct visibility for handle: #{handle} to 'open', the original embargo history is #{doc['embargo_history_ssim']}"
           work.ordered_members.to_a.each do |f|
             f.visibility = 'open'
             f.embargo.save
             if f.save
-              logger.info "Correct visibility of fileset for handle: #{handle} to 'open', #{f}"
+              Rails.logger.info "Correct visibility of fileset for handle: #{handle} to 'open', #{f}"
             else
-              logger.info "Unsuccefully correct visibility of fileset for handle: #{handle} to 'open', #{f}"
+              Rails.logger.info "Unsuccefully correct visibility of fileset for handle: #{handle} to 'open', #{f}"
             end
           end
         end
@@ -47,19 +46,19 @@ namespace :scholars_archive do
           work.visibility_after_embargo = "open"
           work.embargo.save!
           work.save!
-          logger.info "Correct visibility_after_embargo for handle: #{handle} to 'open', the embargo release date is #{doc['embargo_release_date_dtsi']}"
+          Rails.logger.info "Correct visibility_after_embargo for handle: #{handle} to 'open', the embargo release date is #{doc['embargo_release_date_dtsi']}"
           work.ordered_members.to_a.each do |f|
             f.visibility_after_embargo = 'open'
             f.embargo.save
             if f.save
-              logger.info "Correct visibility_after_embargo of fileset for handle: #{handle} to 'open', #{f}"
+              Rails.logger.info "Correct visibility_after_embargo of fileset for handle: #{handle} to 'open', #{f}"
             else
-              logger.info "Unsuccefully correct visibility_after_embargo of fileset for handle: #{handle} to 'open', #{f}"
+              Rails.logger.info "Unsuccefully correct visibility_after_embargo of fileset for handle: #{handle} to 'open', #{f}"
             end
           end
         end
       rescue => e
-        logger.info "failed to correct visibility for handle: #{handle} for: #{e.message}"
+        Rails.logger.info "failed to correct visibility for handle: #{handle} for: #{e.message}"
       end
     end
   end

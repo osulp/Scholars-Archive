@@ -1,10 +1,14 @@
 # Honeycomb integration
 
-if Rails.env.development? || ENV.key?("HONEYCOMB_DEBUG")
-  Honeycomb.configure do |config|
-    config.client = Libhoney::NullClient.new
+if (ENV["HONEYCOMB_ENABLED"] != "false")
+
+  Rails.logger.info 'Honeycomb enabled, initializing...'
+
+  if Rails.env.development? || ENV.key?("HONEYCOMB_DEBUG")
+    Honeycomb.configure do |config|
+      config.client = Libhoney::NullClient.new
+    end
   end
-else
 
   # Honeycomb Rails integration
   Honeycomb.configure do |config|
@@ -34,4 +38,7 @@ else
       ScholarsArchive::NoiseCancellingSampler.sample(fields)
     end
   end
+else
+  Honeycomb.configure { }
+  Rails.logger.warn 'Honeycomb disabled, skipping initialization'
 end

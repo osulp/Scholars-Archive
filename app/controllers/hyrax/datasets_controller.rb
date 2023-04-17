@@ -8,6 +8,7 @@ module Hyrax
   class DatasetsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
+    include ScholarsArchive::DatasetsControllerBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = Dataset
 

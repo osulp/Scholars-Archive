@@ -77,5 +77,16 @@ Rails.application.routes.draw do
     end
   end
 
+  # CUSTOM ROUTES #1: Routes to deletion of all file sets
+  namespace :hyrax, path: :concern do
+    concerns_to_route.each do |curation_concern_name|
+      namespaced_resources curation_concern_name, only: [] do
+        member do
+          delete :destroy_all_files
+        end
+      end
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
