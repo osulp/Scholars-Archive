@@ -401,7 +401,7 @@ GEM
       faraday (>= 0.7.4, < 1.0)
     fcrepo_wrapper (0.9.0)
       ruby-progressbar
-    ffi (1.9.25)
+    ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -1079,7 +1079,7 @@ DEPENDENCIES
   equivalent-xml
   faraday
   fcrepo_wrapper
-  ffi (~> 1.9.24)
+  ffi (~> 1.15.0)
   haml
   honeycomb-beeline (>= 2.10.0)
   hydra-role-management

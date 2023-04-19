@@ -32,7 +32,7 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq', '5.2.10'
-gem 'ffi', '~> 1.9.24'
+gem 'ffi', '~> 1.15.0'
 
 gem 'blacklight_oai_provider'
 gem 'blacklight_range_limit'
