@@ -24,7 +24,7 @@ The details provided assume that the official Docker daemon is running in the ba
 
 ## Optional: create admin set and collection types, load workflows, create admin role
 
-`$ docker-compose exec server bundle exec ./build/firstrun.sh`
+`$ docker-compose exec server ./build/firstrun.sh`
 
 ## Create an administrator
 
@@ -33,19 +33,17 @@ The details provided assume that the official Docker daemon is running in the ba
 ```
 $ docker-compose exec server bundle exec rails c
 
-#within the Rails Console;
+# within the Rails Console;
 Role.create(name: 'admin')
 User.first.roles << Role.first
 ```
 
-## Load Workflows
-`$ docker-compose exec server bundle exec rails hyrax:workflow:load`
 ## Run any command on the server application container
 _$ docker-compose exec server [COMMAND]_
 
 - `$ docker-compose exec server bash` : Open a terminal session on the server container
 - `$ docker-compose exec server bundle exec rails c` : Open the rails console
-- `$ docker-compose exec server bundle exec rspec` : Run the tests
+- `$ docker-compose exec server bundle exec rubocop` : Run rubocop
 
 ### Running commands that alter the local filesystem
 When you do anything that changes the filesystem (rake tasks or otherwise), you may want to pass through your user ID so that on your local filesystem you still own the files:
@@ -93,11 +91,11 @@ Docker and local configurations are structured such that setting `RAILS_ENV=test
 ## Bring up docker in the test environment
 ```
 $ docker-compose down
-$ RAILS_ENV=test docker-compose up
+$ docker-compose up test
 
 # after the services have finished booting, in another window
 
-$ docker-compose run server bundle exec rspec
+$ docker-compose exec test bundle exec rspec
 # ... watch the tests run
 ```
 
