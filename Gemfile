@@ -121,8 +121,8 @@ group :development, :test do
   gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
-  gem 'rubocop', '= 0.73.0'
-  gem 'rubocop-rspec', '= 1.34.0'
+  gem 'rubocop', '>= 1.50.2'
+  gem 'rubocop-rspec', '= 2.20.0'
 end
 
 #group :staging, :production do
