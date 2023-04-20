@@ -41,16 +41,10 @@ module ScholarsArchive
       ActionMailer::Base.perform_deliveries = true
 
       # USER: Finding the reviewer to send out the email
-      # rubocop:disable Style/ConditionalAssignment
-      if User.where(email: Hyrax.config.contact_email).empty?
-        user_email = User.first
-      else
-        user_email = User.where(email: Hyrax.config.contact_email)
-      end
-      # rubocop:enable Style/ConditionalAssignment
+      reviewer_email = User.find(email: 'scholarsarchive@oregonstate.edu')
 
       # DELIVER: Delivering the email to the reviewer
-      ScholarsArchive::HumanDataMailer.with(user: user_email, data: email_data).email_on_human_data.deliver_now
+      ScholarsArchive::HumanDataMailer.with(user: reviewer_email, data: email_data).email_on_human_data.deliver_now
     end
   end
 end
