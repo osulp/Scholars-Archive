@@ -6,6 +6,10 @@ Layout/SpaceInsidePercentLiteralDelimiters:
   Exclude:
     - 'app/indexers/default_work_indexer.rb'
 
+AllCops:
+  Exclude:
+  - vendor/bundle/**/*
+
 Metrics/AbcSize:
   Exclude:
     - 'app/indexers/default_work_indexer.rb'
