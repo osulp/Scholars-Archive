@@ -1,7 +1,7 @@
 <%# TODO: determine these from actual DataCite data instead of the intention field stored in fedora %>
 <% disable_do_not_mint = @curation_concern.doi_status_when_public != nil %>
 <% disable_draft = @curation_concern.doi_status_when_public.in?(['registered','findable']) %>
-<% disable_edits = !current_ability.can?(:update, @curation_concern) %>
+<% disable_edits = !current_ability.admin? %>
 
 <div>
   <% if disable_edits %>
@@ -9,13 +9,13 @@
       DOI information will be provided for you once your dataset has passed review
     </div>
   <% end %>
-
   <%# Render DOI input as a single field even though it is stored as multivalued %>
   <%= f.input :datacite_doi, input_html: { value: @curation_concern.datacite_doi.first,
                                   disabled: disable_edits,
                                   name: "#{f.object.model_name.param_key}[datacite_doi][]",
                                   style: "max-width: 40em" } %>
 
+  <%# Only show an actionable button if the work doesn't have a DOI already %>
   <%# Removed the create draft doi button because we don't want to allow the user to draft DOIs, we create them based on the prefix/id pattern when the work saves %>
 
   <%= link_to "Autofill form",
@@ -23,8 +23,8 @@
               remote: true,
               method: :get,
               data: {
-                confirm: "This operation is destructive and will replace any information already filled in on this form.",
-                disable_with: "Autofilling form...",
+                confirm: t("hyrax.works.form.autofill.button.confirm"),
+                disable_with: t("hyrax.works.form.autofill.button.disable_with"),
                 params: { curation_concern: curation_concern.class.name.underscore }
               },
               class: 'btn btn-primary',
@@ -32,6 +32,7 @@
 
   <br/><br/><br/>
 
+  <% if Flipflop.enabled?(:doi_minting) %>
   <fieldset class="set-doi-status-when-public">
     <label class="control-label">DOI status when work is public</label>
 
@@ -54,6 +55,7 @@
       </label>
     </div>
   </fieldset>
+  <% end %>
 </div>
 
 <script type="text/javascript">
@@ -61,7 +63,7 @@
   // Note this uses jQuery since we're using jquery-ujs still
   // There is probably a better way to do this but this works for now
   $("#doi-autofill-btn").on("ajax:beforeSend", function(e, xhr, settings) {
-    doi = $('#generic_work_doi').val()
+    doi = $('<%= "##{curation_concern.class.name.underscore}_datacite_doi" %>').val()
     settings.url = settings.url + "&doi=" + encodeURIComponent(doi)
   });
 
@@ -69,6 +71,8 @@
     alert(xhr.responseText);
   });
 
+  // To override this action and add your own ajax error listener, you can use jQuery's `off` method,
+  // before registering your own listener. E.g. $("#doi-autofill-btn").off("ajax:error")
   $("#doi-autofill-btn").on("ajax:error", function(e, xhr, status, error) {
     alert(xhr.responseText);
   });
@@ -76,18 +80,20 @@
   // Force the user to confirm using fallback defaults when DataCite mandatory fields
   // not filled in on the deposit form.  This only applies when the DOI is set to become
   // registered or findable.  Let drafts be drafts.
+  $(document).ready(function() {
+  curation_concern = '<%= curation_concern.class.name.underscore %>';
   document.getElementById('with_files_submit').addEventListener("click", function(event){
-    if (["findable", "registered"].indexOf(document.querySelector('input[name="generic_work[doi_status_when_public]"]:checked').value) < 0)
+    if (["findable", "registered"].indexOf(document.querySelector('input[name="' + curation_concern + '[doi_status_when_public]"]:checked').value) < 0)
       return;
 
     const empty_fields = [];
-    if (document.querySelector('.generic_work_title .form-control').value == "")
+    if (document.querySelector('.' + curation_concern + '_title .form-control').value == "")
       empty_fields.push("Title")
-    if (document.querySelector('.generic_work_creator .form-control').value == "")
+    if (document.querySelector('.' + curation_concern + '_creator .form-control').value == "")
       empty_fields.push("Creator")
-    if (document.querySelector('.generic_work_publisher .form-control').value == "")
+    if (document.querySelector('.' + curation_concern + '_publisher .form-control').value == "")
       empty_fields.push("Publisher")
-    if (document.querySelector('.generic_work_date_created .form-control').value == "")
+    if (document.querySelector('.' + curation_concern + '_date_created .form-control').value == "")
       empty_fields.push("Date Created")
     if (empty_fields.length == 0)
       return;
@@ -97,4 +103,5 @@
       event.stopImmediatePropagation();
     }
   }, false);
+  });
 </script>
