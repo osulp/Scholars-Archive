@@ -48,6 +48,7 @@ module Bolognese
 
       def build_hyrax_work_description
         return nil if descriptions.blank?
+
         descriptions.pluck("description").map { |d| Array(d).join("\n") }
       end
     end

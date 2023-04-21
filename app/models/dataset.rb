@@ -30,15 +30,15 @@ class Dataset < ActiveFedora::Base
   end
 
   def remove_datacite_doi
-    self.datacite_doi = nil unless self.persisted?
+    self.datacite_doi = nil unless persisted?
   end
 
   def set_datacite_doi
     # Update datacite DOI so that it fits the prefix/ID pattern
-    self.datacite_doi = ["#{ENV.fetch('DATACITE_PREFIX', '')}/#{self.id}"]
+    self.datacite_doi = ["#{ENV.fetch('DATACITE_PREFIX', '')}/#{id}"]
     # Set the datacite DOI to the regular DOI metadata if it doesn't already exist
-    self.doi ||= self.datacite_doi.first
+    self.doi ||= datacite_doi.first
     # Save again if we changed anything
-    self.save if self.changed?
+    save if changed?
   end
 end

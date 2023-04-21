@@ -1,6 +1,8 @@
 # frozen_string_literal: true
+
 module Hyrax
   module DOI
+    # Hyrax DOI Controller
     class HyraxDOIController < ApplicationController
       before_action :check_authorization
 
@@ -71,6 +73,7 @@ module Hyrax
                                        sandbox: use_sandbox)
         # Check that a record was actually loaded
         raise Hyrax::DOI::NotFoundError, "DOI (#{doi}) could not be found." if meta.blank? || meta.doi.blank?
+
         meta.types["hyrax"] = params['curation_concern'].camelize
         meta.hyrax_work
       end
@@ -94,7 +97,7 @@ module Hyrax
             js << "document.querySelectorAll('#new_date_type')[0].dispatchEvent(event)"
             js << "document.querySelectorAll('#{field_selector(attribute_name)} .form-control:not(.index)')[#{index}].value = '#{helpers.escape_javascript(v)}';"
           elsif attribute_name.include? 'keyword'
-            keyword_field = "nested_ordered_additional_information";
+            keyword_field = "nested_ordered_additional_information"
             js << "document.querySelectorAll('#{field_selector(keyword_field)} .form-control:not(.index)')[0].value += '#{helpers.escape_javascript(v)}\\n'"
             # dataset_nested_ordered_additional_information
           else
