@@ -122,7 +122,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'solr_wrapper', '>= 0.3'
   gem 'rubocop', '>= 1.50.2'
-  gem 'rubocop-rspec', '= 2.20.0'
+  gem 'rubocop-rspec', '>= 2.20.0'
 end
 
 #group :staging, :production do
