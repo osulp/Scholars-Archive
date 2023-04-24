@@ -40,11 +40,8 @@ module ScholarsArchive
       # MAILER: Enable mailer so it can send out the email
       ActionMailer::Base.perform_deliveries = true
 
-      # USER: Finding the reviewer to send out the email
-      user_email = User.where(email: 'scholarsarchive@oregonstate.edu')
-
       # DELIVER: Delivering the email to the reviewer
-      ScholarsArchive::HumanDataMailer.with(user: user_email, data: email_data).email_on_human_data.deliver_now
+      ScholarsArchive::HumanDataMailer.with(data: email_data).email_on_human_data.deliver_now
     end
   end
 end
