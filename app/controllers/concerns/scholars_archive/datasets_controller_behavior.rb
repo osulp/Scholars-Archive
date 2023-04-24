@@ -41,7 +41,7 @@ module ScholarsArchive
       ActionMailer::Base.perform_deliveries = true
 
       # USER: Finding the reviewer to send out the email
-      reviewer_email = User.find(email: 'scholarsarchive@oregonstate.edu')
+      reviewer_email = User.where(email: Hyrax.config.contact_email)
 
       # DELIVER: Delivering the email to the reviewer
       ScholarsArchive::HumanDataMailer.with(user: reviewer_email, data: email_data).email_on_human_data.deliver_now
