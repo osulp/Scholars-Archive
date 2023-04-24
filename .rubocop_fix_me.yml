@@ -1455,6 +1455,7 @@ Style/StringConcatenation:
     - 'app/services/scholars_archive/other_option_create_success_service.rb'
     - 'app/services/scholars_archive/triple_powered_service.rb'
     - 'app/services/scholars_archive/workflow/abstract_notification.rb'
+    - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
     - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
     - 'spec/services/scholars_archive/osu_api_service_spec.rb'
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
@@ -1558,6 +1559,7 @@ Style/RedundantRegexpEscape:
     - 'app/helpers/scholars_archive/citations_behaviors/formatters/mla_formatter.rb'
     - 'app/workers/fetch_failed_graph_worker.rb'
     - 'app/workers/fetch_graph_worker.rb'
+    - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
 
 Style/CaseLikeIf:
   Exclude:
