@@ -34,10 +34,11 @@ class Dataset < ActiveFedora::Base
   end
 
   def set_datacite_doi
+    doi_url = ENV.fetch('DATACITE_MODE', :test) == :production ? 'https://doi.org' : 'https://handle.stage.datacite.org'
     # Update datacite DOI so that it fits the prefix/ID pattern
     self.datacite_doi = ["#{ENV.fetch('DATACITE_PREFIX', '')}/#{id}"]
     # Set the datacite DOI to the regular DOI metadata if it doesn't already exist
-    self.doi ||= datacite_doi.first
+    self.doi ||= "#{doi_url}/#{datacite_doi.first}"
     # Save again if we changed anything
     save if changed?
   end
