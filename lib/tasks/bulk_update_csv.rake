@@ -175,13 +175,10 @@ end
 def add_ordered_property_value(original_values, value_field, new_value)
   indexed_values = original_values.map.with_index { |v,i| { "index" => i, value_field.to_s => v } }
   # Ordered Property is empty and there are multiple new values delimited by '|'
-  if original_values.empty? && new_value.include?('|')
+  if original_values.empty?
     new_value.split('|').each_with_index do |v,i|
       indexed_values << { "index" => i, value_field.to_s => v }
     end
-  # Ordered Property is empty and there is only a single value
-  elsif original_values.empty? && !new_value.include?('|')
-    indexed_values << { "index" => 0, value_field.to_s => v }
   # Ordered Property is populated
   else
     new_value.split('|').each do |v|
