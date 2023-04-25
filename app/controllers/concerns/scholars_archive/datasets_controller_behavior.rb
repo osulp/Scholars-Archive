@@ -40,8 +40,13 @@ module ScholarsArchive
       # MAILER: Enable mailer so it can send out the email
       ActionMailer::Base.perform_deliveries = true
 
+      # USER: Get user in a list to send
+      email_recipients = ['sarah.imholt@oregonstate.edu', 'cara.key@oregonstate.edu', 'clara.llebot@oregonstate.edu', Hyrax.config.contact_email]
+
       # DELIVER: Delivering the email to the reviewer
-      ScholarsArchive::HumanDataMailer.with(data: email_data).email_on_human_data.deliver_now
+      email_recipients.each do |i|
+        ScholarsArchive::HumanDataMailer.with(user_mail: i, data: email_data).email_on_human_data.deliver_now
+      end
     end
   end
 end
