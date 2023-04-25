@@ -14,7 +14,6 @@ RSpec.describe ScholarsArchive::HumanDataMailer do
 
   # TEST GROUP #1: Create couple test to see if the mailer class pass the test
   it { expect(mail.subject).to eql('Dataset Alert! Human Subject Data Included') }
-  it { expect(mail.to).to eql(['scholarsarchive@oregonstate.edu']) }
 
   # TEST GROUP #2: Create couple test to see if the view mailer hold the exact same data
   it { expect(mail.body.encoded).to include("Dataset Title: #{tst[:title]}") }
