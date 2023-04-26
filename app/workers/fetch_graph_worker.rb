@@ -5,8 +5,6 @@ class FetchGraphWorker
   include Sidekiq::Worker
   sidekiq_options retry: 11
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def perform(pid, _user_key)
     work = ActiveFedora::Base.find(pid)
     solr_doc = work.to_solr
@@ -14,7 +12,7 @@ class FetchGraphWorker
     work.attributes['based_near'].each do |val|
       val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
 
-      fetch_and_persist(val) 
+      fetch_and_persist(val)
 
       solr_based_near_label_insert(solr_doc, val)
       solr_based_near_linked_insert(solr_doc, val)
@@ -24,22 +22,17 @@ class FetchGraphWorker
   end
 
   def fetch_and_persist(val)
-    if val.respond_to?(:fetch)
-      begin
-        val.fetch(headers: { 'Accept' => default_accept_header })
-      # rubocop:disable Style/RescueStandardError
-      rescue => e
-        Rails.logger.info "Failed #{e}"
-        fetch_failed_graph(pid, val, :based_near)
-        next
-      end
-      # rubocop:enable Style/RescueStandardError
-
-      val.persist!
+    begin
+      val.fetch(headers: { 'Accept' => default_accept_header }) if val.respond_to?(:fetch)
+    # rubocop:disable Style/RescueStandardError
+    rescue => e
+      Rails.logger.info "Failed #{e}"
+      fetch_failed_graph(pid, val, :based_near)
+      next
     end
+    # rubocop:enable Style/RescueStandardError
+    val.persist!
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   def solr_based_near_linked_insert(solr_doc, val)
     Solrizer.insert_field(solr_doc, 'based_near_linked', [extracted_label(val.solrize, onlylabel: false)], :stored_searchable)
