@@ -5,8 +5,6 @@ class FetchFailedGraphWorker
   include Sidekiq::Worker
   sidekiq_options retry: 11
 
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def perform(pid, val, _controlled_prop)
     work = ActiveFedora::Base.find(pid)
     solr_doc = work.to_solr
@@ -21,8 +19,6 @@ class FetchFailedGraphWorker
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   def solr_based_near_linked_insert(solr_doc, val)
     Solrizer.insert_field(solr_doc, 'based_near_linked', [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first], :stored_searchable)
