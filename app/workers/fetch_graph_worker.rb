@@ -5,7 +5,6 @@ class FetchGraphWorker
   include Sidekiq::Worker
   sidekiq_options retry: 11
 
-  # rubocop:disable Style/RescueStandardError
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def perform(pid, _user_key)
@@ -28,14 +27,19 @@ class FetchGraphWorker
     if val.respond_to?(:fetch)
       begin
         val.fetch(headers: { 'Accept' => default_accept_header })
+      # rubocop:disable Style/RescueStandardError
       rescue => e
         Rails.logger.info "Failed #{e}"
         fetch_failed_graph(pid, val, :based_near)
         next
       end
+      # rubocop:enable Style/RescueStandardError
+
       val.persist!
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def solr_based_near_linked_insert(solr_doc, val)
     Solrizer.insert_field(solr_doc, 'based_near_linked', [extracted_label(val.solrize, onlylabel: false)], :stored_searchable)
@@ -57,7 +61,6 @@ class FetchGraphWorker
     label_obj
   end
 
-
   def fetch_failed_graph(pid, val, controlled_prop)
     FetchFailedGraphWorker.perform_async(pid, val, controlled_prop)
   end
@@ -65,7 +68,4 @@ class FetchGraphWorker
   def default_accept_header
     RDF::Util::File::HttpAdapter.default_accept_header.sub(%r{, \*\/\*;q=0\.1\Z}, '')
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
-  # rubocop:enable Style/RescueStandardError
 end
