@@ -41,7 +41,7 @@ module ScholarsArchive
       ActionMailer::Base.perform_deliveries = true
 
       # USER: Get user in a list to send
-      email_recipients = ['sarah.imholt@oregonstate.edu', 'cara.key@oregonstate.edu', 'clara.llebot@oregonstate.edu', Hyrax.config.contact_email]
+      email_recipients = User.where(username: curation_concern.admin_set.edit_users).map(&:email)
 
       # DELIVER: Delivering the email to the reviewer
       email_recipients.each do |i|
