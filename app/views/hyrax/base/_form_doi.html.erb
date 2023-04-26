@@ -33,15 +33,15 @@
       </label>
       <label class="radio" style="font-weight: normal">
         <%= f.radio_button :doi_status_when_public, 'draft', disabled: disable_draft || disable_edits, checked: true, style: 'margin-top: 0px;' %>
-        Draft
+        Draft (default)
       </label>
       <label class="radio" style="font-weight: normal">
         <%= f.radio_button :doi_status_when_public, 'registered', disabled: disable_edits, style: 'margin-top: 0px;' %>
-        Registered
+        Registered (DOI cannot be deleted)
       </label>
       <label class="radio" style="font-weight: normal">
         <%= f.radio_button :doi_status_when_public, 'findable', disabled: disable_edits, style: 'margin-top: 0px;' %>
-        Findable
+        Findable (DOI cannot be deleted)
       </label>
     </div>
   </fieldset>
