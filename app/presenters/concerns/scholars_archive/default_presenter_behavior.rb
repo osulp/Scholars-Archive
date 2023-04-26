@@ -14,6 +14,7 @@ module ScholarsArchive
                :conference_section,
                :conference_location,
                :contributor_advisor,
+               :datacite_doi,
                :date_accepted,
                :date_available,
                :date_collected,

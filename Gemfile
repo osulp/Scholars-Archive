@@ -50,10 +50,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'browse-everything'
 gem 'devise'
-gem 'devise-guests', '~> 0.5'
-gem 'devise_cas_authenticatable'
+gem 'devise-guests', '~> 0.7.0'
+gem 'devise_cas_authenticatable', '~> 1.0'
 gem 'faraday'
 gem 'hyrax', github: 'samvera/hyrax', tag: 'v2.9.5'
+gem 'hyrax-doi', github: 'samvera-labs/hyrax-doi', branch: 'main'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
 gem 'rsolr'

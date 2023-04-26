@@ -44,6 +44,8 @@ Metrics/AbcSize:
     - 'lib/hyrax/controlled_vocabularies/location.rb'
     - 'app/services/scholars_archive/degree_level_service.rb'
     - 'app/models/ability.rb'
+    - 'app/services/bolognese/writers/hyrax_work_writer.rb'
+    - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
 
 Metrics/MethodLength:
   Exclude:
@@ -83,6 +85,8 @@ Metrics/MethodLength:
     - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
     - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
     - 'app/services/scholars_archive/degree_level_service.rb'
+    - 'app/services/bolognese/writers/hyrax_work_writer.rb'
+    - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
 
 Metrics/BlockLength:
   ExcludedMethods: ['included']
@@ -391,6 +395,7 @@ Layout/EmptyLineAfterMagicComment:
     - 'app/controllers/saved_searches_controller.rb'
     - 'app/controllers/search_history_controller.rb'
     - 'lib/scholars_archive/document/qualified_dublin_core.rb'
+    - 'app/services/bolognese/writers/hyrax_work_writer.rb'
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
@@ -486,6 +491,10 @@ Style/OptionalBooleanParameter:
 Style/MultilineIfThen:
   Exclude:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
+
+Style/MultilineIfModifier:
+  Exclude:
+    - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
 
 Style/RedundantParentheses:
   Exclude:
@@ -660,6 +669,11 @@ Style/StringLiteralsInInterpolation:
     - 'app/jobs/migrate_creators_no_handles_job.rb'
     - 'app/jobs/reindex_everything_job.rb'
 
+Style/StringLiterals:
+  Exclude:
+    - 'app/services/bolognese/writers/hyrax_work_writer.rb'
+    - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
+
 Naming/VariableName:
   Exclude:
     - 'app/jobs/resolrize_job.rb'
@@ -717,6 +731,7 @@ Style/InverseMethods:
   Exclude:
     - 'app/services/scholars_archive/triple_powered_service.rb'
     - 'app/services/scholars_archive/label_and_ordered_parser_service.rb'
+    - 'app/services/bolognese/writers/hyrax_work_writer.rb'
 
 Style/EmptyElse:
   Exclude:
@@ -1440,6 +1455,7 @@ Style/StringConcatenation:
     - 'app/services/scholars_archive/other_option_create_success_service.rb'
     - 'app/services/scholars_archive/triple_powered_service.rb'
     - 'app/services/scholars_archive/workflow/abstract_notification.rb'
+    - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
     - 'spec/controllers/scholars_archive/handles_controller_spec.rb'
     - 'spec/services/scholars_archive/osu_api_service_spec.rb'
     - 'spec/views/hyrax/base/_work_description.erb_spec.rb'
@@ -1543,6 +1559,7 @@ Style/RedundantRegexpEscape:
     - 'app/helpers/scholars_archive/citations_behaviors/formatters/mla_formatter.rb'
     - 'app/workers/fetch_failed_graph_worker.rb'
     - 'app/workers/fetch_graph_worker.rb'
+    - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
 
 Style/CaseLikeIf:
   Exclude:

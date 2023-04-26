@@ -1,0 +1,97 @@
+<%# TODO: determine these from actual DataCite data instead of the intention field stored in fedora %>
+<% disable_do_not_mint = @curation_concern.doi_status_when_public != nil %>
+<% disable_draft = @curation_concern.doi_status_when_public.in?(['registered','findable']) %>
+<% disable_edits = !current_ability.admin? %>
+
+<% if disable_edits %>
+<%# Remove DOI tab if the user is not allowed to edit DOI information %>
+<style>
+  a[href='#doi'] {
+    display: none !important;
+  }
+</style>
+<% end %>
+
+<div>
+  <%# Render DOI input as a single field even though it is stored as multivalued %>
+  <%= f.input :datacite_doi, input_html: { value: @curation_concern.datacite_doi.first,
+                                  name: "#{f.object.model_name.param_key}[datacite_doi][]",
+                                  style: "max-width: 40em" } %>
+
+  <%# Only show an actionable button if the work doesn't have a DOI already %>
+  <%# Removed the create draft doi button because we don't want to allow the user to draft DOIs, we create them based on the prefix/id pattern when the work saves %>
+  <%# Remove the DOI fetch form, we won't have DOIs to pull from since they're created after entering SA@OSU %>
+
+  <% if Flipflop.enabled?(:doi_minting) %>
+  <fieldset class="set-doi-status-when-public">
+    <label class="control-label">DOI live status</label>
+
+    <div class="form-group" style="margin-left: 20px">
+      <label class="radio" style="font-weight: normal">
+        <%= f.radio_button :doi_status_when_public, '', disabled: disable_do_not_mint, style: 'margin-top: 0px;' %>
+        Do not mint
+      </label>
+      <label class="radio" style="font-weight: normal">
+        <%= f.radio_button :doi_status_when_public, 'draft', disabled: disable_draft || disable_edits, checked: true, style: 'margin-top: 0px;' %>
+        Draft (default)
+      </label>
+      <label class="radio" style="font-weight: normal">
+        <%= f.radio_button :doi_status_when_public, 'registered', disabled: disable_edits, style: 'margin-top: 0px;' %>
+        Registered (DOI cannot be deleted)
+      </label>
+      <label class="radio" style="font-weight: normal">
+        <%= f.radio_button :doi_status_when_public, 'findable', disabled: disable_edits, style: 'margin-top: 0px;' %>
+        Findable (DOI cannot be deleted)
+      </label>
+    </div>
+  </fieldset>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  // Append the DOI filled in the form to the request
+  // Note this uses jQuery since we're using jquery-ujs still
+  // There is probably a better way to do this but this works for now
+  $("#doi-autofill-btn").on("ajax:beforeSend", function(e, xhr, settings) {
+    doi = $('<%= "##{curation_concern.class.name.underscore}_datacite_doi" %>').val()
+    settings.url = settings.url + "&doi=" + encodeURIComponent(doi)
+  });
+
+  $("#doi-create-draft-btn").on("ajax:error", function(e, xhr, status, error) {
+    alert(xhr.responseText);
+  });
+
+  // To override this action and add your own ajax error listener, you can use jQuery's `off` method,
+  // before registering your own listener. E.g. $("#doi-autofill-btn").off("ajax:error")
+  $("#doi-autofill-btn").on("ajax:error", function(e, xhr, status, error) {
+    alert(xhr.responseText);
+  });
+
+  // Force the user to confirm using fallback defaults when DataCite mandatory fields
+  // not filled in on the deposit form.  This only applies when the DOI is set to become
+  // registered or findable.  Let drafts be drafts.
+  $(document).ready(function() {
+  curation_concern = '<%= curation_concern.class.name.underscore %>';
+  document.getElementById('with_files_submit').addEventListener("click", function(event){
+    if (["findable", "registered"].indexOf(document.querySelector('input[name="' + curation_concern + '[doi_status_when_public]"]:checked').value) < 0)
+      return;
+
+    const empty_fields = [];
+    if (document.querySelector('.' + curation_concern + '_title .form-control').value == "")
+      empty_fields.push("Title")
+    if (document.querySelector('.' + curation_concern + '_creator .form-control').value == "")
+      empty_fields.push("Creator")
+    if (document.querySelector('.' + curation_concern + '_publisher .form-control').value == "")
+      empty_fields.push("Publisher")
+    if (document.querySelector('.' + curation_concern + '_date_created .form-control').value == "")
+      empty_fields.push("Date Created")
+    if (empty_fields.length == 0)
+      return;
+
+    if(!window.confirm("DataCite DOI mandatory fields ("+ empty_fields.join(', ') +") are missing.  Placeholder values will be submitted to DataCite instead.  Do you want to proceed?")){
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }
+  }, false);
+  });
+</script>
