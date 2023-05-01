@@ -3,7 +3,7 @@
 # RSPEC: Create a testing environment to Fixity Mailer class
 RSpec.describe ScholarsArchive::FixityMailer do
   # VARIABLES: Create couple variables for testing purpose
-  let(:user) { User.new(email: 'test@email.com') }
+  let(:email) { 'test@email.com' }
   let(:tst_data) do
     { start_time: Time.now,
       end_time: Time.now,
@@ -12,11 +12,11 @@ RSpec.describe ScholarsArchive::FixityMailer do
       file_fail: 3,
       fail_arr: %w[nk322d 3t94fn 0r489m] }
   end
-  let(:mail) { described_class.with(user: user, data: tst_data).report_email }
+  let(:mail) { described_class.with(to: email, data: tst_data).report_email }
 
   # TEST GROUP #1: Create couple test to see if the mailer class pass the test
   it { expect(mail.subject).to eql('Scholars Archive: Fixity Report') }
-  it { expect(mail.to).to eql([user.email]) }
+  it { expect(mail.to).to eql([email]) }
 
   # TEST GROUP #2: Create couple test to see if the view mailer hold the exact same data
   it { expect(mail.body.encoded).to include("Start Time: #{tst_data[:start_time]}") }

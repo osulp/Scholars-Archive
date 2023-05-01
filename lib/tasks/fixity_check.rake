@@ -57,14 +57,10 @@ namespace :scholars_archive do
     # MAILER: Enable mailer so Fixity can send out the email now
     ActionMailer::Base.perform_deliveries = true
 
-    # CHECK: Check to make sure Scholars Archive email exist
-    if (User.where(email: 'scholarsarchive@oregonstate.edu').empty?)
-      user_email = User.first
-    else
-      user_email = User.where(email: 'scholarsarchive@oregonstate.edu')
-    end
+    # GET: Retrieve admin email address
+    user_email = ENV.fetch('SCHOLARSARCHIVE_ADMIN_EMAIL', 'scholarsarchive@oregonstate.edu')
 
-    # DELIVER: Delivering the email to the user
-    ScholarsArchive::FixityMailer.with(user: user_email, data: fixity_data).report_email.deliver_now
+    # DELIVER: Delivering the email
+    ScholarsArchive::FixityMailer.with(to: user_email, data: fixity_data).report_email.deliver_now
   end
 end
