@@ -12,7 +12,7 @@ class FetchGraphWorker
     work.attributes['based_near'].each do |val|
       val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
 
-      next unless fetch_and_persist(val) == false
+      next unless fetch_and_persist(val, pid) == false
 
       solr_based_near_label_insert(solr_doc, val)
       solr_based_near_linked_insert(solr_doc, val)
@@ -21,7 +21,7 @@ class FetchGraphWorker
     ActiveFedora::SolrService.commit
   end
 
-  def fetch_and_persist(val)
+  def fetch_and_persist(val, pid)
     begin
       val.fetch(headers: { 'Accept' => default_accept_header }) if val.respond_to?(:fetch)
     # rubocop:disable Style/RescueStandardError
