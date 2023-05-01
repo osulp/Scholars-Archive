@@ -12,7 +12,7 @@ class FetchGraphWorker
     work.attributes['based_near'].each do |val|
       val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
 
-      next unless fetch_and_persist(val, pid) == false
+      next if fetch_and_persist(val, pid) == false
 
       solr_based_near_label_insert(solr_doc, val)
       solr_based_near_linked_insert(solr_doc, val)
