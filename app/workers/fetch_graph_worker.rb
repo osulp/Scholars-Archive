@@ -12,7 +12,7 @@ class FetchGraphWorker
     work.attributes['based_near'].each do |val|
       val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
 
-      fetch_and_persist(val)
+      next unless fetch_and_persist(val) == false
 
       solr_based_near_label_insert(solr_doc, val)
       solr_based_near_linked_insert(solr_doc, val)
@@ -28,7 +28,7 @@ class FetchGraphWorker
     rescue => e
       Rails.logger.info "Failed #{e}"
       fetch_failed_graph(pid, val, :based_near)
-      next
+      return false
     end
     # rubocop:enable Style/RescueStandardError
     val.persist!
