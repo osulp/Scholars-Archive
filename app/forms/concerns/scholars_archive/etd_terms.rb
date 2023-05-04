@@ -1,6 +1,9 @@
+#frozen_string_literal:true
+
 module ScholarsArchive
+  # Houses terms for ETDs
   module EtdTerms
-		def self.primary_terms
+    def self.primary_terms
       %i[nested_ordered_title
         alt_title
         nested_ordered_creator
@@ -23,6 +26,6 @@ module ScholarsArchive
         in_series subject
         tableofcontents
         rights_statement]
-		end
-	end
+    end
+  end
 end
