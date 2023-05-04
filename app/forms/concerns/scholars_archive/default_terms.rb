@@ -1,17 +1,18 @@
-#frozen_string_literal:true
+# frozen_string_literal:true
 
 module ScholarsArchive
   # Houses terms for Defaults
   module DefaultTerms
     def self.base_terms
-      self.primary_terms + self.secondary_terms + self.admin_terms + self.date_terms +
-      %i[date_uploaded
-         date_modified
-         nested_geo
-         file_format
-         embargo_reason]
+      primary_terms + secondary_terms + admin_terms + date_terms +
+        %i[date_uploaded
+           date_modified
+           nested_geo
+           file_format
+           embargo_reason]
     end
 
+    # rubocop:disable Metrics/MethodLength
     def self.primary_terms
       %i[nested_ordered_title
          alt_title
@@ -34,7 +35,9 @@ module ScholarsArchive
          tableofcontents
          rights_statement]
     end
+    # rubocop:enable Metrics/MethodLength
 
+    # rubocop:disable Metrics/MethodLength
     def self.secondary_terms
       %i[nested_related_items
          hydrologic_unit_code
@@ -54,6 +57,7 @@ module ScholarsArchive
          isbn
          issn]
     end
+    # rubocop:enable Metrics/MethodLength
 
     def self.admin_terms
       %i[keyword
