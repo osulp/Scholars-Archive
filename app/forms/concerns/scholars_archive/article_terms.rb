@@ -1,4 +1,7 @@
+#frozen_string_literal:true
+
 module ScholarsArchive
+  # Houses the terms for forms for articles
   module ArticleTerms
 		def self.base_terms
       %i[resource_type
