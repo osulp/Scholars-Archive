@@ -1,4 +1,4 @@
-#frozen_string_literal:true
+# frozen_string_literal:true
 
 module ScholarsArchive
   # Houses the terms for forms for articles
@@ -16,6 +16,7 @@ module ScholarsArchive
          web_of_science_uid]
     end
 
+    # rubocop:disable Metrics/MethodLength
     def self.primary_terms
       %i[nested_ordered_title
          alt_title
@@ -42,5 +43,6 @@ module ScholarsArchive
          tableofcontents
          rights_statement]
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end
