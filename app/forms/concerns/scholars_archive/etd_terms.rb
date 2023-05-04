@@ -24,7 +24,8 @@ module ScholarsArchive
          bibliographic_citation
          academic_affiliation
          other_affiliation
-         in_series subject
+         in_series
+         subject
          tableofcontents
          rights_statement]
     end
