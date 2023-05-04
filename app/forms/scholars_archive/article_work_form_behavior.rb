@@ -8,7 +8,7 @@ module ScholarsArchive
       self.terms += ::ScholarsArchive::ArticleTerms.base_terms
 
       def primary_terms
-        ::ScholarsArchive::ArticleTerms.article_terms | super - %i[degree_level degree_name degree_field contributor_advisor]
+        ::ScholarsArchive::ArticleTerms.primary_terms | super - %i[degree_level degree_name degree_field contributor_advisor]
       end
 
       def secondary_terms
