@@ -5,7 +5,8 @@
 
 <%# BUTTON: Add in the deletion of all files %>
 <div class="btn-line">
-  <% if !presenter.file_set_presenters.blank? && user_signed_in? %>
+  <% BREAK %>
+  <% if !presenter.file_set_presenters.blank? && presenter.editor? %>
     <%= link_to "Delete All Files", polymorphic_path([main_app, :destroy_all_files, :hyrax, presenter.model_name.element.downcase.to_sym]), class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete all files?" }, method: :delete %>
   <% end %>
 </div>
