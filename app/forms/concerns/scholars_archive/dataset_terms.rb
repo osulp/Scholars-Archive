@@ -1,6 +1,9 @@
+#frozen_string_literal:true
+
 module ScholarsArchive
-  module DefaultTerms
-		def self.base_terms
+  # Houses the terms for Datasets
+  module DatasetTerms
+    def self.base_terms
       self.primary_terms + ::ScholarsArchive::DefaultTerms.date_terms +
       %i[nested_related_items
         date_uploaded
@@ -15,7 +18,7 @@ module ScholarsArchive
         issn
         embargo_reason
         human_data]
-		end
+    end
 
     def self.primary_terms
       %i[nested_ordered_title
@@ -43,12 +46,5 @@ module ScholarsArchive
         replaces
         nested_ordered_additional_information]
     end
-	end
+  end
 end
-
-
-
-
-
-
-
