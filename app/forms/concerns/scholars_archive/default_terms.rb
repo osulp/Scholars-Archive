@@ -1,4 +1,7 @@
+#frozen_string_literal:true
+
 module ScholarsArchive
+  # Houses terms for Defaults
   module DefaultTerms
 		def self.base_terms
 			self.primary_terms + self.secondary_terms + self.admin_terms + self.date_terms +
