@@ -1,8 +1,9 @@
-#frozen_string_literal:true
+# frozen_string_literal:true
 
 module ScholarsArchive
   # Houses terms for ETDs
   module EtdTerms
+    # rubocop:disable Metrics/MethodLength
     def self.primary_terms
       %i[nested_ordered_title
          alt_title
@@ -27,5 +28,6 @@ module ScholarsArchive
          tableofcontents
          rights_statement]
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end
