@@ -1,5 +1,8 @@
+#frozen_string_literal:true
+
 module ScholarsArchive
-  module EtdTerms
+  # Houses terms for OERs
+  module OerTerms
     def self.primary_terms
       %i[nested_ordered_title
         alt_title
