@@ -3,8 +3,8 @@
 module ScholarsArchive
   # Houses terms for Defaults
   module DefaultTerms
-		def self.base_terms
-			self.primary_terms + self.secondary_terms + self.admin_terms + self.date_terms +
+    def self.base_terms
+      self.primary_terms + self.secondary_terms + self.admin_terms + self.date_terms +
 			%i[date_uploaded
 				date_modified
 				nested_geo
@@ -15,7 +15,7 @@ module ScholarsArchive
 		def self.primary_terms
 			%i[nested_ordered_title
 				alt_title
-			  nested_ordered_creator
+				nested_ordered_creator
 				nested_ordered_contributor
 				contributor_advisor
 				nested_ordered_abstract
