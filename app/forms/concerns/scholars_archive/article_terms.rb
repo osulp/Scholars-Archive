@@ -3,7 +3,7 @@
 module ScholarsArchive
   # Houses the terms for forms for articles
   module ArticleTerms
-		def self.base_terms
+    def self.base_terms
       %i[resource_type
         editor
         has_volume
@@ -14,10 +14,9 @@ module ScholarsArchive
         has_journal
         is_referenced_by
         web_of_science_uid]
+    end
 
-		end
-
-		def self.primary_terms
+    def self.primary_terms
       %i[nested_ordered_title
         alt_title
         nested_ordered_creator
@@ -42,6 +41,6 @@ module ScholarsArchive
         subject
         tableofcontents
         rights_statement]
-		end
-	end
+    end
+  end
 end
