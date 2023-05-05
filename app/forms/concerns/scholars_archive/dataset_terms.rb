@@ -39,6 +39,7 @@ module ScholarsArchive
          in_series
          subject
          rights_statement
+         nested_related_items
          hydrologic_unit_code
          geo_section
          funding_statement
