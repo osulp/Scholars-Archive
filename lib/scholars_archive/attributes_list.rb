@@ -3,12 +3,14 @@
 module ScholarsArchive
   # List for displaying attributes on the show page. Order matters.
   module AttributesList
+    # rubocop:diable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
     def self.base_attributes
       [
         { field: :alt_title, render_as: :linked, search_field: 'alternative_title_ssim', label: t('simple_form.labels.defaults.alt_title') },
-        { field: :nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label_ssim', itemprop_option: 'url', label: "Creator" },
-        { field: :nested_ordered_abstract_label, label: "Abstract" },
-        { field: :nested_ordered_contributor_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_contributor_label_ssim', itemprop_option: 'url', label: "Contributor" },
+        { field: :nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label_ssim', itemprop_option: 'url', label: 'Creator' },
+        { field: :nested_ordered_abstract_label, label: 'Abstract' },
+        { field: :nested_ordered_contributor_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_contributor_label_ssim', itemprop_option: 'url', label: 'Contributor' },
         { field: :license_label, render_as: :search_and_external_link, search_field: 'license_label', label: t('simple_form.labels.defaults.license_label') },
         { field: :resource_type, render_as: :faceted, label: t('simple_form.labels.defaults.resource_type') },
         { field: :doi, render_as: :external_link, label: t('simple_form.labels.defaults.doi') },
@@ -60,7 +62,7 @@ module ScholarsArchive
         { field: :file_extent, label: t('simple_form.labels.defaults.file_extent') },
         { field: :digitization_spec, label: t('simple_form.labels.defaults.digitization_spec') },
         { field: :replaces, render_as: :external_link },
-        { field: :nested_ordered_additional_information_label, label: "Additional Information" },
+        { field: :nested_ordered_additional_information_label, label: 'Additional Information' },
         { field: :based_near_linked, render_as: :search_and_external_link, label: "Location", search_field: 'based_near_label' },
         { field: :funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body') },
         { field: :embargo_reason },
@@ -70,5 +72,7 @@ module ScholarsArchive
         { field: :issn, label: t('simple_form.labels.defaults.issn') }
       ]
     end
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/MethodLength
   end
 end
