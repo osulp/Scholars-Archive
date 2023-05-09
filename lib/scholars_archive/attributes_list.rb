@@ -3,7 +3,7 @@
 module ScholarsArchive
   # List for displaying attributes on the show page. Order matters.
   module AttributesList
-    # rubocop:diable Metrics/AbcSize
+    # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
     def self.base_attributes
       [
@@ -63,7 +63,7 @@ module ScholarsArchive
         { field: :digitization_spec, label: t('simple_form.labels.defaults.digitization_spec') },
         { field: :replaces, render_as: :external_link },
         { field: :nested_ordered_additional_information_label, label: 'Additional Information' },
-        { field: :based_near_linked, render_as: :search_and_external_link, label: "Location", search_field: 'based_near_label' },
+        { field: :based_near_linked, render_as: :search_and_external_link, label: 'Location', search_field: 'based_near_label' },
         { field: :funding_body, render_as: :faceted, label: t('simple_form.labels.defaults.funding_body') },
         { field: :embargo_reason },
         { field: :embargo_date_range },
