@@ -7,20 +7,33 @@ FROM ruby:2.7-alpine3.12 as bundler
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 
-# Install bundler
-RUN gem install bundler
-
 ##########################################################################
 ## Install dependencies
 ##########################################################################
 FROM bundler as dependencies
 
 RUN apk --no-cache update && apk --no-cache upgrade && \
-  apk add --no-cache alpine-sdk nodejs imagemagick unzip ghostscript vim yarn \
-  git sqlite sqlite-dev mysql mysql-client mysql-dev libressl libressl-dev \
-  curl libc6-compat build-base tzdata zip autoconf automake libtool texinfo \
-  bash bash-completion java-common openjdk11-jre-headless graphicsmagick \
-  ffmpeg openjpeg-dev openjpeg-tools openjpeg lcms2 lcms2-dev py3-pip gcompat
+  apk add --no-cache nodejs \
+  imagemagick \
+  ghostscript \
+  vim \
+  yarn \
+  git \
+  mysql mysql-client mysql-dev \
+  musl \
+  curl \
+  libc6-compat \
+  build-base \
+  tzdata \
+  zip \
+  libtool \
+  libffi \
+  bash bash-completion \
+  java-common openjdk11-jre-headless \
+  ffmpeg openjpeg-dev openjpeg-tools openjpeg \
+  lcms2 lcms2-dev \
+  py3-pip \
+  gcompat
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
@@ -33,10 +46,10 @@ RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
 # apk add autoconf aclocal automake libtool
 # tar -xvzpf libffi-3.2.1.tar.gz
 # ./configure --prefix=/usr/local
-RUN mkdir -p /tmp/ffi && \
-  curl -sL https://codeload.github.com/libffi/libffi/tar.gz/refs/tags/v3.2.1 \
-  | tar -xz -C /tmp/ffi && cd /tmp/ffi/libffi-3.2.1 && ./autogen.sh &&\
-  ./configure --prefix=/usr/local && make && make install && rm -rf /tmp/ffi
+# RUN mkdir -p /tmp/ffi && \
+#   curl -sL https://codeload.github.com/libffi/libffi/tar.gz/refs/tags/v3.2.1 \
+#   | tar -xz -C /tmp/ffi && cd /tmp/ffi/libffi-3.2.1 && ./autogen.sh &&\
+#   ./configure --prefix=/usr/local && make && make install && rm -rf /tmp/ffi
 
 # download and install FITS from Github
 RUN mkdir -p /opt/fits && \
@@ -67,8 +80,6 @@ RUN ./build/install_gems.sh && bundle clean --force
 ##########################################################################
 FROM gems as code
 
-ADD . /data
-
 # Clean up stuff not needed to run in the cluster
 RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile \
   /data/solr/conf* /data/coverage /data/config/local_env.* /data/config/mysql \
@@ -81,7 +92,9 @@ RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile \
 
 #USER root
 # Uninstall any dev tools we don't need at runtime
-RUN apk --no-cache update && apk del autoconf automake gcc g++ --purge
+RUN apk --no-cache update && apk del gcc g++ --purge
+
+ADD . /data
 
 ## Precompile assets
 FROM code

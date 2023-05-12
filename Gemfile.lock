@@ -1051,7 +1051,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     ssrf_filter (1.0.7)
     staccato (0.5.3)
     sxp (1.1.0)
@@ -1200,7 +1199,6 @@ DEPENDENCIES
   solr_wrapper (>= 0.3)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
   staccato
   triplestore-adapter!
   tzinfo-data
