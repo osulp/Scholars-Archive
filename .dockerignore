@@ -6,7 +6,9 @@
 .version
 docker-compose.*
 Dockerfile
-solr/conf*
+.circleci/*
+.github/*
+solr/*
 coverage/
 config/local_env.*
 config/mysql/
@@ -15,4 +17,6 @@ config/fcrepo_wrapper_test.yml
 config/blazegraph/
 config/nginx_rewrites.conf
 build/build.sh
+m1/*
 tmp/
+spec/
