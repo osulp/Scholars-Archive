@@ -80,16 +80,6 @@ RUN ./build/install_gems.sh && bundle clean --force
 ##########################################################################
 FROM gems as code
 
-# Clean up stuff not needed to run in the cluster
-RUN rm -rf /data/.env /data/docker-compose.* /data/Dockerfile \
-  /data/solr/conf* /data/coverage /data/config/local_env.* /data/config/mysql \
-  /data/config/solr_wrapper_test.yml /data/config/fcrepo_wrapper_test.yml \
-  /data/config/blazegraph /data/config/puma/development.rb \
-  /data/config/nginx_rewrites.conf /data/build/build.sh /data/tmp \
-  /data/public /data/.solr_wrapper /data/.solr_wrapper.yml \
-  /data/.fcrepo_wrapper /data/.version /data/.github && \
-  mkdir -p /data/tmp /data/public
-
 #USER root
 # Uninstall any dev tools we don't need at runtime
 RUN apk --no-cache update && apk del gcc g++ --purge
