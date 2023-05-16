@@ -10,7 +10,6 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
   private
 
   def build_field(value, index)
-    render_options = select_options
     if %w[err_msg err_valid_val].any? { |msg| value.include? msg }
       error = JSON.parse(value)
       value = error['option']
@@ -18,23 +17,17 @@ class MultiValueSelectOtherInput < MultiValueSelectInput
       err_msg = error['err_msg']
     end
 
-    html_options = build_field_options(value)
-    (render_options, html_options) = options[:item_helper].call(value, index, render_options, html_options) if options[:item_helper]
-    select_input = template.select_tag(attribute_name, template.options_for_select(render_options, value), html_options)
-
-    other_input_op = other_input_options(index, other_entry_value, value)
-
-    input = @builder.text_field('', other_input_op)
+    (render_options, html_options) = options[:item_helper].call(value, index, select_options, build_field_options(value)) if options[:item_helper]
 
     help_block = other_input_help_block_wrapper do
       err_msg.present? ? err_msg : ''
     end
 
     other_input = other_input_wrapper(err_msg) do
-      "#{help_block}#{input}"
+      "#{help_block}#{@builder.text_field('', other_input_options(index, other_entry_value, value))}"
     end
 
-    "#{select_input}#{other_input}"
+    "#{template.select_tag(attribute_name, template.options_for_select(render_options, value), html_options)}#{other_input}"
   end
 
   def other_input_wrapper(error)

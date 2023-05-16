@@ -33,19 +33,10 @@ class MultiValueLabelUrlInput < MultiValueInput
   private
 
   def build_field(value, index)
-    if value.new_record?
-      index = value.object_id
-    end
-    label_options = build_label_options(value, index)
-    input_label = @builder.text_field(:label, label_options)
-
-    related_url_options = build_url_options(value, index)
-    input_related_url = @builder.text_field(:related_url, related_url_options)
-
-    unless value.new_record?
-      id_options = build_id_options(value.id, index)
-      input_id = @builder.text_field(:id, id_options)
-    end
+    index = value.object_id if value.new_record?
+    input_label = @builder.text_field(:label, build_label_options(value, index))
+    input_related_url = @builder.text_field(:related_url, build_url_options(value, index))
+    input_id = @builder.text_field(:id, build_id_options(value.id, index)) unless value.new_record?
 
     if value.destroy_item == true
       destroy_options = build_destroy_options(value.id, index)

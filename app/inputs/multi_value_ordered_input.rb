@@ -70,9 +70,7 @@ class MultiValueOrderedInput < MultiValueInput
   private
 
   def build_field(value, index)
-    if value.new_record?
-      index = value.object_id
-    end
+    index = value.object_id if value.new_record?
 
     if value.is_a?(NestedOrderedCreator)
       item_options = build_item_options(value, index, :creator)
@@ -96,9 +94,6 @@ class MultiValueOrderedInput < MultiValueInput
       input_field_2 = @builder.text_field(:related_url, url_options)
     end
 
-    index_options = build_index_options(value, index)
-    input_index = @builder.text_field(:index, index_options)
-
     unless value.new_record?
       id_options = build_id_options(value.id, index)
       input_id = @builder.text_field(:id, id_options)
@@ -109,14 +104,11 @@ class MultiValueOrderedInput < MultiValueInput
       destroy_input = @builder.text_field(:_destroy, destroy_options)
     end
 
-    nested_item = "#{input_field}#{input_field_2}#{input_index}"
-
-    "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
+    "#{input_id ||= '' }#{destroy_input ||= '' }#{"#{input_field}#{input_field_2}#{@builder.text_field(:index, build_index_options(value, index))}"}"
   end
 
   def build_nested_item(value, index)
-    index_options = build_index_options(value, index)
-    input_index = @builder.text_field(:index, index_options)
+    input_index = @builder.text_field(:index, build_index_options(value, index))
 
     if value.is_a?(NestedOrderedCreator)
       creator_options = build_creator_options(value, index)
@@ -191,8 +183,7 @@ class MultiValueOrderedInput < MultiValueInput
 
   def collection
     @collection ||= begin
-      val = object[attribute_name]
-      val.reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_i }
+      object[attribute_name].reject { |value| value.to_s.strip.blank? }.sort_by { |h| h[:index].first.to_i }
     end
   end
 end

@@ -32,7 +32,6 @@ module ScholarsArchive::Validators
     # This will now check if there is value passed in, since this can be used for optional fields (i.e. other_affiliation)
     # as well as required ones with multiples allowed (i.e. degree_field)
     def validate_other_value_multiple? (record, field: nil, collection: [])
-      other_field = "#{field}_other".to_sym
       other_value = record.send(other_field)
       error_counter = 0
 
@@ -41,7 +40,7 @@ module ScholarsArchive::Validators
         other_value.each do |entry|
           if other_value_in_collection? other_value: entry, collection: collection
             err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
-            add_error_message(record, other_field, err_message)
+            add_error_message(record, "#{field}_other".to_sym, err_message)
             record.send(field) << [{option: 'Other', err_msg: err_message, other_entry: entry.to_s}.to_json]
             error_counter += 1
           else

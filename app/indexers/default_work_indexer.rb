@@ -60,17 +60,12 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     object.triple_powered_properties.each do |o|
       labels = []
       if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
-        uris = object.send(o[:field])
-        uris = object.send(o[:field]).reject { |u| u == 'Other' }
-
         # if multiple URIs, need to get top label for each one
-        uris.each do |uri|
+        object.send(o[:field]).reject { |u| u == 'Other' }.each do |uri|
           labels << ScholarsArchive::TriplePoweredService.new.fetch_top_label(uri.lines.to_a, parse_date: o[:has_date])
         end
       else
-        uris = Array(object.send(o[:field]))
-        uris = Array(object.send(o[:field])).reject { |u| u == 'Other' }
-        labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
+        labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(Array(object.send(o[:field])).reject { |u| u == 'Other' }, parse_date: o[:has_date])
       end
       solr_doc[o[:field].to_s + '_label_ssim'] = labels
       solr_doc[o[:field].to_s + '_label_tesim'] = labels
