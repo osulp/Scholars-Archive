@@ -26,6 +26,7 @@ class Dataset < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
+
   def set_defaults
   end
 

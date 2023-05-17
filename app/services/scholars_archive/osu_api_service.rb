@@ -34,6 +34,7 @@ module ScholarsArchive
     end
 
     private
+
     def get(url, params, headers = {})
       Faraday.get url, params, headers
     end

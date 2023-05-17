@@ -18,6 +18,7 @@ class AdministrativeReportOrPublication < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
+
   def set_defaults
     self.peerreviewed ||= 'FALSE'
   end

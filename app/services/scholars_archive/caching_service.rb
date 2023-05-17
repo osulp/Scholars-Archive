@@ -10,6 +10,7 @@ module ScholarsArchive
     end
 
     private
+
       def self.fetch_or_cache_json_from_etag(uri, expires_in)
         etag = fetch_etag(uri)
         data = read_etag_from_cache(uri)

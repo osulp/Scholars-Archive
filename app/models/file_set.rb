@@ -6,6 +6,7 @@ class FileSet < ActiveFedora::Base
   include ::ScholarsArchive::DefaultMetadata
 
   private
+
   def set_defaults
   end
 end

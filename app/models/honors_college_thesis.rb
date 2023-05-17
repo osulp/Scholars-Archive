@@ -23,6 +23,7 @@ class HonorsCollegeThesis < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
+
   def set_defaults
     self.resource_type = ['Honors College Thesis'] if resource_type.empty?
     self.other_affiliation = ['http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege'] if other_affiliation.empty?
