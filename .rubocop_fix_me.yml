@@ -69,28 +69,6 @@ Style/ConditionalAssignment:
     - 'app/helpers/hyrax_helper.rb'
     - 'app/inputs/multi_value_label_url_input.rb'
 
-Layout/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'app/renderers/hyrax/renderers/edtf_attribute_renderer.rb'
-    - 'app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb'
-    - 'app/models/article.rb'
-    - 'app/models/eesc_publication.rb'
-    - 'app/models/technical_report.rb'
-    - 'app/models/administrative_report_or_publication.rb'
-    - 'app/models/graduate_thesis_or_dissertation.rb'
-    - 'app/models/default.rb'
-    - 'app/models/undergraduate_thesis_or_project.rb'
-    - 'app/models/open_educational_resource.rb'
-    - 'app/models/graduate_project.rb'
-    - 'app/models/dataset.rb'
-    - 'app/models/purchased_e_resource.rb'
-    - 'app/models/honors_college_thesis.rb'
-    - 'app/models/file_set.rb'
-    - 'app/models/conference_proceedings_or_journal.rb'
-    - 'app/models/batch_upload_item.rb'
-    - 'app/services/scholars_archive/caching_service.rb'
-    - 'app/services/scholars_archive/osu_api_service.rb'
-
 Layout/IndentationWidth:
   Exclude:
     - 'app/renderers/hyrax/renderers/external_link_attribute_renderer.rb'
