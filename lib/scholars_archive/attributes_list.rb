@@ -3,7 +3,6 @@
 module ScholarsArchive
   # List for displaying attributes on the show page. Order matters.
   module AttributesList
-    # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/MethodLength
     def self.base_attributes
       [
@@ -72,7 +71,6 @@ module ScholarsArchive
         { field: :issn, label: t('simple_form.labels.defaults.issn') }
       ]
     end
-    # rubocop:enable Metrics/AbcSize
     # rubocop:enable Metrics/MethodLength
   end
 end

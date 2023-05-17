@@ -48,7 +48,6 @@ module ScholarsArchive
     #   Database queries BEGIN and COMMIT
     #   Other redis commands
     # rubocop:disable Metrics/MethodLength
-    # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/CyclomaticComplexity
     # rubocop:disable Metrics/PerceivedComplexity
     def self.sample(fields)
@@ -71,7 +70,6 @@ module ScholarsArchive
       end
     end
     # rubocop:enable Metrics/MethodLength
-    # rubocop:enable Metrics/AbcSize
     # rubocop:enable Style/WordArray
     # rubocop:enable Metrics/CyclomaticComplexity
     # rubocop:enable Metrics/PerceivedComplexity

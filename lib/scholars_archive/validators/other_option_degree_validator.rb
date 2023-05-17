@@ -31,12 +31,12 @@ module ScholarsArchive::Validators
                                                                                                 env_user: current_user_editor(record)
       end
 
-      if degree_grantors_present? (record)
+      #if degree_grantors_present? (record)
         # check if degree_grantors_other is already in the list or is missing
-        error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
-                                                                                       field: :degree_grantors,
-                                                                                       env_user: current_user_editor(record)
-      end
+      #  error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
+      #                                                                                 field: :degree_grantors,
+      #                                                                                 env_user: current_user_editor(record)
+      #end
 
       return
     end

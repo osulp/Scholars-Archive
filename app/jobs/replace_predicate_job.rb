@@ -5,7 +5,6 @@ class ReplacePredicateJob < ScholarsArchive::ApplicationJob
   queue_as :default
 
   # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def perform(ids_and_value, old_predicate, metadata_field)
     counter = 0
     logger = Rails.logger
@@ -49,5 +48,4 @@ class ReplacePredicateJob < ScholarsArchive::ApplicationJob
     logger.info "Total works updated: #{counter}/#{ids_and_value.count}"
   end
   # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 end
