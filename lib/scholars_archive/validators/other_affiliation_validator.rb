@@ -3,13 +3,13 @@
 module ScholarsArchive::Validators
   # Other affiliation validator
   class OtherAffiliationValidator < ActiveModel::Validator
-    def validate(record)
-      #error_counter = 0
+    def validate(_record)
+      # error_counter = 0
 
-      #if other_affiliation_other_present? (record)
-        # check if other_affiliation_other is already in the list or is missing
+      # if other_affiliation_other_present? (record)
+      # check if other_affiliation_other is already in the list or is missing
       #  error_counter = validate_other_value_multiple? record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record))
-      #end
+      # end
 
       return
     end

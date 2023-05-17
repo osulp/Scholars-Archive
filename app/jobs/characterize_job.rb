@@ -20,7 +20,7 @@ class CharacterizeJob < Hyrax::ApplicationJob
 
   private
 
-  def characterize(file_set, _file_id, filepath) # rubocop:disable Metrics/AbcSize
+  def characterize(file_set, _file_id, filepath)
     # store this so we can tell if the original_file is actually changing
     previous_checksum = file_set.characterization_proxy.original_checksum.first
 
