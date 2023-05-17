@@ -69,29 +69,6 @@ Style/ConditionalAssignment:
     - 'app/helpers/hyrax_helper.rb'
     - 'app/inputs/multi_value_label_url_input.rb'
 
-Layout/IndentationWidth:
-  Exclude:
-    - 'app/renderers/hyrax/renderers/external_link_attribute_renderer.rb'
-    - 'app/forms/hyrax/forms/collection_form.rb'
-    - 'app/models/solr_document.rb'
-    - 'app/models/batch_upload_item.rb'
-    - 'app/authorities/scholars_archive/cache_based_authority.rb'
-    - 'app/authorities/parsers/academic_units_parser.rb'
-    - 'app/authorities/parsers/degree_fields_parser.rb'
-    - 'app/controllers/scholars_archive/handles_controller.rb'
-    - 'app/controllers/hyrax/contact_form_controller.rb'
-    - 'app/controllers/concerns/scholars_archive/works_controller_behavior.rb'
-    - 'app/services/scholars_archive/caching_service.rb'
-    - 'app/services/scholars_archive/edtf_date_compare_service.rb'
-    - 'app/inputs/multi_value_date_input.rb'
-    - 'spec/spec_helper.rb'
-    - 'spec/actors/scholars_archive/actors/nested_fields_operations_actor_spec.rb'
-    - 'spec/actors/scholars_archive/actors/add_other_field_option_actor_spec.rb'
-    - 'spec/authorities/parsers/academic_units_parser_spec.rb'
-    - 'spec/authorities/parsers/degree_fields_parser_spec.rb'
-    - 'spec/services/scholars_archive/other_option_create_success_service_spec.rb'
-    - 'lib/qa/authorities/geonames.rb'
-
 Layout/IndentationConsistency:
   Exclude:
     - 'app/renderers/hyrax/renderers/external_link_attribute_renderer.rb'
