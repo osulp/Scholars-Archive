@@ -104,7 +104,7 @@ jobs:
       - image: ualbertalib/docker-fcrepo4:4.7
         environment:
           CATALINA_OPTS: '-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx1024m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC'
-      - image: solr:6-slim
+      - image: solr:8-slim
         command: bin/solr -cloud -noprompt -f -p 8985
     parallelism: 1
     working_directory: ~/app
@@ -134,6 +134,12 @@ jobs:
           name: Create Prometheus Client Data Store
           command: mkdir -p $YABEDA_PROMETHEUS_PATH
       - run:
+          name: Update bundler srsly again
+          command: gem install --force bundler
+      - run:
+          name: Bundle update srsly again
+          command: bundle check --without production --path=vendor/bundle || bundle install --without production --path=vendor/bundle --jobs=4 --retry=3
+      - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
@@ -142,12 +148,6 @@ jobs:
       - run:
           name: Wait for Fedora
           command: dockerize -wait http://localhost:8080 -timeout 1m
-      - run:
-          name: Update bundler srsly again
-          command: gem install --force bundler
-      - run:
-          name: Bundle update srsly again
-          command: bundle check --without production --path=vendor/bundle || bundle install --without production --path=vendor/bundle --jobs=4 --retry=3
       - run:
           name: Create and load MySQL data
           command: bundle exec rake db:create db:schema:load --trace
