@@ -46,7 +46,7 @@ module ScholarsArchive
             doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :stored_searchable)] = label_set[:data]
           end
           if ordered_title_labels.present?
-            ordered_titles = nested_ordered_title.select { |i| i.instance_of?(NestedOrderedTitle) ? (i.title.present? && i.index.present?) : i.present? }.map { |i| i.instance_of? NestedOrderedTitle ? [i.title.first, i.index.first] : [i] }.select(&:present?).sort_by { |titles| titles.second }.map { |titles| titles.first }
+            ordered_titles = nested_ordered_title.select { |i| i.instance_of?(NestedOrderedTitle) ? (i.title.present? && i.index.present?) : i.present? }.map { |i| i.instance_of?(NestedOrderedTitle) ? [i.title.first, i.index.first] : [i] }.select(&:present?).sort_by { |titles| titles.second }.map { |titles| titles.first }
 
             doc[ActiveFedora.index_field_mapper.solr_name('title', :stored_searchable)] = ordered_titles
             doc[ActiveFedora.index_field_mapper.solr_name('nested_ordered_title_label', :stored_searchable)] = ordered_titles
