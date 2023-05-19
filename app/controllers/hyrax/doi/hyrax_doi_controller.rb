@@ -81,7 +81,7 @@ module Hyrax
       # TODO: Move this out to a partial that gets rendered?
       def autofill_js(doi)
         # TODO: Need to wipe old data or is this just supplemental?
-        js = "var event = new Event('change');\n" + hyrax_work_from_doi(doi).attributes.collect { |k, v| autofill_field(k, v) }.reject(&:blank?).join("\n")
+        js = "var event = new Event('change');\n#{hyrax_work_from_doi(doi).attributes.collect { |k, v| autofill_field(k, v) }.reject(&:blank?).join("\n")}"
         js << "document.location = '#metadata';"
       end
 

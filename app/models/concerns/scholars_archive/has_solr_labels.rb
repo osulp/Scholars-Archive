@@ -20,17 +20,17 @@ module ScholarsArchive
               end
             end
           end
-          point_labels = nested_geo.flat_map { |i| (i.instance_of? NestedGeo) ? i.point : '' }.select(&:present?).flatten.map { |i| i[0] }
-          bbox_labels = nested_geo.flat_map { |i| (i.instance_of? NestedGeo) ? i.bbox : '' }.select(&:present?).flatten.map { |i| i[0] }
+          point_labels = nested_geo.flat_map { |i| i.instance_of? NestedGeo ? i.point : '' }.select(&:present?).flatten.map { |i| i[0] }
+          bbox_labels = nested_geo.flat_map { |i| i.instance_of? NestedGeo ? i.bbox : '' }.select(&:present?).flatten.map { |i| i[0] }
           labels = point_labels + bbox_labels
-          related_items_labels = nested_related_items.map { |i| (i.instance_of? NestedRelatedItems) ? "#{i.label.first}$#{i.related_url.first}$#{i.index.first}" : i }.select(&:present?)
-          ordered_creator_labels = nested_ordered_creator.map { |i| (i.instance_of? NestedOrderedCreator) ? "#{i.creator.first}$#{i.index.first}" : i }.select(&:present?)
-          creator_labels = nested_ordered_creator.map { |i| (i.instance_of? NestedOrderedCreator) ? "#{i.creator.first}" : i }.select(&:present?).uniq
-          ordered_title_labels = nested_ordered_title.map { |i| (i.instance_of? NestedOrderedTitle) ? "#{i.title.first}$#{i.index.first}" : i }.select(&:present?)
-          ordered_abstract_labels = nested_ordered_abstract.map { |i| (i.instance_of? NestedOrderedAbstract) ? "#{i.abstract.first}$#{i.index.first}" : i }.select(&:present?)
-          ordered_contributor_labels = nested_ordered_contributor.map { |i| (i.instance_of? NestedOrderedContributor) ? "#{i.contributor.first}$#{i.index.first}" : i }.select(&:present?)
-          contributor_labels = nested_ordered_contributor.map { |i| (i.instance_of? NestedOrderedContributor) ? "#{i.contributor.first}" : i }.select(&:present?).uniq
-          ordered_additional_information_labels = nested_ordered_additional_information.map { |i| (i.instance_of? NestedOrderedAdditionalInformation) ? "#{i.additional_information.first}$#{i.index.first}" : i }.select(&:present?)
+          related_items_labels = nested_related_items.map { |i| i.instance_of? NestedRelatedItems ? "#{i.label.first}$#{i.related_url.first}$#{i.index.first}" : i }.select(&:present?)
+          ordered_creator_labels = nested_ordered_creator.map { |i| i.instance_of? NestedOrderedCreator ? "#{i.creator.first}$#{i.index.first}" : i }.select(&:present?)
+          creator_labels = nested_ordered_creator.map { |i| i.instance_of? NestedOrderedCreator ? "#{i.creator.first}" : i }.select(&:present?).uniq
+          ordered_title_labels = nested_ordered_title.map { |i| i.instance_of? NestedOrderedTitle ? "#{i.title.first}$#{i.index.first}" : i }.select(&:present?)
+          ordered_abstract_labels = nested_ordered_abstract.map { |i| i.instance_of? NestedOrderedAbstract ? "#{i.abstract.first}$#{i.index.first}" : i }.select(&:present?)
+          ordered_contributor_labels = nested_ordered_contributor.map { |i| i.instance_of? NestedOrderedContributor ? "#{i.contributor.first}$#{i.index.first}" : i }.select(&:present?)
+          contributor_labels = nested_ordered_contributor.map { |i| i.instance_of? NestedOrderedContributor ? "#{i.contributor.first}" : i }.select(&:present?).uniq
+          ordered_additional_information_labels = nested_ordered_additional_information.map { |i| i.instance_of? NestedOrderedAdditionalInformation ? "#{i.additional_information.first}$#{i.index.first}" : i }.select(&:present?)
 
           labels = [{ label: 'nested_geo_label', data: labels },
             { label: 'nested_related_items_label', data: related_items_labels },
@@ -46,7 +46,7 @@ module ScholarsArchive
             doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :stored_searchable)] = label_set[:data]
           end
           if ordered_title_labels.present?
-            ordered_titles = nested_ordered_title.select { |i| (i.instance_of? NestedOrderedTitle) ? (i.title.present? && i.index.present?) : i.present? }.map { |i| (i.instance_of? NestedOrderedTitle) ? [i.title.first, i.index.first] : [i] }.select(&:present?).sort_by { |titles| titles.second }.map { |titles| titles.first }
+            ordered_titles = nested_ordered_title.select { |i| i.instance_of? NestedOrderedTitle ? (i.title.present? && i.index.present?) : i.present? }.map { |i| i.instance_of? NestedOrderedTitle ? [i.title.first, i.index.first] : [i] }.select(&:present?).sort_by { |titles| titles.second }.map { |titles| titles.first }
 
             doc[ActiveFedora.index_field_mapper.solr_name('title', :stored_searchable)] = ordered_titles
             doc[ActiveFedora.index_field_mapper.solr_name('nested_ordered_title_label', :stored_searchable)] = ordered_titles
