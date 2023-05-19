@@ -134,12 +134,6 @@ jobs:
           name: Create Prometheus Client Data Store
           command: mkdir -p $YABEDA_PROMETHEUS_PATH
       - run:
-          name: Update bundler srsly again
-          command: gem install --force bundler
-      - run:
-          name: Bundle update srsly again
-          command: bundle check --without production --path=vendor/bundle || bundle install --without production --path=vendor/bundle --jobs=4 --retry=3
-      - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
@@ -148,6 +142,12 @@ jobs:
       - run:
           name: Wait for Fedora
           command: dockerize -wait http://localhost:8080 -timeout 1m
+      - run:
+          name: Update bundler srsly again
+          command: gem install --force bundler
+      - run:
+          name: Bundle update srsly again
+          command: bundle check --without production --path=vendor/bundle || bundle install --without production --path=vendor/bundle --jobs=4 --retry=3
       - run:
           name: Create and load MySQL data
           command: bundle exec rake db:create db:schema:load --trace
