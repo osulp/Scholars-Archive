@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Parsers::DegreeFieldsParser do
-  let(:invalid_jsonld) {
-  '{
+  let(:invalid_jsonld) do
+    '{
   "@context": {
     "dc": "http://purl.org/dc/terms/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -35,10 +35,10 @@ RSpec.describe Parsers::DegreeFieldsParser do
         "@language": "en"
       }
     }]}'
-  }
+  end
 
-  let(:jsonld) {
-  '{
+  let(:jsonld) do
+    '{
   "@context": {
     "dc": "http://purl.org/dc/terms/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -111,7 +111,7 @@ RSpec.describe Parsers::DegreeFieldsParser do
         "@language": "en"
       }
     }]}'
-  }
+  end
 
   describe '#parse' do
     context 'when given JSON-LD without an invalid graph' do
@@ -124,6 +124,7 @@ RSpec.describe Parsers::DegreeFieldsParser do
       it 'parses the graph for id and labels' do
         expect(described_class.parse(jsonld)).to eq [{ id: 'http://opaquenamespace.org/ns/osuDegreeFields/HVWYADSR', term: 'Accountancy - 2017', active: true }]
       end
+
       it 'does not include deprecated terms' do
         expect(described_class.parse(jsonld)).not_to include 'http://opaquenamespace.org/ns/osuDegreeFields/TsB6Zk5J'
       end

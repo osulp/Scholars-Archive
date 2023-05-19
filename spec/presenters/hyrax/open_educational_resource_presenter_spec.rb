@@ -27,7 +27,9 @@ RSpec.describe OpenEducationalResourcePresenter do
   let(:solr_properties) do
     %w[is_based_on_url interactivity_type learning_resource_type typical_age_range time_required duration]
   end
+
   subject { presenter }
+
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(solr_document).to receive(property.to_sym)

@@ -16,12 +16,12 @@ module ScholarsArchive
 
       def initialize_fields
         model.nested_geo.build
-        model.nested_related_items.build({index:'0'})
-        model.nested_ordered_creator.build({index:'0'})
-        model.nested_ordered_title.build({index:'0'})
-        model.nested_ordered_abstract.build({index:'0'})
-        model.nested_ordered_contributor.build({index:'0'})
-        model.nested_ordered_additional_information.build({index:'0'})
+        model.nested_related_items.build({ index: '0' })
+        model.nested_ordered_creator.build({ index: '0' })
+        model.nested_ordered_title.build({ index: '0' })
+        model.nested_ordered_abstract.build({ index: '0' })
+        model.nested_ordered_contributor.build({ index: '0' })
+        model.nested_ordered_additional_information.build({ index: '0' })
         super
       end
     end

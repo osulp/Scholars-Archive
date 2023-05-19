@@ -8,11 +8,11 @@ module ScholarsArchive
         'https://www.geonames.org/ontology#H' => 'Hydrographic',
         'https://www.geonames.org/ontology#L' => 'Area',
         'https://www.geonames.org/ontology#P' => 'Populated Place',
-       'https://www.geonames.org/ontology#R' => 'Road / Railroad',
-       'https://www.geonames.org/ontology#S' => 'Spot',
-       'https://www.geonames.org/ontology#T' => 'Hypsographic',
-       'https://www.geonames.org/ontology#U' => 'Undersea',
-       'https://www.geonames.org/ontology#V' => 'Vegetation'
+        'https://www.geonames.org/ontology#R' => 'Road / Railroad',
+        'https://www.geonames.org/ontology#S' => 'Spot',
+        'https://www.geonames.org/ontology#T' => 'Hypsographic',
+        'https://www.geonames.org/ontology#U' => 'Undersea',
+        'https://www.geonames.org/ontology#V' => 'Vegetation'
       }[uri]
     end
   end

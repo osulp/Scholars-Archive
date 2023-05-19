@@ -27,13 +27,16 @@ RSpec.describe AdministrativeReportOrPublicationPresenter do
   let(:solr_properties) do
     %w[doi abstract alt_title license based_near_linked resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed_label digitization_spec file_extent file_format dspace_community dspace_collection]
   end
+
   subject { presenter }
+
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(solr_document).to receive(property.to_sym)
       presenter.send(property)
     end
   end
+
   it { is_expected.to delegate_method(:doi).to(:solr_document) }
   it { is_expected.to delegate_method(:abstract).to(:solr_document) }
   it { is_expected.to delegate_method(:alt_title).to(:solr_document) }

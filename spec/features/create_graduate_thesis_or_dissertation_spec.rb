@@ -63,7 +63,7 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       ENV['SCHOLARSARCHIVE_DEFAULT_ADMIN_SET'] = 'Test Default Admin Set'
       ENV['OSU_API_PERSON_REFRESH_SECONDS'] = '123456'
       @ticket = CASClient::ServiceTicket.new('ST-test', nil)
-      @ticket.extra_attributes = {id: 10, email: 'admin@example.com'}
+      @ticket.extra_attributes = { id: 10, email: 'admin@example.com' }
       @ticket.success = true
       @ticket.user = 'admin'
 

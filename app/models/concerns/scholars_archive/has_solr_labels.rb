@@ -11,11 +11,11 @@ module ScholarsArchive
           nested_geo.each do |geo|
             if geo.instance_of? NestedGeo
               if geo.point.present? && geo.type.blank?
-                geo.point = geo.label.first+' (' + geo.point.first + ')'
+                geo.point = "#{geo.label.first} (#{geo.point.first})"
                 geo.type = :point.to_s
               end
               if geo.bbox.present? && geo.type.blank?
-                geo.bbox = geo.label.first+' (' + geo.bbox.first + ')'
+                geo.bbox = "#{geo.label.first} (#{geo.bbox.first})"
                 geo.type = :bbox.to_s
               end
             end
@@ -32,13 +32,13 @@ module ScholarsArchive
           contributor_labels = nested_ordered_contributor.map { |i| (i.instance_of? NestedOrderedContributor) ? "#{i.contributor.first}" : i }.select(&:present?).uniq
           ordered_additional_information_labels = nested_ordered_additional_information.map { |i| (i.instance_of? NestedOrderedAdditionalInformation) ? "#{i.additional_information.first}$#{i.index.first}" : i }.select(&:present?)
 
-          labels = [{label: 'nested_geo_label', data: labels },
-            {label: 'nested_related_items_label', data: related_items_labels},
-            {label: 'nested_ordered_creator_label', data: ordered_creator_labels},
-            {label: 'nested_ordered_title_label', data: ordered_title_labels},
-            {label: 'nested_ordered_abstract_label', data: ordered_abstract_labels},
-            {label: 'nested_ordered_contributor_label', data: ordered_contributor_labels},
-            {label: 'nested_ordered_additional_information_label', data: ordered_additional_information_labels}
+          labels = [{ label: 'nested_geo_label', data: labels },
+            { label: 'nested_related_items_label', data: related_items_labels },
+            { label: 'nested_ordered_creator_label', data: ordered_creator_labels },
+            { label: 'nested_ordered_title_label', data: ordered_title_labels },
+            { label: 'nested_ordered_abstract_label', data: ordered_abstract_labels },
+            { label: 'nested_ordered_contributor_label', data: ordered_contributor_labels },
+            { label: 'nested_ordered_additional_information_label', data: ordered_additional_information_labels }
             ]
 
           labels.each do |label_set|

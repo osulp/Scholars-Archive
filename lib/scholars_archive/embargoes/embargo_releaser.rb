@@ -32,7 +32,7 @@ module ScholarsArchive::Embargoes
         end
       rescue StandardError => e
         logger.error("Couldnt process #{work.id}")
-        logger.error([e.message]+e.backtrace).join("\n")
+        logger.error([e.message] + e.backtrace).join("\n")
         return nil
       end
     end

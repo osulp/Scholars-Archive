@@ -6,11 +6,11 @@ RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::GraduateThesisOrDissertationForm.new(work, ability, controller)
   end
@@ -44,7 +44,7 @@ RSpec.describe 'records/edit_fields/_degree_level.html.erb', type: :view do
     end
 
     it 'has the "other" input value as the default in the form' do
-      expect(rendered).to have_selector('.degree-level-other input[value="'+degree_level_other_option_test+'"]')
+      expect(rendered).to have_selector(".degree-level-other input[value=\"#{degree_level_other_option_test}\"]")
     end
   end
 

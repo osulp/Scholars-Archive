@@ -12,6 +12,7 @@ RSpec.describe NestedRelatedItems do
   describe 'instantiation' do
     context 'with a string hash uri' do
       let(:uri) { '#bla_46' }
+
       it 'should make it a URI' do
         expect(subject.rdf_subject).to eq RDF::URI('#bla_46')
       end

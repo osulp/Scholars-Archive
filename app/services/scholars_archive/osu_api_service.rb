@@ -18,7 +18,7 @@ module ScholarsArchive
       return @people[onid] if @people[onid]
 
       url = "#{ENV['OSU_API_HOST']}/v1/directory"
-      params = {q: onid}
+      params = { q: onid }
       header = authorization_header
       @logger.debug("OsuApiService#get_person : fetching user : #{url} with params #{params}")
       response = get(url, params, header)
@@ -46,7 +46,7 @@ module ScholarsArchive
     def get_token
       url = "#{ENV['OSU_API_HOST']}/oauth2/token"
       @logger.debug("OsuApiService#get_token : fetching token : #{url}")
-      response = post(url, {grant_type: 'client_credentials', client_id: ENV['OSU_API_CLIENT_ID'], client_secret: ENV['OSU_API_CLIENT_SECRET']})
+      response = post(url, { grant_type: 'client_credentials', client_id: ENV['OSU_API_CLIENT_ID'], client_secret: ENV['OSU_API_CLIENT_SECRET'] })
       @logger.error("OsuApiService#get_token failed : #{response.status} : #{response.reason_phrase}") unless response.status == 200
       if response.status == 200
         json = JSON.parse(response.body)

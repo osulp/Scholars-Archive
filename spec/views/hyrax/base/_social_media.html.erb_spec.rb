@@ -11,9 +11,11 @@ RSpec.describe 'hyrax/base/_social_media.html.erb', type: :view do
   it 'renders various social media share button' do
     expect(page).to have_link '', href: 'https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F'
   end
+
   it 'renders Twitter share button' do
     expect(page).to have_link '', href: 'https://twitter.com/intent/tweet/?text=Example&url=http%3A%2F%2Fexample.com%2F'
   end
+
   it 'renders Copy link button' do
     expect(page).to have_button 'Copy link'
   end

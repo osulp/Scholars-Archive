@@ -6,11 +6,11 @@ RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb',
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::GraduateThesisOrDissertationForm.new(work, ability, controller)
   end
@@ -44,6 +44,7 @@ RSpec.describe 'graduate_thesis_or_dissertations/edit_fields/_license.html.erb',
       expect(rendered).to have_selector("select#graduate_thesis_or_dissertation_license option[value$='/4.0/']", count: 6)
       expect(rendered).to have_selector("select#graduate_thesis_or_dissertation_license option[value$='rr-r.html']", count: 1)
     end
+
     it 'does not render unneeded licenses' do
       expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='zero/1.0/']")
       expect(rendered).not_to have_selector("select#graduate_thesis_or_dissertation_license option[value$='mark/1.0/']")

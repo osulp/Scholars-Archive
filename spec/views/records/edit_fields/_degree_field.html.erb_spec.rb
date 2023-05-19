@@ -6,11 +6,11 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::GraduateThesisOrDissertationForm.new(work, ability, controller)
   end
@@ -108,9 +108,9 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   end
 
   context "for a work with degree field where 'Other' was not selected" do
-    let(:attributes) { { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field:
+    let(:attributes) do { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field:
         ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
-    } }
+    } end
 
     before do
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])

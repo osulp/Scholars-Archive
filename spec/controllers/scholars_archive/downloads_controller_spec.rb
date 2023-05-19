@@ -24,6 +24,7 @@ RSpec.describe ScholarsArchive::DownloadsController, type: :controller do
     it 'responds to track_download' do
       expect(controller).to respond_to(:track_download)
     end
+
     it 'rescues errors from Staccato' do
       expect(controller.track_download).to be_nil
     end

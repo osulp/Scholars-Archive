@@ -17,6 +17,7 @@ RSpec.describe Hyrax::GraduateThesisOrDissertationForm do
   it 'responds to terms with the proper list of terms' do
     expect(described_class.terms).to include *%i[degree_level degree_name degree_field degree_grantors contributor_advisor contributor_committeemember graduation_year degree_discipline]
   end
+
   it 'has the proper required fields' do
     expect(described_class.required_fields).to include *%i[degree_level degree_name degree_field degree_grantors graduation_year]
   end

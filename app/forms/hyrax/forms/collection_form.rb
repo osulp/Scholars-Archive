@@ -25,7 +25,7 @@ module Hyrax
 
       delegate :blacklight_config, to: Hyrax::CollectionsController
 
-      #OVERRIDE HERE
+      # OVERRIDE HERE
       self.terms = %i[title creator contributor description date_created subject language representative_id thumbnail_id based_near related_url visibility collection_type_gid]
 
       self.required_fields = [:title]
@@ -62,7 +62,7 @@ module Hyrax
       end
 
       # Terms that appear within the accordion
-      #OVERRIDE HERE
+      # OVERRIDE HERE
       def secondary_terms
         %i[creator
            contributor
@@ -79,7 +79,7 @@ module Hyrax
           banner_info = CollectionBrandingInfo.where(collection_id: id).where(role: 'banner')
           banner_file = File.split(banner_info.first.local_path).last unless banner_info.empty?
           file_location = banner_info.first.local_path unless banner_info.empty?
-          relative_path = '/' + banner_info.first.local_path.split('/')[-4..-1].join('/') unless banner_info.empty?
+          relative_path = "/#{banner_info.first.local_path.split('/')[-4..-1].join('/')}" unless banner_info.empty?
           { file: banner_file, full_path: file_location, relative_path: relative_path }
         end
       end
@@ -90,7 +90,7 @@ module Hyrax
           logos_info = CollectionBrandingInfo.where(collection_id: id).where(role: 'logo')
           logos_info.map do |logo_info|
             logo_file = File.split(logo_info.local_path).last
-            relative_path = '/' + logo_info.local_path.split('/')[-4..-1].join('/')
+            relative_path = "/#{logo_info.local_path.split('/')[-4..-1].join('/')}"
             alttext = logo_info.alt_text
             linkurl = logo_info.target_url
             { file: logo_file, full_path: logo_info.local_path, relative_path: relative_path, alttext: alttext, linkurl: linkurl }
@@ -131,25 +131,25 @@ module Hyrax
 
       private
 
-        def all_files_with_access
-          member_presenters(member_work_ids).flat_map(&:file_set_presenters).map { |x| [x.to_s, x.id] }
-        end
+      def all_files_with_access
+        member_presenters(member_work_ids).flat_map(&:file_set_presenters).map { |x| [x.to_s, x.id] }
+      end
 
-        # Override this method if you have a different way of getting the member's ids
-        def member_work_ids
-          response = collection_member_service.available_member_work_ids.response
-          response.fetch('docs').map { |doc| doc['id'] }
-        end
+      # Override this method if you have a different way of getting the member's ids
+      def member_work_ids
+        response = collection_member_service.available_member_work_ids.response
+        response.fetch('docs').map { |doc| doc['id'] }
+      end
 
-        def collection_member_service
-          @collection_member_service ||= membership_service_class.new(scope: scope, collection: collection, params: blacklight_config.default_solr_params)
-        end
+      def collection_member_service
+        @collection_member_service ||= membership_service_class.new(scope: scope, collection: collection, params: blacklight_config.default_solr_params)
+      end
 
-        def member_presenters(member_ids)
-          PresenterFactory.build_for(ids: member_ids,
-                                     presenter_class: WorkShowPresenter,
-                                     presenter_args: [nil])
-        end
+      def member_presenters(member_ids)
+        PresenterFactory.build_for(ids: member_ids,
+                                   presenter_class: WorkShowPresenter,
+                                   presenter_args: [nil])
+      end
     end
     # rubocop:enable ClassLength
   end

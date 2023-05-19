@@ -27,8 +27,7 @@ class Dataset < ActiveFedora::Base
 
   private
 
-  def set_defaults
-  end
+  def set_defaults; end
 
   def remove_datacite_doi
     self.datacite_doi = nil unless persisted?

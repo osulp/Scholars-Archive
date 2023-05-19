@@ -31,7 +31,7 @@ class MultiValueDateInput < MultiValueInput
     calendar_widget = build_calendar_widget(value, index)
 
     date_field_inputs = date_field_inputs_wrapper(index) do
-     "#{input_date}#{calendar_widget}"
+      "#{input_date}#{calendar_widget}"
     end
 
     "#{date_field_inputs}#{toggle_checkbox}"

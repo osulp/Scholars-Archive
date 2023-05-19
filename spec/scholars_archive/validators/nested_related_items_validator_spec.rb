@@ -12,7 +12,7 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
     end
 
     let!(:depositor) do
-      User.new(username:'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+      User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
     end
 
     let(:test_label) { 'Oregon Digital' }
@@ -24,13 +24,13 @@ RSpec.describe ScholarsArchive::Validators::NestedRelatedItemsValidator do
       }
     end
 
-    let(:attributes) {
+    let(:attributes) do
       {
         title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
         depositor: depositor.username,
         nested_related_items_attributes: [test_item]
       }
-    }
+    end
 
     before do
       allow_any_instance_of(User).to receive(:admin?).and_return(true)

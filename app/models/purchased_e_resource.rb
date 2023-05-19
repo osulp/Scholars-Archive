@@ -24,6 +24,5 @@ class PurchasedEResource < ActiveFedora::Base
 
   private
 
-  def set_defaults
-  end
+  def set_defaults; end
 end

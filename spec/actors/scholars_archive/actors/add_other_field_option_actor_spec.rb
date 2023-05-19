@@ -4,11 +4,11 @@ require 'rails_helper'
 require 'spec_helper'
 RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   let(:curation_concern) do
-      GraduateThesisOrDissertation.new do |work|
-        work.attributes = attributes
-      end
+    GraduateThesisOrDissertation.new do |work|
+      work.attributes = attributes
+    end
   end
-  let(:attributes) {
+  let(:attributes) do
     {
       title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
       degree_field: ['Other'],
@@ -17,9 +17,9 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       degree_grantors: 'Other',
       other_affiliation: ['Other']
     }
-  }
+  end
   let!(:user) do
-    User.new(username:'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+    User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
   let(:ability) { double(current_user: user) }
   let(:env) { Hyrax::Actors::Environment.new(curation_concern, ability, attributes) }
@@ -60,7 +60,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_grantors_other) { 'test1 degree grantors other' }
       let(:test_other_affiliation_other) { ['test1 other affiliation other'] }
 
-      let(:attributes) {
+      let(:attributes) do
         {
           title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
           degree_field: ['Other'],
@@ -74,7 +74,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
           degree_grantors_other: test_degree_grantors_other,
           other_affiliation_other: test_other_affiliation_other
         }
-      }
+      end
 
       it 'runs the environment on create' do
         expect(subject.create(env)).to be true
@@ -116,7 +116,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
       let(:test_degree_grantors_other) { 'test2 degree grantors other' }
       let(:test_other_affiliation_other) { ['test2 other affiliation other'] }
 
-      let(:attributes) {
+      let(:attributes) do
         {
           title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
           degree_field: ['Other'],
@@ -130,7 +130,7 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
           degree_grantors_other: test_degree_grantors_other,
           other_affiliation_other: test_other_affiliation_other
         }
-      }
+      end
 
       it 'runs the environment on update' do
         expect(subject.update(env)).to be true
