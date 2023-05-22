@@ -11,7 +11,7 @@ module ScholarsArchive::Validators
       record.respond_to?(:degree_grantors) && record.degree_grantors.present? && record.respond_to?(:degree_grantors_other)
     end
 
-    def validate(_record)
+    def validate(record)
       error_counter = 0
 
       if degree_present? (record)
