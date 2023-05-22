@@ -12,33 +12,33 @@ module ScholarsArchive::Validators
     end
 
     def validate(_record)
-      # error_counter = 0
+      error_counter = 0
 
-      # if degree_present? (record)
-      # check if degree_level_other is already in the list or is missing
-      # error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
-      #                                                                                 field: :degree_level,
-      #                                                                                 env_user: current_user_editor(record)
+      if degree_present? (record)
+        # check if degree_level_other is already in the list or is missing
+        error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
+                                                                                       field: :degree_level,
+                                                                                       env_user: current_user_editor(record)
 
-      # check if degree_field_other is already in the list or is missing
-      # error_counter += ScholarsArchive::FieldValidationService.validate_other_value_multiple? record,
-      #                                                                                          field: :degree_field,
-      #                                                                                          env_user: current_user_editor(record)
+        # check if degree_field_other is already in the list or is missing
+        error_counter += ScholarsArchive::FieldValidationService.validate_other_value_multiple? record,
+                                                                                                field: :degree_field,
+                                                                                                env_user: current_user_editor(record)
 
-      # check if degree_name_other is already in the list or is missing
-      # error_counter += ScholarsArchive::FieldValidationService.validate_other_value_multiple? record,
-      #                                                                                          field: :degree_name,
-      #                                                                                          env_user: current_user_editor(record)
-      # end
+        # check if degree_name_other is already in the list or is missing
+        error_counter += ScholarsArchive::FieldValidationService.validate_other_value_multiple? record,
+                                                                                                field: :degree_name,
+                                                                                                env_user: current_user_editor(record)
+      end
 
-      # if degree_grantors_present? (record)
-      # check if degree_grantors_other is already in the list or is missing
-      #  error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
-      #                                                                                 field: :degree_grantors,
-      #                                                                                 env_user: current_user_editor(record)
-      # end
+      if degree_grantors_present? (record)
+        # check if degree_grantors_other is already in the list or is missing
+        error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
+                                                                                       field: :degree_grantors,
+                                                                                       env_user: current_user_editor(record)
+      end
 
-      nil
+      error_counter
     end
 
     def current_user_editor(record)

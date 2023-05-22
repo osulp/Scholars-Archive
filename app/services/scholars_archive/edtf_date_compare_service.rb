@@ -20,19 +20,19 @@ module ScholarsArchive
     # the form ["Label - date", "uri"] it will then check if the dates are
     # coming in as date1/date2 and or {date1..date2} and parse accordingly
     def self.last_five_years_include?(active_option)
-      academic_date = parse_date(active_option)
-      normalized_date = "{#{academic_date.dup}}" unless academic_date.include?('{')
+      academic_date = parse_date(active_option.dup)
+      normalized_date = "{#{academic_date}}" unless academic_date.include?('{')
       return parse_academic_affiliation(normalized_date) unless normalized_date.nil? || !normalized_date.include?('/')
 
       date_in_past_five_years?(normalized_date, academic_date) if !academic_date.include?('/')
     end
 
     def self.parse_date(active_option)
-      active_option.first.split(' - ').last
+      active_option.first.split(' - ').last.dup
     end
 
     def self.parse_academic_affiliation(normalized_date)
-      normalized_date.gsub!('/', '..')
+      normalized_date = normalized_date.gsub('/', '..')
       return true if normalized_date.include?('open')
 
       date_in_past_five_years?(normalized_date, nil)
