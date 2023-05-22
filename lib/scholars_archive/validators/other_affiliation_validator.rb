@@ -4,7 +4,7 @@ module ScholarsArchive::Validators
   # Other affiliation validator
   class OtherAffiliationValidator < ActiveModel::Validator
     def validate(record)
-      other_affiliation_other_present? (record) ? validate_other_value_multiple? record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record)) : 0
+      other_affiliation_other_present?(record) ? validate_other_value_multiple?(record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record))) : 0
     end
 
     def other_affiliation_other_present?(record)
