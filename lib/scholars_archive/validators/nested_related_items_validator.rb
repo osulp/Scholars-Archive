@@ -4,7 +4,7 @@ module ScholarsArchive::Validators
   # Validate labels and presence of related item
   class NestedRelatedItemsValidator < ActiveModel::Validator
     def validate(record)
-      validate_nested_fields record, error_counter if nested_related_items_present? (record)
+      validate_nested_fields record, 0 if nested_related_items_present? (record)
     end
 
     def validate_nested_fields(record, error_counter = 0)
