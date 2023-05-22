@@ -5,10 +5,7 @@ module ScholarsArchive::Validators
   class OtherAffiliationValidator < ActiveModel::Validator
     def validate(record)
       error_counter = 0
-      if other_affiliation_other_present? (record)
-        error_counter = validate_other_value_multiple? record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record))
-      end
-
+      error_counter = validate_other_value_multiple? record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record)) if other_affiliation_other_present? (record)
 			error_counter
     end
 
