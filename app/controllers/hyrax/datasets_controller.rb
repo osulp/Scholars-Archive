@@ -16,11 +16,19 @@ module Hyrax
     self.show_presenter = DatasetPresenter
 
     before_action :ensure_admin!, only: :destroy
+		before_action :redirect_if_embargo, only: :show
 
     private
 
     def ensure_admin!
       authorize! :read, :admin_dashboard
     end
+
+		def redirect_if_embargo
+			if (cannot?(:read, curation_concern) && curation_concern.embargo_id.present?)	
+				flash[:notice] = "Please contact us to request permission to access this page."
+				redirect_to Hyrax::Engine.routes.url_helpers.contact_path 
+			end
+		end
   end
 end
