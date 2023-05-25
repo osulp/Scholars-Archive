@@ -4,15 +4,15 @@ require 'spec_helper'
 require 'rails_helper'
 describe ScholarsArchive::OtherOptionCreateSuccessService do
   let!(:user) do
-    User.new(id: 1, username:'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+    User.new(id: 1, username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
   let(:inbox) { user.mailbox.inbox }
   let(:curation_concern) do
-      GraduateThesisOrDissertation.new do |work|
-        work.attributes = attributes
-      end
+    GraduateThesisOrDissertation.new do |work|
+      work.attributes = attributes
+    end
   end
-  let(:attributes) {
+  let(:attributes) do
     {
       title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
       degree_field: ['Other'],
@@ -20,7 +20,7 @@ describe ScholarsArchive::OtherOptionCreateSuccessService do
       degree_name: ['Other'],
       other_affiliation: ['Other']
     }
-  }
+  end
 
   let(:test_degree_field_other) { ['test1 degree field other'] }
   let(:test_degree_level_other) { 'test1 degree level other' }

@@ -26,8 +26,8 @@ class Dataset < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
-  def set_defaults
-  end
+
+  def set_defaults; end
 
   def remove_datacite_doi
     self.datacite_doi = nil unless persisted?

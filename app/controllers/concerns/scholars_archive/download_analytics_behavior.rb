@@ -31,7 +31,7 @@ module ScholarsArchive
             tracker.track
           rescue StandardError => e
             Rails.logger.error "Staccato Error: #{e.message} : #{e.backtrace}"
-            return nil
+            nil
           end
         end
       end

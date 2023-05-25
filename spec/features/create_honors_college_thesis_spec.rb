@@ -62,7 +62,7 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       ENV['SCHOLARSARCHIVE_DEFAULT_ADMIN_SET'] = 'Test Default Admin Set'
       ENV['OSU_API_PERSON_REFRESH_SECONDS'] = '123456'
       @ticket = CASClient::ServiceTicket.new('ST-test', nil)
-      @ticket.extra_attributes = {id: 10, email: 'admin@example.com'}
+      @ticket.extra_attributes = { id: 10, email: 'admin@example.com' }
       @ticket.success = true
       @ticket.user = 'admin'
 
@@ -107,12 +107,15 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       it 'default resource type' do
         expect(page).to have_select('honors_college_thesis_resource_type', selected: 'Honors College Thesis')
       end
+
       it 'default degree grantors' do
         expect(page).to have_select('honors_college_thesis_degree_grantors', selected: 'Oregon State University')
       end
+
       it 'default non-academic affiliation' do
         expect(page).to have_select('honors_college_thesis_other_affiliation', selected: 'Honors College')
       end
+
       it 'default peerreviewed' do
         expect(page).to have_select('honors_college_thesis_peerreviewed', selected: 'No')
       end

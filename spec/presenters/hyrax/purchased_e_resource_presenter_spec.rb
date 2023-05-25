@@ -26,7 +26,9 @@ RSpec.describe PurchasedEResourcePresenter do
   let(:solr_properties) do
     %w[resource_type editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn]
   end
+
   subject { presenter }
+
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(solr_document).to receive(property.to_sym)

@@ -60,7 +60,6 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     object.triple_powered_properties.each do |o|
       labels = []
       if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
-        uris = object.send(o[:field])
         uris = object.send(o[:field]).reject { |u| u == 'Other' }
 
         # if multiple URIs, need to get top label for each one
@@ -68,19 +67,18 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
           labels << ScholarsArchive::TriplePoweredService.new.fetch_top_label(uri.lines.to_a, parse_date: o[:has_date])
         end
       else
-        uris = Array(object.send(o[:field]))
         uris = Array(object.send(o[:field])).reject { |u| u == 'Other' }
         labels = ScholarsArchive::TriplePoweredService.new.fetch_top_label(uris, parse_date: o[:has_date])
       end
-      solr_doc[o[:field].to_s + '_label_ssim'] = labels
-      solr_doc[o[:field].to_s + '_label_tesim'] = labels
+      solr_doc["#{o[:field]}_label_ssim"] = labels
+      solr_doc["#{o[:field]}_label_tesim"] = labels
     end
     solr_doc
   end
 
   def file_set_text_extraction(object, solr_doc)
     solr_doc['all_text_tsimv'] = object.file_sets.map { |file_set| file_set.to_solr['all_text_timv'] unless file_set.to_solr['all_text_timv'].nil? }
-  rescue ActiveTriples::UndefinedPropertyError => e
+  rescue ActiveTriples::UndefinedPropertyError
     # If the work hasn't finished saving or populating the first time on initial deposit, #file_sets may not be ready.
     # Skip saving extracted text this time and wait for the work to save again during deposit.
     nil

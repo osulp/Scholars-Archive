@@ -12,10 +12,10 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
     end
 
     let!(:depositor) do
-      User.new(username:'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+      User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
     end
 
-    let(:attributes) {
+    let(:attributes) do
       {
         title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
         degree_field: ['Other'],
@@ -25,7 +25,7 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
         other_affiliation: ['Other'],
         depositor: depositor.username
       }
-    }
+    end
 
     let(:test_degree_field_other) { ['test1 degree field other'] }
     let(:test_degree_level_other) { 'test1 degree level other' }
@@ -58,12 +58,15 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
       it 'raises error if the degree level already exists' do
         expect(record.errors[:degree_level_other].first).to eq "This 'Other' value: \"Certificate\" already exists, please select from the list."
       end
+
       it 'raises error if the degree field already exists' do
         expect(record.errors[:degree_field_other].first).to eq "This 'Other' value: \"Zoology\" already exists, please select from the list."
       end
+
       it 'raises error if the degree name already exists' do
         expect(record.errors[:degree_name_other].first).to eq "This 'Other' value: \"Master of Arts (M.A.)\" already exists, please select from the list."
       end
+
       it 'raises error if the degree grantors already exists' do
         expect(record.errors[:degree_grantors_other].first).to eq "This 'Other' value: \"Oregon State University\" already exists, please select from the list."
       end
@@ -78,15 +81,19 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
       before do
         # curation_concern.id = "test3"
       end
+
       it 'raises error if degree_level is blank' do
         expect(record.errors[:degree_level_other].first).to eq nil
       end
+
       it 'raises error if degree_field is blank' do
         expect(record.errors[:degree_field_other].first).to eq nil
       end
+
       it 'raises error if degree_name is blank' do
         expect(record.errors[:degree_name_other].first).to eq nil
       end
+
       it 'raises error if degree_grantors is blank' do
         expect(record.errors[:degree_grantors_other].first).to eq nil
       end

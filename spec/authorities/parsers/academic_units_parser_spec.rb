@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Parsers::AcademicUnitsParser do
-  let(:invalid_jsonld) {
-  '{
+  let(:invalid_jsonld) do
+    '{
   "@context": {
     "dc": "http://purl.org/dc/terms/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -48,9 +48,9 @@ RSpec.describe Parsers::AcademicUnitsParser do
         "@language": "en"
       }
     }]}'
-  }
-  let(:jsonld) {
-  '{
+  end
+  let(:jsonld) do
+    '{
   "@context": {
     "dc": "http://purl.org/dc/terms/",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -94,7 +94,7 @@ RSpec.describe Parsers::AcademicUnitsParser do
         "@language": "en"
       }
     }]}'
-  }
+  end
 
   describe '#parse' do
     context 'when given JSON-LD with an invalid graph' do

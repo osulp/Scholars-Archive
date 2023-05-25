@@ -5,6 +5,7 @@ module Hyrax
     # renders search and external link on show page
     class SearchAndExternalLinkAttributeRenderer < AttributeRenderer
       include ApplicationHelper
+
       private
 
       def li_value(value)
@@ -28,10 +29,10 @@ module Hyrax
           else
             label = query
             uri = case field
-              when 'rights_statement_label' then maybe_rights_statement_uri(query)
-              when 'license_label' then maybe_license_uri(query)
-              else maybe_uri(query)
-            end
+                  when 'rights_statement_label' then maybe_rights_statement_uri(query)
+                  when 'license_label' then maybe_license_uri(query)
+                  else maybe_uri(query)
+                  end
           end
           links << label if field == 'nested_related_items_label_ssim'
           links << link_to(label, search_path_for(label)) unless label.blank? || field == 'nested_related_items_label_ssim'

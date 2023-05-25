@@ -102,15 +102,15 @@ class SolrDocument
   end
 
   def title
-     nested_ordered_title_label.present? ? nested_ordered_title_label : self[Solrizer.solr_name('title', :stored_searchable)] || []
+    nested_ordered_title_label.present? ? nested_ordered_title_label : self[Solrizer.solr_name('title', :stored_searchable)] || []
   end
 
   def creator
-     nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)] || []
+    nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)] || []
   end
 
   def additional_information
-     nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)] || []
+    nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)] || []
   end
 
   def nested_ordered_abstract_label
@@ -201,21 +201,21 @@ class SolrDocument
   ]
 
   field_semantics.merge!(
-    contributor:  %w[contributor_tesim editor_tesim contributor_advisor_tesim contributor_committeemember_tesim oai_academic_affiliation_label oai_other_affiliation_label],
-    coverage:     %w[based_near_label_tesim conferenceLocation_tesim],
-    creator:      'creator_tesim',
-    date:         'date_created_tesim',
-    description:  %w[description_tesim abstract_tesim],
-    format:       %w[file_extent_tesim file_format_tesim],
-    identifier:   'oai_identifier',
-    language:     'language_label_tesim',
-    publisher:    'publisher_tesim',
-    relation:     'oai_nested_related_items_label',
-    rights:       'oai_rights',
-    source:       %w[source_tesim isBasedOnUrl_tesim],
-    subject:      %w[subject_tesim keyword_tesim],
-    title:        'title_tesim',
-    type:         'resource_type_tesim'
+    contributor: %w[contributor_tesim editor_tesim contributor_advisor_tesim contributor_committeemember_tesim oai_academic_affiliation_label oai_other_affiliation_label],
+    coverage: %w[based_near_label_tesim conferenceLocation_tesim],
+    creator: 'creator_tesim',
+    date: 'date_created_tesim',
+    description: %w[description_tesim abstract_tesim],
+    format: %w[file_extent_tesim file_format_tesim],
+    identifier: 'oai_identifier',
+    language: 'language_label_tesim',
+    publisher: 'publisher_tesim',
+    relation: 'oai_nested_related_items_label',
+    rights: 'oai_rights',
+    source: %w[source_tesim isBasedOnUrl_tesim],
+    subject: %w[subject_tesim keyword_tesim],
+    title: 'title_tesim',
+    type: 'resource_type_tesim'
   )
 
   # Override SolrDocument hash access for certain virtual fields
@@ -267,6 +267,6 @@ class SolrDocument
   end
 
   def abstract
-     nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
+    nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
   end
 end

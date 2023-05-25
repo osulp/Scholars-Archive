@@ -6,11 +6,11 @@ RSpec.describe 'honors_college_theses/edit_fields/_license.html.erb', type: :vie
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     HonorsCollegeThesis.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::HonorsCollegeThesisForm.new(work, ability, controller)
   end
@@ -44,6 +44,7 @@ RSpec.describe 'honors_college_theses/edit_fields/_license.html.erb', type: :vie
       expect(rendered).to have_selector("select#honors_college_thesis_license option[value$='/4.0/']", count: 6)
       expect(rendered).to have_selector("select#honors_college_thesis_license option[value$='rr-r.html']", count: 1)
     end
+
     it 'does not render unneeded licenses' do
       expect(rendered).not_to have_selector("select#honors_college_thesis_license option[value$='zero/1.0/']")
       expect(rendered).not_to have_selector("select#honors_college_thesis_license option[value$='mark/1.0/']")

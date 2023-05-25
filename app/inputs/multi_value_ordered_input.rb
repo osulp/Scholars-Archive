@@ -111,7 +111,7 @@ class MultiValueOrderedInput < MultiValueInput
 
     nested_item = "#{input_field}#{input_field_2}#{input_index}"
 
-    "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
+    "#{input_id}#{destroy_input}#{nested_item}"
   end
 
   def build_nested_item(value, index)
@@ -133,7 +133,7 @@ class MultiValueOrderedInput < MultiValueInput
       input_url = @builder.text_field(:related_url, url_options)
       nested_item = "#{input_label}#{input_url}#{input_index}"
     end
-    "#{nested_item ||= ''}"
+    "#{nested_item}"
   end
 
   def build_id_options(value, index)

@@ -11,7 +11,7 @@ class NestedOrderedCreator < ActiveTriples::Resource
   attr_accessor :destroy_item # true/false
   attr_accessor :validation_msg # string
 
-  def initialize(uri=RDF::Node.new, parent=nil)
+  def initialize(uri = RDF::Node.new, parent = nil)
     if uri.try(:node?)
       uri = RDF::URI("#nested_ordered_creator#{uri.to_s.gsub('_:', '')}")
     elsif uri.start_with?('#')

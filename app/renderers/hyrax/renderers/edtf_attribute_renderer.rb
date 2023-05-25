@@ -8,11 +8,11 @@ module Hyrax
     #   e.g.: presenter.attribute_to_html(:date_created, render_as: :edtf, search_field: 'date_created_sim')
     class EdtfAttributeRenderer < AttributeRenderer
       include ApplicationHelper
+
       private
 
       ##
       # Special treatment for special dates (edtf)
-
       def attribute_value_to_html(value)
         date = Date.edtf(value)
         if date.present?

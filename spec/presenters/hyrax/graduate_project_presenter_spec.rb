@@ -27,7 +27,9 @@ RSpec.describe GraduateProjectPresenter do
   let(:solr_properties) do
     %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
+
   subject { presenter }
+
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(solr_document).to receive(property.to_sym)

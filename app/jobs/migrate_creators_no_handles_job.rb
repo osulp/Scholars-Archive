@@ -10,7 +10,7 @@ class MigrateCreatorsNoHandlesJob < ScholarsArchive::ApplicationJob
     logger = Logger.new(File.join(Rails.root, 'log', file_name))
 
     # Query solr for all docs without handles (exclude docs with handles)
-    docs = ActiveFedora::SolrService.query('creator_tesim:* AND -has_model_ssim:FileSet AND -replaces_tesim:[* TO *]', {rows: 100000})
+    docs = ActiveFedora::SolrService.query('creator_tesim:* AND -has_model_ssim:FileSet AND -replaces_tesim:[* TO *]', { rows: 100000 })
 
     # Iterate over all docs
     docs.each do |doc|

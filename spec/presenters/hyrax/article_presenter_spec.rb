@@ -26,6 +26,7 @@ RSpec.describe ArticlePresenter do
   let(:solr_properties) do
     %w[resource_type editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn web_of_science_uid]
   end
+
   subject { presenter }
 
   it 'delegates to the solr_document' do

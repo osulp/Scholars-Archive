@@ -6,11 +6,11 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::GraduateThesisOrDissertationForm.new(work, ability, controller)
   end

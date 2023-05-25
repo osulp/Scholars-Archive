@@ -8,6 +8,7 @@ RSpec.describe Hyrax::ConferenceProceedingsOrJournalForm do
     User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
   end
   let(:ability) { double('Ability') }
+
   before do
     allow(new_form).to receive(:current_ability).and_return(ability)
     allow(ability).to receive(:current_user).and_return(user)

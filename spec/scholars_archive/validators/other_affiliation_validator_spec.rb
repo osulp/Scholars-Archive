@@ -12,16 +12,16 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
     end
 
     let!(:depositor) do
-      User.new(username:'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
+      User.new(username: 'admin', email: 'test@example.com', guest: false) { |u| u.save!(validate: false) }
     end
 
-    let(:attributes) {
+    let(:attributes) do
       {
         title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'],
         other_affiliation: ['Other'],
         depositor: depositor.username
       }
-    }
+    end
 
     let(:test_other_affiliation_other) { [ 'test entry one', 'test entry two'] }
 

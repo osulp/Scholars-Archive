@@ -18,12 +18,12 @@ module ApplicationHelper
       data_range_widget = render partial: 'scholars_archive/base/form_date_range_widget', locals: { term: term }
 
       data_fields << { term => data_field }
-      data_fields << { 'range_'+term.to_s => data_range_widget }
+      data_fields << { "range_#{term}" => data_range_widget }
     end
 
     data_fields << { 'work_type' => f.object.model_name.singular }
 
-    default_option = {'Select a date type' => 'default_option'}
+    default_option = { 'Select a date type' => 'default_option' }
     date_options = Hash[options.blank? ? [] : options.reduce(:merge).sort]
     date_options = default_option.merge(date_options)
 
@@ -65,7 +65,7 @@ module ApplicationHelper
 
     f.object.model.nested_geo = coordinates
 
-    default_option = {'Select a geographic coordinate type' => 'default_option'}
+    default_option = { 'Select a geographic coordinate type' => 'default_option' }
     geo_options = Hash[options.blank? ? [] : options.reduce(:merge).sort]
     geo_options = default_option.merge(geo_options)
 
@@ -82,16 +82,16 @@ module ApplicationHelper
   end
 
   def link_to_sa_field(field, query)
-    search_path = Rails.application.class.routes.url_helpers.search_catalog_path(f: {field => [query]})
+    search_path = Rails.application.class.routes.url_helpers.search_catalog_path(f: { field => [query] })
     link_to(query, search_path)
   end
 
-  def facet_desc_sort!(items=[])
+  def facet_desc_sort!(items = [])
     items.sort! { |a, b| b.value.downcase <=> a.value.downcase }
     items
   end
 
-  def fixed_work_type_order(items=[])
+  def fixed_work_type_order(items = [])
     model_list = []
     items.each { |item| model_list.push(item) }
     lookup = {}
