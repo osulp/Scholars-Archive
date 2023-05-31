@@ -25,6 +25,7 @@ module Hyrax
     end
 
     def redirect_if_embargo
+      curation_concern = ActiveFedora::Base.find(params[:id])
       return unless cannot?(:read, curation_concern) && curation_concern.embargo_id.present?
 
       flash[:notice] = 'Please contact us to request permission to access this page.'
