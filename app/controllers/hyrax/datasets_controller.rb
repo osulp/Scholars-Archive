@@ -38,7 +38,7 @@ module Hyrax
       when 'restricted'
         flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.month.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}."
       when 'authenticated'
-        flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.month.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}. However, users with an OSU login (ONID) may log in to view the item. #{"<a href=#{request.original_url}> Click here to login and continue to your work </a>".html_safe}"
+        flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.month.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}. However, users with an OSU login (ONID) may log in to view the item. #{helpers.link_to 'Click here to login and continue to your work', request.original_url}"
       end
 
       redirect_to '/'
