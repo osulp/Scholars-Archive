@@ -63,6 +63,7 @@ module ScholarsArchive
       query.execute(graph).to_a
     end
 
+    # rubocop:disable Metrics/CyclomaticComplexity
     def predicate_labels(graph)
       labels = {}
       return labels if graph.nil?
@@ -71,8 +72,8 @@ module ScholarsArchive
         eng_labels = graph
           .query(predicate: predicate)
           .select { |statement| !statement.is_a?(Array) }
-          .map { |statement| statement.object }
-          .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true  }
+          .map(&:object)
+          .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true }
 
         labels[predicate.to_s] = []
         labels[predicate.to_s] << eng_labels.map(&:to_s)
@@ -80,6 +81,7 @@ module ScholarsArchive
       end
       labels
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     def rdf_label_predicates
       [
