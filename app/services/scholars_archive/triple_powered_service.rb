@@ -68,11 +68,14 @@ module ScholarsArchive
       return labels if graph.nil?
 
       rdf_label_predicates.each do |predicate|
-        labels[predicate.to_s] = []
-        labels[predicate.to_s] << graph
+        eng_labels = graph
           .query(predicate: predicate)
           .select { |statement| !statement.is_a?(Array) }
-          .map { |statement| statement.object.to_s }
+          .map { |statement| statement.object }
+          .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true  }
+
+        labels[predicate.to_s] = []
+        labels[predicate.to_s] << eng_labels.map(&:to_s)
         labels[predicate.to_s].flatten!.compact!
       end
       labels
