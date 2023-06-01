@@ -30,10 +30,10 @@ module Hyrax
       return unless cannot?(:read, curation_concern) && curation_concern.embargo_id.present?
 
       # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
-      return if request.original_url == "http://ir.library.oregonstate.edu/"
+      return if request.original_url == 'http://ir.library.oregonstate.edu/'
 
       # Otherwise, this returns them to the homepage because they got here from elsewhere and need to know this work is embargoed
-      # and if its OSU visible, provided a link to login and continue to where they were going 
+      # and if its OSU visible, provided a link to login and continue to where they were going
       case curation_concern.embargo.visibility_during_embargo
       when 'restricted'
         flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.month} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}."
