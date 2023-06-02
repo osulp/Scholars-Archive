@@ -8,6 +8,7 @@ module Hyrax
   class GraduateProjectsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
+    include ScholarsArchive::RedirectIfEmbargoBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = GraduateProject
 
