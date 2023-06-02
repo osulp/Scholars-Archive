@@ -8,7 +8,7 @@ module Hyrax
   class AdministrativeReportOrPublicationsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
-		include ScholarsArchive::RedirectIfEmbargoBehavior
+    include ScholarsArchive::RedirectIfEmbargoBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = AdministrativeReportOrPublication
 

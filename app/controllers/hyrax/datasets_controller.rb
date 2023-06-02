@@ -9,7 +9,7 @@ module Hyrax
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
     include ScholarsArchive::DatasetsControllerBehavior
-		include ScholarsArchive::RedirectIfEmbargoBehavior
+    include ScholarsArchive::RedirectIfEmbargoBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = Dataset
 
@@ -23,7 +23,5 @@ module Hyrax
     def ensure_admin!
       authorize! :read, :admin_dashboard
     end
-
-    
   end
 end

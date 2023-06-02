@@ -1,14 +1,15 @@
 # frozen_string_literal:true
 
 module ScholarsArchive
-	module RedirectIfEmbargoBehavior
+  # Redirect if a work is under embargo
+  module RedirectIfEmbargoBehavior
     extend ActiveSupport::Concern
-		
-		included do
-    	before_action :redirect_if_embargo, only: :show
 
-			def redirect_if_embargo
-   	    curation_concern = ActiveFedora::Base.find(params[:id])
+    included do
+      before_action :redirect_if_embargo, only: :show
+
+      def redirect_if_embargo
+        curation_concern = ActiveFedora::Base.find(params[:id])
         # First we check if the user can see the work
         return unless cannot?(:read, curation_concern) && curation_concern.embargo_id.present?
 
@@ -26,6 +27,6 @@ module ScholarsArchive
 
         redirect_to '/'
       end
-		end
-	end
+    end
+  end
 end
