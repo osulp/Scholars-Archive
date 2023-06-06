@@ -8,7 +8,7 @@ module Hyrax
   class ConferenceProceedingsOrJournalsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
-    include ScholarsArchive::RedirectIfEmbargoBehavior
+    include ScholarsArchive::RedirectIfRestrictedBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = ConferenceProceedingsOrJournal
 
