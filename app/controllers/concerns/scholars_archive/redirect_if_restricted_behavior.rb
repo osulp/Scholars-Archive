@@ -8,6 +8,8 @@ module ScholarsArchive
     included do
       before_action :redirect_if_restricted, only: :show
 
+      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/MethodLength
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
         # First we check if the user can see the work
@@ -27,10 +29,11 @@ module ScholarsArchive
           end
         else
           flash[:notice] = "The item you are trying to access is limited to OSU users only. Users with an OSU login (ONID) may log in to view the item. #{helpers.link_to 'Click here to login and continue to your work', request.original_url}"
-				end
-
+        end
         redirect_to '/'
       end
+      # rubocop:enable Metrics/CyclomaticComplexity
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end
