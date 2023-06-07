@@ -16,7 +16,7 @@ module ScholarsArchive
         return unless cannot?(:read, curation_concern) && (curation_concern.embargo_id.present? || curation_concern.visibility == 'authenticated')
 
         # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
-        return if request.referrer == 'https://ir.library.oregonstate.edu/'
+        return if (request.referrer == 'https://ir.library.oregonstate.edu/' || request.referrer == 'https://ir-staging.library.oregonstate.edu')
 
         # Otherwise, this returns them to the homepage because they got here from elsewhere and need to know this work is embargoed
         # and if its OSU visible, provided a link to login and continue to where they were going
