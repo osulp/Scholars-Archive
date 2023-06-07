@@ -23,9 +23,9 @@ module ScholarsArchive
         if curation_concern.embargo_id.present?
           case curation_concern.embargo.visibility_during_embargo
           when 'restricted'
-            flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.month.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}."
+            flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}."
           when 'authenticated'
-            flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.month.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}. However, users with an OSU login (ONID) may log in to view the item. #{helpers.link_to 'Click here to login and continue to your work', request.original_url}"
+            flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}. However, users with an OSU login (ONID) may log in to view the item. #{helpers.link_to 'Click here to login and continue to your work', request.original_url}"
           end
         else
           flash[:notice] = "The item you are trying to access is limited to OSU users only. Users with an OSU login (ONID) may log in to view the item. #{helpers.link_to 'Click here to login and continue to your work', request.original_url}"
