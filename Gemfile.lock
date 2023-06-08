@@ -299,8 +299,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-guests (0.7.0)
-      devise
     devise_cas_authenticatable (1.10.4)
       devise (>= 1.2.0)
       rubycas-client (>= 2.2.1)
@@ -704,6 +702,7 @@ GEM
     mime-types-data (3.2021.0901)
     mini_magick (4.11.0)
     mini_mime (1.1.1)
+    mini_portile2 (2.8.2)
     minitest (5.17.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -720,6 +719,9 @@ GEM
     noid-rails (3.0.3)
       actionpack (>= 5.0.0, < 7)
       noid (~> 0.9)
+    nokogiri (1.13.10)
+      mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
     nokogiri (1.13.10-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-linux)
@@ -1131,6 +1133,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -1149,7 +1152,6 @@ DEPENDENCIES
   debase (>= 0.2.5.beta2)
   debase-ruby_core_source
   devise
-  devise-guests (~> 0.7.0)
   devise_cas_authenticatable (~> 1.0)
   edtf!
   equivalent-xml
