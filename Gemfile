@@ -48,7 +48,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'browse-everything'
 gem 'devise'
-gem 'devise-guests', '~> 0.7.0'
 gem 'devise_cas_authenticatable', '~> 1.0'
 gem 'faraday'
 gem 'hyrax', '2.9.5'
