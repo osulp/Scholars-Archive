@@ -5,8 +5,8 @@ Rails.application.config.to_prepare do
 
     def show
       # Prevent fileset page from displaying if parent work is still in workflow
-      if presenter.parent.solr_document.suppressed?
-        flash[:notice] = "The item you tried to access is unavailable"
+      if presenter.parent.solr_document.suppressed? && !current_user&.admin?
+        flash[:notice] = "The item you tried to access is unavailable because it is in the review process."
         redirect_to '/'
         return if presenter.parent.solr_document.suppressed?
       end
