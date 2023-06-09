@@ -1,0 +1,8 @@
+<%#NEW FORM: Render the OCR view page for the admin %>
+<h2> OCR Text View </h2>
+<br>
+<!-- PRINT: Get the array of OCR text and print out the item for debug -->
+<% @arr_ocr = SolrDocument.find(curation_concern.id) ['all_text_tsimv'] %>
+<% @arr_ocr.each_with_index do |ocr, i| %>
+  <p><%= ocr %></p>
+<% end %>
