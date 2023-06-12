@@ -57,11 +57,13 @@
         <% end %>
 
         <% # NEW TAB PANES: Add in a section to display the full text from OCR %>
-        <div role="tabpanel" class="tab-pane" id="ocr">
+        <% if curation_concern.persisted? && current_user.admin? && !curation_concern.file_sets.blank? %>
+          <div role="tabpanel" class="tab-pane" id="ocr">
             <div class="form-tab-content">
               <%= render "form_ocr", f: f %>
             </div>
-        </div>
+          </div>
+        <% end %>
 
         <div role="tabpanel" class="tab-pane" id="share" data-param-key="<%= f.object.model_name.param_key %>">
             <div class="form-tab-content">
