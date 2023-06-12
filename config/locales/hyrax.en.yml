@@ -112,7 +112,11 @@ en:
           metadata: Descriptions
           relationships: Relationships
           share: Sharing
-          ocr_view: OCR Viewer
+          ocr: OCR Viewer
+        ocr_item:
+          ocr_heading: OCR Text Debug View
+          ocr_none: No OCR Text Detected
+        
 
     homepage:
       featured_works:

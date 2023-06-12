@@ -1,12 +1,12 @@
 <%#NEW FORM: Render the OCR view page for the admin %>
-<h2> OCR Text View </h2>
+<h2><%= t("hyrax.works.form.ocr_item.ocr_heading") %></h2>
 <br>
 <!-- PRINT: Get the array of OCR text and print out the item for debug -->
 <% @arr_ocr = SolrDocument.find(curation_concern.id) ['all_text_tsimv'] %>
 
 <!-- CONDITION: Check if the OCR does exist -->
 <% if @arr_ocr.blank? %>
-  <p>No OCR text</p>
+  <p><%= t("hyrax.works.form.ocr_item.ocr_none") %></p>
 <% else %>
   <% @arr_ocr.each_with_index do |ocr, i| %>
     <p><%= ocr %></p>
