@@ -25,7 +25,7 @@
         <% end %>
 
         <% # NEW TAB: Add in a tab for OCR text display for admin %>
-        <% if curation_concern.persisted? && current_user.admin? && !curation_concern.file_sets.blank? %>
+        <% if f.object.model.persisted? && current_user.admin? && !f.object.model.file_sets.blank? %>
           <li role="presentation" id="tab-ocr">
             <a href="#ocr" aria-controls="ocr" role="tab" data-toggle="tab">
               <%= t("hyrax.works.form.tab.ocr_view") %>
@@ -57,7 +57,7 @@
         <% end %>
 
         <% # NEW TAB PANES: Add in a section to display the full text from OCR %>
-        <% if curation_concern.persisted? && current_user.admin? && !curation_concern.file_sets.blank? %>
+        <% if f.object.model.persisted? && current_user.admin? && !f.object.model.file_sets.blank? %>
           <div role="tabpanel" class="tab-pane" id="ocr">
             <div class="form-tab-content">
               <%= render "form_ocr", f: f %>
