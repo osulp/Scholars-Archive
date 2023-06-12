@@ -10,7 +10,6 @@ module ScholarsArchive
 
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/MethodLength
-      # rubocop:disable Metrics/PerceivedComplexity
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
         # First we check if the user can see the work
@@ -33,7 +32,6 @@ module ScholarsArchive
         end
         redirect_to '/'
       end
-      # rubocop:enable Metrics/PerceivedComplexity
       # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/MethodLength
     end
