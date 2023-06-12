@@ -25,15 +25,12 @@
         <% end %>
 
         <% # NEW TAB: Add in a tab for OCR text display for admin %>
-        <% all_users = User.all %>
-        <% all_users.each do |i| %>
-          <% if curation_concern.persisted? && i.admin? %>
-            <li role="presentation" id="tab-ocr">
-              <a href="#ocr" aria-controls="ocr" role="tab" data-toggle="tab">
-                <%= t("hyrax.works.form.tab.ocr_view") %>
-              </a>
-            </li>
-          <% end %>
+        <% if curation_concern.persisted? && current_user.admin? && !curation_concern.file_sets.blank? %>
+          <li role="presentation" id="tab-ocr">
+            <a href="#ocr" aria-controls="ocr" role="tab" data-toggle="tab">
+              <%= t("hyrax.works.form.tab.ocr_view") %>
+            </a>
+          </li>
         <% end %>
 
         <li role="presentation" id="tab-share" class="hidden">
