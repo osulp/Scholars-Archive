@@ -25,7 +25,7 @@ module HyraxHelper
   # NEW TAB: Add in the system to map out new tab for OCR
   def form_tabs_for(form:)
     if form.model.persisted? && current_user.admin? && !form.model.file_sets.blank?
-      super.insert(2, 'ocr')
+      super << 'ocr'
     else
       super
     end
