@@ -1,10 +1,15 @@
-<%# OVERRIDE: Testing for GA4 to make sure it is collecting data %>
-<%# Google tag (gtag.js) %>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-86EFWN09F8"></script>
+<%# OVERRIDE: Adding in the GA4 to OD2 %>
+<!-- Google tag (gtag.js) -->
+<%
+if Hyrax.config.google_analytics_id?
+tracking_id = Hyrax.config.google_analytics_id
+%>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= tracking_id %>"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-86EFWN09F8');
+    gtag('config', '<%= tracking_id %>');
 </script>
+<% end %>
