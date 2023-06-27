@@ -89,7 +89,7 @@ RSpec.feature 'Create a Honors College Thesis', js: false do
       select 'Zoology', from: 'honors_college_thesis_degree_field'
       find('body').click
 
-      select 'Master of Arts (M.A.)', from: 'honors_college_thesis_degree_name'
+      select 'Master of Arts (M.A.)', from: 'degree_name_sort'
       find('body').click
 
       click_link 'Files' # switch tab

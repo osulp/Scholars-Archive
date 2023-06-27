@@ -89,10 +89,10 @@ RSpec.feature 'Create a Graduate Project', js: false do
       select 'Dissertation', from: 'graduate_project_resource_type'
       find('body').click
 
-      select "Master's", from: 'graduate_project_degree_level'
+      select "Master's", from: 'degree_level_select'
       find('body').click
 
-      select 'Master of Arts (M.A.)', from: 'graduate_project_degree_name'
+      select 'Master of Arts (M.A.)', from: 'degree_name_sort'
       find('body').click
 
       select 'Zoology', from: 'graduate_project_degree_field'
