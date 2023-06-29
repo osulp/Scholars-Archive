@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 # OVERRIDE: Add in new field to the selection option for contact form
 module Hyrax
+  # Contact object
   class ContactForm
     include ActiveModel::Model
     attr_accessor :contact_method, :category, :name, :email, :subject, :message

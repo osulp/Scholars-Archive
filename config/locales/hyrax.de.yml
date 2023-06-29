@@ -58,3 +58,11 @@ de:
     institution_name_full: Name des Instituts
     product_name: Hyrax
     product_twitter_handle: "@SamveraRepo"
+    contact_form:
+      issue_types:
+        browsing: Durchsuchen und Suchen
+        changing: Änderungen an meinem Inhalt vornehmen
+        depositing: Inhalt ablegen
+        general: Allgemeine Anfrage oder Anfrage
+        reporting: Problem melden
+        statistic: Download-Statistiken anfordern

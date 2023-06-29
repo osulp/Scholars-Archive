@@ -78,13 +78,13 @@ en:
         yes_option: "Yes"
         no_option: "No"
     contact_form:
-        issue_types:
-          browsing: Browsing and searching
-          changing: Making changes to my content
-          depositing: Depositing content
-          general: General inquiry or request
-          reporting: Reporting a problem
-          statistic: Requesting download statistics
+      issue_types:
+        browsing: Browsing and searching
+        changing: Making changes to my content
+        depositing: Depositing content
+        general: General inquiry or request
+        reporting: Reporting a problem
+        statistic: Requesting download statistics
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."

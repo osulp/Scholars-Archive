@@ -1060,6 +1060,11 @@ Style/RedundantRegexpEscape:
     - 'app/workers/fetch_failed_graph_worker.rb'
     - 'app/workers/fetch_graph_worker.rb'
     - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
+    - 'app/models/hyrax/contact_form.rb'
+
+Style/RedundantRegexpCharacterClass:
+  Exclude:
+    - 'app/models/hyrax/contact_form.rb'
 
 Style/CaseLikeIf:
   Exclude:
@@ -1084,6 +1089,7 @@ Layout/EmptyLinesAroundAttributeAccessor:
   Exclude:
     - 'app/models/concerns/scholars_archive/date_operations.rb'
     - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
+    - 'app/models/hyrax/contact_form.rb'
 
 Migration/DepartmentName:
   Exclude:

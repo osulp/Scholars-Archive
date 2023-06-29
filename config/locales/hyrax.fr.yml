@@ -74,10 +74,10 @@ fr:
         yes_option: "Oui"
         no_option: "Non"
     contact_form:
-        issue_types:
-          browsing: Parcourir et rechercher
-          changing: Effectuer des modifications sur mon contenu
-          depositing: Déposer du contenu
-          general: Demande ou demande générale
-          reporting: Signaler un problème
-          statistic: Demander téléchargé de statistique
+      issue_types:
+        browsing: Parcourir et rechercher
+        changing: Effectuer des modifications sur mon contenu
+        depositing: Déposer du contenu
+        general: Demande ou demande générale
+        reporting: Signaler un problème
+        statistic: Demander téléchargé de statistique
