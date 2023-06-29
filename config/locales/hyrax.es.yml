@@ -46,4 +46,12 @@ es:
         title: Datos de sujetos humanos
         question_human: ¿Los datos presentados aquí son el parte de un estudio que fue evaluado por el Programa de Protección de Investigación Humana y la Junta de Revisión Institucional o cualquier otro Comité de Ética?
         yes_option: "Sí"
-        no_option: "No" 
+        no_option: "No"
+    contact_form:
+        issue_types:
+          browsing: Navegación y búsqueda
+          changing: Hacer cambios en mi contenido
+          depositing: Depositando contenido
+          general: Consulta general o solicitud
+          reporting: Informar de un problema
+          statistic: Solicitud de estadísticas de descarga
