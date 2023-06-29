@@ -9,6 +9,9 @@ module ScholarsArchive
       after_action :track_download, only: :show
 
       def track_download
+        # Return early since Staccato is temporarily broken for GA4
+        return
+
         unless Hyrax.config.google_analytics_id.blank?
           # Staccato works with Google Analytics v1 api:
           # https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
