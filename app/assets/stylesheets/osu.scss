@@ -542,6 +542,11 @@ ol.dd-list.dd-dragel {
   font-size: 13px;
 }
 
+// TEMPORARY: Add this line of code to remove analytic button as will reinstate soon once there is update
+#stats {
+  display: none;
+}
+
 textarea.nested-field {
   min-height: 68px !important;
 }
