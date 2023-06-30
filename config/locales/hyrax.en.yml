@@ -106,6 +106,17 @@ en:
       request_delete_form:
         title: Request Deletion
         body: Are you sure you want to send a request to delete this work? Your request will be reviewed and you will receive an email when it's processed.
+      form:
+        tab:
+          files: Files
+          metadata: Descriptions
+          relationships: Relationships
+          share: Sharing
+          ocr: OCR Viewer
+        ocr_item:
+          ocr_heading: OCR Text Debug View
+          ocr_none: No OCR Text Detected
+        
 
     homepage:
       featured_works:

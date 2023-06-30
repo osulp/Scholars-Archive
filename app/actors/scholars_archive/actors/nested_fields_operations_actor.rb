@@ -21,11 +21,11 @@ module ScholarsArchive
 
       private
 
-      def nested_geo_present? (env)
+      def nested_geo_present?(env)
         env.attributes['nested_geo_attributes'].present?
       end
 
-      def set_geo_coordinates (env)
+      def set_geo_coordinates(env)
         if env.attributes['nested_geo_attributes']
           env.attributes['nested_geo_attributes'].each do |box, value|
             if [value['label'], value['bbox_lat_north'], value['bbox_lon_west'], value['bbox_lat_south'], value['bbox_lon_east']].none? { |f| !f.present? }
@@ -46,7 +46,7 @@ module ScholarsArchive
         return true unless nested_geo_present? (env)
 
         set_geo_coordinates(env)
-        return true
+        true
       end
 
       def update_nested_elements(env)
@@ -54,10 +54,10 @@ module ScholarsArchive
         return true unless nested_geo_present? (env)
 
         set_geo_coordinates(env)
-        return true
+        true
       end
 
-      def clean_up_fields (env)
+      def clean_up_fields(env)
         # Note: since we aren't storing "Other" values in fedora for other_affiliation, here we can skip them
         # for the model and only keep valid uri values. add_other_field_option_actor is responsible for persisting the
         # text values provided by the user for these "Other" entries. Here we are just removing/cleaning up the
@@ -65,7 +65,7 @@ module ScholarsArchive
         env.attributes['other_affiliation'].to_a.delete_if { |x| x == 'Other' } if env.attributes['other_affiliation']
       end
 
-      def clean_up_nested_attributes (env)
+      def clean_up_nested_attributes(env)
         env.attributes['nested_geo_attributes'].each do |k, v|
           v.delete('point_lon')
           v.delete('point_lat')

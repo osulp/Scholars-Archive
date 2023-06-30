@@ -28,6 +28,7 @@ RSpec.describe HonorsCollegeThesisPresenter do
   end
 
   subject { presenter }
+
   it 'delegates to the solr_document' do
     solr_properties.each do |property|
       expect(presenter).to delegate_method(property).to(:solr_document)

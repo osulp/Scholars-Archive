@@ -8,6 +8,7 @@ module Hyrax
   class TechnicalReportsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
+    include ScholarsArchive::RedirectIfRestrictedBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = TechnicalReport
 

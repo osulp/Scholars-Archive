@@ -6,11 +6,11 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     Default.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::DefaultForm.new(work, ability, controller)
   end
@@ -49,7 +49,7 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
     let(:date) { '2017-01-27' }
     let(:date_range) { '2017-05-24/2017-05-31' }
 
-    let(:attributes) {
+    let(:attributes) do
       {
         title: ['test'],
         creator: ['Blah'],
@@ -64,7 +64,7 @@ RSpec.describe 'records/edit_fields/_dates_section.html.erb', type: :view do
         date_issued: date,
         date_valid: date
       }
-    }
+    end
 
     before do
       assign(:form, form)

@@ -6,7 +6,7 @@
   <meta property="og:site_name" content="<%= application_name %>"/>
   <meta property="og:type" content="object"/>
   <meta property="og:title" content="<%= @presenter.title.first %>"/>
-  <meta property="og:description" content="<%= @presenter.description.first.truncate(200) rescue @presenter.title.first %>"/>
+  <meta property="og:description" content="<%= (@presenter.abstract.first || @presenter.description.first).truncate(200) rescue '' %>"/>
   <meta property="og:image" content="<%= @presenter.download_url %>"/>
   <meta property="og:url" content="<%= polymorphic_url([main_app, @presenter]) %>"/>
   <meta name="twitter:data1" content="<%= @presenter.keyword.join(', ') %>"/>

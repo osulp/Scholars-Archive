@@ -9,7 +9,7 @@ module ScholarsArchive
       labels = []
       uris.each do |uri|
         graph = fetch_from_store(uri)
-        labels << predicate_labels(graph).values.flatten.compact.collect { |label| label + '$' + uri.to_s }
+        labels << predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri.to_s}" }
       end
       labels.flatten.compact
     end
@@ -20,15 +20,15 @@ module ScholarsArchive
         graph = fetch_from_store(uri)
         values = predicate_label_dates(graph).values.flatten.compact
         labels << if values.size > 0
-                    values.collect { |label_date| label_date + '$' + uri.to_s }
+                    values.collect { |label_date| "#{label_date}$#{uri.to_s}" }
                   else
-                    predicate_labels(graph).values.flatten.compact.collect { |label| label + '$' + uri.to_s }
+                    predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri.to_s}" }
                   end
       end
       labels.flatten.compact
     end
 
-    def fetch_top_label(uris, parse_date:false)
+    def fetch_top_label(uris, parse_date: false)
       if parse_date
         fetch_all_labels_with_date(uris).first
       else
@@ -63,20 +63,25 @@ module ScholarsArchive
       query.execute(graph).to_a
     end
 
+    # rubocop:disable Metrics/CyclomaticComplexity
     def predicate_labels(graph)
       labels = {}
       return labels if graph.nil?
 
       rdf_label_predicates.each do |predicate|
-        labels[predicate.to_s] = []
-        labels[predicate.to_s] << graph
+        eng_labels = graph
           .query(predicate: predicate)
           .select { |statement| !statement.is_a?(Array) }
-          .map { |statement| statement.object.to_s }
+          .map(&:object)
+          .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true }
+
+        labels[predicate.to_s] = []
+        labels[predicate.to_s] << eng_labels.map(&:to_s)
         labels[predicate.to_s].flatten!.compact!
       end
       labels
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     def rdf_label_predicates
       [
@@ -96,7 +101,7 @@ module ScholarsArchive
           @triplestore.fetch(uri, from_remote: true)
         rescue TriplestoreAdapter::TriplestoreException => e
           Rails.logger.warn e.message
-          return nil
+          nil
         end
       end
     end

@@ -64,7 +64,7 @@ class MultiValueLabelUrlInput < MultiValueInput
       nested_item = "#{input_label}#{input_related_url}"
     end
 
-    "#{input_id ||= '' }#{destroy_input ||= '' }#{nested_item}"
+    "#{input_id}#{destroy_input}#{nested_item}"
   end
 
   def nested_item_wrapper(value)

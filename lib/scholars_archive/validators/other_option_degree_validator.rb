@@ -3,11 +3,11 @@
 module ScholarsArchive::Validators
   # other degree validation
   class OtherOptionDegreeValidator < ActiveModel::Validator
-    def degree_present? (record)
+    def degree_present?(record)
       record.respond_to?(:degree_field) && record.respond_to?(:degree_level) && record.respond_to?(:degree_name)
     end
 
-    def degree_grantors_present? (record)
+    def degree_grantors_present?(record)
       record.respond_to?(:degree_grantors) && record.degree_grantors.present? && record.respond_to?(:degree_grantors_other)
     end
 
@@ -38,7 +38,7 @@ module ScholarsArchive::Validators
                                                                                        env_user: current_user_editor(record)
       end
 
-      return
+      error_counter
     end
 
     def current_user_editor(record)

@@ -6,11 +6,11 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: false) }
 
-  let(:work) {
+  let(:work) do
     Default.new do |work|
       work.attributes = attributes
     end
-  }
+  end
   let(:form) do
     Hyrax::DefaultForm.new(work, ability, controller)
   end
@@ -38,7 +38,7 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
       }
     end
 
-    let(:attributes) {
+    let(:attributes) do
       {
         title: ['test'],
         creator: ['Blah'],
@@ -46,7 +46,7 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
         resource_type: ['blah'],
         nested_related_items_attributes: [test_item]
       }
-    }
+    end
 
     before do
       assign(:curation_concern, work)
@@ -61,11 +61,11 @@ RSpec.describe 'records/edit_fields/_nested_related_items.html.erb', type: :view
     end
 
     it 'drows the input label' do
-      expect(rendered).to have_selector('input[value="'+test_label+'"]', visible: true)
+      expect(rendered).to have_selector("input[value=\"#{test_label}\"]", visible: true)
     end
 
     it 'draws the input url' do
-      expect(rendered).to have_selector('input[value="'+test_url+'"]', visible: true)
+      expect(rendered).to have_selector("input[value=\"#{test_url}\"]", visible: true)
     end
   end
 

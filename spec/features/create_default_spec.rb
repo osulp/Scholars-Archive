@@ -37,6 +37,7 @@ RSpec.feature 'Create a Default', skip: true, type: :feature do
       ENV['OSU_API_PERSON_REFRESH_SECONDS'] = '123456'
       login_as user
     end
+
     it do
       allow_any_instance_of(ApplicationHelper).to receive(:select_tag_dates).and_return('')
       allow_any_instance_of(Hyrax::DefaultWorkForm).to receive(:date_terms).and_return([])

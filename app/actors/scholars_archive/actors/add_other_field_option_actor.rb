@@ -21,7 +21,7 @@ module ScholarsArchive
 
       private
 
-      def degree_present? (env)
+      def degree_present?(env)
         env.curation_concern.respond_to?(:degree_field) && env.curation_concern.respond_to?(:degree_level) && env.curation_concern.respond_to?(:degree_name)
       end
 
@@ -58,17 +58,17 @@ module ScholarsArchive
         end
 
         clean_up_fields(env)
-        return true
+        true
       end
 
-      def clean_up_fields (env)
+      def clean_up_fields(env)
         env.attributes.delete('degree_field_other') if env.attributes['degree_field']
         env.attributes.delete('degree_name_other') if env.attributes['degree_name']
         env.attributes.delete('degree_grantors_other') if env.attributes['degree_grantors']
         env.attributes.delete('degree_level_other') if env.attributes['degree_level']
       end
 
-      def other_affiliation_other_present? (env)
+      def other_affiliation_other_present?(env)
         env.curation_concern.respond_to?(:other_affiliation_other) && env.curation_concern.other_affiliation_other.present? && valid_other_affiliation_other?(env.curation_concern, field: :other_affiliation.to_s, collection: other_affiliation_options(env.user))
       end
 
@@ -81,11 +81,11 @@ module ScholarsArchive
         ScholarsArchive::FieldValidationService.is_valid_other_field?(env.curation_concern, field: field, env_user: env.user)
       end
 
-      def is_valid_other_field_multiple? (env, field)
+      def is_valid_other_field_multiple?(env, field)
         ScholarsArchive::FieldValidationService.is_valid_other_field_multiple?(env.curation_concern, env_attributes: env.attributes, field: field, env_user: env.user)
       end
 
-      def valid_other_affiliation_other? (record, field: nil, collection: [])
+      def valid_other_affiliation_other?(record, field: nil, collection: [])
         other_field = "#{field}_other".to_sym
         other_value = record.send(other_field) if record.respond_to?(other_field)
         error_counter = 0
@@ -94,10 +94,10 @@ module ScholarsArchive
             error_counter += 1 if other_value_in_collection? other_value: entry, collection: collection
           end
         end
-        (error_counter > 0) ? false : true
+        error_counter <= 0
       end
 
-      def other_value_in_collection? (other_value: nil, collection: [])
+      def other_value_in_collection?(other_value: nil, collection: [])
         !collection.select { |option| option.include? other_value }.empty? ? true : false
       end
 
@@ -116,7 +116,7 @@ module ScholarsArchive
             all_new_entries << entry.to_s
           end
         end
-        return all_new_entries
+        all_new_entries
       end
 
       def update_custom_option(env)
@@ -160,10 +160,10 @@ module ScholarsArchive
         end
 
         clean_up_fields(env)
-        return true
+        true
       end
 
-      def degree_grantors_present? (record)
+      def degree_grantors_present?(record)
         record.respond_to?(:degree_grantors) && record.degree_grantors.present? && record.respond_to?(:degree_grantors_other) && record.degree_grantors_other.present?
       end
 

@@ -4,17 +4,10 @@ module ScholarsArchive::Validators
   # Other affiliation validator
   class OtherAffiliationValidator < ActiveModel::Validator
     def validate(record)
-      error_counter = 0
-
-      if other_affiliation_other_present? (record)
-        # check if other_affiliation_other is already in the list or is missing
-        error_counter += validate_other_value_multiple? record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record))
-      end
-
-      return
+      other_affiliation_other_present?(record) ? validate_other_value_multiple?(record, field: :other_affiliation, collection: other_affiliation_options(current_user_editor(record))) : 0
     end
 
-    def other_affiliation_other_present? (record)
+    def other_affiliation_other_present?(record)
       record.respond_to?(:other_affiliation_other) && record.other_affiliation_other.present?
     end
 
@@ -31,7 +24,7 @@ module ScholarsArchive::Validators
 
     # This will now check if there is value passed in, since this can be used for optional fields (i.e. other_affiliation)
     # as well as required ones with multiples allowed (i.e. degree_field)
-    def validate_other_value_multiple? (record, field: nil, collection: [])
+    def validate_other_value_multiple?(record, field: nil, collection: [])
       other_field = "#{field}_other".to_sym
       other_value = record.send(other_field)
       error_counter = 0
@@ -42,7 +35,7 @@ module ScholarsArchive::Validators
           if other_value_in_collection? other_value: entry, collection: collection
             err_message = I18n.translate(:"simple_form.actor_validation.other_value_exists", other_entry: entry.to_s)
             add_error_message(record, other_field, err_message)
-            record.send(field) << [{option: 'Other', err_msg: err_message, other_entry: entry.to_s}.to_json]
+            record.send(field) << [{ option: 'Other', err_msg: err_message, other_entry: entry.to_s }.to_json]
             error_counter += 1
           else
             valid_values << entry.to_s
@@ -52,20 +45,20 @@ module ScholarsArchive::Validators
         if record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
           err_message = I18n.t('simple_form.actor_validation.other_value_missing')
           add_error_message(record, other_field, err_message)
-          record.send(field) << [{option: 'Other', err_msg: err_message}.to_json]
+          record.send(field) << [{ option: 'Other', err_msg: err_message }.to_json]
           error_counter += 1
         end
       end
 
       if error_counter > 0
         valid_values.each do |entry|
-          record.send(field) << [{option: 'Other', err_valid_val:true, other_entry: entry.to_s}.to_json]
+          record.send(field) << [{ option: 'Other', err_valid_val: true, other_entry: entry.to_s }.to_json]
         end
       end
-      return error_counter
+      error_counter
     end
 
-    def other_value_in_collection? (other_value: nil, collection: [])
+    def other_value_in_collection?(other_value: nil, collection: [])
       !collection.select { |option| option.include? other_value }.empty? ? true : false
     end
 

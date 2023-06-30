@@ -18,7 +18,8 @@ class ReindexChunkJob < ScholarsArchive::ApplicationJob
       counter += 1
     # rubocop:disable Style/RescueStandardError
     rescue => e
-      logger.info "Failed to reindex #{work.id}: #{e.message}"
+      logger.info "Failed to reindex #{work.id}: #{e.message}" unless work.nil?
+      logger.info "Failed to reindex a work: #{e.message}" if work.nil?
       next
     end
     # rubocop:enable Style/RescueStandardError

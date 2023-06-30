@@ -6,10 +6,10 @@ module Hyrax
     class ExternalLinkAttributeRenderer < AttributeRenderer
       private
 
-        def li_value(value)
-          normalized_link = value.include?('http://') || value.include?('https://') ? value : "http://#{value}"
-          "<a href='#{normalized_link}'>#{value}</a>"
-        end
+      def li_value(value)
+        normalized_link = value.include?('http://') || value.include?('https://') ? value : "http://#{value}"
+        "<a href='#{normalized_link}'>#{value}</a>"
+      end
     end
   end
 end

@@ -8,6 +8,7 @@ module Hyrax
   class UndergraduateThesisOrProjectsController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
+    include ScholarsArchive::RedirectIfRestrictedBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = UndergraduateThesisOrProject
 

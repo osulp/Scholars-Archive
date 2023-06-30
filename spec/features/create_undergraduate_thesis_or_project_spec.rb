@@ -63,7 +63,7 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
       ENV['SCHOLARSARCHIVE_DEFAULT_ADMIN_SET'] = 'Test Default Admin Set'
 
       @ticket = CASClient::ServiceTicket.new('ST-test', nil)
-      @ticket.extra_attributes = {id: 10, email: 'admin@example.com'}
+      @ticket.extra_attributes = { id: 10, email: 'admin@example.com' }
       @ticket.success = true
       @ticket.user = 'admin'
 

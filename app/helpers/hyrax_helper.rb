@@ -13,13 +13,22 @@ module HyraxHelper
     value = options[:value].first
     date = Date.edtf(value)
     if date.instance_of? EDTF::Interval
-      output = date.from.edtf + ' to ' + date.to.edtf
+      output = "#{date.from.edtf} to #{date.to.edtf}"
     elsif date.present?
       output = date.edtf
     else
       output = value
     end
-    return output
+    output
+  end
+
+  # NEW TAB: Add in the system to map out new tab for OCR
+  def form_tabs_for(form:)
+    if form.model.persisted? && current_user.admin? && !form.model.file_sets.blank?
+      super << 'ocr'
+    else
+      super
+    end
   end
 
   ##

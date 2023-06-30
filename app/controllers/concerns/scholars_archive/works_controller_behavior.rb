@@ -73,8 +73,7 @@ module ScholarsArchive
       ScholarsArchive::ParamScrubber.scrub(params, hash_key_for_curation_concern)
     end
 
-    def set_embargo_release_date
-    end
+    def set_embargo_release_date; end
 
     def mutate_embargo_date
       translated_date = date_string.split.first.to_i.send(date_string.split.second.to_sym).from_now.to_date

@@ -27,7 +27,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search = {
-      qt:'search',
+      qt: 'search',
       url_key: 'advanced',
       query_parser: 'dismax',
       form_solr_parameters: {
@@ -104,8 +104,8 @@ class CatalogController < ApplicationController
     config.add_facet_field 'rights_statement_label_ssim', label: 'Rights Statement', limit: 5
     config.add_facet_field solr_name('subject', :facetable), label: 'Subject', limit: 5
 
-    #config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
-    #config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
+    # config.add_facet_field solr_name("human_readable_type", :facetable), label: "Type", limit: 5
+    # config.add_facet_field solr_name('member_of_collections', :symbol), limit: 5, label: 'Collections'
 
     # The generic_type isn't displayed on the facet list
     # It's used to give a label to the filter that comes from the user profile
@@ -243,7 +243,7 @@ class CatalogController < ApplicationController
       field.label = 'Related Items'
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
 
@@ -252,7 +252,7 @@ class CatalogController < ApplicationController
       field.label = 'Creator'
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
     config.add_search_field('nested_ordered_additional_information_label') do |field|
@@ -260,7 +260,7 @@ class CatalogController < ApplicationController
       field.label = 'Description'
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
     config.add_search_field('nested_ordered_title_label') do |field|
@@ -268,7 +268,7 @@ class CatalogController < ApplicationController
       field.label = 'Title'
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
     config.add_search_field('nested_ordered_contributor_label') do |field|
@@ -276,7 +276,7 @@ class CatalogController < ApplicationController
       field.label = 'Contributor'
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
     config.add_search_field('nested_ordered_abstract_label') do |field|
@@ -284,7 +284,7 @@ class CatalogController < ApplicationController
       field.label = 'Abstract'
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
 
@@ -356,7 +356,7 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
       field.solr_local_parameters = {
         qf: solr_name,
-          pf: solr_name
+        pf: solr_name
       }
     end
 

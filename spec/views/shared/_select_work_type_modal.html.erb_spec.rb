@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'rails_helper'
 RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
   let(:presenter) { instance_double Hyrax::SelectTypeListPresenter }
-  let(:type_presenters) {
+  let(:type_presenters) do
     [
       Hyrax::SelectTypePresenter.new(AdministrativeReportOrPublication),
       Hyrax::SelectTypePresenter.new(Article),
@@ -20,7 +20,7 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
       Hyrax::SelectTypePresenter.new(TechnicalReport),
       Hyrax::SelectTypePresenter.new(UndergraduateThesisOrProject)
     ]
-  }
+  end
   let(:ability) { double(current_user: current_user) }
   let(:current_user) { User.new(email: 'test@example.com', guest: true, api_person_type: api_person_type) }
 
@@ -42,6 +42,7 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
       end
     end
   end
+
   context 'as a student' do
     let(:api_person_type) { 'Student' }
     let(:work_type_titles) { ['Graduate Students', 'Undergrad Students', 'Other Scholarly Content'] }
@@ -52,6 +53,7 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
         expect(rendered).to have_content(title)
       end
     end
+
     it 'does not show hidden work types' do
       hidden_work_type_titles.each do |title|
         expect(rendered).not_to have_content(title)

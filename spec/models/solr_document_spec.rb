@@ -9,7 +9,7 @@ RSpec.describe SolrDocument do
                                        'academic_affiliation_label_ssim' => ['label1$www.blah.com']
                                      })
       it 'should return the label' do
-        expect(document.academic_affiliation_label).to eq [{'label'=>'label1', 'uri'=>'www.blah.com'}]
+        expect(document.academic_affiliation_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
   end
@@ -20,7 +20,7 @@ RSpec.describe SolrDocument do
                                        'other_affiliation_label_ssim' => ['label1$www.blah.com']
                                      })
       it 'should return the label' do
-        expect(document.other_affiliation_label).to eq [{'label'=>'label1', 'uri'=>'www.blah.com'}]
+        expect(document.other_affiliation_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
   end
@@ -42,7 +42,7 @@ RSpec.describe SolrDocument do
                                        'degree_grantors_label_ssim' => ['label1$www.blah.com']
                                      })
       it 'should return the label' do
-        expect(document.degree_grantors_label).to eq [{'label'=>'label1', 'uri'=>'www.blah.com'}]
+        expect(document.degree_grantors_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
   end
@@ -56,6 +56,7 @@ RSpec.describe SolrDocument do
         expect(document.nested_geo).to eq []
       end
     end
+
     context 'when there are geo coordinates' do
       it 'should return their labels' do
         document = described_class.new({
@@ -75,12 +76,13 @@ RSpec.describe SolrDocument do
         expect(document.nested_related_items_label).to eq []
       end
     end
+
     context 'when there are related items' do
       it 'should return their labels' do
         document = described_class.new({
                                          'nested_related_items_label_ssim' => ['label1$www.blah.com$0']
                                        })
-        expect(document.nested_related_items_label).to eq [{'label'=>'label1', 'uri'=>'www.blah.com', 'index'=>'0'}]
+        expect(document.nested_related_items_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com', 'index' => '0' }]
       end
     end
   end
@@ -94,6 +96,7 @@ RSpec.describe SolrDocument do
         expect(document.nested_ordered_creator_label).to eq []
       end
     end
+
     context 'when there are ordered creators' do
       it 'should return their labels' do
         document = described_class.new({
@@ -113,6 +116,7 @@ RSpec.describe SolrDocument do
         expect(document.title).to eq []
       end
     end
+
     context 'when there are only ordered titles' do
       it 'should return their labels' do
         document = described_class.new({
@@ -121,6 +125,7 @@ RSpec.describe SolrDocument do
         expect(document.title).to eq %w[title3 title4]
       end
     end
+
     context 'when there are only core metadata titles' do
       it 'should return their labels' do
         document = described_class.new({
@@ -129,6 +134,7 @@ RSpec.describe SolrDocument do
         expect(document.title).to eq %w[title2 title1]
       end
     end
+
     context 'when there are both core metadata titles and ordered titles' do
       it 'should return their labels' do
         document = described_class.new({
@@ -149,6 +155,7 @@ RSpec.describe SolrDocument do
         expect(document.creator).to eq []
       end
     end
+
     context 'when there are only ordered creators' do
       it 'should return their labels' do
         document = described_class.new({
@@ -157,6 +164,7 @@ RSpec.describe SolrDocument do
         expect(document.creator).to eq %w[creatorA creatorB]
       end
     end
+
     context 'when there are only core metadata creators' do
       it 'should return their labels' do
         document = described_class.new({
@@ -165,6 +173,7 @@ RSpec.describe SolrDocument do
         expect(document.creator).to eq %w[creatorB creatorA]
       end
     end
+
     context 'when there are both core metadata creators and ordered creators' do
       it 'should return their labels' do
         document = described_class.new({
@@ -185,6 +194,7 @@ RSpec.describe SolrDocument do
         expect(document.abstract).to eq []
       end
     end
+
     context 'when there are only ordered abstracts' do
       it 'should return their labels' do
         document = described_class.new({
@@ -193,6 +203,7 @@ RSpec.describe SolrDocument do
         expect(document.abstract).to eq %w[abstractA abstractB]
       end
     end
+
     context 'when there are only old abstracts' do
       it 'should return their labels' do
         document = described_class.new({
@@ -201,6 +212,7 @@ RSpec.describe SolrDocument do
         expect(document.abstract).to eq %w[abstractB abstractA]
       end
     end
+
     context 'when there are both old and ordered abstracts' do
       it 'should return their labels' do
         document = described_class.new({
@@ -221,6 +233,7 @@ RSpec.describe SolrDocument do
         expect(document.additional_information).to eq []
       end
     end
+
     context 'when there are only ordered additional_informations' do
       it 'should return their labels' do
         document = described_class.new({
@@ -229,6 +242,7 @@ RSpec.describe SolrDocument do
         expect(document.additional_information).to eq %w[additional_informationA additional_informationB]
       end
     end
+
     context 'when there are only core metadata additional_informations' do
       it 'should return their labels' do
         document = described_class.new({
@@ -237,6 +251,7 @@ RSpec.describe SolrDocument do
         expect(document.additional_information).to eq %w[additional_informationB additional_informationA]
       end
     end
+
     context 'when there are both core metadata creators and ordered additional_informations' do
       it 'should return their labels' do
         document = described_class.new({
@@ -257,6 +272,7 @@ RSpec.describe SolrDocument do
         expect(document.nested_ordered_title_label).to eq []
       end
     end
+
     context 'when there are ordered titles' do
       it 'should return their labels' do
         document = described_class.new({
@@ -276,6 +292,7 @@ RSpec.describe SolrDocument do
         expect(document.oai_nested_related_items_label).to eq []
       end
     end
+
     context 'when there are related items' do
       it 'should return their labels and uris as array' do
         document = described_class.new({
@@ -295,6 +312,7 @@ RSpec.describe SolrDocument do
         expect(document.oai_academic_affiliation_label).to eq []
       end
     end
+
     context 'when there are academic affiliations' do
       it 'should return their labels' do
         document = described_class.new({
@@ -314,6 +332,7 @@ RSpec.describe SolrDocument do
         expect(document.oai_other_affiliation_label).to eq []
       end
     end
+
     context 'when there are other (non-academic) affiliations' do
       it 'should return their labels' do
         document = described_class.new({
@@ -333,6 +352,7 @@ RSpec.describe SolrDocument do
         expect(document.oai_rights).to eq ['In Copyright - Educational Use Permitted']
       end
     end
+
     context 'when there is only a License' do
       it 'should return the License label' do
         document = described_class.new({
@@ -341,6 +361,7 @@ RSpec.describe SolrDocument do
         expect(document.oai_rights).to eq ['CC0 1.0 Universal']
       end
     end
+
     context 'when there is both a Rights Statement and a License' do
       it 'should return only the License label' do
         document = described_class.new({

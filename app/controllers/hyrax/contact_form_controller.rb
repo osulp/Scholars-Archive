@@ -37,19 +37,18 @@ module Hyrax
     # Override this method if you want to perform additional operations
     # when a email is successfully sent, such as sending a confirmation
     # response to the user.
-    def after_deliver
-    end
+    def after_deliver; end
 
     private
 
-      def build_contact_form
-        @contact_form = Hyrax::ContactForm.new(contact_form_params)
-      end
+    def build_contact_form
+      @contact_form = Hyrax::ContactForm.new(contact_form_params)
+    end
 
-      def contact_form_params
-        return {} unless params.key?(:contact_form)
+    def contact_form_params
+      return {} unless params.key?(:contact_form)
 
-        params.require(:contact_form).permit(:contact_method, :category, :name, :email, :subject, :message)
-      end
+      params.require(:contact_form).permit(:contact_method, :category, :name, :email, :subject, :message)
+    end
   end
 end

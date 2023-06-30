@@ -38,26 +38,26 @@ module Qa::Authorities
 
     private
 
-      # Reformats the data received from the service
-      def parse_authority_response(response)
-        response['geonames'].map do |result|
-          # Note: the trailing slash is meaningful.
-          { 'id' => "https://sws.geonames.org/#{result['geonameId']}/",
-            'label' => label.call(result, translate_fcl(result['fcl'])) }
-        end
+    # Reformats the data received from the service
+    def parse_authority_response(response)
+      response['geonames'].map do |result|
+        # Note: the trailing slash is meaningful.
+        { 'id' => "https://sws.geonames.org/#{result['geonameId']}/",
+          'label' => label.call(result, translate_fcl(result['fcl'])) }
       end
+    end
 
-      def translate_fcl(fcl)
-        { 'A' => 'Administrative Boundary',
-          'H' => 'Hydrographic',
-          'L' => 'Area',
-          'P' => 'Populated Place',
-          'R' => 'Road / Railroad',
-          'S' => 'Spot',
-          'T' => 'Hypsographic',
-          'U' => 'Undersea',
-          'V' => 'Vegetation'
-        }[fcl]
-      end
+    def translate_fcl(fcl)
+      { 'A' => 'Administrative Boundary',
+        'H' => 'Hydrographic',
+        'L' => 'Area',
+        'P' => 'Populated Place',
+        'R' => 'Road / Railroad',
+        'S' => 'Spot',
+        'T' => 'Hypsographic',
+        'U' => 'Undersea',
+        'V' => 'Vegetation'
+      }[fcl]
+    end
   end
 end

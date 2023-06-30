@@ -28,6 +28,6 @@ class BatchUploadItem < ActiveFedora::Base
   end
 
   private
-    def set_defaults
-    end
+
+  def set_defaults; end
 end

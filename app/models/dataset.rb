@@ -26,15 +26,15 @@ class Dataset < ActiveFedora::Base
   validates_with ScholarsArchive::Validators::NestedRelatedItemsValidator
 
   private
-  def set_defaults
-  end
+
+  def set_defaults; end
 
   def remove_datacite_doi
     self.datacite_doi = nil unless persisted?
   end
 
   def set_datacite_doi
-    doi_url = ENV.fetch('DATACITE_MODE', :test) == :production ? 'https://doi.org' : 'https://handle.stage.datacite.org'
+    doi_url = ENV.fetch('DATACITE_MODE', :test).to_sym == :production ? 'https://doi.org' : 'https://handle.stage.datacite.org'
     # Update datacite DOI so that it fits the prefix/ID pattern
     self.datacite_doi = ["#{ENV.fetch('DATACITE_PREFIX', '')}/#{id}"]
     # Set the datacite DOI to the regular DOI metadata if it doesn't already exist

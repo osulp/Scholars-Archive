@@ -13,13 +13,13 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
       }
     ]
   end
-  let(:work) {
+  let(:work) do
     work = Default.new do |w|
       w.rights_statement = [rights_statement_uri]
     end
     work.nested_ordered_title_attributes = nested_ordered_title_attributes
     work
-  }
+  end
   let(:solr_document) do
     SolrDocument.new(work.to_solr)
   end
@@ -43,6 +43,7 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
     ]
   end
   let(:page) { Capybara::Node::Simple.new(rendered) }
+
   before do
     allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], %w[Certificate Certificate]])
     allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_current_options_truncated).and_return(test_sorted_current_options)
@@ -58,6 +59,6 @@ RSpec.describe 'hyrax/base/_work_description.erb', type: :view do
 
   it 'shows citeable url' do
     expect(page).to have_content 'Citeable URL'
-    expect(page).to have_content 'https://test.host/concern/defaults/'+presenter.id
+    expect(page).to have_content "https://test.host/concern/defaults/#{presenter.id}"
   end
 end

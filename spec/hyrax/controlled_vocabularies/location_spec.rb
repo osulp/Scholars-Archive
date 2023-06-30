@@ -55,6 +55,7 @@ RSpec.describe Hyrax::ControlledVocabularies::Location do
       end
 
       it { expect(location.fetch).to eq location }
+
       it do
         expect(parent_adm1).to receive(:fetch).once
         location.fetch
@@ -79,6 +80,7 @@ RSpec.describe Hyrax::ControlledVocabularies::Location do
       end
 
       it { expect(location.persist!).to eq true }
+
       it do
         expect(parent_adm1).to receive(:persist!).once
         location.persist!

@@ -31,11 +31,11 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
       ['Adult Education - {1989..1990,1995,2001,2016}', 'http://opaquenamespace.org/ns/osuDegreeFields/OGvwFaYi']
     ]
   end
-  let(:work) {
+  let(:work) do
     Default.new do |w|
       w.title = ['test']
     end
-  }
+  end
   let(:curation_concern) { work }
   let(:options_presenter) { double(select_options: []) }
 

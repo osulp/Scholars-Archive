@@ -65,7 +65,7 @@ module ScholarsArchive
             # tracker.track
           rescue StandardError => e
             Rails.logger.error "Analytics Error: #{e.message} : #{e.backtrace}"
-            return nil
+            nil
           end
         end
       end
