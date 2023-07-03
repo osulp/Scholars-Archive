@@ -72,4 +72,12 @@ fr:
         title: Données de sujets humains
         question_human: Les données soumises ici font-elles partie d'une étude qui a été évaluée par le Programme de protection de la Recherche humaine et le comité d'examen institutionnel (IRB) ou tout autre Comité d'éthique?
         yes_option: "Oui"
-        no_option: "Non" 
+        no_option: "Non"
+    contact_form:
+      issue_types:
+        browsing: Parcourir et rechercher
+        changing: Effectuer des modifications sur mon contenu
+        depositing: Déposer du contenu
+        general: Demande ou demande générale
+        reporting: Signaler un problème
+        statistic: Demander téléchargé de statistique
