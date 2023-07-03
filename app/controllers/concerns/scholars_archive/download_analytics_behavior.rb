@@ -23,6 +23,7 @@ module ScholarsArchive
               'dl': request.url.to_s, # Document Location URL
               'dh': request.server_name.to_s, # Document Host Name
               'dr': request.referrer.to_s, # Document Referrer
+              'dt': params[:id].to_s, # Document Title
               'en': 'page_view' # Event Name
             }
             # Combine params as query params and base URI
