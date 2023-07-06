@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
+# Controller for fileset, work, and other presenters
 module Hyrax::Controller
-  # Controller for fileset, work, and other presenters
   extend ActiveSupport::Concern
   include ScholarsArchive::RedirectIfRestrictedBehavior
 
@@ -40,6 +40,7 @@ module Hyrax::Controller
   end
 
   private
+  
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end

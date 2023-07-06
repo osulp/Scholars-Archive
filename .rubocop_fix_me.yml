@@ -1108,7 +1108,7 @@ Lint/UselessMethodDefinition:
 
 Lint/MissingSuper:
   Exclude:
-    - 'app/models/oai_set.rb':
+    - 'app/models/oai_set.rb'
 
 Style/SymbolArray:
   Exclude:
