@@ -47,6 +47,21 @@ pt-BR:
           title_tesim: Título
   hyrax:
     account_name: ID da conta da minha instituição
+    base:
+      form_progress:
+        proxy_depositors: Depositantes proxy - Selecione o usuário em cujo nome você está depositando
+        required_agreement: Verifique o acordo de depósito
+        required_descriptions: Descreva sua obra
+        required_human_data: Selecione uma opção para dados de Sujeito Humano
+        required_files: Acrescente arquivos
+        requirements: Requisitos
+        saving_your_work: Salvando seu trabalho. Isso pode levar algum tempo
+        yourself: A si mesmo
+      form_human_subject_data_component:
+        title: Dados de seres humanos
+        question_human: Os dados aqui apresentados fazem parte de um estudo que foi avaliado pelo Human Research Protection Program e pelo Institutional Review Board (IRB) ou por qualquer outro Comitê de Ética?
+        yes_option: "Sim"
+        no_option: "Não"
     directory:
       suffix: "@ Example.org"
     footer:

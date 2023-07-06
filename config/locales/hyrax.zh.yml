@@ -47,6 +47,21 @@ zh:
           title_tesim: 标题
   hyrax:
     account_name: 我的机构帐户标识符
+    base:
+      form_progress:
+        proxy_depositors: 代理存款人-选择您代表其存款的用户
+        required_agreement: 核对存储协议
+        required_descriptions: 描述您的作品
+        required_human_data: 选择人类受试者数据的选项
+        required_files: 添加文件
+        requirements: 必要条件
+        saving_your_work: 保存你的工作。这可能需要一些时间
+        yourself: 自己
+      form_human_subject_data_component:
+        title: 人类受试者数据
+        question_human: 此处提交的数据是否是由人类研究保护计划和机构审查委员会 (IRB) 或任何其他伦理委员会评估的研究的一部分？
+        yes_option: "是的"
+        no_option: "没有"
     directory:
       suffix: "@example.org"
     footer:
