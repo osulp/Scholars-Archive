@@ -1097,6 +1097,10 @@ Layout/IndentationWidth:
   Exclude:
     - 'app/controllers/concerns/hyrax/controller.rb'
 
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'app/controllers/concerns/hyrax/controller.rb'
+
 Migration/DepartmentName:
   Exclude:
     - 'app/forms/hyrax/forms/collection_form.rb'
