@@ -349,6 +349,7 @@ Style/StringLiterals:
   Exclude:
     - 'app/services/bolognese/writers/hyrax_work_writer.rb'
     - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
+    - 'app/controllers/concerns/hyrax/controller.rb'
 
 Naming/VariableName:
   Exclude:
@@ -429,6 +430,7 @@ Style/RedundantFreeze:
     - 'app/inputs/multi_value_label_url_input.rb'
     - 'app/inputs/multi_value_date_input.rb'
     - 'app/inputs/multi_value_ordered_input.rb'
+    - 'app/controllers/concerns/hyrax/controller.rb'
 
 Lint/UnusedMethodArgument:
   Exclude:
@@ -1091,6 +1093,10 @@ Layout/EmptyLinesAroundAttributeAccessor:
     - 'lib/scholars_archive/migrate_ordered_metadata_service.rb'
     - 'app/models/hyrax/contact_form.rb'
 
+Layout/IndentationWidth:
+  Exclude:
+    - 'app/controllers/concerns/hyrax/controller.rb'
+
 Migration/DepartmentName:
   Exclude:
     - 'app/forms/hyrax/forms/collection_form.rb'
@@ -1102,4 +1108,8 @@ Lint/UselessMethodDefinition:
 
 Lint/MissingSuper:
   Exclude:
-    - 'app/models/oai_set.rb'
+    - 'app/models/oai_set.rb':
+
+Style/SymbolArray:
+  Exclude:
+    - 'app/controllers/concerns/hyrax/controller.rb'
