@@ -47,6 +47,21 @@ de:
           title_tesim: Titel
   hyrax:
     account_name: Meine Institution Konto-ID
+    base:
+      form_progress:
+        proxy_depositors: Proxy-Deponent - Wählen Sie den Benutzer aus, in dessen Namen Sie Arbeiten einstellen
+        required_agreement: Deponierungsvereinbarung zustimmen
+        required_descriptions: Beschreiben Sie Ihre Arbeit
+        required_human_data: Wählen Sie eine Option für Daten menschlicher Subjekte
+        required_files: Dateien hinzufügen
+        requirements: Bedarf
+        saving_your_work: Speichern Sie Ihre Arbeit. Dies kann einige Momente dauern
+        yourself: Selbst
+      form_human_subject_data_component:
+        title: Daten menschlicher Subjekte
+        question_human: Sind die hier eingereichten Daten Teil einer Studie, die vom Human Research Protection Program and Institutional Review Board (IRB) oder einer anderen Ethikkommission ausgewertet wurde?
+        yes_option: "Ja"
+        no_option: "Nein"
     directory:
       suffix: "@ Example.org"
     footer:
