@@ -2,6 +2,8 @@
 
 Rails.application.config.to_prepare do
   Hyrax::FileSetsController.class_eval do
+    # INCLUDE: Add in the redirect to filesets for embargo
+    include ScholarsArchive::RedirectIfRestrictedBehavior
 
     def show
       # Prevent fileset page from displaying if parent work is still in workflow
