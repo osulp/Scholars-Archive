@@ -47,6 +47,21 @@ it:
           title_tesim: Titolo
   hyrax:
     account_name: ID del mio istituto dell'istituto
+    base:
+      form_progress:
+        proxy_depositors: Depositanti proxy - Seleziona l'utente per conto del quale stai depositando
+        required_agreement: Controllare l'accordo di deposito
+        required_descriptions: Descrivi il tuo lavoro
+        required_human_data: Selezionare un'opzione per i dati del soggetto umano
+        required_files: Aggiungere i file
+        requirements: Requisiti
+        saving_your_work: Salvare il tuo lavoro. Questo potrebbe richiedere alcuni minuti
+        yourself: Te
+      form_human_subject_data_component:
+        title: Dati sui soggetti umani
+        question_human: I dati presentati qui fanno parte di uno studio che è stato valutato dal Programma di protezione della ricerca umana e dal Comitato di revisione istituzionale (IRB) o da qualsiasi altro Comitato etico?
+        yes_option: "Sì"
+        no_option: "No"
     directory:
       suffix: "@ example.org"
     footer:
