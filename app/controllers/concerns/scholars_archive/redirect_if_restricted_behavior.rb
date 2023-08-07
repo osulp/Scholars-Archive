@@ -12,7 +12,7 @@ module ScholarsArchive
       # rubocop:disable Metrics/MethodLength
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
-        # First we check if the user can see the work
+        # First we check if the user can see the work or fileset
         return unless cannot?(:read, curation_concern) && (curation_concern.embargo_id.present? || curation_concern.visibility == 'authenticated')
 
         # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
