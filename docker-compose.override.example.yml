@@ -9,6 +9,10 @@ services:
       - 80:80
   server:
     environment:
+      - DATACITE_MODE=test
+      - DATACITE_PREFIX=12.34567
+      - DATACITE_USERNAME=ABC.123
+      - DATACITE_PASSWORD=def456
       - HTTP_API_AUTHENTICATION_TOKEN='12345678901234567890'
       - HTTP_API_AUTHENTICATION_USERNAME='bobross@FQDN'
       - OSU_API_HOST=https://fqdn.to.server
