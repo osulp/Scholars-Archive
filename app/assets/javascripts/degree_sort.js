@@ -19,14 +19,11 @@ $(document).ready(function() {
 
     // FUNCTION: Filter out the degree name based on selection
     $('#degree_name_sort > option').each(function() {
-      // VARIABLE: Get the value of the option lists
-      var name_val = $(this).val();
-
-      // CHECK: Check to see if the options met the condition of keyword
-      if (degree_select == "Other") {
+      // CONDITION: Check if the selection has specific keyword to filter out
+      if (degree_select == 'Other') {
         $(this).show();
       } else {
-        if (name_val.includes(degree_select)) {
+        if (this.value.includes(degree_select) || this.value.includes('Other')) {
           $(this).show();
         } else {
           $(this).hide();
