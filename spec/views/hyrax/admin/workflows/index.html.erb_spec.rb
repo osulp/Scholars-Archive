@@ -17,8 +17,8 @@ RSpec.describe 'hyrax/admin/workflows/index.html.erb', type: :view do
   end
 
   context 'when user has submissions to review' do
-    it 'displays submission date in the format YYYY-MM-DD HH:MM:SS' do
-      expect(rendered).to include('2019-04-24 21:22:44')
+    it 'displays submission local date in the format YYYY-MM-DD HH:MM:SS' do
+      expect(rendered).to include('2019-04-24 14:22:44')
     end
   end
 end
