@@ -714,7 +714,7 @@ GEM
     net-http-persistent (4.0.1)
       connection_pool (~> 2.2)
     netrc (0.11.0)
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     noid (0.9.0)
     noid-rails (3.0.3)
       actionpack (>= 5.0.0, < 7)
@@ -768,7 +768,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.6)
     pul_uv_rails (2.0.1)
-    puma (5.6.4)
+    puma (5.6.7)
       nio4r (~> 2.0)
     qa (5.6.0)
       activerecord-import
@@ -1173,7 +1173,7 @@ DEPENDENCIES
   net-http-persistent
   poltergeist
   pry-rails
-  puma (~> 5.6.4)
+  puma (~> 5.6.7)
   rails (~> 5.2.5)
   rails-controller-testing
   rdf (= 3.2.4)
