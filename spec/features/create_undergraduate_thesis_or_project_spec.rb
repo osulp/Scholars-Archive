@@ -89,10 +89,10 @@ RSpec.feature 'Create a Undergraduate Thesis Or Project', js: false do
       select 'Dissertation', from: 'undergraduate_thesis_or_project_resource_type'
       find('body').click
 
-      select "Bachelor's", from: 'undergraduate_thesis_or_project_degree_level'
+      select "Bachelor's", from: 'degree_level_select'
       find('body').click
 
-      select 'Master of Arts (M.A.)', from: 'undergraduate_thesis_or_project_degree_name'
+      select 'Master of Arts (M.A.)', from: 'degree_name_sort'
       find('body').click
 
       select 'Zoology', from: 'undergraduate_thesis_or_project_degree_field'

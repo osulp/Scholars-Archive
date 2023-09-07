@@ -3,7 +3,7 @@
     collection: current_user.admin? ? degree_name_service.select_sorted_all_options : degree_name_service.select_sorted_active_options,
     include_blank: true,
     as: :multi_value_select_other,
-    input_html: { class: "form-control degree-name-selector #{f.object.new_record? ? 'new-record' : ''}"} %>
+    input_html: { class: "form-control degree-name-selector #{f.object.new_record? ? 'new-record' : ''}", id: 'degree_name_sort'} %>
 
 <div class="other_options" id="other_options">
   <% if @degree_name_other_options && @degree_name_other_options.count > 0 %>

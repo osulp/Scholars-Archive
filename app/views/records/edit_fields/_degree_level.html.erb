@@ -2,7 +2,7 @@
 <%= f.input :degree_level,
     collection: current_user.admin? ? degree_level_service.select_sorted_all_options : degree_level_service.work_type_limited_options(f.object.model.class.to_s),
     include_blank: true,
-    input_html: { class: "form-control degree-level-selector" } %>
+    input_html: { class: "form-control degree-level-selector", id: 'degree_level_select' } %>
 <% if f.object.model.degree_level.present? && f.object.model.degree_level == 'Other' && f.object.model.degree_level_other.present? %>
     <%= f.input :degree_level_other, label: false, aria: { label: 'Degree Level' }, :placeholder => 'Degree Level', :input_html => {value: f.object.model.degree_level_other, :class => "form-control"}, :wrapper_html => {:class => "degree-level-other" }, required: true %>
 <% else %>

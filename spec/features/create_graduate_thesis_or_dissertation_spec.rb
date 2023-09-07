@@ -89,10 +89,10 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       select 'Dissertation', from: 'graduate_thesis_or_dissertation_resource_type'
       find('body').click
 
-      select "Master's", from: 'graduate_thesis_or_dissertation_degree_level'
+      select "Master's", from: 'degree_level_select'
       find('body').click
 
-      select 'Master of Arts (M.A.)', from: 'graduate_thesis_or_dissertation_degree_name'
+      select 'Master of Arts (M.A.)', from: 'degree_name_sort'
       find('body').click
 
       select 'Zoology', from: 'graduate_thesis_or_dissertation_degree_field'
