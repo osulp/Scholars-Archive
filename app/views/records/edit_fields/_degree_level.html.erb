@@ -4,7 +4,6 @@
     include_blank: true,
     input_html: { class: "form-control degree-level-selector", id: 'degree_level_select' } %>
 
-<%# CREATE: Have a hidden field to fetch out to use for the javascript %>
 <%= f.input :degree_work,
    :as => :hidden, 
    input_html: { id: 'degree_work_select', value: @curation_concern.model_name.human.to_s } %>
@@ -14,3 +13,6 @@
 <% else %>
     <%= f.input :degree_level_other, as: :hidden, label: false, aria: { label: 'Degree Level' }, :placeholder => 'Degree Level', :input_html => {:class => "form-control"}, :wrapper_html => {:class => "degree-level-other" } %>
 <% end %>
+
+<%# CREATE: Have a hidden field to fetch out to use for the javascript %>
+<%= f.input :degree_work, :as => :hidden, input_html: { class: "form-control", id: 'degree_work_select', value: f.object.model_name.human.to_s } %>
