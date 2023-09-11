@@ -31,3 +31,4 @@
 //= require_directory .
 //= require hyrax
 //= require degree_filter/degree_level_filter
+//= require degree_filter/degree_sort
