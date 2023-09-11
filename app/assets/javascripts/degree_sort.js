@@ -1,7 +1,7 @@
 // JAVASCRIPT: Create a javascript to filter out degree based on selection
 $(document).ready(function() {
-  // FUNCTION: Setup an on change event to get the selected value of the degree level
-  $('#degree_level_select').change(function() {
+  // FUNCTION: Create a function to check and filter out the degree name & level
+  $.fn.filter_degree = function() {
     // VARIABLE: Setup a string variable to store the value of degree
     var degree_select = '';
     var degree_level = $("#degree_level_select option:selected").val();
@@ -30,5 +30,13 @@ $(document).ready(function() {
         }
       }
     });
+  }
+
+  // CALL: Load the function on load to filter out the degree once page load
+  $.fn.filter_degree();
+  
+  // FUNCTION: Setup an on change event to get the selected value of the degree level
+  $('#degree_level_select').change(function() {
+    $.fn.filter_degree();
   });
 });
