@@ -4,7 +4,7 @@ $(document).ready(function() {
   $.fn.filter_degree = function() {
     // VARIABLE: Setup a string variable to store the value of degree
     var degree_select = '';
-    var degree_level = $("#degree_level_select option:selected").val();
+    var degree_level = $('#degree_level_select option:selected').val();
 
     // CONDITION: Check and set condition of degree
     if (degree_level == "Bachelor's") {
@@ -20,10 +20,10 @@ $(document).ready(function() {
     // FUNCTION: Filter out the degree name based on selection
     $('#degree_name_sort > option').each(function() {
       // CONDITION: Check if the selection has specific keyword to filter out
-      if (degree_select == 'Other') {
+      if (degree_select == "Other") {
         $(this).show();
       } else {
-        if (this.value.includes(degree_select) || this.value.includes('Other')) {
+        if (this.value.includes(degree_select) || this.value.includes("Other")) {
           $(this).show();
         } else {
           $(this).hide();
