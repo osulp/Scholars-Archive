@@ -1103,3 +1103,15 @@ Lint/UselessMethodDefinition:
 Lint/MissingSuper:
   Exclude:
     - 'app/models/oai_set.rb'
+
+Layout/IndentationConsistency:
+  Exclude:
+    - 'app/controllers/concerns/hyrax/controller.rb'
+
+Layout/IndentationWidth:
+  Exclude:
+    - 'app/controllers/concerns/hyrax/controller.rb'
+
+Style/SymbolArray:
+  Exclude:
+    - 'app/controllers/concerns/hyrax/controller.rb'
