@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # OVERRIDE: Setup an override on locale to render header
 module Hyrax::Controller
   extend ActiveSupport::Concern
