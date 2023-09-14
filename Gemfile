@@ -29,7 +29,7 @@ gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
-gem 'sidekiq', '5.2.10'
+gem 'sidekiq', '7.1.3'
 gem 'ffi', '~> 1.15.0'
 
 gem 'blacklight_oai_provider'
