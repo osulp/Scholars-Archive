@@ -1071,10 +1071,6 @@ Style/WordArray:
   Exclude:
     - 'app/helpers/hyrax_helper.rb'
 
-Style/ParenthesesAroundCondition:
-  Exclude:
-    - 'lib/qa/authorities/geonames.rb'
-
 Layout/BeginEndAlignment:
   Exclude:
     - 'app/forms/hyrax/forms/collection_form.rb'
