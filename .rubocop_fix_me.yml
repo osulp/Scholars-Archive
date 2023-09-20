@@ -46,6 +46,7 @@ Metrics/MethodLength:
     - 'app/services/scholars_archive/degree_level_service.rb'
     - 'app/services/bolognese/writers/hyrax_work_writer.rb'
     - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
+    - 'lib/qa/authorities/geonames.rb'
 
 Metrics/BlockLength:
   ExcludedMethods: ['included']
@@ -189,19 +190,6 @@ Style/MultilineIfThen:
 Style/MultilineIfModifier:
   Exclude:
     - 'app/controllers/hyrax/doi/hyrax_doi_controller.rb'
-
-Style/RedundantParentheses:
-  Exclude:
-    - 'app/models/concerns/scholars_archive/date_operations.rb'
-    - 'app/actors/scholars_archive/actors/add_other_field_option_actor.rb'
-    - 'app/actors/scholars_archive/actors/nested_fields_operations_actor.rb'
-    - 'spec/models/user_spec.rb'
-    - 'spec/services/scholars_archive/all_facet_values_service_spec.rb'
-    - 'spec/inputs/multi_value_ordered_input_spec.rb'
-    - 'lib/scholars_archive/validators/other_affiliation_validator.rb'
-    - 'lib/scholars_archive/validators/nested_related_items_validator.rb'
-    - 'lib/scholars_archive/validators/other_option_degree_validator.rb'
-    - 'lib/qa/authorities/geonames.rb'
 
 Style/RedundantCondition:
   Exclude:
@@ -1062,6 +1050,7 @@ Style/RedundantRegexpEscape:
     - 'app/workers/fetch_graph_worker.rb'
     - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
     - 'app/models/hyrax/contact_form.rb'
+    - 'lib/qa/authorities/geonames.rb'
 
 Style/RedundantRegexpCharacterClass:
   Exclude:

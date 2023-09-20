@@ -17,9 +17,13 @@ module Qa::Authorities
         return []
       end
 
-      # CHECK: Making a check that if an id number is enter instead of city name
-      if (q.to_s.match(/^[0-9]*$/))
+      # CHECK: Making a check that if an id number or url is enter instead of city name
+      if q.to_s.match(/^[0-9]*$/)
         parse_response_with_id(json(build_id_url(q)))
+      elsif q.to_s.match(%r{^https?:\/\/www\.geonames\.org})
+        # PARSE: Get the id out of the URL & fetch the id to be use for
+        query = URI(q.to_s).path.split('/')[1]
+        parse_response_with_id(json(build_id_url(query)))
       else
         parse_authority_response(json(build_query_url(q)))
       end
