@@ -119,4 +119,18 @@ class ApplicationController < ActionController::Base
       Honeycomb.add_field('classname', self.class.name)
     end
   end
+
+  private
+
+  # OVERRIDE: Import in the set_locale function and setup the error for locale
+  def set_locale
+    locale_check = params[:locale] || I18n.default_locale
+    # CHECK: Making sure the locale exist in Hyrax
+    if I18n.available_locales.include?(locale_check.to_sym)
+      I18n.locale = locale_check
+    else
+      flash[:error] = 'Error: Could Not Find the Locale'
+      redirect_to '/'
+    end
+  end
 end
