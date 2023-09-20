@@ -1050,7 +1050,6 @@ Style/RedundantRegexpEscape:
     - 'app/workers/fetch_graph_worker.rb'
     - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
     - 'app/models/hyrax/contact_form.rb'
-    - 'lib/qa/authorities/geonames.rb'
 
 Style/RedundantRegexpCharacterClass:
   Exclude:
@@ -1093,7 +1092,3 @@ Lint/UselessMethodDefinition:
 Lint/MissingSuper:
   Exclude:
     - 'app/models/oai_set.rb'
-
-Layout/HashAlignment:
-  Exclude:
-    - 'lib/qa/authorities/geonames.rb'

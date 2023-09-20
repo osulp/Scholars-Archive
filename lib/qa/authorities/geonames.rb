@@ -20,7 +20,7 @@ module Qa::Authorities
       # CHECK: Making a check that if an id number or url is enter instead of city name
       if q.to_s.match(/^[0-9]*$/)
         parse_response_with_id(json(build_id_url(q)))
-      elsif q.to_s.match(%r{^https?:\/\/www\.geonames\.org})
+      elsif q.to_s.match(%r{^https?://www\.geonames\.org})
         # PARSE: Get the id out of the URL & fetch the id to be use for
         query = URI(q.to_s).path.split('/')[1]
         parse_response_with_id(json(build_id_url(query)))
@@ -67,7 +67,7 @@ module Qa::Authorities
     def parse_response_with_id(response)
       # Note: the trailing slash is meaningful.
       [{ 'id' => "https://sws.geonames.org/#{response['geonameId']}/",
-        'label' => label.call(response, translate_fcl(response['fcl'])) }]
+         'label' => label.call(response, translate_fcl(response['fcl'])) }]
     end
 
     def translate_fcl(fcl)
