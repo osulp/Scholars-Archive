@@ -16,7 +16,23 @@ module Qa::Authorities
         Rails.logger.error 'Questioning Authority tried to call geonames, but no username was set'
         return []
       end
-      parse_authority_response(json(build_query_url(q)))
+
+      # CHECK: Making a check that if an id number or url is enter instead of city name
+      if q.to_s.match(/^[0-9]*$/)
+        parse_response_with_id(json(build_id_url(q)))
+      elsif q.to_s.match(%r{^https?://www\.geonames\.org})
+        # PARSE: Get the id out of the URL & fetch the id to be use for
+        query = URI(q.to_s).path.split('/')[1]
+        parse_response_with_id(json(build_id_url(query)))
+      else
+        parse_authority_response(json(build_query_url(q)))
+      end
+    end
+
+    # BUILD: Create a search using id number instead
+    def build_id_url(q)
+      query = URI.escape(untaint(q))
+      "http://api.geonames.org/getJSON?geonameId=#{query}&username=#{username}"
     end
 
     def build_query_url(q)
@@ -45,6 +61,13 @@ module Qa::Authorities
         { 'id' => "https://sws.geonames.org/#{result['geonameId']}/",
           'label' => label.call(result, translate_fcl(result['fcl'])) }
       end
+    end
+
+    # REFORMAT: Format data with the id given
+    def parse_response_with_id(response)
+      # Note: the trailing slash is meaningful.
+      [{ 'id' => "https://sws.geonames.org/#{response['geonameId']}/",
+         'label' => label.call(response, translate_fcl(response['fcl'])) }]
     end
 
     def translate_fcl(fcl)
