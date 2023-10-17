@@ -1,6 +1,6 @@
 # frozen_string_literal:true
 
-# RSPEC: Create a testing environment to Fixity Mailer class
+# RSPEC: Create a testing environment to Human Data Mailer class
 RSpec.describe ScholarsArchive::HumanDataMailer do
   include ActionView::Helpers::UrlHelper
   # VARIABLES: Create couple variables for testing purpose
