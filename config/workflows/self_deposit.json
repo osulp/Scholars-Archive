@@ -7,6 +7,11 @@
             "name": "Deposit",
             "from_states": [],
             "transition_to": "Deposited",
+            "notifications": [{
+                "notification_type": "email",
+                "name": "ScholarsArchive::Workflow::DepositReceivedNotification",
+                "to": ["depositing"]
+            }],
             "methods": [
                 "Hyrax::Workflow::GrantEditToDepositor",
                 "Hyrax::Workflow::ActivateObject"
