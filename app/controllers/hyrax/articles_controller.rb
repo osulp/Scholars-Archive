@@ -8,7 +8,6 @@ module Hyrax
   class ArticlesController < ApplicationController
     # Adds Hyrax behaviors to the controller.
     include ScholarsArchive::WorksControllerBehavior
-    include ScholarsArchive::ArticlesControllerBehavior
     include ScholarsArchive::RedirectIfRestrictedBehavior
     include Hyrax::BreadcrumbsForWorks
     self.curation_concern_type = Article
