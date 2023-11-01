@@ -35,14 +35,14 @@ class FetchGraphWorker
   end
 
   def solr_based_near_linked_insert(solr_doc, val)
-    Solrizer.insert_field(solr_doc, 'based_near_linked', [extracted_label(val.solrize, onlylabel: false)], :stored_searchable)
-    Solrizer.insert_field(solr_doc, 'based_near_linked', [extracted_label(val.solrize, onlylabel: false)], :facetable)
-    Solrizer.insert_field(solr_doc, 'based_near_linked', [extracted_label(val.solrize, onlylabel: false)], :symbol)
+    solr_doc['based_near_linked_tesim'] = [extracted_label(val.solrize, onlylabel: false)]
+    solr_doc['based_near_linked_ssim'] = [extracted_label(val.solrize, onlylabel: false)]
+    solr_doc['based_near_linked_sim'] = [extracted_label(val.solrize, onlylabel: false)]
   end
 
   def solr_based_near_label_insert(solr_doc, val)
-    Solrizer.insert_field(solr_doc, 'based_near_label', [extracted_label(val.solrize, onlylabel: true)], :stored_searchable)
-    Solrizer.insert_field(solr_doc, 'based_near_label', [extracted_label(val.solrize, onlylabel: true)], :facetable)
+    solr_doc = ['based_near_label_tesim']
+    solr_doc = ['based_near_label_sim']
   end
 
   def extracted_label(input, onlylabel: false)
