@@ -797,7 +797,7 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 5.0, < 7.1)
       rdf
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-protection (3.0.5)
       rack
@@ -1040,7 +1040,7 @@ GEM
       faraday (>= 0.17.5, < 3.a)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    simple_form (5.3.0)
+    simple_form (5.2.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     simplecov (0.16.1)
@@ -1255,7 +1255,7 @@ DEPENDENCIES
   sassc-rails (~> 2.1)
   shoulda-matchers (~> 4)
   sidekiq (= 5.2.10)
-  simple_form (~> 5.0)
+  simple_form (~> 5.2.0)
   simplecov (>= 0.9)
   sitemap_generator
   solr_wrapper (>= 0.3)
