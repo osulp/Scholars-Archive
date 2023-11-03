@@ -14,7 +14,17 @@ module ScholarsArchive
       # rubocop:disable Metrics/MethodLength
       # rubocop:disable Lint/Void
       def message
-        if !SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dataset')
+        if SolrDocument.find(work_id)['resource_type_tesim']&.include?('Article')
+          "ScholarsArchive@OSU has received your deposit: #{title}
+           <br />
+           The citable URL for your article is: #{link_to citeable_url, citeable_url}
+           <br /><br/>
+           If you have questions, please respond to this email.
+           <br/>
+           Thank you,
+           <br />
+           ScholarsArchive@OSU Admin"
+        elsif !SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dataset')
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n #{comment}"
         else
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository.<br />
