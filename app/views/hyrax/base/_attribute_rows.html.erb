@@ -2,5 +2,7 @@
 <% ::ScholarsArchive::AttributesList.base_attributes.each do |attributes_hash| %>
 	<%= presenter.attribute_to_html(attributes_hash[:field], attributes_hash) %>
 <% end %>
+<%# ATTRIBUTE: Add in 'other affiliation' section in the show page %>
+<%= presenter.attribute_to_html(:other_affiliation, label: t('simple_form.labels.defaults.other_affiliation')) %>
 <%= presenter.attribute_to_html(:documentation, label: t('simple_form.labels.defaults.documentation')) if current_user&.admin? %>
 <%= presenter.attribute_to_html(:depositor, label: t('simple_form.labels.defaults.depositor')) if current_user&.admin? %>
