@@ -149,7 +149,7 @@ class SolrDocument
   solrized_methods %w[
     abstract
     academic_affiliation
-    alt_title
+    alternative_title
     bibliographic_citation
     conference_location
     conference_name
