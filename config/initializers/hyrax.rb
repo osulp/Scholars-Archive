@@ -69,6 +69,7 @@ Hyrax.config do |config|
   # Defaults to false
   # Requires a Google Analytics id and OAuth2 keyfile.  See README for more info
   config.analytics = ENV.fetch('SCHOLARSARCHIVE_ENABLE_ANALYTICS', 'false')
+  config.analytics_provider = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_PROVIDER', 'ga4')
 
   # Google Analytics tracking ID to gather usage statistics
   config.google_analytics_id = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_ID', 'abc123')
