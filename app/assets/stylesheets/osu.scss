@@ -30,6 +30,10 @@ body {
   filter: blur(0px) !important;
 }
 
+.image-masthead .navbar .nav.navbar-nav li {
+  background-color: unset;
+}
+
 #masthead {
   margin-bottom: 0px;
 }
