@@ -41,8 +41,8 @@ class FetchGraphWorker
   end
 
   def solr_based_near_label_insert(solr_doc, val)
-    solr_doc = ['based_near_label_tesim']
-    solr_doc = ['based_near_label_sim']
+    solr_doc['based_near_label_tesim'] = [extracted_label(val.solrize, onlylabel: true)]
+    solr_doc['based_near_label_sim'] = [extracted_label(val.solrize, onlylabel: true)]
   end
 
   def extracted_label(input, onlylabel: false)
