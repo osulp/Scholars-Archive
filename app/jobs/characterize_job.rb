@@ -16,6 +16,11 @@ class CharacterizeJob < Hyrax::ApplicationJob
     filepath = Hyrax::WorkingDirectory.find_or_retrieve(file_id, file_set.id) unless filepath && File.exist?(filepath)
     characterize(file_set, file_id, filepath)
     CreateDerivativesJob.perform_later(file_set, file_id, filepath)
+
+    Hyrax.publisher.publish('file.characterized',
+                            file_set: file_set,
+                            file_id: file_id,
+                            path_hint: filepath)
   end
 
   private
@@ -32,7 +37,7 @@ class CharacterizeJob < Hyrax::ApplicationJob
 
     characterization_service.run(file_set.characterization_proxy, filepath)
     Rails.logger.debug "Ran characterization on #{file_set.characterization_proxy.id} (#{file_set.characterization_proxy.mime_type})"
-    file_set.characterization_proxy.alpha_channels = channels(filepath) if file_set.characterization_proxy.respond_to?(:alpha_channels=) && file_set.image? && Hyrax.config.iiif_image_server?
+    file_set.characterization_proxy.alpha_channels = channels(filepath) if file_set.image? && Hyrax.config.iiif_image_server?
     file_set.characterization_proxy.save!
 
     # Ensure that if the actual file content has changed, the mod timestamp on the FileSet object changes.
