@@ -11,7 +11,7 @@
     <th><%= t('simple_form.labels.defaults.other_affiliation') %></th>
       <td>
         <ul class='tabular'>
-				<% OTHER_AFFILIATION['terms'].each do |value| %>
+        <% OTHER_AFFILIATION['terms'].each do |value| %>
           <% presenter.other_affiliation.each do |item| %>
             <% if item.to_s == value['id'].to_s %>
               <li class="attribute attribute-other_affiliation">
