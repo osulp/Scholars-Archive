@@ -7,20 +7,20 @@
 
 <%# ATTRIBUTE: Add in 'other affiliation' section in the show page w/ custom display %>
 <% if !presenter.other_affiliation.blank? %>
-	<tr>
-		<th><%= t('simple_form.labels.defaults.other_affiliation') %></th>
-		<td>
-			<ul class='tabular'>
+  <tr>
+    <th><%= t('simple_form.labels.defaults.other_affiliation') %></th>
+      <td>
+        <ul class='tabular'>
 				<% OTHER_AFFILIATION['terms'].each do |value| %>
-					<% presenter.other_affiliation.each do |item| %>
-						<% if item.to_s == value['id'].to_s %>
-							<li class="attribute attribute-other_affiliation">
-								<a href="<%= value['id'] %>"><%= value['term'] %></a>
-							</li>
-						<% end %>
-					<% end %>
-				<% end %>
-			</ul>
-		</td>
-	</tr>
+          <% presenter.other_affiliation.each do |item| %>
+            <% if item.to_s == value['id'].to_s %>
+              <li class="attribute attribute-other_affiliation">
+                <a href="<%= value['id'] %>"><%= value['term'] %></a>
+              </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
 <% end %>
