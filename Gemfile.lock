@@ -117,8 +117,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.8.5)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
     almond-rails (0.3.0)
       rails (>= 4.2)
     anyway_config (2.3.0)
@@ -1197,6 +1197,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  addressable (= 2.8.0)
   bagit (~> 0.4.1)
   blacklight_advanced_search
   blacklight_oai_provider
