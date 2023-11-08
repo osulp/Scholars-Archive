@@ -93,19 +93,27 @@ module ScholarsArchive
 
       curation_concern.degree_grantors_other = params[hash_key_for_curation_concern]['degree_grantors_other'] if params[hash_key_for_curation_concern]['degree_grantors'] == 'Other' && params[hash_key_for_curation_concern]['degree_grantors_other'].present?
 
+      curation_concern.other_affiliation_other = params[hash_key_for_curation_concern]['other_affiliation_other'] if params[hash_key_for_curation_concern]['other_affiliation'] == 'Other' && params[hash_key_for_curation_concern]['other_affiliation_other'].present?
+      curation_concern.other_affiliation = params[hash_key_for_curation_concern]['other_affiliation'] if params[hash_key_for_curation_concern]['other_affiliation'].include?('Other')
+
       curation_concern.current_username = current_user.username
     end
 
     def get_other_option_values
       @degree_field_other_options = get_all_other_options('degree_field')
       curation_concern.degree_field_other = degree_field_other_option.name if @degree_field_other_options.present? && curation_concern.degree_field.present? && curation_concern.degree_field == 'Other'
+
       @degree_name_other_options = get_all_other_options('degree_name')
       curation_concern.degree_name_other = degree_name_other_option.name if @degree_name_other_options.present? && curation_concern.degree_name.present? && curation_concern.degree_name == 'Other'
+
       degree_level_other_option = get_other_options('degree_level')
       curation_concern.degree_level_other = degree_level_other_option.name if degree_level_other_option.present? && curation_concern.degree_level.present? && curation_concern.degree_level == 'Other'
+
       degree_grantors_other_option = get_other_options('degree_grantors')
       curation_concern.degree_grantors_other = degree_grantors_other_option.name if degree_grantors_other_option.present? && curation_concern.degree_grantors.present? && curation_concern.degree_grantors == 'Other'
+
       @other_affiliation_other_options = get_all_other_options('other_affiliation')
+      curation_concern.other_affiliation_other = other_affiliation_other_option.name if @other_affiliation_other_options.present? && curation_concern.other_affiliation.present? && curation_concern.other_affiliation == 'Other'
     end
 
     def parse_geo
