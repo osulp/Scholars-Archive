@@ -27,7 +27,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <% @status_list.each do |document| %>
+                  <% @response.docs.each do |document| %>
                       <tr>
                         <td>
                           <%= link_to document.title.join('; '), [main_app, document] %>
