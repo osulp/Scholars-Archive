@@ -244,7 +244,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :peerreviewed, predicate: ::RDF::URI('http://dbpedia.org/ontology/isPeerReviewed'), multiple: false do |index|
+      property :peerreviewed, predicate: ::RDF::URI('https://dbpedia.org/ontology/isPeerReviewed'), multiple: false do |index|
         index.as :stored_searchable, :facetable
       end
 
