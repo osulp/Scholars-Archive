@@ -26,6 +26,6 @@ class UndergraduateThesisOrProject < ActiveFedora::Base
 
   def set_defaults
     self.degree_level ||= "Bachelor's"
-    self.peerreviewed ||= 'FALSE'
+    self.peerreviewed ||= 'false'
   end
 end

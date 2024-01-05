@@ -24,6 +24,6 @@ class GraduateProject < ActiveFedora::Base
   private
 
   def set_defaults
-    self.peerreviewed ||= 'FALSE'
+    self.peerreviewed ||= 'false'
   end
 end
