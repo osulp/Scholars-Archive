@@ -1,9 +1,6 @@
 namespace :scholars_archive do
   desc "Update peer review predicate data from all work graphs & change value to lowercase"
-  task :update_peer_review_data, [:chunk_size] => :environment do |t, args|
-    # SETUP: Setup a default value of 100 for chunk_size
-    args.with_defaults(:chunk_size => 100)
-
+  task update_peer_review_data: :environment do
     # SETUP: Add in the start time of the bulk changes and add message to know that the rake is starting
     datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
     Rails.logger.info "Processing bulk changes for peer review"
