@@ -1,0 +1,1 @@
+Hyrax.publisher.subscribe(ScholarsArchive::Listeners::MetadataFetchListener.new)
