@@ -36,7 +36,7 @@ namespace :scholars_archive do
         if !record.resource.graph.query(old_peer_review_statement).statements.empty?
           # GET: Get the graph
           orm = Ldp::Orm.new(record.ldp_source)
-          new_update_value = record.peerreviewed.downcase
+          new_update_value = orm.query(old_peer_review_statement).first.object.value.downcase
           statement = [orm.resource.subject_uri, old_predicate, nil]
 
           # DELETE: Delete the graph
