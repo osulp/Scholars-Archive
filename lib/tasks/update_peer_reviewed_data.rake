@@ -32,11 +32,11 @@ namespace :scholars_archive do
         # FETCH: Get the old peer review from the work
         old_peer_review_statement = [record.resource.rdf_subject, old_predicate, nil]
 
-        # CONDITION: If the peer review section found in work, add it to the hash of 'to_update'
+        # CONDITION: If the peer review section found in work, get the info out for preparing to be delete
         if !record.resource.graph.query(old_peer_review_statement).statements.empty?
           # GET: Get the graph
           orm = Ldp::Orm.new(record.ldp_source)
-          new_value = orm.query(old_peer_review_statement).first.object.value.downcase
+          new_update_value = record.peerreviewed.downcase
           statement = [orm.resource.subject_uri, old_predicate, nil]
 
           # DELETE: Delete the graph
@@ -46,7 +46,7 @@ namespace :scholars_archive do
           if orm.save
             logger.info "Deleted statement from Fedora: #{statement}"
             logger.info "Setting the value to lowercase"
-            record.peerreviewed = new_value
+            record.peerreviewed = new_update_value
             record&.save
           else
             logger.info "Failed to delete statement from Fedora: #{statement}"
