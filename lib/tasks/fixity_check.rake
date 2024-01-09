@@ -13,8 +13,15 @@ namespace :scholars_archive do
     start_time = Time.now
 
     # OVERRIDE: From Hyrax, add async option for Fixity check
-    ::FileSet.find_each do |file_set|
-      Hyrax::FileSetFixityCheckService.new(file_set, async_jobs: false).fixity_check
+    s = ActiveFedora::SolrService.query("has_model_ssim:FileSet", :rows => 200_000)
+    s.map(&:id).each do |id|
+      begin
+        file_set = ::FileSet.find(id)
+        Hyrax::FileSetFixityCheckService.new(file_set, async_jobs: false).fixity_check
+      rescue ActiveFedora::ModelMismatch
+        failed_arr << id
+        next
+      end
     end
 
     # CREATE: Make an end time to know when Fixity finish
