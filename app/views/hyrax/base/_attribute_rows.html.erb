@@ -1,26 +1,5 @@
-
 <% ::ScholarsArchive::AttributesList.base_attributes.each do |attributes_hash| %>
 	<%= presenter.attribute_to_html(attributes_hash[:field], attributes_hash) %>
 <% end %>
 <%= presenter.attribute_to_html(:documentation, label: t('simple_form.labels.defaults.documentation')) if current_user&.admin? %>
 <%= presenter.attribute_to_html(:depositor, label: t('simple_form.labels.defaults.depositor')) if current_user&.admin? %>
-
-<%# ATTRIBUTE: Add in 'other affiliation' section in the show page w/ custom display %>
-<% if !presenter.other_affiliation.blank? %>
-  <tr>
-    <th><%= t('simple_form.labels.defaults.other_affiliation') %></th>
-    <td>
-      <ul class='tabular'>
-        <% OTHER_AFFILIATION['terms'].each do |value| %>
-          <% presenter.other_affiliation.each do |item| %>
-            <% if item.to_s == value['id'].to_s %>
-              <li class="attribute attribute-other_affiliation">
-                <a href="<%= value['id'] %>"><%= value['term'] %></a>
-              </li>
-            <% end %>
-          <% end %>
-        <% end %>
-      </ul>
-    </td>
-  </tr>
-<% end %>
