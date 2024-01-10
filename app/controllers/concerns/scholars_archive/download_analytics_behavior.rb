@@ -15,6 +15,9 @@ module ScholarsArchive
           # https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
           # Staccato on Github: https://github.com/tpitale/staccato
           begin
+            # GA4 collection url
+            base_uri = URI('https://www.google-analytics.com/g/collect')
+
             file_download_params = {
               'v': '2', # Protocol version
               'tid': Hyrax.config.google_analytics_id.to_s, # Tracking ID

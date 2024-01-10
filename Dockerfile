@@ -22,6 +22,7 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
   mysql mysql-client mysql-dev \
   musl \
   curl \
+  less \
   libc6-compat \
   build-base \
   tzdata \
