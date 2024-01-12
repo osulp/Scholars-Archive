@@ -63,25 +63,32 @@ module ScholarsArchive
       query.execute(graph).to_a
     end
 
+    # rubocop:disable Metrics/PerceivedComplexity
     # rubocop:disable Metrics/CyclomaticComplexity
     def predicate_labels(graph)
       labels = {}
       return labels if graph.nil?
 
       rdf_label_predicates.each do |predicate|
-        eng_labels = graph
+        # GET: Fetch all the labels
+        all_labels = graph
           .query(predicate: predicate)
           .select { |statement| !statement.is_a?(Array) }
           .map(&:object)
-          .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true }
 
-        labels[predicate.to_s] = []
-        labels[predicate.to_s] << eng_labels.map(&:to_s)
-        labels[predicate.to_s].flatten!.compact!
+        # ASSIGN: Assign all the labels to the labels arr
+        labels[predicate.to_s] = all_labels.map(&:to_s)
+        # SELECT: Go through all labels and sort out all that has english label
+        eng_labels = all_labels
+                     .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true }
+        # CHECK: Assign the english label and check the english label
+        labels[predicate.to_s] = eng_labels.map(&:to_s) if eng_labels.count > 0
+        labels[predicate.to_s].compact!
       end
       labels
     end
     # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/PerceivedComplexity
 
     def rdf_label_predicates
       [
