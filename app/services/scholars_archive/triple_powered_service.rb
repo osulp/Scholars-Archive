@@ -63,10 +63,10 @@ module ScholarsArchive
       query.execute(graph).to_a
     end
 
-    # rubocop:disable Metrics/CyclomaticComplexity
     def predicate_labels(graph)
       labels = {}
       return labels if graph.nil?
+
       rdf_label_predicates.each do |predicate|
         eng_labels = graph
           .query(predicate: predicate)
@@ -79,7 +79,6 @@ module ScholarsArchive
       end
       labels
     end
-    # rubocop:enable Metrics/CyclomaticComplexity
 
     def rdf_label_predicates
       [
