@@ -17,20 +17,6 @@ module ScholarsArchive
           begin
             # GA4 collection url
             base_uri = URI('https://www.google-analytics.com/g/collect')
-            page_view_params = {
-              'v': '2', # Protocol version
-              'tid': Hyrax.config.google_analytics_id.to_s, # Tracking ID
-              'cid': SecureRandom.uuid.to_s, # Client ID
-              'dl': request.url.to_s, # Document Location URL
-              'dh': request.server_name.to_s, # Document Host Name
-              'dr': request.referrer.to_s, # Document Referrer
-              'dt': params[:id].to_s, # Document Title
-              'en': 'page_view' # Event Name
-            }
-            # Combine params as query params and base URI
-            page_view_uri = URI.parse([base_uri, URI.encode_www_form(page_view_params)].join('?'))
-            # Submit Page View
-            ::Net::HTTP.post(page_view_uri, nil)
 
             file_download_params = {
               'v': '2', # Protocol version
