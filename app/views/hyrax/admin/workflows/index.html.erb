@@ -44,7 +44,7 @@
                   <%= safe_join(document.creator, tag(:br)) %>
                 </td>
                 <td>
-                  <%= document.date_modified %>
+                  <%= local_time_from_utc(document.date_modified) %>
                 </td>
                 <td>
                   <span class="state state-pending"><%= document.workflow_state %></span>
