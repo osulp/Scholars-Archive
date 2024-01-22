@@ -621,7 +621,7 @@ class CatalogController < ApplicationController
     config.oai = {
       provider: {
         repository_name: 'ScholarsArchive@OSU',
-        repository_url: 'https://ir.library.oregonstate.edu',
+        repository_url: 'https://ir.library.oregonstate.edu/catalog/oai',
         record_prefix: 'ir.library.oregonstate.edu',
         admin_email: 'scholarsarchive@oregonstate.edu'
       },
