@@ -1,7 +1,9 @@
 namespace :scholars_archive do
   desc "Update peer review predicate data from all work graphs & change value to lowercase"
-  task update_peer_review_data: :environment do
+  task :update_peer_review_data, [:chunk_size] => :environment do |t, args|
     # SETUP: Add in the start time of the bulk changes and add message to know that the rake is starting
+    #        and set a default value of 100 for chunk_size
+    args.with_defaults(:chunk_size => 100)
     datetime_today = Time.now.strftime('%Y%m%d%H%M%S') # "20171021125903"
     Rails.logger.info "Processing bulk changes for peer review"
 
@@ -24,35 +26,30 @@ namespace :scholars_archive do
 
     # SEARCHING: After all the works are added, search for the one that has the old predicate
     Rails.logger.info "All works found. Searching for works to be updated"
+    to_update = {}
     old_predicate = ::RDF::URI.new('http://purl.org/ontology/bibo/peerReviewed')
 
     # LOOP: Now loop through each works and identify the work that needed to be updated
     all_records.each do |works|
-      works.each do |record|
-        # FETCH: Get the old peer review from the work
+      works.each_with_index do |record, index|
+        # FETCH: Get the old statement from work that has the old predicate
         old_peer_review_statement = [record.resource.rdf_subject, old_predicate, nil]
 
-        # CONDITION: If the peer review section found in work, get the info out for preparing to be delete
+        # CONDITION: If conference section to delete exist
         if !record.resource.graph.query(old_peer_review_statement).statements.empty?
-          # GET: Get the graph
+          # GET: Setup the graph and change the value to be reflected of the new value
           orm = Ldp::Orm.new(record.ldp_source)
-          new_update_value = orm.query(old_peer_review_statement).first.object.value.downcase
-          statement = [orm.resource.subject_uri, old_predicate, nil]
+          new_value = orm.query(old_peer_review_statement).first.object.value.downcase
 
-          # DELETE: Delete the graph
-          orm.graph.delete(statement)
-
-          # CHECK: Now save the works and update the value to lowercase
-          if orm.save
-            logger.info "Deleted statement from Fedora: #{statement}"
-            logger.info "Setting the value to lowercase"
-            record.peerreviewed = new_update_value
-            record&.save
-          else
-            logger.info "Failed to delete statement from Fedora: #{statement}"
-          end
+          # ADD: Add the list of updated value to the hash
+          to_update.merge!({ record.id => new_value })
         end
       end
+    end
+
+    # UPDATE: Now go through each update value to delete the old graph and assign the new value to it
+    to_update.each_slice(args.chunk_size) do |params|
+      ReplacePredicateJob.perform_later(params, old_predicate.to_s, 'peerreviewed')
     end
   end
 end
