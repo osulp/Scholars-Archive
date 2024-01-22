@@ -17,6 +17,14 @@ module ScholarsArchive
           begin
             # GA4 collection url
             base_uri = URI('https://www.google-analytics.com/g/collect')
+            # Update host header for submission to GA4
+            headers = {
+              'Accept-Language': request.headers['HTTP_ACCEPT_LANGUAGE'],
+              'Host': 'www.google-analytics.com',
+              'Origin': request.headers['HTTP_ORIGIN'],
+              'Referer': request.headers['HTTP_REFERER'],
+              'User-Agent': request.headers['HTTP_USER_AGENT']
+            }
 
             file_download_params = {
               'v': '2', # Protocol version
@@ -33,7 +41,7 @@ module ScholarsArchive
             # Combine params as query params and base URI
             file_download_uri = URI.parse([base_uri, URI.encode_www_form(file_download_params)].join('?'))
             # Submit File Download
-            ::Net::HTTP.post(file_download_uri, nil)
+            ::Net::HTTP.post(file_download_uri, nil, headers)
 
             # Disable Staccato tracking until Staccato can be updated for GA4
             # tracker = Staccato.tracker(Hyrax.config.google_analytics_id)
