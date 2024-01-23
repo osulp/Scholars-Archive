@@ -14,7 +14,7 @@ module ScholarsArchive
         curation_concern = ActiveFedora::Base.find(params[:id])
 
         # Reset flash notice since we redirected due to not viewable
-        flash[:alert] = ""
+        flash[:alert] = ''
 
         # First we check if the user can see the work or fileset
         return unless cannot?(:read, curation_concern) && (curation_concern.embargo_id.present? || curation_concern.visibility == 'authenticated')
