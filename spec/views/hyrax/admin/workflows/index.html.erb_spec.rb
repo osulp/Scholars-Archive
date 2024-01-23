@@ -7,7 +7,7 @@ RSpec.describe 'hyrax/admin/workflows/index.html.erb', type: :view do
                      date_modified_dtsi: modified_date,
                      title_tesim: ['Submission Title 999'])
   end
-  let(:response) { Hyrax::Admin::WorkflowsController::WorkflowResponse.new([doc], 0, nil, nil, nil) }
+  let(:response) { Hyrax::Admin::WorkflowsController::WorkflowResponse.new([doc], 0, 1, 10, nil) }
 
   let(:modified_date) { 'Wed Apr 24 21:22:44 2019' }
 
