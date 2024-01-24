@@ -89,4 +89,8 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # TORRENT FORM ROUTE: Setup the routes for the torrent form
+  get 'torrent', to: 'scholars_archive/torrent_form#new'
+  post 'torrent', to: 'scholars_archive/torrent_form#create', as: :torrent_form_index, controller: 'scholars_archive/torrent_form'
 end
