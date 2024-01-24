@@ -64,7 +64,7 @@ class User < ApplicationRecord
   end
 
   def student_employee?
-    roles.map(&:name).include? "Student Employee"
+    roles.map(&:name).include? "Student-Employee"
   end
   
   # If api_person_type is set, evaluate if the user is an student or not. Default to
