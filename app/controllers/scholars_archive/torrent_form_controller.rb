@@ -6,8 +6,7 @@ module ScholarsArchive
     # ACTION: Before page load, build the form with all the params
     before_action :build_torrent_form
 
-    def new;
-    end
+    def new; end
 
     def create
       render :new

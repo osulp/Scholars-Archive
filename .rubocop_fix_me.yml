@@ -1050,10 +1050,12 @@ Style/RedundantRegexpEscape:
     - 'app/workers/fetch_graph_worker.rb'
     - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
     - 'app/models/hyrax/contact_form.rb'
+    - 'app/models/scholars_archive/torrent_form.rb'
 
 Style/RedundantRegexpCharacterClass:
   Exclude:
     - 'app/models/hyrax/contact_form.rb'
+    - 'app/models/scholars_archive/torrent_form.rb'
 
 Style/CaseLikeIf:
   Exclude:
