@@ -31,7 +31,7 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
   libffi \
   bash bash-completion \
   java-common openjdk11-jre-headless \
-  ffmpeg openjpeg-dev openjpeg-tools openjpeg \
+  ffmpeg openjpeg-dev openjpeg-tools openjpeg mediainfo exiftool \
   lcms2 lcms2-dev \
   py3-pip \
   gcompat
