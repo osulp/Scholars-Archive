@@ -15,7 +15,7 @@
             <li>
               <%= render partial: 'shared/select_work_type_undergrad_students', locals: {presenters: presenters, classname: 'worktype-row'} %>
             </li>
-            <% if !current_user.student? || current_user.admin? %>
+            <% if !current_user.student? || current_user.employee? || current_user.admin? %>
               <li>
                 <%= render partial: 'shared/select_work_type_faculty_article_deposits', locals: {presenters: presenters, classname: 'worktype-row'} %>
               </li>
@@ -23,7 +23,7 @@
             <li>
               <%= render partial: 'shared/select_work_type_other_scholarly_content', locals: {presenters: presenters, classname: 'worktype-row'} %>
             </li>
-            <% if !current_user.student? || current_user.admin? %>
+            <% if !current_user.student? || current_user.employee? || current_user.admin? %>
               <li>
                 <%= render partial: 'shared/select_work_type_administrator', locals: {presenters: presenters, classname: 'worktype-row'} %>
               </li>
