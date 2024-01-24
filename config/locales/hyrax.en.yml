@@ -85,6 +85,12 @@ en:
         general: General inquiry or request
         reporting: Reporting a problem
         statistic: Requesting download statistics
+    torrent_form:
+      button_label: Send
+      email_label: Your Email
+      description_label: Describe the Problem
+      error_label: Error Message(s)
+      header: Torrent Report Form
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."
@@ -92,7 +98,7 @@ en:
       suffix:               "@example.org"
     footer:
       contact_info_html: "121 The Valley Library<br/>Corvallis, OR 97331-4501"
-      links_html: "<a href='contact'>Contact Us</a><br/><a href='https://library.oregonstate.edu/accessibility-services' target='_blank'>Services for Persons with Disabilities</a>"
+      links_html: "<a href='contact'>Contact Us</a><br/><a href='https://library.oregonstate.edu/accessibility-services' target='_blank'>Services for Persons with Disabilities</a><br/><a href='torrent'>Report Torrent</a>"
       copyright_html: "<strong>Copyright &copy; 2018 Oregon State University</strong><br/>Licensed under the Apache License, Version 2.0"
       service_html: Scholars Archive is a service of <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Oregon State University Libraries & Press</a>
     search:

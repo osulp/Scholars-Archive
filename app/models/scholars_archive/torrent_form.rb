@@ -5,9 +5,9 @@ module ScholarsArchive
   class TorrentForm
     include ActiveModel::Model
     # ADD: Add in accessor to couple field will be use in the form
-    attr_accessor :email, :name, :message
+    attr_accessor :email, :description, :error_message
 
-    validates :email, :name, :message, presence: true
+    validates :email, :description, :error_message, presence: true
     validates :email, format: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i, allow_blank: true
   end
 end

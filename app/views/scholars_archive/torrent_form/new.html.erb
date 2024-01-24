@@ -1,23 +1,28 @@
 <h1>
-    <%= "Test Torrent" %>
+    <%= t('hyrax.torrent_form.header') %>
 </h1>
 
+<%# FORM: Create the form view page to submit the torrent report %>
 <%= form_for @torrent_form, url: torrent_form_index_path,
                             html: { class: 'form-horizontal' } do |f| %>
+  
+  <%# EMAIL: Set the email layout to enter in email, if login use their email %>
   <div class="form-group">
-    <%= f.label :name, "Name Test", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10"><%= f.text_field :name, value: user_signed_in? ? current_user.name : "", class: 'form-control', required: true %></div>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email, "Email Test", class: "col-sm-2 control-label" %>
+    <%= f.label :email, t('hyrax.torrent_form.email_label'), class: "col-sm-2 control-label" %>
     <div class="col-sm-10"><%= f.text_field :email, value: user_signed_in? ? current_user.email : '', class: 'form-control', required: true %></div>
   </div>
 
+  <%# DESCRIPTION: Area to write the description of the problem %>
   <div class="form-group">
-    <%= f.label :message, "Message Test", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10"><%= f.text_area :message, rows: 4, class: 'form-control', required: true %></div>
+    <%= f.label :description, t('hyrax.torrent_form.description_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_area :description, rows: 4, class: 'form-control', required: true %></div>
   </div>
 
-  <%= f.submit value: "Submit Test", class: "btn btn-primary" %>
+  <%# ERROR MESSAGE: Area to write the where the error message is display %>
+  <div class="form-group">
+    <%= f.label :error_message, t('hyrax.torrent_form.error_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_area :error_message, rows: 4, class: 'form-control', required: true %></div>
+  </div>
+
+  <%= f.submit value: t('hyrax.contact_form.button_label'), class: "btn btn-primary" %>
 <% end %>

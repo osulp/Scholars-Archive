@@ -23,7 +23,7 @@ module ScholarsArchive
     def torrent_form_params
       return {} unless params.key?(:torrent_form)
 
-      params.require(:torrent_form).permit(:name, :email, :message)
+      params.require(:torrent_form).permit(:name, :description, :error_message)
     end
   end
 end
