@@ -90,6 +90,8 @@ en:
       email_label: Your Email
       description_label: Describe the Problem
       error_label: Error Message(s)
+      file_label: File Upload
+      additional_label: Additional Item
       header: Torrent Report Form
     dashboard:
       proxies_heading: "Manage Proxies"

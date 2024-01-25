@@ -5,6 +5,7 @@ module ScholarsArchive
   class TorrentFormController < ApplicationController
     # ACTION: Before page load, build the form with all the params
     before_action :build_torrent_form
+    layout 'homepage'
 
     def new; end
 
@@ -23,7 +24,7 @@ module ScholarsArchive
     def torrent_form_params
       return {} unless params.key?(:torrent_form)
 
-      params.require(:torrent_form).permit(:name, :description, :error_message)
+      params.require(:torrent_form).permit(:torrent_method, :name, :description, :error_message)
     end
   end
 end

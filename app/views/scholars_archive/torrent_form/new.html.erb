@@ -5,6 +5,8 @@
 <%# FORM: Create the form view page to submit the torrent report %>
 <%= form_for @torrent_form, url: torrent_form_index_path,
                             html: { class: 'form-horizontal' } do |f| %>
+  <%# HIDDEN FIELD: This field is hidden to check for spam %>
+  <%= f.text_field :torrent_method, class: 'hide' %>
   
   <%# EMAIL: Set the email layout to enter in email, if login use their email %>
   <div class="form-group">
@@ -21,7 +23,19 @@
   <%# ERROR MESSAGE: Area to write the where the error message is display %>
   <div class="form-group">
     <%= f.label :error_message, t('hyrax.torrent_form.error_label'), class: "col-sm-2 control-label" %>
-    <div class="col-sm-10"><%= f.text_area :error_message, rows: 4, class: 'form-control', required: true %></div>
+    <div class="col-sm-10"><%= f.text_area :error_message, rows: 4, class: 'form-control' %></div>
+  </div>
+
+  <%# FILE UPLOAD: Area to upload file %>
+  <div class="form-group">
+    <%= f.label :file_item, t('hyrax.torrent_form.file_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.file_field :file_item, class: 'form-control', required: true %></div>
+  </div>
+
+  <%# FILE UPLOAD 2: Area to upload additional screenshot %>
+  <div class="form-group">
+    <%= f.label :additional_item, t('hyrax.torrent_form.additional_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.file_field :additional_item, class: 'form-control' %></div>
   </div>
 
   <%= f.submit value: t('hyrax.contact_form.button_label'), class: "btn btn-primary" %>
