@@ -13,14 +13,13 @@ namespace :scholars_archive do
     start_time = Time.now
 
     # OVERRIDE: From Hyrax, add async option for Fixity check
-    s = ActiveFedora::SolrService.query("has_model_ssim:FileSet", fl: 'id', :rows => 200_000)
-    s.map(&:id).each do |id|
-      begin
-        file_set = ::FileSet.find(id)
+    ::FileSet.search_in_batches({}, { fl: 'id' }) do |batch|
+      batch.each do |hit|
+        file_set = FileSet.find(hit['id'])
         Hyrax::FileSetFixityCheckService.new(file_set, async_jobs: false).fixity_check
-      rescue ActiveFedora::ModelMismatch
-        failed_arr << id
-        next
+      rescue Ldp::Gone, ActiveFedora::ModelMismatch, ActiveFedora::ObjectNotFoundError => e
+        Rails.logger.warn e
+        failed_arr << hit['id']
       end
     end
 
@@ -34,7 +33,7 @@ namespace :scholars_archive do
     file_failed = latest_file.where("passed = false").count
 
     # QUERY #2: Get all the ids that failed via checking with fixity
-    failed_arr = latest_file.where("passed = false").map(&:file_set_id)
+    failed_arr += latest_file.where("passed = false").map(&:file_set_id)
 
     # APPEND: Display an outro message saying Fixity is done checking
     Rails.logger.info "\n[COMPLETE] All fixity checks complete!\n"
