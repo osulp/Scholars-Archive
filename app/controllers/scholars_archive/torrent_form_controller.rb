@@ -5,6 +5,7 @@ module ScholarsArchive
   class TorrentFormController < ApplicationController
     # ACTION: Before page load, build the form with all the params
     before_action :build_torrent_form
+    invisible_captcha only: [:create]
     layout 'homepage'
 
     def new; end
@@ -12,6 +13,9 @@ module ScholarsArchive
     def create
       render :new
     end
+
+    # NOTE: Override if needed to perform after email delivery
+    def after_deliver; end
 
     private
 

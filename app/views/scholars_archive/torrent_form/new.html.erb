@@ -38,5 +38,9 @@
     <div class="col-sm-10"><%= f.file_field :additional_item, class: 'form-control' %></div>
   </div>
 
+  <%# CAPTCHA: Add in the captcha on form %>
+  <%= recaptcha_tags if Hyrax.config.recaptcha? %>
+  <%= invisible_captcha %>
+
   <%= f.submit value: t('hyrax.contact_form.button_label'), class: "btn btn-primary" %>
 <% end %>

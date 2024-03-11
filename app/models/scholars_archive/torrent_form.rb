@@ -14,5 +14,14 @@ module ScholarsArchive
     def spam?
       torrent_method.present?
     end
+
+    # HEADER: Declare the e-mail headers. It accepts anything the mail method in ActionMailer accepts
+    def headers
+      {
+        subject: 'Scholars Archive Torrent Form: Report of Torrent',
+        to: Hyrax.config.contact_email,
+        from: email
+      }
+    end
   end
 end
