@@ -5,9 +5,9 @@ module ScholarsArchive
   class TorrentMailer < ApplicationMailer
     def torrent_contact(torrent_form)
       @torrent_form = torrent_form
-
       # Check for spam
       return if @torrent_form.spam?
+
       mail(@torrent_form.headers)
     end
   end
