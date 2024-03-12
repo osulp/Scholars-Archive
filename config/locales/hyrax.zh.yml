@@ -81,3 +81,11 @@ zh:
         general: 一般查询或请求
         reporting: 报告问题
         statistic: 请求下载统计
+    torrent_form:
+      button_label: 发送
+      email_label: 您的邮件
+      description_label: 描述问题
+      error_label: 给出错误信息
+      file_label: 上传文件
+      additional_label: 附加文件上传 (如果需要)
+      header: 洪流报告表

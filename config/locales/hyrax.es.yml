@@ -55,3 +55,11 @@ es:
         general: Consulta general o solicitud
         reporting: Informar de un problema
         statistic: Solicitud de estadísticas de descarga
+    torrent_form:
+      button_label: Enviar
+      email_label: Tu Correo Electrónico
+      description_label: Describe el Problema
+      error_label: Mensaje de Error Dado
+      file_label: Subir Archivo
+      additional_label: Carga de Archivos Adicionales (si es necesario)
+      header: Formulario de Informe de Torrent

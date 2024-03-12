@@ -81,3 +81,11 @@ it:
         general: Richiesta o richiesta generale
         reporting: Segnala un problema
         statistic: Richiesta di statistiche di download
+    torrent_form:
+      button_label: Inviare
+      email_label: La tua email
+      description_label: Descrivi il problema
+      error_label: Messaggio di errore fornito
+      file_label: Upload di file
+      additional_label: Caricamento di file aggiuntivi (se necessario)
+      header: Modulo di Segnalazione Torrent

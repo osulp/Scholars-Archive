@@ -81,3 +81,11 @@ de:
         general: Allgemeine Anfrage oder Anfrage
         reporting: Problem melden
         statistic: Download-Statistiken anfordern
+    torrent_form:
+      button_label: Senden
+      email_label: Ihre E-Mail
+      description_label: Beschreibe das Problem
+      error_label: Fehlermeldung gegeben
+      file_label: Datei-Upload
+      additional_label: Zusätzlicher Datei-Upload (falls erforderlich)
+      header: Torrent-Berichtsformular

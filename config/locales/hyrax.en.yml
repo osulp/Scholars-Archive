@@ -89,9 +89,9 @@ en:
       button_label: Send
       email_label: Your Email
       description_label: Describe the Problem
-      error_label: Error Message(s)
+      error_label: Error Message Given
       file_label: File Upload
-      additional_label: Additional Item
+      additional_label: Additional File Upload (if needed)
       header: Torrent Report Form
     dashboard:
       proxies_heading: "Manage Proxies"
