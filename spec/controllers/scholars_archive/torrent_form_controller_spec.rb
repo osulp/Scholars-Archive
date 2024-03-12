@@ -23,7 +23,7 @@ RSpec.describe ScholarsArchive::TorrentFormController, type: :controller do
 
   before { sign_in(user) }
 
-  # TEST #1: Check if recaptcha works
+  # TEST #1: Check if recaptcha work on the controller
   describe '#check_recaptcha' do
     before do
       controller.instance_variable_set(:@torrent_form, torrent_form)
