@@ -12,7 +12,7 @@ RSpec.describe ScholarsArchive::TorrentFormController, type: :controller do
 
   let(:required_params) do
     {
-      email: 'rose@timetraveler.org',
+      email: 'rose@test.org',
       description: 'Test description',
       error_message: 'Error description',
       file_item: @file,
