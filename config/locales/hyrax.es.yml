@@ -63,3 +63,6 @@ es:
       file_label: Subir Archivo
       additional_label: Carga de Archivos Adicionales (si es necesario)
       header: Formulario de Informe de Torrent
+      success_email: ¡Gracias por tu mensaje!
+      failed_email: Lo sentimos, este mensaje no fue enviado exitosamente.
+      notice: Utilice el formulario de torrent para informar un problema relacionado con un archivo torrent en Scholars Archive.

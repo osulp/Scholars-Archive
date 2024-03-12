@@ -89,3 +89,6 @@ zh:
       file_label: 上传文件
       additional_label: 附加文件上传 (如果需要)
       header: 洪流报告表
+      success_email: 感谢您的留言!
+      failed_email: 抱歉, 此消息未成功发送.
+      notice: 当涉及学者档案上的 torrent 文件时, 请使用 torrent 表单报告问题.

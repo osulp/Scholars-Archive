@@ -89,3 +89,6 @@ fr:
       file_label: Téléchargement de Fichiers
       additional_label: Téléchargement de Fichiers Supplémentaires (si nécessaire)
       header: Formulaire de Rapport de Torrent
+      success_email: Merci pour votre message!
+      failed_email: Désolé, ce message n'a pas été envoyé avec succès.
+      notice: Veuillez utiliser le formulaire torrent pour signaler un problème concernant le fichier torrent sur Scholars Archive.

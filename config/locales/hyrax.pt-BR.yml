@@ -89,3 +89,6 @@ pt-BR:
       file_label: Upload de arquivo
       additional_label: Upload de arquivo adicional (se necessário)
       header: Formulário de Relatório de Torrent
+      success_email: Obrigado pela sua mensagem!
+      failed_email: Desculpe, esta mensagem não foi enviada com sucesso.
+      notice: Use o formulário de torrent para relatar um problema quando se trata de arquivo torrent no Scholars Archive.

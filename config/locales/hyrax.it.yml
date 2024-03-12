@@ -89,3 +89,6 @@ it:
       file_label: Upload di file
       additional_label: Caricamento di file aggiuntivi (se necessario)
       header: Modulo di Segnalazione Torrent
+      success_email: Grazie per il vostro messaggio!
+      failed_email: Siamo spiacenti, questo messaggio non è stato inviato correttamente.
+      notice: Si prega di utilizzare il modulo torrent per segnalare un problema relativo al file torrent su Scholars Archive.

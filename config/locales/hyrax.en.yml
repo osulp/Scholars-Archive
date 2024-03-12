@@ -93,6 +93,9 @@ en:
       file_label: File Upload
       additional_label: Additional File Upload (if needed)
       header: Torrent Report Form
+      success_email: Thank you for your message!
+      failed_email: Sorry, this message was not sent successfully.
+      notice: Please use the torrent form to report a problem when it comes to torrent file on Scholars Archive.
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."
