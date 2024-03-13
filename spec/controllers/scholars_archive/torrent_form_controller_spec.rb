@@ -4,12 +4,6 @@ require 'rails_helper'
 
 RSpec.describe ScholarsArchive::TorrentFormController, type: :controller do
   let(:user) { User.new(email: 'test@example.com', guest: false) { |u| u.save!(validate: false) } }
-  routes { Hyrax::Engine.routes }
-
-  before do
-    @file = fixture_file_upload('app/assets/images/default.png', 'image/png')
-  end
-
   let(:required_params) do
     {
       email: 'rose@testemail.org',
@@ -21,7 +15,12 @@ RSpec.describe ScholarsArchive::TorrentFormController, type: :controller do
   end
   let(:torrent_form) { ScholarsArchive::TorrentForm.new(required_params) }
 
-  before { sign_in(user) }
+  routes { Hyrax::Engine.routes }
+
+  before do
+    @file = fixture_file_upload('app/assets/images/default.png', 'image/png')
+    sign_in(user)
+  end
 
   # TEST #1: Check if recaptcha work on the controller
   describe '#check_recaptcha' do
@@ -36,7 +35,7 @@ RSpec.describe ScholarsArchive::TorrentFormController, type: :controller do
         allow(controller).to receive(:is_recaptcha?).and_return(true)
       end
 
-      context 'and the recaptcha is not verified' do
+      context 'with the recaptcha is not verified' do
         before do
           allow(controller).to receive(:verify_recaptcha).and_return(false)
         end
@@ -46,7 +45,7 @@ RSpec.describe ScholarsArchive::TorrentFormController, type: :controller do
         end
       end
 
-      context 'and the recaptcha is verified' do
+      context 'with the recaptcha is verified' do
         before do
           allow(controller).to receive(:verify_recaptcha).and_return(true)
         end

@@ -806,6 +806,7 @@ RSpec/InstanceVariable:
     - 'spec/features/create_honors_college_thesis_spec.rb'
     - 'spec/features/create_technical_report_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/controllers/scholars_archive/torrent_form_controller_spec.rb'
 
 RSpec/DescribedClass:
   Exclude:
@@ -860,6 +861,7 @@ RSpec/NestedGroups:
   Exclude:
     - 'spec/models/default_spec.rb'
     - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
+    - 'spec/controllers/scholars_archive/torrent_form_controller_spec.rb'
 
 Style/TrailingCommaInHashLiteral:
   Exclude:
