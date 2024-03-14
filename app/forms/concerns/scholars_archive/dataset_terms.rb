@@ -53,7 +53,7 @@ module ScholarsArchive
     # rubocop:enable Metrics/MethodLength
 
     def self.admin_terms
-			%i[documentation]
-		end
+      %i[documentation]
+    end
   end
 end

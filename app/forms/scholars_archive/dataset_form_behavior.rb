@@ -26,7 +26,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        t = (current_ability.current_user.admin? ? ::ScholarsArchive::DatasetTerms.admin_terms : [])
+        current_ability.current_user.admin? ? ::ScholarsArchive::DatasetTerms.admin_terms : []
       end
 
       def self.date_terms
