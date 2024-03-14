@@ -1,0 +1,4 @@
+<p>From: <%= %(<#{@torrent_form.email}>) %></p>
+
+<p><%= @torrent_form.description %></p>
+<p><%= @torrent_form.error_message  if !@torrent_form.error_message.empty? || !@torrent_form.error_message.blank? %></p>

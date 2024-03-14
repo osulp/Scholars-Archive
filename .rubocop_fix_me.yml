@@ -806,6 +806,7 @@ RSpec/InstanceVariable:
     - 'spec/features/create_honors_college_thesis_spec.rb'
     - 'spec/features/create_technical_report_spec.rb'
     - 'spec/features/create_undergraduate_thesis_or_project_spec.rb'
+    - 'spec/controllers/scholars_archive/torrent_form_controller_spec.rb'
 
 RSpec/DescribedClass:
   Exclude:
@@ -860,6 +861,7 @@ RSpec/NestedGroups:
   Exclude:
     - 'spec/models/default_spec.rb'
     - 'spec/controllers/hyrax/contact_form_controller_spec.rb'
+    - 'spec/controllers/scholars_archive/torrent_form_controller_spec.rb'
 
 Style/TrailingCommaInHashLiteral:
   Exclude:
@@ -1050,10 +1052,12 @@ Style/RedundantRegexpEscape:
     - 'app/workers/fetch_graph_worker.rb'
     - 'app/models/concerns/hyrax/doi/doi_behavior.rb'
     - 'app/models/hyrax/contact_form.rb'
+    - 'app/models/scholars_archive/torrent_form.rb'
 
 Style/RedundantRegexpCharacterClass:
   Exclude:
     - 'app/models/hyrax/contact_form.rb'
+    - 'app/models/scholars_archive/torrent_form.rb'
 
 Style/CaseLikeIf:
   Exclude:

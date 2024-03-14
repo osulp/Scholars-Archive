@@ -81,3 +81,14 @@ de:
         general: Allgemeine Anfrage oder Anfrage
         reporting: Problem melden
         statistic: Download-Statistiken anfordern
+    torrent_form:
+      button_label: Senden
+      email_label: Ihre E-Mail
+      description_label: Beschreibe das Problem
+      error_label: Fehlermeldung gegeben
+      file_label: Datei-Upload
+      additional_label: Zusätzlicher Datei-Upload (falls erforderlich)
+      header: Torrent-Berichtsformular
+      success_email: Danke für deine Nachricht!
+      failed_email: Leider wurde diese Nachricht nicht erfolgreich gesendet.
+      notice: Bitte verwenden Sie das Torrent-Formular, um ein Problem mit der Torrent-Datei im Scholars Archive zu melden.

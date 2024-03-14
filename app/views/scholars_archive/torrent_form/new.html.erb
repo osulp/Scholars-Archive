@@ -1,0 +1,50 @@
+<div class="alert alert-info">
+  <%= render 'instructions' %>
+</div>
+
+<h1>
+    <%= t('hyrax.torrent_form.header') %>
+</h1>
+
+<%# FORM: Create the form view page to submit the torrent report %>
+<%= form_for @torrent_form, url: torrent_form_index_path,
+                            html: { class: 'form-horizontal' } do |f| %>
+  <%# HIDDEN FIELD: This field is hidden to check for spam %>
+  <%= f.text_field :torrent_method, class: 'hide' %>
+  
+  <%# EMAIL: Set the email layout to enter in email, if login use their email %>
+  <div class="form-group">
+    <%= f.label :email, t('hyrax.torrent_form.email_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_field :email, value: user_signed_in? ? current_user.email : '', class: 'form-control', required: true %></div>
+  </div>
+
+  <%# DESCRIPTION: Area to write the description of the problem %>
+  <div class="form-group">
+    <%= f.label :description, t('hyrax.torrent_form.description_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_area :description, rows: 4, class: 'form-control', required: true %></div>
+  </div>
+
+  <%# FILE UPLOAD: Area to upload file %>
+  <div class="form-group">
+    <%= f.label :file_item, t('hyrax.torrent_form.file_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.file_field :file_item, class: 'form-control', required: true %></div>
+  </div>
+
+  <%# OTHER DESCRIPTIONS: Area to write the where the %>
+  <div class="form-group">
+    <%= f.label :error_message, t('hyrax.torrent_form.error_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.text_area :error_message, rows: 4, class: 'form-control' %></div>
+  </div>
+
+  <%# FILE UPLOAD 2: Area to upload additional screenshot %>
+  <div class="form-group">
+    <%= f.label :additional_item, t('hyrax.torrent_form.additional_label'), class: "col-sm-2 control-label" %>
+    <div class="col-sm-10"><%= f.file_field :additional_item, class: 'form-control' %></div>
+  </div>
+
+  <%# CAPTCHA: Add in the captcha on form %>
+  <%= recaptcha_tags if Hyrax.config.recaptcha? %>
+  <%= invisible_captcha %>
+
+  <%= f.submit value: t('hyrax.contact_form.button_label'), class: "btn btn-primary" %>
+<% end %>
