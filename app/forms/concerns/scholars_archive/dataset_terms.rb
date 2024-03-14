@@ -5,7 +5,7 @@ module ScholarsArchive
   module DatasetTerms
     # rubocop:disable Metrics/MethodLength
     def self.base_terms
-      primary_terms + ::ScholarsArchive::DefaultTerms.date_terms +
+      primary_terms + ::ScholarsArchive::DefaultTerms.date_terms + admin_terms +
         %i[nested_related_items
            date_uploaded
            date_modified
@@ -51,5 +51,9 @@ module ScholarsArchive
          nested_ordered_additional_information]
     end
     # rubocop:enable Metrics/MethodLength
+
+    def self.admin_terms
+			%i[documentation]
+		end
   end
 end
