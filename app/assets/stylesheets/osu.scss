@@ -111,17 +111,23 @@ a:focus {
   font-size: 36px;
 }
 
-.work-title-wrapper .label, td.status span {
-  display: inline;
-  padding: .2em .6em .3em;
-  font-size: 100%;
-  font-weight: 700;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
+.work-title-wrapper {
+  .title-with-badges {
+    margin-bottom: 1em;
+  }
+
+  .label, td.status span {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+   }
 }
 
 div.facets h3 {
