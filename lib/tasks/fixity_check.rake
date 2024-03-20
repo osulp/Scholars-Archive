@@ -30,10 +30,12 @@ namespace :scholars_archive do
     latest_file = ChecksumAuditLog.where("updated_at >= ?", start_time)
     file_checked = latest_file.count
     file_passed = latest_file.where("passed = true").count
-    file_failed = latest_file.where("passed = false").count
 
     # QUERY #2: Get all the ids that failed via checking with fixity
     failed_arr += latest_file.where("passed = false").map(&:file_set_id)
+
+    # DATA: Count the failed in the array instead of query
+    file_failed = failed_arr.count
 
     # APPEND: Display an outro message saying Fixity is done checking
     Rails.logger.info "\n[COMPLETE] All fixity checks complete!\n"
