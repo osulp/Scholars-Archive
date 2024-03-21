@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_220525) do
+ActiveRecord::Schema.define(version: 2024_03_19_200812) do
 
   create_table "bookmarks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -134,6 +134,12 @@ ActiveRecord::Schema.define(version: 2018_05_29_220525) do
     t.boolean "brandable", default: true, null: false
     t.string "badge_color", default: "#663333"
     t.index ["machine_id"], name: "index_hyrax_collection_types_on_machine_id", unique: true
+  end
+
+  create_table "hyrax_default_administrative_set", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.string "default_admin_set_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hyrax_features", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -312,9 +318,9 @@ ActiveRecord::Schema.define(version: 2018_05_29_220525) do
   end
 
   create_table "single_use_links", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "downloadKey"
+    t.string "download_key"
     t.string "path"
-    t.string "itemId"
+    t.string "item_id"
     t.datetime "expires"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -352,7 +358,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_220525) do
 
   create_table "sipity_entity_specific_responsibilities", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "workflow_role_id", null: false
-    t.string "entity_id", null: false
+    t.integer "entity_id", null: false
     t.integer "agent_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

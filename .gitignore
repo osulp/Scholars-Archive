@@ -37,6 +37,8 @@ fits.log
 /public/branding*
 docker-compose.override.yml
 
+/node_modules
+
 revisions.log
 migration.csv
 .version

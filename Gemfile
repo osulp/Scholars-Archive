@@ -50,7 +50,8 @@ gem 'browse-everything'
 gem 'devise'
 gem 'devise_cas_authenticatable', '~> 1.0'
 gem 'faraday'
-gem 'hyrax', '2.9.5'
+gem 'hyrax', '3.6.0'
+gem 'solrizer', '4.1.0'
 gem 'hyrax-doi', github: 'samvera-labs/hyrax-doi', branch: 'main'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
@@ -69,7 +70,7 @@ gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', 
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
-gem 'simple_form', '~> 5.0'
+gem 'simple_form', '~> 5.2.0'
 
 # Gem vulnerability fix
 gem 'rest-client', '~> 2.0'
@@ -111,6 +112,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'addressable', '2.8.0'
   gem 'byebug', platform: :mri
   gem 'debase', '>= 0.2.5.beta2'
   gem 'debase-ruby_core_source'

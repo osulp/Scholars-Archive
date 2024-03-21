@@ -38,7 +38,7 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
-      property :alt_title, predicate: ::RDF::Vocab::DC.alternative do |index|
+      property :alternative_title, predicate: ::RDF::Vocab::DC.alternative do |index|
         index.as :stored_searchable
       end
 

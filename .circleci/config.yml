@@ -16,7 +16,7 @@ jobs:
           name: Save code cache
           key: v1-source-{{ .Branch }}-{{ .Revision }}
           paths:
-            - '.git'
+            - ".git"
       - persist_to_workspace:
           root: ~/
           paths:
@@ -78,7 +78,7 @@ jobs:
           BUNDLE_PATH: vendor/bundle
           CAPYBARA_APP_HOST: http://test:3001
           HONEYCOMB_DATASET: sa-rails-test
-          HONEYCOMB_DEBUG: 'true'
+          HONEYCOMB_DEBUG: "true"
           HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
           HONEYCOMB_SERVICE: sa-rails-test
           RAILS_ENV: test
@@ -103,7 +103,7 @@ jobs:
       - image: circleci/redis:4
       - image: ualbertalib/docker-fcrepo4:4.7
         environment:
-          CATALINA_OPTS: '-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx1024m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC'
+          CATALINA_OPTS: "-Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms512m -Xmx1024m -XX:NewSize=256m -XX:MaxNewSize=256m -XX:PermSize=256m -XX:MaxPermSize=256m -XX:+DisableExplicitGC"
       - image: solr:6-slim
         command: bin/solr -cloud -noprompt -f -p 8985
     parallelism: 1
@@ -182,12 +182,12 @@ jobs:
     parameters:
       repo:
         type: string
-        default: ''
+        default: ""
       environment:
         type: string
-        default: 'production'
+        default: "production"
     executor:
-      name: 'docker/docker'
+      name: "docker/docker"
     environment:
       DOCKER_LOGIN: admin
       DOCKER_PASSWORD: admin

@@ -69,6 +69,7 @@ Hyrax.config do |config|
   # Defaults to false
   # Requires a Google Analytics id and OAuth2 keyfile.  See README for more info
   config.analytics = ENV.fetch('SCHOLARSARCHIVE_ENABLE_ANALYTICS', 'false')
+  config.analytics_provider = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_PROVIDER', 'ga4')
 
   # Google Analytics tracking ID to gather usage statistics
   config.google_analytics_id = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_ID', 'abc123')
@@ -148,10 +149,10 @@ Hyrax.config do |config|
   #   * iiif_image_size_default
   #
   # Default is false
-  config.iiif_image_server = true
+  config.iiif_image_server = false
 
   # Returns a URL that resolves to an image provided by a IIIF image server
-  config.iiif_image_url_builder = lambda do |file_id, base_url, size|
+  config.iiif_image_url_builder = lambda do |file_id, base_url, size, format|
     Riiif::Engine.routes.url_helpers.image_url(file_id, host: base_url, size: size)
   end
 

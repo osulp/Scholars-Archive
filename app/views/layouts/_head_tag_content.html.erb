@@ -7,7 +7,7 @@ signed in %>
     <%= tag :meta, name: 'current-user', data: { user_key: current_user.user_key } %>
 <% end %>
 <!-- added for use on small devices like phones -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="resourcesync" href="<%= hyrax.capability_list_url %>" />
 
 <!-- Twitter card metadata -->
@@ -28,7 +28,7 @@ be removed as soon as that issue is fixed. %>
 <%= render 'shared/appearance_styles' %>
 
 <!-- Google Analytics -->
-<%= render partial: '/ga', formats: [:html] %>
+<%= render partial: 'shared/ga4', formats: [:html] %>
 
 <!-- for extras, e.g., a favicon -->
 <%= render partial: '/head_tag_extras', formats: [:html] %>

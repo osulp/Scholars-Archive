@@ -28,7 +28,7 @@ module Hyrax
 
       # On the batch upload, title is set per-file.
       def primary_terms
-        %i[alt_title nested_ordered_creator nested_ordered_contributor contributor_advisor nested_ordered_abstract license doi identifier bibliographic_citation academic_affiliation other_affiliation in_series subject tableofcontents rights_statement] | super - %i[title nested_ordered_title resource_type]
+        %i[alternative_title nested_ordered_creator nested_ordered_contributor contributor_advisor nested_ordered_abstract license doi identifier bibliographic_citation academic_affiliation other_affiliation in_series subject tableofcontents rights_statement] | super - %i[title nested_ordered_title resource_type]
       end
 
       # # On the batch upload, title is set per-file.

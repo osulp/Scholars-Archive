@@ -6,7 +6,7 @@ module ScholarsArchive
     # rubocop:disable Metrics/MethodLength
     def self.base_attributes
       [
-        { field: :alt_title, render_as: :linked, search_field: 'alternative_title_ssim', label: I18n.t('simple_form.labels.defaults.alt_title') },
+        { field: :alternative_title, render_as: :linked, search_field: 'alternative_title_ssim', label: I18n.t('simple_form.labels.defaults.alternative_title') },
         { field: :nested_ordered_creator_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_creator_label_ssim', itemprop_option: 'url', label: 'Creator' },
         { field: :nested_ordered_abstract_label, label: 'Abstract' },
         { field: :nested_ordered_contributor_label, render_as: :scholars_archive_nested, search_field: 'nested_ordered_contributor_label_ssim', itemprop_option: 'url', label: 'Contributor' },

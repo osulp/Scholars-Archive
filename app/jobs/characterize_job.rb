@@ -16,6 +16,11 @@ class CharacterizeJob < Hyrax::ApplicationJob
     filepath = Hyrax::WorkingDirectory.find_or_retrieve(file_id, file_set.id) unless filepath && File.exist?(filepath)
     characterize(file_set, file_id, filepath)
     CreateDerivativesJob.perform_later(file_set, file_id, filepath)
+
+    Hyrax.publisher.publish('file.characterized',
+                            file_set: file_set,
+                            file_id: file_id,
+                            path_hint: filepath)
   end
 
   private

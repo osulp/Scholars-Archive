@@ -18,6 +18,7 @@ RSpec.describe 'hyrax/base/_form.html.erb', type: :view do
     allow(controller).to receive(:current_user).and_return(user)
     allow(controller).to receive(:current_ability).and_return(ability)
     allow(ability).to receive(:current_user).and_return(user)
+    allow(ability).to receive(:user_groups).and_return([])
     assign(:form, form)
     allow(controller).to receive(:controller_name).and_return('batch_uploads')
     allow(controller).to receive(:action_name).and_return('new')
@@ -33,10 +34,11 @@ RSpec.describe 'hyrax/base/_form.html.erb', type: :view do
     let(:work) { Default.new }
 
     context 'with batch_upload on and admin user' do
-      let(:user) { instance_double(User, admin?: true, groups: []) }
+      let(:user) { instance_double(User, admin?: true, groups: [], user_key: '') }
 
       before do
         allow(Flipflop).to receive(:batch_upload?).and_return(true)
+        allow(ability).to receive(:admin?).and_return(true)
         render
       end
 
@@ -46,11 +48,12 @@ RSpec.describe 'hyrax/base/_form.html.erb', type: :view do
     end
 
     context 'with batch_upload on but non admin user' do
-      let(:user) { instance_double(User, admin?: false, groups: []) }
+      let(:user) { instance_double(User, admin?: false, groups: [], user_key: '') }
 
       before do
         allow(Flipflop).to receive(:batch_upload?).and_return(false)
         allow(user).to receive(:admin?).and_return(true)
+        allow(ability).to receive(:admin?).and_return(false)
         render
       end
 
