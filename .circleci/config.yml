@@ -237,9 +237,9 @@ workflows:
           name: build_and_push_beavernetes
           requires:
             - test
-          # filters:
-          #   branches:
-          #     only:
-          #       - main
-          #       - /infra\/.*/
+          filters:
+            branches:
+              only:
+                - main
+                - /infra\/.*/
           repo: sa_web
