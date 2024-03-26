@@ -242,5 +242,5 @@ workflows:
               only:
                 - main
                 - /infra\/.*/
-                - staging\/.*/
+                - /staging\/.*/
           repo: sa_web
