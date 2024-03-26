@@ -7,7 +7,7 @@ describe ScholarsArchive::PeerreviewedService do
 
   describe '#select_active_options' do
     it 'returns active terms' do
-      expect(service.select_active_options).to include(%w[Yes TRUE], %w[No FALSE])
+      expect(service.select_active_options).to include(%w[Yes true], %w[No false])
     end
   end
 end
