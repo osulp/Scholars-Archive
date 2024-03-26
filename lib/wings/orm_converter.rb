@@ -13,6 +13,7 @@ module Wings
     def self.base_for(klass:)
       mapped_class = klass.try(:valkyrie_class) || ModelRegistry.reverse_lookup(klass)
       return mapped_class if mapped_class
+
       klass < Hydra::Works::WorkBehavior ? Hyrax::Work : Hyrax::Resource
     end
 
@@ -22,7 +23,6 @@ module Wings
     # @return [Class] a dyamically generated `Valkyrie::Resource` subclass
     #   mirroring the provided `ActiveFedora` model
     #
-    # rubocop:disable Metrics/AbcSize
     # rubocop:disable Metrics/BlockLength
     # rubocop:disable Metrics/CyclomaticComplexity
     # rubocop:disable Metrics/PerceivedComplexity
@@ -89,11 +89,11 @@ module Wings
                ActiveFedora::Reflection::OrdersReflection # map to :unordered_association in Wings::AttributeTransformer (but retain order)
             next
           when ActiveFedora::Reflection::DirectlyContainsOneReflection
-            attribute_name = (reflection_key.to_s.singularize + '_id').to_sym
+            attribute_name = "#{reflection_key.to_s.singularize}_id".to_sym
             type = ::Valkyrie::Types::ID.optional
           when ActiveFedora::Reflection::DirectlyContainsReflection,
                ActiveFedora::Reflection::IndirectlyContainsReflection
-            attribute_name = (reflection_key.to_s.singularize + '_ids').to_sym
+            attribute_name = "#{reflection_key.to_s.singularize}_ids".to_sym
             type = ::Valkyrie::Types::Set.of(::Valkyrie::Types::ID)
           when ActiveFedora::Reflection::SingularRDFPropertyReflection
             attribute_name = reflection.name.to_sym

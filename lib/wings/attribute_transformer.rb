@@ -15,7 +15,8 @@ module Wings
       end
     end
 
-    def self.run(obj) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength
+    # rubocop:disable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+    def self.run(obj)
       attrs = obj.reflections.each_with_object({}) do |(key, reflection), mem|
         case reflection
         when ActiveFedora::Reflection::HasManyReflection,
@@ -43,17 +44,22 @@ module Wings
 
       obj.class.delegated_attributes.keys.each_with_object(attrs) do |attr_name, mem|
         next unless obj.respond_to?(attr_name) && !mem.key?(attr_name.to_sym)
+
         mem[attr_name.to_sym] = TransformerValueMapper.for(obj.public_send(attr_name)).result
       end
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 
+  # Transforms file attributes
   class FileAttributeTransformer
+    # rubocop:disable Metrics/MethodLength
     def run(obj)
       keys = obj.metadata_node.class.fields
 
       attributes = keys.each_with_object({}) do |attr_name, mem|
         next unless obj.respond_to?(attr_name) && !mem.key?(attr_name.to_sym)
+
         mem[attr_name.to_sym] = TransformerValueMapper.for(obj.public_send(attr_name)).result
       end
 
@@ -67,5 +73,6 @@ module Wings
       attributes[:size] = obj.size
       attributes
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

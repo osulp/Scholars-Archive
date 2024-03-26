@@ -138,7 +138,7 @@ module Wings
       result << ::Valkyrie::Persistence::OptimisticLockToken.new(adapter_id: 'wings-fedora-etag', token: pcdm_object.etag) unless pcdm_object.new_record?
 
       graph_node = pcdm_object.try(:resource) || pcdm_object.metadata_node
-      last_modified_literal = graph_node.first_object([nil, RDF::URI("http://fedora.info/definitions/v4/repository#lastModified"), nil])
+      last_modified_literal = graph_node.first_object([nil, RDF::URI('http://fedora.info/definitions/v4/repository#lastModified'), nil])
       token = last_modified_literal&.object&.to_s
       result << ::Valkyrie::Persistence::OptimisticLockToken.new(adapter_id: 'wings-fedora-last-modified', token: token) if token
       result
@@ -146,6 +146,7 @@ module Wings
 
     def append_embargo(attrs)
       return unless pcdm_object.try(:embargo)
+
       embargo_attrs = pcdm_object.embargo.attributes.symbolize_keys
       embargo_attrs[:embargo_history] = embargo_attrs[:embargo_history].to_a
       embargo_attrs[:id] = ::Valkyrie::ID.new(embargo_attrs[:id]) if embargo_attrs[:id]
@@ -155,6 +156,7 @@ module Wings
 
     def append_lease(attrs)
       return unless pcdm_object.try(:lease)
+
       lease_attrs = pcdm_object.lease.attributes.symbolize_keys
       lease_attrs[:lease_history] = lease_attrs[:embargo_history].to_a
       lease_attrs[:id] = ::Valkyrie::ID.new(lease_attrs[:id]) if lease_attrs[:id]
@@ -162,8 +164,10 @@ module Wings
       attrs[:lease] = Hyrax::Lease.new(**lease_attrs)
     end
 
+    # rubocop:disable Metrics/CyclomaticComplexity
     def append_permissions(attrs)
       return unless pcdm_object.try(:permissions)
+
       attrs[:permissions] = pcdm_object.permissions.map do |permission|
         agent = permission.type == 'group' ? "group/#{permission.agent_name}" : permission.agent_name
 
@@ -176,5 +180,6 @@ module Wings
 
       attrs[:access_to] = attrs[:permissions].find { |p| p.access_to&.id&.present? }&.access_to
     end
+    # rubocop:enable Metrics/CyclomaticComplexity
   end
 end
