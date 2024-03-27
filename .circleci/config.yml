@@ -77,6 +77,7 @@ jobs:
         environment:
           BUNDLE_PATH: vendor/bundle
           CAPYBARA_APP_HOST: http://test:3001
+          DISABLE_WINGS: "true"
           HONEYCOMB_DATASET: sa-rails-test
           HONEYCOMB_DEBUG: "true"
           HONEYCOMB_WRITEKEY: buzzzzzzzzzzzzzzzz
