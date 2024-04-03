@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Archive/Container Files Inventory Report</h3>
+    <p>Hi there, below are the report on the Filesets Inventory Run (Container/Archive files) that ran and below is the results after
+       it has finished running:
+    </p>
+
+    <br>
+
+    <% if (@inventory_data.blank?) %>
+      <p>No container/inventory files were discover</p>
+    <% else %>
+      <% @inventory_data.each_with_index do |data, index| %>
+        <%= data[index][0] %>
+      <% end %>
+    <% end %>
+
+    <br><br>
+    <p> - Scholars Archive Support </p>
+    <p>Email Date & Time: <%= Time.now.strftime("%B %-d, %Y - %l:%M %p") %> </p>
+  </body>
+</html>
