@@ -5,7 +5,7 @@ module ScholarsArchive
   class ContainerMailer < ApplicationMailer
     # METHOD: Create an email and send a report to the user
     def report_email
-      @inventory_data = params[:data]
+      attachments['filesets_inventory.txt'] = File.read('./tmp/inventory.txt')
       mail(to: params[:to], subject: 'Scholars Archive: Archive/Container Files Inventory Report')
     end
   end

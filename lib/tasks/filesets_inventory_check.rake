@@ -35,6 +35,9 @@ namespace :scholars_archive do
     # DISPLAY: Add message about sending email
     puts "Now composing email to send out the report... .. ."
 
+    # CREATE: Make a .txt file
+    create_txt_file(email_data)
+
     # MAILER: Enable mailer so Container can send out the email now
     ActionMailer::Base.perform_deliveries = true
 
@@ -42,7 +45,7 @@ namespace :scholars_archive do
     user_email = ENV.fetch('SCHOLARSARCHIVE_ADMIN_EMAIL', 'scholarsarchive@oregonstate.edu')
 
     # DELIVER: Delivering the email
-    ScholarsArchive::ContainerMailer.with(to: user_email, data: email_data).report_email.deliver_now
+    ScholarsArchive::ContainerMailer.with(to: user_email).report_email.deliver_now
 
     # DISPLAY: Done message
     puts "ALL COMPLETE ✓"
@@ -60,7 +63,7 @@ namespace :scholars_archive do
     when 'application/x-7z-compressed'
       data = zip7_reading(container)
     when 'application/x-gzip'
-      data = gzip_reading(container)
+
     when 'application/x-gtar'
       data = tar_reading(container)
     end
@@ -118,21 +121,6 @@ namespace :scholars_archive do
     data_info
   end
 
-  # METHOD: Create a method to read gzip file
-  def gzip_reading(container)
-    # DATA: A tmp data storage for info & a counter for total files
-    data_info, tmp = [], []
-    counter = 0
-
-    # READ: Now open up the .zip file
-    Zlib::GzipReader.open('./tmp/Transcriptome_annotation.tar.gz') {|gz|
-      puts(gz.readbyte)
-    }
-
-    # RETURN: Return the data that was collected
-    #data_info
-  end
-
   # METHOD: Create a method to read tar file
   def tar_reading(container)
     # DATA: A tmp data storage for info & a counter for total files
@@ -156,5 +144,28 @@ namespace :scholars_archive do
 
     # RETURN: Return the data that was collected
     data_info
+  end
+
+  # METHOD: Create a file to attach to email
+  def create_txt_file(email_data)
+    # CHECK: Check and delete files if exist
+    File.delete('./tmp/inventory.txt') if File.file?('./tmp/inventory.txt')
+    email_data&.size - 1
+
+    # LOOP: Go through items and write to file
+    File.open("./tmp/inventory.txt", "w+") do |f|
+      email_data.each do |data|
+        data.each_with_index do |item, index|
+          str = item.split('$')
+          if index == 0
+            f.write("The File '#{str[0]}' contains total of #{str[1]} file(s)")
+          else
+            f.write("File name: '#{str[0]}'   Format: #{str[1]}   Byte sizes: #{str[2]}")
+          end
+          f.write("#{$/}")
+        end
+        f.write("#{$/}")
+      end
+    end
   end
 end
