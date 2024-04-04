@@ -8,12 +8,17 @@
     <%# Changes start here %>
     <% if current_user.admin? %>
       <%= link_to "Delete", [main_app, presenter], class: 'btn btn-danger', data: { confirm: "Delete this #{presenter.human_readable_type}?" }, method: :delete %>
-      <% if @presenter.workflow.actions.present? && @presenter.solr_document['workflow_state_name_ssim'] && @presenter.solr_document['workflow_state_name_ssim'].first.capitalize == 'Deposited' %>
+      <% if @presenter.workflow.actions.present? && @presenter.solr_document['workflow_state_name_ssim']&.first&.capitalize == 'Deposited' %>
         <%= form_tag main_app.hyrax_workflow_action_path(presenter), method: :put do %>
           <%= hidden_field :workflow_action, :name, value: 'tombstone' %>
-          <input class="btn btn-danger" type="submit" value="Tombstone" data-confirm='<%= t('hyrax.tombstone.confirmation') %>'>
+          <input class="btn btn-default" style='width: 105%;' type="submit" value="Tombstone" data-confirm='<%= t('hyrax.tombstone.confirmation') %>'>
         <% end %>
-      <% end %>
+      <% else %>
+        <%= form_tag main_app.hyrax_workflow_action_path(presenter), method: :put do %>
+          <%= hidden_field :workflow_action, :name, value: 'approve' %>
+          <input class="btn btn-default" style='width: 105%;' type="submit" value="Approve" data-confirm='<%= t('hyrax.tombstone.revert') %>'>
+        <% end %>
+      <% end %> 
     <% elsif @presenter.workflow.actions.present? %>
       <button class="btn btn-danger" data-toggle="modal" data-target="#deletion-request-modal">Request Deletion</button>
     <% end %>

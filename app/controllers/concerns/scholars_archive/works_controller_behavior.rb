@@ -25,6 +25,28 @@ module ScholarsArchive
       end
     end
 
+    # Override from hyrax to add in a different message depending on if the work is tombstoned or under review
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/MethodLength
+    def render_unavailable
+      tombstoned = (unavailable_presenter.workflow.state == 'tombstoned')
+      message = tombstoned ? I18n.t('hyrax.workflow.tombstoned') : I18n.t('hyrax.workflow.unauthorized')
+      respond_to do |wants|
+        wants.html do
+          unavailable_presenter
+          flash[:notice] = message
+          render 'unavailable', status: :unauthorized
+        end
+        wants.json { render plain: message, status: :unauthorized }
+        additional_response_formats(wants)
+        wants.ttl { render plain: message, status: :unauthorized }
+        wants.jsonld { render plain: message, status: :unauthorized }
+        wants.nt { render plain: message, status: :unauthorized }
+      end
+    end
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/MethodLength
+
     def new
       curation_concern.publisher = ['Oregon State University']
       curation_concern.rights_statement = ['http://rightsstatements.org/vocab/InC/1.0/']
