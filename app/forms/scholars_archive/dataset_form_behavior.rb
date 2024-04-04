@@ -26,7 +26,7 @@ module ScholarsArchive
       end
 
       def secondary_terms
-        []
+        current_ability.current_user.admin? ? ::ScholarsArchive::DatasetTerms.admin_terms : []
       end
 
       def self.date_terms
@@ -39,6 +39,7 @@ module ScholarsArchive
 
       def self.build_permitted_params
         super + date_terms + [:embargo_reason] + [
+          :documentation,
           {
             nested_geo_attributes: %i[id _destroy point_lat point_lon bbox_lat_north bbox_lon_west bbox_lat_south bbox_lon_east label point bbox],
             nested_ordered_creator_attributes: %i[id _destroy index creator],
