@@ -140,9 +140,13 @@ RSpec.configure do |config|
                                                    ->(id:, extent:) {}
                                                  end
 
+    stub_request(:head, 'opaquenamespace.org/ns/osuDegreeFields.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
     stub_request(:get, 'opaquenamespace.org/ns/osuDegreeFields.jsonld')
       .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
       .to_return(status: 200, body: file_fixture('osuDegreeFields.jsonld').read, headers: {})
+    stub_request(:head, 'opaquenamespace.org/ns/osuAcademicUnits.jsonld')
+      .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
     stub_request(:get, 'opaquenamespace.org/ns/osuAcademicUnits.jsonld')
       .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
       .to_return(status: 200, body: file_fixture('osuAcademicUnits.jsonld').read, headers: {})

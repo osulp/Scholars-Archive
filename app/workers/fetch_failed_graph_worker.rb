@@ -21,9 +21,9 @@ class FetchFailedGraphWorker
   end
 
   def solr_based_near_linked_insert(solr_doc, val)
-    Solrizer.insert_field(solr_doc, 'based_near_linked', [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first], :stored_searchable)
-    Solrizer.insert_field(solr_doc, 'based_near_linked', [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first], :facetable)
-    Solrizer.insert_field(solr_doc, 'based_near_linked', [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first], :symbol)
+    solr_doc['based_near_linked_tesim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+    solr_doc['based_near_linked_ssim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+    solr_doc['based_near_linked_sim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
   end
 
   def default_accept_header

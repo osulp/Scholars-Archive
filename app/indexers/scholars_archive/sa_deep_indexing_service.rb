@@ -4,7 +4,7 @@ require 'linkeddata' # we need all the linked data types, because we don't know 
 module ScholarsArchive
   # SA deep indexing service
   class SaDeepIndexingService < Hyrax::DeepIndexingService
-    self.stored_fields = stored_fields - [:related_url]
+    self.stored_fields = stored_fields - %i[access_right related_url rights_notes]
 
     private
 

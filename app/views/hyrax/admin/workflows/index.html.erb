@@ -1,57 +1,55 @@
 <% provide :page_header do %>
-    <h1><span class="glyphicon glyphicon-ok-circle"></span> <%= t('.header') %></h1>
+  <h1><span class="glyphicon glyphicon-ok-circle"></span> <%= t('.header') %></h1>
 <% end %>
 
-
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-12 tab-pane" id="under-review">
     <div class="panel panel-default tabs">
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-          <a href="#under-review" role="tab" data-toggle="tab"><%= t('.tabs.under_review') %></a>
-        </li>
-      </ul>
-      <div class="tab-content">
-        <div id="under-review" class="tab-pane active">
-          <div class="panel panel-default labels">
-            <div class="panel-body">
-              <div class="table-responsive">
-                <table class="table table-condensed table-striped datatable">
-                  <thead>
-                  <tr>
-                    <th width="40%">Work</th>
-                    <th width="15%">Depositor</th>
-                    <th width="15%">Creator</th>
-                    <th width="15%">Submission Date</th>
-                    <th width="15%">Status</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% @status_list.each do |document| %>
-                      <tr>
-                        <td>
-                          <%= link_to document.title.join('; '), [main_app, document] %>
-                        </td>
-                        <td>
-                          <%= document.depositor %>
-                        </td>
-                        <td>
-                          <%= safe_join(document.creator, tag(:br)) %>
-                        </td>
-                        <td>
-                          <%= local_time_from_utc(document['date_modified_dtsi']) %>
-                        </td>
-                        <td>
-                          <span class="state state-pending"><%= document.workflow_state %></span>
-                        </td>
-                      </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+      <%= render 'tabs' %>
+      <div class="panel-heading">
+        <span class="count-display">
+          <% if @response.viewing_under_review? %>
+            <%= I18n.t('hyrax.admin.workflows.index.works_under_review', total_count: @response.total_count).html_safe %>
+          <% else %>
+            <%= I18n.t('hyrax.admin.workflows.index.works_published', total_count: @response.total_count).html_safe %>
+          <% end %>
+        </span>
+      </div>
+      <div class="panel-body">
+        <h2 class="sr-only"><%= t('.works_listing') %></h2>
+        <table class="table table-sm table-striped works-list datatable">
+          <thead>
+            <tr>
+              <th width="40%"><%= t(".heading.work") %></th>
+              <th width="15%"><%= t(".heading.depositor") %></th>
+              <th width="15%"><%= t(".heading.creator") %></th>
+              <th width="15%"><%= t(".heading.submission_date") %></th>
+              <th width="15%"><%= t(".heading.status") %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @response.docs.sort { |a,b| (b.date_modified <=> a.date_modified) }.each do |document| %>
+              <tr>
+                <td>
+                  <%= link_to document, [main_app, document] %>
+                </td>
+                <td>
+                  <%= document.depositor %>
+                </td>
+                <td>
+                  <%= safe_join(document.creator, tag(:br)) %>
+                </td>
+                <td>
+                  <%= local_time_from_utc(document[:date_modified_dtsi]) %>
+                </td>
+                <td>
+                  <span class="state state-pending"><%= document.workflow_state %></span>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= render 'hyrax/my/results_pagination' %>
       </div>
     </div>
   </div>

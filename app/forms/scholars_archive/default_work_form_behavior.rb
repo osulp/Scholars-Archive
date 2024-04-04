@@ -49,7 +49,6 @@ module ScholarsArchive
           :embargo_reason,
           :degree_level_other,
           :degree_grantors_other,
-          :member_of_collection_ids,
           :documentation,
           {
             nested_geo_attributes: %i[id _destroy point_lat point_lon bbox_lat_north bbox_lon_west bbox_lat_south bbox_lon_east label point bbox],

@@ -1,58 +1,68 @@
 <%# Overriding partial in hyrax gem in order to change the delete button %>
-<div class="show-actions">
-  <% if Hyrax.config.analytics? %>
-    <%= link_to "Analytics", presenter.stats_path, id: 'stats', class: 'btn btn-default', data: { turbolinks: false } %>
+<div class="show-actions button-row-top-two-column">
+  <% if !workflow_restriction?(presenter) %>
+    <% if presenter.show_deposit_for?(collections: @user_collections) %>
+      <input type="checkbox"  style="display:none" name="batch_document_ids[]" id="batch_document_<%= presenter.id %>" value="<%= presenter.id %>" class="batch_document_selector" checked="checked" />
+      <%= button_tag t('hyrax.dashboard.my.action.add_to_collection'),
+                    class: 'btn btn-default submits-batches submits-batches-add',
+                    data: { toggle: "modal", target: "#collection-list-container" } %>
+    <% end %>
+    <% if presenter.work_featurable? %>
+      <%= link_to t('.feature'), hyrax.featured_work_path(presenter, format: :json),
+          data: { behavior: 'feature' },
+          class: presenter.display_feature_link? ? 'btn btn-default' : 'btn btn-default collapse' %>
+
+      <%= link_to t('.unfeature'), hyrax.featured_work_path(presenter, format: :json),
+          data: { behavior: 'unfeature' },
+          class: presenter.display_unfeature_link? ? 'btn btn-default' : 'btn btn-default collapse' %>
+    <% end %>
   <% end %>
-  <% if presenter.editor? %>
-    <%= link_to "Edit", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
-    <%# Changes start here %>
-    <% if current_user.admin? %>
-      <%= link_to "Delete", [main_app, presenter], class: 'btn btn-danger', data: { confirm: "Delete this #{presenter.human_readable_type}?" }, method: :delete %>
-      <% if @presenter.workflow.actions.present? && @presenter.solr_document['workflow_state_name_ssim']&.first&.capitalize == 'Deposited' %>
-        <%= form_tag main_app.hyrax_workflow_action_path(presenter), method: :put do %>
-          <%= hidden_field :workflow_action, :name, value: 'tombstone' %>
-          <input class="btn btn-default" style='width: 105%;' type="submit" value="Tombstone" data-confirm='<%= t('hyrax.tombstone.confirmation') %>'>
-        <% end %>
-      <% else %>
-        <%= form_tag main_app.hyrax_workflow_action_path(presenter), method: :put do %>
-          <%= hidden_field :workflow_action, :name, value: 'approve' %>
-          <input class="btn btn-default" style='width: 105%;' type="submit" value="Approve" data-confirm='<%= t('hyrax.tombstone.revert') %>'>
-        <% end %>
-      <% end %> 
-    <% elsif @presenter.workflow.actions.present? %>
-      <button class="btn btn-danger" data-toggle="modal" data-target="#deletion-request-modal">Request Deletion</button>
+  <% if Hyrax.config.analytics? && Hyrax.config.analytics_provider != 'ga4' %>
+    <% # turbolinks needs to be turned off or the page will use the cache and the %>
+    <% # analytics graph will not show unless the page is refreshed. %>
+    <%= link_to t('.analytics'), presenter.stats_path, id: 'stats', class: 'btn btn-default', data: { turbolinks: false } %>
+  <% end %>
+
+  <% if presenter.editor? && !workflow_restriction?(presenter) %>
+    <%= link_to t('.edit'), edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default' %>
+
+    <% if presenter.member_count > 1 %>
+        <%= link_to t("hyrax.file_manager.link_text"), polymorphic_path([main_app, :file_manager, presenter]), class: 'btn btn-default' %>
     <% end %>
-    <%# Changes end here %>
-    <% if presenter.member_presenters.size > 1 %>
-      <%= link_to t("hyrax.file_manager.link_text"), polymorphic_path([main_app, :file_manager, presenter]), class: 'btn btn-default' %>
-    <% end %>
+
     <% if presenter.valid_child_concerns.length > 0 %>
       <div class="btn-group">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Attach Child <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu">
-          <% presenter.valid_child_concerns.each do |concern| %>
-            <li>
-              <%= link_to "Attach #{concern.human_readable_type}", polymorphic_path([main_app, :new, :hyrax, :parent, concern.model_name.singular.to_sym], parent_id: presenter.id) %>
-            </li>
-          <% end %>
-        </ul>
+        <button type="button" class="btn btn-default dropdown-toggle" type="button" id="dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= t('.attach_child') %> <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <% presenter.valid_child_concerns.each do |concern| %>
+              <li>
+                <%= link_to "Attach #{concern.human_readable_type}", polymorphic_path([main_app, :new, :hyrax, :parent, concern.model_name.singular.to_sym], parent_id: presenter.id) %>
+              </li>
+            <% end %>
+          </ul>
       </div>
     <% end %>
-  <% end %>
-  <% if presenter.work_featurable? %>
-    <%= link_to "Feature", hyrax.featured_work_path(presenter, format: :json),
-                data: { behavior: 'feature' },
-                class: presenter.display_unfeature_link? ? 'btn btn-default collapse' : 'btn btn-default' %>
 
-    <%= link_to "Unfeature", hyrax.featured_work_path(presenter, format: :json),
-                data: { behavior: 'unfeature' },
-                class: presenter.display_feature_link? ? 'btn btn-default collapse' : 'btn btn-default' %>
-  <% end %>
+    <%= link_to t('.delete'), [main_app, presenter], class: 'btn btn-danger', data: { confirm: t('.confirm_delete', work_type: presenter.human_readable_type) }, method: :delete %>
 
-  <!-- COinS hook for Zotero -->
-  <span class="Z3988" title="<%= export_as_openurl_ctx_kev(presenter) %>"></span>
+  <% end %>
+  <% if @presenter.workflow.actions.present? && @presenter.solr_document['workflow_state_name_ssim']&.first&.capitalize == 'Deposited' %>
+    <%= form_tag main_app.hyrax_workflow_action_path(presenter), method: :put do %>
+      <%= hidden_field :workflow_action, :name, value: 'tombstone' %>
+      <input class="btn btn-default" style='width: 105%;' type="submit" value="Tombstone" data-confirm='<%= t('hyrax.tombstone.confirmation') %>'>
+    <% end %>
+  <% else %>
+    <%= form_tag main_app.hyrax_workflow_action_path(presenter), method: :put do %>
+      <%= hidden_field :workflow_action, :name, value: 'approve' %>
+      <input class="btn btn-default" style='width: 105%;' type="submit" value="Approve" data-confirm='<%= t('hyrax.tombstone.revert') %>'>
+    <% end %>
+  <% end %> 
 </div>
+
+<!-- COinS hook for Zotero -->
+  <span class="Z3988" title="<%= export_as_openurl_ctx_kev(presenter) %>"></span>
+<!-- Render Modals -->
+<%= render 'hyrax/dashboard/collections/form_for_select_collection', user_collections: @user_collections %>
 
 <%= render 'scholars_archive/base/modal_request_delete' %>

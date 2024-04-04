@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-alpine3.12 as bundler
+FROM ruby:2.7-alpine3.13 as bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8

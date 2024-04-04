@@ -28,7 +28,7 @@
             <p class="switch-upload-type">To create a separate work for each of the files, go to <%= link_to "Batch upload", hyrax.new_batch_upload_path(payload_concern: f.object.model.model_name.name) %></p>
         <% end %>
     <% end %>
-    <%= render 'hyrax/base/guts4form', f: f %>
+  <%= render 'hyrax/base/guts4form', f: f, tabs: form_tabs_for(form: f.object) %>
 <% end %>
 
 <script type="text/javascript">
