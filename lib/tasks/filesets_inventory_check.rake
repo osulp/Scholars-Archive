@@ -6,7 +6,7 @@ require 'tar/reader'
 # RAKE TASK: Create a rake task to give report on files that are archive/container & in torrent formats
 namespace :scholars_archive do
   desc "FileSets inventory check within container/archives & torrent files"
-  task filesets_inventory_check: :environment do
+  task filesets_check: :environment do
     # DISPLAY: Create status to show where the process is running
     puts "Running ScholarsArchive::FilesetsInventoryCheck"
 
@@ -14,7 +14,7 @@ namespace :scholars_archive do
     ActionMailer::Base.perform_deliveries = false
 
     # SETUP: Create an array fill with common file size to be check
-    file_check = ['application/zip✓', 'application/x-gzip', 'application/x-tar✓', 'application/x-7z-compressed✓', 'application/x-bittorrent']
+    file_check = ['application/zip✓', 'application/x-gzip✓', 'application/x-tar✓', 'application/x-7z-compressed✓', 'application/x-bittorrent']
 
     # DISPLAY: Display out that we are looping through each filesets
     puts "Checking each filesets for either container/torrent... .. ."
@@ -63,7 +63,7 @@ namespace :scholars_archive do
     when 'application/x-7z-compressed'
       data = zip7_reading(container)
     when 'application/x-gzip'
-
+      data = gzip_reading(container)
     when 'application/x-gtar'
       data = tar_reading(container)
     end
@@ -121,6 +121,30 @@ namespace :scholars_archive do
     data_info
   end
 
+  # METHOD: Create a method to read gzip file
+  def gzip_reading(container)
+    # DATA: A tmp data storage for info
+    data_info = []
+
+    # OPEN: Look at file for reading
+    file = File.open('./tmp/Transcriptome_annotation.tar.gz')
+    # MOVE: Move to the end to obtain only the ISIZE data
+    file.seek(-4, 2)
+    # READ: Read the needed data and decode it to unsigned int
+    size = file.read(4).unpack1('I')
+    # CLOSE: Close the file after reading
+    file.close
+
+    # CREATE: Add the data into the array for later usage for report
+    parse_title = container.title.first.gsub('.gz', '')
+    format_type = parse_title.split('.')
+    data_info << "#{container.title.first}$1"
+    data_info << "#{parse_title}$#{format_type.last.downcase}$#{size}"
+
+    # RETURN: Return the data that was collected
+    data_info
+  end
+
   # METHOD: Create a method to read tar file
   def tar_reading(container)
     # DATA: A tmp data storage for info & a counter for total files
@@ -150,21 +174,25 @@ namespace :scholars_archive do
   def create_txt_file(email_data)
     # CHECK: Check and delete files if exist
     File.delete('./tmp/inventory.txt') if File.file?('./tmp/inventory.txt')
-    email_data&.size - 1
 
     # LOOP: Go through items and write to file
     File.open("./tmp/inventory.txt", "w+") do |f|
-      email_data.each do |data|
-        data.each_with_index do |item, index|
-          str = item.split('$')
-          if index == 0
-            f.write("The File '#{str[0]}' contains total of #{str[1]} file(s)")
-          else
-            f.write("File name: '#{str[0]}'   Format: #{str[1]}   Byte sizes: #{str[2]}")
+      if email_data.blank?
+        f.write("None of the filesets inventory have anything to check.")
+      else
+        email_data.each do |data|
+          next if data.blank?
+          data.each_with_index do |item, index|
+            str = item.split('$')
+            if index == 0
+              f.write("The File '#{str[0]}' contains total of #{str[1]} file(s)")
+            else
+              f.write("File name: #{str[0]}     [Format: #{str[1]}] - Byte sizes: #{str[2]}")
+            end
+            f.write("#{$/}")
           end
           f.write("#{$/}")
         end
-        f.write("#{$/}")
       end
     end
   end
