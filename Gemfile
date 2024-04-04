@@ -86,8 +86,8 @@ gem 'riiif', '~> 1.1'
 gem 'rubyzip', '~> 1.3.0'
 
 # Unzip gems
-gem 'seven_zip_ruby'
 gem 'tar', '~> 0.1.0'
+gem 'seven_zip_ruby', '~> 1.2', '>= 1.2.4'
 
 # Monitoring and Observability
 gem 'honeycomb-beeline', '>= 2.10.0'
