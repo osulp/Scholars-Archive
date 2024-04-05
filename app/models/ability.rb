@@ -22,11 +22,11 @@ class Ability
     # end
 
     can %i[edit update], SolrDocument do |solr_doc|
-      (AdminSet.where(title: solr_doc.admin_set).first.edit_users.include?(current_user.username) || current_user.admin?) if solr_doc.admin_set.present? && current_user.present?
+      admin? || can_review_submissions? || (AdminSet.where(title: solr_doc.admin_set).first.edit_users.include?(current_user.username) if solr_doc.admin_set.present?)
     end
 
     can %i[edit update], ActiveFedora::Base do |record|
-      (record.admin_set.edit_users.include?(current_user.username) if record.respond_to?(:admin_set)) || current_user.admin?
+      admin? || can_review_submissions? || (record.admin_set.edit_users.include?(current_user.username) if record.respond_to?(:admin_set))
     end
   end
 end
