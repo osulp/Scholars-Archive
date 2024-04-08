@@ -15,10 +15,16 @@ module Hyrax
       property :parentCountry, predicate: RDF::URI('http://www.geonames.org/ontology#parentCountry'), class_name: Hyrax::ControlledVocabularies::Location
       property :featureCode, predicate: RDF::URI('http://www.geonames.org/ontology#featureCode')
 
-      def solrize
-        return [rdf_subject.to_s] if rdf_label.first.to_s.blank? || rdf_label_uri_same?
+      def full_label
+        Hyrax::LocationService.new.full_label(rdf_subject.to_s)
+      end
 
-        [rdf_subject.to_s, { label: "#{rdf_label.first}$#{rdf_subject}" }]
+      # Return a tuple of url & label
+      def solrize
+        label = full_label || rdf_label.first.to_s
+        return [rdf_subject.to_s] if label.blank? || label == rdf_subject.to_s
+
+        [rdf_subject.to_s, { label: "#{label}$#{rdf_subject}" }]
       end
 
       # Overrides rdf_label to add location disambiguation when available.
@@ -86,10 +92,6 @@ module Hyrax
           parentADM1,
           parentCountry
         ].reject(&:empty?)
-      end
-
-      def rdf_label_uri_same?
-        rdf_label.first.to_s == rdf_subject.to_s
       end
 
       def valid_label
