@@ -7,7 +7,25 @@ module Qa::Authorities
 
     class_attribute :username, :label
 
-    self.label = lambda do |item, translated_fcl|
+    class << self
+      private
+
+      def translate_fcl(fcl)
+        { 'A' => 'Administrative Boundary',
+          'H' => 'Hydrographic',
+          'L' => 'Area',
+          'P' => 'Populated Place',
+          'R' => 'Road / Railroad',
+          'S' => 'Spot',
+          'T' => 'Hypsographic',
+          'U' => 'Undersea',
+          'V' => 'Vegetation'
+        }[fcl]
+      end
+    end
+
+    self.label = lambda do |item|
+      translated_fcl = translate_fcl(item['fcl'])
       [item['name'], item['adminName1'], item['countryName'], "(#{translated_fcl})"].compact.join(', ')
     end
 
@@ -59,7 +77,7 @@ module Qa::Authorities
       response['geonames'].map do |result|
         # Note: the trailing slash is meaningful.
         { 'id' => "https://sws.geonames.org/#{result['geonameId']}/",
-          'label' => label.call(result, translate_fcl(result['fcl'])) }
+          'label' => label.call(result) }
       end
     end
 
@@ -67,20 +85,7 @@ module Qa::Authorities
     def parse_response_with_id(response)
       # Note: the trailing slash is meaningful.
       [{ 'id' => "https://sws.geonames.org/#{response['geonameId']}/",
-         'label' => label.call(response, translate_fcl(response['fcl'])) }]
-    end
-
-    def translate_fcl(fcl)
-      { 'A' => 'Administrative Boundary',
-        'H' => 'Hydrographic',
-        'L' => 'Area',
-        'P' => 'Populated Place',
-        'R' => 'Road / Railroad',
-        'S' => 'Spot',
-        'T' => 'Hypsographic',
-        'U' => 'Undersea',
-        'V' => 'Vegetation'
-      }[fcl]
+         'label' => label.call(response) }]
     end
   end
 end
