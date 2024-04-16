@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe ScholarsArchive::HandlesController, type: :controller do
   let(:work) { Default.new(title: ['blah'], id: 'asdfasdf') }
-  let(:fileset) { FileSet.new(title: ['cat.jpg'], id: 'qwerqwer') }
+  let(:fileset) { double(title: ['cat.jpg'], id: 'qwerqwer') }
 
   context '#get handle_show' do
     context 'when a work exists with the proper handle' do

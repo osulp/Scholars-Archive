@@ -517,6 +517,7 @@ RSpec/NamedSubject:
 
 RSpec/VerifiedDoubles:
   Exclude:
+    - "spec/controllers/scholars_archive/handles_controller_spec.rb"
     - "spec/forms/hyrax/eesc_publication_form_spec.rb"
     - "spec/forms/hyrax/open_educational_resource_form_spec.rb"
     - "spec/forms/hyrax/article_form_spec.rb"
