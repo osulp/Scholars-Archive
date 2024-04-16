@@ -1,9 +1,28 @@
 # frozen_string_literal: true
 
-# OVERRIDE to implement the characterization fixes from: https://github.com/samvera/hyrax/pull/5475
-# From Hyrax. Characterize a file and set its metadata
+# OVERRIDE to guard against objects that don't respond to #alpha_channels=
+#  And to initialize #page_count
+##
+# a +ActiveJob+ job to process file characterization.
+#
+# the characterization process is handled by a service object, which is
+# configurable via {CharacterizeJob.characterization_service}.
+#
+# @example setting a custom characterization service
+#   class MyCharacterizer
+#     def run(file, path)
+#       # do custom characterization
+#     end
+#   end
+#
+#   # in a Rails initializer
+#   CharacterizeJob.characterization_service = MyCharacterizer.new
+# end
 class CharacterizeJob < Hyrax::ApplicationJob
   queue_as Hyrax.config.ingest_queue_name
+
+  class_attribute :characterization_service
+  self.characterization_service = Hydra::Works::CharacterizationService
 
   # Characterizes the file at 'filepath' if available, otherwise, pulls a copy from the repository
   # and runs characterization on that file.
@@ -15,7 +34,6 @@ class CharacterizeJob < Hyrax::ApplicationJob
 
     filepath = Hyrax::WorkingDirectory.find_or_retrieve(file_id, file_set.id) unless filepath && File.exist?(filepath)
     characterize(file_set, file_id, filepath)
-    CreateDerivativesJob.perform_later(file_set, file_id, filepath)
 
     Hyrax.publisher.publish('file.characterized',
                             file_set: file_set,
@@ -58,7 +76,7 @@ class CharacterizeJob < Hyrax::ApplicationJob
   end
 
   def clear_metadata(file_set)
-    # The characterization of additional file versions adds new page_count/height/width/size/checksum values to un-orderable...
+    # The characterization of additional file versions adds new height/width/size/checksum values to un-orderable...
     # `ActiveTriples::Relation` fields on `original_file`. Values from those are then randomly pulled into Solr...
     # fields which may have scalar or vector cardinality. So for height/width you get two scalar values pulled from...
     # "randomized parallel arrays". Upshot is to reset all of these before (re)characterization to stop the mayhem.
@@ -82,6 +100,6 @@ class CharacterizeJob < Hyrax::ApplicationJob
   # @api public
   # @return [#run]
   def characterization_service
-    Hydra::Works::CharacterizationService
+    self.class.characterization_service
   end
 end
