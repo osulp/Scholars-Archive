@@ -5,6 +5,7 @@
 class TechnicalReport < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::ScholarsArchive::DefaultMetadata
+  include ::ScholarsArchive::FinalizeNestedMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties

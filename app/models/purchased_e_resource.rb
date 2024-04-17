@@ -7,6 +7,7 @@ class PurchasedEResource < ActiveFedora::Base
   include ::ScholarsArchive::EtdMetadata
   include ::ScholarsArchive::ArticleMetadata
   include ::ScholarsArchive::DefaultMetadata
+  include ::ScholarsArchive::FinalizeNestedMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasPurchasedEResourceTriplePoweredProperties
