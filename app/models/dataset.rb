@@ -12,6 +12,7 @@ class Dataset < ActiveFedora::Base
   # Adds behaviors for DataCite DOIs via hyrax-doi plugin.
   include Hyrax::DOI::DataCiteDOIBehavior
   include ::ScholarsArchive::DefaultMetadata
+  include ::ScholarsArchive::FinalizeNestedMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
