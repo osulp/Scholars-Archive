@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-alpine3.13 as bundler
+FROM ruby:2.7-slim-bullseye as bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -12,45 +12,33 @@ ENV LC_ALL C.UTF-8
 ##########################################################################
 FROM bundler as dependencies
 
-RUN apk --no-cache update && apk --no-cache upgrade && \
-  apk add --no-cache nodejs \
-  imagemagick \
+RUN apt update && apt -y upgrade && \
+  apt -y install \
+  nodejs \
   ghostscript \
   vim \
   yarn \
   git \
-  mysql mysql-client mysql-dev \
-  musl \
-  curl \
+  mariadb-client libmariadb-dev \
+  curl wget \
   less \
-  libc6-compat \
-  build-base \
+  build-essential \
   tzdata \
   zip \
   libtool \
-  libffi \
   bash bash-completion \
-  java-common openjdk11-jre-headless \
-  ffmpeg openjpeg-dev openjpeg-tools openjpeg mediainfo exiftool \
-  lcms2 lcms2-dev \
-  py3-pip \
-  gcompat
+  java-common openjdk-17-jre-headless \
+  ffmpeg mediainfo exiftool
+
+# Install ImageMagick with full support
+RUN t=$(mktemp) && \
+  wget 'https://raw.githubusercontent.com/SoftCreatR/imei/main/imei.sh' -qO "$t" && \
+  bash "$t" --imagemagick-version=7.0.11-14 --skip-jxl && \
+  rm "$t"
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
-  echo 'America/Los_Angeles' > /etc/timezone && \
-  pip install s3cmd
-
-# install libffi 3.2.1
-# https://github.com/libffi/libffi/archive/refs/tags/v3.2.1.tar.gz
-# https://codeload.github.com/libffi/libffi/tar.gz/refs/tags/v3.2.1
-# apk add autoconf aclocal automake libtool
-# tar -xvzpf libffi-3.2.1.tar.gz
-# ./configure --prefix=/usr/local
-# RUN mkdir -p /tmp/ffi && \
-#   curl -sL https://codeload.github.com/libffi/libffi/tar.gz/refs/tags/v3.2.1 \
-#   | tar -xz -C /tmp/ffi && cd /tmp/ffi/libffi-3.2.1 && ./autogen.sh &&\
-#   ./configure --prefix=/usr/local && make && make install && rm -rf /tmp/ffi
+  echo 'America/Los_Angeles' > /etc/timezone
 
 # download and install FITS from Github
 RUN mkdir -p /opt/fits && \
@@ -83,7 +71,7 @@ FROM gems as code
 
 #USER root
 # Uninstall any dev tools we don't need at runtime
-RUN apk --no-cache update && apk del gcc g++ --purge
+RUN apt --purge -y autoremove gcc g++
 
 ADD . /data
 
