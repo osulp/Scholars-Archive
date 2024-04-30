@@ -143,3 +143,5 @@ group :test do
   gem 'simplecov', '>= 0.9'
   gem 'webmock'
 end
+
+gem 'okcomputer', '~> 1.18'
