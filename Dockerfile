@@ -42,9 +42,10 @@ RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
 
 # download and install FITS from Github
 RUN mkdir -p /opt/fits && \
-  curl -fSL -o /opt/fits-1.5.0.zip https://github.com/harvard-lts/fits/releases/download/1.5.0/fits-1.5.0.zip && \
-  cd /opt/fits && unzip /opt/fits-1.5.0.zip  && chmod +X fits.sh && \
-  rm -f /opt/fits-1.5.0.zip
+  curl -fSL -o /opt/fits-1.6.0.zip https://github.com/harvard-lts/fits/releases/download/1.6.0/fits-1.6.0.zip && \
+  cd /opt/fits && unzip /opt/fits-1.6.0.zip  && chmod +X fits.sh && \
+  rm -f /opt/fits-1.6.0.zip && \
+  rm /opt/fits/tools/mediainfo/linux/libmediainfo.so.0
 
 ##########################################################################
 ## Add our Gemfile and install our gems
