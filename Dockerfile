@@ -28,6 +28,7 @@ RUN apt update && apt -y upgrade && \
   libtool \
   bash bash-completion \
   java-common openjdk-17-jre-headless \
+  python-is-python3 \
   ffmpeg mediainfo exiftool
 
 # Install ImageMagick with full support
