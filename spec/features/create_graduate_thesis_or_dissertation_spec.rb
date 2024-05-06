@@ -12,12 +12,13 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
       User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false) }
     end
     let(:current_user) { user }
+    let(:current_ability) { user.ability }
 
     let(:admin_set) do
       begin
-        AdminSet.find('blah')
+        AdminSet.find('admin_set/default')
       rescue ActiveFedora::ObjectNotFoundError
-        AdminSet.create(id: 'blah',
+        AdminSet.create(id: 'admin_set/default',
                         title: ['title'],
                         description: ['A substantial description'],
                         edit_users: ['admin'])
@@ -102,8 +103,8 @@ RSpec.feature 'Create a Graduate Thesis Or Dissertation', js: false do
 
       click_link 'Files' # switch tab
       expect(page).to have_content 'Add files'
-      within('#addfiles') do
-        attach_file('files[]', File.join(Rails.root, '/spec/fixtures/files/world.png'))
+      within('#add-files') do
+        attach_file('files[]', File.join(Rails.root, '/spec/fixtures/files/world.png'), visible: false)
       end
 
       choose('graduate_thesis_or_dissertation_visibility_open')

@@ -380,7 +380,7 @@ RSpec.describe SolrDocument do
                                          'has_model_ssim' => ['Default'],
                                          'id' => ['xw42n789j']
                                        })
-        expect(document.oai_identifier).to eq 'http://ir.library.oregonstate.edu/concern/defaults/xw42n789j'
+        expect(document.oai_identifier).to eq 'https://ir.library.oregonstate.edu/concern/defaults/xw42n789j'
       end
     end
   end

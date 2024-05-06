@@ -203,7 +203,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(' ')
       title_name = solr_name('nested_ordered_title_label', :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} title_tesim alt_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_tsimv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
+        qf: "#{all_names} title_tesim alternative_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_tsimv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
         pf: title_name.to_s
       }
     end
@@ -621,7 +621,7 @@ class CatalogController < ApplicationController
     config.oai = {
       provider: {
         repository_name: 'ScholarsArchive@OSU',
-        repository_url: 'http://ir.library.oregonstate.edu',
+        repository_url: 'https://ir.library.oregonstate.edu/catalog/oai',
         record_prefix: 'ir.library.oregonstate.edu',
         admin_email: 'scholarsarchive@oregonstate.edu'
       },

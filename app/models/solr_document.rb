@@ -35,7 +35,7 @@ class SolrDocument
   def self.solrized_methods(property_names)
     property_names.each do |property_name|
       define_method property_name.to_sym do
-        values = self[Solrizer.solr_name(property_name)]
+        values = self["#{property_name}_tesim"]
         if values.respond_to?(:each)
           values.reject(&:blank?)
         else
@@ -86,43 +86,43 @@ class SolrDocument
   end
 
   def nested_geo
-    self[Solrizer.solr_name('nested_geo_label', :symbol)] || []
+    self['nested_geo_label_ssim'] || []
   end
 
   def nested_related_items_label
-    ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self[Solrizer.solr_name('nested_related_items_label', :symbol)]) || []
+    ScholarsArchive::LabelAndOrderedParserService.parse_label_uris(self['nested_related_items_label_ssim']) || []
   end
 
   def nested_ordered_creator_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_creator_label', :symbol)]) || []
+    ScholarsArchive::OrderedParserService.parse(self['nested_ordered_creator_label_ssim']) || []
   end
 
   def nested_ordered_title_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_title_label', :symbol)]) || []
+    ScholarsArchive::OrderedParserService.parse(self['nested_ordered_title_label_ssim']) || []
   end
 
   def title
-    nested_ordered_title_label.present? ? nested_ordered_title_label : self[Solrizer.solr_name('title', :stored_searchable)] || []
+    nested_ordered_title_label.present? ? nested_ordered_title_label : self['title_tesim'] || []
   end
 
   def creator
-    nested_ordered_creator_label.present? ? nested_ordered_creator_label : self[Solrizer.solr_name('creator', :stored_searchable)] || []
+    nested_ordered_creator_label.present? ? nested_ordered_creator_label : self['creator_tesim'] || []
   end
 
   def additional_information
-    nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self[Solrizer.solr_name('additional_information', :stored_searchable)] || []
+    nested_ordered_additional_information_label.present? ? nested_ordered_additional_information_label : self['additional_information_tesim'] || []
   end
 
   def nested_ordered_abstract_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_abstract_label', :symbol)]) || []
+    ScholarsArchive::OrderedParserService.parse(self['nested_ordered_abstract_label_ssim']) || []
   end
 
   def nested_ordered_contributor_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_contributor_label', :symbol)]) || []
+    ScholarsArchive::OrderedParserService.parse(self['nested_ordered_contributor_label_ssim']) || []
   end
 
   def nested_ordered_additional_information_label
-    ScholarsArchive::OrderedParserService.parse(self[Solrizer.solr_name('nested_ordered_additional_information_label', :symbol)]) || []
+    ScholarsArchive::OrderedParserService.parse(self['nested_ordered_additional_information_label_ssim']) || []
   end
 
   def system_created
@@ -149,7 +149,7 @@ class SolrDocument
   solrized_methods %w[
     abstract
     academic_affiliation
-    alt_title
+    alternative_title
     bibliographic_citation
     conference_location
     conference_name
@@ -260,13 +260,13 @@ class SolrDocument
 
   def oai_identifier
     if self['has_model_ssim'].first.to_s == 'Collection'
-      Hyrax::Engine.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url], controller: 'hyrax/collections', id: id)
+      Hyrax::Engine.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url].gsub('/catalog/oai', ''), controller: 'hyrax/collections', id: id)
     else
-      Rails.application.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url], controller: "hyrax/#{self['has_model_ssim'].first.to_s.underscore.pluralize}", id: id)
+      Rails.application.routes.url_helpers.url_for(only_path: false, action: 'show', host: CatalogController.blacklight_config.oai[:provider][:repository_url].gsub('/catalog/oai', ''), controller: "hyrax/#{self['has_model_ssim'].first.to_s.underscore.pluralize}", id: id)
     end
   end
 
   def abstract
-    nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self[Solrizer.solr_name('abstract', :stored_searchable)] || []
+    nested_ordered_abstract_label.present? ? nested_ordered_abstract_label : self['abstract_tesim'] || []
   end
 end

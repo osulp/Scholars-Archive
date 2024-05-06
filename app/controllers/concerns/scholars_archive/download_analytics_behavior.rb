@@ -9,27 +9,22 @@ module ScholarsArchive
       after_action :track_download, only: :show
 
       def track_download
-        unless Hyrax.config.google_analytics_id.blank? || params[:file].to_s.downcase == 'thumbnail'
+        # Add in special case to ignore collection of analytic data
+        unless Hyrax.config.google_analytics_id.blank? || params[:file].to_s.downcase == 'thumbnail' || request.path.include?('/admin/')
           # Staccato works with Google Analytics v1 api:
           # https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
           # Staccato on Github: https://github.com/tpitale/staccato
           begin
             # GA4 collection url
             base_uri = URI('https://www.google-analytics.com/g/collect')
-            page_view_params = {
-              'v': '2', # Protocol version
-              'tid': Hyrax.config.google_analytics_id.to_s, # Tracking ID
-              'cid': SecureRandom.uuid.to_s, # Client ID
-              'dl': request.url.to_s, # Document Location URL
-              'dh': request.server_name.to_s, # Document Host Name
-              'dr': request.referrer.to_s, # Document Referrer
-              'dt': params[:id].to_s, # Document Title
-              'en': 'page_view' # Event Name
+            # Update host header for submission to GA4
+            headers = {
+              'Accept-Language': request.headers['HTTP_ACCEPT_LANGUAGE'],
+              'Host': 'www.google-analytics.com',
+              'Origin': request.headers['HTTP_ORIGIN'],
+              'Referer': request.headers['HTTP_REFERER'],
+              'User-Agent': request.headers['HTTP_USER_AGENT']
             }
-            # Combine params as query params and base URI
-            page_view_uri = URI.parse([base_uri, URI.encode_www_form(page_view_params)].join('?'))
-            # Submit Page View
-            ::Net::HTTP.post(page_view_uri, nil)
 
             file_download_params = {
               'v': '2', # Protocol version
@@ -46,7 +41,7 @@ module ScholarsArchive
             # Combine params as query params and base URI
             file_download_uri = URI.parse([base_uri, URI.encode_www_form(file_download_params)].join('?'))
             # Submit File Download
-            ::Net::HTTP.post(file_download_uri, nil)
+            ::Net::HTTP.post(file_download_uri, nil, headers)
 
             # Disable Staccato tracking until Staccato can be updated for GA4
             # tracker = Staccato.tracker(Hyrax.config.google_analytics_id)

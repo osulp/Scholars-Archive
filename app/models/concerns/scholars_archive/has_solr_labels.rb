@@ -42,14 +42,14 @@ module ScholarsArchive
             ]
 
           labels.each do |label_set|
-            doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :symbol)] = label_set[:data]
-            doc[ActiveFedora.index_field_mapper.solr_name(label_set[:label], :stored_searchable)] = label_set[:data]
+            doc["#{label_set[:label]}_ssim"] = label_set[:data]
+            doc["#{label_set[:label]}_tesim"] = label_set[:data]
           end
           if ordered_title_labels.present?
             ordered_titles = nested_ordered_title.select { |i| i.instance_of?(NestedOrderedTitle) ? (i.title.present? && i.index.present?) : i.present? }.map { |i| i.instance_of?(NestedOrderedTitle) ? [i.title.first, i.index.first] : [i] }.select(&:present?).sort_by { |titles| titles.second }.map { |titles| titles.first }
 
-            doc[ActiveFedora.index_field_mapper.solr_name('title', :stored_searchable)] = ordered_titles
-            doc[ActiveFedora.index_field_mapper.solr_name('nested_ordered_title_label', :stored_searchable)] = ordered_titles
+            doc['title_tesim'] = ordered_titles
+            doc['nested_ordered_title_label_tesim'] = ordered_titles
           end
 
           doc[ActiveFedora.index_field_mapper.solr_name('rights_statement', :facetable)] = rights_statement.first

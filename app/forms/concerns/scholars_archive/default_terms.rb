@@ -15,7 +15,7 @@ module ScholarsArchive
     # rubocop:disable Metrics/MethodLength
     def self.primary_terms
       %i[nested_ordered_title
-         alt_title
+         alternative_title
          nested_ordered_creator
          nested_ordered_contributor
          contributor_advisor

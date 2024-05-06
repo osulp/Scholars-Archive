@@ -3,7 +3,7 @@
 # indexes default metadata
 class DefaultWorkIndexer < Hyrax::WorkIndexer
   class_attribute :stored_and_facetable_fields
-  self.stored_and_facetable_fields = %i[doi rights_statement rights_statement_label abstract alt_title license license_label language_label based_near based_near_linked resource_type date_available date_copyright date_issued date_collected date_valid date_reviewed date_accepted degree_level degree_name degree_field replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed additional_information digitization_spec file_extent file_format dspace_community dspace_collection itemtype nested_geo peerreviewed_label conference_name conference_section conference_location contributor_advisor]
+  self.stored_and_facetable_fields = %i[doi rights_statement rights_statement_label abstract alternative_title license license_label language_label based_near based_near_linked resource_type date_available date_copyright date_issued date_collected date_valid date_reviewed date_accepted degree_level degree_name degree_field replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed additional_information digitization_spec file_extent file_format dspace_community dspace_collection itemtype nested_geo peerreviewed_label conference_name conference_section conference_location contributor_advisor]
   # This indexes the default metadata. You can remove it if you want to
   # provide your own metadata and indexing.
   include Hyrax::IndexesBasicMetadata

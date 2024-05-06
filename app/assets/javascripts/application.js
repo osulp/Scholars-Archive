@@ -25,10 +25,13 @@
 //= require embargo_date_field
 //= require default_datatable_order
 //= require 'blacklight_range_limit'
-//= require browse_everything
 //= require tinymce
 //= require ordered_creator
 //= require_directory .
 //= require hyrax
 //= require degree_filter/degree_level_filter
 //= require degree_filter/degree_sort
+
+// Required by browse-everything. requiring all of browse-everything causes bootstrap to be included twice
+//= require jquery.treetable
+//= require browse_everything/behavior

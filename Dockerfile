@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-alpine3.12 as bundler
+FROM ruby:2.7-alpine3.13 as bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -22,6 +22,7 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
   mysql mysql-client mysql-dev \
   musl \
   curl \
+  less \
   libc6-compat \
   build-base \
   tzdata \
@@ -30,7 +31,7 @@ RUN apk --no-cache update && apk --no-cache upgrade && \
   libffi \
   bash bash-completion \
   java-common openjdk11-jre-headless \
-  ffmpeg openjpeg-dev openjpeg-tools openjpeg \
+  ffmpeg openjpeg-dev openjpeg-tools openjpeg mediainfo exiftool \
   lcms2 lcms2-dev \
   py3-pip \
   gcompat

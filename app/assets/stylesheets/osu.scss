@@ -30,6 +30,10 @@ body {
   filter: blur(0px) !important;
 }
 
+.image-masthead .navbar .nav.navbar-nav li {
+  background-color: unset;
+}
+
 #masthead {
   margin-bottom: 0px;
 }
@@ -101,6 +105,29 @@ a:focus {
   #logo span.institution_name {
     padding-left: 0px;
   }
+}
+
+.work-type .work-type-tag {
+  font-size: 36px;
+}
+
+.work-title-wrapper {
+  .title-with-badges {
+    margin-bottom: 1em;
+  }
+
+  .label, td.status span {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+   }
 }
 
 div.facets h3 {
@@ -186,6 +213,10 @@ div#geo_wrapper {
 
 table[data-behavior="child-relationships"] > tbody > tr > td {
   max-width: 0;
+}
+
+.form-group.advanced-search-facet {
+  margin-bottom:2em
 }
 
 .form-group .controlled_vocabulary {

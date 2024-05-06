@@ -6,6 +6,7 @@ class OpenEducationalResource < ActiveFedora::Base
   include ::Hyrax::WorkBehavior
   include ::ScholarsArchive::OerMetadata
   include ::ScholarsArchive::DefaultMetadata
+  include ::ScholarsArchive::FinalizeNestedMetadata
   include ScholarsArchive::HasSolrLabels
   include ScholarsArchive::DateOperations
   include ScholarsArchive::HasTriplePoweredProperties
