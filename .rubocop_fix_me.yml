@@ -437,6 +437,7 @@ Naming/VariableNumber:
 
 RSpec/ExampleWording:
   Exclude:
+    - "spec/active_support/logger_spec.rb"
     - "spec/scholars_archive/triple_powered_properties/triple_powered_form_spec.rb"
     - "spec/models/nested_ordered_title_spec.rb"
     - "spec/models/nested_related_items_spec.rb"
@@ -667,6 +668,10 @@ Style/RedundantBegin:
     - "spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb"
     - "spec/services/hyrax/workflow/pending_deletion_notification_spec.rb"
     - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
+
+Style/RedundantReturn:
+  Exclude:
+    - "app/models/oai_set.rb"
 
 RSpec/ExampleLength:
   Exclude:
