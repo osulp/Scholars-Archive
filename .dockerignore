@@ -3,14 +3,11 @@
 .github
 .env
 .dockerignore
-.fcrepo_wrapper
 .gitignore
 .rspec
 .rubocop_fix_me.yml
 .rubocop.yml
 .ruby-version
-.solr_wrapper
-.solr_wrapper.yml
 .version
 docker-compose.*
 Dockerfile
@@ -20,8 +17,6 @@ solr/*
 coverage/
 config/local_env.*
 config/mysql/
-config/solr_wrapper_test.yml
-config/fcrepo_wrapper_test.yml
 config/blazegraph/
 config/puma/development.rb
 config/nginx_rewrites.conf
