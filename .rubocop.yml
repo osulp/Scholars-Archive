@@ -6,16 +6,16 @@ AllCops:
   TargetRubyVersion: 2.5
   DisplayCopNames: true
   Exclude:
-    - 'db/**/*'
-    - 'script/**/*'
-    - 'build/**/*'
-    - 'vendor/**/*'
-    - 'bin/**/*'
-    - 'Gemfile'
-    - 'Rakefile'
-    - 'lib/tasks/**/*'
-    - 'config/**/*'
-    - 'sa_scripts/**/*'
+    - "db/**/*"
+    - "script/**/*"
+    - "build/**/*"
+    - "vendor/**/*"
+    - "bin/**/*"
+    - "Gemfile"
+    - "Rakefile"
+    - "lib/tasks/**/*"
+    - "config/**/*"
+    - "sa_scripts/**/*"
 
 Metrics/LineLength:
   Enabled: false
@@ -24,20 +24,26 @@ Metrics/AbcSize:
   Enabled: false
 
 Metrics/BlockLength:
-  ExcludedMethods: ['included']
+  ExcludedMethods: ["included"]
+
+Style/AccessorGrouping:
+  Enabled: false
 
 Style/AsciiComments:
   Enabled: false
 
 Style/CollectionMethods:
   PreferredMethods:
-    collect: 'map'
-    collect!: 'map!'
-    inject: 'reduce'
-    detect: 'find'
-    find_all: 'select'
+    collect: "map"
+    collect!: "map!"
+    inject: "reduce"
+    detect: "find"
+    find_all: "select"
 
 Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/HashEachMethods:
   Enabled: false
 
 Style/SingleLineBlockParams:

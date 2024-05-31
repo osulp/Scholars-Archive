@@ -34,7 +34,7 @@ gem 'ffi', '~> 1.15.0'
 
 gem 'blacklight_oai_provider'
 gem 'blacklight_range_limit'
-gem 'edtf', github: 'inukshuk/edtf-ruby', branch: 'master'
+gem 'edtf', '~> 3.1.1'
 
 gem 'blacklight_advanced_search'
 
@@ -51,7 +51,6 @@ gem 'devise'
 gem 'devise_cas_authenticatable', '~> 1.0'
 gem 'faraday'
 gem 'hyrax', '3.6.0'
-gem 'solrizer', '4.1.0'
 gem 'hyrax-doi', github: 'samvera-labs/hyrax-doi', branch: 'main'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
@@ -74,6 +73,8 @@ gem 'simple_form', '~> 5.2.0'
 
 # Gem vulnerability fix
 gem 'rest-client', '~> 2.0'
+
+# gem 'actionpack-page_caching'
 
 # For asset precompiled error pages, and/or general use because it's way better than ERB
 gem 'haml'
@@ -116,11 +117,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'debase', '>= 0.2.5.beta2'
   gem 'debase-ruby_core_source'
-  gem 'fcrepo_wrapper'
   gem 'pry-rails'
   gem 'ruby-debug-ide'
   gem 'rspec-rails'
-  gem 'solr_wrapper', '>= 0.3'
   gem 'rubocop', '>= 1.50.2'
   gem 'rubocop-rspec', '>= 2.20.0'
 end
