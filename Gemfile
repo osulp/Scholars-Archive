@@ -87,7 +87,6 @@ gem 'rubyzip', '~> 1.3.0'
 
 # Unzip gems
 gem 'tar', '~> 0.1.0'
-gem 'seven_zip_ruby', '~> 1.3'
 
 # Monitoring and Observability
 gem 'honeycomb-beeline', '>= 2.10.0'
