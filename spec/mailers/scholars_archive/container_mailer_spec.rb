@@ -7,10 +7,6 @@ RSpec.describe ScholarsArchive::ContainerMailer do
 
   let(:mail) { described_class.with(to: email).report_email }
 
-  before do
-    allow(mail).to_receive
-  end
-
   # TEST GROUP #1: Create couple test to see if the mailer class pass the test
   it { expect(mail.subject).to eql('Scholars Archive: Archive/Container Files Inventory Report') }
   it { expect(mail.to).to eql([email]) }
