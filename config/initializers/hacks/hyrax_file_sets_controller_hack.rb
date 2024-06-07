@@ -4,17 +4,27 @@ Rails.application.config.to_prepare do
   Hyrax::FileSetsController.class_eval do
 
     def show
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "Hello World"
       curation_concern = presenter.solr_document.id
 
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "Hello World 2"
       # Reset flash notice since we redirected due to not viewable
       flash[:alert] = ''
 
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "Hello World 3"
       # First we check if the user can see the work or fileset
       return unless cannot?(:read, curation_concern) && (curation_concern.embargo_id.present? || curation_concern.visibility == 'authenticated')
 
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "Hello World 4"
       # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
       return if request.referrer.to_s == "https://#{ENV.fetch('SCHOLARSARCHIVE_URL_HOST')}/"
 
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "Hello World 5"
       # Otherwise, this returns them to the homepage because they got here from elsewhere and need to know this work is embargoed
       # and if its OSU visible, provided a link to login and continue to where they were going
       if curation_concern.embargo_id.present?
