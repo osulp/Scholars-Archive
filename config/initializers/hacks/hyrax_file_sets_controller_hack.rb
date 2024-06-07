@@ -2,8 +2,6 @@
 
 Rails.application.config.to_prepare do
   Hyrax::FileSetsController.class_eval do
-    # INCLUDE: Add in the redirect to filesets for embargo
-    include ScholarsArchive::RedirectIfRestrictedBehavior
 
     def show
       curation_concern = presenter.solr_document.id
