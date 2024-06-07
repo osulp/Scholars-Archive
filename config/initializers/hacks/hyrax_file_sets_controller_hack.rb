@@ -1,6 +1,5 @@
 # frozen_string_literal:true
 
-Rails.application.config.to_prepare do
   Hyrax::FileSetsController.class_eval do
 
     def show
@@ -51,4 +50,3 @@ Rails.application.config.to_prepare do
       end
     end
   end
-end
