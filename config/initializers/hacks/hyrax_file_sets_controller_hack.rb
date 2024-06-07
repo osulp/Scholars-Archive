@@ -1,7 +1,7 @@
 # frozen_string_literal:true
 
   Hyrax::FileSetsController.class_eval do
-
+    skip_filter *_process_action_callbacks.map(&:filter)
     def show
       Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       Rails.logger.info "Hello World"
