@@ -13,9 +13,6 @@ namespace :scholars_archive do
     # MAILER: Disable mailer so File Inventory won't send out email while running check
     ActionMailer::Base.perform_deliveries = false
 
-    # SETUP: Create an array fill with common file size to be check
-    file_check = ['application/zip✓', 'application/x-gzip✓', 'application/x-tar✓', 'application/x-7z-compressed✓', 'application/x-bittorrent']
-
     # DISPLAY: Display out that we are looping through each filesets
     puts "Checking each filesets for either container/torrent... .. ."
 
@@ -60,8 +57,6 @@ namespace :scholars_archive do
     case container.mime_type.to_s
     when 'application/zip'
       data = zip_reading(container)
-    when 'application/x-7z-compressed'
-      data = zip7_reading(container)
     when 'application/x-gzip'
       data = gzip_reading(container)
     when 'application/x-gtar'
@@ -88,34 +83,6 @@ namespace :scholars_archive do
         end
       end
     end
-
-    # RETURN: Return the data that was collected
-    data_info
-  end
-
-  # METHOD: Create a method to read 7z file
-  def zip7_reading(container)
-    # DATA: A tmp data storage for info & a counter for total files
-    data_info, tmp = [], []
-    counter = 0
-
-    # READ: Now open up the .zip file
-    File.open("./tmp/A.7z", "rb") do |file|
-      SevenZipRuby::Reader.open(file) do |zip7_file|
-        # DATA: Handle reading entries one by one
-        zip7_file.entries.each do |entry|
-          if entry.size != 0
-            format_type = entry.path.split('.')
-            tmp << "#{entry.path}$#{format_type.last.downcase}$#{entry.size}"
-            counter += 1
-          end
-        end
-      end
-    end
-
-    # COMBINE: Combine all data into singular array
-    data_info << "#{container.title.first}$#{counter}"
-    (data_info << tmp).flatten!
 
     # RETURN: Return the data that was collected
     data_info
