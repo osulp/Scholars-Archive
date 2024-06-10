@@ -77,3 +77,9 @@ terms:
 - id: "Executive Master of Public Policy (E.M.P.P.)"
   term: "Executive Master of Public Policy (E.M.P.P.)"
   active: true
+- id: “Bachelor of Music (B.Mus.)”
+  term: “Bachelor of Music (B.Mus.)”
+  active: true
+- id: “Honors Bachelor of Music (H.B.Mus.)”
+  term: “Honors Bachelor of Music (H.B.Mus.)”
+  active: true
