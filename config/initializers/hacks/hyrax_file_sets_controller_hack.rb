@@ -2,7 +2,7 @@
 
   Hyrax::FileSetsController.class_eval do
 
-    before_action :redirect_if_restricted, only: :show
+    prepend_before_action :redirect_if_restricted, only: :show
 
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/MethodLength
