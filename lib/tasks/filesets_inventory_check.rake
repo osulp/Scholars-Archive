@@ -2,6 +2,7 @@
 
 require 'zip'
 require 'tar/reader'
+require 'down'
 
 # RAKE TASK: Create a rake task to give report on files that are archive/container & in torrent formats
 namespace :scholars_archive do
@@ -72,8 +73,15 @@ namespace :scholars_archive do
     # DATA: A tmp data storage for info
     data_info = []
 
+    # GET: Get the file via URI from Fedora
+    fileset = container.files.first
+    fileset_uri = fileset.uri.to_s
+
+    # READ: Read the file content
+    zip_fileset = URI.open(fileset_uri) { |f| f.read }
+
     # READ: Now open up the .zip file
-    Zip::File.open('./tmp/hi.zip') do |zip_file|
+    Zip::File.open_buffer(zip_fileset) do |zip_file|
       data_info << "#{container.title.first}$#{zip_file.size}"
       # DATA: Handle reading entries one by one
       zip_file.each do |entry|
@@ -93,14 +101,17 @@ namespace :scholars_archive do
     # DATA: A tmp data storage for info
     data_info = []
 
-    # OPEN: Look at file for reading
-    file = File.open('./tmp/Transcriptome_annotation.tar.gz')
+    # GET: Get the file via URI from Fedora
+    fileset = container.files.first
+    fileset_uri = fileset.uri.to_s
+
+    # READ: Read the file content
+    gzip_fileset = Down.open(fileset_uri)
+
     # MOVE: Move to the end to obtain only the ISIZE data
-    file.seek(-4, 2)
-    # READ: Read the needed data and decode it to unsigned int
-    size = file.read(4).unpack1('I')
-    # CLOSE: Close the file after reading
-    file.close
+    gzip_fileset.seek(-4, 2)
+    # READ: Read the needed data and decode it to unsigned int to get the actually size within the GZIP
+    size = gzip_fileset.read(4).unpack1('I')
 
     # CREATE: Add the data into the array for later usage for report
     parse_title = container.title.first.gsub('.gz', '')
@@ -118,8 +129,12 @@ namespace :scholars_archive do
     data_info, tmp = [], []
     counter = 0
 
-    # READ: Now open up the .zip file
-    File.open("./tmp/osu.tar") do |file|
+    # GET: Get the file via URI from Fedora
+    fileset = container.files.first
+    fileset_uri = fileset.uri.to_s
+
+    # READ: Now open up the .tar file
+    URI.open(fileset_uri) do |file|
       Tar::Reader.new(file).each do |entry|
         if entry.header.size != 0
           format_type = entry.header.path.split('.')

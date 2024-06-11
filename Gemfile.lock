@@ -307,6 +307,8 @@ GEM
     docile (1.4.0)
     docopt (0.5.0)
     domain_name (0.6.20240107)
+    down (5.4.2)
+      addressable (~> 2.8)
     draper (4.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -1216,6 +1218,7 @@ DEPENDENCIES
   debase-ruby_core_source
   devise
   devise_cas_authenticatable (~> 1.0)
+  down (~> 5.0)
   edtf (~> 3.1.1)
   equivalent-xml
   faraday
