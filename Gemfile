@@ -85,6 +85,12 @@ gem 'riiif', '~> 1.1'
 # Security update
 gem 'rubyzip', '~> 1.3.0'
 
+# Unzip gems
+gem 'tar', '~> 0.1.0'
+
+# Download helper
+gem 'down', '~> 5.0'
+
 # Monitoring and Observability
 gem 'honeycomb-beeline', '>= 2.10.0'
 gem 'libhoney', '>= 2.2.0'
