@@ -18,12 +18,13 @@
             "notifications": [
                 {
                     "notification_type": "email",
-                    "name": "Hyrax::Workflow::DeletionApprovalNotification",
+                    "name": "Hyrax::Workflow::TombstoneApprovalNotification",
                     "to": ["depositing"]
                 }
             ],
             "methods": [
-                "Hyrax::Workflow::MetadataOnlyRecord"
+                "Hyrax::Workflow::MetadataOnlyRecord",
+                "Hyrax::Workflow::RemoveFeaturedFileSets"
             ]
         }, {
             "name": "request_deletion",

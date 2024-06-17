@@ -48,6 +48,8 @@ en:
       subject_new: "ScholarsArchive@OSU Message: %{subject}"
       subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
+    workflow:
+      tombstoned: "This item has been deleted. It is no longer available."
     tombstone:
       confirmation: 'Are you sure you want to tombstone this item?'
     product_name:           "ScholarsArchive@OSU"
