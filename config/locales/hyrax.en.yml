@@ -48,6 +48,13 @@ en:
       subject_new: "ScholarsArchive@OSU Message: %{subject}"
       subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
+    notifications:
+      workflow:
+        changes_required:
+          message: |-
+            Your deposit %{title} (%{link}) requires additional changes before it can be accepted. You need to be logged in to ScholarsArchive@OSU to access and make changes to your deposit. comment
+            '%{comment}'
+          subject: Your deposit requires changes
     tombstone:
       confirmation: 'Are you sure you want to tombstone this item?'
     product_name:           "ScholarsArchive@OSU"
