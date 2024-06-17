@@ -15,7 +15,6 @@ namespace :scholars_archive do
     # COUNTER: Create a counter for the fail array display
     failed_item = 0
 
-
     # OVERRIDE: From Hyrax, add async option for Fixity check
     ::FileSet.search_in_batches({}, { fl: 'id' }) do |batch|
       batch.each do |hit|
