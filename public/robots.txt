@@ -27,3 +27,5 @@ User-agent: ChatGPT-User
 Disallow: /
 User-agent: Bytespider
 Disallow: /
+User-agent: Amazonbot
+Disallow: /
