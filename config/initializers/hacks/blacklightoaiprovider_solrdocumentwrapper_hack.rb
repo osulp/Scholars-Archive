@@ -2,13 +2,13 @@
 
 # OVERRIDE blacklight_oai_provider to remove Collections from list_records
 BlacklightOaiProvider::SolrDocumentWrapper.class_eval do
-  def conditions(options) # conditions/query derived from options
+  # conditions/query derived from options
+  def conditions(options)
     query = @controller.search_builder.merge(sort: "#{solr_timestamp} asc", rows: limit).query
 
     # OVERRIDE: Remove collections
-    query['fq'].each do |f|
-      f.sub!(',Collection', '')
-    end
+    # UPDATE: Make this query to use .map instead to modify and remove collection
+    query['fq'].map! { |f| f.sub!(',Collection', '') }
     # END OVERRIDE
 
     if options[:from].present? || options[:until].present?
