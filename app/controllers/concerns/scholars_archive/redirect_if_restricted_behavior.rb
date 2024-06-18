@@ -10,8 +10,12 @@ module ScholarsArchive
 
       # rubocop:disable Metrics/CyclomaticComplexity
       # rubocop:disable Metrics/MethodLength
+      # rubocop:disable Metrics/PerceivedComplexity
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
+
+        # If we are approving and it is readable by the current user
+        redirect_to '/' if can?(:read, curation_concern) && curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required'
 
         # Reset flash notice since we redirected due to not viewable
         flash[:alert] = ''
@@ -38,6 +42,7 @@ module ScholarsArchive
       end
       # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/MethodLength
+      # rubocop:enable Metrics/PerceivedComplexity
     end
   end
 end
