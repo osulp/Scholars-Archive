@@ -13,6 +13,9 @@ module ScholarsArchive
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
 
+        # If we are approving and it is readable by the current user
+        redirect_to '/' if can?(:read, curation_concern) && curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required'
+
         # Reset flash notice since we redirected due to not viewable
         flash[:alert] = ''
 
