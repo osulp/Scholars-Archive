@@ -12,6 +12,9 @@ namespace :scholars_archive do
     # CREATE: Make a start time to know when Fixity starts
     start_time = Time.now
 
+    # COUNTER: Create a counter for the fail array display
+    failed_item = 0
+
     # OVERRIDE: From Hyrax, add async option for Fixity check
     ::FileSet.search_in_batches({}, { fl: 'id' }) do |batch|
       batch.each do |hit|
@@ -20,6 +23,7 @@ namespace :scholars_archive do
       rescue Ldp::Gone, ActiveFedora::ModelMismatch, ActiveFedora::ObjectNotFoundError => e
         Rails.logger.warn e
         failed_arr << hit['id']
+        failed_item += 1
       end
     end
 
@@ -30,12 +34,10 @@ namespace :scholars_archive do
     latest_file = ChecksumAuditLog.where("updated_at >= ?", start_time)
     file_checked = latest_file.count
     file_passed = latest_file.where("passed = true").count
+    file_failed = failed_item
 
     # QUERY #2: Get all the ids that failed via checking with fixity
     failed_arr += latest_file.where("passed = false").map(&:file_set_id)
-
-    # DATA: Count the failed in the array instead of query
-    file_failed = failed_arr.count
 
     # APPEND: Display an outro message saying Fixity is done checking
     Rails.logger.info "\n[COMPLETE] All fixity checks complete!\n"
