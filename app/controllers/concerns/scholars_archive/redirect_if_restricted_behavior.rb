@@ -17,7 +17,7 @@ module ScholarsArchive
         # If we are approving and it is readable by the current user
         if can?(:read, curation_concern) && curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required'
           flash[:notice] = "The work is not currently available because it has not yet completed the approval process. If you are the owner of this work, #{helpers.link_to 'click here to login and continue.', request.original_url}"
-          redirect_to '/' 
+          redirect_to '/'
         end
 
         # Reset flash notice since we redirected due to not viewable
