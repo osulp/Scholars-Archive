@@ -48,7 +48,7 @@ namespace :scholars_archive do
     end
 
     # UPDATE: Now go through each update value to delete the old graph and assign the new value to it
-    to_update.each_slice(args.chunk_size) do |params|
+    to_update.each_slice(args.chunk_size.to_i) do |params|
       ReplacePredicateJob.perform_later(params, old_predicate.to_s, 'peerreviewed')
     end
   end
