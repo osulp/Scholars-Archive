@@ -2,7 +2,7 @@
 
 Rails.application.config.to_prepare do
   Hyrax::Forms::FileSetEditForm.class_eval do
-    # Add embargo_reason to permited FileSet terms
-    self.terms += [:embargo_reason]
+    # Add embargo_reason & ext_relation to permited FileSet terms
+    self.terms += [:embargo_reason, :ext_relation]
   end
 end
