@@ -3,6 +3,7 @@
 # frozen_string_literal: true
 
 module Hyrax
+  # File Set Presenter
   class FileSetPresenter
     include ModelProxy
     include PresentsAttributes
@@ -78,6 +79,7 @@ module Hyrax
 
     def license
       return if solr_document.license.nil?
+
       solr_document.license.first
     end
 
@@ -100,9 +102,11 @@ module Hyrax
 
     ##
     # @return [WorkShowPresenter, nil] +nil+ if no parent can be found
+    # rubocop:disable Naming/MemoizedInstanceVariableName
     def parent
       @parent_presenter ||= fetch_parent_presenter
     end
+    # rubocop:enable Naming/MemoizedInstanceVariableName
 
     def user_can_perform_any_action?
       Deprecation.warn("We're removing Hyrax::FileSetPresenter.user_can_perform_any_action? in Hyrax 4.0.0; Instead use can? in view contexts.")
@@ -115,6 +119,7 @@ module Hyrax
       SingleUseLinkPresenter
     end
 
+    # rubocop:disable Metrics/MethodLength
     def fetch_parent_presenter
       ids = Hyrax::SolrService.query("{!field f=member_ids_ssim}#{id}", fl: Hyrax.config.id_field)
                               .map { |x| x.fetch(Hyrax.config.id_field) }
@@ -128,5 +133,6 @@ module Hyrax
                                         presenter_class: WorkShowPresenter,
                                         presenter_args: current_ability).first
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

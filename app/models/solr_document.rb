@@ -198,6 +198,7 @@ class SolrDocument
     typical_age_range
     documentation
     web_of_science_uid
+    ext_relation
   ]
 
   field_semantics.merge!(
