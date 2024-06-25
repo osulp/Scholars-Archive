@@ -9,6 +9,9 @@ class FileSet < ActiveFedora::Base
   include ::Hyrax::FileSetBehavior
   include ::ScholarsArchive::FinalizeNestedMetadata
 
+  # INDEXER: Tell indexer to run custom file
+  self.indexer = ScholarsArchive::FileSetIndexer
+
   # METHOD: To check true/false if exist for external resource
   def ext_relation?
     !ext_relation.blank?
