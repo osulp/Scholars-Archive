@@ -29,4 +29,6 @@ class Ability
       admin? || can_review_submissions? || (record.admin_set.edit_users.include?(current_user.username) if record.respond_to?(:admin_set))
     end
   end
-end
+  def can_import_works?
+    can_create_any_work?
+  endend
