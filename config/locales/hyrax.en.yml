@@ -49,7 +49,7 @@ en:
       subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
     workflow:
-      unauthorized: The work is not currently available because it has not yet completed the approval process. If you are the owner of this work, log in to make changes.
+      unauthorized: The work is not currently available because it has not completed the approval process. If you are the owner of this work, log in to make changes.
     notifications:
       workflow:
         changes_required:
