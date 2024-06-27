@@ -14,9 +14,9 @@ module ScholarsArchive
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
 
-        # If we are approving and it is readable by the current user
-        if cannot?(:read, curation_concern) && curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required'
-          flash[:notice] = "The work is not currently available because it has not yet completed the approval process. If you are the owner of this work, #{helpers.link_to 'Click here', request.original_url} to login and continue."
+        # If we are approving and it is not readable by the current user
+        if cannot?(:edit, curation_concern) && (curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required')
+          flash[:notice] = "The work is not currently available because it has not completed the approval process. If you are the owner of this work, #{helpers.link_to 'Click here', request.original_url} to login and continue."
           redirect_to '/'
         end
 
