@@ -21,7 +21,7 @@ module ScholarsArchive
             return if can?(:edit, curation_concern)
           end
 
-          flash[:notice] = "The work is not currently available because it has not completed the approval process. If you are the owner of this work, #{helpers.link_to 'Click here', request.original_url} to login and continue."
+          flash[:notice] = "The work is not available because it has not completed the approval process. If you are the owner of this work, #{helpers.link_to 'click here', request.original_url} to login and continue."
           redirect_to '/'
         end
 
