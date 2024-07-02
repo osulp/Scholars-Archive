@@ -22,8 +22,11 @@ namespace :scholars_archive do
 
     # LOOP: Go through each filesets in SA
     ::FileSet.find_each do |file_set|
+      # CHECK: To see if :mime_type exist
+      check_type = file_set.try(:mime_type) rescue nil
+
       # CONDITION: Check to see if the condition match of the case of format
-      email_data << check_container(file_set) if file_set.mime_type.include?('application')
+      email_data << check_container(file_set) if ((!check_type.blank?) && file_set.mime_type.include?('application'))
     end
 
     # DISPLAY: Done message for checking filesets
