@@ -284,3 +284,8 @@ Qa::Authorities::Local.register_subauthority('genres', 'Qa::Authorities::Local::
 Qa::Authorities::Local.register_subauthority('academic_units', 'ScholarsArchive::CacheBasedAuthority')
 Qa::Authorities::Local.register_subauthority('degree_fields', 'ScholarsArchive::CacheBasedAuthority')
 Qa::Authorities::Local.register_subauthority('degree_grantors', 'ScholarsArchive::ExtendedFileBasedAuthority')
+
+# set bulkrax default work type to first curation_concern if it isn't already set
+if Bulkrax.default_work_type.blank?
+  Bulkrax.default_work_type = Hyrax.config.curation_concerns.first.to_s
+end
