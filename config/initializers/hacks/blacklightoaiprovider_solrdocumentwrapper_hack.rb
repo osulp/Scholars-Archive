@@ -7,8 +7,8 @@ BlacklightOaiProvider::SolrDocumentWrapper.class_eval do
     query = @controller.search_builder.merge(sort: "#{solr_timestamp} asc", rows: limit).query
 
     # OVERRIDE: Remove collections
-    # UPDATE: Make this query to use .map instead to modify and remove collection
-    query['fq'].map! { |f| f.sub(',Collection', '') }
+    # UPDATE: Make this query to use .map instead to modify and remove collection and check for nil
+    query['fq'].map! { |f| f.sub(',Collection', '') if !f.blank? }
     # END OVERRIDE
 
     if options[:from].present? || options[:until].present?
