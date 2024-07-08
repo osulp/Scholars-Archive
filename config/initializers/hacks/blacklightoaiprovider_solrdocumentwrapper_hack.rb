@@ -8,7 +8,7 @@ BlacklightOaiProvider::SolrDocumentWrapper.class_eval do
 
     # OVERRIDE: Remove collections
     # UPDATE: Make this query to use .map instead to modify and remove collection
-    query['fq'].map! { |f| f.sub!(',Collection', '') }
+    query['fq'].map! { |f| f.sub(',Collection', '') }
     # END OVERRIDE
 
     if options[:from].present? || options[:until].present?
