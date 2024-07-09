@@ -9,6 +9,6 @@ RSpec.describe ScholarsArchive::ContainerMailer do
 
   # TEST GROUP #1: Create couple test to see if the mailer class pass the test
   it { expect(mail.subject).to eql('Scholars Archive: Archive/Container Files Inventory Report') }
-  it { expect(mail.body.encoded).to include("The report on the Filesets Inventory of container/archive files is attached.") }
+  it { expect(mail.body.encoded).to include('The report on the Filesets Inventory of container/archive files is attached.') }
   it { expect(mail.to).to eql([email]) }
 end
