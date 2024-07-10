@@ -3,11 +3,12 @@
 require 'zip'
 require 'tar/reader'
 require 'down'
+require 'csv'
 
 # RAKE TASK: Create a rake task to give report on files that are archive/container & in torrent formats
 namespace :scholars_archive do
   desc "FileSets inventory check within container/archives & torrent files"
-  task filesets_check: :environment do
+  task filesets_inventory_check: :environment do
     # DISPLAY: Create status to show where the process is running
     puts "Running ScholarsArchive::FilesetsInventoryCheck"
 
@@ -37,7 +38,7 @@ namespace :scholars_archive do
     puts "Now composing email to send out the report... .. ."
 
     # CREATE: Make a .txt file
-    create_txt_file(email_data)
+    create_csv_file(email_data)
 
     # MAILER: Enable mailer so Container can send out the email now
     ActionMailer::Base.perform_deliveries = true
@@ -73,8 +74,11 @@ namespace :scholars_archive do
 
   # METHOD: Create a method to read zip file
   def zip_reading(container)
-    # DATA: A tmp data storage for info
-    data_info = []
+    # DATA: A tmp data storage for info & get the file ids & title
+    data_info, tmp = [], []
+    counter = 0
+    file_id = container.id.to_s
+    title = container.title.first.to_s
 
     # GET: Get the file via URI from Fedora
     fileset = container.files.first
@@ -85,24 +89,29 @@ namespace :scholars_archive do
 
     # READ: Now open up the .zip file
     Zip::File.open_buffer(zip_fileset) do |zip_file|
-      data_info << "#{container.title.first}$#{zip_file.size}"
       # DATA: Handle reading entries one by one
       zip_file.each do |entry|
         if entry.size != 0
           format_type = entry.name.split('.')
-          data_info << "#{entry.name}$#{format_type.last.downcase}$#{entry.size}"
+          tmp << "#{file_id}$#{title}$0$#{entry.name}$#{format_type.last.downcase}$#{entry.size}"
+          counter += 1
         end
       end
     end
 
+    # MAP: Map out the entire array and replace it with the total number of item in files
+    tmp.map! { |i| i.sub('$0$', "$#{counter}$") }
+
     # RETURN: Return the data that was collected
-    data_info
+    data_info = tmp.dup
   end
 
   # METHOD: Create a method to read gzip file
   def gzip_reading(container)
-    # DATA: A tmp data storage for info
-    data_info = []
+    # DATA: A tmp data storage for info & get the file ids & title
+    data_info, tmp = [], []
+    file_id = container.id.to_s
+    title = container.title.first.to_s
 
     # GET: Get the file via URI from Fedora
     fileset = container.files.first
@@ -119,18 +128,19 @@ namespace :scholars_archive do
     # CREATE: Add the data into the array for later usage for report
     parse_title = container.title.first.gsub('.gz', '')
     format_type = parse_title.split('.')
-    data_info << "#{container.title.first}$1"
-    data_info << "#{parse_title}$#{format_type.last.downcase}$#{size}"
+    tmp << "#{file_id}$#{title}$1$#{parse_title}$#{format_type.last.downcase}$#{size}"
 
     # RETURN: Return the data that was collected
-    data_info
+    data_info = tmp.dup
   end
 
   # METHOD: Create a method to read tar file
   def tar_reading(container)
-    # DATA: A tmp data storage for info & a counter for total files
+    # DATA: A tmp data storage for info & get the file ids & title
     data_info, tmp = [], []
     counter = 0
+    file_id = container.id.to_s
+    title = container.title.first.to_s
 
     # GET: Get the file via URI from Fedora
     fileset = container.files.first
@@ -141,42 +151,35 @@ namespace :scholars_archive do
       Tar::Reader.new(file).each do |entry|
         if entry.header.size != 0
           format_type = entry.header.path.split('.')
-          tmp << "#{entry.header.path}$#{format_type.last.downcase}$#{entry.header.size}"
+          tmp << "#{file_id}$#{title}$0$#{entry.header.path}$#{format_type.last.downcase}$#{entry.header.size}"
           counter += 1
         end
       end
     end
 
-    # COMBINE: Combine all data into singular array
-    data_info << "#{container.title.first}$#{counter}"
-    (data_info << tmp).flatten!
+    # MAP: Map out the entire array and replace it with the total number of item in files
+    tmp.map! { |i| i.sub('$0$', "$#{counter}$") }
 
     # RETURN: Return the data that was collected
-    data_info
+    data_info = tmp.dup
   end
 
   # METHOD: Create a file to attach to email
-  def create_txt_file(email_data)
+  def create_csv_file(email_data)
     # CHECK: Check and delete files if exist
-    File.delete('./tmp/inventory.txt') if File.file?('./tmp/inventory.txt')
+    File.delete('./tmp/filesets_inventory.csv') if File.file?('./tmp/filesets_inventory.csv')
 
     # LOOP: Go through items and write to file
-    File.open("./tmp/inventory.txt", "w+") do |f|
+    CSV.open("./tmp/filesets_inventory.csv", "w+") do |csv|
       if email_data.blank?
-        f.write("None of the filesets inventory have anything to check.")
+        csv << ['None of the filesets inventory have anything to check.']
       else
         email_data.each do |data|
           next if data.blank?
-          data.each_with_index do |item, index|
-            str = item.split('$')
-            if index == 0
-              f.write("The File '#{str[0]}' contains total of #{str[1]} file(s)")
-            else
-              f.write("File name: #{str[0]}     [Format: #{str[1]}] - Byte sizes: #{str[2]}")
-            end
-            f.write("#{$/}")
+          data.each do |item|
+            csv_str = item.split('$')
+            csv << csv_str
           end
-          f.write("#{$/}")
         end
       end
     end
