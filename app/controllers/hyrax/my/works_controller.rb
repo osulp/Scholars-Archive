@@ -28,11 +28,12 @@ module Hyrax
         end
   
         private
-  
+
+        # OVERRIDE FROM HYRAX: CAN REMOVE AT 4.0
         def collections_service
-          new_work_thing = self.dup
-          new_work_thing.params = {}
-          Hyrax::CollectionsService.new(new_work_thing)
+          dupe = self.dup
+          dupe.params = {}
+          Hyrax::CollectionsService.new(dupe)
         end
   
         def search_action_url(*args)
