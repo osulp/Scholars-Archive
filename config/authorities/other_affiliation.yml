@@ -146,3 +146,6 @@ terms:
 - id: "http://id.loc.gov/authorities/names/no2019010891"
   term: "Oregon Climate Change Research Institute"
   active: true
+- id: "https://opaquenamespace.org/ns/subject/OregonStateUniversityOfficeOfUndergraduateResearch"
+  term: "Office of Undergraduate Research (OUR)"
+  active: true
