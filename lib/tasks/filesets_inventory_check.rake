@@ -174,17 +174,12 @@ namespace :scholars_archive do
       if email_data.blank?
         csv << ['None of the filesets inventory have anything to check.']
       else
+        csv << ['fileset_pid', 'container_filename', 'files_in_container', 'filename', 'format', 'size_in_bytes']
         email_data.each do |data|
           next if data.blank?
           data.each_with_index do |item, index|
-            if index == 0
-              csv << ['fileset_pid', 'container_filename', 'files_in_container', 'filename', 'format', 'size_in_bytes']
-              csv_str = item.split('$')
-              csv << csv_str
-            else
-              csv_str = item.split('$')
-              csv << csv_str
-            end
+            csv_str = item.split('$')
+            csv << csv_str
           end
         end
       end
