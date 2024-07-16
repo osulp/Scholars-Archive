@@ -10,6 +10,7 @@ production:
   :concurrency: <%= ENV.fetch('SCHOLARSARCHIVE_SIDEKIQ_THREADS', 16) %>
   :pidfile: tmp/pids/sidekiq.pid
   :logfile: log/sidekiq.log
-:queues:
-  - default
-  - [ingest, 2]
+# :queues:
+#   - default
+#   - [ingest, 2]
+#   - reindex

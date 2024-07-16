@@ -2,7 +2,7 @@
 
 # reindexes all works of a single model
 class ReindexModelJob < ScholarsArchive::ApplicationJob
-  queue_as :default
+  queue_as :reindex
 
   def perform(model_name, uris)
     counter = 0
