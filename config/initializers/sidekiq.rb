@@ -26,7 +26,7 @@ Sidekiq.configure_server do |s|
 
     s.options[:queues] = queues
   else
-    s.options[:queues] = ["default","ingest","reindex"]
+    s.options[:queues] = ["default","ingest","ingest"]
   end
   Yabeda::Prometheus::Exporter.start_metrics_server!
 end
