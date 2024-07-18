@@ -2,7 +2,7 @@
 
 # reindexes chunks of uris
 class ReindexChunkJob < ScholarsArchive::ApplicationJob
-  queue_as :default
+  queue_as :reindex
 
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
@@ -19,7 +19,7 @@ class ReindexChunkJob < ScholarsArchive::ApplicationJob
     # rubocop:disable Style/RescueStandardError
     rescue => e
       logger.info "Failed to reindex #{work.id}: #{e.message}" unless work.nil?
-      logger.info "Failed to reindex a work: #{e.message}" if work.nil?
+      logger.info "Failed to reindex a work: #{e.message}; #{uri}" if work.nil?
       next
     end
     # rubocop:enable Style/RescueStandardError

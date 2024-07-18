@@ -4,7 +4,7 @@ namespace :scholars_archive do
     # Set a default value of 100 for chunk_size
     args.with_defaults(:chunk_size => 100)
     # ACL have to be indexed first so permissions and visibilities are correct
-    @priority_models = %w[Hydra::AccessControl Hydra::AccessControl::Permissions].freeze
+    @priority_models = %w[Hydra::AccessControl Hydra::AccessControl::Permissions AdminSet].freeze
     @priority_uris = []
     @secondary_uris = []
 

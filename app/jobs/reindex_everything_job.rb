@@ -2,7 +2,7 @@
 
 # reindexes everything
 class ReindexEverythingJob < ScholarsArchive::ApplicationJob
-  queue_as :default
+  queue_as :reindex
 
   def perform
     admin_set_map = YAML.load(File.read('config/admin_set_map.yml'))
