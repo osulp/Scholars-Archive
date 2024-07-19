@@ -1,51 +1,55 @@
 namespace :scholars_archive do
-  desc "Enqueue a job to resolrize repository objects in chunks"
-  task :reindex_by_chunk, [:chunk_size] => :environment do |t, args|
-    # Set a default value of 100 for chunk_size
-    args.with_defaults(:chunk_size => 100)
+  desc "Enqueue jobs to resolrize repository objects in chunks"
+  task :reindex_by_chunk, [:chunk_size, :base_uris] => :environment do |t, args|
     # ACL have to be indexed first so permissions and visibilities are correct
     @priority_models = %w[Hydra::AccessControl Hydra::AccessControl::Permissions AdminSet].freeze
-    @priority_uris = []
-    @secondary_uris = []
-
+    @uris = []
+    # Get the Fedora config for creating default base uri and credentials
     fedora_config = Rails.application.config_for(:fedora)
+
+    # Set a default value of 100 for chunk_size and the fedora base url
+    args.with_defaults({
+      chunk_size: 100,
+      base_uris: "#{fedora_config['url']}#{fedora_config['base_path']}",
+    })
+    # Support crawling multiple starting URLs
+    base_uris = args.base_uris.split(' ')
+
+    # Base Fedora connection
     @conn = Faraday.new(fedora_config['url'])
     @conn.basic_auth(fedora_config['user'], fedora_config['password'])
 
+    Rails.logger.info("Starting crawl of following URIs: #{base_uris}")
     # Fetch all Fedora URIs
-    fedora_crawl("#{fedora_config['url']}#{fedora_config['base_path']}")
+    base_uris.each { |uri| fedora_crawl(uri) }
 
-    @priority_uris.each_slice(args.chunk_size) do |uris|
-      ReindexChunkJob.perform_now(uris)
-    end
-    @secondary_uris.each_slice(args.chunk_size) do |uris|
+    @uris.each_slice(args.chunk_size.to_i) do |uris|
       ReindexChunkJob.perform_later(uris)
     end
   end
 
   def fedora_crawl(base_uri)
     Rails.logger.info("crawling: #{base_uri}")
-    uris = []
 
     # Query Fedora for current node
     resp = @conn.get(base_uri) do |req|
-      # Wait up to 15 mins because initial request is HUGE
-      req.options.timeout = 15 * 60
+      # Wait up to 20 mins because initial request is HUGE
+      req.options.timeout = 20 * 60
       req.headers['Accept'] = 'application/ld+json'
     end
     json_resp = JSON.parse(resp.body)[0]
 
     model = parse_model(json_resp)
-    if @priority_models.include? model
-      @priority_uris << base_uri
+    if @priority_models.include?(model)
+      # If it's a priority model lets just reindex it here and now
+      # It's a possible race-condition if the other crawlers finish first with an asset that requires this ACL
+      ActiveFedora::Base.find(ActiveFedora::Base.uri_to_id(base_uri)).update_index
     else
-      @secondary_uris << base_uri
+      @uris << base_uri
     end
 
-    # Get children and node creation time
+    # Get children nodes
     contains = json_resp['http://www.w3.org/ns/ldp#contains'] || []
-
-    # For each child
     contains.each do |uri|
       uri = uri['@id']
 
