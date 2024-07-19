@@ -18,14 +18,17 @@ class SearchBuilder < Blacklight::SearchBuilder
   #     solr_parameters[:custom] = blacklight_params[:user_value]
   #   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/PerceivedComplexity
   def add_advanced_parse_q_to_solr(solr_parameters)
-    default_field_def = {advanced_parse: false}
+    default_field_def = { advanced_parse: false }
 
     return if blacklight_params[:q].blank? || !blacklight_params[:q].respond_to?(:to_str)
 
-    field_def = blacklight_config.search_fields[blacklight_params[:search_field]] ||
-      blacklight_config.default_search_field
+    field_def = blacklight_config.search_fields[blacklight_params[:search_field]] || blacklight_config.default_search_field
 
+    # OVERRIDE FROM BLACKLIGHT ADVANCE SEARCH TO ENSURE DEFAULT EXISTS
     field_def = default_field_def if field_def.nil?
 
     # If the individual field has advanced_parse_q suppressed, punt
@@ -41,11 +44,10 @@ class SearchBuilder < Blacklight::SearchBuilder
 
       BlacklightAdvancedSearch.deep_merge!(solr_parameters, solr_direct_params)
       BlacklightAdvancedSearch.deep_merge!(solr_parameters, adv_search_params)
-    rescue *PARSLET_FAILED_EXCEPTIONS => e
-      # do nothing, don't merge our input in, keep basic search
-      # optional TODO, display error message in flash here, but hard to
-      # display a good one.
-      return
+    rescue *PARSLET_FAILED_EXCEPTIONS
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/PerceivedComplexity
 end
