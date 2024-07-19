@@ -23,7 +23,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # rubocop:disable Metrics/PerceivedComplexity
   # rubocop:disable Lint/UselessAssignment
   # rubocop:disable Style/RedundantReturn
-  
+
   def add_advanced_parse_q_to_solr(solr_parameters)
     default_field_def = { advanced_parse: false }
 
