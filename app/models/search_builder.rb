@@ -21,6 +21,9 @@ class SearchBuilder < Blacklight::SearchBuilder
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/PerceivedComplexity
+  # rubocop:disable Lint/UselessAssignment
+  # rubocop:disable Style/RedundantReturn
+  
   def add_advanced_parse_q_to_solr(solr_parameters)
     default_field_def = { advanced_parse: false }
 
@@ -44,10 +47,13 @@ class SearchBuilder < Blacklight::SearchBuilder
 
       BlacklightAdvancedSearch.deep_merge!(solr_parameters, solr_direct_params)
       BlacklightAdvancedSearch.deep_merge!(solr_parameters, adv_search_params)
-    rescue *PARSLET_FAILED_EXCEPTIONS
+    rescue *PARSLET_FAILED_EXCEPTIONS => e
+      return
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Lint/UselessAssignment
+  # rubocop:enable Style/RedundantReturn
 end
