@@ -1,6 +1,6 @@
 namespace :scholars_archive do
   desc "Enqueue jobs to resolrize repository objects in chunks"
-  task :reindex_by_chunk, [:chunk_size, :base_uris] => :environment do |t, args|
+  task :reindex_by_chunk, [:chunk_size, :base_uris_file] => :environment do |t, args|
     # ACL have to be indexed first so permissions and visibilities are correct
     @priority_models = %w[Hydra::AccessControl Hydra::AccessControl::Permissions AdminSet].freeze
     @uris = []
@@ -10,10 +10,16 @@ namespace :scholars_archive do
     # Set a default value of 100 for chunk_size and the fedora base url
     args.with_defaults({
       chunk_size: 100,
-      base_uris: "#{fedora_config['url']}#{fedora_config['base_path']}",
+      base_uris_file: nil,
     })
+
     # Support crawling multiple starting URLs
-    base_uris = args.base_uris.split(' ')
+    if (args.base_uris_file)
+      base_uris = File.readlines(args.base_uris_file).map(&:chomp)
+    end
+    # And default to the head of Fedora
+    base_uris ||= "#{fedora_config['url']}#{fedora_config['base_path']}"
+
 
     # Base Fedora connection
     @conn = Faraday.new(fedora_config['url'])
