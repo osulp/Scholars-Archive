@@ -15,14 +15,18 @@ namespace :scholars_archive do
     uris = base_uris_query("#{fedora_config['url']}#{fedora_config['base_path']}")
 
     # Group URIs and fork for each group
-    uris.in_groups(args.proc_count.to_i) do |uris|
-      Process.fork {
-        exec("bundle exec rake 'scholars_archive:reindex_by_chunk[#{args.chunk_size}, #{uris.compact.join(' ')}]'")
-      }
+    uris.in_groups(args.proc_count.to_i).each_with_index do |uris, index|
+      File.open("/tmp/uris_#{index}", 'w+') do |file|
+        file.puts(uris)
+        Process.fork {
+          exec("bundle exec rake 'scholars_archive:reindex_by_chunk[#{args.chunk_size}, #{file.path}]'")
+        }
+      end
     end
   end
 
   def base_uris_query(base_uri)
+    Rails.logger.info("crawling: #{base_uri} for initial uris")
     # Query Fedora for top node
     resp = @conn.get(base_uri) do |req|
       # Wait up to 20 mins because initial request is HUGE
