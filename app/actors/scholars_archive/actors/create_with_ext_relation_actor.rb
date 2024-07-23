@@ -26,11 +26,11 @@ module ScholarsArchive
       def attach_files(env, ext_relation)
         return true unless ext_relation
 
-        ext_relation.each do |url|
-          next if url.blank?
+        ext_relation.each do |ext|
+          next if ext.blank?
 
           # Escape any space characters, so that this is a legal URI
-          uri = URI.parse(Addressable::URI.escape(url.strip))
+          uri = URI.parse(Addressable::URI.escape(ext.strip))
           create_file_from_url(env, uri)
         end
         true
@@ -43,29 +43,16 @@ module ScholarsArchive
         ext_relation = URI.decode_www_form_component(uri.to_s)
         use_valkyrie = false
 
-        fs_class = curation_concern.is_a? Valkyrie::Resource ? Hyrax::FileSet : ::FileSet
-
-        file_set = fs_class.new(ext_relation: ext_relation) do |fs|
-          # title = 'oEmbed Media'
-          # begin
-          #   resource = OEmbed::Providers.get(oembed_url)
-          #   title = resource.respond_to?(:title) ? resource.title : "oEmbed Media from #{resource.provider_name}"
-          # rescue OEmbed::Error => e
-          #   msg = e.message
-          #   msg += ' (broken or non-allowlisted URI)' if e.is_a? OEmbed::NotFound
-          #   OembedError.find_or_create_by(document_id: fs.id) do |error|
-          #     error.document_id = fs.id
-          #   end.add_error(msg)
-          # end
-          # fs.title = Array(title)
-        end
-
-        if curation_concern.is_a? Valkyrie::Resource
-          file_set = Hyrax.persister.save(resource: file_set)
+        # CASES: Check on curation concern if it is a Valkyrie::Resource
+        case env.curation_concern
+        when Valkyrie::Resource
+          file_set = Hyrax.persister.save(resource: Hyrax::FileSet.new(ext_relation: ext_relation))
           use_valkyrie = true
+        else
+          file_set = ::FileSet.new(ext_relation: ext_relation)
         end
 
-        actor = Hyrax::Actors::FileSetActor.new(fs, env.user, use_valkyrie: use_valkyrie)
+        actor = Hyrax::Actors::FileSetActor.new(file_set, env.user, use_valkyrie: use_valkyrie)
         actor.create_metadata(visibility: env.curation_concern.visibility)
         actor.attach_to_work(env.curation_concern)
         file_set.save! if file_set.respond_to?(:save!)

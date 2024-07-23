@@ -48,6 +48,15 @@ module ScholarsArchive
       super
     end
 
+    # We can use Hyrax::WorksControllerBehavior definition and add on additional params we want
+    def attributes_for_actor
+      attributes = super
+      ext_relation = params.fetch(:ext_relation, [])
+      attributes[:ext_relation] = ext_relation
+
+      attributes
+    end
+
     # METHOD: Setup a method to clear all file sets
     def destroy_all_files
       # FETCH: Get the array of all file sets data
