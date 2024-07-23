@@ -2,6 +2,7 @@
 
 module ScholarsArchive
   # works controller behavior
+  # rubocop:disable Metrics/ModuleLength
   module WorksControllerBehavior
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior
@@ -154,4 +155,5 @@ module ScholarsArchive
       OtherOption.where(work_id: curation_concern.id, property_name: property.to_s)
     end
   end
+  # rubocop:enable Metrics/ModuleLength
 end
