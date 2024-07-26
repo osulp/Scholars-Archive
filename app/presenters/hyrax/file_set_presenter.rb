@@ -24,7 +24,7 @@ module Hyrax
 
     # CurationConcern methods
     delegate :stringify_keys, :human_readable_type, :collection?, :image?, :video?,
-             :audio?, :pdf?, :office_document?, :representative_id, :to_s, to: :solr_document
+             :audio?, :pdf?, :office_document?, :representative_id, :ext_relation?, :to_s, to: :solr_document
 
     # Methods used by blacklight helpers
     delegate :has?, :first, :fetch, to: :solr_document
@@ -111,6 +111,17 @@ module Hyrax
     def user_can_perform_any_action?
       Deprecation.warn("We're removing Hyrax::FileSetPresenter.user_can_perform_any_action? in Hyrax 4.0.0; Instead use can? in view contexts.")
       current_ability.can?(:edit, id) || current_ability.can?(:destroy, id) || current_ability.can?(:download, id)
+    end
+
+    # METHOD: Declare two methods to fetch out the :ext_relation & check if it exist
+    def ext_relation?
+      curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id)
+      !curation_concern.ext_relation.blank?
+    end
+
+    def ext_relation
+      curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id)
+      curation_concern.ext_relation
     end
 
     private

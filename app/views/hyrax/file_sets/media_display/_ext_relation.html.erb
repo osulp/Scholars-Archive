@@ -1,0 +1,8 @@
+<div class="ext-relation-preview">
+  <%= image_tag('ext_relation.png', alt: '', class: 'ext-relation') %>
+    <p /><%= link_to "View Online",
+      file_set.ext_relation.to_s,
+      id: "external_relation",
+      data: { label: file_set.id.to_s, work_id: @presenter.id, collection_ids: @presenter.member_of_collection_ids },
+      target: "_blank" %>
+</div>
