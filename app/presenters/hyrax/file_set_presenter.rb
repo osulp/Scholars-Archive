@@ -115,16 +115,19 @@ module Hyrax
 
     # METHOD: Declare two methods to fetch out the :ext_relation & check if it exist
     def ext_relation?
-      curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id, use_valkyrie: false)
-      !curation_concern.ext_relation.blank?
+      ext?(solr_document, control_stm = true)
     end
 
     def ext_relation
-      curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id, use_valkyrie: false)
-      curation_concern.ext_relation
+      ext?(solr_document, control_stm = false)
     end
 
     private
+
+    def ext?(solr_document, control_stm)
+      curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id, use_valkyrie: false)
+      control_stm ? !curation_concern.ext_relation.blank? : curation_concern.ext_relation
+    end
 
     def link_presenter_class
       SingleUseLinkPresenter

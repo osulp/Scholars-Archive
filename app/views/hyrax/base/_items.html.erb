@@ -12,7 +12,10 @@
 
 <%  array_of_ids = presenter.list_of_item_ids_to_display %>
 <%  members = presenter.member_presenters_for(array_of_ids) %>
-<% if members.present? %>
+
+<% if presenter.ext_relation? %>
+  <div class="alert alert-warning" role="alert"><%= t('hyrax.items.ext_relation', type: presenter.human_readable_type, relation_url: presenter.ext_relation) %></div>
+<% elsif members.present? %>
   <table class="table table-striped related-files">
     <thead>
       <tr>

@@ -25,5 +25,28 @@ module ScholarsArchive
                :rights_statement_label, to: :solr_document
       delegate(*::ScholarsArchive::DefaultTerms.base_terms, to: :solr_document)
     end
+
+    # METHOD: Add in a method to check if ext_relation exist & fetch the value
+    def ext_relation?
+      file_set_presenters.any? do |presenter|
+        ext?(presenter, control_stm = true)
+      end
+    end
+
+    def ext_relation
+      item = ''
+
+      file_set_presenters.any? do |presenter|
+        item = ext?(presenter, control_stm = false)
+      end
+
+      item
+    end
+
+    private
+
+    def ext?(presenter, control_stm)
+      control_stm ? !presenter.ext_relation.blank? : presenter.ext_relation
+    end
   end
 end
