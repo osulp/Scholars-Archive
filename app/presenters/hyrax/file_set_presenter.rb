@@ -115,11 +115,11 @@ module Hyrax
 
     # METHOD: Declare two methods to fetch out the :ext_relation & check if it exist
     def ext_relation?
-      ext?(solr_document, control_stm = true)
+      ext?(solr_document, true)
     end
 
     def ext_relation
-      ext?(solr_document, control_stm = false)
+      ext?(solr_document, false)
     end
 
     private
