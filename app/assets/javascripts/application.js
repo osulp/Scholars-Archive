@@ -20,6 +20,7 @@
 //= require blacklight/blacklight
 //= require field_other
 //= require add_geo_field
+//= require modal_subcollection_submit
 //= require add_date_field
 //= require nested_field
 //= require embargo_date_field
