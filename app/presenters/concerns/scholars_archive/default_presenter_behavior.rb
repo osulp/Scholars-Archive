@@ -29,18 +29,18 @@ module ScholarsArchive
     # METHOD: Add in a method to check if ext_relation exist & fetch the value
     def ext_relation?
       file_set_presenters.any? do |presenter|
-        ext?(presenter, control_stm = true)
+        ext?(presenter, true)
       end
     end
 
     def ext_relation
-      item = ''
+      ext_url = ''
 
       file_set_presenters.any? do |presenter|
-        item = ext?(presenter, control_stm = false)
+        ext_url = ext?(presenter, false)
       end
 
-      item
+      ext_url
     end
 
     private
