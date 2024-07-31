@@ -50,11 +50,10 @@ module ScholarsArchive
           if env.curation_concern.file_sets.map(&:ext_relation).count == 1
             file_set = env.curation_concern.file_sets.find_all(&:ext_relation).first
             file_set.ext_relation = ext_relation
-            use_valkyrie = true
           else
             file_set = Hyrax.persister.save(resource: Hyrax::FileSet.new(ext_relation: ext_relation))
-            use_valkyrie = true
           end
+          use_valkyrie = true
         else
           # CASES: If the :ext_relation already exist, then update the value rather than create a new FileSet
           if env.curation_concern.file_sets.map(&:ext_relation).count == 1

@@ -88,6 +88,7 @@ Metrics/CyclomaticComplexity:
     - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
     - "lib/scholars_archive/validators/other_affiliation_validator.rb"
     - "app/inputs/multi_value_label_url_input.rb"
+    - "app/actors/scholars_archive/actors/create_with_ext_relation_actor.rb"
 
 Metrics/PerceivedComplexity:
   Exclude:
@@ -107,6 +108,7 @@ Metrics/PerceivedComplexity:
     - "app/inputs/multi_value_label_url_input.rb"
     - "app/services/scholars_archive/degree_level_service.rb"
     - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/actors/scholars_archive/actors/create_with_ext_relation_actor.rb"
 
 Naming/MethodParameterName:
   Exclude:
