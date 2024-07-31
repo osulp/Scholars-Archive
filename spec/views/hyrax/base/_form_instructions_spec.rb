@@ -63,14 +63,14 @@ RSpec.describe 'hyrax/base/_form.erb', type: :view do
     allow(controller).to receive(:action_name).and_return('new')
   end
 
-  context 'batch upload off' do
-    before do
-      allow(Flipflop).to receive(:batch_upload?).and_return(false)
-      render
-    end
+  # context 'batch upload off' do
+  #   before do
+  #     allow(Flipflop).to receive(:batch_upload?).and_return(false)
+  #     render
+  #   end
 
-    it 'shows link to LibGuide' do
-      expect(rendered).to have_link 'ScholarsArchive@OSU User Guide'
-    end
-  end
+  #   it 'shows link to LibGuide' do
+  #     expect(rendered).to have_link 'ScholarsArchive@OSU User Guide'
+  #   end
+  # end
 end

@@ -154,4 +154,4 @@ en:
         ext_relation: "View Online"
 
     items:
-      ext_relation: "This %{type} has item that is available from an external website: %{relation_url}."
+      ext_relation: "This %{type} has item that is available from an external website: "
