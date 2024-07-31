@@ -13,8 +13,32 @@
 <%  array_of_ids = presenter.list_of_item_ids_to_display %>
 <%  members = presenter.member_presenters_for(array_of_ids) %>
 
+<%# CASE: Add in additional statement to see if :ext_relation present %>
 <% if presenter.ext_relation? %>
   <div class="alert alert-warning" role="alert"><%= t('hyrax.items.ext_relation', type: presenter.human_readable_type, relation_url: presenter.ext_relation) %></div>
+  <% if can?(:edit, presenter.id) || can?(:admin, presenter.id) %>
+    <table class="table table-striped related-files">
+      <thead>
+        <tr>
+          <th><%= t('.thumbnail') %></th>
+          <th><%= t('.title') %></th>
+          <th><%= t('.date_uploaded') %></th>
+          <th><%= t('.visibility') %></th>
+          <th><%= t('.actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'member', collection: members %>
+      </tbody>
+    </table>
+    <div class="row">
+      <% if presenter.total_pages > 1 %>
+          <div class="row record-padding col-md-9">
+            <%= paginate array_of_ids, outer_window: 2, theme: 'blacklight', param_name: :page, route_set: main_app %>
+          </div><!-- /pager -->
+      <% end %>
+    </div>
+  <% end %>
 <% elsif members.present? %>
   <table class="table table-striped related-files">
     <thead>

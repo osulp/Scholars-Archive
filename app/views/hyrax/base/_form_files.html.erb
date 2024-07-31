@@ -62,13 +62,21 @@
         </div>
      </div>
 
-     <br/><br/>
-
     <%# FIELD: Add field to have a link URL rather file upload using :ext_relation %>
-     <div class="form-group string optional">
-      <label id="ext_relation_label" class="control-label string optional" for="ext_relation"><%= t('simple_form.labels.defaults.ext_relation') %></label>
-      <p class="help-block"><%= t('simple_form.hints.defaults.ext_relation') %></p>
-      <input class="form-control string optional" type="url" value="" name="ext_relation[]" id="ext_relation">
-    </div>
+    <% @work_lists = ['GraduateThesisOrDissertation', 'HonorsCollegeThesis', 'GraduateProject', 'UndergraduateThesisOrProject'] %>
+    <% if !@work_lists.include?(curation_concern.model_name.name) %>
+      <br/><br/>
+
+      <div class="form-group string optional">
+        <% @ext_relation = '' %>
+        <% curation_concern.file_sets.each do |fs| %>
+          <% @ext_relation = fs.ext_relation if !fs.ext_relation.blank? %>
+        <% end %>
+
+        <label id="ext_relation_label" class="control-label string optional" for="ext_relation"><%= t('simple_form.labels.defaults.ext_relation') %></label>
+        <p class="help-block"><%= t('simple_form.hints.defaults.ext_relation') %></p>
+        <input class="form-control string optional" type="url" value="<%= @ext_relation || '' %>" name="ext_relation[]" id="ext_relation">
+      </div>
+    <% end %>
 
 <%= render 'hyrax/uploads/js_templates' %>
