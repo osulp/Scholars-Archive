@@ -64,19 +64,28 @@
 
     <%# FIELD: Add field to have a link URL rather file upload using :ext_relation %>
     <% @work_lists = ['GraduateThesisOrDissertation', 'HonorsCollegeThesis', 'GraduateProject', 'UndergraduateThesisOrProject'] %>
-    <% if !@work_lists.include?(curation_concern.model_name.name) %>
+    <% if !@work_lists.include?(f.object.model.model_name.name) %>
       <br/><br/>
 
       <div class="form-group string optional">
-        <% @ext_relation = '' %>
-        <% curation_concern.file_sets.each do |fs| %>
-          <% @ext_relation = fs.ext_relation if !fs.ext_relation.blank? %>
+        <% @file_counter = 0 %>
+        <% f.object.model.file_sets.each do |fs| %>
+          <% if !fs.ext_relation.blank? %>
+            <% @ext_relation = fs.ext_relation %>
+          <% else %>
+            <% @file_counter += 1 %>
+          <% end %>
         <% end %>
 
         <label id="ext_relation_label" class="control-label string optional" for="ext_relation"><%= t('simple_form.labels.defaults.ext_relation') %></label>
         <p class="help-block"><%= t('simple_form.hints.defaults.ext_relation') %></p>
         <input class="form-control string optional" type="url" value="<%= @ext_relation || '' %>" name="ext_relation[]" id="ext_relation">
       </div>
+
+      <%# HIDDEN: This hidden field helps out the JS script to determine some factors %>
+      <p id="ext_relation_curr" hidden><% @ext_relation %></p>
+      <p id="file_curr" hidden><% @file_counter %></p>
     <% end %>
+    
 
 <%= render 'hyrax/uploads/js_templates' %>
