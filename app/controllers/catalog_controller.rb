@@ -459,6 +459,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('conference_name') do |field|
+      solr_name = solr_name('conference_name', :stored_searchable)
+      field.solr_parameters = {
+        qf: solr_name,
+        pf: solr_name
+      }
+    end
+
     config.add_search_field('has_journal') do |field|
       solr_name = solr_name('has_journal', :stored_searchable)
       field.solr_parameters = {
