@@ -67,8 +67,8 @@
     <% if !@work_lists.include?(f.object.model.model_name.name) %>
       <br/><br/>
 
-      <div class="form-group string optional">
-        <% @file_counter = 0 %>
+      <%# FETCH: Get FileSet to check if exist for some checking on JS side %>
+      <% @file_counter = 0 %>
         <% f.object.model.file_sets.each do |fs| %>
           <% if !fs.ext_relation.blank? %>
             <% @ext_relation = fs.ext_relation %>
@@ -77,6 +77,7 @@
           <% end %>
         <% end %>
 
+      <div class="form-group string optional">
         <label id="ext_relation_label" class="control-label string optional" for="ext_relation"><%= t('simple_form.labels.defaults.ext_relation') %></label>
         <p class="help-block"><%= t('simple_form.hints.defaults.ext_relation') %></p>
         <input class="form-control string optional" type="url" value="<%= @ext_relation || '' %>" name="ext_relation[]" id="ext_relation">
@@ -86,6 +87,5 @@
       <p id="ext_relation_curr" hidden><% @ext_relation %></p>
       <p id="file_curr" hidden><% @file_counter %></p>
     <% end %>
-    
 
 <%= render 'hyrax/uploads/js_templates' %>

@@ -10,6 +10,7 @@
   <% end %>
 </div>
 
+<%# SPECIAL CASE: If there are multiple ids that are duplicate from :ext_relation, make it unique %>
 <%  array_of_ids = presenter.list_of_item_ids_to_display %>
 <%  array_of_ids = array_of_ids.uniq! if (array_of_ids.length > 1) %>
 <%  members = presenter.member_presenters_for(array_of_ids) %>
