@@ -466,7 +466,7 @@ class CatalogController < ApplicationController
         pf: solr_name
       }
     end
-    
+
     config.add_search_field('has_journal') do |field|
       solr_name = solr_name('has_journal', :stored_searchable)
       field.solr_parameters = {
