@@ -84,8 +84,8 @@
       </div>
 
       <%# HIDDEN: This hidden field helps out the JS script to determine some factors %>
-      <p id="ext_relation_curr" hidden><% @ext_relation %></p>
-      <p id="file_curr" hidden><% @file_counter %></p>
+      <p id="ext_relation_curr" hidden><%= @ext_relation %></p>
+      <p id="file_curr" hidden><%= @file_counter %></p>
     <% end %>
 
 <%= render 'hyrax/uploads/js_templates' %>
