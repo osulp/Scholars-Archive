@@ -86,6 +86,7 @@ en:
         tableofcontents: "Table of Contents for the item."
         time_required: "Time (in minutes) to complete the activity."
         typical_age_range: ""
+        ext_relation: "Add an External Resource URL here. Use one URL here or the files above, but not both."
       honors_college_thesis:
         contributor_advisor: "The name of the Academic Mentor on this project.<br>The name should be entered with the last name first, e.g. \"Smith, John Q.\"."
     labels:
@@ -164,5 +165,6 @@ en:
         time_required: "Time Required"
         typical_age_range: "Typical Age Range"
         visibility_after_embargo: "Then set it to"
+        ext_relation: "External Resource"
       honors_college_thesis:
         contributor_advisor: "Mentor"

@@ -2,6 +2,7 @@
 
 module ScholarsArchive
   # works controller behavior
+  # rubocop:disable Metrics/ModuleLength
   module WorksControllerBehavior
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior
@@ -46,6 +47,15 @@ module ScholarsArchive
     def create
       set_other_option_values
       super
+    end
+
+    # We can use Hyrax::WorksControllerBehavior definition and add on additional params we want
+    def attributes_for_actor
+      attributes = super
+      ext_relation = params.fetch(:ext_relation, [])
+      attributes[:ext_relation] = ext_relation
+
+      attributes
     end
 
     # METHOD: Setup a method to clear all file sets
@@ -145,4 +155,5 @@ module ScholarsArchive
       OtherOption.where(work_id: curation_concern.id, property_name: property.to_s)
     end
   end
+  # rubocop:enable Metrics/ModuleLength
 end

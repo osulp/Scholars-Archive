@@ -231,6 +231,9 @@ Hyrax.config do |config|
   # ActiveJob queue to handle ingest-like jobs
   config.ingest_queue_name = :ingest
 
+  # Actor factory add in a custom fileset actor with :ext_relation
+  Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithRemoteFilesActor, ScholarsArchive::Actors::CreateWithExtRelationActor
+
   ## Attributes for the lock manager which ensures a single process/thread is mutating a ore:Aggregation at once.
   # How many times to retry to acquire the lock before raising UnableToAcquireLockError
   # config.lock_retry_count = 600 # Up to 2 minutes of trying at intervals up to 200ms

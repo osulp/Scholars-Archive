@@ -148,3 +148,10 @@ en:
           subject_missing: no subjects specified
       featured_researcher:
         tab_label: "Spotlight"
+  
+    file_set:
+      show:
+        ext_relation: "View Online"
+
+    items:
+      ext_relation: "This %{type} is available from an external website: "
