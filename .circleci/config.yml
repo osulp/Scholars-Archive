@@ -243,4 +243,5 @@ workflows:
                 - main
                 - /infra\/.*/
                 - /staging\/.*/
+                - /patch\/.*/
           repo: sa_web
