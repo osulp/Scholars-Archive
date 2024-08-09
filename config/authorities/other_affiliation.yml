@@ -149,3 +149,6 @@ terms:
 - id: "https://opaquenamespace.org/ns/subject/OregonStateUniversityOfficeOfUndergraduateResearch"
   term: "Office of Undergraduate Research (OUR)"
   active: true
+- id: "http://opaquenamespace.org/ns/subject/OregonStateUniversitySpringPosterSymposium"
+  term: "Spring Poster Symposium (SPS)"
+  active: true
