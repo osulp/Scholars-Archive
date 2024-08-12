@@ -133,8 +133,7 @@ en:
         ocr_item:
           ocr_heading: OCR Text Debug View
           ocr_none: No OCR Text Detected
-        
-
+  
     homepage:
       featured_works:
         document:
