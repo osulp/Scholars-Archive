@@ -17,7 +17,7 @@
 
 <%# CASE: Add in additional statement to see if :ext_relation present %>
 <% if presenter.ext_relation? %>
-  <div class="alert alert-info" role="alert"><%= t('hyrax.items.ext_relation', type: presenter.human_readable_type) %><a href='<%= presenter.ext_relation %>'>Click here</a></div>
+  <div class="alert alert-info" role="alert"><%= t('hyrax.items.ext_relation', type: presenter.human_readable_type) %><a href="<%= presenter.ext_relation %>", target="_blank">Click here</a></div>
   <% if can?(:edit, presenter.id) || can?(:admin, presenter.id) %>
     <table class="table table-striped related-files">
       <thead>
