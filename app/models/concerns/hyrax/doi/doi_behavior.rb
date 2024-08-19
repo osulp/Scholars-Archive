@@ -32,6 +32,8 @@ module Hyrax
 
       def validate_doi
         Array(datacite_doi).each do |doi|
+          next if doi_status_when_public = 'draft'
+
           errors.add(:datacite_doi, "DOI (#{doi}) is invalid.") unless doi.match? DOI_REGEX
         end
       end
