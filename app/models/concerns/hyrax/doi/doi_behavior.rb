@@ -30,9 +30,10 @@ module Hyrax
 
       private
 
+      # No need to add errors if its a drafted doi that will not be used. 
       def validate_doi
         Array(datacite_doi).each do |doi|
-          next if doi_status_when_public = 'draft'
+          next if doi_status_when_public == 'draft'
 
           errors.add(:datacite_doi, "DOI (#{doi}) is invalid.") unless doi.match? DOI_REGEX
         end
