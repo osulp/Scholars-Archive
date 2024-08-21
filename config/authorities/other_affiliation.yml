@@ -152,3 +152,6 @@ terms:
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversitySpringPosterSymposium"
   term: "Spring Poster Symposium (SPS)"
   active: true
+- id: "https://opaquenamespace.org/ns/subject/OregonStateUniversityFallVirtualSymposium"
+  term: "Fall Virtual Symposium (FVS)"
+  active: true
