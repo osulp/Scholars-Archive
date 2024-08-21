@@ -15,8 +15,9 @@
       <% unless a.object.new_record? %>
         <%= a.hidden_field :_destroy %>
       <% end %>
-      <button type="button" class="btn btn-link remove remove_entry" data-id="nested_geo_points">
-        <span class="glyphicon glyphicon-remove"></span><span class="controls-remove-text">Remove</span>
+      <button type="button" class="btn btn-danger remove remove_entry" data-id="nested_geo_points">
+        <%# REPLACE: Add in the trashcan icon rather than the link icon %>
+        <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
         <span class="sr-only"> previous <span class="controls-field-name-text"> Title</span></span>
       </button>
     </span>
