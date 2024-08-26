@@ -665,6 +665,16 @@ button.btn-secondary {
   border-radius: 4px !important;
 }
 
+// MODIFY: Adjust layout for the bbox_nested for lat & lon
+#bbox_nested_label, #bbox_nested_lat, #bbox_nested_lon {
+  margin-top: 15px;
+}
+
+// MODIFY: Adjust the layout for bbox_nested for N, W, S, E
+#bbox_nested_north, #bbox_nested_west, #bbox_nested_south, #bbox_nested_east {
+  margin-top: 15px;
+}
+
 .search-result-wrapper > .col-md-6 {
   width: 80% !important;
 }
