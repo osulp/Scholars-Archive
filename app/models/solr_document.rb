@@ -81,6 +81,10 @@ class SolrDocument
     self['based_near_linked_ssim']
   end
 
+  def based_near_linked_label
+    ScholarsArchive::LabelParserService.parse_label_uris(self['based_near_linked_ssim'])
+  end
+
   def embargo_date_range
     self['embargo_date_range_ssim']
   end
