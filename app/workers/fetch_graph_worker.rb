@@ -5,12 +5,14 @@ class FetchGraphWorker
   include Sidekiq::Worker
   sidekiq_options retry: 11
 
+  # rubocop:disable Metrics/MethodLength
   def perform(pid, _user_key)
     work = ActiveFedora::Base.find(pid)
     solr_doc = work.to_solr
 
     # VARIABLES: Create two labels to store value of location in
-    labels_linked, labels_only = [], []
+    labels_linked = []
+    labels_only = []
 
     work.attributes['based_near'].each do |val|
       val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
@@ -29,6 +31,7 @@ class FetchGraphWorker
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
   end
+  # rubocop:enable Metrics/MethodLength
 
   def fetch_and_persist(val, pid)
     begin
