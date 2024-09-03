@@ -5,20 +5,20 @@
       <%= label_tag 'file_set[title][]', t('.title'),  class: "string optional" %>
     </span>
     <%= text_field_tag 'file_set[title][]', curation_concern.title.first, class: 'form-control', required: true %>
-  </fieldset>
 
-  <br/>
+    <br/>
 
-  <%# ADD: Create the :ext_relation field to edit on the FileSet %>
-  <% if !curation_concern.ext_relation.blank? %>
-    <fieldset class="required">
+    <%# ADD: Create the :ext_relation field to edit on the FileSet %>
+    <% if !curation_concern.ext_relation.blank? %>
+      <h2><%= t('.edit_url') %></h2>
       <span class="control-label">
         <%= label_tag 'file_set[ext_relation]', t('.ext_relation'),  class: "string optional" %>
       </span>
       <%= text_field_tag 'file_set[ext_relation]', curation_concern.ext_relation, class: 'form-control', type: 'url', required: true %>
-    </fieldset>
-  <% end %>
+    <% end %>
+  </fieldset>
 
+  <%# SUBMIT: Save the form area %>
   <div class="row">
     <div class="col-md-12 form-actions">
       <%= f.submit(
