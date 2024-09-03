@@ -8,5 +8,9 @@ module Hyrax
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
 
     self.model_class = ::AdministrativeReportOrPublication
+
+    def self.primary_terms
+      super - %i[degree_level degree_name degree_field contributor_advisor]
+    end
   end
 end

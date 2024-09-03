@@ -1,13 +1,12 @@
 # frozen_string_literal:true
 
 module ScholarsArchive
-  # Houses terms for ETDs
-  module EtdTerms
+  # Houses the terms for forms for PERs
+  module PurchasedEResourceTerms
     def self.base_terms
       primary_terms + secondary_terms + admin_terms
     end
 
-    # rubocop:disable Metrics/MethodLength
     def self.primary_terms
       %i[nested_ordered_title
          alternative_title
@@ -15,45 +14,54 @@ module ScholarsArchive
          nested_ordered_contributor
          resource_type
          nested_ordered_abstract
-         dates_section
+         doi
+         academic_affiliation
+         other_affiliation
          degree_level
          degree_name
          degree_field
          degree_grantors
-         academic_affiliation
-         other_affiliation
          graduation_year
          contributor_advisor
-         contributor_committeemember
          license
          rights_statement
+         bibliographic_citation
+         dates_section
+         publisher
+         peerreviewed
+         in_series
+         has_journal
+         has_volume
+         has_number
+         conference_name
+         conference_section
+         conference_location
+         editor
+         identifier
          nested_related_items
          subject
         ]
     end
-    # rubocop:enable Metrics/MethodLength
 
     def self.secondary_terms
-      %i[bibliographic_citation
-         funding_body
+      %i[funding_body
          funding_statement
-         publisher
-         peerreviewed
-         conference_name
-         conference_section
+         issn
+         isbn
+         web_of_science_uid
+         tableofcontents
          geo_section
          hydrologic_unit_code
          language
          file_format
          file_extent
-         digitization_spec
+         igitization_spec
          nested_ordered_additional_information
         ]
     end
 
     def self.admin_terms
-      %i[in_series
-         identifier
+      %i[identifier
          is_referenced_by
          replaces
          keyword

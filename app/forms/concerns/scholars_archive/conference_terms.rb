@@ -1,8 +1,8 @@
 # frozen_string_literal:true
 
 module ScholarsArchive
-  # Houses terms for ETDs
-  module EtdTerms
+  # Houses the terms for forms for ConferenceProceedingsOrJournals
+  module ArticleTerms
     def self.base_terms
       primary_terms + secondary_terms + admin_terms
     end
@@ -15,18 +15,23 @@ module ScholarsArchive
          nested_ordered_contributor
          resource_type
          nested_ordered_abstract
-         dates_section
-         degree_level
-         degree_name
-         degree_field
-         degree_grantors
+         doi
          academic_affiliation
          other_affiliation
-         graduation_year
-         contributor_advisor
-         contributor_committeemember
          license
          rights_statement
+         bibliographic_citation
+         dates_section
+         publisher
+         peerreviewed
+         in_series
+         conference_name
+         conference_section
+         conference_location
+         editor
+         has_journal
+         has_volume
+         has_number
          nested_related_items
          subject
         ]
@@ -34,13 +39,11 @@ module ScholarsArchive
     # rubocop:enable Metrics/MethodLength
 
     def self.secondary_terms
-      %i[bibliographic_citation
-         funding_body
+      %i[funding_body
          funding_statement
-         publisher
-         peerreviewed
-         conference_name
-         conference_section
+         issn
+         isbn
+         tableofcontents
          geo_section
          hydrologic_unit_code
          language
@@ -52,8 +55,7 @@ module ScholarsArchive
     end
 
     def self.admin_terms
-      %i[in_series
-         identifier
+      %i[identifier
          is_referenced_by
          replaces
          keyword

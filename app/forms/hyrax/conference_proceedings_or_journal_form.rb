@@ -6,7 +6,7 @@ module Hyrax
   # form object for conference proceedings or journals
   class ConferenceProceedingsOrJournalForm < DefaultForm
     include ::ScholarsArchive::TriplePoweredProperties::TriplePoweredForm
-    include ScholarsArchive::ArticleWorkFormBehavior
+    include ScholarsArchive::ConferenceProceedingsOrJournalFormBehavior
 
     self.model_class = ::ConferenceProceedingsOrJournal
   end

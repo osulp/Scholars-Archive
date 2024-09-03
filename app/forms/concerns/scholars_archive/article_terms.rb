@@ -4,16 +4,7 @@ module ScholarsArchive
   # Houses the terms for forms for articles
   module ArticleTerms
     def self.base_terms
-      %i[resource_type
-         editor
-         has_volume
-         has_number
-         conference_location
-         conference_name
-         conference_section
-         has_journal
-         is_referenced_by
-         web_of_science_uid]
+      primary_terms + secondary_terms + admin_terms
     end
 
     # rubocop:disable Metrics/MethodLength
@@ -22,27 +13,59 @@ module ScholarsArchive
          alternative_title
          nested_ordered_creator
          nested_ordered_contributor
-         nested_ordered_abstract
-         license
          resource_type
+         nested_ordered_abstract
          doi
-         dates_section
+         academic_affiliation
+         other_affiliation
+         funding_statement
+         license
+         rights_statement
          bibliographic_citation
-         is_referenced_by
+         dates_section
          has_journal
          has_volume
          has_number
+         publisher
+         peerreviewed
+         nested_related_items
+         subject
+        ]
+    end
+    # rubocop:enable Metrics/MethodLength
+
+    def self.secondary_terms
+      %i[in_series
+         funding_body
          conference_name
          conference_section
          conference_location
          editor
-         academic_affiliation
-         other_affiliation
-         in_series
-         subject
+         issn
+         isbn
+         web_of_science_uid
          tableofcontents
-         rights_statement]
+         geo_section
+         hydrologic_unit_code
+         language
+         file_format
+         file_extent
+         digitization_spec
+         nested_ordered_additional_information
+        ]
     end
-    # rubocop:enable Metrics/MethodLength
+
+    def self.admin_terms
+      %i[identifier
+         is_referenced_by
+         replaces
+         keyword
+         source
+         dspace_community
+         dspace_collection
+         description
+         documentation
+        ]
+    end
   end
 end

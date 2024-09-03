@@ -10,5 +10,11 @@ module Hyrax
 
     self.model_class = ::UndergraduateThesisOrProject
     self.required_fields -= [:other_affiliation]
+
+    def secondary_terms
+      t = ::ScholarsArchive::EtdTerms.secondary_terms
+      t << (::ScholarsArchive::EtdTerms.admin_terms - [:in_series]) if current_ability.current_user.admin?
+      t.flatten
+    end
   end
 end

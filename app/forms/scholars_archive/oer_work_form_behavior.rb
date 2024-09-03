@@ -5,14 +5,16 @@ module ScholarsArchive
   module OerWorkFormBehavior
     extend ActiveSupport::Concern
     included do
-      self.terms += %i[resource_type is_based_on_url interactivity_type learning_resource_type typical_age_range time_required duration]
+      self.terms = ScholarsArchive::OerTerms.base_terms + ScholarsArchive::DefaultTerms.base_terms
 
       def primary_terms
-        ::ScholarsArchive::OerTerms.primary_terms | super - %i[degree_level degree_name degree_field contributor_advisor]
+        ::ScholarsArchive::OerTerms.primary_terms
       end
 
       def secondary_terms
-        super - date_terms + [:duration]
+        t = ::ScholarsArchive::OerTerms.secondary_terms
+        t << ::ScholarsArchive::OerTerms.admin_terms if current_ability.current_user.admin?
+        t.flatten
       end
     end
   end

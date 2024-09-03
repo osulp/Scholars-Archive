@@ -18,56 +18,60 @@ module ScholarsArchive
          alternative_title
          nested_ordered_creator
          nested_ordered_contributor
-         contributor_advisor
-         nested_ordered_abstract
-         license
          resource_type
+         nested_ordered_abstract
          doi
-         dates_section
+         academic_affiliation
+         other_affiliation
          degree_level
          degree_name
          degree_field
+         contributor_advisor
+         license
+         rights_statement
          bibliographic_citation
-         academic_affiliation
-         other_affiliation
+         dates_section
+         publisher
+         peerreviewed
          in_series
+         nested_related_items
          subject
-         tableofcontents
-         rights_statement]
+        ]
     end
     # rubocop:enable Metrics/MethodLength
 
     # rubocop:disable Metrics/MethodLength
     def self.secondary_terms
-      %i[nested_related_items
-         hydrologic_unit_code
-         geo_section
+      %i[funding_body
          funding_statement
-         publisher
-         peerreviewed
          conference_name
          conference_section
          conference_location
+         issn
+         isbn
+         tableofcontents
+         geo_section
+         hydrologic_unit_code
          language
          file_format
          file_extent
          digitization_spec
-         replaces
          nested_ordered_additional_information
-         isbn
-         issn]
+        ]
     end
     # rubocop:enable Metrics/MethodLength
 
     def self.admin_terms
-      %i[keyword
+      %i[identifier
+         is_referenced_by
+         replaces
+         keyword
          source
-         funding_body
          dspace_community
          dspace_collection
          description
-         identifier
-         documentation]
+         documentation
+        ]
     end
 
     def self.date_terms

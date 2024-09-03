@@ -9,5 +9,11 @@ module Hyrax
     include ScholarsArchive::EtdWorkFormBehavior
 
     self.model_class = ::GraduateThesisOrDissertation
+
+    def secondary_terms
+      t = ::ScholarsArchive::EtdTerms.secondary_terms
+      t << (::ScholarsArchive::EtdTerms.admin_terms - [:in_series]) if current_ability.current_user.admin?
+      t.flatten
+    end
   end
 end
