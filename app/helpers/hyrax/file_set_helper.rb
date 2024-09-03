@@ -43,7 +43,7 @@ module Hyrax::FileSetHelper
   # MODIFY: Add in the 'ext_relation' keyword to the display
   def media_display_partial(file_set)
     'hyrax/file_sets/media_display/' +
-      if !file_set.ext_relation.blank?
+      if (!file_set.ext_relation.blank? || !curation_concern.ext_relation.blank?)
         'ext_relation'
       elsif file_set.image?
         'image'
