@@ -156,5 +156,10 @@ en:
       ext_relation: "This %{type} is available from an external website: "
     
     file_sets:
-      edit:
-        ext_relation: "If you want to change the URL for this FileSet, please go to the work's edit page to do so."
+      form:
+        attach_to: Attach to %{parent}
+        cancel: Cancel
+        save: Save
+        title: Title
+        ext_relation: External Resource
+        edit_url: Edit URL
