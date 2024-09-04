@@ -5,16 +5,16 @@ module ScholarsArchive
   module ArticleWorkFormBehavior
     extend ActiveSupport::Concern
     included do
-      self.terms += ::ScholarsArchive::ArticleTerms.base_terms
+      self.terms = ::ScholarsArchive::ArticleTerms.base_terms + ::ScholarsArchive::DefaultTerms.base_terms
 
       def primary_terms
-        ::ScholarsArchive::ArticleTerms.primary_terms | super - %i[degree_level degree_name degree_field contributor_advisor]
+        ::ScholarsArchive::ArticleTerms.primary_terms
       end
 
       def secondary_terms
-        t = super - date_terms - %i[conference_location conference_name conference_section]
-        t << :web_of_science_uid if current_ability.current_user.admin?
-        t
+        t = ::ScholarsArchive::ArticleTerms.secondary_terms
+        t << ::ScholarsArchive::ArticleTerms.admin_terms if current_ability.current_user.admin?
+        t.flatten
       end
     end
   end

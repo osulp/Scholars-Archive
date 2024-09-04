@@ -1,8 +1,8 @@
 # frozen_string_literal:true
 
 module ScholarsArchive
-  # Houses the terms for forms for articles
-  module ArticleTerms
+  # Houses the terms for forms for PERs
+  module PurchasedEResourceTerms
     def self.base_terms
       primary_terms + secondary_terms + admin_terms
     end
@@ -18,16 +18,27 @@ module ScholarsArchive
          doi
          academic_affiliation
          other_affiliation
-         funding_statement
+         degree_level
+         degree_name
+         degree_field
+         degree_grantors
+         graduation_year
+         contributor_advisor
          license
          rights_statement
          bibliographic_citation
          dates_section
+         publisher
+         peerreviewed
+         in_series
          has_journal
          has_volume
          has_number
-         publisher
-         peerreviewed
+         conference_name
+         conference_section
+         conference_location
+         editor
+         identifier
          nested_related_items
          subject]
     end
@@ -35,12 +46,8 @@ module ScholarsArchive
 
     # rubocop:disable Metrics/MethodLength
     def self.secondary_terms
-      %i[in_series
-         funding_body
-         conference_name
-         conference_section
-         conference_location
-         editor
+      %i[funding_body
+         funding_statement
          issn
          isbn
          web_of_science_uid
@@ -50,7 +57,7 @@ module ScholarsArchive
          language
          file_format
          file_extent
-         digitization_spec
+         igitization_spec
          nested_ordered_additional_information]
     end
     # rubocop:enable Metrics/MethodLength

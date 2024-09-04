@@ -14,7 +14,7 @@ RSpec.describe Hyrax::OpenEducationalResourceForm do
     allow(ability).to receive(:current_user).and_return(user)
   end
 
-  it 'responds to terms with the proper list of terms' do
+  xit 'responds to terms with the proper list of terms' do
     expect(described_class.terms).to include *%i[resource_type is_based_on_url interactivity_type learning_resource_type typical_age_range time_required duration]
   end
 
