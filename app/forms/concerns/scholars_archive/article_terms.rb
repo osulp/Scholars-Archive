@@ -34,6 +34,7 @@ module ScholarsArchive
     end
     # rubocop:enable Metrics/MethodLength
 
+    # rubocop:disable Metrics/MethodLength
     def self.secondary_terms
       %i[in_series
          funding_body
@@ -54,7 +55,9 @@ module ScholarsArchive
          nested_ordered_additional_information
         ]
     end
+    # rubocop:enable Metrics/MethodLength
 
+    # rubocop:disable Metrics/MethodLength
     def self.admin_terms
       %i[identifier
          is_referenced_by
@@ -67,5 +70,6 @@ module ScholarsArchive
          documentation
         ]
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end
