@@ -51,7 +51,6 @@ module ScholarsArchive
     end
     # rubocop:enable Metrics/MethodLength
 
-    # rubocop:disable Metrics/MethodLength
     def self.admin_terms
       %i[in_series
          identifier
@@ -64,6 +63,5 @@ module ScholarsArchive
          description
          documentation]
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
