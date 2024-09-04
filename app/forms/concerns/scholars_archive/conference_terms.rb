@@ -2,7 +2,7 @@
 
 module ScholarsArchive
   # Houses the terms for forms for ConferenceProceedingsOrJournals
-  module ArticleTerms
+  module ConferenceTerms
     def self.base_terms
       primary_terms + secondary_terms + admin_terms
     end
