@@ -9,8 +9,8 @@ module Hyrax
 
     self.model_class = ::AdministrativeReportOrPublication
 
-    def self.primary_terms
-      super - %i[degree_level degree_name degree_field contributor_advisor]
+    def primary_terms
+      ::ScholarsArchive::DefaultTerms.primary_terms - %i[degree_level degree_name degree_field contributor_advisor]
     end
   end
 end
