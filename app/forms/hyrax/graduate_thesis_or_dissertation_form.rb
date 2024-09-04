@@ -10,6 +10,8 @@ module Hyrax
 
     self.model_class = ::GraduateThesisOrDissertation
 
+    self.required_fields += [:contributor_advisor]
+
     def secondary_terms
       t = ::ScholarsArchive::EtdTerms.secondary_terms
       t << (::ScholarsArchive::EtdTerms.admin_terms - [:in_series]) if current_ability.current_user.admin?
