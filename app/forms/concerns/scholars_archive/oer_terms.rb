@@ -6,6 +6,7 @@ module ScholarsArchive
     def self.base_terms
       primary_terms + secondary_terms + admin_terms
     end
+
     # rubocop:disable Metrics/MethodLength
     def self.primary_terms
       %i[nested_ordered_title
@@ -30,8 +31,7 @@ module ScholarsArchive
          interactivity_type
          time_required
          typical_age_range
-         is_based_on_url
-        ]
+         is_based_on_url]
     end
     # rubocop:enable Metrics/MethodLength
 
@@ -51,12 +51,10 @@ module ScholarsArchive
          file_format
          file_extent
          digitization_spec
-         nested_ordered_additional_information
-        ]
+         nested_ordered_additional_information]
     end
     # rubocop:enable Metrics/MethodLength
 
-    # rubocop:disable Metrics/MethodLength
     def self.admin_terms
       %i[identifier
          is_referenced_by
@@ -66,9 +64,7 @@ module ScholarsArchive
          dspace_community
          dspace_collection
          description
-         documentation
-        ]
+         documentation]
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

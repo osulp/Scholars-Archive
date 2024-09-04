@@ -29,8 +29,7 @@ module ScholarsArchive
          publisher
          peerreviewed
          nested_related_items
-         subject
-        ]
+         subject]
     end
     # rubocop:enable Metrics/MethodLength
 
@@ -52,12 +51,10 @@ module ScholarsArchive
          file_format
          file_extent
          digitization_spec
-         nested_ordered_additional_information
-        ]
+         nested_ordered_additional_information]
     end
     # rubocop:enable Metrics/MethodLength
 
-    # rubocop:disable Metrics/MethodLength
     def self.admin_terms
       %i[identifier
          is_referenced_by
@@ -67,9 +64,7 @@ module ScholarsArchive
          dspace_community
          dspace_collection
          description
-         documentation
-        ]
+         documentation]
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
