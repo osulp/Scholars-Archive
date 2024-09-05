@@ -9,6 +9,7 @@ module ScholarsArchive
       attr_accessor :degree_grantors_other
 
       self.required_fields = [:nested_ordered_title]
+      self.terms = ::ScholarsArchive::PurchasedEResourceTerms.base_terms
 
       def primary_terms
         ::ScholarsArchive::PurchasedEResourceTerms.primary_terms | super
