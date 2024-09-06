@@ -24,10 +24,12 @@ class FetchGraphWorker
       labels_only << extracted_label(val.solrize, onlylabel: true)
     end
 
+    # parse_labels = labels_only
+
     # INSERT: Added to solr to appropriate field
-    solr_based_near_label_insert(solr_doc, labels_only)
     solr_based_near_parse_label_insert(solr_doc, labels_only)
     solr_based_near_linked_insert(solr_doc, labels_linked)
+    solr_based_near_label_insert(solr_doc, labels_only)
 
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
