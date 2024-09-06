@@ -25,7 +25,6 @@ class FetchGraphWorker
     end
 
     # INSERT: Added to solr to appropriate field
-    solr_based_near_parse_label_insert(solr_doc, labels_only)
     solr_based_near_linked_insert(solr_doc, labels_linked)
     solr_based_near_label_insert(solr_doc, labels_only)
 
@@ -54,13 +53,8 @@ class FetchGraphWorker
   end
 
   def solr_based_near_label_insert(solr_doc, labels_only)
-    solr_doc['based_near_label_tesim'] = labels_only
-    solr_doc['based_near_label_sim'] = labels_only
-  end
-
-  def solr_based_near_parse_label_insert(solr_doc, labels_only)
-    solr_doc['based_near_parse_label_tesim'] = ScholarsArchive::LocationLabelParserService.location_parse_labels(labels_only)
-    solr_doc['based_near_parse_label_sim'] = ScholarsArchive::LocationLabelParserService.location_parse_labels(labels_only)
+    solr_doc['based_near_label_tesim'] = ScholarsArchive::LabelParserService.location_parse_labels(labels_only)
+    solr_doc['based_near_label_sim'] = ScholarsArchive::LabelParserService.location_parse_labels(labels_only)
   end
 
   def extracted_label(input, onlylabel: false)

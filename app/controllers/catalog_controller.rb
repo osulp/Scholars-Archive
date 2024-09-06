@@ -97,7 +97,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'has_journal_sfacet', limit: 5, label: 'Journal Title'
     config.add_facet_field 'language_label_ssim', label: 'Language', limit: 5
     config.add_facet_field 'license_label_ssim', label: 'License', limit: 5
-    config.add_facet_field solr_name('based_near_parse_label', :facetable), label: 'Location', limit: 5
+    config.add_facet_field solr_name('based_near_label', :facetable), label: 'Location', limit: 5
     config.add_facet_field 'other_affiliation_label_ssim', label: 'Non-Academic Affiliation', limit: 5, helper_method: :parsed_label_uri
     config.add_facet_field 'peerreviewed_label_ssim', label: 'Peer Reviewed', limit: 2
     config.add_facet_field solr_name('resource_type', :facetable), label: 'Resource Type', limit: 5
@@ -203,7 +203,7 @@ class CatalogController < ApplicationController
       all_names = config.show_fields.values.map(&:field).join(' ')
       title_name = solr_name('nested_ordered_title_label', :stored_searchable)
       field.solr_parameters = {
-        qf: "#{all_names} title_tesim alternative_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_tsimv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_parse_label_tesim based_near_parse_label_tesim web_of_science_uid_tesim",
+        qf: "#{all_names} title_tesim alternative_title_tesim contributor_advisor_tesim contributor_committeemember_tesim abstract_tesim dspace_community_tesim dspace_collection_tesim degree_grantors_label_tesim nested_related_items_label_tesim nested_ordered_creator_label_tesim nested_ordered_additional_information_label_tesim nested_ordered_contributor_label_tesim nested_ordered_abstract_label_tesim degree_field_label_tesim file_format_tesim all_text_tsimv language_label_tesim rights_statement_label_tesim license_label_tesim academic_affiliation_label_tesim other_affiliation_label_tesim based_near_label_tesim web_of_science_uid_tesim",
         pf: title_name.to_s
       }
     end
@@ -608,8 +608,8 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('based_near_parse_label') do |field|
-      solr_name = solr_name('based_near_parse_label', :stored_searchable)
+    config.add_search_field('based_near_label') do |field|
+      solr_name = solr_name('based_near_label', :stored_searchable)
       field.label = 'Location'
       field.solr_parameters = {
         qf: solr_name,
