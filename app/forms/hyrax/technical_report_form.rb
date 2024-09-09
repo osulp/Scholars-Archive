@@ -10,7 +10,7 @@ module Hyrax
     self.model_class = ::TechnicalReport
 
     def primary_terms
-      ::ScholarsArchive::DefaultTerms.primary_terms - %i[degree_level degree_name degree_field contributor_advisor]
+      ::ScholarsArchive::DefaultTerms.primary_terms - %i[degree_level degree_name degree_field contributor_advisor] + %i[contributor_advisor degree_level degree_name degree_field]
     end
   end
 end

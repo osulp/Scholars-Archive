@@ -8,7 +8,7 @@ module ScholarsArchive
       include ScholarsArchive::DefaultWorkFormBehavior
       attr_accessor :degree_grantors_other
 
-      self.required_fields = [:nested_ordered_title]
+      self.required_fields = %i[nested_ordered_title nested_ordered_creator resource_type rights_statement]
       self.terms = ::ScholarsArchive::PurchasedEResourceTerms.base_terms
 
       def primary_terms

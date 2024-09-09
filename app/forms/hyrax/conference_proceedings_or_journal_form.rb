@@ -9,5 +9,7 @@ module Hyrax
     include ScholarsArchive::ConferenceProceedingsOrJournalFormBehavior
 
     self.model_class = ::ConferenceProceedingsOrJournal
+
+    self.terms = ::ScholarsArchive::ConferenceTerms.base_terms
   end
 end

@@ -57,7 +57,7 @@ module ScholarsArchive
          language
          file_format
          file_extent
-         igitization_spec
+         digitization_spec
          nested_ordered_additional_information]
     end
     # rubocop:enable Metrics/MethodLength
