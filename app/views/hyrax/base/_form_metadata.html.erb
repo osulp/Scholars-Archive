@@ -1,6 +1,6 @@
         <div class="base-terms">
           <% f.object.primary_terms.each do |term| %>
-            <%= render_edit_field_partial(term, f: f) unless !option_visible_to_depositor?(f.object.model, current_user) && %i[doi bibliographic_citation in_series tableofcontents isbn issn].include?(term) %>
+            <%= render_edit_field_partial(term, f: f) unless !option_visible_to_depositor?(f.object.model, current_user) && %i[doi in_series tableofcontents isbn issn].include?(term) %>
           <% end %>
         </div>
         <%= render 'form_media', f: f if f.object.model.class.to_s == "Dataset" %>
@@ -15,7 +15,7 @@
                       'aria-controls'=> "extended-terms" %>
           <div id="extended-terms" class='collapse'>
             <% f.object.secondary_terms.each do |term| %>
-              <%= render_edit_field_partial(term, f: f) unless !option_visible_to_depositor?(f.object.model, current_user) && %i[doi bibliographic_citation in_series tableofcontents isbn issn].include?(term) %>
+              <%= render_edit_field_partial(term, f: f) unless !option_visible_to_depositor?(f.object.model, current_user) && %i[doi in_series tableofcontents isbn issn].include?(term) %>
             <% end %>
           </div>
         <% end %>
