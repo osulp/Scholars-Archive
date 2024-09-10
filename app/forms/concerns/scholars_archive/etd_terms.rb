@@ -40,6 +40,7 @@ module ScholarsArchive
          peerreviewed
          conference_name
          conference_section
+         conference_location
          geo_section
          hydrologic_unit_code
          language
