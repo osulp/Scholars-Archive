@@ -92,14 +92,11 @@ module ScholarsArchive
         next if v == ' ' || i == (str_arr.length - 1)
 
         new_str += v
-        new_str += ',' if i != str_arr.length - 2
+        new_str += ','
       end
 
-      # DOUBLE CHECK: Make sure at the end of the string there are now ','
-      new_str = new_str.gsub(',', '') if new_str[-1] == ','
-
-      # RETURN: Return the new string value
-      new_str
+      # DOUBLE CHECK: Make sure at the end of the string there are no ',' & return the value
+      new_str.slice(0..-2)
     end
   end
 end
