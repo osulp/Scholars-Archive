@@ -86,7 +86,7 @@ en:
         tableofcontents: "Table of Contents for the item."
         time_required: "Time (in minutes) to complete the activity."
         typical_age_range: ""
-        ext_relation: "Add an External Resource URL here. Use one URL here or the files above, but not both."
+        ext_relation: "To create a ScholarsArchive record that links to a work in another location, add an External Resource URL here. The location of that work must be reasonably stable, so a DOI or other persistent URL is strongly encouraged. Use one URL here or the files above, but not both."
       honors_college_thesis:
         contributor_advisor: "The name of the Academic Mentor on this project.<br>The name should be entered with the last name first, e.g. \"Smith, John Q.\"."
     labels:
