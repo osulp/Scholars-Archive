@@ -284,6 +284,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      property :is_referenced_by, predicate: ::RDF::Vocab::DC.isReferencedBy do |index|
+        index.as :stored_searchable
+      end
+
       property :documentation, predicate: ::RDF::URI.new('http://scholarsphere.psu.edu/ns#documentation') do |index|
         index.as :stored_searchable
       end
