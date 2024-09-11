@@ -19,6 +19,7 @@ RUN apt update && apt -y upgrade && \
   vim \
   yarn \
   git \
+  cron \
   mariadb-client libmariadb-dev \
   curl wget \
   less \
