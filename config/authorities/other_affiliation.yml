@@ -88,7 +88,7 @@ terms:
   active: true
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityURSA"
   term: "Undergraduate Research, Scholarship, and the Arts (URSA)"
-  active: true
+  active: false
 - id: "http://opaquenamespace.org/ns/subject/OregonStateUniversityHousingDiningServices"
   term: "University Housing & Dining Services"
   active: true
