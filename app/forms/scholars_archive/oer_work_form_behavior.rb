@@ -5,7 +5,7 @@ module ScholarsArchive
   module OerWorkFormBehavior
     extend ActiveSupport::Concern
     included do
-      self.terms = ScholarsArchive::OerTerms.base_terms + ScholarsArchive::DefaultTerms.base_terms
+      self.terms += ScholarsArchive::OerTerms.base_terms
 
       def primary_terms
         ::ScholarsArchive::OerTerms.primary_terms
