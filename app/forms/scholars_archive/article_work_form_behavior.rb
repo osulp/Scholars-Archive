@@ -5,7 +5,7 @@ module ScholarsArchive
   module ArticleWorkFormBehavior
     extend ActiveSupport::Concern
     included do
-      self.terms = ::ScholarsArchive::ArticleTerms.base_terms + ::ScholarsArchive::DefaultTerms.base_terms
+      self.terms += ::ScholarsArchive::ArticleTerms.base_terms
 
       def primary_terms
         ::ScholarsArchive::ArticleTerms.primary_terms
