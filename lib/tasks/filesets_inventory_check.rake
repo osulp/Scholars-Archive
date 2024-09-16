@@ -207,6 +207,7 @@ namespace :scholars_archive do
           next if data.blank?
           data.each do |item|
             csv_str = item.split('$')
+            csv_str = csv_str.map { |s| s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?') }
             csv << csv_str
           end
         end
@@ -222,6 +223,7 @@ namespace :scholars_archive do
         fail_data.each do |data|
           next if data.blank?
           csv_str = data.split('$')
+          csv_str = csv_str.map { |s| s.encode('UTF-8', invalid: :replace, undef: :replace, replace: '?') }
           csv << csv_str
         end
       end
