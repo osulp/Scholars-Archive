@@ -570,6 +570,7 @@ RSpec/VerifiedDoubles:
     - "spec/services/hyrax/workflow/deletion_approval_notification_spec.rb"
     - "spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb"
     - "spec/services/hyrax/workflow/pending_deletion_notification_spec.rb"
+    - "spec/views/hyrax/base/_items.html.erb_spec.rb"
 
 Lint/AmbiguousOperator:
   Exclude:
@@ -741,6 +742,7 @@ RSpec/MultipleExpectations:
     - "spec/services/hyrax/workflow/deletion_approval_notification_spec.rb"
     - "spec/services/hyrax/workflow/deletion_request_rejection_notification_spec.rb"
     - "spec/services/hyrax/workflow/pending_deletion_notification_spec.rb"
+    - "spec/views/hyrax/base/_items.html.erb_spec.rb"
 
 RSpec/MultipleMemoizedHelpers:
   Exclude:
@@ -792,6 +794,7 @@ RSpec/MultipleMemoizedHelpers:
     - "spec/features/create_undergraduate_thesis_or_project_spec.rb"
     - "spec/renderers/hyrax/renderers/scholars_archive_nested_attribute_renderer_spec.rb"
     - "spec/active_support/logger_spec.rb"
+    - "spec/views/hyrax/base/_items.html.erb_spec.rb"
 
 Style/MethodCallWithoutArgsParentheses:
   Exclude:
@@ -862,6 +865,14 @@ RSpec/NestedGroups:
   Exclude:
     - "spec/models/default_spec.rb"
     - "spec/controllers/hyrax/contact_form_controller_spec.rb"
+
+RSpec/ExpectInHook:
+  Exclude:
+    - "spec/views/hyrax/base/_items.html.erb_spec.rb"
+
+RSpec/StubbedMock:
+  Exclude:
+    - "spec/views/hyrax/base/_items.html.erb_spec.rb"
 
 Style/TrailingCommaInHashLiteral:
   Exclude:
