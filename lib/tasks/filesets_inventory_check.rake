@@ -55,6 +55,9 @@ namespace :scholars_archive do
     # CREATE: Make a .txt file
     create_csv_file(email_data, fail_data)
 
+    # CREATE: Add in a zip file
+    create_zip_file
+
     # MAILER: Enable mailer so Container can send out the email now
     ActionMailer::Base.perform_deliveries = true
 
@@ -227,6 +230,19 @@ namespace :scholars_archive do
           csv << csv_str
         end
       end
+    end
+  end
+
+  # METHOD: Create a zip file to reduce down the size while sending
+  def create_zip_file
+    # CHECK: Check if file exist if not create a new one
+    File.delete('./tmp/filesets_inventory.zip') if File.file?('./tmp/filesets_inventory.zip')
+    zip_file = File.new("./tmp/filesets_inventory.zip", "w+")
+
+    # ZIP: Add file and zip them together
+    Zip::File.open(zip_file.path, Zip::File::CREATE) do |zip|
+      zip.add('filesets_inventory.csv', './tmp/filesets_inventory.csv')
+      zip.add('filesets_failed.csv', './tmp/filesets_failed.csv')
     end
   end
 end
