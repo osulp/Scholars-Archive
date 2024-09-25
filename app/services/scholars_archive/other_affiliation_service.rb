@@ -18,5 +18,9 @@ module ScholarsArchive
     def select_sorted_all_options
       select_all_options.sort << other_option
     end
+
+    def select_sorted_active_options
+      select_active_options.sort << other_option
+    end
   end
 end
