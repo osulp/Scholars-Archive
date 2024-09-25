@@ -1,7 +1,7 @@
 <% other_affiliation_service = ScholarsArchive::OtherAffiliationService.new %>
 <%= f.input :other_affiliation, 
             as: :multi_value_select_other,
-            collection: other_affiliation_service.select_sorted_all_options,
+            collection: other_affiliation_service.select_sorted_active_options,
             include_blank: true,
             input_html: { class: "form-control other-affiliation-selector #{f.object.new_record? ? 'new-record' : ''}" },
             :wrapper_html => {:class => "other-affiliation-field"}
