@@ -167,7 +167,8 @@ module ScholarsArchive
         index.as :stored_searchable, :facetable
       end
 
-      property :funding_body, predicate: ::RDF::Vocab::MARCRelators.fnd do |index|
+      # UPDATE: Add in the class name for 'controlled_vocab' to the funding_body
+      property :funding_body, predicate: ::RDF::Vocab::MARCRelators.fnd, class_name: ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry do |index|
         index.as :stored_searchable, :facetable
       end
 
