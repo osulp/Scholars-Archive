@@ -206,7 +206,7 @@ jobs:
             echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export YABEDA_PROMETHEUS_PATH=/tmp/prom >> $BASH_ENV
       - setup_remote_docker:
-          version: 20.10.12
+          version: docker23
           docker_layer_caching: false
       - docker/check:
           registry: registry.library.oregonstate.edu
