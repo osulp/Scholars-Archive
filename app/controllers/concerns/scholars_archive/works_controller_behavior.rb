@@ -40,11 +40,13 @@ module ScholarsArchive
     end
 
     def update
+      store_funding
       set_other_option_values
       super
     end
 
     def create
+      store_funding
       set_other_option_values
       super
     end
@@ -73,6 +75,35 @@ module ScholarsArchive
     end
 
     private
+
+    # METHOD: Manually add controlled_vocab object to funding body
+    def store_funding
+      # FETCH: Get the attributes from params, setup a tmp array, & get object if exist in curation_concern
+      funding_params = params[hash_key_for_curation_concern]['funding_body_attributes']
+      funding_current = curation_concern.funding_body.blank? ? [] : curation_concern.funding_body
+      tmp_arr = []
+
+      # LOOP: Loop through each entry from attribute(s)
+      funding_params.each do |_key, value|
+        # CREATE & CHECK: Setup a exist tracker to see if already exist in work & skip if 'id' value is blank
+        exist_tracker = 0
+        next if value['id'].blank? || value['_destroy'] == 'true'
+
+        # LOOP: Check the current funding to see if any exist so we don't have to create a new 'cv'
+        funding_current.each do |current|
+          if current.id == value['id']
+            tmp_arr << current
+            exist_tracker = 1
+          end
+        end
+
+        # CONDITION: If no 'id' match current, then create a new 'cv'
+        tmp_arr << ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(value['id']) if exist_tracker.zero?
+      end
+
+      # RETURN: Assign the obj arrays into the funding_body area
+      curation_concern.funding_body = tmp_arr.flatten
+    end
 
     # METHOD: Create a method to fetch individual file set
     def file_set_actor(file_set)
