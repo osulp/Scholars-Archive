@@ -89,6 +89,11 @@ class SolrDocument
     self['embargo_date_range_ssim']
   end
 
+  # METHOD: A funding_body fetching label method
+  def funding_body_label
+    ScholarsArchive::LabelParserService.parse_label_uris(self['funding_body_linked_ssim']) || []
+  end
+
   def nested_geo
     self['nested_geo_label_ssim'] || []
   end
