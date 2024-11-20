@@ -6,6 +6,8 @@ class FetchGraphWorker
   sidekiq_options retry: 11
 
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def perform(pid, _user_key)
     work = ActiveFedora::Base.find(pid)
     solr_doc = work.to_solr
@@ -19,8 +21,8 @@ class FetchGraphWorker
       work.attributes[cv.to_s].each do |val|
         if cv.to_s == 'based_near'
           val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
-        else
-          val = ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(val) if val.include? 'ror.org'
+        elsif val.include? 'ror.org'
+          val = ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(val)
         end
 
         next if fetch_and_persist(val, pid, cv) == false
@@ -44,6 +46,8 @@ class FetchGraphWorker
     ActiveFedora::SolrService.commit
   end
   # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   def fetch_and_persist(val, pid, controlled_prop)
     begin
