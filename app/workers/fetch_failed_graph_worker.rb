@@ -5,7 +5,7 @@ class FetchFailedGraphWorker
   include Sidekiq::Worker
   sidekiq_options retry: 11
 
-  def perform(pid, val, _controlled_prop)
+  def perform(pid, val, controlled_prop)
     work = ActiveFedora::Base.find(pid)
     solr_doc = work.to_solr
 
@@ -14,7 +14,11 @@ class FetchFailedGraphWorker
       val.persist!
     end
 
-    solr_based_near_linked_insert(solr_doc, val)
+    if controlled_prop.to_s == 'based_near'
+      solr_based_near_linked_insert(solr_doc, val)
+    else
+      solr_funding_body_linked_insert(solr_doc, val)
+    end
 
     ActiveFedora::SolrService.add(solr_doc)
     ActiveFedora::SolrService.commit
@@ -24,6 +28,12 @@ class FetchFailedGraphWorker
     solr_doc['based_near_linked_tesim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
     solr_doc['based_near_linked_ssim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
     solr_doc['based_near_linked_sim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+  end
+
+  def solr_funding_body_linked_insert(solr_doc, val)
+    solr_doc['funding_body_linked_tesim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+    solr_doc['funding_body_linked_ssim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+    solr_doc['funding_body_linked_sim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
   end
 
   def default_accept_header
