@@ -300,7 +300,7 @@ module ScholarsArchive
       attr_accessor :current_username
 
       class_attribute :controlled_properties
-      self.controlled_properties = [:based_near, :funding_body]
+      self.controlled_properties = %i[based_near funding_body]
     end
   end
 end
