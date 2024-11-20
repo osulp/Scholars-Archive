@@ -28,6 +28,11 @@ module ScholarsArchive
         node? ? [] : [rdf_subject.to_s]
       end
 
+      # METHOD: Add in full label fetch for the edit work page
+      def full_label
+        ScholarsArchive::ResearchOrganizationRegistryService.new.full_label(rdf_subject.to_s)
+      end
+
       # METHOD: Override fetch to do a manual fetch on ROR
       def fetch(*_args, &_block)
         persistence_strategy.graph = fetch_graph_manual

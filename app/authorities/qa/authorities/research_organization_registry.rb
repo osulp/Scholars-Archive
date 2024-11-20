@@ -10,7 +10,8 @@ module Qa::Authorities
 
     # SELF METHOD: Format the label to present on typeahead
     self.label = lambda do |item|
-      [item['names'].map { |v| v['value'] if v['types'].include?('ror_display') }, "(#{item['id']})"].compact.join(', ')
+      val = item['names'].map { |v| v['value'] if v['types'].include?('ror_display') }.compact
+      [val.first, "(#{item['id']})"].compact.join(', ')
     end
 
     # METHOD: Create a search function based on user typing
