@@ -41,6 +41,15 @@ module Qa::Authorities
       "https://api.ror.org/v2/organizations/#{query_str}"
     end
 
+    # METHOD: Find id for full label
+    def find(id)
+      json(find_url(id))
+    end
+
+    def find_url(id)
+      "https://api.ror.org/v2/organizations/#{id}"
+    end
+
     private
 
     # PARSE: Reformats the data received from the service

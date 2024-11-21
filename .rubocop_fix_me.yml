@@ -1011,6 +1011,10 @@ RSpec/RepeatedExampleGroupDescription:
     - "spec/models/default_spec.rb"
     - "spec/scholars_archive/validators/graduation_year_validator_spec.rb"
 
+RSpec/UnspecifiedException:
+  Exclude:
+    - "spec/services/scholars_archive/research_organization_registry_service_spec.rb"
+
 Lint/RedundantCopDisableDirective:
   Exclude:
     - "app/indexers/concerns/scholars_archive/indexes_combined_sort_date.rb"

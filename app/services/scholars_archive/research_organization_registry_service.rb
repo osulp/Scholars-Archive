@@ -11,8 +11,7 @@ module ScholarsArchive
 
       id = extract_id uri
       Rails.cache.fetch(cache_key(id), expires_in: CACHE_EXPIRATION) do
-        search_term = search(id)
-        return search_term.first['label']
+        label.call(find(id))
       end
     rescue URI::InvalidURIError
       # Old data may be just a string, display it.
