@@ -982,7 +982,7 @@ Style/MethodDefParentheses:
 Lint/UriEscapeUnescape:
   Exclude:
     - "lib/qa/authorities/geonames.rb"
-    - "app/authorities/qa/authorities/research_organization_registry.rb"
+    - "lib/qa/authorities/research_organization_registry.rb"
 
 Capybara/VisibilityMatcher:
   Exclude:
