@@ -6,6 +6,7 @@ module ScholarsArchive
     CACHE_KEY_PREFIX = 'scholars_archive_ror_label-v1-'
     CACHE_EXPIRATION = 1.week
 
+    # All method follow the exact same layout on how Hyrax::LocationService works
     def full_label(uri)
       return if uri.blank?
 
