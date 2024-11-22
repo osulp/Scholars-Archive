@@ -73,7 +73,7 @@ module ScholarsArchive
 
         # INGEST: Add in "subject", "predicate", and "object" keys
         subject = RDF::URI(rdf_subject.to_s)
-        predicate = RDF::URI("#{rdf_subject}/item/test")
+        predicate = ::RDF::Vocab::MARCRelators.fnd
         object = RDF::Literal.new(val_literal.join)
 
         # INSERT: Insert the RDF triple into the graph & return graph
