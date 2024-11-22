@@ -1,0 +1,68 @@
+{
+  "admin": {
+    "created": {
+      "date": "2018-11-14",
+      "schema_version": "1.0"
+    },
+    "last_modified": {
+      "date": "2024-05-13",
+      "schema_version": "2.0"
+    }
+  },
+  "domains": [],
+  "established": 1990,
+  "external_ids": [
+    {
+      "all": [
+        "grid.440350.6"
+      ],
+      "preferred": "grid.440350.6",
+      "type": "grid"
+      },
+      {
+      "all": [
+        "Q30293535"
+      ],
+      "preferred": null,
+      "type": "wikidata"
+    }
+  ],
+  "id": "https://ror.org/01mdg2p21",
+  "links": [
+    {
+      "type": "website",
+      "value": "https://snco.org/learn-explore/at-the-oregon-observatory/"
+    },
+    {
+      "type": "wikipedia",
+      "value": "https://en.wikipedia.org/wiki/Oregon_Observatory"
+    }
+  ],
+  "locations": [
+    {
+      "geonames_details": {
+        "country_code": "US",
+        "country_name": "United States",
+        "lat": 43.886172,
+        "lng": -121.448158,
+        "name": "Sunriver"
+      },
+      "geonames_id": 5755337
+    }
+  ],
+  "names": [
+    {
+      "lang": "en",
+      "types": [
+        "ror_display",
+        "label"
+      ],
+      "value": "Oregon Observatory"
+    }
+  ],
+  "relationships": [],
+  "status": "active",
+  "types": [
+    "facility"
+  ]
+}

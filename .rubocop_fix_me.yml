@@ -982,6 +982,7 @@ Style/MethodDefParentheses:
 Lint/UriEscapeUnescape:
   Exclude:
     - "lib/qa/authorities/geonames.rb"
+    - "lib/qa/authorities/research_organization_registry.rb"
 
 Capybara/VisibilityMatcher:
   Exclude:
@@ -1009,6 +1010,10 @@ RSpec/RepeatedExampleGroupDescription:
   Exclude:
     - "spec/models/default_spec.rb"
     - "spec/scholars_archive/validators/graduation_year_validator_spec.rb"
+
+RSpec/UnspecifiedException:
+  Exclude:
+    - "spec/services/scholars_archive/research_organization_registry_service_spec.rb"
 
 Lint/RedundantCopDisableDirective:
   Exclude:
