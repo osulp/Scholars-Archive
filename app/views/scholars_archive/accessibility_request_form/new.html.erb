@@ -1,0 +1,78 @@
+<h1>
+    <%= t('hyrax.accessibility_request_form.header') %>
+</h1>
+
+<p>
+  ScholarsArchive@OSU has long accepted scholarly content from the OSU community in many formats. We are aware that not all items in the repository are fully accessible to all of our users at this time, and we are working hard to bring all content up to the standards outlined in OSU’s Digital Accessibility Policy. For more information about this work, see the OSU Libraries Accessibility Statement [coming soon].
+  <br/><br/>
+  To request a remediated version of inaccessible content, such as a PDF document or media file, please complete the form below and OSU Libraries staff will accommodate your request. Some types of remediation take a substantial amount of staff time, so please give as much advance notice as possible.
+  <br/><br/>
+  If you are looking for help with a different topic in ScholarsArchive@OSU, use the Contact Us form.
+</p>
+
+<br/>
+
+<h2>
+    <%= t('hyrax.accessibility_request_form.sub_header') %>
+</h2>
+<p>
+  Fields marked with <span style="color:red"> * </span> are required.
+</p>
+
+<%# FORM: Create the form view page to submit the accessibility form %>
+<%= form_for @accessibility_request_form, url: accessibility_request_form_index_path,
+                            html: { class: 'form-horizontal' } do |f| %>
+  <%# HIDDEN FIELD: This field is hidden to check for spam %>
+  <%= f.text_field :accessibility_request_method, class: 'hide' %>
+
+  <%# NAME: Set the naming box %>
+  <div class="form-group">
+    <%= f.label :name, t('hyrax.accessibility_request_form.name'), class: "col-sm control-label" %>
+    <div class="name"><%= f.text_field :name, value: user_signed_in? ? current_user.name : '', class: 'form-control', required: true %></div>
+  </div>
+  
+  <%# EMAIL: Set the email layout to enter in email, if login use their email %>
+  <div class="form-group">
+    <%= f.label :email, t('hyrax.accessibility_request_form.email'), class: "col-sm control-label" %>
+    <div class="email"><%= f.text_field :email, value: user_signed_in? ? current_user.email : '', class: 'form-control', required: true %></div>
+  </div>
+
+  <%# PHONE: Let user enter in a phone number %>
+  <div class="form-group">
+    <%= f.label :phone, t('hyrax.accessibility_request_form.phone'), class: "col-sm control-label" %>
+    <div class="phone"><%= f.telephone_field :phone, value: '', class: 'form-control' %></div>
+  </div>
+
+  <%# LINK: Provide link here on request %>
+  <div class="form-group">
+    <%= f.label :url_link, t('hyrax.accessibility_request_form.link'), class: "col-sm control-label" %>
+    <div class="url_link"><%= f.text_field :url_link, value: '', class: 'form-control', required: true %></div>
+    <p>Please include the full link to the item that you would like us to remediate.</p>
+  </div>
+
+  <%# DETAILS: Provide any details needed on the request %>
+  <div class="form-group">
+    <%= f.label :request_detail, t('hyrax.accessibility_request_form.details'), class: "col-sm control-label" %>
+    <div class="request_detail"><%= f.text_area :request_detail, rows: 4, class: 'form-control' %></div>
+    <p>Please describe the type of accommodation that you need (for example, written transcription, compatibility with a particular assistive device, preferred file formats, etc.). Include details about what particular parts of the content are inaccessible, if applicable.</p>
+  </div>
+
+  <%# DETAILS: Provide any extra details needed on the request %>
+  <div class="form-group">
+    <%= f.label :additional_detail, t('hyrax.accessibility_request_form.additional'), class: "col-sm control-label" %>
+    <div class="additional_detail"><%= f.text_area :additional_detail, rows: 4, class: 'form-control' %></div>
+    <p>List any other ScholarsArchive@OSU items you would like remediated as part of this request.</p>
+  </div>
+
+  <%# DATE: Provide date needed on the request %>
+  <div class="form-group">
+    <%= f.label :date, t('hyrax.accessibility_request_form.date'), class: "col-sm control-label" %>
+    <div class="date"><%= f.text_field :date, class: 'form-control' %></div>
+    <p>If you need this item by a particular date, let us know and we will do our best to deliver by your deadline. </p>
+  </div>
+  
+  <%# CAPTCHA: Add in the captcha on form %>
+  <%= recaptcha_tags if Hyrax.config.recaptcha? %>
+  <%= invisible_captcha %>
+  <%= f.submit value: t('hyrax.accessibility_request_form.button'), class: "btn btn-primary" %>
+<% end %>
