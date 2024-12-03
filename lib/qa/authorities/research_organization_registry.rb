@@ -18,9 +18,9 @@ module Qa::Authorities
     def search(query)
       # CONDITION: Check if user search by 'id' or 'word'
       if query[0] == '0' && query.length == 9
-        parse_authority_response_with_id(json(build_id_url(URI.escape(untaint(query)))))
+        parse_authority_response_with_id(json(build_id_url(CGI.escape(untaint(query)))))
       else
-        parse_authority_response(json(build_query_url(URI.escape(untaint(query)))))
+        parse_authority_response(json(build_query_url(CGI.escape(untaint(query)))))
       end
     end
 

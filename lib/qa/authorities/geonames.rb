@@ -49,12 +49,12 @@ module Qa::Authorities
 
     # BUILD: Create a search using id number instead
     def build_id_url(q)
-      query = URI.escape(untaint(q))
+      query = CGI.escape(untaint(q))
       "http://api.geonames.org/getJSON?geonameId=#{query}&username=#{username}"
     end
 
     def build_query_url(q)
-      query = URI.escape(untaint(q))
+      query = CGI.escape(untaint(q))
       "http://api.geonames.org/searchJSON?q=#{query}&username=#{username}&maxRows=10"
     end
 

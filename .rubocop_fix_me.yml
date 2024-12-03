@@ -979,11 +979,6 @@ Style/MethodDefParentheses:
   Exclude:
     - "lib/scholars_archive/document/qualified_dublin_core.rb"
 
-Lint/UriEscapeUnescape:
-  Exclude:
-    - "lib/qa/authorities/geonames.rb"
-    - "lib/qa/authorities/research_organization_registry.rb"
-
 Capybara/VisibilityMatcher:
   Exclude:
     - "spec/views/records/edit_fields/_degree_field.html.erb_spec.rb"
