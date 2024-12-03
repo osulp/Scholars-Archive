@@ -27,6 +27,7 @@ module ScholarsArchive
 
         node? ? [] : [rdf_subject.to_s]
       end
+      # rubocop:enable Metrics/MethodLength
 
       # METHOD: Add in full label fetch for the edit work page
       def full_label
@@ -53,35 +54,15 @@ module ScholarsArchive
       end
 
       # METHOD: Add in a manual fetch for graph
-      # rubocop:disable Security/Open
       def fetch_graph_manual
-        # GRAB: Fetch and modify the URL from rdf_subject
-        modify_url = rdf_subject.to_s.split('/')
-        modify_url[1] = '//api.ror.org'
-        modify_url[2] = '/v2/organizations/'
-        url = modify_url.join
-
-        # GRAB: Fetch and parse the raw JSON data from the URL
-        json_data = URI.open(url).read
-        parsed_data = JSON.parse(json_data)
-
-        # GRAPH: Define a new RDF::Graph
-        graph = RDF::Graph.new
+        url = URI::HTTP.build(host: 'api.ror.org', path: "/v2/organizations/#{rdf_subject.to_s.split('/').last}")
 
         # GET: Get the value for RDF::Literal
-        val_literal = parsed_data['names'].map { |v| v['value'] if v['types'].include?('ror_display') }
-
-        # INGEST: Add in "subject", "predicate", and "object" keys
-        subject = RDF::URI(rdf_subject.to_s)
-        predicate = ::RDF::Vocab::MARCRelators.fnd
-        object = RDF::Literal.new(val_literal.join)
+        val_literal = JSON.parse(url.open.read)['names'].map { |v| v['value'] if v['types'].include?('ror_display') }
 
         # INSERT: Insert the RDF triple into the graph & return graph
-        graph << [subject, predicate, object]
-        graph
+        RDF::Graph.new << [RDF::URI(rdf_subject.to_s), ::RDF::Vocab::MARCRelators.fnd, RDF::Literal.new(val_literal.join)]
       end
-      # rubocop:enable Metrics/MethodLength
-      # rubocop:enable Security/Open
     end
   end
 end

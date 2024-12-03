@@ -18,9 +18,9 @@ module Qa::Authorities
     def search(query)
       # CONDITION: Check if user search by 'id' or 'word'
       if query[0] == '0' && query.length == 9
-        parse_authority_response_with_id(json(build_id_url(query)))
+        parse_authority_response_with_id(json(build_id_url(URI.escape(untaint(query)))))
       else
-        parse_authority_response(json(build_query_url(query)))
+        parse_authority_response(json(build_query_url(URI.escape(untaint(query)))))
       end
     end
 
@@ -31,14 +31,12 @@ module Qa::Authorities
 
     # METHOD: Build search using 'word'
     def build_query_url(query)
-      query_str = URI.escape(untaint(query))
-      "https://api.ror.org/v2/organizations?query=#{query_str}"
+      "https://api.ror.org/v2/organizations?query=#{query}"
     end
 
     # METHOD: Create a search using id number instead
     def build_id_url(query)
-      query_str = URI.escape(untaint(query))
-      "https://api.ror.org/v2/organizations/#{query_str}"
+      "https://api.ror.org/v2/organizations/#{query}"
     end
 
     # METHOD: Find id for full label
