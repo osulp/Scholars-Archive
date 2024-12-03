@@ -63,7 +63,7 @@ module ScholarsArchive
         { field: :replaces, render_as: :external_link },
         { field: :nested_ordered_additional_information_label, label: 'Additional Information' },
         { field: :based_near_linked_label, render_as: :search_and_external_link, label: 'Location', search_field: 'based_near_label' },
-        { field: :funding_body, render_as: :faceted, label: I18n.t('simple_form.labels.defaults.funding_body') },
+        { field: :funding_body_label, render_as: :search_and_external_link, label: I18n.t('simple_form.labels.defaults.funding_body'), search_field: 'funding_body_label' },
         { field: :embargo_reason },
         { field: :embargo_date_range },
         { field: :duration, label: I18n.t('simple_form.labels.defaults.duration') },

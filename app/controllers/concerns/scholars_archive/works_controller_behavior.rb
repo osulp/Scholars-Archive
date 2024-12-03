@@ -40,11 +40,13 @@ module ScholarsArchive
     end
 
     def update
+      store_funding
       set_other_option_values
       super
     end
 
     def create
+      store_funding
       set_other_option_values
       super
     end
@@ -73,6 +75,18 @@ module ScholarsArchive
     end
 
     private
+
+    # METHOD: Manually add controlled_vocab object to funding body
+    def store_funding
+      # LOOP: Loop through each entry from attribute(s)
+      curation_concern.funding_body = params[hash_key_for_curation_concern]['funding_body_attributes'].to_unsafe_h.each_with_object([]) do |(_key, value), object|
+        # CHECK: Skip if 'id' value is blank or destroy
+        next if value['id'].blank? || value['_destroy'] == 'true'
+
+        # STORE: Store the controlled_vocab obj into the array
+        object << ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(value['id'])
+      end
+    end
 
     # METHOD: Create a method to fetch individual file set
     def file_set_actor(file_set)

@@ -93,7 +93,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('degree_level', :facetable), limit: 5, label: 'Degree Level'
     config.add_facet_field solr_name('degree_name', :facetable), limit: 5, label: 'Degree Name'
     config.add_facet_field solr_name('file_format', :facetable), label: 'File Format', limit: 5
-    config.add_facet_field solr_name('funding_body', :facetable), label: 'Funding Body', limit: 5
+    config.add_facet_field solr_name('funding_body_label', :facetable), label: 'Funding Body', limit: 5
     config.add_facet_field 'has_journal_sfacet', limit: 5, label: 'Journal Title'
     config.add_facet_field 'language_label_ssim', label: 'Language', limit: 5
     config.add_facet_field 'license_label_ssim', label: 'License', limit: 5

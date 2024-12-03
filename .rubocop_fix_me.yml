@@ -979,10 +979,6 @@ Style/MethodDefParentheses:
   Exclude:
     - "lib/scholars_archive/document/qualified_dublin_core.rb"
 
-Lint/UriEscapeUnescape:
-  Exclude:
-    - "lib/qa/authorities/geonames.rb"
-
 Capybara/VisibilityMatcher:
   Exclude:
     - "spec/views/records/edit_fields/_degree_field.html.erb_spec.rb"
@@ -1009,6 +1005,10 @@ RSpec/RepeatedExampleGroupDescription:
   Exclude:
     - "spec/models/default_spec.rb"
     - "spec/scholars_archive/validators/graduation_year_validator_spec.rb"
+
+RSpec/UnspecifiedException:
+  Exclude:
+    - "spec/services/scholars_archive/research_organization_registry_service_spec.rb"
 
 Lint/RedundantCopDisableDirective:
   Exclude:

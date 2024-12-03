@@ -23,6 +23,7 @@ module ScholarsArchive
                :other_affiliation_label,
                :peerreviewed_label,
                :based_near_linked_label,
+               :funding_body_label,
                :rights_statement_label, to: :solr_document
       delegate(*::ScholarsArchive::DefaultTerms.base_terms, to: :solr_document)
     end

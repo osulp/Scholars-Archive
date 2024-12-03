@@ -25,6 +25,18 @@ RSpec.describe SolrDocument do
     end
   end
 
+  # TEST: New test on funding_body_label
+  describe '#funding_body_label' do
+    context 'when an funding_body_label is indexed' do
+      document = described_class.new({
+                                       'funding_body_linked_ssim' => ['label1$www.blah.com']
+                                     })
+      it 'should return the label' do
+        expect(document.funding_body_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
+      end
+    end
+  end
+
   describe '#embargo_date_range' do
     context 'when an embargo_date_range is indexed' do
       document = described_class.new({
