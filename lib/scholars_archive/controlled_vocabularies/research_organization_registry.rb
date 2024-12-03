@@ -55,6 +55,7 @@ module ScholarsArchive
 
       # METHOD: Add in a manual fetch for graph
       def fetch_graph_manual
+        # BUILD: Build the URL to fetch JSON data from it
         url = URI::HTTP.build(host: 'api.ror.org', path: "/v2/organizations/#{rdf_subject.to_s.split('/').last}")
 
         # GET: Get the value for RDF::Literal
