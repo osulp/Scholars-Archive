@@ -87,9 +87,8 @@ Rails.application.routes.draw do
     end
   end
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # ACCESSIBILITY REQUEST FORM ROUTE: Setup the routes for the accessibility form
   get 'accessibility_request', to: 'scholars_archive/accessibility_request_form#new', controller: 'scholars_archive/accessibility_request_form'
   post 'accessibility_request', to: 'scholars_archive/accessibility_request_form#create', as: :accessibility_request_form_index, controller: 'scholars_archive/accessibility_request_form'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
