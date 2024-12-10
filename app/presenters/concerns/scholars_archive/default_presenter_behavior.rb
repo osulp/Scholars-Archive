@@ -8,7 +8,6 @@ module ScholarsArchive
       delegate :abstract,
                :academic_affiliation_label,
                :based_near_linked,
-               :datacite_doi,
                :degree_field_label,
                :embargo_date_range,
                :itemtype,

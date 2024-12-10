@@ -8,10 +8,6 @@ class SolrDocument
 
   # Adds Hyrax behaviors to the SolrDocument.
   include Hyrax::SolrDocumentBehavior
-  # Add attributes for DOIs for hyrax-doi plugin.
-  include Hyrax::DOI::SolrDocument::DOIBehavior
-  # Add attributes for DataCite DOIs for hyrax-doi plugin.
-  include Hyrax::DOI::SolrDocument::DataCiteDOIBehavior
 
   # .unique_key = 'id'
 

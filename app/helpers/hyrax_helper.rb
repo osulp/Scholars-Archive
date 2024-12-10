@@ -6,7 +6,6 @@ module HyraxHelper
   include Hyrax::BlacklightOverride
   include Hyrax::HyraxHelperBehavior
   # Helpers provided by hyrax-doi plugin.
-  include Hyrax::DOI::HelperBehavior
   include ScholarsArchive::CitationsBehavior
 
   def human_readable_date_edtf(options)

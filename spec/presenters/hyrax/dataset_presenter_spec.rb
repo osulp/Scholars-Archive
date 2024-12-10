@@ -25,7 +25,7 @@ RSpec.describe DatasetPresenter do
   let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
-    %w[datacite_doi doi abstract alternative_title license based_near_linked resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed_label digitization_spec file_extent file_format dspace_community dspace_collection]
+    %w[doi abstract alternative_title license based_near_linked resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed_label digitization_spec file_extent file_format dspace_community dspace_collection]
   end
 
   subject { presenter }
@@ -37,7 +37,6 @@ RSpec.describe DatasetPresenter do
     end
   end
 
-  it { is_expected.to delegate_method(:datacite_doi).to(:solr_document) }
   it { is_expected.to delegate_method(:doi).to(:solr_document) }
   it { is_expected.to delegate_method(:abstract).to(:solr_document) }
   it { is_expected.to delegate_method(:alternative_title).to(:solr_document) }

@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   mount Hydra::RoleManagement::Engine => '/'
   mount Qa::Engine => '/authorities'
   mount Hyrax::Engine, at: '/'
-  mount Hyrax::DOI::Engine, at: '/doi', as: 'hyrax_doi'
   resources :welcome, only: 'index'
   root 'hyrax/homepage#index'
   curation_concerns_basic_routes
