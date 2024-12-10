@@ -17,7 +17,7 @@ module ScholarsArchive
       if @accessibility_form.valid?
         # IF: If recaptcha present, then send the email and reload the new form for submission
         if check_recaptcha
-          # ScholarsArchive::AccessibilityRequestForm.torrent_contact(@torrent_form).deliver_now
+          ScholarsArchive::AccessibilityFormMailer.auto_contact(@accessibility_form).deliver_now
           flash.now[:notice] = t('hyrax.accessibility_request_form.success_email')
           after_deliver
           @accessibility_form = ScholarsArchive::AccessibilityRequestForm.new
