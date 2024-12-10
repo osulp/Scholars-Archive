@@ -1,0 +1,44 @@
+<h1>
+    <%= t('hyrax.accessibility_request_form.header') %>
+</h1>
+
+<p>
+  ScholarsArchive@OSU has long accepted scholarly content from the OSU community in many formats. We are aware that not all items in the repository are fully accessible to all of our users at this time, and we are working hard to bring all content up to the standards outlined in OSU’s Digital Accessibility Policy. For more information about this work, see the OSU Libraries Accessibility Statement [coming soon].
+  <br/><br/>
+  To request a remediated version of inaccessible content, such as a PDF document or media file, please complete the form below and OSU Libraries staff will accommodate your request. Some types of remediation take a substantial amount of staff time, so please give as much advance notice as possible.
+  <br/><br/>
+  If you are looking for help with a different topic in ScholarsArchive@OSU, use the Contact Us form.
+</p>
+
+<br/>
+
+<h2>
+    <%= t('hyrax.accessibility_request_form.sub_header') %>
+</h2>
+<p>
+  Fields marked with <span style="color:red"> * </span> are required.
+</p>
+
+<%# FORM: Create the form view page to submit the accessibility form %>
+<%= form_for @accessibility_form, url: accessibility_request_form_index_path,
+                            html: { class: 'form-horizontal' } do |f| %>
+  <%# HIDDEN FIELD: This field is hidden to check for spam %>
+  <%= f.text_field :accessibility_method, class: 'hide' %>
+
+  <%# NAME: Set the naming box %>
+  <div class="form-group">
+    <%= f.label :name, t('hyrax.accessibility_request_form.name'), class: "control-label" %>
+    <div class="accessibility-name"><%= f.text_field :name, value: user_signed_in? ? current_user.name : '', class: 'form-control', required: true %></div>
+  </div>
+  
+  <%# EMAIL: Set the email layout to enter in email, if login use their email %>
+  <div class="form-group">
+    <%= f.label :email, t('hyrax.accessibility_request_form.email'), class: "control-label" %>
+    <div class="accessibility-email"><%= f.text_field :email, value: user_signed_in? ? current_user.email : '', class: 'form-control', required: true %></div>
+  </div>
+  
+  <%# CAPTCHA: Add in the captcha on form %>
+  <%= recaptcha_tags if Hyrax.config.recaptcha? %>
+  <%= invisible_captcha %>
+  <%= f.submit value: t('hyrax.accessibility_request_form.button'), class: "btn btn-primary" %>
+<% end %>

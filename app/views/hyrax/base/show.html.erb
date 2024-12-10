@@ -33,6 +33,8 @@
             <div class="col-sm-3 text-center">
               <%= render 'representative_media', presenter: @presenter, viewer: false unless @presenter.universal_viewer? %>
               <%= render 'citations', presenter: @presenter %>
+              <%# ADD: Add a new render field for accessibility request %>
+              <%= render 'scholars_archive/base/accessibility_request' %>
               <%= render 'social_media' %>
             </div>
             <div class="col-sm-9">

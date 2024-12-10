@@ -1,0 +1,4 @@
+<%# VIEW: Add in a new view that has a button to guide to a form on request %>
+<div class="accessibility-request">
+    <%= link_to "Request Accessible Version", polymorphic_path([main_app, :accessibility_request]), id: 'accessibility-request', 'aria-label': 'Request Accessible Version', class: 'btn btn-default' %>
+</div>
