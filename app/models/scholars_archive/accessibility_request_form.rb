@@ -24,5 +24,14 @@ module ScholarsArchive
         from: email
       }
     end
+
+    # HEADER: Declare the e-mail headers. It accepts anything the mail method in ActionMailer accepts
+    def auto_headers
+      {
+        subject: 'Scholars Archive Accessibility Request Form: Request Confirmation',
+        to: email,
+        from: Hyrax.config.contact_email
+      }
+    end
   end
 end
