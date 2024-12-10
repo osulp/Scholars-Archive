@@ -14,13 +14,13 @@ module ScholarsArchive
     # rubocop:disable Metrics/MethodLength
     def create
       # CHECK: See if the form is valid
-      if @accessibility_request_form.valid?
+      if @accessibility_form.valid?
         # IF: If recaptcha present, then send the email and reload the new form for submission
         if check_recaptcha
           # ScholarsArchive::AccessibilityRequestForm.torrent_contact(@torrent_form).deliver_now
           flash.now[:notice] = t('hyrax.accessibility_request_form.success_email')
           after_deliver
-          @accessibility_request_form = ScholarsArchive::AccessibilityRequestForm.new
+          @accessibility_form = ScholarsArchive::AccessibilityRequestForm.new
         end
       else
         flash.now[:error] = t('hyrax.accessibility_request_form.failed_email')
@@ -45,14 +45,14 @@ module ScholarsArchive
 
     # METHOD: Create a new form with all the params
     def build_accessibility_request_form
-      @accessibility_request_form = ScholarsArchive::AccessibilityRequestForm.new(accessibility_request_form_params)
+      @accessibility_form = ScholarsArchive::AccessibilityRequestForm.new(accessibility_request_form_params)
     end
 
     # METHOD: Permits all the required params
     def accessibility_request_form_params
-      return {} unless params.key?(:accessibility_request_form)
+      return {} unless params.key?(:scholars_archive_accessibility_request_form)
 
-      params.require(:accessibility_request_form).permit(:accessibility_request_method, :email, :name, :phone, :url_link, :request_detail, :additional_detail, :date)
+      params.require(:scholars_archive_accessibility_request_form).permit(:accessibility_method, :email, :name)
     end
   end
 end
