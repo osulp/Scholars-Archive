@@ -5,10 +5,10 @@ module ScholarsArchive
   class AccessibilityRequestForm
     include ActiveModel::Model
     # ADD: Add in accessors to map out on field that will be use in the form
-    attr_accessor :accessibility_method, :email, :name
+    attr_accessor :accessibility_method, :email, :name, :url_link, :details, :additional, :phone, :date
 
     # VALIDATION: Add in validation to these variables to check before pass the form
-    validates :email, :name, presence: true
+    validates :email, :name, :url_link, :details, presence: true
     validates :email, format: /\A([\w.%+-]+)@([\w-]+\.)+(\w{2,})\z/i, allow_blank: true
 
     # SPAM: Check to make sure this section isn't fill, if so, it might be a spam

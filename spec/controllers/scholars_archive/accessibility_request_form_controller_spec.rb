@@ -7,7 +7,12 @@ RSpec.describe ScholarsArchive::AccessibilityRequestFormController, type: :contr
   let(:required_params) do
     {
       email: 'rose@testemail.org',
-      name: 'Test Name'
+      name: 'Test Name',
+      url_link: 'www.test.com',
+      details: 'test detail',
+      additional: 'additional detail',
+      phone: '123456789',
+      date: 'Test Date'
     }
   end
 
