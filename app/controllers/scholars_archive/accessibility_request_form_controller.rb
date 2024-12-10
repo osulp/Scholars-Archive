@@ -52,7 +52,7 @@ module ScholarsArchive
     def accessibility_request_form_params
       return {} unless params.key?(:scholars_archive_accessibility_request_form)
 
-      params.require(:scholars_archive_accessibility_request_form).permit(:accessibility_method, :email, :name)
+      params.require(:scholars_archive_accessibility_request_form).permit(:accessibility_method, :email, :name, :url_link, :details, :additional, :phone, :date)
     end
   end
 end

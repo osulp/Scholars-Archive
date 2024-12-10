@@ -1,3 +1,9 @@
-<p>TEST To SEE IF SEND</p>
-<p><%= @accessibility_form.name %></p>
-<p><%= @accessibility_form.email %></p>
+<p>Dear <%= @accessibility_form.name %>,</p>
+<p>Your accessibility remediation request has been received and is being routed to the OSU Libraries team who manages this type of content. We will reach out if we have any follow up questions and/or when we have completed your request.</p>
+<br/>
+<p>Here is a copy of the information you provided about this request:</p>
+<br/>
+<p>Item's Link: <%= @accessibility_form.url_link %></p>
+<p>Request Detail: <%= @accessibility_form.details %></p>
+<p>Additional Detail: <%= @accessibility_form.additional.blank? ? 'None' : @accessibility_form.additional %></p>
+<p>Date Needed: <%= @accessibility_form.date.blank? ? 'None' : @accessibility_form.date %></p>

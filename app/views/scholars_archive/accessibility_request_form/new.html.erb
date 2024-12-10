@@ -27,14 +27,48 @@
 
   <%# NAME: Set the naming box %>
   <div class="form-group">
-    <%= f.label :name, t('hyrax.accessibility_request_form.name'), class: "control-label" %>
+    <p> <%= f.label :name, t('hyrax.accessibility_request_form.name'), class: "control-label" %> <span style="color:red"> * </span> </p>
     <div class="accessibility-name"><%= f.text_field :name, value: user_signed_in? ? current_user.name : '', class: 'form-control', required: true %></div>
   </div>
   
   <%# EMAIL: Set the email layout to enter in email, if login use their email %>
   <div class="form-group">
-    <%= f.label :email, t('hyrax.accessibility_request_form.email'), class: "control-label" %>
+    <p> <%= f.label :email, t('hyrax.accessibility_request_form.email'), class: "control-label" %> <span style="color:red"> * </span> </p>
     <div class="accessibility-email"><%= f.text_field :email, value: user_signed_in? ? current_user.email : '', class: 'form-control', required: true %></div>
+  </div>
+
+  <%# PHONE: Provide the phone number option %>
+  <div class="form-group">
+    <%= f.label :phone, t('hyrax.accessibility_request_form.phone'), class: "control-label" %>
+    <div class="accessibility-phone"><%= f.text_field :phone, value: '', class: 'form-control' %></div>
+  </div>
+
+  <%# LINK: Provide the link to let user gives the link to access accessibility %>
+  <div class="form-group">
+    <p> <%= f.label :url_link, t('hyrax.accessibility_request_form.link'), class: "control-label" %> <span style="color:red"> * </span> </p>
+    <div class="accessibility-url-link"><%= f.text_field :url_link, value: '', class: 'form-control', required: true %></div>
+    <p><em>Please include the full link to the item that you would like us to remediate.</em></p>
+  </div>
+
+  <%# DESCRIPTION: Provide the detail about the accessibility %>
+  <div class="form-group">
+    <p> <%= f.label :details, t('hyrax.accessibility_request_form.details'), class: "control-label" %> <span style="color:red"> * </span> </p>
+    <div class="accessibility-details"><%= f.text_area :details, value: '', rows: 4, class: 'form-control', required: true %></div>
+    <p><em>Please describe the type of accommodation that you need (for example, written transcription, compatibility with a particular assistive device, preferred file formats, etc.). Include details about what particular parts of the content are inaccessible, if applicable.</em></p>
+  </div>
+
+  <%# DESCRIPTION: Provide the additional detail about the accessibility %>
+  <div class="form-group">
+    <%= f.label :additional, t('hyrax.accessibility_request_form.additional'), class: "control-label" %>
+    <div class="accessibility-additional"><%= f.text_area :additional, value: '', rows: 4, class: 'form-control' %></div>
+    <p><em>List any other ScholarsArchive@OSU items you would like remediated as part of this request.</em></p>
+  </div>
+
+  <%# DATE: Provide the date needed for request %>
+  <div class="form-group">
+    <%= f.label :date, t('hyrax.accessibility_request_form.date'), class: "control-label" %>
+    <div class="accessibility-date"><%= f.text_field :date, value: '', class: 'form-control' %></div>
+    <p><em>If you need this item by a particular date, let us know and we will do our best to deliver by your deadline.</em></p>
   </div>
   
   <%# CAPTCHA: Add in the captcha on form %>
