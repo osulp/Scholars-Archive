@@ -11,5 +11,14 @@ module ScholarsArchive
 
       mail(@accessibility_form.auto_headers)
     end
+
+    # METHOD: A method to send an confirmation email to admin
+    def admin_contact(accessibility_form)
+      @accessibility_form = accessibility_form
+      # Check for spam
+      return if @accessibility_form.spam?
+
+      mail(@accessibility_form.headers)
+    end
   end
 end
