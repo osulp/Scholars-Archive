@@ -46,7 +46,7 @@
   <%# LINK: Provide the link to let user gives the link to access accessibility %>
   <div class="form-group">
     <p> <%= f.label :url_link, t('hyrax.accessibility_request_form.link'), class: "control-label" %> <span style="color:red"> * </span> </p>
-    <div class="accessibility-url-link"><%= f.text_field :url_link, value: '', class: 'form-control', required: true %></div>
+    <div class="accessibility-url-link"><%= f.text_field :url_link, value: @request_url.blank? ? '' : @request_url, class: 'form-control', required: true %></div>
     <p><em>Please include the full link to the item that you would like us to remediate.</em></p>
   </div>
 
