@@ -9,7 +9,9 @@ module ScholarsArchive
     invisible_captcha only: [:create]
     layout 'homepage'
 
-    def new; end
+    def new
+      @request_url = session[:request_url]
+    end
 
     # rubocop:disable Metrics/MethodLength
     def create
