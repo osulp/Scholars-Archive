@@ -67,7 +67,7 @@
   <%# DATE: Provide the date needed for request %>
   <div class="form-group">
     <%= f.label :date, t('hyrax.accessibility_request_form.date'), class: "control-label" %>
-    <div class="accessibility-date"><%= f.text_field :date, value: '', class: 'form-control' %></div>
+    <div class="accessibility-date"><%= f.date_field :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %></div>
     <p><em>If you need this item by a particular date, let us know and we will do our best to deliver by your deadline.</em></p>
   </div>
   
