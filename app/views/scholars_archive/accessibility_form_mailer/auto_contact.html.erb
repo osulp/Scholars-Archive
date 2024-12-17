@@ -1,3 +1,7 @@
+<%# DATE: Formatting the date %>
+<% date = Date.parse(@accessibility_form.date) unless @accessibility_form.date.blank? %>
+<% @formatted_date = date.strftime('%m/%d/%Y') unless @accessibility_form.date.blank? %>
+
 <p>Dear <%= @accessibility_form.name %>,</p>
 <p>Your accessibility remediation request has been received and is being routed to the OSU Libraries team who manages this type of content. We will reach out if we have any follow up questions and/or when we have completed your request.</p>
 <br/>
@@ -6,4 +10,4 @@
 <p>Item's Link: <%= @accessibility_form.url_link %></p>
 <p>Request Detail: <%= @accessibility_form.details %></p>
 <p>Additional Detail: <%= @accessibility_form.additional.blank? ? 'None' : @accessibility_form.additional %></p>
-<p>Date Needed: <%= @accessibility_form.date.blank? ? 'None' : @accessibility_form.date %></p>
+<p>Date Needed: <%= @accessibility_form.date.blank? ? 'None' : @formatted_date %></p>
