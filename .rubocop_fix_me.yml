@@ -853,6 +853,7 @@ RSpec/NestedGroups:
   Exclude:
     - "spec/models/default_spec.rb"
     - "spec/controllers/hyrax/contact_form_controller_spec.rb"
+    - "spec/controllers/scholars_archive/accessibility_request_form_controller_spec.rb"
 
 RSpec/ExpectInHook:
   Exclude:
