@@ -1,6 +1,9 @@
 Lint/EmptyWhen:
   Exclude:
     - "app/controllers/scholars_archive/handles_controller.rb"
+Security/YAMLLoad:
+  Exclude:
+    - "app/authorities/scholars_archive/cache_based_authority.rb"
 Lint/MissingSuper:
   Exclude:
     - "app/models/oai_set.rb"
