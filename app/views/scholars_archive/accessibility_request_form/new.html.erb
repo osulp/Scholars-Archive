@@ -3,11 +3,11 @@
 </h1>
 
 <p>
-  ScholarsArchive@OSU has long accepted scholarly content from the OSU community in many formats. We are aware that not all items in the repository are fully accessible to all of our users at this time, and we are working hard to bring all content up to the standards outlined in OSU’s Digital Accessibility Policy. For more information about this work, see the OSU Libraries Accessibility Statement [coming soon].
+  ScholarsArchive@OSU has long accepted scholarly content from the OSU community in many formats. We are aware that not all items in the repository are fully accessible to all of our users at this time, and we are working hard to bring all content up to the standards outlined in <a href="https://policy.oregonstate.edu/policy/digital-accessibility" target="_blank">OSU's Digital Accessibility Policy</a>.
   <br/><br/>
   To request a remediated version of inaccessible content, such as a PDF document or media file, please complete the form below and OSU Libraries staff will accommodate your request. Some types of remediation take a substantial amount of staff time, so please give as much advance notice as possible.
   <br/><br/>
-  If you are looking for help with a different topic in ScholarsArchive@OSU, use the Contact Us form.
+  If you are looking for help with a different topic in ScholarsArchive@OSU, use the <a href="<%= hyrax.contact_form_index_path %>" target="_blank">Contact Us</a> form.
 </p>
 
 <br/>
@@ -46,7 +46,7 @@
   <%# LINK: Provide the link to let user gives the link to access accessibility %>
   <div class="form-group">
     <p> <%= f.label :url_link, t('hyrax.accessibility_request_form.link'), class: "control-label" %> <span style="color:red"> * </span> </p>
-    <div class="accessibility-url-link"><%= f.text_field :url_link, value: @request_url.blank? ? '' : @request_url, class: 'form-control', required: true %></div>
+    <div class="accessibility-url-link"><%= f.url_field :url_link, value: @request_url.blank? ? '' : @request_url, class: 'form-control', required: true %></div>
     <p><em>Please include the full link to the item that you would like us to remediate.</em></p>
   </div>
 
