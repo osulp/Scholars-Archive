@@ -1,6 +1,6 @@
 require: rubocop-rspec
 
-inherit_from: .rubocop_fix_me.yml
+inherit_from: rubocop_fix_me.yml
 
 AllCops:
   TargetRubyVersion: 2.5
@@ -13,6 +13,7 @@ AllCops:
     - "bin/**/*"
     - "Gemfile"
     - "Rakefile"
+    - "spec/**/*"
     - "lib/tasks/**/*"
     - "config/**/*"
     - "sa_scripts/**/*"

@@ -38,7 +38,7 @@ RSpec.describe Default do
         g
       end
 
-      it 'should be blank' do
+      it 'is blank' do
         expect(facet).to be_nil
       end
     end
@@ -58,13 +58,13 @@ RSpec.describe Default do
         g
       end
 
-      it 'should be blank' do
+      it 'is blank' do
         expect(facet).to be_nil
       end
     end
 
     context 'when given a date' do
-      it 'should be that year' do
+      it 'is that year' do
         expect(facet).to eq [2022]
       end
     end
@@ -72,7 +72,7 @@ RSpec.describe Default do
     context 'when given just a year' do
       let(:date) { '2011' }
 
-      it 'should pull the year' do
+      it 'pulls the year' do
         expect(facet).to eq [2011]
       end
     end
@@ -81,7 +81,7 @@ RSpec.describe Default do
       context 'when is a range of dates YYYY-mm-dd/YYY-mm-dd' do
         let(:date) { '1925-12-01/1927-01-01' }
 
-        it 'should have years in that range' do
+        it 'has years in that range' do
           expect(facet).to eq [1925, 1926, 1927]
         end
       end
@@ -89,7 +89,7 @@ RSpec.describe Default do
       context 'when is a range of years only YYYY/YYYY' do
         let(:date) { '2014/2017' }
 
-        it 'should have years in that range' do
+        it 'has years in that range' do
           expect(facet).to eq [2014, 2015, 2016, 2017]
         end
       end
@@ -97,7 +97,7 @@ RSpec.describe Default do
       context 'when is a range of year and month only YYYY-mm/YYY-mm' do
         let(:date) { '2017-12/2018-01' }
 
-        it 'should have years in that range' do
+        it 'has years in that range' do
           expect(facet).to eq [2017, 2018]
         end
       end
@@ -127,7 +127,7 @@ RSpec.describe Default do
           g
         end
 
-        it 'should be blank' do
+        it 'is blank' do
           expect(facet).to be_nil
         end
       end
@@ -144,7 +144,7 @@ RSpec.describe Default do
         end
         let(:date_created) { '1973-03-09' }
 
-        it 'should be that decade' do
+        it 'is that decade' do
           expect(facet).to eq ['1970-1979']
         end
       end
@@ -160,7 +160,7 @@ RSpec.describe Default do
         end
         let(:date_copyright) { '1943' }
 
-        it 'should be that decade' do
+        it 'is that decade' do
           expect(facet).to eq ['1940-1949']
         end
       end
@@ -176,14 +176,14 @@ RSpec.describe Default do
         end
         let(:date_issued) { '1943' }
 
-        it 'should be that decade' do
+        it 'is that decade' do
           expect(facet).to eq ['1940-1949']
         end
       end
     end
 
     context 'when given a date' do
-      it 'should be that decade' do
+      it 'is that decade' do
         expect(facet).to eq ['2020-2029']
       end
     end
@@ -191,7 +191,7 @@ RSpec.describe Default do
     context 'when given just a year' do
       let(:date) { '2011' }
 
-      it 'should pull the date' do
+      it 'pulls the date' do
         expect(facet).to eq ['2010-2019']
       end
     end
@@ -200,7 +200,7 @@ RSpec.describe Default do
       context 'when is in a single decade' do
         let(:date) { '1910-1915' }
 
-        it 'should have only one entry' do
+        it 'has only one entry' do
           expect(facet).to eq ['1910-1919']
         end
       end
@@ -208,14 +208,14 @@ RSpec.describe Default do
       context 'which spans decades' do
         let(:date) { '1910-1920' }
 
-        it 'should have two entries' do
+        it 'has two entries' do
           expect(facet).to eq %w[1910-1919 1920-1929]
         end
 
         context 'which is more than 30 years' do
           let(:date) { '1900-1940' }
 
-          it 'should be blank' do
+          it 'is blank' do
             expect(facet).to be_nil
           end
         end
@@ -231,7 +231,7 @@ RSpec.describe Default do
       }]
     end
 
-    it 'should be able to delete items' do
+    it 'is able to delete items' do
       g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = attributes
       g.nested_geo_attributes = [
@@ -250,14 +250,14 @@ RSpec.describe Default do
       expect(g.nested_geo.first.label).to eq ['Banana']
     end
 
-    it 'should work on already persisted items' do
+    it 'works on already persisted items' do
       g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = attributes
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_geo.first.label).to eq ['Salem']
     end
 
-    it 'should be able to edit' do
+    it 'is able to edit' do
       g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = attributes
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
@@ -270,12 +270,12 @@ RSpec.describe Default do
       expect(g.nested_geo.first.label).to eq ['Banana']
     end
 
-    it 'should not create blank ones' do
+    it 'does not create blank ones' do
       g = described_class.new(keyword: ['test'])
       g.nested_geo_attributes = [
         {
           label: '',
-          point: '',
+          point: ''
         }
       ]
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
@@ -283,7 +283,7 @@ RSpec.describe Default do
     end
   end
 
-  it 'should be able to create multiple nested geo points' do
+  it 'is able to create multiple nested geo points' do
     g = described_class.new(keyword: ['test'])
     g.nested_geo_attributes = [
       {
@@ -306,8 +306,8 @@ RSpec.describe Default do
       }]
     end
 
-    it 'should be able to delete items' do
-      g = described_class.new()
+    it 'is able to delete items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = attributes
       g.nested_ordered_creator_attributes = [
@@ -324,8 +324,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.first.creator).to eq ['CreatorB']
     end
 
-    it 'should not persist items when all are blank' do
-      g = described_class.new()
+    it 'does not persist items when all are blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
         {
@@ -340,8 +340,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.length).to eq 0
     end
 
-    it 'should not persist item when only creator is blank' do
-      g = described_class.new()
+    it 'does not persist item when only creator is blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
         {
@@ -352,8 +352,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.length).to eq 0
     end
 
-    it 'should persist item when only index is blank' do
-      g = described_class.new()
+    it 'persists item when only index is blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
         {
@@ -364,15 +364,15 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.length).to eq 1
     end
 
-    it 'should work on already persisted items' do
-      g = described_class.new()
+    it 'works on already persisted items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = attributes
       expect(g.nested_ordered_creator.first.creator).to eq ['CreatorA']
     end
 
-    it 'should be able to edit' do
-      g = described_class.new()
+    it 'is able to edit' do
+      g = described_class.new
       g.nested_ordered_creator_attributes = attributes
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_ordered_creator.length).to eq 1
@@ -384,21 +384,21 @@ RSpec.describe Default do
       expect(g.nested_ordered_creator.first.creator).to eq ['CreatorB']
     end
 
-    it 'should not create blank ones' do
+    it 'does not create blank ones' do
       g = described_class.new(keyword: ['test'])
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_creator_attributes = [
         {
           index: '',
-          creator: '',
+          creator: ''
         }
       ]
       expect(g.nested_ordered_creator.length).to eq 0
     end
   end
 
-  it 'should be able to create multiple nested ordered creators' do
-    g = described_class.new()
+  it 'is able to create multiple nested ordered creators' do
+    g = described_class.new
     g.nested_ordered_title_attributes = nested_ordered_title_attributes
     g.nested_ordered_creator_attributes = [
       {
@@ -416,8 +416,8 @@ RSpec.describe Default do
   end
 
   # Test sort is happening on id as integer, especially for more than 10 items, see Issue #1773
-  it 'should return multiple nested ordered creators in correct order' do
-    g = described_class.new()
+  it 'returns multiple nested ordered creators in correct order' do
+    g = described_class.new
     g.nested_ordered_title_attributes = nested_ordered_title_attributes
     g.nested_ordered_creator_attributes = [
       { 'index' => '0', 'creator' => 'Creator0' },
@@ -439,8 +439,8 @@ RSpec.describe Default do
       }]
     end
 
-    it 'should be able to delete items' do
-      g = described_class.new()
+    it 'is able to delete items' do
+      g = described_class.new
       g.nested_related_items_attributes = attributes
       g.nested_related_items_attributes = [
         {
@@ -457,8 +457,8 @@ RSpec.describe Default do
       expect(g.nested_related_items.first.label).to eq ['LabelB']
     end
 
-    it 'should not persist items when all are blank' do
-      g = described_class.new()
+    it 'does not persist items when all are blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = attributes
       g.nested_related_items_attributes = [
         {
@@ -475,14 +475,14 @@ RSpec.describe Default do
       expect(g.nested_related_items.length).to eq 0
     end
 
-    it 'should work on already persisted items' do
-      g = described_class.new()
+    it 'works on already persisted items' do
+      g = described_class.new
       g.nested_related_items_attributes = attributes
       expect(g.nested_related_items.first.label).to eq ['LabelA']
     end
 
-    it 'should be able to edit' do
-      g = described_class.new()
+    it 'is able to edit' do
+      g = described_class.new
       g.nested_related_items_attributes = attributes
       expect(g.nested_related_items.length).to eq 1
       expect(g.nested_related_items.first.label).to eq ['LabelA']
@@ -493,7 +493,7 @@ RSpec.describe Default do
       expect(g.nested_related_items.first.label).to eq ['LabelB']
     end
 
-    it 'should not create blank ones' do
+    it 'does not create blank ones' do
       g = described_class.new(keyword: ['test'])
       g.nested_related_items_attributes = [
         {
@@ -506,8 +506,8 @@ RSpec.describe Default do
     end
   end
 
-  it 'should be able to create multiple nested related items with order index' do
-    g = described_class.new()
+  it 'is able to create multiple nested related items with order index' do
+    g = described_class.new
     g.nested_related_items_attributes = [
       {
         'index' => '0',
@@ -534,8 +534,8 @@ RSpec.describe Default do
       }]
     end
 
-    it 'should be able to delete items' do
-      g = described_class.new()
+    it 'is able to delete items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = attributes
       g.nested_ordered_title_attributes = [
         {
@@ -551,8 +551,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_title.first.title).to eq ['TitleB']
     end
 
-    it 'should not persist items when all are blank' do
-      g = described_class.new()
+    it 'does not persist items when all are blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = [
         {
           index: '',
@@ -566,8 +566,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_title.length).to eq 0
     end
 
-    it 'should not persist item when only title is blank' do
-      g = described_class.new()
+    it 'does not persist item when only title is blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = [
         {
           index: '1',
@@ -577,8 +577,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_title.length).to eq 0
     end
 
-    it 'should persist item when only index is blank' do
-      g = described_class.new()
+    it 'persists item when only index is blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = [
         {
           index: '',
@@ -588,14 +588,14 @@ RSpec.describe Default do
       expect(g.nested_ordered_title.length).to eq 1
     end
 
-    it 'should work on already persisted items' do
-      g = described_class.new()
+    it 'works on already persisted items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = attributes
       expect(g.nested_ordered_title.first.title).to eq ['TitleA']
     end
 
-    it 'should be able to edit' do
-      g = described_class.new()
+    it 'is able to edit' do
+      g = described_class.new
       g.nested_ordered_title_attributes = attributes
       expect(g.nested_ordered_title.length).to eq 1
       expect(g.nested_ordered_title.first.title).to eq ['TitleA']
@@ -606,20 +606,20 @@ RSpec.describe Default do
       expect(g.nested_ordered_title.first.title).to eq ['TitleB']
     end
 
-    it 'should not create blank ones' do
+    it 'does not create blank ones' do
       g = described_class.new(keyword: ['test'])
       g.nested_ordered_title_attributes = [
         {
           index: '',
-          title: '',
+          title: ''
         }
       ]
       expect(g.nested_ordered_title.length).to eq 0
     end
   end
 
-  it 'should be able to create multiple nested ordered title' do
-    g = described_class.new()
+  it 'is able to create multiple nested ordered title' do
+    g = described_class.new
     g.nested_ordered_title_attributes = [
       {
         'index' => '0',
@@ -643,8 +643,8 @@ RSpec.describe Default do
       }]
     end
 
-    it 'should be able to delete items' do
-      g = described_class.new()
+    it 'is able to delete items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = attributes
       g.nested_ordered_contributor_attributes = [
@@ -661,8 +661,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_contributor.first.contributor).to eq ['ContributorB']
     end
 
-    it 'should not persist items when all are blank' do
-      g = described_class.new()
+    it 'does not persist items when all are blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = [
         {
@@ -677,8 +677,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_contributor.length).to eq 0
     end
 
-    it 'should not persist item when only contributor is blank' do
-      g = described_class.new()
+    it 'does not persist item when only contributor is blank' do
+      g = described_class.new
       g.nested_ordered_contributor_attributes = [
         {
           index: '1',
@@ -688,8 +688,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_contributor.length).to eq 0
     end
 
-    it 'should persist item when only index is blank' do
-      g = described_class.new()
+    it 'persists item when only index is blank' do
+      g = described_class.new
       g.nested_ordered_contributor_attributes = [
         {
           index: '',
@@ -699,15 +699,15 @@ RSpec.describe Default do
       expect(g.nested_ordered_contributor.length).to eq 1
     end
 
-    it 'should work on already persisted items' do
-      g = described_class.new()
+    it 'works on already persisted items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = attributes
       expect(g.nested_ordered_contributor.first.contributor).to eq ['ContributorA']
     end
 
-    it 'should be able to edit' do
-      g = described_class.new()
+    it 'is able to edit' do
+      g = described_class.new
       g.nested_ordered_contributor_attributes = attributes
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_ordered_contributor.length).to eq 1
@@ -719,13 +719,13 @@ RSpec.describe Default do
       expect(g.nested_ordered_contributor.first.contributor).to eq ['ContributorB']
     end
 
-    it 'should not create blank ones' do
+    it 'does not create blank ones' do
       g = described_class.new(keyword: ['test'])
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_contributor_attributes = [
         {
           index: '',
-          contributor: '',
+          contributor: ''
         }
       ]
       expect(g.nested_ordered_contributor.length).to eq 0
@@ -740,8 +740,8 @@ RSpec.describe Default do
       }]
     end
 
-    it 'should be able to delete items' do
-      g = described_class.new()
+    it 'is able to delete items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = attributes
       g.nested_ordered_abstract_attributes = [
@@ -758,8 +758,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_abstract.first.abstract).to eq ['AbstractB']
     end
 
-    it 'should not persist items when all are blank' do
-      g = described_class.new()
+    it 'does not persist items when all are blank' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = [
         {
@@ -774,8 +774,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_abstract.length).to eq 0
     end
 
-    it 'should not persist item when only abstract is blank' do
-      g = described_class.new()
+    it 'does not persist item when only abstract is blank' do
+      g = described_class.new
       g.nested_ordered_abstract_attributes = [
         {
           index: '1',
@@ -785,8 +785,8 @@ RSpec.describe Default do
       expect(g.nested_ordered_abstract.length).to eq 0
     end
 
-    it 'should persist item when only index is blank' do
-      g = described_class.new()
+    it 'persists item when only index is blank' do
+      g = described_class.new
       g.nested_ordered_abstract_attributes = [
         {
           index: '',
@@ -796,15 +796,15 @@ RSpec.describe Default do
       expect(g.nested_ordered_abstract.length).to eq 1
     end
 
-    it 'should work on already persisted items' do
-      g = described_class.new()
+    it 'works on already persisted items' do
+      g = described_class.new
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = attributes
       expect(g.nested_ordered_abstract.first.abstract).to eq ['AbstractA']
     end
 
-    it 'should be able to edit' do
-      g = described_class.new()
+    it 'is able to edit' do
+      g = described_class.new
       g.nested_ordered_abstract_attributes = attributes
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       expect(g.nested_ordered_abstract.length).to eq 1
@@ -816,13 +816,13 @@ RSpec.describe Default do
       expect(g.nested_ordered_abstract.first.abstract).to eq ['AbstractB']
     end
 
-    it 'should not create blank ones' do
+    it 'does not create blank ones' do
       g = described_class.new(keyword: ['test'])
       g.nested_ordered_title_attributes = nested_ordered_title_attributes
       g.nested_ordered_abstract_attributes = [
         {
           index: '',
-          abstract: '',
+          abstract: ''
         }
       ]
       expect(g.nested_ordered_abstract.length).to eq 0

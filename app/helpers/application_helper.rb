@@ -104,12 +104,18 @@ module ApplicationHelper
   end
 
   def selected_embargo(release_date, options)
-    if release_date
-      options_hash = options.map { |option| option.second.instance_of?(ActiveSupport::TimeWithZone) ? [option.first, option.second ? option.second.strftime('%Y-%m-%d') : option.second] : option }.to_h
-      key = options_hash.key(release_date.strftime('%Y-%m-%d'))
-      value = options.to_h[key]
-      value ? value : 'other'
-    end
+    return unless release_date
+
+    options_hash = options.map do |option|
+      if option.second.instance_of?(ActiveSupport::TimeWithZone)
+        [option.first, option.second ? option.second.strftime('%Y-%m-%d') : option.second]
+      else
+        option
+      end
+    end.to_h
+    key = options_hash.key(release_date.strftime('%Y-%m-%d'))
+    value = options.to_h[key]
+    value || 'other'
   end
 
   def help_block_wrapper
@@ -120,7 +126,7 @@ module ApplicationHelper
     Kaminari::Helpers::PrevPage.new(self, params: search_state, param_name: request_keys[:page], current_page: page).url
   end
 
-  def generate_next_page_link(search_state, request_keys, page: )
+  def generate_next_page_link(search_state, request_keys, page:)
     Kaminari::Helpers::NextPage.new(self, params: search_state, param_name: request_keys[:page], current_page: page).url
   end
 

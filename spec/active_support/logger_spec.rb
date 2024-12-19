@@ -90,7 +90,7 @@ RSpec.describe ActiveSupport::Logger do
     end
 
     # FAIL TEST #1: Testing to see the parsing fail
-    it 'will not parse correctly w/ some edge cases' do
+    it 'does not parse correctly w/ some edge cases' do
       logger.add(severity, msg5, progname)
       log.rewind
 
@@ -104,7 +104,7 @@ RSpec.describe ActiveSupport::Logger do
     end
 
     # FAIL TEST #2: Testing to see the parsing fail
-    it 'will not parse correctly w/ having bracket inside the uri' do
+    it 'does not parse correctly w/ having bracket inside the uri' do
       logger.add(severity, msg6, progname)
       log.rewind
 

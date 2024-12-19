@@ -23,7 +23,7 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
       }
     end
 
-    let(:test_other_affiliation_other) { [ 'test entry one', 'test entry two'] }
+    let(:test_other_affiliation_other) { ['test entry one', 'test entry two'] }
 
     before do
       allow_any_instance_of(User).to receive(:admin?).and_return(true)
@@ -39,7 +39,7 @@ RSpec.describe ScholarsArchive::Validators::OtherAffiliationValidator do
     end
 
     context 'with invalid other values selected for degree_field and degree_level' do
-      let(:test_other_affiliation_other) { [ 'Oregon State University Bioenergy Minor Program'] }
+      let(:test_other_affiliation_other) { ['Oregon State University Bioenergy Minor Program'] }
 
       it 'raises error if the other_affiliation entry already exists' do
         expect(record.errors[:other_affiliation_other].first).to eq "This 'Other' value: \"Oregon State University Bioenergy Minor Program\" already exists, please select from the list."

@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe PurchasedEResourcePresenter do
+  subject { presenter }
+
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
@@ -20,14 +22,13 @@ RSpec.describe PurchasedEResourcePresenter do
       id: '123abc',
       nested_ordered_title_attributes: nested_ordered_title_attributes,
       depositor: user.user_key,
-      label: 'filename.tif')
+      label: 'filename.tif'
+    )
   end
   let(:user) { double(user_key: 'sarah') }
   let(:solr_properties) do
     %w[resource_type editor has_volume has_number conference_location conference_name conference_section has_journal is_referenced_by isbn]
   end
-
-  subject { presenter }
 
   it 'delegates to the solr_document' do
     solr_properties.each do |property|

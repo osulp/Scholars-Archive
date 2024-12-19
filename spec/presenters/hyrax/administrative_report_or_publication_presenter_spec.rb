@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe AdministrativeReportOrPublicationPresenter do
+  subject { presenter }
+
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
@@ -20,15 +22,14 @@ RSpec.describe AdministrativeReportOrPublicationPresenter do
       id: '123abc',
       nested_ordered_title_attributes: nested_ordered_title_attributes,
       depositor: user.user_key,
-      label: 'filename.tif')
+      label: 'filename.tif'
+    )
   end
   let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
     %w[doi abstract alternative_title license based_near_linked resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed_label digitization_spec file_extent file_format dspace_community dspace_collection]
   end
-
-  subject { presenter }
 
   it 'delegates to the solr_document' do
     solr_properties.each do |property|

@@ -27,7 +27,7 @@ module ScholarsArchive
 
       def save_custom_option(env)
         puts 'save custom option if any'
-        if degree_present? (env)
+        if degree_present?(env)
           if env.attributes['degree_field_other'].present? && is_valid_other_field_multiple?(env, :degree_field)
             puts 'saving degree field other and notifying admin'
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
@@ -51,7 +51,7 @@ module ScholarsArchive
           notify_admin(env, field: :degree_grantors, new_entries: env.curation_concern.degree_grantors_other)
         end
 
-        if other_affiliation_other_present? (env)
+        if other_affiliation_other_present?(env)
           puts 'other affiliation other and notifying admin'
           all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
           notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
@@ -105,7 +105,7 @@ module ScholarsArchive
         puts 'persist multiple other entries'
         all_current_entries = get_all_other_options(env, field).map(&:name)
         all_new_entries = []
-        other_field = "#{field.to_s}_other"
+        other_field = "#{field}_other"
 
         return all_new_entries if env.attributes[other_field].blank?
 
@@ -120,7 +120,7 @@ module ScholarsArchive
       end
 
       def update_custom_option(env)
-        if degree_present? (env)
+        if degree_present?(env)
           if is_valid_other_field_multiple?(env, :degree_field)
 
             all_new_entries = persist_multiple_other_entries(env, :degree_field)
@@ -154,7 +154,7 @@ module ScholarsArchive
           end
         end
 
-        if other_affiliation_other_present? (env)
+        if other_affiliation_other_present?(env)
           all_new_entries = persist_multiple_other_entries(env, :other_affiliation)
           notify_admin(env, field: :other_affiliation, new_entries: all_new_entries)
         end
@@ -168,11 +168,11 @@ module ScholarsArchive
       end
 
       def notify_admin(env, field:, new_entries:)
-        if new_entries.present? && new_entries.respond_to?(:size) && new_entries.size > 0
-          ScholarsArchive::OtherOptionCreateSuccessService.new(env.curation_concern,
-                                                               field: field,
-                                                               new_entries: new_entries).call
-        end
+        return unless new_entries.present? && new_entries.respond_to?(:size) && new_entries.size.positive?
+
+        ScholarsArchive::OtherOptionCreateSuccessService.new(env.curation_concern,
+                                                             field: field,
+                                                             new_entries: new_entries).call
       end
 
       def get_other_option(env, field)

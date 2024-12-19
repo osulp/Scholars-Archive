@@ -19,8 +19,7 @@ module Qa::Authorities
           'S' => 'Spot',
           'T' => 'Hypsographic',
           'U' => 'Undersea',
-          'V' => 'Vegetation'
-        }[fcl]
+          'V' => 'Vegetation' }[fcl]
       end
     end
 
@@ -75,7 +74,7 @@ module Qa::Authorities
     # Reformats the data received from the service
     def parse_authority_response(response)
       response['geonames'].map do |result|
-        # Note: the trailing slash is meaningful.
+        # NOTE: the trailing slash is meaningful.
         { 'id' => "https://sws.geonames.org/#{result['geonameId']}/",
           'label' => label.call(result) }
       end
@@ -83,7 +82,7 @@ module Qa::Authorities
 
     # REFORMAT: Format data with the id given
     def parse_response_with_id(response)
-      # Note: the trailing slash is meaningful.
+      # NOTE: the trailing slash is meaningful.
       [{ 'id' => "https://sws.geonames.org/#{response['geonameId']}/",
          'label' => label.call(response) }]
     end

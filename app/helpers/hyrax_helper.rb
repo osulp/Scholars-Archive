@@ -12,13 +12,12 @@ module HyraxHelper
     value = options[:value].first
     date = Date.edtf(value)
     if date.instance_of? EDTF::Interval
-      output = "#{date.from.edtf} to #{date.to.edtf}"
+      "#{date.from.edtf} to #{date.to.edtf}"
     elsif date.present?
-      output = date.edtf
+      date.edtf
     else
-      output = value
+      value
     end
-    output
   end
 
   # NEW TAB: Add in the system to map out new tab for OCR
@@ -54,7 +53,7 @@ module HyraxHelper
     # Create a list of words to always be lowercase
     # Some more affixes could be added from here:
     #   https://en.wikipedia.org/wiki/List_of_family_name_affixes
-    force_lower = %w[de la las los jr jr. du del della d' van\ der von van]
+    force_lower = ['de', 'la', 'las', 'los', 'jr', 'jr.', 'du', 'del', 'della', "d'", 'van der', 'von', 'van']
     # Capitalize the first letter of each word
     value = value.titleize
     # Downcase words in our list

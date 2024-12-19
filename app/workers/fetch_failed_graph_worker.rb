@@ -39,7 +39,7 @@ class FetchFailedGraphWorker
   end
 
   def default_accept_header
-    RDF::Util::File::HttpAdapter.default_accept_header.sub(%r{, \*\/\*;q=0\.1\Z}, '')
+    RDF::Util::File::HttpAdapter.default_accept_header.sub(%r{, \*/\*;q=0\.1\Z}, '')
   end
 
   def run_success_callback(user, val)

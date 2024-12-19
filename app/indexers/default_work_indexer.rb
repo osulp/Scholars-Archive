@@ -49,11 +49,11 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   end
 
   def title_for_solr_doc(object, solr_doc)
-    if object.nested_ordered_title.first.present?
-      solr_doc['title_ssi'] = object.nested_ordered_title.first.title.first
-    else
-      solr_doc['title_ssi'] = object.title.first
-    end
+    solr_doc['title_ssi'] = if object.nested_ordered_title.first.present?
+                              object.nested_ordered_title.first.title.first
+                            else
+                              object.title.first
+                            end
   end
 
   def triple_powered_properties_for_solr_doc(object, solr_doc)

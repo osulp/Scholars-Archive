@@ -24,13 +24,11 @@ module ScholarsArchive::TriplePoweredProperties
         return if values.include? 'Other'
 
         values.each do |value|
-          begin
-            uri = URI.parse(value)
-          rescue
-            record.errors[prop[:field]] << "#{value} is not a URL"
-          else
-            record.errors[prop[:field]] << "#{value} is invalid" unless uri.kind_of?(URI::HTTP)
-          end
+          uri = URI.parse(value)
+        rescue StandardError
+          record.errors[prop[:field]] << "#{value} is not a URL"
+        else
+          record.errors[prop[:field]] << "#{value} is invalid" unless uri.is_a?(URI::HTTP)
         end
       end
     end

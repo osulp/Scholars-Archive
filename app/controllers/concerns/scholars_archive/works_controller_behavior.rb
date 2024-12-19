@@ -151,13 +151,13 @@ module ScholarsArchive
           geo.bbox_lon_east = box_array[3]
           geo.type = :bbox.to_s
         end
-        if geo.point.present?
-          # point is stored as a string array of lat/long string arrays like: '["121.1", "121.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2"]
-          point_array = geo.point.to_a.first.tr('[]" ', '').split(',')
-          geo.point_lat = point_array[0]
-          geo.point_lon = point_array[1]
-          geo.type = :point.to_s
-        end
+        next unless geo.point.present?
+
+        # point is stored as a string array of lat/long string arrays like: '["121.1", "121.2"]', however only one array of lat/long array is stored, so the first will need to be converted to simple array of strings like: ["121.1","121.2"]
+        point_array = geo.point.to_a.first.tr('[]" ', '').split(',')
+        geo.point_lat = point_array[0]
+        geo.point_lon = point_array[1]
+        geo.type = :point.to_s
       end
     end
 

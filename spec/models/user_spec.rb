@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
 
   it 'has an email' do
     expect(user.email).to be_kind_of String
-    expect(user.email).to eq ('test@example.com')
+    expect(user.email).to eq('test@example.com')
   end
 
   it 'has mailbox-related methods defined' do

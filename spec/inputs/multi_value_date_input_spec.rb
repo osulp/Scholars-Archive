@@ -9,19 +9,19 @@ describe 'MultiValueDateInput', type: :input do
   end
 
   describe '#build_field' do
-    let(:foo) { Foo.new }
-    let(:date1) { '2017-08-03' }
-    let(:date2) { '2017-08-12' }
-    before { foo.multi_value_date = [date1, date2] }
-
-    let(:builder) { double('builder', object: foo, object_name: 'foo') }
-
     subject { MultiValueDateInput.new(builder, :multi_value_date, nil, :multi_value, {}) }
 
+    let(:foo) { Foo.new }
+    let(:builder) { double('builder', object: foo, object_name: 'foo') }
+    let(:date1) { '2017-08-03' }
+    let(:date2) { '2017-08-12' }
+
+    before { foo.multi_value_date = [date1, date2] }
+
     it 'renders multi-value' do
-      expect(subject).to receive(:build_field).with(date1, Fixnum)
-      expect(subject).to receive(:build_field).with(date2, Fixnum)
-      expect(subject).to receive(:build_field).with('', Fixnum)
+      expect(subject).to receive(:build_field).with(date1, Integer)
+      expect(subject).to receive(:build_field).with(date2, Integer)
+      expect(subject).to receive(:build_field).with('', Integer)
       subject.input({})
     end
   end

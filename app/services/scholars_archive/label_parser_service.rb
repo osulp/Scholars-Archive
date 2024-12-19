@@ -66,8 +66,6 @@ module ScholarsArchive
       labels
     end
 
-    private
-
     def self.strip_uri(label)
       items = build_array(label)
       items[0...-1].join('$')

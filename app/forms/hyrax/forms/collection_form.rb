@@ -46,9 +46,9 @@ module Hyrax
 
       def permission_template
         @permission_template ||= begin
-                                   template_model = PermissionTemplate.find_or_create_by(source_id: model.id)
-                                   PermissionTemplateForm.new(template_model)
-                                 end
+          template_model = PermissionTemplate.find_or_create_by(source_id: model.id)
+          PermissionTemplateForm.new(template_model)
+        end
       end
 
       # @return [Hash] All FileSets in the collection, file.to_s is the key, file.id is the value
@@ -151,6 +151,6 @@ module Hyrax
                                    presenter_args: [nil])
       end
     end
-    # rubocop:enable ClassLength
+    # rubocop:enable Metrics/ClassLength
   end
 end

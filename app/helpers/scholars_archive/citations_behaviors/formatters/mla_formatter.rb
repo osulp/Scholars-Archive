@@ -11,7 +11,7 @@ module ScholarsArchive
           # END OVERRIDE
           if first_date.present?
             first_date = CGI.escapeHTML(first_date)
-            date_value = first_date.gsub(/[^0-9|n\.d\.]/, '')[0, 4]
+            date_value = first_date.gsub(/[^0-9|n.d.]/, '')[0, 4]
             return nil if date_value.nil?
           end
           clean_end_punctuation(date_value) if date_value

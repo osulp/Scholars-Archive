@@ -12,8 +12,7 @@ module ScholarsArchive
         'https://www.geonames.org/ontology#S' => 'Spot',
         'https://www.geonames.org/ontology#T' => 'Hypsographic',
         'https://www.geonames.org/ontology#U' => 'Undersea',
-        'https://www.geonames.org/ontology#V' => 'Vegetation'
-      }[uri]
+        'https://www.geonames.org/ontology#V' => 'Vegetation' }[uri]
     end
   end
 end

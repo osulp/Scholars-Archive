@@ -5,7 +5,6 @@ class ReindexChunkJob < ScholarsArchive::ApplicationJob
   queue_as :reindex
 
   # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def perform(uris)
     counter = 0
     logger = Rails.logger

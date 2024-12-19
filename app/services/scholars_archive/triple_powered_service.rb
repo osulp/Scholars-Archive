@@ -9,7 +9,7 @@ module ScholarsArchive
       labels = []
       uris.each do |uri|
         graph = fetch_from_store(uri)
-        labels << predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri.to_s}" }
+        labels << predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri}" }
       end
       labels.flatten.compact
     end
@@ -19,10 +19,10 @@ module ScholarsArchive
       uris.each do |uri|
         graph = fetch_from_store(uri)
         values = predicate_label_dates(graph).values.flatten.compact
-        labels << if values.size > 0
-                    values.collect { |label_date| "#{label_date}$#{uri.to_s}" }
+        labels << if values.size.positive?
+                    values.collect { |label_date| "#{label_date}$#{uri}" }
                   else
-                    predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri.to_s}" }
+                    predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri}" }
                   end
       end
       labels.flatten.compact
@@ -45,8 +45,8 @@ module ScholarsArchive
       rdf_label_predicates.each do |predicate|
         label_dates[predicate.to_s] = []
         label_dates[predicate.to_s] << label_dates_query(graph, predicate)
-          .select { |statement| !statement.is_a?(Array) }
-          .map { |statement| "#{statement.label.to_s} - #{statement.date.to_s}" }
+                                       .reject { |statement| statement.is_a?(Array) }
+                                       .map { |statement| "#{statement.label} - #{statement.date}" }
         label_dates[predicate.to_s].flatten!.compact!
       end
       label_dates
@@ -72,9 +72,9 @@ module ScholarsArchive
       rdf_label_predicates.each do |predicate|
         # GET: Fetch all the labels
         all_labels = graph
-          .query(predicate: predicate)
-          .select { |statement| !statement.is_a?(Array) }
-          .map(&:object)
+                     .query(predicate: predicate)
+                     .reject { |statement| statement.is_a?(Array) }
+                     .map(&:object)
 
         # ASSIGN: Assign all the labels to the labels arr
         labels[predicate.to_s] = all_labels.map(&:to_s)
@@ -82,7 +82,7 @@ module ScholarsArchive
         eng_labels = all_labels
                      .select { |value| value.respond_to?(:language) ? value.language.in?(%i[en en-us]) : true }
         # CHECK: Assign the english label and check the english label
-        labels[predicate.to_s] = eng_labels.map(&:to_s) if eng_labels.count > 0
+        labels[predicate.to_s] = eng_labels.map(&:to_s) if eng_labels.count.positive?
         labels[predicate.to_s].compact!
       end
       labels
@@ -101,15 +101,15 @@ module ScholarsArchive
     end
 
     def fetch_from_store(uri)
-      unless uri.blank?
-        begin
-          @triplestore ||= TriplestoreAdapter::Triplestore.new(TriplestoreAdapter::Client.new(ENV['SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE'] || 'blazegraph',
-                                                                                              ENV['SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL'] || 'http://localhost:9999/blazegraph/namespace/development/sparql'))
-          @triplestore.fetch(uri, from_remote: true)
-        rescue TriplestoreAdapter::TriplestoreException => e
-          Rails.logger.warn e.message
-          nil
-        end
+      return if uri.blank?
+
+      begin
+        @triplestore ||= TriplestoreAdapter::Triplestore.new(TriplestoreAdapter::Client.new(ENV['SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE'] || 'blazegraph',
+                                                                                            ENV['SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL'] || 'http://localhost:9999/blazegraph/namespace/development/sparql'))
+        @triplestore.fetch(uri, from_remote: true)
+      rescue TriplestoreAdapter::TriplestoreException => e
+        Rails.logger.warn e.message
+        nil
       end
     end
   end

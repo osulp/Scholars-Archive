@@ -3,7 +3,7 @@
 # Multi valued date input
 class MultiValueDateInput < MultiValueInput
   def input_type
-    'multi_value'.freeze
+    'multi_value'
   end
 
   private
@@ -94,7 +94,7 @@ class MultiValueDateInput < MultiValueInput
     HTML
   end
 
-  def build_start_calendar(value, index)
+  def build_start_calendar(_value, index)
     start_date_options = start_date_options(index)
     input_start_date = @builder.text_field('', start_date_options)
 

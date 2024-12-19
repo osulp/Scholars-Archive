@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe HonorsCollegeThesisPresenter do
+  subject { presenter }
+
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
@@ -26,8 +28,6 @@ RSpec.describe HonorsCollegeThesisPresenter do
   let(:solr_properties) do
     %i[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
-
-  subject { presenter }
 
   it 'delegates to the solr_document' do
     solr_properties.each do |property|

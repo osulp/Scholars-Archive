@@ -9,7 +9,7 @@ module ScholarsArchive
     attr_accessor :token, :logger, :people
 
     def initialize(logger = nil)
-      @logger = logger || Logger.new(STDOUT)
+      @logger = logger || Logger.new($stdout)
       @people = {}
       @token = get_token
     end
@@ -24,13 +24,11 @@ module ScholarsArchive
       response = get(url, params, header)
       @logger.debug('OsuApiService#get_person : returned user') if response.status == 200
       @logger.error("OsuApiService#get_person(#{onid}) failed : #{response.status} : #{response.reason_phrase}") unless response.status == 200
-      if response.status == 200
-        o = JSON.parse(response.body)
-        @people[onid] = o['data'].first
-        @people[onid]
-      else
-        nil
-      end
+      return unless response.status == 200
+
+      o = JSON.parse(response.body)
+      @people[onid] = o['data'].first
+      @people[onid]
     end
 
     private
@@ -48,12 +46,10 @@ module ScholarsArchive
       @logger.debug("OsuApiService#get_token : fetching token : #{url}")
       response = post(url, { grant_type: 'client_credentials', client_id: ENV['OSU_API_CLIENT_ID'], client_secret: ENV['OSU_API_CLIENT_SECRET'] })
       @logger.error("OsuApiService#get_token failed : #{response.status} : #{response.reason_phrase}") unless response.status == 200
-      if response.status == 200
-        json = JSON.parse(response.body)
-        json['access_token']
-      else
-        raise 'OsuApiService#get_token failed: #{response.status} : #{response.reason_phrase}'
-      end
+      raise "OsuApiService#get_token failed: #{response.status} : #{response.reason_phrase}" unless response.status == 200
+
+      json = JSON.parse(response.body)
+      json['access_token']
     end
 
     def authorization_header

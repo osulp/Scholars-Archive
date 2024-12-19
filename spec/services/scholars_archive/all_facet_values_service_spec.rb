@@ -12,12 +12,12 @@ describe ScholarsArchive::AllFacetValuesService do
   describe '#call' do
     before do
       allow(facet).to receive(:key).and_return(facet_key)
-      allow(service).to receive(:catalog_search_params).with(anything()).and_return({})
-      allow(service).to receive(:solr_facets).with(anything(), anything()).and_return(solr_results)
+      allow(service).to receive(:catalog_search_params).with(anything).and_return({})
+      allow(service).to receive(:solr_facets).with(anything, anything).and_return(solr_results)
     end
 
     it 'returns all unique creators in an array' do
-      expect(service.call(facet, {})).to eq (facet_results)
+      expect(service.call(facet, {})).to eq(facet_results)
     end
   end
 end

@@ -6,7 +6,7 @@ module ScholarsArchive
     private
 
     def terms
-      authority_yaml = YAML.load(File.read(subauthority_filename))
+      authority_yaml = YAML.safe_load(File.read(subauthority_filename))
       uri = authority_yaml.with_indifferent_access.dig(@subauthority, :uri)
       expiration = authority_yaml.with_indifferent_access.dig(@subauthority, :cache_expires_in_hours)
       raise "#{@subauthority} uri configuration not found. " unless uri

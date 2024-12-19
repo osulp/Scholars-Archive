@@ -38,7 +38,7 @@ module Hyrax
 
       # Override of ActiveModel::Model name that allows us to use our custom name class
       def self.model_name
-        @_model_name ||= begin
+        @model_name ||= begin
           namespace = parents.detect do |n|
             n.respond_to?(:use_relative_model_naming?) && n.use_relative_model_naming?
           end

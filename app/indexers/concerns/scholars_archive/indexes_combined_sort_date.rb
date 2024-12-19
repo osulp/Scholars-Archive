@@ -15,9 +15,6 @@ module ScholarsArchive
     private
 
     # Get the date for the date created sorting as an EDTF object
-    # rubocop:disable Metrics/AbcSize
-    # rubocop:disable Metrics/CyclomaticComplexity
-    # rubocop:disable Metrics/PerceivedComplexity
     def edtf_sorting_date(object)
       # Figure out which date to use
       date = if object.respond_to?(:date_issued) && object.date_issued.present?
@@ -33,7 +30,5 @@ module ScholarsArchive
       Date.edtf(Array(date).first)
     end
     # rubocop:enable Metrics/AbcSize
-    # rubocop:enable Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/PerceivedComplexity
   end
 end

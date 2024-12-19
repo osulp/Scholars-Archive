@@ -8,7 +8,7 @@ RSpec.describe SolrDocument do
       document = described_class.new({
                                        'academic_affiliation_label_ssim' => ['label1$www.blah.com']
                                      })
-      it 'should return the label' do
+      it 'returns the label' do
         expect(document.academic_affiliation_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe SolrDocument do
       document = described_class.new({
                                        'other_affiliation_label_ssim' => ['label1$www.blah.com']
                                      })
-      it 'should return the label' do
+      it 'returns the label' do
         expect(document.other_affiliation_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe SolrDocument do
       document = described_class.new({
                                        'funding_body_linked_ssim' => ['label1$www.blah.com']
                                      })
-      it 'should return the label' do
+      it 'returns the label' do
         expect(document.funding_body_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
@@ -42,7 +42,7 @@ RSpec.describe SolrDocument do
       document = described_class.new({
                                        'embargo_date_range_ssim' => 'first_date to second_date'
                                      })
-      it 'should return the range' do
+      it 'returns the range' do
         expect(document.embargo_date_range).to eq 'first_date to second_date'
       end
     end
@@ -53,7 +53,7 @@ RSpec.describe SolrDocument do
       document = described_class.new({
                                        'degree_grantors_label_ssim' => ['label1$www.blah.com']
                                      })
-      it 'should return the label' do
+      it 'returns the label' do
         expect(document.degree_grantors_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
       end
     end
@@ -61,7 +61,7 @@ RSpec.describe SolrDocument do
 
   describe '#nested_geo' do
     context 'when there are no geo points' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'nested_geo_label_ssim' => []
                                        })
@@ -70,7 +70,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are geo coordinates' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_geo_label_ssim' => ['Test']
                                        })
@@ -81,7 +81,7 @@ RSpec.describe SolrDocument do
 
   describe '#nested_related_items' do
     context 'when there are no related items' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'nested_related_items_label_ssim' => []
                                        })
@@ -90,7 +90,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are related items' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_related_items_label_ssim' => ['label1$www.blah.com$0']
                                        })
@@ -101,7 +101,7 @@ RSpec.describe SolrDocument do
 
   describe '#nested_ordered_creator' do
     context 'when there are no ordered creators' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'nested_ordered_creator_label_ssim' => []
                                        })
@@ -110,7 +110,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are ordered creators' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_ordered_creator_label_ssim' => ['creator1$0']
                                        })
@@ -121,7 +121,7 @@ RSpec.describe SolrDocument do
 
   describe '#title' do
     context 'when there are no core metadata titles and no ordered titles' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'title_tesim' => []
                                        })
@@ -130,7 +130,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only ordered titles' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_ordered_title_label_ssim' => ['title3$0', 'title4$1']
                                        })
@@ -139,7 +139,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only core metadata titles' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'title_tesim' => %w[title2 title1]
                                        })
@@ -148,10 +148,10 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are both core metadata titles and ordered titles' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'title_tesim' => %w[title1 title2],
-                                         'nested_ordered_title_label_ssim' => ['title3$0', 'title4$1'],
+                                         'nested_ordered_title_label_ssim' => ['title3$0', 'title4$1']
                                        })
         expect(document.title).to eq %w[title3 title4]
       end
@@ -160,7 +160,7 @@ RSpec.describe SolrDocument do
 
   describe '#creator' do
     context 'when there are no core metadata creators and no ordered creators' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'creator_tesim' => []
                                        })
@@ -169,7 +169,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only ordered creators' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_ordered_creator_label_ssim' => ['creatorA$0', 'creatorB$1']
                                        })
@@ -178,7 +178,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only core metadata creators' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'creator_tesim' => %w[creatorB creatorA]
                                        })
@@ -187,10 +187,10 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are both core metadata creators and ordered creators' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'creator_tesim' => %w[creatorA creatorB],
-                                         'nested_ordered_creator_label_ssim' => ['creatorC$0', 'creatorD$1'],
+                                         'nested_ordered_creator_label_ssim' => ['creatorC$0', 'creatorD$1']
                                        })
         expect(document.creator).to eq %w[creatorC creatorD]
       end
@@ -199,7 +199,7 @@ RSpec.describe SolrDocument do
 
   describe '#abstract' do
     context 'when there are no core metadata abstracts and no ordered abstracts' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'abstract_tesim' => []
                                        })
@@ -208,7 +208,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only ordered abstracts' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_ordered_abstract_label_ssim' => ['abstractA$0', 'abstractB$1']
                                        })
@@ -217,7 +217,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only old abstracts' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'abstract_tesim' => %w[abstractB abstractA]
                                        })
@@ -226,10 +226,10 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are both old and ordered abstracts' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'abstract_tesim' => %w[abstractA abstractB],
-                                         'nested_ordered_abstract_label_ssim' => ['abstractC$0', 'abstractD$1'],
+                                         'nested_ordered_abstract_label_ssim' => ['abstractC$0', 'abstractD$1']
                                        })
         expect(document.abstract).to eq %w[abstractC abstractD]
       end
@@ -238,7 +238,7 @@ RSpec.describe SolrDocument do
 
   describe '#additional_information' do
     context 'when there are no core metadata additional_informations and no ordered additional_informations' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'additional_information_tesim' => []
                                        })
@@ -247,7 +247,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only ordered additional_informations' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_ordered_additional_information_label_ssim' => ['additional_informationA$0', 'additional_informationB$1']
                                        })
@@ -256,7 +256,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are only core metadata additional_informations' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'additional_information_tesim' => %w[additional_informationB additional_informationA]
                                        })
@@ -265,10 +265,10 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are both core metadata creators and ordered additional_informations' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'additional_information_ssim' => %w[additional_informationA additional_informationB],
-                                         'nested_ordered_additional_information_label_ssim' => ['additional_informationC$0', 'additional_informationD$1'],
+                                         'nested_ordered_additional_information_label_ssim' => ['additional_informationC$0', 'additional_informationD$1']
                                        })
         expect(document.additional_information).to eq %w[additional_informationC additional_informationD]
       end
@@ -277,7 +277,7 @@ RSpec.describe SolrDocument do
 
   describe '#nested_ordered_title' do
     context 'when there are no ordered titles' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'nested_ordered_title_label_ssim' => []
                                        })
@@ -286,7 +286,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are ordered titles' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'nested_ordered_title_label_ssim' => ['title1$0']
                                        })
@@ -297,7 +297,7 @@ RSpec.describe SolrDocument do
 
   describe '#oai_nested_related_items_label' do
     context 'when there are no related items' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'nested_related_items_label_ssim' => []
                                        })
@@ -306,7 +306,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are related items' do
-      it 'should return their labels and uris as array' do
+      it 'returns their labels and uris as array' do
         document = described_class.new({
                                          'nested_related_items_label_ssim' => ['label1$www.blah.com$0', 'label3$www.example.org$1']
                                        })
@@ -317,7 +317,7 @@ RSpec.describe SolrDocument do
 
   describe '#oai_academic_affiliation_label' do
     context 'when there are no related items' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'academic_affiliation_label_ssim' => []
                                        })
@@ -326,7 +326,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are academic affiliations' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'academic_affiliation_label_ssim' => ['Technical Journalism$http://opaquenamespace.org/ns/osuAcademicUnits/DhPwxzf1', 'Aerospace Studies$http://opaquenamespace.org/ns/osuAcademicUnits/Rn0bhPiY']
                                        })
@@ -337,7 +337,7 @@ RSpec.describe SolrDocument do
 
   describe '#oai_other_affiliation_label' do
     context 'when there are no related items' do
-      it 'should return an empty array' do
+      it 'returns an empty array' do
         document = described_class.new({
                                          'other_affiliation_label_ssim' => []
                                        })
@@ -346,7 +346,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there are other (non-academic) affiliations' do
-      it 'should return their labels' do
+      it 'returns their labels' do
         document = described_class.new({
                                          'other_affiliation_label_ssim' => ['OSU Press$http://id.loc.gov/authorities/names/n82039655', 'Honors College$http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege']
                                        })
@@ -357,7 +357,7 @@ RSpec.describe SolrDocument do
 
   describe '#oai_rights' do
     context 'when there is only a Rights Statement' do
-      it 'should return the Rights Statement label' do
+      it 'returns the Rights Statement label' do
         document = described_class.new({
                                          'rights_statement_label_ssim' => ['In Copyright - Educational Use Permitted']
                                        })
@@ -366,7 +366,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there is only a License' do
-      it 'should return the License label' do
+      it 'returns the License label' do
         document = described_class.new({
                                          'license_label_ssim' => ['CC0 1.0 Universal']
                                        })
@@ -375,7 +375,7 @@ RSpec.describe SolrDocument do
     end
 
     context 'when there is both a Rights Statement and a License' do
-      it 'should return only the License label' do
+      it 'returns only the License label' do
         document = described_class.new({
                                          'rights_statement_label_ssim' => ['In Copyright - Educational Use Permitted'],
                                          'license_label_ssim' => ['CC0 1.0 Universal']
@@ -387,7 +387,7 @@ RSpec.describe SolrDocument do
 
   describe '#oai_identifier' do
     context 'when there is an item' do
-      it 'should return the web identifier for OAI use' do
+      it 'returns the web identifier for OAI use' do
         document = described_class.new({
                                          'has_model_ssim' => ['Default'],
                                          'id' => ['xw42n789j']

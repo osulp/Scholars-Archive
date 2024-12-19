@@ -108,9 +108,10 @@ RSpec.describe 'records/edit_fields/_degree_field.html.erb', type: :view do
   end
 
   context "for a work with degree field where 'Other' was not selected" do
-    let(:attributes) do { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field:
-        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz']
-    } end
+    let(:attributes) do
+      { title: ['test'], creator: ['Blah'], rights_statement: ['blah.blah'], resource_type: ['blah'], degree_field:
+        ['Animal Breeding - 1952', 'http://opaquenamespace.org/ns/osuDegreeFields/KWzvXUyz'] }
+    end
 
     before do
       allow_any_instance_of(ScholarsArchive::DegreeFieldService).to receive(:select_sorted_all_options).and_return([%w[Other Other]])

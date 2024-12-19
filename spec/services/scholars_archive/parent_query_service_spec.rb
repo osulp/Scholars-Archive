@@ -10,7 +10,7 @@ describe ScholarsArchive::ParentQueryService do
   describe '#query_parents_for_id' do
     context 'when a child work exists with a parent' do
       before do
-        allow(ActiveFedora::SolrService).to receive(:get).with("member_ids_ssim:#{child_id}", rows: 100000).and_return(parent_doc)
+        allow(ActiveFedora::SolrService).to receive(:get).with("member_ids_ssim:#{child_id}", rows: 100_000).and_return(parent_doc)
       end
 
       it 'returns the parent works' do
@@ -20,7 +20,7 @@ describe ScholarsArchive::ParentQueryService do
 
     context 'when a work exists without a parent' do
       before do
-        allow(ActiveFedora::SolrService).to receive(:get).with("member_ids_ssim:#{child_id}", rows: 100000).and_return(empty_results)
+        allow(ActiveFedora::SolrService).to receive(:get).with("member_ids_ssim:#{child_id}", rows: 100_000).and_return(empty_results)
       end
 
       it 'returns an empty array' do

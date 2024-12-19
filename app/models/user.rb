@@ -44,14 +44,14 @@ class User < ApplicationRecord
   # number of seconds have elapsed since the previous update occurred.
   def update_from_person_api
     right_now = DateTime.now.in_time_zone(ScholarsArchive::Application.config.time_zone)
-    if !api_person_updated_at || api_person_updated_at + ENV['OSU_API_PERSON_REFRESH_SECONDS'].to_i.seconds < right_now
-      service = ScholarsArchive::OsuApiService.new
-      person = service.get_person(username)
-      self.api_person_type = person['attributes']['primaryAffiliation']
-      self.api_person_updated_at = DateTime.now
-      # TODO: set api_student_type to nil, undergraduate, or graduate once the Person API has been extended to support fetching this data
-      save
-    end
+    return unless !api_person_updated_at || api_person_updated_at + ENV['OSU_API_PERSON_REFRESH_SECONDS'].to_i.seconds < right_now
+
+    service = ScholarsArchive::OsuApiService.new
+    person = service.get_person(username)
+    self.api_person_type = person['attributes']['primaryAffiliation']
+    self.api_person_updated_at = DateTime.now
+    # TODO: set api_student_type to nil, undergraduate, or graduate once the Person API has been extended to support fetching this data
+    save
   end
 
   # If api_person_type is set, evaluate if the user is an employee or not. Default to

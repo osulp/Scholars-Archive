@@ -3,10 +3,10 @@
 # Multi value ordered input
 class MultiValueOrderedInput < MultiValueInput
   def input_type
-    'multi_value'.freeze
+    'multi_value'
   end
 
-  def input(wrapper_options)
+  def input(_wrapper_options)
     @rendered_first_element = false
     input_html_classes.unshift('string')
     input_html_options[:name] ||= "#{object_name}[#{attribute_name}][]"
@@ -22,7 +22,7 @@ class MultiValueOrderedInput < MultiValueInput
 
   protected
 
-  def inner_wrapper(value, index)
+  def inner_wrapper(value, _index)
     "
       <li class='field-wrapper dd-item'>
         <div class='dd-handle dd3-handle #{text_area_handle_class(value)}'></div>
@@ -41,15 +41,15 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def multi_input_nested_item_class(value)
-    "#{'multi-input-nested-item' if has_multi_input_elements?(value)}"
+    ('multi-input-nested-item' if has_multi_input_elements?(value)).to_s
   end
 
   def text_area_class(value)
-    "#{'text-area-nested-field' if is_text_area?(value)}"
+    ('text-area-nested-field' if is_text_area?(value)).to_s
   end
 
   def text_area_handle_class(value)
-    "#{'text-area-dd-handle' if is_text_area?(value)}"
+    ('text-area-dd-handle' if is_text_area?(value)).to_s
   end
 
   def has_multi_input_elements?(value)
@@ -70,26 +70,25 @@ class MultiValueOrderedInput < MultiValueInput
   private
 
   def build_field(value, index)
-    if value.new_record?
-      index = value.object_id
-    end
+    index = value.object_id if value.new_record?
 
-    if value.is_a?(NestedOrderedCreator)
+    case value
+    when NestedOrderedCreator
       item_options = build_item_options(value, index, :creator)
       input_field = @builder.text_field(:creator, item_options)
-    elsif value.is_a?(NestedOrderedTitle)
+    when NestedOrderedTitle
       item_options = build_item_options(value, index, :title)
       input_field = @builder.text_field(:title, item_options)
-    elsif value.is_a?(NestedOrderedAbstract)
+    when NestedOrderedAbstract
       item_options = build_item_options(value, index, :abstract)
       input_field = @builder.text_area(:abstract, item_options)
-    elsif value.is_a?(NestedOrderedContributor)
+    when NestedOrderedContributor
       item_options = build_item_options(value, index, :contributor)
       input_field = @builder.text_field(:contributor, item_options)
-    elsif value.is_a?(NestedOrderedAdditionalInformation)
+    when NestedOrderedAdditionalInformation
       item_options = build_item_options(value, index, :additional_information)
       input_field = @builder.text_area(:additional_information, item_options)
-    elsif value.is_a?(NestedRelatedItems)
+    when NestedRelatedItems
       item_options = build_item_options(value, index, :label)
       url_options = build_item_options(value, index, :related_url)
       input_field = @builder.text_field(:label, item_options)
@@ -118,22 +117,23 @@ class MultiValueOrderedInput < MultiValueInput
     index_options = build_index_options(value, index)
     input_index = @builder.text_field(:index, index_options)
 
-    if value.is_a?(NestedOrderedCreator)
+    case value
+    when NestedOrderedCreator
       creator_options = build_creator_options(value, index)
       input_creator = @builder.text_field(:creator, creator_options)
       nested_item = "#{input_creator}#{input_index}"
-    elsif value.is_a?(NestedOrderedTitle)
+    when NestedOrderedTitle
       title_options = build_title_options(value, index)
       input_title = @builder.text_field(:title, title_options)
       nested_item = "#{input_title}#{input_index}"
-    elsif value.is_a?(NestedRelatedItems)
+    when NestedRelatedItems
       label_options = build_related_items_label_options(value, index)
       url_options = build_related_items_url_options(value, index)
       input_label = @builder.text_field(:label, label_options)
       input_url = @builder.text_field(:related_url, url_options)
       nested_item = "#{input_label}#{input_url}#{input_index}"
     end
-    "#{nested_item}"
+    nested_item.to_s
   end
 
   def build_id_options(value, index)
@@ -182,11 +182,11 @@ class MultiValueOrderedInput < MultiValueInput
   end
 
   def nested_field_name(property, index)
-    "#{object_name}[#{attribute_name}_attributes][#{index.to_s}][#{property}]"
+    "#{object_name}[#{attribute_name}_attributes][#{index}][#{property}]"
   end
 
   def nested_field_id(property, index)
-    "#{object_name}_#{attribute_name}_attributes_#{index.to_s}_#{property}"
+    "#{object_name}_#{attribute_name}_attributes_#{index}_#{property}"
   end
 
   def collection

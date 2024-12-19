@@ -3,10 +3,10 @@
 # Multi value label uri input
 class MultiValueLabelUrlInput < MultiValueInput
   def input_type
-    'multi_value'.freeze
+    'multi_value'
   end
 
-  def input(wrapper_options)
+  def input(_wrapper_options)
     @rendered_first_element = false
     input_html_classes.unshift('string')
     input_html_options[:name] ||= "#{object_name}[#{attribute_name}][]"
@@ -22,9 +22,9 @@ class MultiValueLabelUrlInput < MultiValueInput
 
   protected
 
-  def inner_wrapper(value, index)
+  def inner_wrapper(value, _index)
     <<-HTML
-          <li class="field-wrapper#{ ' hidden' if value.destroy_item == true}">
+          <li class="field-wrapper#{' hidden' if value.destroy_item == true}">
             #{yield}
           </li>
     HTML
@@ -33,9 +33,7 @@ class MultiValueLabelUrlInput < MultiValueInput
   private
 
   def build_field(value, index)
-    if value.new_record?
-      index = value.object_id
-    end
+    index = value.object_id if value.new_record?
     label_options = build_label_options(value, index)
     input_label = @builder.text_field(:label, label_options)
 
@@ -56,13 +54,13 @@ class MultiValueLabelUrlInput < MultiValueInput
       value.validation_msg.present? ? value.validation_msg : ''
     end
 
-    if value.validation_msg.present?
-      nested_item = nested_item_wrapper(value) do
-        "#{help_block}#{input_label}#{input_related_url}"
-      end
-    else
-      nested_item = "#{input_label}#{input_related_url}"
-    end
+    nested_item = if value.validation_msg.present?
+                    nested_item_wrapper(value) do
+                      "#{help_block}#{input_label}#{input_related_url}"
+                    end
+                  else
+                    "#{input_label}#{input_related_url}"
+                  end
 
     "#{input_id}#{destroy_input}#{nested_item}"
   end
@@ -117,11 +115,11 @@ class MultiValueLabelUrlInput < MultiValueInput
   end
 
   def nested_field_name(property, index)
-    "#{object_name}[#{attribute_name}_attributes][#{index.to_s}][#{property}]"
+    "#{object_name}[#{attribute_name}_attributes][#{index}][#{property}]"
   end
 
   def nested_field_id(property, index)
-    "#{object_name}_#{attribute_name}_attributes_#{index.to_s}_#{property}"
+    "#{object_name}_#{attribute_name}_attributes_#{index}_#{property}"
   end
 
   def collection
