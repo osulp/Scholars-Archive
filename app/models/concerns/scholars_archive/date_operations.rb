@@ -8,8 +8,7 @@ module ScholarsArchive
     def to_solr(solr_doc = {})
       solr_doc = super
       solr_doc = solr_doc.merge({ 'date_decades_ssim' => decades })
-      solr_doc = solr_doc.merge({ 'date_facet_yearly_ssim' => date_facet_yearly })
-      solr_doc
+      solr_doc.merge({ 'date_facet_yearly_ssim' => date_facet_yearly })
     end
 
     # date_facet_yearly is intended to be used for date_facet_yearly_ssim, which is used by the facet provided
@@ -46,11 +45,11 @@ module ScholarsArchive
 
     # Determine the date value to use for Decades facet and date facet yearly processing.
     def date_value
-      if date_created.present? then
+      if date_created.present?
         date_created
-      elsif date_copyright.present? then
+      elsif date_copyright.present?
         date_copyright
-      elsif date_issued.present? then
+      elsif date_issued.present?
         date_issued
       end
     end
@@ -83,19 +82,20 @@ module ScholarsArchive
 
       dates = DateDecadeConverter.new(date_value).run
       dates ||= Array.wrap(DecadeDecorator.new(parsed_year)) if parsed_year
-      dates ? dates : []
+      dates || []
     end
 
     def parsed_year
-      clean_datetime.year if clean_datetime
+      clean_datetime&.year
     end
 
     def clean_datetime
-      if date_value =~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/ # YYYY-MM-DD
+      case date_value
+      when /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/ # YYYY-MM-DD
         DateTime.strptime(date_value, '%Y-%m-%d')
-      elsif date_value =~ /^[0-9]{4}-[0-9]{2}$/ # YYYY-MM
+      when /^[0-9]{4}-[0-9]{2}$/ # YYYY-MM
         DateTime.strptime(date_value, '%Y-%m')
-      elsif date_value =~ /^[0-9]{4}/ # YYYY
+      when /^[0-9]{4}/ # YYYY
         DateTime.strptime(date_value.split('-').first, '%Y')
       else
         Rails.logger.warn "Invalid date_value: #{date_value}. Acceptable formats: YYYY-MM-DD, YYYY-MM, YYYY."
@@ -106,6 +106,7 @@ module ScholarsArchive
     # Date decorator
     class DecadeDecorator
       attr_accessor :year
+
       def initialize(year)
         @year = year
       end
@@ -129,6 +130,7 @@ module ScholarsArchive
     # when calling run. Expected input dates: "2017-12-01", "2017-12", "2017", "2017-2018", "2010-2020", "1900-1940"
     class DateDecadeConverter
       attr_accessor :date
+
       def initialize(date)
         @date = date
       end

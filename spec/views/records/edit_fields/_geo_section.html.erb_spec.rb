@@ -48,8 +48,10 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
 
     before do
       assign(:curation_concern, work)
-      form.nested_geo.each { |geo| geo.point.present? ? geo.type = :point.to_s : '' }
-      form.nested_geo.each { |geo| geo.point.present? ? geo.point = "#{test_point[:label]} (#{test_point[:point]})" : '' }
+      form.nested_geo.each do |geo|
+        geo.point.present? ? geo.type = :point.to_s : ''
+        geo.point.present? ? geo.point = "#{test_point[:label]} (#{test_point[:point]})" : ''
+      end
       assign(:form, form)
       render inline: form_template
     end
@@ -84,8 +86,10 @@ RSpec.describe 'records/edit_fields/_geo_section.html.erb', type: :view do
 
     before do
       assign(:curation_concern, work)
-      form.nested_geo.each { |geo| geo.bbox.present? ? geo.type = :bbox.to_s : '' }
-      form.nested_geo.each { |geo| geo.bbox.present? ? geo.bbox = "#{test_box[:label]} (#{test_box[:bbox]})" : '' }
+      form.nested_geo.each do |geo|
+        geo.bbox.present? ? geo.type = :bbox.to_s : ''
+        geo.bbox.present? ? geo.bbox = "#{test_box[:label]} (#{test_box[:bbox]})" : ''
+      end
       assign(:form, form)
       render inline: form_template
     end

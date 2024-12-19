@@ -6,6 +6,7 @@ module ScholarsArchive
   # Migration for ordered metadata
   class MigrateOrderedMetadataService
     attr_reader :creator_csv
+
     ##
     # Open and read CSVs into memory to prevent unnecessary IO for processing multiple works,
     # then provide methods for querying, ordering, and migrating a work based on CSV data and/or
@@ -88,7 +89,7 @@ module ScholarsArchive
         work.save
         log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : #{doc['id']} : Work successfully migrated")
 
-        work.members.reject { |m| m.class.to_s == 'FileSet' }.each do |child|
+        work.members.reject { |m| m.instance_of?(::FileSet) }.each do |child|
           log("MigrateOrderedMetadataService(handle:#{handle}, work:#{work_id}) : child_work:#{child.id} : Finding child work, attempting to migrate")
 
           unless creators.empty?

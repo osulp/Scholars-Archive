@@ -16,10 +16,8 @@ module ScholarsArchive
       labels.each do |label|
         parsed_label_uris << { 'label' => extract_label(label), 'uri' => extract_uri(label), 'index' => extract_index(label) }
       end
-      parsed_label_uris.sort_by { |hash| hash['index'].to_i }.select { |hash| !hash['label'].empty? }
+      parsed_label_uris.sort_by { |hash| hash['index'].to_i }.reject { |hash| hash['label'].empty? }
     end
-
-    private
 
     def self.extract_label(label)
       items = build_array(label)

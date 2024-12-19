@@ -2,7 +2,6 @@
 
 module ScholarsArchive::TriplePoweredProperties
   module Errors
-
     ##
     # Base error
     class TriplePoweredPropertyError < StandardError

@@ -5,16 +5,17 @@ module ScholarsArchive
   class ParamScrubber
     def self.scrub(params, hash_key)
       params[hash_key].each_pair do |attr, value|
-        if value.is_a?(Array)
+        case value
+        when Array
           # Set the mapped array on the params hash
           set_values(params, hash_key, attr, mapped_values(value))
 
           # If value is a Hash
-        elsif value.is_a? ActionController::Parameters
+        when ActionController::Parameters
           # Recursively dig into the hashes
           # find the raw value and set them on the params hash
           set_values(params, hash_key, attr, extract_hash_values(value.to_enum.to_h).to_hash)
-        elsif value.is_a? String
+        when String
           # set the stripped string on the params
           set_params(params, hash_key, attr, value)
         end

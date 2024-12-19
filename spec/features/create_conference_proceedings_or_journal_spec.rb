@@ -6,7 +6,7 @@ require 'rails_helper'
 require 'spec_helper'
 include Warden::Test::Helpers
 
-RSpec.feature 'Create a Conference Proceedings Or Journal', js: false do
+RSpec.describe 'Create a Conference Proceedings Or Journal', js: false do
   context 'a logged in user' do
     let(:user) do
       User.new(email: 'test@example.com', username: 'test', guest: false, api_person_updated_at: DateTime.now) { |u| u.save!(validate: false) }
@@ -15,14 +15,12 @@ RSpec.feature 'Create a Conference Proceedings Or Journal', js: false do
     let(:current_ability) { user.ability }
 
     let(:admin_set) do
-      begin
-        AdminSet.find('admin_set/default')
-      rescue ActiveFedora::ObjectNotFoundError
-        AdminSet.create(id: 'admin_set/default',
-                        title: ['title'],
-                        description: ['A substantial description'],
-                        edit_users: ['admin'])
-      end
+      AdminSet.find('admin_set/default')
+    rescue ActiveFedora::ObjectNotFoundError
+      AdminSet.create(id: 'admin_set/default',
+                      title: ['title'],
+                      description: ['A substantial description'],
+                      edit_users: ['admin'])
     end
 
     let(:permission_template) do

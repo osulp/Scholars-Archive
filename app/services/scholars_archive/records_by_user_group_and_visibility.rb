@@ -54,7 +54,7 @@ module ScholarsArchive
         rows: 0,
         queries: query_strings,
         facets: { fields: [facet_field] },
-        'facet.limit' => 10000
+        'facet.limit' => 10_000
       }
     end
 

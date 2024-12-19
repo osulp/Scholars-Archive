@@ -10,8 +10,8 @@ module ScholarsArchive::Document::QualifiedDublinCore
   end
 
   def self.register_export_formats(document)
-#    document.will_export_as(:xml)
-#    document.will_export_as(:dc_xml, "text/xml")
+    #    document.will_export_as(:xml)
+    #    document.will_export_as(:dc_xml, "text/xml")
     document.will_export_as(:oai_qdc_xml, 'text/xml')
   end
 
@@ -36,12 +36,12 @@ module ScholarsArchive::Document::QualifiedDublinCore
     xml.target!
   end
 
-  alias_method :export_as_xml, :export_as_oai_qdc_xml
-  alias_method :export_as_qdc_xml, :export_as_oai_qdc_xml
+  alias export_as_xml export_as_oai_qdc_xml
+  alias export_as_qdc_xml export_as_oai_qdc_xml
 
   private
 
-  def qualified_dublin_core_field_name? field
+  def qualified_dublin_core_field_name?(field)
     qualified_dublin_core_field_names.include? field.to_sym
   end
 end

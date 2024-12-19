@@ -13,10 +13,6 @@ module ScholarsArchive
       def message
         "The item: #{title} (#{link_to work_id, citeable_url}) was deposited by #{user.user_key} and is awaiting review. #{comment}"
       end
-
-      def users_to_notify
-        super
-      end
     end
   end
 end

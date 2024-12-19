@@ -31,7 +31,7 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
     let(:test_degree_level_other) { 'test1 degree level other' }
     let(:test_degree_name_other) { ['test1 degree name other'] }
     let(:test_degree_grantors_other) { 'test1 degree grantors other' }
-    let(:test_other_affiliation_other) { [ 'test entry one', 'test entry two'] }
+    let(:test_other_affiliation_other) { ['test entry one', 'test entry two'] }
 
     before do
       allow(depositor).to receive(:admin?).and_return(true)
@@ -53,7 +53,7 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
       let(:test_degree_field_other) { ['Zoology'] }
       let(:test_degree_name_other) { ['Master of Arts (M.A.)'] }
       let(:test_degree_grantors_other) { 'Oregon State University' }
-      let(:test_other_affiliation_other) { [ 'Bioenergy Minor Program'] }
+      let(:test_other_affiliation_other) { ['Bioenergy Minor Program'] }
 
       it 'raises error if the degree level already exists' do
         expect(record.errors[:degree_level_other].first).to eq "This 'Other' value: \"Certificate\" already exists, please select from the list."
@@ -77,10 +77,6 @@ RSpec.describe ScholarsArchive::Validators::OtherOptionDegreeValidator do
       let(:test_degree_field_other) { [] }
       let(:test_degree_name_other) { [] }
       let(:test_degree_grantors_other) { '' }
-
-      before do
-        # curation_concern.id = "test3"
-      end
 
       it 'raises error if degree_level is blank' do
         expect(record.errors[:degree_level_other].first).to eq nil

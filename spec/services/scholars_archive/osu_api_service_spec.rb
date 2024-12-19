@@ -27,7 +27,7 @@ describe ScholarsArchive::OsuApiService do
        'emailAddress' => 'bogus.email',
        'username' => 'bogususername',
        'alternatePhoneNumber' => nil,
-       'osuuid' => 12345678901 },
+       'osuuid' => 12_345_678_901 },
       'links' => { 'self' => 'https://api.oregonstate.edu/v1/directory/12345678901' } }
   end
   let(:response_status) { 200 }
@@ -41,7 +41,7 @@ describe ScholarsArchive::OsuApiService do
     r
   end
 
-  before(:each) do
+  before do
     allow_any_instance_of(described_class).to receive(:get_token).and_return('fakie')
   end
 
@@ -50,7 +50,7 @@ describe ScholarsArchive::OsuApiService do
   end
 
   describe '#get_person' do
-    before(:each) do
+    before do
       allow(service).to receive(:get).and_return(response)
     end
 

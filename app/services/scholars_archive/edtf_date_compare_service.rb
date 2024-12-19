@@ -12,8 +12,6 @@ module ScholarsArchive
       last_five_years_include?(active_option) ? parse_date(active_option).include?('open') : false
     end
 
-    private
-
     # This method normalizes the active_option sent into this method. If the
     # date comes not in the form {date1, date2, date..range} it will coerce it
     # into that form so Date.edtf will be able to parse it. active_option is in
@@ -24,7 +22,7 @@ module ScholarsArchive
       normalized_date = "{#{academic_date}}" unless academic_date.include?('{')
       return parse_academic_affiliation(normalized_date) unless normalized_date.nil? || !normalized_date.include?('/')
 
-      date_in_past_five_years?(normalized_date, academic_date) if !academic_date.include?('/')
+      date_in_past_five_years?(normalized_date, academic_date) unless academic_date.include?('/')
     end
 
     def self.parse_date(active_option)

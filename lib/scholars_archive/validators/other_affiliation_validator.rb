@@ -17,9 +17,9 @@ module ScholarsArchive::Validators
     end
 
     def current_user_editor(record)
-      if record.respond_to?(:current_username)
-        User.find_by_username(record.current_username.to_s) if record.current_username.present?
-      end
+      return unless record.respond_to?(:current_username)
+
+      User.find_by_username(record.current_username.to_s) if record.current_username.present?
     end
 
     # This will now check if there is value passed in, since this can be used for optional fields (i.e. other_affiliation)
@@ -41,16 +41,14 @@ module ScholarsArchive::Validators
             valid_values << entry.to_s
           end
         end
-      else
-        if record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
-          err_message = I18n.t('simple_form.actor_validation.other_value_missing')
-          add_error_message(record, other_field, err_message)
-          record.send(field) << [{ option: 'Other', err_msg: err_message }.to_json]
-          error_counter += 1
-        end
+      elsif record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
+        err_message = I18n.t('simple_form.actor_validation.other_value_missing')
+        add_error_message(record, other_field, err_message)
+        record.send(field) << [{ option: 'Other', err_msg: err_message }.to_json]
+        error_counter += 1
       end
 
-      if error_counter > 0
+      if error_counter.positive?
         valid_values.each do |entry|
           record.send(field) << [{ option: 'Other', err_valid_val: true, other_entry: entry.to_s }.to_json]
         end

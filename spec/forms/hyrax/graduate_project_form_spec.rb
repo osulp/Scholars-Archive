@@ -15,19 +15,19 @@ RSpec.describe Hyrax::GraduateProjectForm do
   end
 
   xit 'responds to terms with the proper list of terms' do
-    expect(described_class.terms).to include *%i[degree_level degree_name degree_field degree_grantors contributor_advisor contributor_committeemember graduation_year degree_discipline]
+    expect(described_class.terms).to include(*%i[degree_level degree_name degree_field degree_grantors contributor_advisor contributor_committeemember graduation_year degree_discipline])
   end
 
   it 'has the proper required fields' do
-    expect(described_class.required_fields).to include *%i[degree_level degree_name degree_field degree_grantors graduation_year]
+    expect(described_class.required_fields).to include(*%i[degree_level degree_name degree_field degree_grantors graduation_year])
   end
 
   it 'has the proper primary terms' do
-    expect(new_form.primary_terms).to include *%i[contributor_advisor contributor_committeemember]
+    expect(new_form.primary_terms).to include(*%i[contributor_advisor contributor_committeemember])
   end
 
   xit 'has the proper secondary terms' do
-    expect(new_form.secondary_terms).to include *%i[nested_related_items hydrologic_unit_code geo_section funding_statement publisher peerreviewed language file_format file_extent digitization_spec replaces nested_ordered_additional_information isbn issn]
+    expect(new_form.secondary_terms).to include(*%i[nested_related_items hydrologic_unit_code geo_section funding_statement publisher peerreviewed language file_format file_extent digitization_spec replaces nested_ordered_additional_information isbn issn])
   end
 
   it 'responds to date_terms' do

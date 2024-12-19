@@ -9,6 +9,6 @@ RSpec.describe OtherOption, type: :model do
 
   it 'is not valid without a proper attributes' do
     other = described_class.new(name: nil, work_id: nil, property_name: nil)
-    expect(other).to_not be_valid
+    expect(other).not_to be_valid
   end
 end

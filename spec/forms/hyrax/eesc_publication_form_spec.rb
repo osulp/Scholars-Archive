@@ -15,7 +15,7 @@ RSpec.describe Hyrax::EescPublicationForm do
   end
 
   it 'responds to terms with the proper list of terms' do
-    expect(described_class.terms).to include *%i[doi alternative_title nested_ordered_abstract license based_near resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed nested_ordered_additional_information digitization_spec file_extent file_format dspace_community dspace_collection]
+    expect(described_class.terms).to include(*%i[doi alternative_title nested_ordered_abstract license based_near resource_type date_available date_copyright date_issued date_collected date_reviewed date_valid date_accepted replaces hydrologic_unit_code funding_body funding_statement in_series tableofcontents bibliographic_citation peerreviewed nested_ordered_additional_information digitization_spec file_extent file_format dspace_community dspace_collection])
   end
 
   it 'has the proper required fields' do
@@ -23,11 +23,11 @@ RSpec.describe Hyrax::EescPublicationForm do
   end
 
   it 'has the proper primary terms' do
-    expect(new_form.primary_terms).to include *%i[doi alternative_title nested_ordered_abstract subject license]
+    expect(new_form.primary_terms).to include(*%i[doi alternative_title nested_ordered_abstract subject license])
   end
 
   it 'has the proper secondary terms' do
-    expect(new_form.secondary_terms).to_not include *%i[license resource_type subject]
+    expect(new_form.secondary_terms).not_to include(*%i[license resource_type subject])
   end
 
   it 'responds to date_terms' do

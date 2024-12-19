@@ -14,7 +14,7 @@ module ScholarsArchive::Validators
     def validate(record)
       error_counter = 0
 
-      if degree_present? (record)
+      if degree_present?(record)
         # check if degree_level_other is already in the list or is missing
         error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
                                                                                        field: :degree_level,
@@ -31,7 +31,7 @@ module ScholarsArchive::Validators
                                                                                                 env_user: current_user_editor(record)
       end
 
-      if degree_grantors_present? (record)
+      if degree_grantors_present?(record)
         # check if degree_grantors_other is already in the list or is missing
         error_counter += ScholarsArchive::FieldValidationService.validate_other_value? record,
                                                                                        field: :degree_grantors,
@@ -42,9 +42,9 @@ module ScholarsArchive::Validators
     end
 
     def current_user_editor(record)
-      if record.respond_to?(:current_username)
-        User.find_by_username(record.current_username.to_s) if record.current_username.present?
-      end
+      return unless record.respond_to?(:current_username)
+
+      User.find_by_username(record.current_username.to_s) if record.current_username.present?
     end
   end
 end

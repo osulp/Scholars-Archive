@@ -3,6 +3,13 @@
 require 'rails_helper'
 require 'spec_helper'
 RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
+  subject(:middleware) do
+    stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
+      middleware.use described_class
+    end
+    stack.build(terminator)
+  end
+
   let(:curation_concern) do
     GraduateThesisOrDissertation.new do |work|
       work.attributes = attributes
@@ -24,13 +31,6 @@ RSpec.describe ScholarsArchive::Actors::AddOtherFieldOptionActor do
   let(:ability) { double(current_user: user) }
   let(:env) { Hyrax::Actors::Environment.new(curation_concern, ability, attributes) }
   let(:terminator) { Hyrax::Actors::Terminator.new }
-
-  subject(:middleware) do
-    stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
-      middleware.use described_class
-    end
-    stack.build(terminator)
-  end
 
   before do
     allow_any_instance_of(ScholarsArchive::DegreeLevelService).to receive(:select_sorted_all_options).and_return([%w[Other Other], %w[Certificate Certificate]])

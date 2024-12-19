@@ -64,8 +64,8 @@ module ScholarsArchive
       params[:rows] = 0
       params[:facet] = 'on'
       params['facet.field'] = facet_field
-      params['facet.limit'] = 100000
-      params["f.#{facet_field}.facet.limit"] = 100000
+      params['facet.limit'] = 100_000
+      params["f.#{facet_field}.facet.limit"] = 100_000
       params
     end
   end

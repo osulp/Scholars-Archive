@@ -15,11 +15,11 @@ module Hyrax
       # Special treatment for special dates (edtf)
       def attribute_value_to_html(value)
         date = Date.edtf(value)
-        if date.present?
-          output = date.edtf
-        else
-          output = value
-        end
+        output = if date.present?
+                   date.edtf
+                 else
+                   value
+                 end
 
         link_to_sa_field(search_field, output)
       end

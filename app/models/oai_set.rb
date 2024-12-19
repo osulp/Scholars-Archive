@@ -24,7 +24,7 @@ class OaiSet < BlacklightOaiProvider::SolrSet
     def sets_from_facets(facets)
       sets = []
       facets.each do |_facet, terms|
-        sets.concat terms.each_slice(2).map { |t| new(t.first) }
+        sets.concat(terms.each_slice(2).map { |t| new(t.first) })
       end
       sets.empty? ? nil : sets
     end
@@ -52,6 +52,6 @@ class OaiSet < BlacklightOaiProvider::SolrSet
     describe_meta = ActiveFedora::SolrService.query("has_model_ssim:AdminSet AND id:#{@spec}", rows: 1).first['description_tesim']&.first
 
     # CONDITION: Check the condition to return the correct description to display on OAI
-    return describe_meta if describe_meta.blank? == false
+    describe_meta if describe_meta.blank? == false
   end
 end

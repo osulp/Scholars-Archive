@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe UndergraduateThesisOrProjectPresenter do
+  subject { presenter }
+
   let(:solr_document) { SolrDocument.new(attributes) }
   let(:ability) { double 'Ability' }
   let(:presenter) { described_class.new(solr_document, ability) }
@@ -20,15 +22,14 @@ RSpec.describe UndergraduateThesisOrProjectPresenter do
       id: '123abc',
       nested_ordered_title_attributes: nested_ordered_title_attributes,
       depositor: user.user_key,
-      label: 'filename.tif')
+      label: 'filename.tif'
+    )
   end
   let(:user) { double(user_key: 'sarah') }
 
   let(:solr_properties) do
     %w[contributor_advisor contributor_committeemember degree_discipline degree_field degree_grantors degree_level degree_name graduation_year]
   end
-
-  subject { presenter }
 
   it 'delegates to the solr_document' do
     solr_properties.each do |property|

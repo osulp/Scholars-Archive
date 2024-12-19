@@ -18,7 +18,7 @@ describe ScholarsArchive::EdtfDateCompareService do
   context 'when date is in the last five years and not open' do
     let(:active_option) { ['Animal Sciences - 1984/2013', 'http://opaquenamespace.org/ns/osuAcademicUnits/EaDtECbp'] }
 
-    it 'should not include the option in the list' do
+    it 'does not include the option in the list' do
       expect(described_class.includes_open_dates?(active_option)).to eq false
     end
   end
@@ -26,7 +26,7 @@ describe ScholarsArchive::EdtfDateCompareService do
   context 'when date is in the last five years and is open' do
     let(:active_option) { ['Animal and Rangeland Sciences - 2013/open', 'http://opaquenamespace.org/ns/osuAcademicUnits/ZWAvMfi7'] }
 
-    it 'it should include the option in the list' do
+    it 'includes the option in the list' do
       expect(described_class.includes_open_dates?(active_option)).to eq true
     end
   end
@@ -34,7 +34,7 @@ describe ScholarsArchive::EdtfDateCompareService do
   context 'when date is not in the last five years' do
     let(:active_option) { ['4-H Youth Development Education - 2006/2010', 'http://opaquenamespace.org/ns/osuAcademicUnits/5eh7OKFX'] }
 
-    it 'should not include the option in the list' do
+    it 'does not include the option in the list' do
       expect(described_class.includes_open_dates?(active_option)).to eq false
     end
   end

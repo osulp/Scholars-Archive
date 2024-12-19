@@ -52,47 +52,41 @@ module ScholarsArchive
 
     def handle_redirects
       new_od_path = od_redirects['handles_od_communities_collections'][params[:handle_localname]]
-      if new_od_path
-        redirect_to new_od_path and return
-      end
+      redirect_to new_od_path and return if new_od_path
 
       new_od_items_path = od_items_redirects['handles_od_items'][params[:handle_localname]]
-      if new_od_items_path
-        redirect_to new_od_items_path and return
-      end
+      redirect_to new_od_items_path and return if new_od_items_path
 
       new_ir_collections_path = ir_collections_redirects['handles_ir_communities_collections'][params[:handle_localname]]
-      if new_ir_collections_path
-        redirect_to new_ir_collections_path and return
-      end
+      redirect_to new_ir_collections_path and return if new_ir_collections_path
 
       new_ir_mismatch_path = ir_mismatch_redirects['handles_mismatched_items'][params[:handle_localname]]
-      if new_ir_mismatch_path
-        redirect_to new_ir_mismatch_path and return
-      end
+      return unless new_ir_mismatch_path
+
+      redirect_to new_ir_mismatch_path and return
     end
 
     def od_redirects
-      YAML.load(File.read('config/handles_od_communities_collections.yml'))
+      YAML.safe_load(File.read('config/handles_od_communities_collections.yml'))
     end
 
     def od_items_redirects
-      YAML.load(File.read('config/handles_od_items.yml'))
+      YAML.safe_load(File.read('config/handles_od_items.yml'))
     end
 
     def ir_collections_redirects
-      YAML.load(File.read('config/handles_ir_communities_collections.yml'))
+      YAML.safe_load(File.read('config/handles_ir_communities_collections.yml'))
     end
 
     def ir_mismatch_redirects
-      YAML.load(File.read('config/handles_mismatched_items.yml'))
+      YAML.safe_load(File.read('config/handles_mismatched_items.yml'))
     end
 
     def verify_handle_prefix
-      if params[:handle_prefix] != '1957'
-        ScholarsArchive::HandleErrorLoggingService.log_incorrect_handle_prefix_error(params)
-        redirect_to root_path
-      end
+      return unless params[:handle_prefix] != '1957'
+
+      ScholarsArchive::HandleErrorLoggingService.log_incorrect_handle_prefix_error(params)
+      redirect_to root_path
     end
 
     def filesets_for_work(work)
@@ -115,11 +109,11 @@ module ScholarsArchive
     def extract_all_filesets(work)
       filesets = []
       work.members.each do |member|
-        if member.class.to_s != 'FileSet'
-          filesets << extract_all_filesets(member)
-        else
-          filesets << member
-        end
+        filesets << if member.class.to_s != 'FileSet'
+                      extract_all_filesets(member)
+                    else
+                      member
+                    end
       end
       filesets.flatten.compact
     end
@@ -147,11 +141,11 @@ module ScholarsArchive
 
     def query_solr_for_work(handle)
       # Query solr
-      ActiveFedora::SolrService.query("replaces_ssim:#{handle}", rows: 1000000)
+      ActiveFedora::SolrService.query("replaces_ssim:#{handle}", rows: 1_000_000)
     end
 
     def query_solr_for_filesets(label)
-      ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", rows: 10000)
+      ActiveFedora::SolrService.query("has_model_ssim:FileSet AND label_ssi:#{label}", rows: 10_000)
     end
   end
 end

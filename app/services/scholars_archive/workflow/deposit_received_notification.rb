@@ -10,9 +10,7 @@ module ScholarsArchive
         'Thank you for your deposit to ScholarsArchive@OSU'
       end
 
-      # rubocop:disable Metrics/AbcSize
       # rubocop:disable Metrics/MethodLength
-      # rubocop:disable Lint/Void
       def message
         if SolrDocument.find(work_id)['resource_type_tesim']&.include?('Article')
           "ScholarsArchive@OSU has received your deposit: #{title}
@@ -46,10 +44,9 @@ module ScholarsArchive
            Visit https://ir.library.oregonstate.edu/ and go to your dashboard for more info."
         end
       end
+
       # rubocop:enable Metrics/AbcSize
       # rubocop:enable Metrics/MethodLength
-      # rubocop:enable Lint/Void
-
       # Add the user who initiated this action to the list of users being notified
       def users_to_notify
         [user]

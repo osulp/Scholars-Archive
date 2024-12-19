@@ -14,7 +14,7 @@ class ReindexModelJob < ScholarsArchive::ApplicationJob
       logger.info "\t reindexing #{work.id}"
       work.update_index
       counter += 1
-    rescue => e
+    rescue StandardError => e
       logger.info "Failed to reindex #{work.id}: #{e.message}"
       next
     end

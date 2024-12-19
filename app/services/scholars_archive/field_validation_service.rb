@@ -24,13 +24,14 @@ module ScholarsArchive
     end
 
     def self.get_collection(field, record: nil, env_user: nil)
-      if field.to_s == 'degree_level'
+      case field.to_s
+      when 'degree_level'
         degree_level_options(env_user)
-      elsif field.to_s == 'degree_grantors'
+      when 'degree_grantors'
         degree_grantors_options(record.degree_grantors, env_user)
-      elsif field.to_s == 'degree_name'
+      when 'degree_name'
         degree_name_options(env_user)
-      elsif field.to_s == 'degree_field'
+      when 'degree_field'
         degree_field_options(env_user)
       else
         []
@@ -69,8 +70,8 @@ module ScholarsArchive
       collection = get_collection(field, record: record, env_user: env_user)
       if other_value.present?
         error_counter += 1 if other_value_in_collection? other_value: other_value, collection: collection
-      else
-        error_counter += 1 if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s] == 'Other'
+      elsif record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s] == 'Other'
+        error_counter += 1
       end
       error_counter <= 0
     end
@@ -85,8 +86,8 @@ module ScholarsArchive
         other_value.each do |entry|
           error_counter += 1 if other_value_in_collection? other_value: entry, collection: collection
         end
-      else
-        error_counter += 1 if record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
+      elsif record.class.ancestors.include?(::ScholarsArchive::EtdMetadata) && record.attributes[field.to_s].present? && record.attributes[field.to_s].include?('Other')
+        error_counter += 1
       end
       error_counter <= 0
     end
@@ -126,7 +127,7 @@ module ScholarsArchive
         # end
       end
 
-      if error_counter > 0
+      if error_counter.positive?
         valid_values.each do |entry|
           record.send(field) << [{ option: 'Other', err_valid_val: true, other_entry: entry.to_s }.to_json]
         end
@@ -137,8 +138,6 @@ module ScholarsArchive
     def self.other_value_in_collection?(other_value: nil, collection: [])
       !collection.select { |option| option.include? other_value }.empty? ? true : false
     end
-
-    private
 
     def self.add_error_message(record, field, error_msg)
       record.errors[field.to_s] << error_msg

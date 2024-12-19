@@ -7,13 +7,11 @@ module Parsers
       extract_and_massage_data(jsonld)
     end
 
-    private
-
     def self.extract_and_massage_data(jsonld)
-      graph = JSON.parse(jsonld).dig('@graph')
+      graph = JSON.parse(jsonld)['@graph']
       return [{ id: 'invalid', term: 'invalid', active: true }] if graph.nil?
 
-      terms = graph.map { |g| { id: g.dig('@id'), term: labels_with_dates(g), active: true } }
+      terms = graph.map { |g| { id: g['@id'], term: labels_with_dates(g), active: true } }
       # return only terms that have id and label
       terms.delete_if { |term| term[:id].nil? || term[:term].nil? }
     end
@@ -22,7 +20,7 @@ module Parsers
       label = g.dig('rdfs:label', '@value')
       return label if label.nil?
 
-      date = g.dig('dc:date')
+      date = g['dc:date']
       date = g.dig('dc:date', '@value') if date.is_a?(Hash)
       date = date.join(', ') if date.is_a?(Array)
       "#{label} - #{date}"

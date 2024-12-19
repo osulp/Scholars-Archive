@@ -1,0 +1,183 @@
+Lint/EmptyWhen:
+  Exclude:
+    - "app/controllers/scholars_archive/handles_controller.rb"
+Security/YAMLLoad:
+  Exclude:
+    - "app/authorities/scholars_archive/cache_based_authority.rb"
+Lint/MissingSuper:
+  Exclude:
+    - "app/models/oai_set.rb"
+Lint/NonLocalExitFromIterator:
+  Exclude:
+    - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
+    - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
+Lint/ShadowedArgument:
+  Exclude:
+    - "app/models/concerns/scholars_archive/date_operations.rb"
+Metrics/BlockLength:
+  Exclude:
+    - "app/controllers/catalog_controller.rb"
+    - "app/models/concerns/scholars_archive/has_solr_labels.rb"
+    - "lib/scholars_archive/migrate_ordered_metadata_service.rb"
+Metrics/ClassLength:
+  Exclude:
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/controllers/catalog_controller.rb"
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/inputs/multi_value_date_input.rb"
+    - "app/inputs/multi_value_label_url_input.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/models/solr_document.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "lib/scholars_archive/migrate_ordered_metadata_service.rb"
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/create_with_ext_relation_actor.rb"
+    - "app/controllers/concerns/scholars_archive/works_controller_behavior.rb"
+    - "app/controllers/concerns/scholars_archive/works_controller_behavior.rb"
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/indexers/default_work_indexer.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_solr_labels.rb"
+    - "app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb"
+    - "app/services/scholars_archive/degree_level_service.rb"
+    - "lib/scholars_archive/migrate_ordered_metadata_service.rb"
+    - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
+    - "lib/scholars_archive/validators/nested_related_items_validator.rb"
+    - "lib/scholars_archive/validators/other_affiliation_validator.rb"
+Metrics/MethodLength:
+  Exclude:
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/nested_fields_operations_actor.rb"
+    - "app/controllers/application_controller.rb"
+    - "app/controllers/concerns/scholars_archive/download_analytics_behavior.rb"
+    - "app/controllers/concerns/scholars_archive/works_controller_behavior.rb"
+    - "app/controllers/hyrax/contact_form_controller.rb"
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/forms/scholars_archive/dataset_form_behavior.rb"
+    - "app/forms/scholars_archive/default_work_form_behavior.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/indexers/default_work_indexer.rb"
+    - "app/indexers/default_work_indexer.rb"
+    - "app/inputs/multi_value_date_input.rb"
+    - "app/inputs/multi_value_date_input.rb"
+    - "app/inputs/multi_value_date_input.rb"
+    - "app/inputs/multi_value_label_url_input.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/inputs/multi_value_select_other_input.rb"
+    - "app/jobs/characterize_job.rb"
+    - "app/jobs/migrate_creators_no_handles_job.rb"
+    - "app/jobs/migrate_creators_no_handles_job.rb"
+    - "app/jobs/reindex_everything_job.rb"
+    - "app/jobs/reindex_model_job.rb"
+    - "app/models/concerns/scholars_archive/date_operations.rb"
+    - "app/models/concerns/scholars_archive/has_solr_labels.rb"
+    - "app/renderers/hyrax/renderers/scholars_archive_nested_attribute_renderer.rb"
+    - "app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb"
+    - "app/services/scholars_archive/caching_service.rb"
+    - "app/services/scholars_archive/degree_level_service.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "app/services/scholars_archive/osu_api_service.rb"
+    - "app/services/scholars_archive/records_by_user_group_and_visibility.rb"
+    - "app/services/scholars_archive/triple_powered_service.rb"
+    - "app/services/scholars_archive/triple_powered_service.rb"
+    - "lib/qa/authorities/geonames.rb"
+    - "lib/scholars_archive/document/qualified_dublin_core.rb"
+    - "lib/scholars_archive/embargoes/embargo_releaser.rb"
+    - "lib/scholars_archive/migrate_ordered_metadata_service.rb"
+    - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
+    - "lib/scholars_archive/validators/nested_related_items_validator.rb"
+    - "lib/scholars_archive/validators/other_affiliation_validator.rb"
+    - "lib/scholars_archive/validators/other_option_degree_validator.rb"
+Metrics/ModuleLength:
+  Exclude:
+    - "app/helpers/application_helper.rb"
+    - "app/models/concerns/scholars_archive/default_metadata.rb"
+Metrics/PerceivedComplexity:
+  Exclude:
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/create_with_ext_relation_actor.rb"
+    - "app/controllers/concerns/scholars_archive/works_controller_behavior.rb"
+    - "app/controllers/concerns/scholars_archive/works_controller_behavior.rb"
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/indexers/default_work_indexer.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_nested_ordered_properties.rb"
+    - "app/models/concerns/scholars_archive/has_solr_labels.rb"
+    - "app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb"
+    - "app/services/scholars_archive/degree_level_service.rb"
+    - "lib/scholars_archive/migrate_ordered_metadata_service.rb"
+    - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
+    - "lib/scholars_archive/validators/nested_related_items_validator.rb"
+    - "lib/scholars_archive/validators/other_affiliation_validator.rb"
+Naming/AccessorMethodName:
+  Exclude:
+    - "app/actors/scholars_archive/actors/nested_fields_operations_actor.rb"
+    - "app/controllers/blacklight_advanced_search/advanced_controller.rb"
+    - "app/controllers/concerns/scholars_archive/works_controller_behavior.rb"
+    - "app/services/scholars_archive/osu_api_service.rb"
+Naming/MethodParameterName:
+  Exclude:
+    - "app/authorities/parsers/academic_units_parser.rb"
+    - "app/authorities/parsers/degree_fields_parser.rb"
+    - "app/authorities/parsers/degree_fields_parser.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/jobs/resolrize_job.rb"
+    - "app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb"
+    - "app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb"
+    - "app/renderers/hyrax/renderers/search_and_external_link_attribute_renderer.rb"
+    - "app/services/scholars_archive/license_service.rb"
+    - "lib/qa/authorities/geonames.rb"
+    - "lib/qa/authorities/geonames.rb"
+    - "lib/qa/authorities/geonames.rb"
+    - "lib/qa/authorities/geonames.rb"
+Naming/PredicateName:
+  Exclude:
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/actors/scholars_archive/actors/add_other_field_option_actor.rb"
+    - "app/controllers/concerns/hyrax/contact_form_recaptcha_behavior.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "lib/scholars_archive/migrate_ordered_metadata_service.rb"
+    - "lib/scholars_archive/triple_powered_properties/triple_powered_form.rb"
+Naming/VariableName:
+  Exclude:
+    - "app/jobs/resolrize_job.rb"
+    - "app/jobs/resolrize_job.rb"
+Naming/VariableNumber:
+  Exclude:
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/controllers/scholars_archive/handles_controller.rb"
+    - "app/inputs/multi_value_ordered_input.rb"
+Style/EmptyElse:
+  Exclude:
+    - "app/services/scholars_archive/field_validation_service.rb"
+    - "app/services/scholars_archive/field_validation_service.rb"
+Style/OptionalBooleanParameter:
+  Exclude:
+    - "app/services/scholars_archive/degree_grantors_service.rb"

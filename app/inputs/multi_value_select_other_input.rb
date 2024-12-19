@@ -4,7 +4,7 @@
 class MultiValueSelectOtherInput < MultiValueSelectInput
   # Overriding so that we can handle the "Other" option with an input
   def input_type
-    'multi_value'.freeze
+    'multi_value'
   end
 
   private

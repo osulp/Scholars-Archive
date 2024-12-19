@@ -26,13 +26,13 @@ class ApplicationController < ActionController::Base
   # API. This helps to maintain details of the user type (student, employee, etc)
   # which can be leveraged to improve the usability for different types of users.
   def update_from_person_api
-    if user_signed_in?
-      begin
-        current_user.update_from_person_api
-      rescue
-        # Don't fail hard when the API queries fail
-        logger.error('Failed accessing OSU API, unable to synchronize user details.')
-      end
+    return unless user_signed_in?
+
+    begin
+      current_user.update_from_person_api
+    rescue StandardError
+      # Don't fail hard when the API queries fail
+      logger.error('Failed accessing OSU API, unable to synchronize user details.')
     end
   end
 
@@ -52,16 +52,16 @@ class ApplicationController < ActionController::Base
   # it as authenticated. This allows for API requests to flow through without requiring
   # a CAS authentication to happen beforehand.
   def http_header_auth_login
-    if !user_signed_in? && request.headers.key?('HTTP_API_AUTHENTICATION')
-      credentials = api_credentials(request.headers)
-      if http_header_auth?
-        u = User.where(email: credentials[:config][:username]).first
-        sign_in :user, u
-        authenticate_user!
-      else
-        warden.custom_failure!
-        render json: 'Unable to authenticate user.', status: 422
-      end
+    return unless !user_signed_in? && request.headers.key?('HTTP_API_AUTHENTICATION')
+
+    credentials = api_credentials(request.headers)
+    if http_header_auth?
+      u = User.where(email: credentials[:config][:username]).first
+      sign_in :user, u
+      authenticate_user!
+    else
+      warden.custom_failure!
+      render json: 'Unable to authenticate user.', status: 422
     end
   end
 

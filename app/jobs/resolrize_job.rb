@@ -4,7 +4,7 @@
 class ResolrizeJob < Hyrax::ApplicationJob
   queue_as :reindex
 
-  # Note: Exposing arguments available in ActiveFedora::Base.reindex_everything: batch_size, softCommit, progress_bar and final_commit
+  # NOTE: Exposing arguments available in ActiveFedora::Base.reindex_everything: batch_size, softCommit, progress_bar and final_commit
   def perform(batch_size: 50, softCommit: true, progress_bar: false, final_commit: false)
     ActiveFedora::Base.reindex_everything(batch_size: batch_size,
                                           softCommit: softCommit,

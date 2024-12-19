@@ -46,7 +46,7 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
       <th>Sholars archive nested</th>
       <td><ul class="tabular"><li class="attribute attribute-sholars_archive_nested">          <span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
                   <span itemprop="name">
-                    <a href="/catalog?f%5Bnested_geo_label_ssim%5D%5B%5D=#{label_geo_q}">#{label_geo.to_s}</a>
+                    <a href="/catalog?f%5Bnested_geo_label_ssim%5D%5B%5D=#{label_geo_q}">#{label_geo}</a>
                   </span>
                 </span>
       </li></ul></td>

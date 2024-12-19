@@ -2,7 +2,7 @@
 
 ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -12,7 +12,7 @@ WebMock.disable_net_connect!(allow_localhost: true, allow: ['blazegraph:8080', '
 require 'triplestore_adapter'
 require 'shoulda/matchers'
 
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].sort.each { |f| require f }
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'creator_sfacet', label: 'Creator', limit: 5, helper_method: :diacritic_facet_denorm_affixes
     config.add_facet_field 'contributor_sfacet', label: 'Contributor', limit: 5, helper_method: :diacritic_facet_denorm_affixes
 
-#    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
+    #    config.add_facet_field 'date_facet_yearly_ssim', :label => 'Date', :range => true
     config.add_facet_field('date_facet_yearly_ssim') do |field|
       field.label = 'Date'
       field.range = true
@@ -342,7 +342,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('degree_field_label') do |field|
-#      solr_name = solr_name("degree_field_label", :stored_searchable)
+      #      solr_name = solr_name("degree_field_label", :stored_searchable)
       solr_name = 'degree_field_label_tesim'
       field.label = 'Degree Field'
       field.solr_parameters = {

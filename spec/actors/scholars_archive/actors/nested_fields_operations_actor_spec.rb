@@ -3,6 +3,13 @@
 require 'rails_helper'
 require 'spec_helper'
 RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
+  subject(:middleware) do
+    stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
+      middleware.use described_class
+    end
+    stack.build(terminator)
+  end
+
   let(:curation_concern) do
     Default.new do |work|
       work.attributes = attributes
@@ -15,13 +22,13 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   let(:env) { Hyrax::Actors::Environment.new(curation_concern, ability, attributes) }
   let(:terminator) { Hyrax::Actors::Terminator.new }
   let(:attributes) do
-        {
-          title: ['test'],
-          creator: ['Blah'],
-          rights_statement: ['blah.blah'],
-          resource_type: ['blah'],
-        }
-      end
+    {
+      title: ['test'],
+      creator: ['Blah'],
+      rights_statement: ['blah.blah'],
+      resource_type: ['blah']
+    }
+  end
   let(:nested_geo_attributes) do
     {
       '2' => {
@@ -46,13 +53,6 @@ RSpec.describe ScholarsArchive::Actors::NestedFieldsOperationsActor do
   end
   let(:expected_point) { 'a,b' }
   let(:expected_bbox) { '1,2,3,4' }
-
-  subject(:middleware) do
-    stack = ActionDispatch::MiddlewareStack.new.tap do |middleware|
-      middleware.use described_class
-    end
-    stack.build(terminator)
-  end
 
   describe '#create' do
     context 'with nested geo attributes' do

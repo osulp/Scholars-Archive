@@ -6,7 +6,7 @@ module Hyrax
     # Sets the work and filesets to private
     module MetadataOnlyRecord
       # rubocop:disable Lint/UnusedMethodArgument
-      def self.call(user: _user, target:, **)
+      def self.call(target:, user: _user, **)
         target.file_sets.each(&:destroy)
         target.thumbnail_id = ''
       end
