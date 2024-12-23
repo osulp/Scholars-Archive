@@ -9,7 +9,6 @@ module ScholarsArchive
         %i[nested_related_items
            date_uploaded
            date_modified
-           funding_body
            tableofcontents
            file_extent
            file_format
@@ -42,6 +41,7 @@ module ScholarsArchive
          nested_related_items
          hydrologic_unit_code
          geo_section
+         funding_body
          funding_statement
          publisher
          peerreviewed
