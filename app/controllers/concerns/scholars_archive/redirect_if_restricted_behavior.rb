@@ -29,14 +29,14 @@ module ScholarsArchive
         flash[:alert] = ''
 
         # First we check if the user can see the work or fileset
-        return unless cannot?(:read, curation_concern) && (curation_concern.embargo_id.present? || curation_concern.visibility == 'authenticated')
+        return unless current_user.cannot?(:read, curation_concern) && (!visible_under_embargo(curation_concern) || curation_concern.visibility == 'authenticated')
 
         # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
         return if request.referrer.to_s == "https://#{ENV.fetch('SCHOLARSARCHIVE_URL_HOST')}/"
 
         # Otherwise, this returns them to the homepage because they got here from elsewhere and need to know this work is embargoed
         # and if its OSU visible, provided a link to login and continue to where they were going
-        if curation_concern.embargo_id.present?
+        if !visible_under_embargo(curation_concern)
           case curation_concern.embargo.visibility_during_embargo
           when 'restricted'
             flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}."
@@ -51,6 +51,11 @@ module ScholarsArchive
       # rubocop:enable Metrics/CyclomaticComplexity
       # rubocop:enable Metrics/MethodLength
       # rubocop:enable Metrics/PerceivedComplexity
+
+      # Returns True if the work is under embargo but still visible to the user because they are the depositor
+      def visible_under_embargo(curation_concern)
+        curation_concern.embargo_id.present? && curation_concern.depositor == current_user.try(:username)
+      end
     end
   end
 end
