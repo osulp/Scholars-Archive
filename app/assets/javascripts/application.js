@@ -29,6 +29,7 @@
 //= require tinymce
 //= require ordered_creator
 //= require_directory .
+//= require bulkrax/application
 //= require hyrax
 //= require degree_filter/degree_level_filter
 //= require degree_filter/degree_sort
