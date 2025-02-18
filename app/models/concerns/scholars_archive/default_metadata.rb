@@ -293,6 +293,10 @@ module ScholarsArchive
         index.as :stored_searchable
       end
 
+      # ADD: Create two new metadata fields for accessibility
+      property :accessibility_feature, predicate: ::RDF::URI.new('http://schema.org/accessibilityFeature') do |index|
+      end
+
       # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
       attr_accessor :geo_section
 
@@ -300,7 +304,7 @@ module ScholarsArchive
       attr_accessor :current_username
 
       class_attribute :controlled_properties
-      self.controlled_properties = %i[based_near funding_body]
+      self.controlled_properties = %i[based_near funding_body accessibility_feature]
     end
   end
 end

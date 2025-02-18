@@ -31,7 +31,8 @@ module ScholarsArchive
          interactivity_type
          time_required
          typical_age_range
-         is_based_on_url]
+         is_based_on_url
+         accessibility_feature]
     end
     # rubocop:enable Metrics/MethodLength
 

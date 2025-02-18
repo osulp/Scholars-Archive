@@ -17,7 +17,8 @@ module ScholarsArchive
            isbn
            issn
            embargo_reason
-           human_data]
+           human_data
+           accessibility_feature]
     end
     # rubocop:enable Metrics/MethodLength
 
