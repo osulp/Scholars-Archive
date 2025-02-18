@@ -29,7 +29,7 @@ module ScholarsArchive
         flash[:alert] = ''
 
         # First we check if the user can see the work or fileset
-        return unless current_user.cannot?(:read, curation_concern) && (!visible_under_embargo(curation_concern) || curation_concern.visibility == 'authenticated')
+        return unless cannot?(:read, curation_concern) && (!visible_under_embargo(curation_concern) || curation_concern.visibility == 'authenticated')
 
         # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
         return if request.referrer.to_s == "https://#{ENV.fetch('SCHOLARSARCHIVE_URL_HOST')}/"
