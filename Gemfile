@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 6.0.6'
 # Use Puma as the app server
 gem 'puma', '~> 5.6.7'
 
@@ -50,7 +50,7 @@ gem 'browse-everything'
 gem 'devise'
 gem 'devise_cas_authenticatable', '~> 1.0'
 gem 'faraday'
-gem 'hyrax', '3.6.0'
+gem 'hyrax', '4.0.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
 gem 'rsolr'
@@ -79,7 +79,7 @@ gem 'rest-client', '~> 2.0'
 gem 'haml'
 
 gem 'bagit', '~>0.4.1'
-gem 'riiif', '~> 1.1'
+gem 'riiif', '~> 2.2'
 
 # Security update
 gem 'rubyzip', '~> 1.3.0'
