@@ -32,7 +32,8 @@ module ScholarsArchive
          time_required
          typical_age_range
          is_based_on_url
-         accessibility_feature]
+         accessibility_feature
+         accessibility_summary]
     end
     # rubocop:enable Metrics/MethodLength
 

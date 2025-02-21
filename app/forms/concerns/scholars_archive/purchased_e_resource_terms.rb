@@ -41,7 +41,8 @@ module ScholarsArchive
          identifier
          nested_related_items
          subject
-         accessibility_feature]
+         accessibility_feature
+         accessibility_summary]
     end
     # rubocop:enable Metrics/MethodLength
 

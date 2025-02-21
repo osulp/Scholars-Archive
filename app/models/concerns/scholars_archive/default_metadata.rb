@@ -297,6 +297,9 @@ module ScholarsArchive
       property :accessibility_feature, predicate: ::RDF::URI.new('http://schema.org/accessibilityFeature') do |index|
       end
 
+      property :accessibility_summary, predicate: ::RDF::URI.new('http://schema.org/accessibilitySummary') do |index|
+      end
+
       # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
       attr_accessor :geo_section
 
