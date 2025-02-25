@@ -17,9 +17,7 @@ module ScholarsArchive
            isbn
            issn
            embargo_reason
-           human_data
-           accessibility_feature
-           accessibility_summary]
+           human_data]
     end
     # rubocop:enable Metrics/MethodLength
 
@@ -50,7 +48,9 @@ module ScholarsArchive
          language
          digitization_spec
          replaces
-         nested_ordered_additional_information]
+         nested_ordered_additional_information
+         accessibility_feature
+         accessibility_summary]
     end
     # rubocop:enable Metrics/MethodLength
 
