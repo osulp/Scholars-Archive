@@ -307,7 +307,7 @@ module ScholarsArchive
       attr_accessor :current_username
 
       class_attribute :controlled_properties
-      self.controlled_properties = %i[based_near funding_body accessibility_feature]
+      self.controlled_properties = %i[based_near funding_body]
     end
   end
 end

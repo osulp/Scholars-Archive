@@ -130,6 +130,10 @@ class SolrDocument
     ScholarsArchive::OrderedParserService.parse(self['nested_ordered_additional_information_label_ssim']) || []
   end
 
+  def accessiblity_feature_label
+    self['accessiblity_feature_label_ssim']
+  end
+
   def system_created
     Time.parse self['system_create_dtsi']
   end
@@ -154,6 +158,8 @@ class SolrDocument
   solrized_methods %w[
     abstract
     academic_affiliation
+    accessibility_feature
+    accessibility_summary
     alternative_title
     bibliographic_citation
     conference_location
@@ -204,7 +210,6 @@ class SolrDocument
     documentation
     web_of_science_uid
     ext_relation
-    accessibility_summary
   ]
 
   field_semantics.merge!(

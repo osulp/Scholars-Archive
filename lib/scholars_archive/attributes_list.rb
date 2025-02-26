@@ -69,6 +69,7 @@ module ScholarsArchive
         { field: :duration, label: I18n.t('simple_form.labels.defaults.duration') },
         { field: :isbn, label: I18n.t('simple_form.labels.defaults.isbn') },
         { field: :issn, label: I18n.t('simple_form.labels.defaults.issn') },
+        { field: :accessibility_feature, render_as: :faceted, label: I18n.t('simple_form.labels.defaults.accessibility_feature') },
         { field: :accessibility_summary, label: I18n.t('simple_form.labels.defaults.accessibility_summary') }
       ]
     end
