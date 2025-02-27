@@ -7,9 +7,12 @@ module ScholarsArchive
     included do
       delegate :abstract,
                :academic_affiliation_label,
+               :accessibility_feature_label,
                :based_near_linked,
+               :based_near_linked_label,
                :degree_field_label,
                :embargo_date_range,
+               :funding_body_label,
                :itemtype,
                :language_label,
                :license_label,
@@ -21,8 +24,6 @@ module ScholarsArchive
                :nested_related_items_label,
                :other_affiliation_label,
                :peerreviewed_label,
-               :based_near_linked_label,
-               :funding_body_label,
                :rights_statement_label, to: :solr_document
       delegate(*::ScholarsArchive::DefaultTerms.base_terms, to: :solr_document)
     end

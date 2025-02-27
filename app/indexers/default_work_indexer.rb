@@ -96,8 +96,8 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
 
   # Add the field of accessibility over to solr
   def accessibility_for_solr_doc(object, solr_doc, labels)
-    solr_doc['accessibility_feature_ssim'] = labels
-    solr_doc['accessibility_feature_tesim'] = labels
+    solr_doc['accessibility_feature_label_ssim'] = labels
+    solr_doc['accessibility_feature_label_tesim'] = labels
     solr_doc['accessibility_summary_ssim'] = object.accessibility_summary
     solr_doc['accessibility_summary_tesim'] = object.accessibility_summary
   end
