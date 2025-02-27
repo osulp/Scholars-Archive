@@ -71,9 +71,6 @@ Hyrax.config do |config|
   config.analytics = ENV.fetch('SCHOLARSARCHIVE_ENABLE_ANALYTICS', 'false')
   config.analytics_provider = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_PROVIDER', 'ga4')
 
-  # Google Analytics tracking ID to gather usage statistics
-  # config.google_analytics_id = ENV.fetch('SCHOLARSARCHIVE_ANALYTICS_ID', 'abc123')
-
   # Date you wish to start collecting Google Analytic statistics for
   # Leaving it blank will set the start date to when ever the file was uploaded by
   # NOTE: if you have always sent analytics to GA for downloads and page views leave this commented out
