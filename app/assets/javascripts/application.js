@@ -14,8 +14,8 @@
 //= require 'blacklight_advanced_search'
 //= require jquery_ujs
 //= require jquery-ui
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require jquery.dataTables
+//= require dataTables.bootstrap4
 //= require jquery-datetimepicker/jquery.datetimepicker.full
 //= require blacklight/blacklight
 //= require field_other
