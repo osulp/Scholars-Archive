@@ -21,5 +21,7 @@ class EescPublication < ActiveFedora::Base
 
   private
 
-  def set_defaults; end
+  def set_defaults
+    self.accessibility_feature = ['unknown']
+  end
 end

@@ -22,5 +22,6 @@ class AdministrativeReportOrPublication < ActiveFedora::Base
 
   def set_defaults
     self.peerreviewed ||= 'false'
+    self.accessibility_feature = ['unknown']
   end
 end
