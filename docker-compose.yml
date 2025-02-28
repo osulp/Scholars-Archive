@@ -37,6 +37,7 @@ services:
       - BROWSEEVERYTHING_FILESYSTEM_PATH='/tmp/browse-everything'
       - FITS_PATH=/opt/fits/fits.sh
       - HONEYCOMB_ENABLED=false
+      - HYRAX_ANALYTICS=false
       - INVISIBLE_CAPTCHA_SECRET=12341234
       - RAILS_CACHE_STORE_URL=memcache
       - RAILS_ENV=development
