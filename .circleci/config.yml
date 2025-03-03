@@ -250,4 +250,5 @@ workflows:
                 - /infra\/.*/
                 - /staging\/.*/
                 - /patch\/.*/
+                - /upgrade\/.*/
           repo: sa_web
