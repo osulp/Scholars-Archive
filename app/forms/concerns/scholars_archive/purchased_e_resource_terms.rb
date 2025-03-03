@@ -40,7 +40,9 @@ module ScholarsArchive
          editor
          identifier
          nested_related_items
-         subject]
+         subject
+         accessibility_feature
+         accessibility_summary]
     end
     # rubocop:enable Metrics/MethodLength
 
