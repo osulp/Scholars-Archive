@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require jquery.dataTables
+//= require bootstrap-sprockets
 //= require dataTables.bootstrap4
 //= require jquery-datetimepicker/jquery.datetimepicker.full
 //= require blacklight/blacklight
