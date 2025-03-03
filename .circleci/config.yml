@@ -218,13 +218,13 @@ jobs:
           registry: registry.library.oregonstate.edu
       - docker/build:
           registry: registry.library.oregonstate.edu
-          image: sa_web
+          image: sa_web_v4
           tag: "$TAG,last"
           extra_build_args: --build-arg RAILS_ENV=<< parameters.environment >> --build-arg DEPLOYED_VERSION=$DEPLOYED_VERSION
-          cache_from: registry.library.oregonstate.edu/sa_web:last
+          cache_from: registry.library.oregonstate.edu/sa_web_v4:last
       - docker/push:
           registry: registry.library.oregonstate.edu
-          image: sa_web
+          image: sa_web_v4
           tag: "$TAG,last"
 workflows:
   ci:
@@ -239,10 +239,19 @@ workflows:
       - test:
           requires:
             - lint
+          filters:
+            branches:
+              ignore:
+                - main
+                - /infra\/.*/
+                - /staging\/.*/
+                - /patch\/.*/
+                - /upgrade\/.*/
       - build_and_push_beavernetes:
           name: build_and_push_beavernetes
           requires:
             - test
+            - lint
           filters:
             branches:
               only:
