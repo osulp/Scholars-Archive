@@ -163,7 +163,15 @@ en:
   
     file_set:
       show:
-        ext_relation: "View Online"
+        download: "<strong>Download the File</strong>"
+        downloadable_content:
+          audio_link: "<strong>Download Audio</strong>"
+          default_link: "<strong>Download File</strong>"
+          ext_relation: "<strong>View Online</strong>"
+          image_link: "<strong>Download Image</strong>"
+          office_link: "<strong>Download File</strong>"
+          pdf_link: "<strong>Download PDF</strong>"
+          video_link: "<strong>Download Video</strong>"
 
     items:
       ext_relation: "This %{type} is available from an external website: "
