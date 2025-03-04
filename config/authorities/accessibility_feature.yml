@@ -9,7 +9,7 @@ terms:
   term: "pageBreakMarkers"
   active: true
 - id: "pageNavigation"
-  term: "pageNavigatio"
+  term: "pageNavigation"
   active: true
 - id: "readingOrder"
   term: "readingOrder"
