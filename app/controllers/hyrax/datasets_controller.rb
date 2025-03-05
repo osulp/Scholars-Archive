@@ -26,7 +26,7 @@ module Hyrax
     end
 
     def set_doi
-      curation_concern.doi = "https://doi.org/10.7267/#{curation_concern.id}" if curation_concern.doi == "mint-doi"
+      curation_concern.doi = "https://doi.org/10.7267/#{curation_concern.id}" if curation_concern.doi == 'mint-doi'
       curation_concern.save!
     end
   end
