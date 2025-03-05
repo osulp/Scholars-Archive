@@ -17,11 +17,17 @@ module Hyrax
     self.show_presenter = DatasetPresenter
 
     before_action :ensure_admin!, only: :destroy
+    after_action :set_doi, only: :create
 
     private
 
     def ensure_admin!
       authorize! :read, :admin_dashboard
+    end
+
+    def set_doi
+      curation_concern.doi = "https://doi.org/10.7267/#{curation_concern.id}" if curation_concern.doi == 'mint-doi'
+      curation_concern.save!
     end
   end
 end
