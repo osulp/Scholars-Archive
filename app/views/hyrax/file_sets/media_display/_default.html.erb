@@ -1,0 +1,12 @@
+<%# OVERRIDE: Override the default display to set button more clearer for download %>
+<div class="no-preview">
+  <%= t('hyrax.works.show.no_preview') %>
+  <% if display_media_download_link?(file_set: file_set) %>
+    <p /><%= link_to raw(t('hyrax.file_set.show.download')),
+      hyrax.download_path(file_set),
+      id: "file_download",
+      data: { label: file_set.id },
+      target: "_new",
+      class: "btn btn-primary" %>
+  <% end %>
+</div>
