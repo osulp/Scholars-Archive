@@ -15,6 +15,19 @@ module ScholarsArchive
 
     # rubocop:disable Metrics/MethodLength
     def create
+      # SAVE: Preserve the URL in the session before any validations
+      @save_url = @accessibility_form.url_link unless @accessibility_form.url_link.blank?
+
+      # CHECK: Make sure email matches before submission
+      if @accessibility_form.email != @accessibility_form.confirm_email
+        flash.now[:error] = t('hyrax.accessibility_request_form.mismatch_email')
+        @accessibility_form = ScholarsArchive::AccessibilityRequestForm.new
+        @accessibility_form.url_link = @save_url
+
+        # RENDER: Render the form again with the stored URL
+        render :new and return
+      end
+
       # CHECK: See if the form is valid
       if @accessibility_form.valid?
         # IF: If recaptcha present, then send the email and reload the new form for submission
@@ -24,6 +37,7 @@ module ScholarsArchive
           flash.now[:notice] = t('hyrax.accessibility_request_form.success_email')
           after_deliver
           @accessibility_form = ScholarsArchive::AccessibilityRequestForm.new
+          @accessibility_form.url_link = @save_url
         end
       else
         flash.now[:error] = t('hyrax.accessibility_request_form.failed_email')
@@ -55,7 +69,7 @@ module ScholarsArchive
     def accessibility_request_form_params
       return {} unless params.key?(:scholars_archive_accessibility_request_form)
 
-      params.require(:scholars_archive_accessibility_request_form).permit(:accessibility_method, :email, :name, :url_link, :details, :additional, :phone, :date)
+      params.require(:scholars_archive_accessibility_request_form).permit(:accessibility_method, :email, :confirm_email, :name, :url_link, :details, :additional, :phone, :date)
     end
   end
 end

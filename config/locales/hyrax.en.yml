@@ -97,6 +97,7 @@ en:
     accessibility_request_form:
       button: Send
       email: Your Email
+      confirm_email: Confirm Email
       name: Your Name
       phone: Your Phone
       link: Link to the Item
@@ -107,6 +108,7 @@ en:
       sub_header: Accessibility Request
       success_email: Thank you for your message!
       failed_email: Sorry, this message was not sent successfully.
+      mismatch_email: Sorry, both your Email & Confirm Email section needs to match.
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."
