@@ -12,7 +12,7 @@ module ScholarsArchive
 
       def doi
         s = SolrDocument.find(work_id)
-        return "https://doi.org/10.7267/#{s.id.to_s}" if s.doi.include?('mint-doi')
+        return "https://doi.org/10.7267/#{s.id}" if s.doi.include?('mint-doi')
 
         s.doi.first
       end
