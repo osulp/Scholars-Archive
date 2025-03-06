@@ -36,7 +36,7 @@ module ScholarsArchive
            <br />
            Reviews typically take several days. If you have a deadline that we should know of please send a message to researchdataservices@oregonstate.edu.<br />
            <br />
-           Your temporary DOI is https://doi.org/10.7267/#{work_id} . This DOI will not be live until the dataset is approved, but it won't change.<br>
+           Your temporary DOI is https://doi.org/10.7267/#{work_id} . This DOI will not be live until the dataset is approved, but it won't change. If you supplied an existing DOI or declined to register one when you submitted this work, please disregard this temporary DOI.<br>
            <br />
            If the submitted dataset includes human subjects data, give the following information to the data curator:
            <br />
