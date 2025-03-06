@@ -2,12 +2,12 @@
   <label class="form-label select optional" for="dataset_doi"> DOI </label></br>
   <% unless f.object.doi.blank? %>
     <div class="custom-doi">
-      <%= f.radio_button :doi, "custom-doi", value: f.object.doi, checked: true %> Edit this Dataset's DOI. </br>
+      <%= f.radio_button :doi, f.object.doi.to_s, value: f.object.doi, checked: true %> Edit this Dataset's DOI. </br>
       <input type="text" value=<%= f.object.doi.to_s %> class="string multi_value optional form-control form-control multi-text-field"id="doi-text-box" onkeyup="$('#dataset_doi_custom-doi').val(this.value)"><br>
     </div>
   <% else %>
     <div class="auto-doi">
-      <%= f.radio_button :doi, "mint-doi", checked: "checked" %> Automatically assign a DOI for this dataset. <i class="glyphicon glyphicon-question-sign" id="doi-tooltip" data-toggle="tooltip" title="Your DOI will be available after you submit. While this DOI won't change, it will not be active until the dataset is approved."></i></br>
+      <%= f.radio_button :doi, "mint-doi", checked: true %> Automatically assign a DOI for this dataset. <i class="glyphicon glyphicon-question-sign" id="doi-tooltip" data-toggle="tooltip" title="Your DOI will be available after you submit. While this DOI won't change, it will not be active until the dataset is approved."></i></br>
     </div>
     <div class="custom-doi">
       <%= f.radio_button :doi, "custom-doi" %> This dataset has an existing DOI. </br>
