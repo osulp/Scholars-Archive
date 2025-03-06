@@ -11,10 +11,10 @@ module ScholarsArchive
       end
 
       def doi
-        s = SolrDocument.find(work_id) 
-        return "https://doi.org/10.7267/#{s.id.to_s}" if s.doi.include?("mint-doi")
-        
-        return s.doi.first
+        s = SolrDocument.find(work_id)
+        return "https://doi.org/10.7267/#{s.id.to_s}" if s.doi.include?('mint-doi')
+
+        s.doi.first
       end
 
       # rubocop:disable Metrics/MethodLength
