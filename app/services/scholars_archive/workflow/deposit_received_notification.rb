@@ -37,7 +37,7 @@ module ScholarsArchive
            <br />
            Reviews typically take several days. If you have a deadline that we should know of please send a message to researchdataservices@oregonstate.edu.<br />
            <br />
-           #{doi_message} 
+           #{doi_message}
            <br />
            If the submitted dataset includes human subjects data, give the following information to the data curator:
            <br />
