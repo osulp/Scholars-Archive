@@ -32,12 +32,12 @@ module ScholarsArchive
         elsif !SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dataset')
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n #{comment}"
         else
-          doi_message = doi == "https://doi.org/10.7267/#{work_id}" ? "Your temporary DOI is https://doi.org/10.7267/#{work_id} . This DOI will not be live until the dataset is approved, but it won't change.<br />" : "Your DOI is: #{doi}}<br />"
+          doi_message = doi == "https://doi.org/10.7267/#{work_id}" ? "Your temporary DOI is https://doi.org/10.7267/#{work_id}. This DOI will not be live until the dataset is approved, but it won't change.<br />" : "Your DOI is: #{doi}<br />"
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository.<br />
            <br />
            Reviews typically take several days. If you have a deadline that we should know of please send a message to researchdataservices@oregonstate.edu.<br />
            <br />
-           #{doi_message}
+           #{doi.blank? ? 'This work does not have a DOI.<br />' : doi_message}
            <br />
            If the submitted dataset includes human subjects data, give the following information to the data curator:
            <br />
