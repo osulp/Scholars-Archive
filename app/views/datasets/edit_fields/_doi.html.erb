@@ -4,7 +4,7 @@
       <%= f.input :doi %>
     </div>
   <% else %>
-    <%= f.input :doi, as: :radio_buttons, :collection => [ ['Automatically assign a DOI for this dataset.', 'mint-doi'], ['This dataset has an existing DOI.', 'custom-doi'], ['Decline DOI: This dataset will not be assigned a DOI.', ''] ], :checked => ['Automatically assign a DOI for this dataset.', 'mint-doi'] %>
+    <%= f.input :doi, as: :radio_buttons, :collection => [ ['Automatically assign a DOI for this dataset.', 'mint-doi'], ['This dataset has an existing DOI.', 'custom-doi'], ['Decline DOI: This dataset will not be assigned a DOI.', 'decline-doi'] ], :checked => ['Automatically assign a DOI for this dataset.', 'mint-doi'] %>
   <% end %>
 </div>
 <!-- NOTE I DONT KNOW IF ITS RIGHT TO JUST LEAVE THIS HERE BECAUSE ITS EASY -->
