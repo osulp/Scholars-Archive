@@ -10,6 +10,8 @@ gem 'rails', '~> 6.0.6'
 # Use Puma as the app server
 gem 'puma', '~> 5.6.7'
 
+gem 'concurrent-ruby', '1.3.4'
+
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
 # Use Chosen.js to render type-ahead advanced search facets
@@ -38,7 +40,7 @@ gem 'sidekiq', '5.2.10'
 gem 'ffi', '~> 1.15.0'
 
 gem 'blacklight_oai_provider'
-gem 'blacklight_range_limit'
+gem "blacklight_range_limit", "~> 7.0"
 gem 'edtf', '~> 3.1.1'
 
 gem 'blacklight_advanced_search'
