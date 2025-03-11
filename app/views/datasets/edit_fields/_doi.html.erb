@@ -1,5 +1,5 @@
 <div class="doi-form-container">
-  <% unless f.object.doi.blank? || current_page?(action: 'edit') %>
+  <% if request.env['PATH_INFO'].include?('edit') %>
     <div class="custom-doi">
       <%= f.input :doi %>
     </div>
