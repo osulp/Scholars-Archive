@@ -10,6 +10,8 @@ gem 'rails', '~> 6.0.6'
 # Use Puma as the app server
 gem 'puma', '~> 5.6.7'
 
+gem 'concurrent-ruby', '1.3.4'
+
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
 # Use Chosen.js to render type-ahead advanced search facets
@@ -18,12 +20,15 @@ gem 'chosen-rails', '~> 1.9'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # And bootstrap as a CSS library
 gem 'bootstrap', '~> 4.0'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -32,10 +37,11 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq', '5.2.10'
+gem 'sprockets', '3.7.2'
 gem 'ffi', '~> 1.15.0'
 
 gem 'blacklight_oai_provider'
-gem 'blacklight_range_limit'
+gem "blacklight_range_limit", "~> 7.0"
 gem 'edtf', '~> 3.1.1'
 
 gem 'blacklight_advanced_search'
