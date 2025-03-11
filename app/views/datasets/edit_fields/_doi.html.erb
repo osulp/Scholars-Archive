@@ -4,20 +4,23 @@
       <%= f.input :doi %>
     </div>
   <% else %>
-    <label class="form-label select optional" for="dataset_doi"> DOI </label></br>
-    <div class="auto-doi">
-      <%= f.radio_button :doi, "mint-doi", checked: true %> Automatically assign a DOI for this dataset. <i class="glyphicon glyphicon-question-sign" id="doi-tooltip" data-toggle="tooltip" title="Your DOI will be available after you submit. While this DOI won't change, it will not be active until the dataset is approved."></i></br>
-    </div>
-    <div class="custom-doi">
-      <%= f.radio_button :doi, "custom-doi", checked: false %> This dataset has an existing DOI. </br>
-      <input type="text" class="string multi_value optional form-control form-control multi-text-field"id="doi-text-box" onkeyup="$('#dataset_doi_custom-doi').val(this.value)"><br>
-    </div>
-    <div class="no-doi">
-      <%= f.radio_button :doi, '', checked: false %> Decline DOI: This dataset will not be assigned a DOI. </br>
-    </div>
+    <%= f.input :doi, as: :radio_buttons, :collection => [ ['Automatically assign a DOI for this dataset.', 'mint-doi'], ['This dataset has an existing DOI.', 'custom-doi'], ['Decline DOI: This dataset will not be assigned a DOI.', ''] ], :checked => ['Automatically assign a DOI for this dataset.', 'mint-doi'] %>
   <% end %>
 </div>
 <!-- NOTE I DONT KNOW IF ITS RIGHT TO JUST LEAVE THIS HERE BECAUSE ITS EASY -->
 <script>
+  $('#dataset_doi_custom-doi').on( "change", function() {
+    $('#doi-text-box').prop('disabled', '')
+  });
+  $('#dataset_doi_mint-doi').on( "change", function() {
+    $('#doi-text-box').prop('disabled', 'disabled')
+    $('#doi-text-box').val('')
+  });
+  $('#dataset_doi_').on( "change", function() {
+    $('#doi-text-box').prop('disabled', 'disabled')
+    $('#doi-text-box').val('')
+  });
+  $('label[for="dataset_doi_mint-doi"]').append('<i class="glyphicon glyphicon-question-sign" id="doi-tooltip" data-toggle="tooltip" title="Your DOI will be available after you submit. While this DOI won\'t change, it will not be active until the dataset is approved."></i>');
   $('#doi-tooltip').tooltip();
+  $('label[for="dataset_doi_custom-doi"]').append('<input type="text" class="string multi_value optional form-control form-control multi-text-field" disabled id="doi-text-box" onkeyup="$(\'#dataset_doi_custom-doi\').val(this.value)">')
 </script>
