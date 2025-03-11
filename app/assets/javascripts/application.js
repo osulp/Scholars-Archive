@@ -9,17 +9,15 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//= require activestorage
-//= require turbolinks
 //
-//= require jquery3
 //= require rails-ujs
+//= require jquery3
 //= require popper
 //= require twitter/typeahead
 //= require bootstrap
 //= require chosen-jquery
 //= require 'blacklight_advanced_search'
-//= require jquery-ui
+
 //= require jquery.dataTables
 //= require dataTables.bootstrap4
 //= require jquery-datetimepicker/jquery.datetimepicker.full
