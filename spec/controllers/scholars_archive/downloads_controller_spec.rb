@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe ScholarsArchive::DownloadsController, type: :controller do
   before do
-    Hyrax.config.google_analytics_id = 'blah'
+    allow(Hyrax::Analytics.config).to receive(:analytics_id).and_return('UA-XXXXXXXX')
   end
 
   it 'has the method for tracking analytics for download' do

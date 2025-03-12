@@ -69,7 +69,7 @@ Hyrax.config do |config|
   # Defaults to false
   # Requires a Google Analytics id and OAuth2 keyfile.  See README for more info
   config.analytics = ActiveModel::Type::Boolean.new.cast(ENV.fetch('HYRAX_ANALYTICS', 'false'))
-  config.analytics_provider = ENV.fetch('HYRAX_ANALYTICS_PROVIDER', 'ga4')
+  config.analytics_provider = ENV.fetch('HYRAX_ANALYTICS_PROVIDER', 'google')
 
   # Date you wish to start collecting Google Analytic statistics for
   # Leaving it blank will set the start date to when ever the file was uploaded by
