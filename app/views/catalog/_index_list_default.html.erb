@@ -8,7 +8,7 @@
           <dt class="col-5 text-right" data-solr-field-name="<%= field_name %>"><%= render_index_field_label document, field: field_name %></dt>
           <%# OVERRIDE of https://github.com/samvera/hyrax/blob/master/app/views/catalog/_index_list_default.html.erb, per
           ticket https://github.com/osulp/Scholars-Archive/issues/1807 %>
-          <dd class="col-7 <% field_name == 'abstract_tesim' ? "preformatted" : "" %>"><%= doc_presenter.field_value field %></dd>
+          <dd class="col-7 <%= field_name == 'abstract_tesim' ? "preformatted" : "" %>"><%= doc_presenter.field_value field %></dd>
         </div>
       <% end %>
     <% end %>
