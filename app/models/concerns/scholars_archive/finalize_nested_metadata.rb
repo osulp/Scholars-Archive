@@ -11,6 +11,7 @@ module ScholarsArchive
 
     included do
       accepts_nested_attributes_for :based_near, allow_destroy: true, reject_if: proc { |a| a[:id].blank? }
+      accepts_nested_attributes_for :funding_body, allow_destroy: true, reject_if: proc { |a| a[:id].blank? }
       accepts_nested_attributes_for :nested_geo, allow_destroy: true, reject_if: :all_blank
       accepts_nested_attributes_for :nested_related_items, allow_destroy: true, reject_if: :all_blank
       # reject if all attributes all blank OR if either index or creator is blank
