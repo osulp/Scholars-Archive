@@ -54,7 +54,7 @@ RSpec.describe 'Modal facet pagination', type: :feature, clean_repo: true do
       expect(page).to have_content lots_of_works.first.nested_ordered_title.first.title.first
       expect(page).to have_content lots_of_works.second.nested_ordered_title.first.title.first
 
-      click_link 'Subject'
+      click_button 'Subject'
       click_link 'more Subjects »'
       within('.bottom') do
         click_link '2'
