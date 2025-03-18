@@ -18,6 +18,7 @@ module ScholarsArchive
          doi
          academic_affiliation
          other_affiliation
+         funding_body
          funding_statement
          license
          rights_statement
@@ -38,7 +39,6 @@ module ScholarsArchive
     # rubocop:disable Metrics/MethodLength
     def self.secondary_terms
       %i[in_series
-         funding_body
          conference_name
          conference_section
          conference_location

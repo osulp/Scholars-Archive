@@ -54,8 +54,11 @@ export default class Autocomplete {
         break
       // ADD: Add case for 'funding_body' on autocomplete
       case 'funding_body':
+        new LinkedData(element, url)
+        break
       case 'based_near':
         new LinkedData(element, url)
+        break
       default:
         new Default(element, url)
         break
