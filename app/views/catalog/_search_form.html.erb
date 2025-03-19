@@ -1,43 +1,34 @@
-<%= form_tag search_form_action, method: :get, id: "search-form-header", role: "search" do %>
-  <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
+<%= form_tag search_form_action, method: :get, class: "form-control-lg search-form", id: "search-form-header", role: "search" do %>
+  <%= render Blacklight::HiddenSearchStateComponent.new(params: search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
   <%= hidden_field_tag :search_field, 'all_fields' %>
-  <div class="input-group">
+  <div class="form-group row form-control-sm">
 
-    <label class="sr-only" for="search-field-header"><%= t("hyrax.search.form.q.label", application_name: application_name) %></label>
-    <%= text_field_tag :q, current_search_parameters , class: "q form-control", id: "search-field-header", placeholder: t("hyrax.search.form.q.placeholder") %>
+    <div class="input-group col-md-11">
+      <%= text_field_tag :q, current_search_parameters , 'aria-label': 'Search', class: "q form-control", id: "search-field-header", placeholder: t("hyrax.search.form.q.placeholder") %>
 
-    <div class="input-group-btn">
-      <button type="submit" class="btn btn-primary" id="search-submit-header">
-        <%= t('hyrax.search.button.html') %>
-      </button>
-      <% if current_user %>
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-          <span data-search-element="label"><%= t("hyrax.search.form.option.all.label_long", application_name: application_name) %></span>
-          <span class="caret"></span>
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary homepage-search-buttons" id="search-submit-header">
+          <%= t('hyrax.search.button.html') %>
         </button>
+        <% if current_user %>
+          <button class="btn btn-secondary dropdown-toggle homepage-search-buttons" type="button" data-toggle="dropdown" aria-expanded="false">
 
-        <ul class="dropdown-menu pull-right">
-          <li>
-            <%= link_to t("hyrax.search.form.option.all.label_long", application_name: application_name), "#",
+            <span class="sr-only" data-search-element="label"><%= t("hyrax.search.form.option.all.label_long", application_name: application_name) %></span>
+            <span aria-hidden="true"><%= t("hyrax.search.form.option.all.label_short") %></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right homepage-dropdown-aligned">
+            <%= link_to t("hyrax.search.form.option.all.label_long", application_name: application_name), "#", class: "dropdown-item",
                 data: { "search-option" => main_app.search_catalog_path, "search-label" => t("hyrax.search.form.option.all.label_short") } %>
-          </li>
-          <li>
-            <%= link_to t("hyrax.search.form.option.my_works.label_long"), "#",
+            <div class="dropdown-divider"></div>
+            <%= link_to t("hyrax.search.form.option.my_works.label_long"), "#", class: "dropdown-item",
                 data: { "search-option" => hyrax.my_works_path, "search-label" => t("hyrax.search.form.option.my_works.label_short") } %>
-          </li>
-          <li>
-            <%= link_to t("hyrax.search.form.option.my_collections.label_long"), "#",
+            <div class="dropdown-divider"></div>
+            <%= link_to t("hyrax.search.form.option.my_collections.label_long"), "#", class: "dropdown-item",
                 data: { "search-option" => hyrax.my_collections_path, "search-label" => t("hyrax.search.form.option.my_collections.label_short") } %>
-          </li>
+          </div>
         <% end %>
+      </div><!-- /.input-group-btn -->
+    </div><!-- /.input-group -->
 
-      </ul>
-    </div><!-- /.input-group-btn -->
-
-  </div><!-- /.input-group -->
+  </div><!-- /.form-group -->
 <% end %>
-
-
-<div class="navbar-form">
-  <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h.except(:search_field, :page)), class: 'advanced_search' %>
-</div>
