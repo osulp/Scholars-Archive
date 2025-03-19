@@ -198,8 +198,7 @@ div#geo_wrapper {
   max-width: 100% !important;
 }
 
-.input-group-addon,
-.input-group-btn {
+.input-group-append {
   width: 1% !important;
 }
 
@@ -701,6 +700,15 @@ button.btn-secondary {
 
 .tombstone-text {
   word-wrap: break-word;
+}
+
+.homepage-search-buttons {
+  height: 60%;
+}
+
+.homepage-dropdown-aligned {
+  margin-right: -90px !important;
+  margin-top: -25px !important;
 }
 
 /* Override Hyrax CSS so that first multivalue input can be removed */
