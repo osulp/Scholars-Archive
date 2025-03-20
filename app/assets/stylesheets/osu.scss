@@ -646,6 +646,7 @@ button.copy-single-use-link {
 // Added so Bootstrap buttons in Mac Chrome don't have a white fill color
 button.btn-secondary {
   -webkit-appearance: none!important;
+  border-color: #ccc
 }
 
 .public-collapse > p {
