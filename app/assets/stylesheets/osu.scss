@@ -467,6 +467,7 @@ ol.dd-list.dd-dragel {
   .dd3-handle.dd-handle {
     display: table-cell;
     position: inherit;
+    z-index: 1;
   }
 }
 
