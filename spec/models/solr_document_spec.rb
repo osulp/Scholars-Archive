@@ -37,6 +37,18 @@ RSpec.describe SolrDocument do
     end
   end
 
+  # TEST: Test on accessibility_feature_label
+  describe '#accessibility_feature_label' do
+    context 'when an accessibility_feature_label is indexed' do
+      document = described_class.new({
+                                       'accessibility_feature_label_ssim' => ['label1']
+                                     })
+      it 'returns the label' do
+        expect(document.accessibility_feature_label).to eq ['label1']
+      end
+    end
+  end
+
   describe '#embargo_date_range' do
     context 'when an embargo_date_range is indexed' do
       document = described_class.new({

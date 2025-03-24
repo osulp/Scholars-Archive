@@ -30,5 +30,6 @@ class HonorsCollegeThesis < ActiveFedora::Base
     self.other_affiliation = ['http://opaquenamespace.org/ns/subject/OregonStateUniversityHonorsCollege'] if other_affiliation.empty?
     self.degree_level ||= "Bachelor's"
     self.peerreviewed ||= 'false'
+    self.accessibility_feature = ['unknown']
   end
 end

@@ -18,6 +18,8 @@ en:
       defaults:
         abstract: "A brief description of the item."
         academic_affiliation: "Academic Department or College at Oregon State University."
+        accessibility_feature: "Features present in the attached file(s) that support accessibility for the resource."
+        accessibility_summary: "Details of accessibility features or deficiencies present in the attached file(s)."
         additional_information: "Any additional information not covered in other metadata fields."
         alternative_title: "An alternative title for this item. This should be a title that helps identify the item or a version of the title that differs significantly from the full title."
         based_near: "A place name related to the work, such as its site of publication, or the city, state, or country the work contents are about. Calls upon the <a href=\"http://www.geonames.org\">GeoNames</a> web service. <br><br> Due to current system limitations, existing values in this field cannot be edited. To make changes, add a new entry (label and/or URL) and remove the old one."
@@ -93,6 +95,8 @@ en:
       defaults:
         abstract: "Abstract or Summary"
         academic_affiliation: "Academic Affiliation"
+        accessibility_feature: "Accessibility Feature"
+        accessibility_summary: "Accessibility Summary"
         additional_information: "Additional Information"
         alternative_title: "Alternative Title"
         based_near: "Location"

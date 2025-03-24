@@ -48,7 +48,9 @@ module ScholarsArchive
          language
          digitization_spec
          replaces
-         nested_ordered_additional_information]
+         nested_ordered_additional_information
+         accessibility_feature
+         accessibility_summary]
     end
     # rubocop:enable Metrics/MethodLength
 

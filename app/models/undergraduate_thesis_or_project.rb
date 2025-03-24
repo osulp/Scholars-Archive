@@ -28,5 +28,6 @@ class UndergraduateThesisOrProject < ActiveFedora::Base
   def set_defaults
     self.degree_level ||= "Bachelor's"
     self.peerreviewed ||= 'false'
+    self.accessibility_feature = ['unknown']
   end
 end

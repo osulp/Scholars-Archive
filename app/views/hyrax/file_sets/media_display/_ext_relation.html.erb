@@ -1,8 +1,10 @@
 <div class="ext-relation-preview">
   <%= image_tag('ext_relation.png', alt: '', class: 'ext-relation') %>
-    <p /><%= link_to t('hyrax.file_set.show.ext_relation'),
+    <br/><br/>
+    <%= link_to raw(t('hyrax.file_set.show.downloadable_content.ext_relation')),
       file_set.ext_relation.to_s,
       id: "external_relation",
       data: { label: file_set.id.to_s, work_id: @presenter.id, collection_ids: @presenter.member_of_collection_ids },
-      target: "_blank" %>
+      target: "_blank",
+      class: "btn btn-primary" %>
 </div>

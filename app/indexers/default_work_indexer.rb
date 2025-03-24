@@ -20,7 +20,9 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       license_labels = ScholarsArchive::LicenseService.new.all_labels(object.license)
       language_labels = ScholarsArchive::LanguageService.new.all_labels(object.language)
       peerreviewed_label = ScholarsArchive::PeerreviewedService.new.all_labels(object.peerreviewed)
+      accessibility_feature_labels = ScholarsArchive::AccessibilityFeatureService.new.all_labels(object.accessibility_feature)
       triple_powered_properties_for_solr_doc(object, solr_doc)
+      accessibility_for_solr_doc(object, solr_doc, accessibility_feature_labels)
       solr_doc['rights_statement_label_ssim'] = rights_statement_labels
       solr_doc['rights_statement_label_tesim'] = rights_statement_labels
       solr_doc['license_label_ssim'] = license_labels
@@ -90,5 +92,13 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
     solr_doc['creator_sfacet'] = solr_doc['creator_sim']
     solr_doc['contributor_sfacet'] = solr_doc['contributor_sim']
     solr_doc['contributor_advisor_sfacet'] = solr_doc['contributor_advisor_sim']
+  end
+
+  # Add the field of accessibility over to solr
+  def accessibility_for_solr_doc(object, solr_doc, labels)
+    solr_doc['accessibility_feature_label_ssim'] = labels
+    solr_doc['accessibility_feature_label_tesim'] = labels
+    solr_doc['accessibility_summary_ssim'] = object.accessibility_summary
+    solr_doc['accessibility_summary_tesim'] = object.accessibility_summary
   end
 end

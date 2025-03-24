@@ -17,6 +17,7 @@ AllCops:
     - "lib/tasks/**/*"
     - "config/**/*"
     - "sa_scripts/**/*"
+    - "app/services/hyrax/workflow/deposited_notification.rb"
 
 Metrics/LineLength:
   Enabled: false

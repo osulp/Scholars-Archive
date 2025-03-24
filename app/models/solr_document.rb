@@ -77,6 +77,10 @@ class SolrDocument
     self['based_near_linked_ssim']
   end
 
+  def accessibility_feature_label
+    self['accessibility_feature_label_ssim']
+  end
+
   def based_near_linked_label
     ScholarsArchive::LabelParserService.location_parse_uris(self['based_near_linked_ssim'])
   end
@@ -154,6 +158,7 @@ class SolrDocument
   solrized_methods %w[
     abstract
     academic_affiliation
+    accessibility_summary
     alternative_title
     bibliographic_citation
     conference_location

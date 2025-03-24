@@ -97,6 +97,7 @@ en:
     accessibility_request_form:
       button: Send
       email: Your Email
+      confirm_email: Confirm Email
       name: Your Name
       phone: Your Phone
       link: Link to the Item
@@ -107,6 +108,7 @@ en:
       sub_header: Accessibility Request
       success_email: Thank you for your message!
       failed_email: Sorry, this message was not sent successfully.
+      mismatch_email: Sorry, both your Email & Confirm Email section needs to match.
     dashboard:
       proxies_heading: "Manage Proxies"
       proxies_explainer: "ScholarsArchive@OSU allows users to have a proxy user deposit content on their behalf. If you would like to have a proxy user, please search for them below and add them as a proxy."
@@ -163,7 +165,15 @@ en:
   
     file_set:
       show:
-        ext_relation: "View Online"
+        download: "<strong>Download the File</strong>"
+        downloadable_content:
+          audio_link: "<strong>Download Audio</strong>"
+          default_link: "<strong>Download File</strong>"
+          ext_relation: "<strong>View Online</strong>"
+          image_link: "<strong>Download Image</strong>"
+          office_link: "<strong>Download File</strong>"
+          pdf_link: "<strong>Download PDF</strong>"
+          video_link: "<strong>Download Video</strong>"
 
     items:
       ext_relation: "This %{type} is available from an external website: "
