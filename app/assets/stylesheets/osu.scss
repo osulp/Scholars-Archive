@@ -730,4 +730,7 @@ button.btn-secondary {
 // ADD: Create a bit of spacing on the controlled_vocab
 .input-group .form-control:first-child {
   margin-bottom: 10px;
+/* Settings toggle page */
+.status .badge-disabled {
+  background-color: #6c757d;
 }
