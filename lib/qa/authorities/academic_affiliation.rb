@@ -15,27 +15,17 @@ module Qa::Authorities
 
     # METHOD: Create a search function based on user typing
     def search(query)
-      # CONDITION: Check if user search by 'id', 'http', or 'word'
+      # CONDITION: Check if user search by 'http', or 'word'
       if query.match(%r{^https?://(www.)?})
-        parse_authority_response_with_id(json("#{query}.jsonld"))
+        parse_authority_response_with_http(json("#{query}.jsonld"))
       else
         parse_authority_response(json(build_query_url), query)
       end
     end
 
-    # METHOD: To double check the 'q' string for special char
-    def untaint(query)
-      query.gsub(/[^\w\s-]/, '')
-    end
-
     # METHOD: Build search using 'word'
     def build_query_url
       'https://opaquenamespace.org/ns/osuAcademicUnits.jsonld'
-    end
-
-    # METHOD: Create a search using ID instead
-    def build_id_url(query)
-      "https://opaquenamespace.org/ns/osuAcademicUnits/#{query}.jsonld"
     end
 
     private
