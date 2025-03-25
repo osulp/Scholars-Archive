@@ -731,3 +731,12 @@ button.btn-secondary {
 .status .badge-disabled {
   background-color: #6c757d;
 }
+
+/* Bootstrap fixes */
+.dropdown-item {
+  // Hyrax setup bootstrap dropdowns wrong, .dropdown-item is supposed to go on <a> tags
+  // This will make the full length of the link clickable again
+  a {
+    display: block;
+  }
+}
