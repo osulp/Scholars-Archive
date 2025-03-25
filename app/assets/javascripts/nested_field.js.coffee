@@ -118,7 +118,7 @@
             destroy_field.attr("id", id_field.attr("id").replace(new RegExp('_'+index+'_id', 'g'), '_'+index+'__destroy'))
             destroy_field.val('1')
             destroy_field.insertAfter(id_field)
-            reindex_ordered_list += "<li class='hidden'>"+removed.html()+"</li>"
+            reindex_ordered_list += "<li class='d-none'>"+removed.html()+"</li>"
             resetNestedItemId($(element))
 
       $(field_selector).append($(reindex_ordered_list))

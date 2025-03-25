@@ -138,7 +138,7 @@ class MultiValueOrderedInput < MultiValueInput
 
   def build_id_options(value, index)
     options = build_field_options(value, index)
-    options[:class] = %w[form-control hidden]
+    options[:class] = %w[form-control d-none]
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:id.to_s, index)
     options[:id] = nested_field_id(:id.to_s, index)
@@ -149,7 +149,7 @@ class MultiValueOrderedInput < MultiValueInput
     # example:
     # <input type="hidden" name="article[nested_related_items_attributes][0][_destroy]" id="article_nested_related_items_attributes_0__destroy" value="1">
     options = build_field_options(value, index)
-    options[:class] = ['hidden']
+    options[:class] = ['d-none']
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:_destroy.to_s, index)
     options[:id] = nested_field_id(:_destroy.to_s, index)

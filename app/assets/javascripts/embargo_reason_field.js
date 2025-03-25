@@ -2,10 +2,10 @@ Blacklight.onLoad(function() {
   $('#embargo_reason_select').change(function() {
     var val = $("#embargo_reason_select option:selected").val();
     if (val == 'Other...') {
-      $('[id$=embargo_reason]').removeClass('hidden');
+      $('[id$=embargo_reason]').removeClass('d-none');
       $('[id$=embargo_reason]').val("");
     } else {
-      $('[id$=embargo_reason]').addClass('hidden');
+      $('[id$=embargo_reason]').addClass('d-none');
       $('[id$=embargo_reason]').val(val);
     }
   });
