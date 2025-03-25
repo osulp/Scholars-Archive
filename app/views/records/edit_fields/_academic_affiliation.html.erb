@@ -1,5 +1,15 @@
-<% academic_units_service = ScholarsArchive::AcademicUnitsService.new %>
-<%= f.input :academic_affiliation, as: :multi_value_select,
-  collection: current_user.admin? ? academic_units_service.select_sorted_all_options : academic_units_service.select_sorted_current_open_options_truncated,
-  include_blank: true,
-  input_html: {class: "form-control #{f.object.new_record? ? 'new-record' : ''}" } %>
+<%# OVERRIDE: Override the edit field for 'academic_affiliation' to have autocomplete field %>
+<%# ADD: Filter out an extra field on :new or if the area is blank %>
+<% f.object.academic_affiliation.delete_at(1) if f.object.academic_affiliation.count == 2 %>
+<%= f.input key,
+            as: :controlled_vocabulary,
+            placeholder: 'Search for an academic affiliation',
+            input_html: {
+              class: 'form-control',
+              data: { 'autocomplete-url' => "/authorities/search/academic_affiliation",
+                      'autocomplete' => key }
+            },
+            ### Required for the ControlledVocabulary javascript:
+            wrapper_html: { data: { 'autocomplete-url' => "/authorities/search/academic_affiliation",
+                                    'field-name' => key }},
+            required: f.object.required?(key) %>

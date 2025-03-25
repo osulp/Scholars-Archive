@@ -52,6 +52,10 @@ export default class Autocomplete {
           element,
           url)
         break
+      // ADD: Add case for 'academic_affiliation' on autocomplete
+      case 'academic_affiliation':
+        new LinkedData(element, url)
+        break
       // ADD: Add case for 'funding_body' on autocomplete
       case 'funding_body':
         new LinkedData(element, url)
