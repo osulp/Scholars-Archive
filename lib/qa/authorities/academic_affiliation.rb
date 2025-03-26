@@ -30,7 +30,7 @@ module Qa::Authorities
 
     # METHOD: Override the find method ID for full label
     def find(id)
-      json(id + '.jsonld')
+      json("#{id}.jsonld")
     end
 
     private
