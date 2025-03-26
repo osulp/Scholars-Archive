@@ -27,7 +27,7 @@ module ScholarsArchive
       end
 
       # UPDATE: Make it a typeahead with 'cv' for :academic_affiliation
-      property :academic_affiliation, predicate: ::RDF::URI('http://vivoweb.org/ontology/core#AcademicDepartment'), class_name: ScholarsArchive::ControlledVocabularies::AcademicAffiliation  do |index|
+      property :academic_affiliation, predicate: ::RDF::URI('http://vivoweb.org/ontology/core#AcademicDepartment'), class_name: ScholarsArchive::ControlledVocabularies::AcademicAffiliation do |index|
         index.as :stored_searchable, :facetable
       end
 
