@@ -28,6 +28,11 @@ module Qa::Authorities
       'https://opaquenamespace.org/ns/osuAcademicUnits.jsonld'
     end
 
+    # METHOD: Override the find method ID for full label
+    def find(id)
+      json(id + '.jsonld')
+    end
+
     private
 
     # PARSE: Reformats the data received from the service
