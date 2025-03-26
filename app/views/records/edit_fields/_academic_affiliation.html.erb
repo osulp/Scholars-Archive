@@ -1,6 +1,6 @@
 <%# OVERRIDE: Override the edit field for 'academic_affiliation' to have autocomplete field %>
 <%# ADD: Filter out an extra field on :new or if the area is blank %>
-<% f.object.academic_affiliation.delete_at(1) if f.object.academic_affiliation.count == 2 %>
+<% f.object.academic_affiliation.delete_at(1) if f.object.academic_affiliation.count == 2 && !f.object.academic_affiliation.first.id.include?('.org') %>
 <%= f.input key,
             as: :controlled_vocabulary,
             placeholder: 'Search for an academic affiliation',
