@@ -1,6 +1,8 @@
 @import "osu_settings";
 
-/* Temporary override to disable 'Explore Collections' tab */
+html {
+  font-size: 11pt !important;
+}
 
 body {
   font-family: 'Open Sans', sans-serif !important;
