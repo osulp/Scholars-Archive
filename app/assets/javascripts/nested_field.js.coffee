@@ -93,14 +93,14 @@
         all_items.each (i, e) ->
           if is_multiple == true
             if $(e).val().length == 0 && i > 1
-              $(e).parent().remove()
+              $(e).closest('li.dd-item').remove()
           else
             if $(e).val().length == 0 && i > 0
-              $(e).parent().remove()
+              $(e).closest('li.dd-item').remove()
       else
         all_items.each (i, e) ->
           if $(e).val().length == 0
-            $(e).parent().remove()
+            $(e).closest('li.dd-item').remove()
 
     resetNestedFieldItems = (field_selector, is_multiple, input_selector) ->
       reindex_ordered_list = ""
@@ -123,11 +123,11 @@
 
       $(field_selector).append($(reindex_ordered_list))
 
-    nested_fields = ['.nested-ordered-creator', 
-                     '.nested-ordered-title', 
-                     '.nested-ordered-abstract', 
-                     '.nested-ordered-contributor', 
-                     '.nested-ordered-additional-information', 
+    nested_fields = ['.nested-ordered-creator',
+                     '.nested-ordered-title',
+                     '.nested-ordered-abstract',
+                     '.nested-ordered-contributor',
+                     '.nested-ordered-additional-information',
                      '.nested-ordered-related-items']
 
     for field in nested_fields
