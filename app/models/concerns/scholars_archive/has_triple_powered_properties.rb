@@ -11,7 +11,7 @@ module ScholarsArchive
       class_attribute :triple_powered_properties
 
       def triple_powered_properties
-        [{ field: :academic_affiliation, has_date: false, skip_validation: false }, { field: :other_affiliation, has_date: false, skip_validation: false }, { field: :degree_field, has_date: false, skip_validation: false }]
+        [{ field: :other_affiliation, has_date: false, skip_validation: false }, { field: :degree_field, has_date: false, skip_validation: false }]
       end
     end
   end
