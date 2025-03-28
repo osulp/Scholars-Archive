@@ -24,18 +24,19 @@ class MultiValueOrderedInput < MultiValueInput
 
   def inner_wrapper(value, _index)
     "
-      <li class='field-wrapper dd-item'>
-        <div class='dd-handle dd3-handle #{text_area_handle_class(value)}'></div>
-        <div class='input-group-btn group-up-down-arrows #{multi_input_nested_item_class(value)} #{text_area_class(value)}'>
-          <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
-            <span class='glyphicon glyphicon-arrow-up ordered-up-arrow'></span>
-          </button>
-
-          <button type='button' class='btn btn-default down-arrow' aria-label='Move Down' data-toggle='tooltip' data-placement='top' title='Move Down'>
-            <span class='glyphicon glyphicon-arrow-down ordered-down-arrow'></span>
-          </button>
+      <li class='dd-item'>
+        <div class='field-wrapper input-group'>
+          <div class='input-group-prepend'>
+            <span class='input-group-text dd-handle dd3-handle #{text_area_handle_class(value)}' style='position:relative;'></span>
+              <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
+                <span class='fa fa-solid fa-arrow-up'></span>
+              </button>
+              <button type='button' class='btn btn-default down-arrow' aria-label='Move Down' data-toggle='tooltip' data-placement='top' title='Move Down'>
+                <span class='fa fa-solid fa-arrow-down'></span>
+              </button>
+          </div>
+          #{yield}
         </div>
-        #{yield}
       </li>
     "
   end
@@ -138,7 +139,7 @@ class MultiValueOrderedInput < MultiValueInput
 
   def build_id_options(value, index)
     options = build_field_options(value, index)
-    options[:class] = %w[form-control hidden]
+    options[:class] = %w[form-control d-none]
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:id.to_s, index)
     options[:id] = nested_field_id(:id.to_s, index)
@@ -149,7 +150,7 @@ class MultiValueOrderedInput < MultiValueInput
     # example:
     # <input type="hidden" name="article[nested_related_items_attributes][0][_destroy]" id="article_nested_related_items_attributes_0__destroy" value="1">
     options = build_field_options(value, index)
-    options[:class] = ['hidden']
+    options[:class] = ['d-none']
     options[:type] = ['hidden']
     options[:name] = nested_field_name(:_destroy.to_s, index)
     options[:id] = nested_field_id(:_destroy.to_s, index)

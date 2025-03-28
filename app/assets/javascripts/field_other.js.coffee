@@ -1,17 +1,17 @@
 (($) ->
   Blacklight.onLoad ->
     hide_field = (class_selector) ->
-      $(class_selector).addClass("hidden")
+      $(class_selector).addClass("d-none")
       $(class_selector).find('input').attr("type", "hidden")
-      $(class_selector).find('input').addClass("hidden")
+      $(class_selector).find('input').addClass("d-none")
       $(class_selector).find('input').removeAttr('required')
       $(class_selector).find('input').parent().removeClass('has-error')
       $(class_selector).find('.help-block').text('')
 
     show_field = (class_selector) ->
-      $(class_selector).removeClass("hidden")
+      $(class_selector).removeClass("d-none")
       $(class_selector).find('input').attr("type", "text")
-      $(class_selector).find('input').removeClass("hidden")
+      $(class_selector).find('input').removeClass("d-none")
       $(class_selector).find('input').attr('required', 'required')
 
     set_single_value_validation = (class_selector) ->
@@ -50,8 +50,8 @@
     cancel_save = (e) ->
       e.preventDefault()
       e.stopPropagation()
-      $("#form-progress .panel-footer:first").removeClass("hidden").find("input.btn-primary").attr("disabled", false)
-      $("#form-progress .panel-footer:last").addClass("hidden")
+      $("#form-progress .panel-footer:first").removeClass("d-none").find("input.btn-primary").attr("disabled", false)
+      $("#form-progress .panel-footer:last").addClass("d-none")
 
     escape_special_chars = (input_str) ->
       return input_str.replace(/\./g, '\\.').replace(/\(/g, '\\(').replace(/\)/g, '\\)')
