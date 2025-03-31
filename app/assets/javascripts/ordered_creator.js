@@ -17,12 +17,12 @@ function bindUpDownArrow(mutationsList) {
 }
 
 function swapUp(selector) {
-  $(selector).parent().insertBefore($(selector).parent().prev());
+  $(selector).closest('li.dd-item').insertBefore($(selector).closest('li.dd-item').prev());
   reindexNestedOrderedField();
 }
 
 function swapDown(selector) {
-  $(selector).parent().insertAfter($(selector).parent().next());
+  $(selector).closest('li.dd-item').insertAfter($(selector).closest('li.dd-item').next());
   reindexNestedOrderedField();
 }
 
