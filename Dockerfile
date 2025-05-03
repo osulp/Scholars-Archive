@@ -30,7 +30,8 @@ RUN apt update && apt -y upgrade && \
   bash bash-completion \
   java-common openjdk-17-jre-headless \
   python-is-python3 \
-  ffmpeg mediainfo exiftool
+  ffmpeg mediainfo exiftool \
+  libxslt-dev libxml2-dev libxml2
 
 # Install ImageMagick with full support
 RUN t=$(mktemp) && \
