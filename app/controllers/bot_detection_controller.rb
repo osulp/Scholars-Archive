@@ -8,7 +8,7 @@
 #
 # See more local docs at https://sciencehistory.atlassian.net/wiki/spaces/HDC/pages/2645098498/Cloudflare+Turnstile+bot+detection
 #
-class ScholarsArchive::BotDetectController < ApplicationController
+class BotDetectionController < ApplicationController
     # Config for bot detection is held here in class_attributes, kind of wonky, but it works
     #
     # These are defaults ready for extraction to a gem, in general here at Sci Hist if we want
@@ -45,12 +45,11 @@ class ScholarsArchive::BotDetectController < ApplicationController
     #
     #     before_action { |controller| BotDetectController.bot_detection_enforce_filter(controller) }
     def self.bot_detection_enforce_filter(controller)
-      if self.enabled &&
-          controller.request.env[self.env_challenge_trigger_key] &&
-          !controller.session[self.session_passed_key].try { |date| Time.now - Time.new(date) < self.session_passed_good_for } &&
-          !controller.kind_of?(self) && # don't ever guard ourself, that'd be a mess!
-          ! self.allow_exempt.call(controller)
-  
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "GOT HERE"
+      if self.enabled
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "ENABLED" 
         # we can only do GET requests right now
         if !controller.request.get?
           Rails.logger.warn("#{self}: Asked to protect request we could not, unprotected: #{controller.requet.method} #{controller.request.url}, (#{controller.request.remote_ip}, #{controller.request.user_agent})")
@@ -59,15 +58,19 @@ class ScholarsArchive::BotDetectController < ApplicationController
   
         Rails.logger.info("#{self.name}: Cloudflare Turnstile challenge redirect: (#{controller.request.remote_ip}, #{controller.request.user_agent}): from #{controller.request.url}")
         # status code temporary
-        controller.redirect_to controller.bot_detect_challenge_path(dest: controller.request.original_fullpath), status: 307
+        controller.redirect_to '/challenge'
       end
     end
   
   
     def challenge
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "CHALLENGE"
     end
   
     def verify_challenge
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info "VERIFY CHALLENGE ENTER"
       body = {
         secret: self.cf_turnstile_secret_key,
         response: params["cf_turnstile_response"],

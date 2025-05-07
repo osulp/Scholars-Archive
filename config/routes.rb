@@ -93,6 +93,6 @@ Rails.application.routes.draw do
   post 'accessibility_request', to: 'scholars_archive/accessibility_request_form#create', as: :accessibility_request_form_index, controller: 'scholars_archive/accessibility_request_form'
 
   # bot detection challenge
-  get "/challenge", to: "bot_detect#challenge", as: :bot_detect_challenge
-  post "/challenge", to: "bot_detect#verify_challenge"
+  get "/challenge", to: "bot_detection#challenge", as: :bot_detect_challenge
+  #post "/challenge", to: "bot_detection#verify_challenge"
 end

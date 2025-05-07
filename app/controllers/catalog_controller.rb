@@ -11,6 +11,7 @@ class CatalogController < ApplicationController
 
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
+  before_action { |controller| BotDetectionController.bot_detection_enforce_filter(controller) }
 
   def self.uploaded_field
     solr_name('date_uploaded', :stored_sortable, type: :date)

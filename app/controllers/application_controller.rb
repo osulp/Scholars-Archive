@@ -20,7 +20,6 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token, unless: :http_header_auth?
   before_action :http_header_auth_login
   before_action :update_from_person_api
-  before_action { |controller| BotDetectController.bot_detection_enforce_filter(controller) }
 
   ##
   # Attempt to query and update the current user information from the OSU directory
