@@ -5,13 +5,12 @@ require 'http'
 # This controller has actions for issuing a challenge page for CloudFlare Turnstile product,
 # and then redirecting back to desired page.
 class BotDetectionController < ApplicationController
-
   class_attribute :enabled, default: true # Must set to true to turn on at all
 
   class_attribute :session_passed_good_for, default: 24.hours.ago
 
-  class_attbute :cf_turnstile_sitekey, default: '1x00000000000000000000AA' # a testing key that always passes
-  class_attribute cf_turnstile_secret_key, default: '1x0000000000000000000000000000000AA' # a testing key always passes
+  class_attribute :cf_turnstile_sitekey, default: '1x00000000000000000000AA' # a testing key that always passes
+  class_attribute :cf_turnstile_secret_key, default: '1x0000000000000000000000000000000AA' # a testing key always passes
   class_attribute :cf_turnstile_js_url, default: 'https://challenges.cloudflare.com/turnstile/v0/api.js'
   class_attribute :cf_turnstile_validation_url, default: 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
   class_attribute :cf_timeout, default: 3 # max timeout seconds waiting on Cloudfront Turnstile api
@@ -32,17 +31,11 @@ class BotDetectionController < ApplicationController
     controller.redirect_to '/challenge', status: 307
   end
 
-  def challenge;end
+  def challenge; end
 
   def verify_challenge
-    body = {
-      secret: cf_turnstile_secret_key,
-      response: params['cf_turnstile_response'],
-      remoteip: request.remote_ip
-    }
-
+    body = { secret: cf_turnstile_secret_key, response: params['cf_turnstile_response'], remoteip: request.remote_ip }
     response = HTTP.timeout(cf_timeout).post(cf_turnstile_validation_url, json: body)
-
     result = response.parse
     Rails.logger.info 'Turnstile redirect result:'
     Rails.logger.info result
@@ -56,8 +49,8 @@ class BotDetectionController < ApplicationController
     end
 
     render json: result
-    rescue HTTP::Error, JSON::ParserError => e
-      Rails.logger.warn("Cloudflare turnstile validation error (#{request.remote_ip}, #{request.user_agent}): #{e}: #{response&.body}")
-      render json: { success: false, http_exception: e }
+  rescue HTTP::Error, JSON::ParserError => e
+    Rails.logger.warn("Cloudflare turnstile validation error (#{request.remote_ip}, #{request.user_agent}): #{e}: #{response&.body}")
+    render json: { success: false, http_exception: e }
   end
 end
