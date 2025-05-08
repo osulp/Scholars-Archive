@@ -33,6 +33,7 @@ class BotDetectionController < ApplicationController
 
   def challenge; end
 
+  # rubocop:disable Metrics/MethodLength
   def verify_challenge
     body = { secret: cf_turnstile_secret_key, response: params['cf_turnstile_response'], remoteip: request.remote_ip }
     response = HTTP.timeout(cf_timeout).post(cf_turnstile_validation_url, json: body)
@@ -53,4 +54,5 @@ class BotDetectionController < ApplicationController
     Rails.logger.warn("Cloudflare turnstile validation error (#{request.remote_ip}, #{request.user_agent}): #{e}: #{response&.body}")
     render json: { success: false, http_exception: e }
   end
+  # rubocop:enable Metrics/MethodLength
 end
