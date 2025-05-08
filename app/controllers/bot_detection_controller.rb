@@ -5,7 +5,7 @@ require 'http'
 # This controller has actions for issuing a challenge page for CloudFlare Turnstile product,
 # and then redirecting back to desired page.
 class BotDetectionController < ApplicationController
-  class_attribute :enabled, default: true # Must set to true to turn on at all
+  class_attribute :enabled, default: false # Must set to true to turn on at all
 
   class_attribute :session_passed_good_for, default: 24.hours.ago
 
@@ -22,7 +22,7 @@ class BotDetectionController < ApplicationController
   # key in rack env that says challenge is required
   class_attribute :env_challenge_trigger_key, default: 'bot_detect.should_challenge'
 
-  def bot_detection_enforce_filter(controller)
+  def self.bot_detection_enforce_filter(controller)
     return unless enabled && !controller.session[session_passed_key].try { |date| Time.new(date) < session_passed_good_for }
 
     return unless controller.request.get?
