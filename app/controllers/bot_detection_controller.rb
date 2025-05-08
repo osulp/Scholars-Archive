@@ -8,6 +8,9 @@
 #
 # See more local docs at https://sciencehistory.atlassian.net/wiki/spaces/HDC/pages/2645098498/Cloudflare+Turnstile+bot+detection
 #
+
+require "http"
+
 class BotDetectionController < ApplicationController
     # Config for bot detection is held here in class_attributes, kind of wonky, but it works
     #
@@ -21,7 +24,7 @@ class BotDetectionController < ApplicationController
     # Turnstile testing keys: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
   
     # how long is a challenge pass good for before re-challenge?
-    class_attribute :session_passed_good_for, default: 24.hours
+    class_attribute :session_passed_good_for, default: 24.hours.ago
   
     # Executed at the _controller_ filter level, to last minute exempt certain
     # actions from protection.
@@ -33,7 +36,7 @@ class BotDetectionController < ApplicationController
     helper_method :cf_turnstile_js_url, :cf_turnstile_sitekey
   
     # key stored in Rails session object with channge passed confirmed
-    class_attribute :session_passed_key, default: "bot_detection-passed"
+    class_attribute :session_passed_key, default: "bot_detection-passed-2"
   
     # key in rack env that says challenge is required
     class_attribute :env_challenge_trigger_key, default: "bot_detect.should_challenge"
@@ -45,11 +48,10 @@ class BotDetectionController < ApplicationController
     #
     #     before_action { |controller| BotDetectController.bot_detection_enforce_filter(controller) }
     def self.bot_detection_enforce_filter(controller)
-      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      Rails.logger.info "GOT HERE"
-      if self.enabled
-      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      Rails.logger.info "ENABLED" 
+      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      Rails.logger.info controller.session[self.session_passed_key]
+      Rails.logger.info controller.session[self.session_passed_key].try { |date| Time.new(date) < self.session_passed_good_for }
+      if self.enabled && !controller.session[self.session_passed_key].try { |date| Time.new(date) < self.session_passed_good_for }
         # we can only do GET requests right now
         if !controller.request.get?
           Rails.logger.warn("#{self}: Asked to protect request we could not, unprotected: #{controller.requet.method} #{controller.request.url}, (#{controller.request.remote_ip}, #{controller.request.user_agent})")
@@ -64,13 +66,9 @@ class BotDetectionController < ApplicationController
   
   
     def challenge
-      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      Rails.logger.info "CHALLENGE"
     end
   
     def verify_challenge
-      Rails.logger.info "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      Rails.logger.info "VERIFY CHALLENGE ENTER"
       body = {
         secret: self.cf_turnstile_secret_key,
         response: params["cf_turnstile_response"],
@@ -82,6 +80,7 @@ class BotDetectionController < ApplicationController
         json: body)
   
       result = response.parse
+      Rails.logger.info result
       # {"success"=>true, "error-codes"=>[], "challenge_ts"=>"2025-01-06T17:44:28.544Z", "hostname"=>"example.com", "metadata"=>{"result_with_testing_key"=>true}}
       # {"success"=>false, "error-codes"=>["invalid-input-response"], "messages"=>[], "metadata"=>{"result_with_testing_key"=>true}}
   
