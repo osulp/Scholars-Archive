@@ -5,7 +5,7 @@ require 'http'
 # This controller has actions for issuing a challenge page for CloudFlare Turnstile product,
 # and then redirecting back to desired page.
 class BotDetectionController < ApplicationController
-  class_attribute :enabled, default: false # Must set to true to turn on at all
+  class_attribute :enabled, default: true # Must set to true to turn on at all
 
   class_attribute :session_passed_good_for, default: 24.hours.ago
 
@@ -17,7 +17,7 @@ class BotDetectionController < ApplicationController
   helper_method :cf_turnstile_js_url, :cf_turnstile_sitekey
 
   # key stored in Rails session object with change passed confirmed
-  class_attribute :session_passed_key, default: 'bot_detection-passed-3'
+  class_attribute :session_passed_key, default: 'bot_detection-passed-245'
 
   # key in rack env that says challenge is required
   class_attribute :env_challenge_trigger_key, default: 'bot_detect.should_challenge'
@@ -27,11 +27,12 @@ class BotDetectionController < ApplicationController
 
     return unless controller.request.get?
 
-    Rails.logger.info 'Redirecting for Turnstile'
-    controller.redirect_to '/challenge', status: 307
+    controller.redirect_to controller: 'bot_detection', action: 'challenge', dest: controller.request.original_fullpath, status: 307
   end
 
-  def challenge; end
+  def challenge
+    @dest = params['dest']
+  end
 
   # rubocop:disable Metrics/MethodLength
   def verify_challenge
