@@ -91,4 +91,8 @@ Rails.application.routes.draw do
   # ACCESSIBILITY REQUEST FORM ROUTE: Setup the routes for the accessibility form
   get 'accessibility_request', to: 'scholars_archive/accessibility_request_form#new', controller: 'scholars_archive/accessibility_request_form'
   post 'accessibility_request', to: 'scholars_archive/accessibility_request_form#create', as: :accessibility_request_form_index, controller: 'scholars_archive/accessibility_request_form'
+
+  # bot detection challenge
+  get "/challenge", to: "bot_detection#challenge", as: :bot_detect_challenge
+  post "/challenge", to: "bot_detection#verify_challenge"
 end
