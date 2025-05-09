@@ -37,7 +37,6 @@
         }
   
         result = await response.json();
-        alert('<%= @dest %>');
         if (result["success"] == true) {
           window.location.replace('<%= @dest %>');
         } else {
