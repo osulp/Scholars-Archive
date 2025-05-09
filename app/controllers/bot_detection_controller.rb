@@ -5,7 +5,7 @@ require 'http'
 # This controller has actions for issuing a challenge page for CloudFlare Turnstile product,
 # and then redirecting back to desired page.
 class BotDetectionController < ApplicationController
-  class_attribute :enabled, default: false # Must set to true to turn on at all
+  class_attribute :enabled, default: true # Must set to true to turn on at all
 
   class_attribute :session_passed_good_for, default: 24.hours.ago
 
@@ -17,7 +17,7 @@ class BotDetectionController < ApplicationController
   helper_method :cf_turnstile_js_url, :cf_turnstile_sitekey
 
   # key stored in Rails session object with change passed confirmed
-  class_attribute :session_passed_key, default: 'bot_detection-passed'
+  class_attribute :session_passed_key, default: 'bot_detection-passed-3'
 
   # key in rack env that says challenge is required
   class_attribute :env_challenge_trigger_key, default: 'bot_detect.should_challenge'
@@ -47,12 +47,13 @@ class BotDetectionController < ApplicationController
       session[session_passed_key] = Time.now.utc.iso8601
     else
       Rails.logger.warn("Cloudflare Turnstile validation failed (#{request.remote_ip}, #{request.user_agent}): #{result}")
+      redirect_to '/contact'
     end
 
     render json: result
   rescue HTTP::Error, JSON::ParserError => e
     Rails.logger.warn("Cloudflare turnstile validation error (#{request.remote_ip}, #{request.user_agent}): #{e}: #{response&.body}")
-    render json: { success: false, http_exception: e }
+    redirect_to '/contact'
   end
   # rubocop:enable Metrics/MethodLength
 end

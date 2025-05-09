@@ -34,6 +34,7 @@
   
         if (!response.ok) {
           throw new Error('bad response: ' + response.status + ": " + response.url);
+          window.location.replace("/contact");
         }
   
         result = await response.json();
@@ -43,10 +44,12 @@
         } else {
           console.error("Turnstile response reported as failure: " + JSON.stringify(result))
           _displayChallengeError();
+          window.location.replace("/contact");
         }
       } catch(error) {
         console.error("Error processing turnstile challenge backend action: " + error);
         _displayChallengeError();
+        window.location.replace("/contact");
       }
     }
   
