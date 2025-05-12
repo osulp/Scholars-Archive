@@ -5,19 +5,19 @@ require 'http'
 # This controller has actions for issuing a challenge page for CloudFlare Turnstile product,
 # and then redirecting back to desired page.
 class BotDetectionController < ApplicationController
-  class_attribute :enabled, default: false # Must set to true to turn on at all
+  class_attribute :enabled, default: ENV.fetch('CF_ENABLED', false) # Must set to true to turn on at all
 
   class_attribute :session_passed_good_for, default: 24.hours.ago
 
-  class_attribute :cf_turnstile_sitekey, default: '1x00000000000000000000AA' # a testing key that always passes
-  class_attribute :cf_turnstile_secret_key, default: '1x0000000000000000000000000000000AA' # a testing key always passes
-  class_attribute :cf_turnstile_js_url, default: 'https://challenges.cloudflare.com/turnstile/v0/api.js'
-  class_attribute :cf_turnstile_validation_url, default: 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-  class_attribute :cf_timeout, default: 3 # max timeout seconds waiting on Cloudfront Turnstile api
+  class_attribute :cf_turnstile_sitekey, default: ENV.fetch('CF_TURNSTILE_SITE_KEY', '1x00000000000000000000AA') # a testing key that always passes
+  class_attribute :cf_turnstile_secret_key, default: ENV.fetch('CF_TURNSTILE_SECRET_KEY', '1x0000000000000000000000000000000AA') # a testing key always passes
+  class_attribute :cf_turnstile_js_url, default: ENV.fetch('CF_TURNSTILE_JS_URL', 'https://challenges.cloudflare.com/turnstile/v0/api.js')
+  class_attribute :cf_turnstile_validation_url, default: ENV.fetch('CF_TURNSTILE_VALIDATION_URL', 'https://challenges.cloudflare.com/turnstile/v0/siteverify')
+  class_attribute :cf_timeout, default: ENV.fetch('CF_TIMEOUT', 3) # max timeout seconds waiting on Cloudfront Turnstile api
   helper_method :cf_turnstile_js_url, :cf_turnstile_sitekey
 
   # key stored in Rails session object with change passed confirmed
-  class_attribute :session_passed_key, default: 'bot_detection-passed-245'
+  class_attribute :session_passed_key, default: 'bot_detection-passed'
 
   # key in rack env that says challenge is required
   class_attribute :env_challenge_trigger_key, default: 'bot_detect.should_challenge'
