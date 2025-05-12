@@ -23,7 +23,7 @@ class BotDetectionController < ApplicationController
   class_attribute :env_challenge_trigger_key, default: 'bot_detect.should_challenge'
 
   def self.bot_detection_enforce_filter(controller)
-    return unless enabled && !controller.session[session_passed_key].try { |date| Time.new(date) < session_passed_good_for }
+    return unless (enabled == 'true') && !controller.session[session_passed_key].try { |date| Time.new(date) < session_passed_good_for }
 
     return unless controller.request.get?
 
@@ -38,7 +38,7 @@ class BotDetectionController < ApplicationController
   # rubocop:disable Metrics/MethodLength
   def verify_challenge
     body = { secret: cf_turnstile_secret_key, response: params['cf_turnstile_response'], remoteip: request.remote_ip }
-    response = HTTP.timeout(cf_timeout).post(cf_turnstile_validation_url, json: body)
+    response = HTTP.timeout(cf_timeout.to_i).post(cf_turnstile_validation_url, json: body)
     result = response.parse
     Rails.logger.info 'Turnstile redirect result:'
     Rails.logger.info result
