@@ -86,6 +86,9 @@ terms:
 - id: "tactileObject"
   term: "tactileObject"
   active: true
+- id: "none"
+  term: "none"
+  active: true
 - id: "unknown"
   term: "unknown"
   active: true
