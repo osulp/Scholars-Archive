@@ -17,6 +17,8 @@ class FetchFailedGraphWorker
 
     if controlled_prop.to_s == 'based_near'
       solr_based_near_linked_insert(solr_doc, val)
+    elsif controlled_prop.to_s == 'academic_affiliation'
+      solr_academic_affiliation_linked_insert(solr_doc, val)
     else
       solr_funding_body_linked_insert(solr_doc, val)
     end
@@ -36,6 +38,12 @@ class FetchFailedGraphWorker
     solr_doc['funding_body_linked_tesim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
     solr_doc['funding_body_linked_ssim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
     solr_doc['funding_body_linked_sim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+  end
+
+  def solr_academic_affiliation_linked_insert(solr_doc, val)
+    solr_doc['academic_affiliation_linked_tesim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+    solr_doc['academic_affiliation_linked_ssim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
+    solr_doc['academic_affiliation_linked_sim'] = [val.solrize.last.is_a?(String) ? val.solrize.last : val.solrize.last[:label].split('$').first]
   end
 
   def default_accept_header

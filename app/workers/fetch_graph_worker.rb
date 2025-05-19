@@ -19,10 +19,13 @@ class FetchGraphWorker
       labels_only = []
 
       work.attributes[cv.to_s].each do |val|
-        if cv.to_s == 'based_near'
+        case cv.to_s
+        when 'based_near'
           val = Hyrax::ControlledVocabularies::Location.new(val) if val.include? 'sws.geonames.org'
-        elsif val.include? 'ror.org'
-          val = ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(val)
+        when 'funding_body'
+          val = ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(val) if val.include? 'ror.org'
+        when 'academic_affiliation'
+          val = ScholarsArchive::ControlledVocabularies::AcademicAffiliation.new(val) if val.include? 'opaquenamespace.org'
         end
 
         next if fetch_and_persist(val, pid, cv) == false
@@ -36,6 +39,9 @@ class FetchGraphWorker
       if cv.to_s == 'based_near'
         solr_based_near_linked_insert(solr_doc, labels_linked)
         solr_based_near_label_insert(solr_doc, labels_only)
+      elsif cv.to_s == 'academic_affiliation'
+        solr_academic_affiliation_linked_insert(solr_doc, labels_linked)
+        solr_academic_affiliation_label_insert(solr_doc, labels_only)
       else
         solr_funding_body_linked_insert(solr_doc, labels_linked)
         solr_funding_body_label_insert(solr_doc, labels_only)
@@ -74,7 +80,7 @@ class FetchGraphWorker
     solr_doc['based_near_label_sim'] = ScholarsArchive::LabelParserService.location_parse_labels(labels_only)
   end
 
-  # SOLR: Add funding_body index
+  # SOLR: Add :funding_body index
   def solr_funding_body_linked_insert(solr_doc, labels_linked)
     solr_doc['funding_body_linked_tesim'] = labels_linked
     solr_doc['funding_body_linked_ssim'] = labels_linked
@@ -84,6 +90,18 @@ class FetchGraphWorker
   def solr_funding_body_label_insert(solr_doc, labels_only)
     solr_doc['funding_body_label_tesim'] = labels_only
     solr_doc['funding_body_label_sim'] = labels_only
+  end
+
+  # SOLR: Add :academic_affiliation index
+  def solr_academic_affiliation_linked_insert(solr_doc, labels_linked)
+    solr_doc['academic_affiliation_linked_tesim'] = labels_linked
+    solr_doc['academic_affiliation_linked_ssim'] = labels_linked
+    solr_doc['academic_affiliation_linked_sim'] = labels_linked
+  end
+
+  def solr_academic_affiliation_label_insert(solr_doc, labels_only)
+    solr_doc['academic_affiliation_label_tesim'] = labels_only
+    solr_doc['academic_affiliation_label_sim'] = labels_only
   end
 
   def extracted_label(input, onlylabel: false)

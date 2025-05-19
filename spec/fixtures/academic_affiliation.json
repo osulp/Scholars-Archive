@@ -1,0 +1,19 @@
+{
+  "@context": {
+    "dc": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "http://opaquenamespace.org/ns/osuAcademicUnits/0VDmN3pS",
+  "@type": "skos:CorporateName",
+  "dc:date": "1961/1974",
+  "dc:issued": {
+    "@value": "2017-03-28",
+    "@type": "xsd:date"
+  },
+  "rdfs:label": {
+    "@value": "Pharmacy Administration",
+    "@language": "en"
+  }
+}

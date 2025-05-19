@@ -40,12 +40,14 @@ module ScholarsArchive
     end
 
     def update
+      store_academic_affiliation
       store_funding
       set_other_option_values
       super
     end
 
     def create
+      store_academic_affiliation
       store_funding
       set_other_option_values
       super
@@ -85,6 +87,18 @@ module ScholarsArchive
 
         # STORE: Store the controlled_vocab obj into the array
         object << ScholarsArchive::ControlledVocabularies::ResearchOrganizationRegistry.new(value['id'])
+      end
+    end
+
+    # METHOD: Manually add controlled_vocab object to academic affiliation
+    def store_academic_affiliation
+      # LOOP: Loop through each entry from attribute(s)
+      curation_concern.academic_affiliation = params[hash_key_for_curation_concern]['academic_affiliation_attributes'].to_unsafe_h.each_with_object([]) do |(_key, value), object|
+        # CHECK: Skip if 'id' value is blank or destroy
+        next if value['id'].blank? || value['_destroy'] == 'true'
+
+        # STORE: Store the controlled_vocab obj into the array
+        object << ScholarsArchive::ControlledVocabularies::AcademicAffiliation.new(value['id'])
       end
     end
 
