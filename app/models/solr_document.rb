@@ -49,8 +49,9 @@ class SolrDocument
     self['license_label_ssim']
   end
 
+  # UPDATE: Make small tweak to the label for :academic_affiliation
   def academic_affiliation_label
-    ScholarsArchive::LabelParserService.parse_label_uris(self['academic_affiliation_label_ssim'])
+    ScholarsArchive::LabelParserService.parse_label_uris(self['academic_affiliation_linked_ssim']) || []
   end
 
   def degree_field_label
