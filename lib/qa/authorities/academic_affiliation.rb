@@ -16,8 +16,8 @@ module Qa::Authorities
     # METHOD: Create a search function based on user typing
     def search(query)
       # CONDITION: Check if user search by 'http', or 'word'
-      if query.match(%r{^https?://(www.)?})
-        parse_authority_response_with_http(json("#{query}.jsonld"))
+      if query.match(%r{^https?://opaquenamespace.org/ns/osuAcademicUnits/})
+        parse_authority_response_with_id(json("#{query}.jsonld"))
       else
         parse_authority_response(json(build_query_url), query)
       end
