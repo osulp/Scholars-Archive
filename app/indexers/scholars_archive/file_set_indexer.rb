@@ -8,6 +8,8 @@ module ScholarsArchive
       super.tap do |solr_doc|
         # ADD: Solrize the :ext_relation
         solr_doc['ext_relation_sim'] = object.ext_relation
+        solr_doc['ext_relation_ssim'] = object.ext_relation
+        solr_doc['ext_relation_tesim'] = object.ext_relation
       end
     end
   end
