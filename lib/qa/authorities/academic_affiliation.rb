@@ -10,14 +10,14 @@ module Qa::Authorities
 
     # SELF METHOD: Format the label to present on typeahead
     self.label = lambda do |item|
-      "#{item['rdfs:label']['@value']} - #{item['dc:date']}, (#{item['@id']})"
+      "#{item['rdfs:label']['@value']} - #{item['dc:date']}"
     end
 
     # METHOD: Create a search function based on user typing
     def search(query)
       # CONDITION: Check if user search by 'http', or 'word'
       if query.match(%r{^https?://opaquenamespace.org/ns/osuAcademicUnits/})
-        parse_authority_response_with_id(json("#{query}.jsonld"))
+        parse_authority_response_with_url(json("#{query}.jsonld"))
       else
         parse_authority_response(json(build_query_url), query)
       end
@@ -40,16 +40,18 @@ module Qa::Authorities
       parse_array = []
 
       response['@graph'].select do |result|
-        parse_array << { 'id' => result['@id'].to_s, 'label' => label.call(result) } if result.key?('rdfs:label') && result['rdfs:label']['@value'].downcase.include?(query.downcase)
+        parse_array << { 'id' => result['@id'].to_s, 'label' => "#{result['rdfs:label']['@value']} - #{result['dc:date']}, (#{result['@id']})" } if result.key?('rdfs:label') && result['rdfs:label']['@value'].downcase.include?(query.downcase) && !result.key?('dc:isReplacedBy')
       end.compact
 
       parse_array
     end
 
     # REFORMAT: Format data with the id given or HTTP
-    def parse_authority_response_with_id(response)
+    def parse_authority_response_with_url(response)
+      return if response.key?('dc:isReplacedBy')
+
       [{ 'id' => response['@id'].to_s,
-         'label' => label.call(response) }]
+         'label' => "#{response['rdfs:label']['@value']} - #{response['dc:date']}, (#{response['@id']})" }]
     end
   end
 end

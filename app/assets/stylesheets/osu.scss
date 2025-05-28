@@ -716,3 +716,8 @@ button.btn-secondary {
 .form-group.controlled_vocabulary .listing li:first-of-type {
   width: 100%;
 }
+
+// ADD: Create a bit of spacing on the controlled_vocab
+.input-group .form-control:first-child {
+  margin-bottom: 10px;
+}
