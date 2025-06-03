@@ -40,7 +40,7 @@ module Qa::Authorities
       parse_array = []
 
       response['@graph'].select do |result|
-        parse_array << { 'id' => result['@id'].to_s, 'label' => "#{result['rdfs:label']['@value']} - #{result['dc:date']}, (#{result['@id']})" } if result.key?('rdfs:label') && result['rdfs:label']['@value'].downcase.include?(query.downcase) && !result.key?('dc:isReplacedBy')
+        parse_array << { 'id' => result['@id'].to_s, 'label' => label.call(result) } if result.key?('rdfs:label') && result['rdfs:label']['@value'].downcase.include?(query.downcase) && !result.key?('dc:isReplacedBy')
       end.compact
 
       parse_array
@@ -51,7 +51,7 @@ module Qa::Authorities
       return if response.key?('dc:isReplacedBy')
 
       [{ 'id' => response['@id'].to_s,
-         'label' => "#{response['rdfs:label']['@value']} - #{response['dc:date']}, (#{response['@id']})" }]
+         'label' => label.call(response) }]
     end
   end
 end
