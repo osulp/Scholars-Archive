@@ -30,7 +30,7 @@
     <p> <%= f.label :name, t('hyrax.accessibility_request_form.name'), class: "control-label", id: "name-label" %> <span style="color:red"> * </span> </p>
     <div class="accessibility-name"><%= f.text_field :name, value: user_signed_in? ? current_user.name : '', class: 'form-control', required: true, 'aria-required': "true", 'aria-labelledby': "name-label" %></div>
   </div>
-  
+
   <%# EMAIL: Set the email layout to enter in email, if login use their email %>
   <div class="form-group">
     <p> <%= f.label :email, t('hyrax.accessibility_request_form.email'), class: "control-label", id: "email-label" %> <span style="color:red"> * </span> </p>
@@ -60,7 +60,7 @@
   <div class="form-group">
     <p> <%= f.label :details, t('hyrax.accessibility_request_form.details'), class: "control-label" %> <span style="color:red"> * </span> </p>
     <div class="accessibility-details"><%= f.text_area :details, value: '', rows: 4, class: 'form-control', required: true, 'aria-required': "true", 'aria-labelledby': "desc-label" %></div>
-    <p id="desc-label"><em>Please describe the type of accommodation that you need (for example, written transcription, compatibility with a particular assistive device, preferred file formats, etc.). Include details about what particular parts of the content are inaccessible, if applicable.</em></p>
+    <p id="desc-label"><em>Please describe the type of accommodation that you need (for example, written transcription, compatibility with a particular assistive device, preferred file formats, etc.). Documents will be provided in Microsoft Word format unless otherwise noted. Include details about what particular parts of the content are inaccessible, if applicable.</em></p>
   </div>
 
   <%# DESCRIPTION: Provide the additional detail about the accessibility %>
@@ -76,7 +76,7 @@
     <div class="accessibility-date"><%= f.date_field :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control', 'aria-labelledby': "date-label" %></div>
     <p id="date-label"><em>If you need this item by a particular date, let us know and we will do our best to deliver by your deadline.</em></p>
   </div>
-  
+
   <%# CAPTCHA: Add in the captcha on form %>
   <%= recaptcha_tags if Hyrax.config.recaptcha? %>
   <%= invisible_captcha %>
