@@ -35,6 +35,18 @@ module ScholarsArchive
       get_data
     end
 
+    def find_remove_human_data
+      get_data = ""
+      if curation_concern.class.to_s.include?('External')
+        get_data = params['external_dataset']['human_data']
+        params['external_dataset'].delete('human_data')
+      else
+        get_data = params['dataset']['human_data']
+        params['dataset'].delete('human_data')
+      end
+      get_data
+    end
+
     # METHOD: Send out email to the reviewer if data have human subject in it
     def send_email_on_human_data(email_data)
       # MAILER: Enable mailer so it can send out the email
