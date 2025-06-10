@@ -10,6 +10,5 @@ module Hyrax
 
     self.model_class = ::ExternalDataset
     self.field_metadata_service = ScholarsArchive::FormMetadataService
-
   end
 end
