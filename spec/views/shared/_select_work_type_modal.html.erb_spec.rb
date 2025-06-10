@@ -10,6 +10,7 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
       Hyrax::SelectTypePresenter.new(Article),
       Hyrax::SelectTypePresenter.new(ConferenceProceedingsOrJournal),
       Hyrax::SelectTypePresenter.new(Dataset),
+      Hyrax::SelectTypePresenter.new(ExternalDataset),
       Hyrax::SelectTypePresenter.new(Default),
       Hyrax::SelectTypePresenter.new(EescPublication),
       Hyrax::SelectTypePresenter.new(GraduateProject),
