@@ -32,7 +32,7 @@ Bulkrax.setup do |config|
     'date_issued' => { from: ['date_issued'] },
     'date_reviewed' => { from: ['date_reviewed'] },
     'date_valid' => { from: ['date_valid'] },
-    'degree_field' => { from: ['degree_field'], split: true },
+    'degree_field' => { from: ['degree_field'], split: '\|' },
     'degree_level' => { from: ['degree_level'] },
     'degree_name' => { from: ['degree_name'] },
     'description' => { from: ['description'], split: true },
@@ -74,7 +74,7 @@ Bulkrax.setup do |config|
     'relative_path' => { from: ['relative_path'] },
     'replaces' => { from: ['replaces'] },
     'resource_type' => { from: ['resource_type'], split: true },
-    'rights_statement' => { from: ['rights_statement'], split: true },
+    'rights_statement' => { from: ['rights_statement'] },
     'source' => { from: ['source'], split: true },
     'subject' => { from: ['subject'], split: true },
     'tableofcontents' => { from: ['tableofcontents'], split: true },
@@ -157,10 +157,11 @@ config.field_mappings['Bulkrax::OaiDcParser'] = {
   config.default_work_type = 'Default'
 
   # Path to store pending imports
-  config.import_path = '/tmp/imports'
+  config.import_path = '/data/tmp/shared/imports'
 
   # Path to store exports before download
-  config.export_path = '/tmp/exports'
+  config.export_path = '/data/tmp/shared/exports'
+
 
   config.fill_in_blank_source_identifiers = ->(obj, index) { "#{obj.importerexporter.id}-#{index}" }
 
