@@ -30,14 +30,9 @@ module ScholarsArchive
 
     # METHOD: Get the value out of the human data and remove it
     def find_remove_human_data
-      get_data = ''
-      if curation_concern.class.to_s.include?('External')
-        get_data = params['external_dataset']['human_data']
-        params['external_dataset'].delete('human_data')
-      else
-        get_data = params['dataset']['human_data']
-        params['dataset'].delete('human_data')
-      end
+      klass = curation_concern.class.to_s.underscore
+      get_data = params[klass]['human_data']
+      params[klass].delete('human_data')
       get_data
     end
 
