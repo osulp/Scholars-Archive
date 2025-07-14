@@ -10,7 +10,6 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
       Hyrax::SelectTypePresenter.new(Article),
       Hyrax::SelectTypePresenter.new(ConferenceProceedingsOrJournal),
       Hyrax::SelectTypePresenter.new(Dataset),
-      Hyrax::SelectTypePresenter.new(ExternalDataset),
       Hyrax::SelectTypePresenter.new(Default),
       Hyrax::SelectTypePresenter.new(EescPublication),
       Hyrax::SelectTypePresenter.new(GraduateProject),
@@ -29,7 +28,7 @@ RSpec.describe 'shared/_select_work_type_modal.html.erb', type: :view do
     allow(view).to receive(:signed_in?).and_return(true)
     allow(view).to receive(:current_user).and_return(current_user)
     allow(view).to receive(:can?).and_return(true)
-    allow(presenter).to receive(:each).and_yield(type_presenters[0]).and_yield(type_presenters[1]).and_yield(type_presenters[2]).and_yield(type_presenters[3]).and_yield(type_presenters[4]).and_yield(type_presenters[5]).and_yield(type_presenters[6]).and_yield(type_presenters[7]).and_yield(type_presenters[8]).and_yield(type_presenters[9]).and_yield(type_presenters[10]).and_yield(type_presenters[11]).and_yield(type_presenters[12]).and_yield(type_presenters[13])
+    allow(presenter).to receive(:each).and_yield(type_presenters[0]).and_yield(type_presenters[1]).and_yield(type_presenters[2]).and_yield(type_presenters[3]).and_yield(type_presenters[4]).and_yield(type_presenters[5]).and_yield(type_presenters[6]).and_yield(type_presenters[7]).and_yield(type_presenters[8]).and_yield(type_presenters[9]).and_yield(type_presenters[10]).and_yield(type_presenters[11]).and_yield(type_presenters[12])
     render 'shared/select_work_type_modal', create_work_presenter: presenter
   end
 

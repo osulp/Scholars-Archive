@@ -25,8 +25,6 @@ Hyrax.config do |config|
   config.register_curation_concern :honors_college_thesis
   # Injected via `rails g hyrax:work PurchasedEResource`
   config.register_curation_concern :purchased_e_resource
-  # Injected via `rails g hyrax:work_resource ExternalDataset`
-  config.register_curation_concern :external_dataset
   # Register roles that are expected by your implementation.
   # @see Hyrax::RoleRegistry for additional details.
   # @note there are magical roles as defined in Hyrax::RoleRegistry::MAGIC_ROLES
