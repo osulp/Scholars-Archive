@@ -4,8 +4,8 @@ require 'coveralls'
 require 'simplecov'
 require 'capybara/rspec'
 
-# SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter])
-# SimpleCov.start
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([SimpleCov::Formatter::HTMLFormatter, Coveralls::SimpleCov::Formatter])
+SimpleCov.start
 
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
