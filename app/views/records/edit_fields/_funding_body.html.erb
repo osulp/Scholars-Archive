@@ -1,5 +1,6 @@
 <%# OVERRIDE: Override the edit field for 'funding_body' to have autocomplete field %>
 <%# ADD: Filter out an extra field on :new or if the area is blank %>
+<% f.object.funding_body.each { |f| f.fetch } %>
 <% f.object.funding_body.delete_at(1) if f.object.funding_body.count == 2 && !f.object.funding_body.first.id.include?('.org') %>
 <%= f.input key,
             as: :controlled_vocabulary,
