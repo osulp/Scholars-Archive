@@ -40,14 +40,14 @@ module ScholarsArchive
     end
 
     def update
-      #store_academic_affiliation
+      # store_academic_affiliation
       store_funding
       set_other_option_values
       super
     end
 
     def create
-      #store_academic_affiliation
+      # store_academic_affiliation
       store_funding
       set_other_option_values
       super
