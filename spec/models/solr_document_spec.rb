@@ -340,7 +340,7 @@ RSpec.describe SolrDocument do
     context 'when there are academic affiliations' do
       it 'returns their labels' do
         document = described_class.new({
-                                         'academic_affiliation_linked_ssim' => ['Technical Journalism$http://opaquenamespace.org/ns/osuAcademicUnits/DhPwxzf1', 'Aerospace Studies$http://opaquenamespace.org/ns/osuAcademicUnits/Rn0bhPiY']
+                                         'academic_affiliation_label_ssim' => ['Technical Journalism$http://opaquenamespace.org/ns/osuAcademicUnits/DhPwxzf1', 'Aerospace Studies$http://opaquenamespace.org/ns/osuAcademicUnits/Rn0bhPiY']
                                        })
         expect(document.oai_academic_affiliation_label).to eq ['Technical Journalism', 'Aerospace Studies']
       end
