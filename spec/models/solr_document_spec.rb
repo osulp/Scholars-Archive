@@ -6,7 +6,7 @@ RSpec.describe SolrDocument do
   describe '#academic_affiliation_label' do
     context 'when an academic_affiliation_label is indexed' do
       document = described_class.new({
-                                       'academic_affiliation_linked_ssim' => ['label1$www.blah.com']
+                                       'academic_affiliation_label_ssim' => ['label1$www.blah.com']
                                      })
       it 'returns the label' do
         expect(document.academic_affiliation_label).to eq [{ 'label' => 'label1', 'uri' => 'www.blah.com' }]
@@ -331,7 +331,7 @@ RSpec.describe SolrDocument do
     context 'when there are no related items' do
       it 'returns an empty array' do
         document = described_class.new({
-                                         'academic_affiliation_linked_ssim' => []
+                                         'academic_affiliation_label_ssim' => []
                                        })
         expect(document.oai_academic_affiliation_label).to eq []
       end
