@@ -63,7 +63,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       labels = []
       if ScholarsArchive::FormMetadataService.multiple? object.class, o[:field]
         uris = object.send(o[:field]).reject { |u| u == 'Other' }
-        uris = object.send(o[:field]).map(&:id) if o[:field].to_s == 'academic_affiliation' && o.send(o[:field]).first.is_a?(ActiveTriples::Resource)
+        uris = object.send(o[:field]).map(&:id) if o[:field].to_s == 'academic_affiliation' && object.send(o[:field]).first.is_a?(ActiveTriples::Resource)
         # if multiple URIs, need to get top label for each one
         uris.each do |uri|
           labels << ScholarsArchive::TriplePoweredService.new.fetch_top_label(uri.lines.to_a, parse_date: o[:has_date])
