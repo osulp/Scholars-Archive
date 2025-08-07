@@ -57,7 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'browse-everything'
 gem 'devise'
 gem 'devise_cas_authenticatable', '~> 1.0'
-gem 'faraday'
+gem 'faraday', '~> 1.0'
 gem 'hyrax', '4.0.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
