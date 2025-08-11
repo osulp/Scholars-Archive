@@ -255,6 +255,7 @@ table[data-behavior="child-relationships"] > tbody > tr > td {
 
 div .modal-dialog {
   width: 65%;
+  max-width: unset;
 }
 
 div .select-worktype {
