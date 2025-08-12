@@ -496,6 +496,9 @@ textarea.nested-field {
   min-height: 68px !important;
 }
 
+.dd-handle {
+  z-index: 1;
+}
 .dd-dragel {
   .text-area-dd-handle {
     height: 68px !important;
