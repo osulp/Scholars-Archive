@@ -10,6 +10,11 @@ module ScholarsArchive
       before_action :redirect_mismatched_work, only: [:show]
       before_action :scrub_params, only: %i[update create]
 
+      # Redirect for Bot Detection
+      before_action only: :show do |controller|
+        BotDetectionController.bot_detection_enforce_filter(controller)
+      end
+
       def redirect_mismatched_work
         curation_concern = ActiveFedora::Base.find(params[:id])
         redirect_to(main_app.polymorphic_path(curation_concern), status: :moved_permanently) and return if curation_concern.class != _curation_concern_type
