@@ -109,6 +109,10 @@ a:focus {
   }
 }
 
+#search-form-header {
+  margin-bottom: 10px;
+}
+
 .work-type .work-type-tag {
   font-size: 36px;
 }
@@ -620,7 +624,7 @@ button.btn-secondary {
 }
 
 // ADD: Create a bit of spacing on the controlled_vocab
-.input-group .form-control:first-child {
+.input-group .controlled_vocabulary:first-child {
   margin-bottom: 10px;
 }
 /* Settings toggle page */
