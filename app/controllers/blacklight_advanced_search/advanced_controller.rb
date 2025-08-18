@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# Copied from blacklight_advanced_search plugin, changed to remove filter adjustments
-#
 # Need to sub-class CatalogController so we get all other plugins behavior
 # for our own "inside a search context" lookup of facets.
 class BlacklightAdvancedSearch::AdvancedController < CatalogController
@@ -24,7 +22,7 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
       v.delete(:limit)
     end
 
-    response, = search_results(params) do |search_builder|
+    response, = search_service.search_results do |search_builder|
       search_builder.except(:add_advanced_search_to_solr).append(:facets_for_advanced_search_form)
     end
 
