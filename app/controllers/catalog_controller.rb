@@ -46,6 +46,10 @@ class CatalogController < ApplicationController
     config.show.partials.insert(1, :openseadragon)
     config.search_builder_class = ScholarsArchive::CatalogSearchBuilder
 
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
+
     # Show gallery view
     config.view.gallery.partials = %i[index_header index]
 
