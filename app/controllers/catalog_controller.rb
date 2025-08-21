@@ -28,6 +28,8 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent)
+    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent)
     # default advanced config values
     config.advanced_search = {
       qt: 'search',

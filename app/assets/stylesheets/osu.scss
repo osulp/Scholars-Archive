@@ -592,8 +592,14 @@ button.btn-secondary {
   margin-top: 15px;
 }
 
-.search-result-wrapper > .col-md-6 {
-  width: 80% !important;
+.search-result-wrapper {
+  border-bottom:1px dashed #ccc;
+  margin-bottom:30px;
+  padding-bottom:0;
+
+  & > .col-md-6 {
+    width: 80% !important;
+  }
 }
 
 .tombstone-text {
