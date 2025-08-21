@@ -13,7 +13,7 @@ module ScholarsArchive
       # rubocop:disable Metrics/PerceivedComplexity
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
-        redirect_referrers = %w(https://ir.library.oregonstate.edu/ http://test.lib.oregonstate.edu:3000/ https://ir-staging.library.oregonstate.edu/)
+        redirect_referrers = %w[https://ir.library.oregonstate.edu/ http://test.lib.oregonstate.edu:3000/ https://ir-staging.library.oregonstate.edu/]
 
         # If we are approving and it is not readable by the current user
         if cannot?(:edit, curation_concern) && (curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required')
