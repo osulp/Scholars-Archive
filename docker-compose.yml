@@ -56,6 +56,7 @@ services:
       - SCHOLARSARCHIVE_REDIS_PORT='6379'
       - SCHOLARSARCHIVE_SOLR_URL=http://solr-dev:8983
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/kb/sparql
+      - SCHOLARSARCHIVE_URL_HOST=test.lib.oregonstate.edu
     # Ideally we will replace this set of commands with an entrypoint script that checks to see if these
     # have been run already have been run and if so it just starts the server without the first three commands
     # taking time to run.
@@ -113,6 +114,7 @@ services:
       - SCHOLARSARCHIVE_SOLR_URL=http://solr-test:8983
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_TYPE=blazegraph
       - SCHOLARSARCHIVE_TRIPLESTORE_ADAPTER_URL=http://blazegraph:8080/bigdata/namespace/test/sparql
+      - SCHOLARSARCHIVE_URL_HOST=test.lib.oregonstate.edu
     depends_on:
       - db_test
       - solr-test
