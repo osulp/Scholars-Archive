@@ -301,6 +301,8 @@ footer.site-footer {
   font-size: 14px;
   line-height: 18px;
   padding: 20px 0 20px 20px;
+  height: 175px !important;
+  bottom: -25px !important;
   background: $osu-black;
   /* FF3.6+ */
   background: -webkit-gradient(
@@ -320,6 +322,27 @@ footer.site-footer {
   background: linear-gradient(top, #39393a 0%, #252525 100%);
   /* W3C */
   border-top: 4px solid $osu-orange;
+
+  .navbar-right {
+    margin-right: 15px;
+  }
+  .navbar-text {
+    margin: 0 15px;
+  }
+
+  .navbar-image {
+    margin: -10px 15px;
+    float: right;
+  }
+    .navbar-image_image-custom {
+      height: 80px;
+      width: 80px;
+    }
+
+  .deployed {
+    color: rgba($color: #fff, $alpha: 0.2);
+    font-size: 12px;
+  }
 }
 
 footer.site-footer a.navbar-link {
@@ -415,32 +438,6 @@ p.deposit-help {
 }
 hr.deposit-help {
   margin: 0 0 10px 0;
-}
-
-.site-footer {
-  height: 150px !important;
-  bottom: -25px !important;
-
-  .navbar-right {
-    margin-right: 15px;
-  }
-  .navbar-text {
-    margin: 0 15px;
-  }
-
-  .navbar-image {
-    margin: -10px 15px;
-    float: right;
-  }
-    .navbar-image_image-custom {
-      height: 80px;
-      width: 80px;
-    }
-
-  .deployed {
-    color: rgba($color: #fff, $alpha: 0.2);
-    font-size: 12px;
-  }
 }
 
 .modal-footer {
