@@ -13,10 +13,12 @@ module ScholarsArchive
       # rubocop:disable Metrics/PerceivedComplexity
       def redirect_if_restricted
         curation_concern = ActiveFedora::Base.find(params[:id])
+        referrer_uri = URI.parse(request.referrer.to_s)
+        referred_from_homepage = referrer_uri.host == ENV.fetch('SCHOLARSARCHIVE_URL_HOST') && referrer_uri.path == '/'
 
         # If we are approving and it is not readable by the current user
         if cannot?(:edit, curation_concern) && (curation_concern.to_solr['workflow_state_name_ssim'] == 'Changes Required')
-          if request.referrer.to_s == "https://#{ENV.fetch('SCHOLARSARCHIVE_URL_HOST')}/"
+          if referred_from_homepage
             authenticate_user!
             return if can?(:edit, curation_concern)
           end
@@ -31,8 +33,8 @@ module ScholarsArchive
         # First we check if the user can see the work or fileset
         return unless cannot?(:read, curation_concern) && (!visible_under_embargo(curation_concern) || curation_concern.visibility == 'authenticated')
 
-        # Next we check if user got here specifically from the homepage. This means they got redirected and clicked the login link.
-        return if request.referrer.to_s == "https://#{ENV.fetch('SCHOLARSARCHIVE_URL_HOST')}/"
+        # If one of the referrers is matches with the request referrer then allow login. This runs after the redirect for OSU-ONLY items.
+        return if referred_from_homepage
 
         # Otherwise, this returns them to the homepage because they got here from elsewhere and need to know this work is embargoed
         # and if its OSU visible, provided a link to login and continue to where they were going
