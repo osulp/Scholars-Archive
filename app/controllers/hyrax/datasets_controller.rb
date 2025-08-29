@@ -11,6 +11,12 @@ module Hyrax
     include ScholarsArchive::DatasetsControllerBehavior
     include ScholarsArchive::RedirectIfRestrictedBehavior
     include Hyrax::BreadcrumbsForWorks
+
+    # Redirect for Bot Detection
+    before_action do |controller|
+      Hyrax::BotDetectionController.bot_detection_enforce_filter(controller)
+    end
+
     self.curation_concern_type = Dataset
 
     # Use this line if you want to use a custom presenter
