@@ -24,19 +24,17 @@ class MultiValueOrderedInput < MultiValueInput
 
   def inner_wrapper(value, _index)
     "
-      <li class='dd-item'>
-        <div class='field-wrapper input-group'>
-          <div class='input-group-prepend'>
-            <span class='input-group-text dd-handle dd3-handle #{text_area_handle_class(value)}' style='position:relative;'></span>
-              <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
-                <span class='fa fa-solid fa-arrow-up'></span>
-              </button>
-              <button type='button' class='btn btn-default down-arrow' aria-label='Move Down' data-toggle='tooltip' data-placement='top' title='Move Down'>
-                <span class='fa fa-solid fa-arrow-down'></span>
-              </button>
-          </div>
-          #{yield}
+      <li class='dd-item field-wrapper input-group input-append'>
+        <div class='input-group-prepend'>
+          <span class='input-group-text dd-handle dd3-handle #{text_area_handle_class(value)}' style='position:relative;'></span>
+            <button type='button' class='btn btn-default up-arrow' aria-label='Move Up' data-toggle='tooltip' data-placement='top' title='Move Up'>
+              <span class='fa fa-solid fa-arrow-up'></span>
+            </button>
+            <button type='button' class='btn btn-default down-arrow' aria-label='Move Down' data-toggle='tooltip' data-placement='top' title='Move Down'>
+              <span class='fa fa-solid fa-arrow-down'></span>
+            </button>
         </div>
+        #{yield}
       </li>
     "
   end
