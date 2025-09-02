@@ -493,6 +493,9 @@ textarea.nested-field {
   min-height: 68px !important;
 }
 
+.dd-item {
+  display: flex !important;
+}
 .dd-handle {
   z-index: 1;
 }
