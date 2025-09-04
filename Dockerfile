@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-slim-bullseye as bundler
+FROM ruby:2.7-slim-bullseye AS bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -10,7 +10,7 @@ ENV LC_ALL C.UTF-8
 ##########################################################################
 ## Install dependencies
 ##########################################################################
-FROM bundler as dependencies
+FROM bundler AS dependencies
 
 RUN apt update && apt -y upgrade && \
   apt -y install \
@@ -52,13 +52,13 @@ RUN mkdir -p /opt/fits && \
 ARG UID=8083
 ARG GID=8083
 
-# Create an app user so our program doesn't run as root.
+# Create an app user so our program doesn't run AS root.
 RUN groupadd -g 8083 app && useradd -d /data -u 8083 -g app app
 
 ##########################################################################
 ## Add our Gemfile and install our gems
 ##########################################################################
-FROM dependencies as gems
+FROM dependencies AS gems
 
 # Make sure the new user has complete control over all code, including
 # bundler's installed assets
@@ -79,7 +79,7 @@ RUN /data/build/install_gems.sh && bundle clean --force
 ##########################################################################
 ## Add code to the container, clean up any garbage
 ##########################################################################
-FROM gems as code
+FROM gems AS code
 
 COPY --chown=app:app . /data
 
