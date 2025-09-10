@@ -1,19 +1,7 @@
-Lint/EmptyWhen:
-  Exclude:
-    - "app/controllers/scholars_archive/handles_controller.rb"
-Security/YAMLLoad:
-  Exclude:
-    - "app/authorities/scholars_archive/cache_based_authority.rb"
-Lint/MissingSuper:
-  Exclude:
-    - "app/models/oai_set.rb"
 Lint/NonLocalExitFromIterator:
   Exclude:
     - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
     - "lib/scholars_archive/triple_powered_properties/has_url_validator.rb"
-Lint/ShadowedArgument:
-  Exclude:
-    - "app/models/concerns/scholars_archive/date_operations.rb"
 Metrics/BlockLength:
   Exclude:
     - "app/controllers/catalog_controller.rb"
@@ -178,6 +166,3 @@ Style/EmptyElse:
   Exclude:
     - "app/services/scholars_archive/field_validation_service.rb"
     - "app/services/scholars_archive/field_validation_service.rb"
-Style/OptionalBooleanParameter:
-  Exclude:
-    - "app/services/scholars_archive/degree_grantors_service.rb"
