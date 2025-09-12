@@ -13,6 +13,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   include ScholarsArchive::IndexesLinkedMetadata
   include ScholarsArchive::IndexesCombinedSortDate
 
+  # rubocop:disable Metrics/BlockLength
   # Uncomment this block if you want to add custom indexing behavior:
   def generate_solr_document
     super.tap do |solr_doc|
@@ -46,6 +47,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   def embargo_date_range_string(solr_doc, start_date, end_date)
     solr_doc['embargo_date_range_ssim'] = "#{start_date} to #{end_date}"
