@@ -18,6 +18,7 @@ module ScholarsArchive
       else
         case params[:action]
         when 'discover'
+          # Left blank for future implement or other usages
         when 'browse'
           redirect_to [main_app, work]
         when 'stats'
