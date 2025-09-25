@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-slim-bullseye as bundler
+FROM ruby:2.7-slim-bullseye AS bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -10,7 +10,7 @@ ENV LC_ALL C.UTF-8
 ##########################################################################
 ## Install dependencies
 ##########################################################################
-FROM bundler as dependencies
+FROM bundler AS dependencies
 
 RUN apt update && apt -y upgrade && \
   apt -y install \
@@ -49,37 +49,47 @@ RUN mkdir -p /opt/fits && \
   rm -f /opt/fits-1.6.0.zip && \
   rm /opt/fits/tools/mediainfo/linux/libmediainfo.so.0
 
+ARG UID=8083
+ARG GID=8083
+
+# Create an app user so our program doesn't run AS root.
+RUN groupadd -g 8083 app && useradd -d /data -u 8083 -g app app
+
 ##########################################################################
 ## Add our Gemfile and install our gems
 ##########################################################################
-FROM dependencies as gems
+FROM dependencies AS gems
 
-RUN mkdir /data
+# Make sure the new user has complete control over all code, including
+# bundler's installed assets
+RUN mkdir -p /usr/local/bundle
+RUN chown -R app:app /usr/local/bundle
+
+# Pre-install gems so we aren't reinstalling all the gems when literally any
+# filesystem change happens
+RUN mkdir -p /data/build
+RUN chown -R app:app /data && rm -rf /data/.cache
 WORKDIR /data
-
-ADD Gemfile /data/Gemfile
-ADD Gemfile.lock /data/Gemfile.lock
-RUN mkdir /data/build
-
-ARG RAILS_ENV=${RAILS_ENV}
-ENV RAILS_ENV=${RAILS_ENV}
-
-ADD ./build/install_gems.sh /data/build
-RUN ./build/install_gems.sh && bundle clean --force
+COPY --chown=app:app Gemfile /data
+COPY --chown=app:app Gemfile.lock /data
+COPY --chown=app:app build/install_gems.sh /data/build
+USER app
+RUN /data/build/install_gems.sh && bundle clean --force
 
 ##########################################################################
 ## Add code to the container, clean up any garbage
 ##########################################################################
-FROM gems as code
+FROM gems AS code
 
-#USER root
-# Uninstall any dev tools we don't need at runtime
-RUN apt --purge -y autoremove gcc g++
-
-ADD . /data
+COPY --chown=app:app . /data
 
 ## Precompile assets
 FROM code
+
+USER root
+# Uninstall any dev tools we don't need at runtime
+RUN apt --purge -y autoremove gcc g++
+USER app
 
 RUN if [ "${RAILS_ENV}" == "production" -o "$RAILS_ENV" == "staging" ]; then \
   echo "Precompiling assets with $RAILS_ENV environment"; \
