@@ -13,6 +13,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
   include ScholarsArchive::IndexesLinkedMetadata
   include ScholarsArchive::IndexesCombinedSortDate
 
+  # rubocop:disable Metrics/BlockLength
   # Uncomment this block if you want to add custom indexing behavior:
   def generate_solr_document
     super.tap do |solr_doc|
@@ -32,6 +33,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       solr_doc['peerreviewed_label_ssim'] = peerreviewed_label
       solr_doc['peerreviewed_label_tesim'] = peerreviewed_label
       solr_doc['replaces_ssim'] = object.replaces
+      solr_doc['bulkrax_identifier_sim'] = object.bulkrax_identifier
       file_set_text_extraction(object, solr_doc)
       title_for_solr_doc(object, solr_doc)
       sortable_for_solr_doc(solr_doc)
@@ -45,6 +47,7 @@ class DefaultWorkIndexer < Hyrax::WorkIndexer
       end
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
   def embargo_date_range_string(solr_doc, start_date, end_date)
     solr_doc['embargo_date_range_ssim'] = "#{start_date} to #{end_date}"

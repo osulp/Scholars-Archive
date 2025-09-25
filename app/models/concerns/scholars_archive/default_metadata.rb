@@ -300,6 +300,10 @@ module ScholarsArchive
       property :accessibility_summary, predicate: ::RDF::URI.new('http://schema.org/accessibilitySummary') do |index|
       end
 
+      property :bulkrax_identifier, predicate: ::RDF::URI.new('http://id.loc.gov/vocabulary/identifiers/local'), multiple: false do |index|
+        index.as :stored_searchable
+      end
+
       # accessor attribute used only to group the nested_geo fields and allow proper ordering in the forms
       attr_accessor :geo_section
 
