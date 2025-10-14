@@ -13,7 +13,7 @@ class CatalogController < ApplicationController
   before_action :enforce_show_permissions, only: :show
 
   before_action except: :oai do |controller|
-    BotDetectionController.bot_detection_enforce_filter(controller)
+    BotDetectionController.bot_detection_enforce_filter(controller) unless %w[ir.library.oregonstate.edu ir-staging.library.oregonstate.edu test.lib.oregonstate.edu:3000].include?(request.domain)
   end
 
   def self.uploaded_field
