@@ -13,7 +13,7 @@ module Hyrax
 
     # Redirect for Bot Detection
     before_action do |controller|
-      Hyrax::BotDetectionController.bot_detection_enforce_filter(controller)
+      Hyrax::BotDetectionController.bot_detection_enforce_filter(controller) unless %w[ir.library.oregonstate.edu ir-staging.library.oregonstate.edu test.lib.oregonstate.edu:3000].include?(request.domain)
     end
 
     self.curation_concern_type = OpenEducationalResource
