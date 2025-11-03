@@ -13,7 +13,7 @@ module ScholarsArchive
     # key functionality in a locally hosted authority.
     # For the edge case where a non-admin users is editing a form, always ensure that the the "current degree_grantors value" is in the
     # select option list.
-    def select_sorted_all_options(value = '', admin_only = false)
+    def select_sorted_all_options(value = '', admin_only: false)
       admin_select = [false]
       admin_select << true if admin_only
       options = @authority.all.select { |element| admin_select.include?(element[:admin_only]) || element[:id] == value }.map do |element|

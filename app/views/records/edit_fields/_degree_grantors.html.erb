@@ -1,6 +1,6 @@
 <% degree_grantors_service = ScholarsArchive::DegreeGrantorsService.new %>
 <%= f.input :degree_grantors,
-    collection: degree_grantors_service.select_sorted_all_options(f.object.degree_grantors, current_user.admin?),
+    collection: degree_grantors_service.select_sorted_all_options(f.object.degree_grantors, admin_only: current_user&.admin?),
     include_blank: true,
     input_html: { class: "form-control degree-grantors-selector" } %>
 <% if f.object.model.degree_grantors.present? && f.object.model.degree_grantors == 'Other' && f.object.model.degree_grantors_other.present? %>

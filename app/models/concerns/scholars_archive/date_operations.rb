@@ -5,11 +5,13 @@ module ScholarsArchive
   module DateOperations
     extend ActiveSupport::Concern
 
+    # rubocop:disable Lint/ShadowedArgument
     def to_solr(solr_doc = {})
       solr_doc = super
       solr_doc = solr_doc.merge({ 'date_decades_ssim' => decades })
       solr_doc.merge({ 'date_facet_yearly_ssim' => date_facet_yearly })
     end
+    # rubocop:enable Lint/ShadowedArgument
 
     # date_facet_yearly is intended to be used for date_facet_yearly_ssim, which is used by the facet provided
     # by the interactive Blacklight Range Limit widget

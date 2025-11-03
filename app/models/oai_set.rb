@@ -34,11 +34,13 @@ class OaiSet < BlacklightOaiProvider::SolrSet
   attr_accessor :spec, :name, :description
 
   # Build a set object with, at minimum, a set spec string
+  # rubocop:disable Lint/MissingSuper
   def initialize(spec, opts = {})
     @spec = spec
     @name = opts[:name] || name_from_spec
     @description = opts[:description] || description_from_spec
   end
+  # rubocop:enable Lint/MissingSuper
 
   private
 
