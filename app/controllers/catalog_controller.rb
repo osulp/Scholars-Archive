@@ -16,18 +16,18 @@ class CatalogController < ApplicationController
     BotDetectionController.bot_detection_enforce_filter(controller) unless valid_bot? 
   end
 
+  # 'ir.library.oregonstate.edu,ir-staging.library.oregonstate.edu,test.lib.oregonstate.edu:3000'
   def self.valid_bot?
-    allow_listed_uris.include?(request.domain) || allow_listed_ip_addr?
-  end
-
-  def self.allow_listed_uris
-    %w[ir.library.oregonstate.edu ir-staging.library.oregonstate.edu test.lib.oregonstate.edu:3000]
+    ENV.fetch('URI_TURNSTILE_BYPASS', '').split(',').include?(request.domain) || allow_listed_ip_addr?
   end
 
   def self.allow_listed_ip_addr?
-    ip_range_sets = [(IPAddr.new("66.249.64.0").to_i..IPAddr.new("66.249.79.255").to_i), (IPAddr.new("192.178.4.0").to_i..IPAddr.new("192.178.7.255").to_i)]
-    ip_range_sets.each do |ip_range|
-      return true if ip_range.include?(request.remote_ip)
+    ips = ENV.fetch('IP_TURNSTILE_BYPASS', '') # '127.0.0.1-127.255.255.255,66.249.64.0-66.249.79.255'
+    ranges = ips.split(',')
+    ranges.each do |range|
+      range = range.split('-')
+      range = (IPAddr.new(range[0]).to_i..IPAddr.new(range[1]).to_i)
+      return true if range.include?(request.remote_ip)
     end
     false
   end
