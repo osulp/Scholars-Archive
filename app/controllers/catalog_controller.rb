@@ -13,7 +13,22 @@ class CatalogController < ApplicationController
   before_action :enforce_show_permissions, only: :show
 
   before_action except: :oai do |controller|
-    BotDetectionController.bot_detection_enforce_filter(controller) unless %w[ir.library.oregonstate.edu ir-staging.library.oregonstate.edu test.lib.oregonstate.edu:3000].include?(request.domain)
+    BotDetectionController.bot_detection_enforce_filter(controller) if valid_bot? 
+  end
+
+  def self.valid_bot?
+    allow_listed_uris.include?(request.domain) || allow_listed_ip_addr?
+  end
+
+  def self.allow_listed_uris
+    %w[ir.library.oregonstate.edu ir-staging.library.oregonstate.edu test.lib.oregonstate.edu:3000]
+  end
+
+  def self.allow_listed_ip_addr?
+    ip_range_sets = [(IPAddr.new("66.249.64.0").to_i..IPAddr.new("66.249.79.255").to_i), (IPAddr.new("192.178.4.0").to_i..IPAddr.new("192.178.7.255").to_i)]
+    ip_range_sets.each do |ip_range|
+      return true if ip_range.include?(request.remote_ip)
+    end
   end
 
   def self.uploaded_field
