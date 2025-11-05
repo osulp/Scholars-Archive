@@ -13,7 +13,7 @@ class CatalogController < ApplicationController
   before_action :enforce_show_permissions, only: :show
 
   before_action except: :oai do |controller|
-    BotDetectionController.bot_detection_enforce_filter(controller) if valid_bot? 
+    BotDetectionController.bot_detection_enforce_filter(controller) unless valid_bot? 
   end
 
   def self.valid_bot?
@@ -29,6 +29,7 @@ class CatalogController < ApplicationController
     ip_range_sets.each do |ip_range|
       return true if ip_range.include?(request.remote_ip)
     end
+    false
   end
 
   def self.uploaded_field
