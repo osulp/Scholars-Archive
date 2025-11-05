@@ -17,11 +17,11 @@ class CatalogController < ApplicationController
   end
 
   # 'ir.library.oregonstate.edu,ir-staging.library.oregonstate.edu,test.lib.oregonstate.edu:3000'
-  def self.valid_bot?
+  def valid_bot?
     ENV.fetch('URI_TURNSTILE_BYPASS', '').split(',').include?(request.domain) || allow_listed_ip_addr?
   end
 
-  def self.allow_listed_ip_addr?
+  def allow_listed_ip_addr?
     ips = ENV.fetch('IP_TURNSTILE_BYPASS', '') # '127.0.0.1-127.255.255.255,66.249.64.0-66.249.79.255'
     ranges = ips.split(',')
     ranges.each do |range|
