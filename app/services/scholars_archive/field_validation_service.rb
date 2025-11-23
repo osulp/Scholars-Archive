@@ -20,7 +20,7 @@ module ScholarsArchive
 
     def self.degree_grantors_options(value, env_user)
       service = ScholarsArchive::DegreeGrantorsService.new
-      service.select_sorted_all_options(value, env_user.present? ? env_user.admin? : false)
+      service.select_sorted_all_options(value, admin_only: env_user.present? ? env_user.admin? : false)
     end
 
     def self.get_collection(field, record: nil, env_user: nil)
