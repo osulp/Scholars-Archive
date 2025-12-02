@@ -96,4 +96,10 @@ Rails.application.routes.draw do
   # bot detection challenge
   get "/challenge", to: "bot_detection#challenge", as: :bot_detect_challenge
   post "/challenge", to: "bot_detection#verify_challenge"
+
+    # override ResourceSync routes from Hyrax, direct to homepage instead, issue 3495
+  get '/.well-known/resourcesync' => 'hyrax/homepage#index'
+  get '/capabilitylist' => 'hyrax/homepage#index'
+  get '/resourcelist' => 'hyrax/homepage#index'
+  get '/changelist' => 'hyrax/homepage#index'
 end
