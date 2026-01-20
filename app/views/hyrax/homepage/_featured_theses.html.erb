@@ -1,0 +1,27 @@
+<table class="table table-striped collection-theses-highlights">
+  <tbody>
+    <% collections.each do |collection| %>
+      <tr>
+        <td>
+          <div class="media">
+            <div class="media-body">
+              <div class="media-heading">
+                <%= link_to main_app.polymorphic_path(collection) do %>
+                  <%= collection.title.first %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<ul class="list-inline collection-theses-highlights-list">
+  <li>
+    <%= link_to t('hyrax.homepage.featured_thesis.link_button'),
+                main_app.search_catalog_path(f: { human_readable_type_sim: ["Collection"]}),
+                class: 'btn btn-default' %>
+  </li>
+</ul>

@@ -18,6 +18,7 @@
   <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a aria-expanded="true" href="#tab-col2-first" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_researcher.tab_label') %></a></li>
     <li class=""><a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab"><%= t('hyrax.homepage.admin_sets.title') %></a></li>
+    <li class=""><a aria-expanded="false" href="#tab-col2-third" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_thesis.tab_label') %></a></li>
   </ul>
 
   <div class="tab-content">
@@ -28,6 +29,10 @@
     <div class="tab-pane" id="tab-col2-second">
       <h2 class="sr-only"><%= t('hyrax.homepage.admin_sets.title') %></h2>
       <%= render 'explore_collections', collections: @presenter.collections %>
+    </div>
+    <div class="tab-pane" id="tab-col2-third">
+      <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.tab_label') %></h2>
+      <%= render 'featured_theses', collections: GraduateThesisOrDissertation.all %>
     </div>
   </div>
 </div>

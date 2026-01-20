@@ -162,6 +162,9 @@ en:
           subject_missing: no subjects specified
       featured_researcher:
         tab_label: "Spotlight"
+      featured_thesis:
+        tab_label: OSU Thesis Archive
+        link_button: Explore More Theses
   
     file_set:
       show:
