@@ -666,7 +666,7 @@ button.btn-secondary {
 }
 
 // MODIFY: Adjust layout for the bbox_nested for lat & lon
-#bbox_nested_label, #bbox_nested_lat, #bbox_nested_lon {
+#bbox_nested_label, .bbox_nested_lat, .bbox_nested_lon {
   margin-top: 15px;
 }
 
