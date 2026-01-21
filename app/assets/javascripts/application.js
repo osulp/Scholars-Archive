@@ -34,6 +34,7 @@
 //= require degree_filter/degree_level_filter
 //= require degree_filter/degree_sort
 //= require scholars_archive/save_work/uploaded_files_check
+//= require scholars_archive/geographical_check/geo_coordinate_check
 
 // Required by browse-everything. requiring all of browse-everything causes bootstrap to be included twice
 //= require jquery.treetable
