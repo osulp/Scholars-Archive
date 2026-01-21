@@ -11,6 +11,7 @@ $(document).on('input', '.bbox_nested_lat', function() {
   if (value === '-' || value === '') {
     $error.hide();
     $input.removeClass('invalid');
+    checkErrorOnSubmmission(value);
     return;
   }
 
@@ -29,6 +30,8 @@ $(document).on('input', '.bbox_nested_lat', function() {
     $error.hide();
     $input.removeClass('invalid');
   }
+
+  checkErrorOnSubmmission(value);
 });
 
 $(document).on('input', '.bbox_nested_lon', function() {
@@ -43,6 +46,7 @@ $(document).on('input', '.bbox_nested_lon', function() {
   if (value === '-' || value === '') {
     $error.hide();
     $input.removeClass('invalid');
+    checkErrorOnSubmmission(value);
     return;
   }
 
@@ -61,4 +65,13 @@ $(document).on('input', '.bbox_nested_lon', function() {
     $error.hide();
     $input.removeClass('invalid');
   }
+
+  checkErrorOnSubmmission(value);
 });
+
+// METHOD: Has a method checkign to see if submitting button is clickable
+function checkErrorOnSubmmission(value) {
+  // CHECK: Check on disable if return true
+  var errorCheck = $('.lat-error:visible').length > 0 || $('.lon-error:visible').length > 0 || value === '-';
+  $('#with_files_submit').prop('disabled', errorCheck);
+}
