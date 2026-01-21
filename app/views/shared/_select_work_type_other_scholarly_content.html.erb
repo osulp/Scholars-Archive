@@ -13,9 +13,10 @@
 </div>
 <div class="row <%= classname %>">
   <div class="col-md-6 select-worktype">
-    <%= render partial: 'shared/select_work_type_cell', locals: {presenter: presenters[Default]} %>
+    <%= render partial: 'shared/select_work_type_cell', locals: {presenter: presenters[ExternalDataset]} %>
   </div>
   <div class="col-md-6 select-worktype">
+    <%= render partial: 'shared/select_work_type_cell', locals: {presenter: presenters[Default]} %>
   </div>
 </div>
 
