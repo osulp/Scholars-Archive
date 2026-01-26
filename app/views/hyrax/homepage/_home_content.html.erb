@@ -33,7 +33,7 @@
     </div>
     <div class="tab-pane" id="tab-col2-third">
       <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></h2>
-      <%= render 'featured_theses', collections: GraduateThesisOrDissertation.all %>
+      <%= render 'featured_theses', collections: GraduateThesisOrDissertation.order('date_uploaded_dtsi desc').limit(5) %>
     </div>
     <div class="tab-pane" id="tab-col2-fourth">
       <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.honor_label') %></h2>
