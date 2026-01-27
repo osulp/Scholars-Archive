@@ -9,7 +9,8 @@
                 <% solr_doc = SolrDocument.find(collection.id) %>
                 <%= link_to main_app.polymorphic_path(collection) do %>
                   <%= render_thumbnail_tag(solr_doc, { class: 'hidden-xs file_listing_thumbnail' },
-                                           { suppress_link: true }).to_s + collection.title.first %>
+                                           { suppress_link: true }).to_s %>
+                  <span class="theses-title"><%= collection.title.first %></span>
                 <% end %>
               </div>
             </div>
@@ -22,8 +23,8 @@
 
 <ul class="list-inline collection-theses-highlights-list">
   <li>
-    <%= link_to t('hyrax.homepage.featured_thesis.link_button'),
-                main_app.search_catalog_path(f: { human_readable_type_sim: ["Collection"]}),
+    <%= link_to t('hyrax.homepage.featured_thesis.link_theses_button'),
+                main_app.search_catalog_path(f: { resource_type_sim: ["Dissertation"]}),
                 class: 'btn btn-default' %>
   </li>
 </ul>
