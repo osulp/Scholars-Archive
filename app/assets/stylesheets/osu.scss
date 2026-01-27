@@ -675,6 +675,11 @@ button.btn-secondary {
   margin-top: 15px;
 }
 
+// TWEAK: Add spacing between image & text
+.theses-title, .honors-title {
+  margin-left: 10px;
+}
+
 .search-result-wrapper > .col-md-6 {
   width: 80% !important;
 }
