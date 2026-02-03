@@ -42,7 +42,7 @@ module ScholarsArchive
       end
 
       def attest
-        puts params
+        ScholarsArchive::AttestationMailer.accessibility_attestation_mail.deliver_now unless params[:attest]
       end
 
       def self.build_permitted_params
