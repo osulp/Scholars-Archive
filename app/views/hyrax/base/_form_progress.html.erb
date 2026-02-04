@@ -50,7 +50,7 @@
     <% if ::Flipflop.show_deposit_agreement? %>
       <% if ::Flipflop.active_deposit_agreement_acceptance? %>
         <label>
-          <%= check_box_tag 'agreement', 1, f.object.agreement_accepted, required: true %>
+          <%= check_box_tag('agreement', 1, f.object.agreement_accepted, required: true, onclick: "alert('YES')") %>
           <%= t('hyrax.active_consent_to_agreement') %><br />
           <%= link_to t('hyrax.pages.tabs.agreement_page'),
                       hyrax.agreement_path,
