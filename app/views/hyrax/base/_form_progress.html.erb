@@ -21,6 +21,7 @@
           <% if f.object.class.to_s.include?('Dataset') && curation_concern.persisted? == false %>
             <li class="incomplete" id="required-human-data"><%= t('.required_human_data') %></li>
           <% end %>
+          <li class="incomplete" id="required-attestation"><%= t('.required_attestation') %></li>
         </ul>
       </fieldset>
     </div>
@@ -50,7 +51,7 @@
     <% if ::Flipflop.show_deposit_agreement? %>
       <% if ::Flipflop.active_deposit_agreement_acceptance? %>
         <label>
-          <%= check_box_tag('agreement', 1, f.object.agreement_accepted, required: true, onclick: "alert('YES')") %>
+          <%= check_box_tag 'agreement', 1, f.object.agreement_accepted, required: true %>
           <%= t('hyrax.active_consent_to_agreement') %><br />
           <%= link_to t('hyrax.pages.tabs.agreement_page'),
                       hyrax.agreement_path,
