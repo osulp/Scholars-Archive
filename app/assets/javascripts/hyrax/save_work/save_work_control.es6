@@ -202,7 +202,6 @@ export default class SaveWorkControl {
 
   validateAttestation() {
     if ($("#required-attestation").length === 0 || ($("input[name$='[attest]']:checked").length > 0)) {
-      alert("THIS HAPPENED")
       this.requiredAttestation.check()
       return true
     }
