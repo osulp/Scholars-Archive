@@ -95,6 +95,7 @@ export default class SaveWorkControl {
     new VisibilityComponent(this.element.find('.visibility'), this.adminSetWidget)
     this.preventSubmit()
     this.watchMultivaluedFields()
+    this.watchAttestation()
     this.formChanged()
     this.addFileUploadEventListeners();
   }
@@ -122,6 +123,9 @@ export default class SaveWorkControl {
   watchMultivaluedFields() {
       $('.multi_value.form-group', this.form).bind('managed_field:add', () => this.formChanged())
       $('.multi_value.form-group', this.form).bind('managed_field:remove', () => this.formChanged())
+  }
+
+  watchAttestation() {
       $("input[name$='[attest]']", this.form).bind('click', () => this.formChanged())
   }
 
