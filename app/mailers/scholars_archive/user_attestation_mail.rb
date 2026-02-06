@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module ScholarsArchive
-  # MAILER: A human subject data mailer application
+  # MAILER: A mailer for accessibility attestations
   class UserAttestationMailer < ApplicationMailer
-    # METHOD: Create an email and send a report to the reviewer
+    # METHOD: Create an email and send to user
     def user_attestation_mail(email)
       @user = email
       # MAIL: Email out to couple recipients

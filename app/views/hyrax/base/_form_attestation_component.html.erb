@@ -23,10 +23,12 @@
   </ul>
   <ul class="visibility">
     <li class="radio">
-      <%= f.radio_button :attest, false %>
-      I am not sure if my work is fully accessible. <b>I would like to request a consultation for this deposit.</b>
-      <ul>
-        <li><i>I understand that I am still responsible for submitting accessible content, and will be expected to make the changes recommended by library accessibility experts.</i></li>
+      <label>
+        <%= f.radio_button :attest, false %>
+        I am not sure if my work is fully accessible. <b>I would like to request a consultation for this deposit.</b>
+        <ul>
+          <li><i>I understand that I am still responsible for submitting accessible content, and will be expected to make the changes recommended by library accessibility experts.</i></li>
+      </label
     </li>
   </ul>
 </fieldset>
