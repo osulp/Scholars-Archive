@@ -42,7 +42,7 @@ module ScholarsArchive
       end
 
       def attest
-        ScholarsArchive::AttestationMailer.accessibility_attestation_mail.deliver_now
+        #ScholarsArchive::AttestationMailer.accessibility_attestation_mail.deliver_now
       end
 
       def self.build_permitted_params
