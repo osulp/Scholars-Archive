@@ -81,10 +81,10 @@ module ScholarsArchive
 
     # Sends email out for accessibility attestation if user claims they are not sure of their accessibility status (False represents we need email)
     def email_for_accessibility_attestation
-      if params[curation_concern.class.to_s.downcase]["attest"] == "false"
-        ScholarsArchive::AttestationMailer.with(current_user.email, curation_concern).accessibility_attestation_mail.deliver_now
-        ScholarsArchive::UserAttestationMailer.with(current_user.email).user_attestation_mail.deliver_now
-      end
+      return unless params[curation_concern.class.to_s.downcase]['attest'] == 'false'
+
+      ScholarsArchive::AttestationMailer.with(current_user.email, curation_concern).accessibility_attestation_mail.deliver_now
+      ScholarsArchive::UserAttestationMailer.with(current_user.email).user_attestation_mail.deliver_now
     end
 
     # METHOD: Manually add controlled_vocab object to funding body
