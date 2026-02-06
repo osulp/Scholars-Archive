@@ -41,9 +41,7 @@ module ScholarsArchive
         self.class.date_terms
       end
 
-      def attest
-        #ScholarsArchive::AttestationMailer.accessibility_attestation_mail.deliver_now
-      end
+      def attest;end
 
       def self.build_permitted_params
         super + date_terms + [
