@@ -90,10 +90,12 @@ export default class SaveWorkControl {
     this.requiredFiles = new ChecklistItem(this.element.find('#required-files'))
     this.requiredAgreement = new ChecklistItem(this.element.find('#required-agreement'))
     this.requiredHumanData = new ChecklistItem(this.element.find('#required-human-data'))
+    this.requiredAttestation = new ChecklistItem(this.element.find('#required-attestation'))
 
     new VisibilityComponent(this.element.find('.visibility'), this.adminSetWidget)
     this.preventSubmit()
     this.watchMultivaluedFields()
+    this.watchAttestation()
     this.formChanged()
     this.addFileUploadEventListeners();
   }
@@ -123,6 +125,10 @@ export default class SaveWorkControl {
       $('.multi_value.form-group', this.form).bind('managed_field:remove', () => this.formChanged())
   }
 
+  watchAttestation() {
+      $("input[name$='[attest]']", this.form).bind('click', () => this.formChanged())
+  }
+
   // Called when a file has been uploaded, the deposit agreement is clicked or a form field has had text entered.
   formStateChanged() {
     this.saveButton.prop("disabled", !this.isSaveButtonEnabled);
@@ -145,7 +151,8 @@ export default class SaveWorkControl {
     let filesValid = this.validateFiles()
     let agreementValid = this.validateAgreement(filesValid)
     let humanDataValid = this.validateHumanData()
-    return metadataValid && filesValid && agreementValid && humanDataValid
+    let attestationValid = this.validateAttestation()
+    return metadataValid && filesValid && agreementValid && humanDataValid && attestationValid
   }
 
   // sets the metadata indicator to complete/incomplete
@@ -194,6 +201,15 @@ export default class SaveWorkControl {
       return true
     }
     this.requiredHumanData.uncheck()
+    return false
+  }
+
+  validateAttestation() {
+    if ($("#required-attestation").length === 0 || ($("input[name$='[attest]']:checked").length > 0)) {
+      this.requiredAttestation.check()
+      return true
+    }
+    this.requiredAttestation.uncheck()
     return false
   }
 }

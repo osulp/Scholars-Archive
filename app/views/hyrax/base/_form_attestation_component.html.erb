@@ -1,0 +1,34 @@
+<fieldset>
+  <legend class="legend-save-work">Accessibility Attestation</legend>
+  <p>Per Title II of the Americans with Disabilities Act and <a href="https://policy.oregonstate.edu/policy/digital-accessibility">OSU’s Digital Accessibility Polic</a>, documents shared in university systems must be accessible to all users. Depositors to ScholarsArchive@OSU must ensure that their work meets accessibility standards. See <a href="https://accessibility.oregonstate.edu/digital-accessibility">OSU’s Digital Accessibility page</a> for information about creating accessible documents.</p>
+  <ul class="visibility">
+    <li class="radio">
+      <label>
+        <%= f.radio_button :attest, true %>
+        <b>I attest that my work is accessible.</b>
+        <ul>
+          <li>
+            <p>As applicable:</p>
+            <ul>
+              <li>I followed available guidance for the type of content I am submitting.</li>
+              <li>My content includes accessible images, headings, links, lists, and use of color.</li>
+              <li>I ran accessibility checks and corrected errors.</li>
+              <li>I used proper file format conversion methods.</li>
+          </li>
+          <li><i>I understand that my work will be deposited without further accessibility review.</i></li>
+          <li><i>I understand that, if requested by a repository user, library staff will alter my work as they deem necessary in order to provide an accessible copy.</i></li>
+        </ul>
+      </label>
+    </li>
+  </ul>
+  <ul class="visibility">
+    <li class="radio">
+      <label>
+        <%= f.radio_button :attest, false %>
+        I am not sure if my work is fully accessible. <b>I would like to request a consultation for this deposit.</b>
+        <ul>
+          <li><i>I understand that I am still responsible for submitting accessible content, and will be expected to make the changes recommended by library accessibility experts.</i></li>
+      </label
+    </li>
+  </ul>
+</fieldset>

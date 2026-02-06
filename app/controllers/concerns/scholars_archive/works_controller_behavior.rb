@@ -9,6 +9,7 @@ module ScholarsArchive
     included do
       before_action :redirect_mismatched_work, only: [:show]
       before_action :scrub_params, only: %i[update create]
+      after_action :email_for_accessibility_attestation, only: %i[create]
 
       def redirect_mismatched_work
         curation_concern = ActiveFedora::Base.find(params[:id])
@@ -77,6 +78,14 @@ module ScholarsArchive
     end
 
     private
+
+    # Sends email out for accessibility attestation if user claims they are not sure of their accessibility status (False represents we need email)
+    def email_for_accessibility_attestation
+      return unless params[curation_concern.class.to_s.downcase]['attest'] == 'false'
+
+      ScholarsArchive::AttestationMailer.with(current_user.email, curation_concern).accessibility_attestation_mail.deliver_now
+      ScholarsArchive::UserAttestationMailer.with(current_user.email).user_attestation_mail.deliver_now
+    end
 
     # METHOD: Manually add controlled_vocab object to funding body
     def store_funding

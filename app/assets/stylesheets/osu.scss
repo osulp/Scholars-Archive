@@ -721,3 +721,8 @@ button.btn-secondary {
 .input-group .form-control:first-child {
   margin-bottom: 10px;
 }
+
+.fixedsticky {
+  margin-top: 0;
+  top: auto !important;
+}
