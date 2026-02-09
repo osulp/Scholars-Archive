@@ -5,5 +5,10 @@ class Collection < ActiveFedora::Base
   include ::Hyrax::CollectionBehavior
   # You can replace these metadata if they're not suitable
   include Hyrax::BasicMetadata
+
+  property :bulkrax_identifier, predicate: ::RDF::URI.new('http://id.loc.gov/vocabulary/identifiers/local'), multiple: true do |index|
+    index.as :stored_searchable
+  end
+
   self.indexer = CollectionIndexer
 end
