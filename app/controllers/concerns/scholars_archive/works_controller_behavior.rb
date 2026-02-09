@@ -83,8 +83,8 @@ module ScholarsArchive
     def email_for_accessibility_attestation
       return unless params[curation_concern.class.to_s.downcase]['attest'] == 'false'
 
-      ScholarsArchive::AttestationMailer.with(current_user.email, curation_concern).accessibility_attestation_mail.deliver_now
-      ScholarsArchive::UserAttestationMailer.with(current_user.email).user_attestation_mail.deliver_now
+      ScholarsArchive::AttestationMailer.accessibility_attestation_mail(current_user.email, curation_concern).deliver_now
+      ScholarsArchive::UserAttestationMailer.user_attestation_mail(current_user.email).deliver_now
     end
 
     # METHOD: Manually add controlled_vocab object to funding body
