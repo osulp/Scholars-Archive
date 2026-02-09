@@ -1,25 +1,21 @@
-<table class="table table-striped collection-honors-highlights">
-  <tbody>
-    <% collections.each do |collection| %>
-      <tr>
-        <td>
-          <div class="media">
-            <div class="media-body">
-              <div class="media-heading">
-                <% solr_doc = SolrDocument.find(collection.id) %>
-                <%= link_to main_app.polymorphic_path(collection) do %>
-                  <%= render_thumbnail_tag(solr_doc, { class: 'hidden-xs file_listing_thumbnail' },
-                                           { suppress_link: true }).to_s %>
-                  <span class="honors-title"><%= collection.title.first %></span>
-                <% end %>
-              </div>
-            </div>
+<ul class="collection-honors-highlights list-unstyled">
+  <% collections.each do |collection| %>
+    <li class="collection-honors-item">
+      <div class="media">
+        <div class="media-body">
+          <div class="media-heading">
+            <% solr_doc = SolrDocument.find(collection.id) %>
+            <%= link_to main_app.polymorphic_path(collection) do %>
+              <%= render_thumbnail_tag(solr_doc, { class: 'hidden-xs file_listing_thumbnail' },
+                                      { suppress_link: true }).to_s %>
+              <span class="honors-title"><%= collection.title.first %></span>
+            <% end %>
           </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
 
 <ul class="list-inline collection-honors-highlights-list">
   <li>
