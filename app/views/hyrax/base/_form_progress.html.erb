@@ -14,14 +14,14 @@
           <% if Hyrax.config.work_requires_files? && !current_user.admin? %>
             <li class="incomplete" id="required-files"><%= t('.required_files') %></li>
           <% end %>
-          <% if Flipflop.show_deposit_agreement? && Flipflop.active_deposit_agreement_acceptance? %>
-            <li class="incomplete" id="required-agreement"><%= t('.required_agreement') %></li>
-          <% end %>
           <%# REQUIREMENT: Add in a new checking system for the human data %>
           <% if f.object.class.to_s.include?('Dataset') && curation_concern.persisted? == false %>
             <li class="incomplete" id="required-human-data"><%= t('.required_human_data') %></li>
           <% end %>
-          <li class="incomplete" id="required-attestation"><%= t('.required_attestation') %></li>
+          <li class="incomplete" id="required-attestation"><%= 'Required attestation' %></li>
+          <% if Flipflop.show_deposit_agreement? && Flipflop.active_deposit_agreement_acceptance? %>
+            <li class="incomplete" id="required-agreement"><%= t('.required_agreement') %></li>
+          <% end %>
         </ul>
       </fieldset>
     </div>
