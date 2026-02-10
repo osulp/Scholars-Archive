@@ -81,7 +81,7 @@ module ScholarsArchive
 
     # Sends email out for accessibility attestation if user claims they are not sure of their accessibility status (False represents we need email)
     def email_for_accessibility_attestation
-      return unless params[curation_concern.class.to_s.downcase]['attest'] == 'false'
+      return unless params[hash_key_for_curation_concern]['attest'] == 'false'
 
       ScholarsArchive::AttestationMailer.accessibility_attestation_mail(current_user.email, curation_concern).deliver_now
       ScholarsArchive::UserAttestationMailer.user_attestation_mail(current_user.email).deliver_now
