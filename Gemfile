@@ -89,7 +89,7 @@ gem 'rest-client', '~> 2.0'
 gem 'haml'
 
 gem 'bagit', '~>0.6'
-gem 'riiif', '~> 1.1'
+gem 'riiif', '~> 2.5'
 
 # Security update
 gem 'rubyzip', '~> 1.3.0'

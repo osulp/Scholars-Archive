@@ -259,9 +259,6 @@ GEM
       debase-ruby_core_source (>= 0.10.12)
     debase-ruby_core_source (3.3.1)
     declarative (0.0.20)
-    declarative-builder (0.1.0)
-      declarative-option (< 0.2.0)
-    declarative-option (0.1.0)
     denormalize_fields (1.3.0)
       activerecord (>= 4.1.14, < 8.0.0)
     deprecation (1.1.0)
@@ -600,8 +597,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kaminari_route_prefix (0.1.1)
-      kaminari (~> 1.0)
     language_list (1.2.1)
     language_server-protocol (3.17.0.3)
     ld-patch (3.2.2)
@@ -1221,7 +1216,7 @@ DEPENDENCIES
   recaptcha
   redis (~> 4.0)
   rest-client (~> 2.0)
-  riiif (~> 2.2)
+  riiif (~> 2.5)
   rsolr
   rspec
   rspec-mocks
