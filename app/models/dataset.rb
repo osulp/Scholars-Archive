@@ -24,4 +24,6 @@ class Dataset < ActiveFedora::Base
   def set_defaults
     self.accessibility_feature = ['unknown']
   end
+
+  def attest; end
 end
