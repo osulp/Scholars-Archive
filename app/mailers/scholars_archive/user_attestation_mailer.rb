@@ -7,7 +7,7 @@ module ScholarsArchive
     def user_attestation_mail(email)
       @user = email
       # MAIL: Email out to couple recipients
-      mail(to: @user, subject: 'Work Needs Accessibility Support.')
+      mail(to: @user, subject: 'ScholarsArchive@OSU: Your request for an accessibility consultation')
     end
   end
 end
