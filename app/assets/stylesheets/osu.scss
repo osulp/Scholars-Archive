@@ -675,6 +675,19 @@ button.btn-secondary {
   margin-top: 15px;
 }
 
+// TWEAK: Add spacing between image & text
+.theses-title, .honors-title {
+  margin-left: 10px;
+}
+
+.collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.collection-theses-highlights li, .collection-honors-highlights li {
+  padding: 12px 15px;
+}
+
 .search-result-wrapper > .col-md-6 {
   width: 80% !important;
 }
