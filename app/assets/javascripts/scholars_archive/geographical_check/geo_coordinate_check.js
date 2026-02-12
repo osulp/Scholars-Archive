@@ -1,77 +1,65 @@
-// SCRIPT: Run on input to check if Latitude & Longitude enter correctly
+// SCRIPT: Validate the Latitude & Longitude
 $(document).on('input', '.bbox_nested_lat', function() {
-  // GET: Get the value of the input from lat
-  var $input = $(this);
-  var value = $input.val().trim();
-
-  // FIND: Get the div with the error message
-  var $error = $input.closest('.latitude-wrapper').find('.lat-error');
-
-  // IF: If field is empty (no input) or have a '-', hide error
-  if (value === '-' || value === '') {
-    $error.hide();
-    $input.removeClass('invalid');
-    checkErrorOnSubmmission(value);
-    return;
-  }
-
-  // REGEX: Check if entire string must be a valid decimal number
-  var numberRegex = /^-?\d+(\.\d+)?$/;
-
-  // CONVERT: Convert to number
-  var num = parseFloat(value);
-
-  // IF: Show error if not a number or out of range
-  if (isNaN(num) || num < -90 || num > 90 || !numberRegex.test(value)) {
-    // ADD: Add the text to the div if it is incorrect
-    $error.text('Latitude must be a number from -90 to 90').show();
-    $input.addClass('invalid');
-  } else {
-    $error.hide();
-    $input.removeClass('invalid');
-  }
-
-  checkErrorOnSubmmission(value);
+  validateLatLon($(this), 'lat');
 });
 
 $(document).on('input', '.bbox_nested_lon', function() {
-  // GET: Get the value of the input from lon
-  var $input = $(this);
-  var value = $input.val().trim();
+  validateLatLon($(this), 'lon');
+});
 
-  // FIND: Get the div with the error message
-  var $error = $input.closest('.longitude-wrapper').find('.lon-error');
+// METHOD: The core of validating the two, lat & lon
+function validateLatLon($input, type) {
+  // GET: Get value directly from the input, and trimmed for space
+  const value = $input.val().trim();
 
-  // IF: If field is empty (no input) or have a '-', hide error
-  if (value === '-' || value === '') {
+  // FIND: Get the correct error display
+  const $error = type === 'lat' ? $input.closest('.latitude-wrapper').find('.lat-error') : $input.closest('.longitude-wrapper').find('.lon-error');
+
+  // IF: If empty or just '-', hide error and remove invalid
+  if (value === '' || value === '-') {
     $error.hide();
     $input.removeClass('invalid');
-    checkErrorOnSubmmission(value);
+    checkErrorOnSubmission($input);
     return;
   }
 
-  // REGEX: Check if entire string must be a valid decimal number
-  var numberRegex = /^-?\d+(\.\d+)?$/;
+  // REGEX: Check to see if it is a valid number
+  const numberRegex = /^-?\d+(\.\d+)?$/;
+  const num = parseFloat(value);
 
-  // CONVERT: Convert to number
-  var num = parseFloat(value);
+  // CHECK: Validate range
+  let valid = true;
+  if (type === 'lat' && (isNaN(num) || num < -90 || num > 90 || !numberRegex.test(value))) valid = false;
+  if (type === 'lon' && (isNaN(num) || num < -180 || num > 180 || !numberRegex.test(value))) valid = false;
 
-  // IF: Show error if not a number or out of range
-  if (isNaN(num) || num < -180 || num > 180 || !numberRegex.test(value)) {
-    // ADD: Add the text to the div if it is incorrect
-    $error.text('Longitude must be a number from -180 to 180').show();
+  // SHOW: Show or hide error
+  if (!valid) {
+    $error.show();
     $input.addClass('invalid');
   } else {
     $error.hide();
     $input.removeClass('invalid');
   }
 
-  checkErrorOnSubmmission(value);
-});
+  // CHECK: Update submit button
+  checkErrorOnSubmission($input);
+}
 
-// METHOD: Has a method checkign to see if submitting button is clickable
-function checkErrorOnSubmmission(value) {
-  // CHECK: Check on disable if return true
-  var errorCheck = $('.lat-error:visible').length > 0 || $('.lon-error:visible').length > 0 || value === '-';
-  $('#with_files_submit').prop('disabled', errorCheck);
+// METHOD: Submit button state logic
+function checkErrorOnSubmission($input) {
+  // GET: Fetch the form value
+  const $form = $input.closest('form');
+  const $lat = $form.find('.bbox_nested_lat');
+  const $lon = $form.find('.bbox_nested_lon');
+  const latVal = $lat.val().trim();
+  const lonVal = $lon.val().trim();
+
+  // GET: Fetch the bool isValid state
+  const latInvalid = $lat.hasClass('invalid');
+  const lonInvalid = $lon.hasClass('invalid');
+
+  // DETERMINE: Check to see if any of this are presented
+  let disable = latInvalid || lonInvalid || (!!latVal !== !!lonVal);
+
+  $('#with_files_submit').prop('disabled', disable);
 }

@@ -121,12 +121,12 @@ export default class SaveWorkControl {
 
   // If someone adds or removes a field on a multivalue input, fire a formChanged event.
   watchMultivaluedFields() {
-      $('.multi_value.form-group', this.form).bind('managed_field:add', () => this.formChanged())
-      $('.multi_value.form-group', this.form).bind('managed_field:remove', () => this.formChanged())
+    $('.multi_value.form-group', this.form).bind('managed_field:add', () => this.formChanged())
+    $('.multi_value.form-group', this.form).bind('managed_field:remove', () => this.formChanged())
   }
 
   watchAttestation() {
-      $("input[name$='[attest]']", this.form).bind('click', () => this.formChanged())
+    $("input[name$='[attest]']", this.form).bind('click', () => this.formChanged())
   }
 
   // Called when a file has been uploaded, the deposit agreement is clicked or a form field has had text entered.
@@ -152,7 +152,8 @@ export default class SaveWorkControl {
     let agreementValid = this.validateAgreement(filesValid)
     let humanDataValid = this.validateHumanData()
     let attestationValid = this.validateAttestation()
-    return metadataValid && filesValid && agreementValid && humanDataValid && attestationValid
+    let bboxValid = this.validateBboxCoordinate()
+    return metadataValid && filesValid && agreementValid && humanDataValid && attestationValid && bboxValid
   }
 
   // sets the metadata indicator to complete/incomplete
@@ -211,5 +212,31 @@ export default class SaveWorkControl {
     }
     this.requiredAttestation.uncheck()
     return false
+  }
+
+  // METHOD: Add in a check to make sure the Geo Point pass the check
+  validateBboxCoordinate() {
+    // FIND: Identify the value
+    const lat = this.form.find('.bbox_nested_lat')
+    const lon = this.form.find('.bbox_nested_lon')
+    const latVal = lat.val().trim()
+    const lonVal = lon.val().trim()
+
+    // BOOL: Find if has invalid class
+    const latInvalid = lat.hasClass('invalid')
+    const lonInvalid = lon.hasClass('invalid')
+
+    // DISABLE: Disable if any field is invalid
+    if (latInvalid || lonInvalid) {
+      return false
+    }
+
+    // MORE REQUIRE: Require both to be filled, or both blank
+    if ((latVal && !lonVal) || (!latVal && lonVal)) {
+      return false
+    }
+
+    // OTHER: Return true if everything is valid
+    return true
   }
 }
