@@ -48,6 +48,9 @@ en:
       subject_new: "ScholarsArchive@OSU Message: %{subject}"
       subject_reply: "ScholarsArchive@OSU Reply: %{subject}"
   hyrax:
+    admin:
+      sidebar:
+        role_management: "User Account Roles"
     workflow:
       unauthorized: The work is not currently available because it has not completed the approval process. If you are the owner of this work, log in to make changes.
     notifications:
