@@ -163,8 +163,8 @@ en:
       featured_researcher:
         tab_label: "Spotlight"
       featured_thesis:
-        honor_label: OSU Honors College Archive
-        thesis_label: OSU Thesis Archive
+        honor_label: Honors College Theses Archive
+        thesis_label: Theses & Dissertations Archive
         link_theses_button: Explore More Theses
         link_honors_button: Explore More Honors College Theses
   

@@ -677,7 +677,20 @@ button.btn-secondary {
 
 // TWEAK: Add spacing between image & text
 .theses-title, .honors-title {
-  margin-left: 10px;
+  margin-left: 10px;  
+}
+
+// TWEAK: Fix the display to make sure all tabs are viewable in the space
+.nav-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.nav-tabs > li {
+  float: none;
 }
 
 .collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
