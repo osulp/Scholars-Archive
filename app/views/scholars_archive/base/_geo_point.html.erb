@@ -12,13 +12,13 @@
     <%# ADD: Create a field to display text if the latitude if enter incorrectly %>
     <div class="col-xs-6 latitude-wrapper">
       <%= a.input :point_lat, label:false, aria: { label: "Latitude" }, placeholder: "Latitude", input_html: {value: a.object.point_lat, class: 'bbox_nested bbox_nested_lat'} %>
-      <div class="lat-error text-danger" style="display:none;"></div>
+      <div class="lat-error text-danger" style="display:none;">Latitude must be a number from -90 to 90</div>
     </div>
 
     <%# ADD: Create a field to display text if the longitude if enter incorrectly %>
     <div class="col-xs-6 longitude-wrapper">
        <%= a.input :point_lon, label:false, aria: { label: "Longitude" }, placeholder: "Longitude", input_html: {value: a.object.point_lon, class: 'bbox_nested bbox_nested_lon'} %>
-      <div class="lon-error text-danger" style="display:none;"></div>
+      <div class="lon-error text-danger" style="display:none;">Longitude must be a number from -180 to 180</div>
     </div>
 
     <span class="input-group-btn field-controls">
