@@ -1,5 +1,5 @@
 <ul class="collection-theses-highlights list-unstyled">
-  <% collections.each do |collection| %>
+  <% collections.to_a.first(10).each do |collection| %>
     <li class="collection-theses-item">
       <div class="media">
         <div class="media-body">

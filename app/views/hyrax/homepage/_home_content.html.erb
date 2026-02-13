@@ -2,6 +2,7 @@
   <ul id="homeTabs" class="nav nav-tabs">
     <li class="active"><a href="#featured_container" data-toggle="tab" role="tab" id="featureTab"><%= t('hyrax.homepage.featured_works.tab_label') %></a></li>
     <li><a href="#recently_uploaded" data-toggle="tab" role="tab" id="recentTab"><%= t('hyrax.homepage.recently_uploaded.tab_label') %></a></li>
+    <li><a href="#explore_collection" data-toggle="tab" role="tab" id="exploreCollection"><%= t('hyrax.homepage.admin_sets.title') %></a></li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane fade in active" id="featured_container" role="tabpanel" aria-labelledby="featureTab">
@@ -10,6 +11,9 @@
     <div class="tab-pane fade" id="recently_uploaded" role="tabpanel" aria-labelledby="recentTab">
       <%= render 'recently_uploaded', recent_documents: @recent_documents %>
     </div>
+    <div class="tab-pane fade" id="explore_collection" role="tabpanel" aria-labelledby="exploreCollection">
+      <%= render 'explore_collections', collections: @presenter.collections %>
+    </div>
   </div>
 </div><!-- /.col-xs-6 -->
 
@@ -17,9 +21,8 @@
 
   <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a aria-expanded="true" href="#tab-col2-first" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_researcher.tab_label') %></a></li>
-    <li class=""><a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab"><%= t('hyrax.homepage.admin_sets.title') %></a></li>
-    <li class=""><a aria-expanded="false" href="#tab-col2-third" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></a></li>
-    <li class=""><a aria-expanded="false" href="#tab-col2-fourth" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_thesis.honor_label') %></a></li>
+    <li class=""><a aria-expanded="false" href="#tab-col2-second" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></a></li>
+    <li class=""><a aria-expanded="false" href="#tab-col2-third" role="tab" data-toggle="tab"><%= t('hyrax.homepage.featured_thesis.honor_label') %></a></li>
   </ul>
 
   <div class="tab-content">
@@ -28,16 +31,12 @@
       <%= render 'featured_researcher' %>
     </div>
     <div class="tab-pane" id="tab-col2-second">
-      <h2 class="sr-only"><%= t('hyrax.homepage.admin_sets.title') %></h2>
-      <%= render 'explore_collections', collections: @presenter.collections %>
+      <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></h2>
+      <%= render 'featured_theses', collections: GraduateThesisOrDissertation.order('date_modified_dtsi desc').limit(10) %>
     </div>
     <div class="tab-pane" id="tab-col2-third">
-      <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></h2>
-      <%= render 'featured_theses', collections: GraduateThesisOrDissertation.order('date_modified_dtsi desc').limit(5) %>
-    </div>
-    <div class="tab-pane" id="tab-col2-fourth">
       <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.honor_label') %></h2>
-      <%= render 'featured_honors', collections: HonorsCollegeThesis.order('date_modified_dtsi desc').limit(5) %>
+      <%= render 'featured_honors', collections: HonorsCollegeThesis.order('date_modified_dtsi desc').limit(10) %>
     </div>
   </div>
 </div>
