@@ -7,7 +7,7 @@ module ScholarsArchive
       private
 
       def subject
-        'Thank you for your deposit to ScholarsArchive@OSU'
+        'ScholarsArchive@OSU Message: Thank you for your deposit!'
       end
 
       def doi
@@ -24,13 +24,20 @@ module ScholarsArchive
            <br />
            The citable URL for your article is: #{link_to citeable_url, citeable_url}
            <br /><br/>
-           If you have questions, please respond to this email.
-           <br/>
+           If you have questions, please reply to this message or contact #{link_to 'ScholarsArchive@oregonstate.edu', 'mailto:scholarsarchive@oregonstate.edu'}.
+           <br/><br/>
            Thank you,
            <br />
-           ScholarsArchive@OSU Admin"
+           ScholarsArchive@OSU Admin
+           <br/>
+           Oregon State University Libraries and Press"
         elsif !SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dataset')
-          "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n #{comment}"
+          "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). \n\n
+          Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n
+          #{comment} \n\n
+          Thank you, \n
+          ScholarsArchive@OSU Admin \n
+          Oregon State University Libraries and Press"
         else
           doi_message = doi == "https://doi.org/10.7267/#{work_id}" ? "Your temporary DOI is https://doi.org/10.7267/#{work_id}. This DOI will not be live until the dataset is approved, but it won't change.<br />" : "Your DOI is: #{doi}<br />"
           "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository.<br />
@@ -49,7 +56,10 @@ module ScholarsArchive
            <br />
            * If the protocol and/or consent document says that the data shared will be de-identified, then there should be less than 3 indirect identifiers in the data files.
            <br />
-           Visit https://ir.library.oregonstate.edu/ and go to your dashboard for more info."
+           Visit https://ir.library.oregonstate.edu/ and go to your dashboard for more info. <br/><br/>
+           Thank you, <br/>
+           ScholarsArchive@OSU Admin <br/>
+           Oregon State University Libraries and Press"
         end
       end
 
