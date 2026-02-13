@@ -13,7 +13,7 @@ module ScholarsArchive
       curation_concern.rights_statement = ['http://rightsstatements.org/vocab/InC/1.0/']
       super
     end
-    
+
     private
 
     def email_for_accessibility_attestation
