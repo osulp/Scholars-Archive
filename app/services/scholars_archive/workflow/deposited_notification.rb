@@ -35,7 +35,7 @@ module ScholarsArchive
           Oregon State University Libraries and Press"
         end
       end
-       # rubocop:enable Metrics/MethodLength
+      # rubocop:enable Metrics/MethodLength
 
       def users_to_notify
         user_key = ActiveFedora::Base.find(work_id).depositor
