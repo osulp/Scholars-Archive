@@ -16,6 +16,8 @@ module Hyrax
       BotDetectionController.bot_detection_enforce_filter(controller) unless valid_bot?
     end
 
+    after_action :email_for_accessibility_attestation, only: %i[create]
+
     # 'ir.library.oregonstate.edu,ir-staging.library.oregonstate.edu,test.lib.oregonstate.edu:3000'
     def valid_bot?
       ENV.fetch('URI_TURNSTILE_BYPASS', '').split(',').include?(request.domain) || allow_listed_ip_addr?
@@ -41,6 +43,13 @@ module Hyrax
 
     def ensure_admin!
       authorize! :read, :admin_dashboard
+    end
+
+    def email_for_accessibility_attestation
+      return unless params[hash_key_for_curation_concern]['attest'] == 'false'
+
+      ScholarsArchive::AttestationMailer.accessibility_attestation_mail(current_user.email, curation_concern).deliver_now
+      ScholarsArchive::UserAttestationMailer.user_attestation_mail(current_user.email).deliver_now
     end
   end
 end
