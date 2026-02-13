@@ -15,6 +15,7 @@ module ScholarsArchive
         'ScholarsArchive@OSU Message: Deposit approved!'
       end
 
+      # rubocop:disable Metrics/MethodLength
       def message
         if SolrDocument.find(work_id)['resource_type_tesim']&.include?('Honors College Thesis') || SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dissertation')
           "Your deposit: '#{title}' #{@doi} (#{link_to work_id, citeable_url}) was approved by #{user.user_key} and is now live in ScholarsArchive@OSU. \n\n
@@ -34,6 +35,7 @@ module ScholarsArchive
           Oregon State University Libraries and Press"
         end
       end
+       # rubocop:enable Metrics/MethodLength
 
       def users_to_notify
         user_key = ActiveFedora::Base.find(work_id).depositor
