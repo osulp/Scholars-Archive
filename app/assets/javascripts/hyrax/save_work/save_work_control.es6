@@ -153,6 +153,16 @@ export default class SaveWorkControl {
     let humanDataValid = this.validateHumanData()
     let attestationValid = this.validateAttestation()
     let bboxValid = this.validateBboxCoordinate()
+
+    console.log({
+    metadataValid,
+    filesValid,
+    agreementValid,
+    humanDataValid,
+    attestationValid,
+    bboxValid
+  })
+
     return metadataValid && filesValid && agreementValid && humanDataValid && attestationValid && bboxValid
   }
 
@@ -219,6 +229,11 @@ export default class SaveWorkControl {
     // FIND: Identify the value
     const lat = this.form.find('.bbox_nested_lat')
     const lon = this.form.find('.bbox_nested_lon')
+
+    // IF: If fields don't exist on this form, skip validation
+    if (lat.length === 0 || lon.length === 0) {
+      return true
+    }
     const latVal = lat.val().trim()
     const lonVal = lon.val().trim()
 
