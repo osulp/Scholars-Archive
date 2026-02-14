@@ -33,11 +33,6 @@
     <%= menu.nav_link(hyrax.admin_workflow_roles_path, class: "nav-link") do %>
       <span class="fa fa-users" aria-hidden="true"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.workflow_roles') %></span>
     <% end %>
-    <% if current_ability.admin? %>
-      <%= menu.nav_link(role_management.roles_path) do %>
-        <span class="fa fa-users" aria-hidden="true"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.role_management') %></span>
-      <% end %>
-    <% end %>
   <% end %>
 
   <%= render 'hyrax/dashboard/sidebar/menu_partials', menu: menu, section: :configuration %>

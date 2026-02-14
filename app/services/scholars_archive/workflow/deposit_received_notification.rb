@@ -32,11 +32,11 @@ module ScholarsArchive
            <br/>
            Oregon State University Libraries and Press"
         elsif !SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dataset')
-          "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). \n\n
-          Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. \n\n
-          #{comment} \n\n
-          Thank you, \n
-          ScholarsArchive@OSU Admin \n
+          "ScholarsArchive@OSU has received your deposit: #{title} (#{link_to work_id, citeable_url}). <br/><br/>
+          Your item is under review by repository administrators. You will be notified if your deposit requires additional changes and/or when your deposit is live in the repository. <br/><br/>
+          #{comment} <br/><br/>
+          Thank you, <br/>
+          ScholarsArchive@OSU Admin <br/>
           Oregon State University Libraries and Press"
         else
           doi_message = doi == "https://doi.org/10.7267/#{work_id}" ? "Your temporary DOI is https://doi.org/10.7267/#{work_id}. This DOI will not be live until the dataset is approved, but it won't change.<br />" : "Your DOI is: #{doi}<br />"
