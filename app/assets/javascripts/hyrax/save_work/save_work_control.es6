@@ -154,15 +154,6 @@ export default class SaveWorkControl {
     let attestationValid = this.validateAttestation()
     let bboxValid = this.validateBboxCoordinate()
 
-    console.log({
-    metadataValid,
-    filesValid,
-    agreementValid,
-    humanDataValid,
-    attestationValid,
-    bboxValid
-  })
-
     return metadataValid && filesValid && agreementValid && humanDataValid && attestationValid && bboxValid
   }
 
