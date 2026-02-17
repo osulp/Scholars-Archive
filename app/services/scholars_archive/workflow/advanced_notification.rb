@@ -16,7 +16,7 @@ module ScholarsArchive
       end
 
       def message
-        "Your deposit: #{title} #{@doi} (#{link_to work_id, citeable_url}) was approved by #{user.user_key}. <b> It is now in the ScholarsArchive review queue for a metadata check. </b> You will get a message when it is live in the repository. <br/><br/>
+        "Your deposit: #{title} #{@doi} (#{link_to work_id, citeable_url}) was approved by #{user.user_key}. It is now in the ScholarsArchive review queue for a metadata check. You will get a message when it is live in the repository. <br/><br/>
          #{comment} <br/><br/>
          Thank you, <br/>
          ScholarsArchive@OSU Admin <br/>
