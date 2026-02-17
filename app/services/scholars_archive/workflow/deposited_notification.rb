@@ -12,7 +12,7 @@ module ScholarsArchive
       private
 
       def subject
-        workflow_state = entity.workflow_state.name
+        workflow_state = @entity.workflow_state.name
         if (workflow_state == 'Graduate School Review') || (workflow_state == 'Honors College Review')
           'ScholarsArchive@OSU Message: Deposit advanced!'
         else
@@ -25,7 +25,7 @@ module ScholarsArchive
       # rubocop:disable Metrics/PerceivedComplexity
       def message
         if SolrDocument.find(work_id)['resource_type_tesim']&.include?('Honors College Thesis') || SolrDocument.find(work_id)['resource_type_tesim']&.include?('Dissertation') || SolrDocument.find(work_id)['resource_type_tesim']&.include?('Masters Thesis')
-          workflow_state = entity.workflow_state.name
+          workflow_state = @entity.workflow_state.name
           if (workflow_state == 'Graduate School Review') || (workflow_state == 'Honors College Review')
             "Your deposit: '#{title}' #{@doi} (#{link_to work_id, citeable_url}) was approved by #{user.user_key}. It is now live in ScholarsArchive@OSU review queue for a metadata check. You will get a message when it is live in the repository. <br/><br/>
             #{comment} <br/><br/>
