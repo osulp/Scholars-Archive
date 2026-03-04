@@ -32,11 +32,11 @@
     </div>
     <div class="tab-pane" id="tab-col2-second">
       <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></h2>
-      <%= render 'featured_theses', collections: GraduateThesisOrDissertation.order('date_modified_dtsi desc').limit(10) %>
+      <%= render 'featured_theses', collections: controller.recent_by_model(model: 'GraduateThesisOrDissertation') %>
     </div>
     <div class="tab-pane" id="tab-col2-third">
       <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.honor_label') %></h2>
-      <%= render 'featured_honors', collections: HonorsCollegeThesis.order('date_modified_dtsi desc').limit(10) %>
+      <%= render 'featured_honors', collections: controller.recent_by_model(model: 'HonorsCollegeThesis') %>
     </div>
   </div>
 </div>
