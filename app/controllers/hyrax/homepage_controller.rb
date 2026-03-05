@@ -23,7 +23,7 @@ class Hyrax::HomepageController < ApplicationController
 
   # OVERRIDE: from hyrax
   # Add a method to get the most recent documents by model
-  def recent_by_model(model: '', rows: 10)
+  def recent_by_model(model: '', rows: 5)
     # grab recent documents
     (_, docs) = search_service.search_results do |builder|
       builder.rows(rows)

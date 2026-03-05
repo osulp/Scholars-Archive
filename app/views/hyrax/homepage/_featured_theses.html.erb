@@ -19,7 +19,7 @@
 <ul class="list-inline collection-theses-highlights-list">
   <li>
     <%= link_to t('hyrax.homepage.featured_thesis.link_theses_button'),
-                main_app.search_catalog_path(f: { resource_type_sim: ["Dissertation"]}),
+                main_app.search_catalog_path(f_inclusive: { resource_type_sim: ["Dissertation", "Masters Thesis"]}),
                 class: 'btn btn-default' %>
   </li>
 </ul>
