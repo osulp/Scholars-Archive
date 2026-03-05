@@ -29,7 +29,7 @@ class Hyrax::HomepageController < ApplicationController
       builder.rows(rows)
       builder.merge(
         sort: sort_field,
-        qf: ["has_model_ssim:#{model}"]
+        fq: ["has_model_ssim:#{model}"]
       )
     end
     docs
