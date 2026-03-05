@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+
+# Homepage controller from overriden from Hyrax
 class Hyrax::HomepageController < ApplicationController
   # Adds Hydra behaviors into the application controller
   include Blacklight::SearchContext
@@ -27,7 +29,8 @@ class Hyrax::HomepageController < ApplicationController
       builder.rows(rows)
       builder.merge(
         sort: sort_field,
-        qf: ["has_model_ssim:#{model}"])
+        qf: ["has_model_ssim:#{model}"]
+      )
     end
     docs
   rescue Blacklight::Exceptions::ECONNREFUSED, Blacklight::Exceptions::InvalidRequest
@@ -60,6 +63,6 @@ class Hyrax::HomepageController < ApplicationController
   end
 
   def sort_field
-    "date_uploaded_dtsi desc"
+    'date_uploaded_dtsi desc'
   end
 end
