@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-slim-bullseye as bundler
+FROM ruby:2.7-slim-bullseye AS bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -10,7 +10,7 @@ ENV LC_ALL C.UTF-8
 ##########################################################################
 ## Install dependencies
 ##########################################################################
-FROM bundler as dependencies
+FROM bundler AS dependencies
 
 RUN apt update && apt -y upgrade && \
   apt -y install \
@@ -52,7 +52,7 @@ RUN mkdir -p /opt/fits && \
 ##########################################################################
 ## Add our Gemfile and install our gems
 ##########################################################################
-FROM dependencies as gems
+FROM dependencies AS gems
 
 RUN mkdir /data
 WORKDIR /data
@@ -70,7 +70,7 @@ RUN ./build/install_gems.sh && bundle clean --force
 ##########################################################################
 ## Add code to the container, clean up any garbage
 ##########################################################################
-FROM gems as code
+FROM gems AS code
 
 #USER root
 # Uninstall any dev tools we don't need at runtime
