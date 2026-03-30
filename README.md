@@ -27,7 +27,7 @@ The details provided assume that the official Docker daemon is running in the ba
 
 ## Create admin set and collection types, load workflows, create admin role
 
-- The first time you start the services or after you delete volumes you will need to run:
+- The first time you start the services or everytime after you delete volumes you will need to run:
   `$ docker-compose exec server ./build/firstrun.sh`
 
 ## Create an administrator
@@ -39,7 +39,6 @@ The details provided assume that the official Docker daemon is running in the ba
 $ docker-compose exec server bundle exec rails c
 
 # within the Rails Console;
-Role.create(name: 'admin')
 User.first.roles << Role.first
 ```
 
@@ -55,7 +54,7 @@ _$ docker-compose exec server [COMMAND]_
 
 When you do anything that changes the filesystem (rake tasks or otherwise), you may want to pass through your user ID so that on your local filesystem you still own the files:
 
-`` $ docker-compose exec -u `id -u` workers rake -T ``
+``$ docker-compose exec -u `id -u` workers rake -T``
 (`id -u` will return your user id. Note the use of backticks `` ` `` rather than quotes)
 
 Ohmyzsh with the docker-compose plugin makes executing these types of commands easier:
@@ -130,23 +129,20 @@ Following this fix, run the workflow load rake task:
 
 This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
 
+- You could manually create the permission template in the rails console (non-destructive):
+  `Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)`
+
+- OR you could start fresh by clearing Fedora and Solr (destructive):
+
 ```
-    You could manually create the permission template in the rails console (non-destructive):
-
-      Hyrax::PermissionTemplate.create!(source_id: AdminSet::DEFAULT_ID)
-
-    OR you could start fresh by clearing Fedora and Solr (destructive):
-
-      require 'active_fedora/cleaner'
-      ActiveFedora::Cleaner.clean!
-
-    FINALLY you could destroy all volumes and start from scratch (aggressively destructive)
-
-    docker-compose down -v && docker-compose up server
+require 'active_fedora/cleaner'
+ActiveFedora::Cleaner.clean!
 ```
+
+- FINALLY you could destroy all volumes and start from scratch (aggressively destructive)
+  `docker-compose down -v && docker-compose up server`
 
 Following this fix, run the workflow load rake task:
-
 `$ docker-compose exec server bundle exec rails hyrax:workflow:load`
 
 ## Fedora reports 403 Unauthorized error
