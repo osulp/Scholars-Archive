@@ -4,6 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+# Some general mac/linux system files
+.bash_history
+.lesshst
+
 # Ignore bundler config.
 /.bundle
 
