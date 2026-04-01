@@ -25,10 +25,17 @@ The details provided assume that the official Docker daemon is running in the ba
 - `$ docker-compose up server` : Start the containers in the foreground
 - `$ docker-compose up -d server` : Start the containers in the background
 
+**Docker Update:** If you are using a newer version of Docker, the `hyphen (-)` is no longer required. The command remains the same, but simply remove the hyphen as shown below.
+- `$ docker compose up server` : Start the containers in the foreground
+- `$ docker compose up -d server` : Start the containers in the background
+
 ## Create admin set and collection types, load workflows, create admin role
 
 - The first time you start the services or after you delete volumes you will need to run:
   `$ docker-compose exec server ./build/firstrun.sh`
+
+- **Docker Update:** For newer versions of Docker, use the following command:
+  `$ docker compose exec server ./build/firstrun.sh`
 
 ## Create an administrator
 
@@ -43,6 +50,18 @@ Role.create(name: 'admin')
 User.first.roles << Role.first
 ```
 
+**Alternative:** Alternatively, you can create an `admin` role and assign it to a user account using the snippet below.
+
+```
+$ docker compose exec server bundle exec rails c
+
+# within the Rails Console:
+Role.create(name: 'admin')
+u = User.first
+u.roles << Role.first
+u.save
+```
+
 ## Run any command on the server application container
 
 _$ docker-compose exec server [COMMAND]_
@@ -51,12 +70,22 @@ _$ docker-compose exec server [COMMAND]_
 - `$ docker-compose exec server bundle exec rails c` : Open the rails console
 - `$ docker-compose exec server bundle exec rubocop` : Run rubocop
 
+**Docker Update:** For newer versions of Docker, use the following command:
+_$ docker compose exec server [COMMAND]_
+
+- `$ docker compose exec server bash` : Open a terminal session on the server container
+- `$ docker compose exec server bundle exec rails c` : Open the rails console
+- `$ docker compose exec server bundle exec rubocop` : Run rubocop
+
 ### Running commands that alter the local filesystem
 
 When you do anything that changes the filesystem (rake tasks or otherwise), you may want to pass through your user ID so that on your local filesystem you still own the files:
 
 `` $ docker-compose exec -u `id -u` workers rake -T ``
 (`id -u` will return your user id. Note the use of backticks `` ` `` rather than quotes)
+
+**Docker Update:** For newer versions of Docker, use the following command:
+`` $ docker compose exec -u `id -u` workers rake -T ``
 
 Ohmyzsh with the docker-compose plugin makes executing these types of commands easier:
 
@@ -126,6 +155,9 @@ Following this fix, run the workflow load rake task:
 
 `$ docker-compose exec server bundle exec rails hyrax:workflow:load`
 
+**Docker Update:** For newer versions of Docker, use the following command:
+`$ docker compose exec server bundle exec rails hyrax:workflow:load`
+
 ## The server container logged **ERROR: Default admin set exists but it does not have an associated permission template.**
 
 This can happen if the database volume was removed but the Fedora volume was not, these two are out of sync. This can be fixed in a couple of ways on the Rails console:
@@ -148,6 +180,9 @@ This can happen if the database volume was removed but the Fedora volume was not
 Following this fix, run the workflow load rake task:
 
 `$ docker-compose exec server bundle exec rails hyrax:workflow:load`
+
+**Docker Update:** For newer versions of Docker, use the following command:
+`$ docker compose exec server bundle exec rails hyrax:workflow:load`
 
 ## Fedora reports 403 Unauthorized error
 
