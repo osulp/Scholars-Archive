@@ -137,9 +137,14 @@ Docker and local configurations are structured such that setting `RAILS_ENV=test
 $ docker-compose down
 $ docker-compose up test
 
+# Docker Update: For newer versions of Docker, use the following command:
+$ docker compose down
+$ docker compose up test
+
 # after the services have finished booting, in another window
 
-$ docker-compose exec test bundle exec rspec
+$ docker-compose exec test bundle exec rspec OR $ docker compose exec test bundle exec rspec
+
 # ... watch the tests run
 ```
 
