@@ -13,7 +13,7 @@ export default class {
   loadThumbnailOptions(url, field) {
       field.select2({
           allowClear: true,
-          placeholder: 'No Thumbnail Selected',
+          placeholder: 'Default Thumbnail',
           ajax: { // Use the jQuery.ajax wrapper provided by Select2
               url: url,
               dataType: "json",
