@@ -18,7 +18,7 @@ The details provided assume that the official Docker daemon is running in the ba
 
 **Important:** Rebuilding the docker container is required whenever Gemfile or Dockerfile updates affect the application.
 
-`$ docker-compose build server`
+`$ docker-compose build server` OR `$ docker compose build server`
 
 ## Start all of the services
 
