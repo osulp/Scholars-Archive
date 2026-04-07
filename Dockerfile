@@ -30,13 +30,18 @@ RUN apt update && apt -y upgrade && \
   bash bash-completion \
   java-common openjdk-17-jre-headless \
   python-is-python3 \
-  ffmpeg mediainfo exiftool
+  ffmpeg mediainfo exiftool \
+  libpng-dev libjpeg-dev libtiff-dev libwebp-dev \
+  libfreetype6-dev libfontconfig1-dev \
+  libxml2-dev libltdl-dev
 
-# Install ImageMagick with full support
-RUN t=$(mktemp) && \
-  wget 'https://raw.githubusercontent.com/SoftCreatR/imei/main/imei.sh' -qO "$t" && \
-  bash "$t" --imagemagick-version=7.0.11-14 --skip-jxl && \
-  rm "$t"
+# Install ImageMagick 7 from source directly
+RUN wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.0.11-14.tar.gz -O /tmp/im.tar.gz && \
+    tar xzf /tmp/im.tar.gz -C /tmp && \
+    cd /tmp/ImageMagick-7.0.11-14 && \
+    ./configure --with-jpeg --with-png --with-tiff --with-webp --with-freetype --with-xml && \
+    make -j$(nproc) && make install && ldconfig && \
+    rm -rf /tmp/im.tar.gz /tmp/ImageMagick-7.0.11-14
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
