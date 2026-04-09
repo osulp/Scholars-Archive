@@ -584,7 +584,7 @@ button.btn-secondary {
 }
 
 // MODIFY: Adjust layout for the bbox_nested for lat & lon
-#bbox_nested_label, #bbox_nested_lat, #bbox_nested_lon {
+#bbox_nested_label, .bbox_nested_lat, .bbox_nested_lon {
   margin-top: 15px;
 }
 
@@ -597,6 +597,36 @@ button.btn-secondary {
   border-bottom:1px dashed #ccc;
   margin-bottom:30px;
   padding-bottom:0;
+
+// TWEAK: Add spacing between image & text
+.theses-title, .honors-title {
+  margin-left: 10px;
+}
+
+// TWEAK: Fix the display to make sure all tabs are viewable in the space
+.nav-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.nav-tabs > li {
+  float: none;
+}
+
+.collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.collection-theses-highlights li, .collection-honors-highlights li {
+  padding: 12px 15px;
+}
+
+.search-result-wrapper > .col-md-6 {
+  width: 80% !important;
+}
 
   & > .col-md-6 {
     width: 80% !important;
@@ -646,4 +676,8 @@ button.btn-secondary {
   a {
     display: block;
   }
+
+.fixedsticky {
+  margin-top: 0;
+  top: auto !important;
 }

@@ -1,17 +1,17 @@
 // OVERRIDE: Adding in a new requirement over the hyrax default control
-import { RequiredFields } from './required_fields'
-import { ChecklistItem } from './checklist_item'
-import { UploadedFiles } from './uploaded_files'
-import { DepositAgreement } from './deposit_agreement'
-import VisibilityComponent from './visibility_component'
+import { RequiredFields } from "./required_fields";
+import { ChecklistItem } from "./checklist_item";
+import { UploadedFiles } from "./uploaded_files";
+import { DepositAgreement } from "./deposit_agreement";
+import VisibilityComponent from "./visibility_component";
 
 /**
  * Polyfill String.prototype.startsWith()
  */
 if (!String.prototype.startsWith) {
-    String.prototype.startsWith = function(searchString, position){
-      position = position || 0;
-      return this.substr(position, searchString.length) === searchString;
+  String.prototype.startsWith = function (searchString, position) {
+    position = position || 0;
+    return this.substr(position, searchString.length) === searchString;
   };
 }
 
@@ -23,12 +23,12 @@ export default class SaveWorkControl {
    */
   constructor(element, adminSetWidget) {
     if (element.length < 1) {
-      return
+      return;
     }
-    this.element = element
-    this.adminSetWidget = adminSetWidget
-    this.form = element.closest('form')
-    element.data('save_work_control', this)
+    this.element = element;
+    this.adminSetWidget = adminSetWidget;
+    this.form = element.closest("form");
+    element.data("save_work_control", this);
     this.activate();
   }
 
@@ -39,10 +39,9 @@ export default class SaveWorkControl {
    * This seems to occur when focus is on one of the visibility buttons
    */
   preventSubmitUnlessValid() {
-    this.form.on('submit', (evt) => {
-      if (!this.isValid())
-        evt.preventDefault();
-    })
+    this.form.on("submit", (evt) => {
+      if (!this.isValid()) evt.preventDefault();
+    });
   }
 
   /**
@@ -50,10 +49,9 @@ export default class SaveWorkControl {
    *
    */
   preventSubmitIfAlreadyInProgress() {
-    this.form.on('submit', (evt) => {
-      if (this.isValid())
-        this.saveButton.prop("disabled", true);
-    })
+    this.form.on("submit", (evt) => {
+      if (this.isValid()) this.saveButton.prop("disabled", true);
+    });
   }
 
   /**
@@ -61,18 +59,18 @@ export default class SaveWorkControl {
    *
    */
   preventSubmitIfUploading() {
-    this.form.on('submit', (evt) => {
+    this.form.on("submit", (evt) => {
       if (this.uploads.inProgress) {
-        evt.preventDefault()
+        evt.preventDefault();
       }
-    })
+    });
   }
 
   /**
    * Is the form for a new object (vs edit an existing object)
    */
   get isNew() {
-    return this.form.attr('id').startsWith('new')
+    return this.form.attr("id").startsWith("new");
   }
 
   /*
@@ -80,47 +78,53 @@ export default class SaveWorkControl {
    */
   activate() {
     if (!this.form) {
-      return
+      return;
     }
-    this.requiredFields = new RequiredFields(this.form, () => this.formStateChanged())
-    this.uploads = new UploadedFiles(this.form, () => this.formStateChanged())
-    this.saveButton = this.element.find(':submit')
-    this.depositAgreement = new DepositAgreement(this.form, () => this.formStateChanged())
-    this.requiredMetadata = new ChecklistItem(this.element.find('#required-metadata'))
-    this.requiredFiles = new ChecklistItem(this.element.find('#required-files'))
-    this.requiredAgreement = new ChecklistItem(this.element.find('#required-agreement'))
-    this.requiredHumanData = new ChecklistItem(this.element.find('#required-human-data'))
+    this.requiredFields = new RequiredFields(this.form, () => this.formStateChanged());
+    this.uploads = new UploadedFiles(this.form, () => this.formStateChanged());
+    this.saveButton = this.element.find(":submit");
+    this.depositAgreement = new DepositAgreement(this.form, () => this.formStateChanged());
+    this.requiredMetadata = new ChecklistItem(this.element.find("#required-metadata"));
+    this.requiredFiles = new ChecklistItem(this.element.find("#required-files"));
+    this.requiredAgreement = new ChecklistItem(this.element.find("#required-agreement"));
+    this.requiredHumanData = new ChecklistItem(this.element.find("#required-human-data"));
+    this.requiredAttestation = new ChecklistItem(this.element.find("#required-attestation"));
 
-    new VisibilityComponent(this.element.find('.visibility'), this.adminSetWidget)
-    this.preventSubmit()
-    this.watchMultivaluedFields()
-    this.formChanged()
+    new VisibilityComponent(this.element.find(".visibility"), this.adminSetWidget);
+    this.preventSubmit();
+    this.watchMultivaluedFields();
+    this.watchAttestation();
+    this.formChanged();
     this.addFileUploadEventListeners();
   }
 
   addFileUploadEventListeners() {
     let $uploadsEl = this.uploads.element;
-    const $cancelBtn = this.uploads.form.find('#file-upload-cancel-btn');
+    const $cancelBtn = this.uploads.form.find("#file-upload-cancel-btn");
 
-    $uploadsEl.on('fileuploadstart', () => {
+    $uploadsEl.on("fileuploadstart", () => {
       $cancelBtn.hidden = false;
     });
 
-    $uploadsEl.on('fileuploadstop', () => {
+    $uploadsEl.on("fileuploadstop", () => {
       $cancelBtn.hidden = true;
     });
   }
 
   preventSubmit() {
-    this.preventSubmitUnlessValid()
-    this.preventSubmitIfAlreadyInProgress()
-    this.preventSubmitIfUploading()
+    this.preventSubmitUnlessValid();
+    this.preventSubmitIfAlreadyInProgress();
+    this.preventSubmitIfUploading();
   }
 
   // If someone adds or removes a field on a multivalue input, fire a formChanged event.
   watchMultivaluedFields() {
-      $('.multi_value.form-group', this.form).on('managed_field:add', () => this.formChanged())
-      $('.multi_value.form-group', this.form).on('managed_field:remove', () => this.formChanged())
+    $(".multi_value.form-group", this.form).on("managed_field:add", () => this.formChanged());
+    $(".multi_value.form-group", this.form).on("managed_field:remove", () => this.formChanged());
+  }
+
+  watchAttestation() {
+    $("input[name$='[attest]']", this.form).on("click", () => this.formChanged());
   }
 
   // Called when a file has been uploaded, the deposit agreement is clicked or a form field has had text entered.
@@ -141,59 +145,112 @@ export default class SaveWorkControl {
 
   isValid() {
     // avoid short circuit evaluation. The checkboxes should be independent.
-    let metadataValid = this.validateMetadata()
-    let filesValid = this.validateFiles()
-    let agreementValid = this.validateAgreement(filesValid)
-    let humanDataValid = this.validateHumanData()
-    return metadataValid && filesValid && agreementValid && humanDataValid
+    let metadataValid = this.validateMetadata();
+    let filesValid = this.validateFiles();
+    let agreementValid = this.validateAgreement(filesValid);
+    let humanDataValid = this.validateHumanData();
+    let attestationValid = this.validateAttestation();
+    let bboxValid = this.validateBboxCoordinate();
+
+    return (
+      metadataValid &&
+      filesValid &&
+      agreementValid &&
+      humanDataValid &&
+      attestationValid &&
+      bboxValid
+    );
   }
 
   // sets the metadata indicator to complete/incomplete
   validateMetadata() {
     if (this.requiredFields.areComplete) {
-      this.requiredMetadata.check()
-      return true
+      this.requiredMetadata.check();
+      return true;
     }
-    this.requiredMetadata.uncheck()
-    return false
+    this.requiredMetadata.uncheck();
+    return false;
   }
 
   // sets the files indicator to complete/incomplete
   validateFiles() {
     if (!this.uploads.hasFileRequirement) {
-      return true
+      return true;
     }
     if (!this.isNew || this.uploads.hasFiles) {
-      this.requiredFiles.check()
-      return true
+      this.requiredFiles.check();
+      return true;
     }
-    this.requiredFiles.uncheck()
-    return false
+    this.requiredFiles.uncheck();
+    return false;
   }
 
   validateAgreement(filesValid) {
     if (filesValid && this.uploads.hasNewFiles && this.depositAgreement.mustAgreeAgain) {
       // Force the user to agree again
-      this.depositAgreement.setNotAccepted()
-      this.requiredAgreement.uncheck()
-      return false
+      this.depositAgreement.setNotAccepted();
+      this.requiredAgreement.uncheck();
+      return false;
     }
     if (!this.depositAgreement.isAccepted) {
-      this.requiredAgreement.uncheck()
-      return false
+      this.requiredAgreement.uncheck();
+      return false;
     }
-    this.requiredAgreement.check()
-    return true
+    this.requiredAgreement.check();
+    return true;
   }
 
   // NEW METHOD: Sets the human data indicator to complete/incomplete
   validateHumanData() {
     // CHECK: If the radio button is selected, then give it a green check mark, if not, then give it an red notice
     if ($("#required-human-data").length === 0 || $("[name$='[human_data]']:checked").length > 0) {
-      this.requiredHumanData.check()
-      return true
+      this.requiredHumanData.check();
+      return true;
     }
-    this.requiredHumanData.uncheck()
-    return false
+    this.requiredHumanData.uncheck();
+    return false;
+  }
+
+  validateAttestation() {
+    if (
+      $("#required-attestation").length === 0 ||
+      $("input[name$='[attest]']:checked").length > 0
+    ) {
+      this.requiredAttestation.check();
+      return true;
+    }
+    this.requiredAttestation.uncheck();
+    return false;
+  }
+
+  // METHOD: Add in a check to make sure the Geo Point pass the check
+  validateBboxCoordinate() {
+    // FIND: Identify the value
+    const lat = this.form.find(".bbox_nested_lat");
+    const lon = this.form.find(".bbox_nested_lon");
+
+    // IF: If fields don't exist on this form, skip validation
+    if (lat.length === 0 || lon.length === 0) {
+      return true;
+    }
+    const latVal = lat.val().trim();
+    const lonVal = lon.val().trim();
+
+    // BOOL: Find if has invalid class
+    const latInvalid = lat.hasClass("invalid");
+    const lonInvalid = lon.hasClass("invalid");
+
+    // DISABLE: Disable if any field is invalid
+    if (latInvalid || lonInvalid) {
+      return false;
+    }
+
+    // MORE REQUIRE: Require both to be filled, or both blank
+    if ((latVal && !lonVal) || (!latVal && lonVal)) {
+      return false;
+    }
+
+    // OTHER: Return true if everything is valid
+    return true;
   }
 }

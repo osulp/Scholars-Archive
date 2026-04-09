@@ -33,6 +33,8 @@ module ScholarsArchive
         %i[date_created] + ::ScholarsArchive::DefaultTerms.date_terms
       end
 
+      def attest; end
+
       def date_terms
         self.class.date_terms
       end

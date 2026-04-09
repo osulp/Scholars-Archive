@@ -10,6 +10,11 @@
         <%= t('hyrax.homepage.recently_uploaded.tab_label') %>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#explore_collection" data-toggle="tab" id="exploreCollection">
+        <%= t('hyrax.homepage.admin_sets.title') %>
+      </a>
+    </li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane show active" id="featured_container" role="tabpanel" aria-labelledby="featureTab">
@@ -17,6 +22,9 @@
     </div>
     <div class="tab-pane" id="recently_uploaded" role="tabpanel" aria-labelledby="recentTab">
       <%= render 'recently_uploaded', recent_documents: @recent_documents %>
+    </div>
+    <div class="tab-pane fade" id="explore_collection" role="tabpanel" aria-labelledby="exploreCollection">
+      <%= render 'explore_collections', collections: @presenter.collections %>
     </div>
   </div>
 </div>
@@ -33,6 +41,11 @@
         <%= t('hyrax.homepage.admin_sets.title') %>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" aria-expanded="false" href="#tab-col2-third" data-toggle="tab">
+        <%= t('hyrax.homepage.featured_thesis.honor_label') %>
+      </a>
+    </li>
   </ul>
   <div class="tab-content">
     <div class="tab-pane show active" id="tab-col2-second">
@@ -42,6 +55,13 @@
     <div class="tab-pane" id="tab-col2-first">
       <h2 class="sr-only"><%= t('hyrax.homepage.admin_sets.title') %></h2>
       <%= render 'explore_collections', collections: @presenter.collections %>
+    <div class="tab-pane" id="tab-col2-second">
+      <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></h2>
+      <%= render 'featured_theses', collections: controller.recent_by_model(model: 'GraduateThesisOrDissertation') %>
+    </div>
+    <div class="tab-pane" id="tab-col2-third">
+      <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.honor_label') %></h2>
+      <%= render 'featured_honors', collections: controller.recent_by_model(model: 'HonorsCollegeThesis') %>
     </div>
   </div>
 </div>

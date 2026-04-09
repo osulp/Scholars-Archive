@@ -41,6 +41,8 @@ module ScholarsArchive
         self.class.date_terms
       end
 
+      def attest; end
+
       def self.build_permitted_params
         super + date_terms + [
           :degree_level,
