@@ -7,6 +7,7 @@ class Ability
   include Hyrax::Ability
   self.ability_logic += [:everyone_can_create_curation_concerns]
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   # Define any customized permissions here.
   def custom_permissions
     # Limits deleting objects to a the admin user
@@ -21,6 +22,9 @@ class Ability
     #   can [:create], ActiveFedora::Base
     # end
 
+    # METHOD: Add in the Role ability to let admin to create the roles needed
+    can(%i[show create add_user remove_user index edit update destroy], Role) if current_user.admin?
+
     can %i[edit update], SolrDocument do |solr_doc|
       admin? || can_review_submissions? || (AdminSet.where(title: solr_doc.admin_set).first.edit_users.include?(current_user.username) if solr_doc.admin_set.present?)
     end
@@ -29,6 +33,7 @@ class Ability
       admin? || can_review_submissions? || (record.admin_set.edit_users.include?(current_user.username) if record.respond_to?(:admin_set))
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def can_import_works?
     can_create_any_work?
