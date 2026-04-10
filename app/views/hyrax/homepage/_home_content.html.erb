@@ -55,6 +55,7 @@
     <div class="tab-pane" id="tab-col2-first">
       <h2 class="sr-only"><%= t('hyrax.homepage.admin_sets.title') %></h2>
       <%= render 'explore_collections', collections: @presenter.collections %>
+    </div>
     <div class="tab-pane" id="tab-col2-second">
       <h2 class="sr-only"><%= t('hyrax.homepage.featured_thesis.thesis_label') %></h2>
       <%= render 'featured_theses', collections: controller.recent_by_model(model: 'GraduateThesisOrDissertation') %>
