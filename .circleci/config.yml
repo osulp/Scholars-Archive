@@ -209,8 +209,8 @@ jobs:
             export GIT_BRANCH=$(git branch --show-current)
             export DATETIME=$(date "+%Y%m%d%H%M%S")
             export YABEDA_PROMETHEUS_PATH=/tmp/prom
-            echo export TAG="$DATETIME-$GIT_SHORT_HASH-$GIT_BRANCH" >> $BASH_ENV
-            echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH-$GIT_BRANCH" >> $BASH_ENV
+            echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
+            echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export YABEDA_PROMETHEUS_PATH=/tmp/prom >> $BASH_ENV
       - setup_remote_docker:
           version: docker23
