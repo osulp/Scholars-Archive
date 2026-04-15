@@ -115,7 +115,7 @@ gem 'yabeda-http_requests'
 # Pin rdf down because Hyrax has a superclass mismatch
 # https://github.com/ruby-rdf/rdf/blob/3.2.5/lib/rdf/model/literal/datetime.rb#L7
 # https://github.com/samvera/active_fedora/blob/v12.1.1/lib/active_fedora.rb#L16
-gem 'rdf', '3.2.4'
+gem 'rdf', '3.3.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
