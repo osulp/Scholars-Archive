@@ -76,6 +76,7 @@ jobs:
           name: Run Rubocop
           command: bundle exec rubocop
   test:
+    resource_class: medium+
     docker:
       - image: cimg/ruby:3.2-browsers
         environment:
