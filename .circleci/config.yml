@@ -4,7 +4,7 @@ orbs:
 jobs:
   checkout_code:
     docker:
-      - image: cimg/ruby:2.7
+      - image: cimg/ruby:3.2
     working_directory: ~/app
     steps:
       - restore_cache:
@@ -23,8 +23,9 @@ jobs:
             - app/*
             - app/**/*
   bundle:
+    resource_class: medium+
     docker:
-      - image: cimg/ruby:2.7-browsers
+      - image: cimg/ruby:3.2-browsers
     environment:
       BUNDLE_PATH: vendor/bundle
     working_directory: ~/app
@@ -45,10 +46,10 @@ jobs:
             - v2-bundle-{{ checksum "Gemfile.lock" }}
       - run:
           name: Update bundler
-          command: gem install bundler -v 2.1.4
+          command: gem install bundler -v 2.1.4 && bundle config set path 'vendor/bundle'
       - run:
           name: Install dependencies
-          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle
+          command: bundle check || bundle install
       - save_cache:
           name: Save bundle cache
           key: v2-bundle-{{ checksum "Gemfile.lock" }}
@@ -61,7 +62,7 @@ jobs:
             - app/**/*
   lint:
     docker:
-      - image: cimg/ruby:2.7-browsers
+      - image: cimg/ruby:3.2-browsers
     environment:
       BUNDLE_PATH: vendor/bundle
     working_directory: ~/app
@@ -75,8 +76,9 @@ jobs:
           name: Run Rubocop
           command: bundle exec rubocop
   test:
+    resource_class: medium+
     docker:
-      - image: cimg/ruby:2.7-browsers
+      - image: cimg/ruby:3.2-browsers
         environment:
           BUNDLE_PATH: vendor/bundle
           CAPYBARA_APP_HOST: http://test:3001
@@ -150,10 +152,10 @@ jobs:
           command: dockerize -wait http://localhost:8080 -timeout 1m
       - run:
           name: Update bundler srsly again
-          command: gem install --force bundler
+          command: gem install --force bundler  && bundle config set path 'vendor/bundle'
       - run:
           name: Bundle update srsly again
-          command: bundle check --without production --path=vendor/bundle || bundle install --without production --path=vendor/bundle --jobs=4 --retry=3
+          command: bundle check --without production || bundle install --without production --jobs=4 --retry=3
       - run:
           name: Create and load MySQL data
           command: bundle exec rake db:create db:schema:load --trace

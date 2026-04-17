@@ -20,7 +20,7 @@ rm -f $pid_dir/sidekiq.pid
 ./build/install_gems.sh
 
 # Submit a marker to honeycomb marking the time the application starts booting
-if [ "${RAILS_ENV}" == 'production' -o "${RAILS_ENV}" == 'staging' ]; then
+if [ "${RAILS_ENV}" = 'production' -o "${RAILS_ENV}" = 'staging' ]; then
   echo "Creating Honeycomb deployment marker in $HONEYCOMB_DATASET"
   curl -sL https://api.honeycomb.io/1/markers/$HONEYCOMB_DATASET -X POST -H "X-Honeycomb-Team: ${HONEYCOMB_WRITEKEY}" -d "{\"message\":\"${RAILS_ENV} - ${DEPLOYED_VERSION} - Sidekiq booting\", \"type\":\"deploy\"}"
 fi
