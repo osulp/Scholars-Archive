@@ -5,6 +5,9 @@ class FileSet < ActiveFedora::Base
   # PREDICATE: Add in :ext_relation for external resource
   property :ext_relation, predicate: ::RDF::URI.new('http://rioxx.net/schema/v3.0/rioxxterms/#ext_relation'), multiple: false
 
+  # PREDICATE: Add in :oembed_url for oembed
+  property :oembed_url, predicate: ::RDF::URI.new('http://opaquenamespace.org/ns/oembed'), multiple: false
+
   include ::ScholarsArchive::DefaultMetadata
   include ::Hyrax::FileSetBehavior
   include ::ScholarsArchive::FinalizeNestedMetadata
@@ -15,6 +18,11 @@ class FileSet < ActiveFedora::Base
   # METHOD: To check true/false if exist for external resource
   def ext_relation?
     !ext_relation.blank?
+  end
+
+  # METHOD: To check true/false if exist for oembed
+  def oembed?
+    !oembed_url.blank?
   end
 
   private
