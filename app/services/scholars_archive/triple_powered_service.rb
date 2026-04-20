@@ -65,7 +65,6 @@ module ScholarsArchive
       query.execute(graph).to_a
     end
 
-    # rubocop:disable Metrics/PerceivedComplexity
     # rubocop:disable Metrics/CyclomaticComplexity
     def predicate_labels(graph)
       labels = {}
@@ -87,7 +86,6 @@ module ScholarsArchive
       labels
     end
     # rubocop:enable Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/PerceivedComplexity
 
     def fetched_graph(predicate, graph)
       graph.query([:s, predicate, :o]).reject { |statement| statement.is_a?(Array) }.map(&:object)
