@@ -61,7 +61,7 @@ gem 'faraday', '~> 1.0'
 gem 'hyrax', '4.0.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
-gem 'rsolr'
+gem 'rsolr', '>= 1.0', '< 3'
 gem 'staccato'
 gem 'dalli'
 # CAS Authentication gems
@@ -115,7 +115,9 @@ gem 'yabeda-http_requests'
 # Pin rdf down because Hyrax has a superclass mismatch
 # https://github.com/ruby-rdf/rdf/blob/3.2.5/lib/rdf/model/literal/datetime.rb#L7
 # https://github.com/samvera/active_fedora/blob/v12.1.1/lib/active_fedora.rb#L16
-gem 'rdf', '3.3.0'
+gem 'rdf', '3.3.2'
+gem 'linkeddata', '3.3.1'
+gem 'sparql', '3.3.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
