@@ -7,10 +7,8 @@ module ScholarsArchive
   class TriplePoweredService
     def fetch_all_labels(uris)
       labels = []
-      Rails.logger.info('###')
       uris.each do |uri|
         graph = fetch_from_store(uri)
-        Rails.logger.info(uri)
         labels << predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri}" }
       end
       labels.flatten.compact
