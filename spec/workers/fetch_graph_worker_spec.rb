@@ -20,13 +20,29 @@ RSpec.describe FetchGraphWorker, type: :worker do
       end
 
       it 'fetches a work and indexes its linked data labels' do
-        stub_request(:get, 'https://sws.geonames.org/5761960/').with(headers: { 'Accept' => 'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/normalized+n-quads, application/x-normalized+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, */*;q=0.1', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host' => 'sws.geonames.org', 'User-Agent' => 'Ruby RDF.rb/3.3.0' }).to_return(status: 200, body: '', headers: {})
+        stub_request(:get, "https://sws.geonames.org/5761960/").
+          with(
+            headers: {
+            'Accept'=>'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/canonical+n-quads, application/x-canonical+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, application/ld+yaml, */*;q=0.1',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Host'=>'sws.geonames.org',
+            'User-Agent'=>'Ruby RDF.rb/3.3.2'
+            }).
+          to_return(status: 200, body: "", headers: {})
         worker.perform(work.id, work.depositor)
         expect(SolrDocument.find(work.id)['based_near_linked_tesim'].first).to eq 'Yamhill County$https://sws.geonames.org/5761960/'
       end
 
       it 'fetches a work and indexes its linked data label for search' do
-        stub_request(:get, 'https://sws.geonames.org/5761960/').with(headers: { 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host' => 'sws.geonames.org', 'User-Agent' => 'Ruby RDF.rb/3.3.0' }).to_return(status: 200, body: '', headers: {})
+        stub_request(:get, "https://sws.geonames.org/5761960/").
+          with(
+            headers: {
+            'Accept'=>'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/canonical+n-quads, application/x-canonical+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, application/ld+yaml, */*;q=0.1',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Host'=>'sws.geonames.org',
+            'User-Agent'=>'Ruby RDF.rb/3.3.2'
+            }).
+          to_return(status: 200, body: "", headers: {})
         worker.perform(work.id, work.depositor)
         expect(SolrDocument.find(work.id)['based_near_label_tesim'].first).to eq 'Yamhill County'
       end
@@ -38,11 +54,19 @@ RSpec.describe FetchGraphWorker, type: :worker do
         allow_any_instance_of(Hyrax::ControlledVocabularies::Location).to receive(:solrize).and_return(['https://sws.geonames.org/5761960/', { label: 'Chabre, Wayne$https://sws.geonames.org/5761960/' }])
         # TODO: ADD THIS BACK IN WHEN SETTING UP EMAILING FOR JOBS
         # allow(worker).to receive(:fetch_failed_callback).with(nil, controlled_val).and_return(true)
-        stub_request(:get, 'https://sws.geonames.org/5761960/').with(headers: { 'Accept' => 'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/normalized+n-quads, application/x-normalized+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, */*;q=0.1', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby RDF.rb/3.3.0' }).to_return(status: 500, body: '', headers: {})
+        stub_request(:get, 'https://sws.geonames.org/5761960/').with(headers: { 'Accept' => 'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/normalized+n-quads, application/x-normalized+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, application/ld+yaml, */*;q=0.1', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent' => 'Ruby RDF.rb/3.3.0' }).to_return(status: 500, body: '', headers: {})
       end
 
       it 'calls #fetch_failed_graph to fire off new job' do
-        stub_request(:get, 'https://sws.geonames.org/5761960/').with(headers: { 'Accept' => 'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/normalized+n-quads, application/x-normalized+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, */*;q=0.1', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host' => 'sws.geonames.org', 'User-Agent' => 'Ruby RDF.rb/3.3.0' }).to_return(status: 500, body: '', headers: {})
+        stub_request(:get, "https://sws.geonames.org/5761960/").
+          with(
+            headers: {
+            'Accept'=>'application/n-triples, application/ld+json, application/x-ld+json, application/rdf+xml, text/turtle, text/rdf+turtle, application/turtle;q=0.2, application/x-turtle;q=0.2, application/n-quads, application/rdf+json, text/html;q=0.5, application/xhtml+xml;q=0.7, image/svg+xml;q=0.4, text/n3, text/rdf+n3;q=0.2, application/rdf+n3;q=0.2, application/canonical+n-quads, application/x-canonical+n-quads, text/csv;q=0.4, text/tab-separated-values;q=0.4, application/csvm+json, application/trig, application/x-trig;q=0.2, application/trix, application/ld+yaml, */*;q=0.1',
+            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Host'=>'sws.geonames.org',
+            'User-Agent'=>'Ruby RDF.rb/3.3.2'
+            }).
+          to_return(status: 500, body: "", headers: {})
         worker.perform(work.id, work.depositor)
       end
     end
