@@ -7,8 +7,10 @@ module ScholarsArchive
   class TriplePoweredService
     def fetch_all_labels(uris)
       labels = []
+      Rails.logger.info('###')
       uris.each do |uri|
         graph = fetch_from_store(uri)
+        Rails.logger.info(uri)
         labels << predicate_labels(graph).values.flatten.compact.collect { |label| "#{label}$#{uri}" }
       end
       labels.flatten.compact
@@ -71,10 +73,7 @@ module ScholarsArchive
 
       rdf_label_predicates.each do |predicate|
         # GET: Fetch all the labels
-        all_labels = graph
-                     .query(predicate: predicate)
-                     .reject { |statement| statement.is_a?(Array) }
-                     .map(&:object)
+        all_labels = fetched_graph(predicate, graph)
 
         # ASSIGN: Assign all the labels to the labels arr
         labels[predicate.to_s] = all_labels.map(&:to_s)
@@ -89,6 +88,10 @@ module ScholarsArchive
     end
     # rubocop:enable Metrics/CyclomaticComplexity
     # rubocop:enable Metrics/PerceivedComplexity
+
+    def fetched_graph(predicate, graph)
+      graph.query([:s, predicate, :o]).reject { |statement| statement.is_a?(Array) }.map(&:object)
+    end
 
     def rdf_label_predicates
       [
