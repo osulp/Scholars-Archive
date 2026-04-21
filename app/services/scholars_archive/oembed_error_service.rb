@@ -5,10 +5,13 @@ module ScholarsArchive
   # messaging service
   class OembedErrorService < Hyrax::AbstractMessageService
     attr_reader :user, :messages
+
+    # rubocop:disable Lint/MissingSuper
     def initialize(user, messages)
       @user = user
       @messages = messages.to_sentence
     end
+    # rubocop:enable Lint/MissingSuper
 
     def message
       I18n.t(
