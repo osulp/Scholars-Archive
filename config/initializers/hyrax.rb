@@ -284,6 +284,11 @@ Hyrax.config.callback.set(:after_fixity_check_failure) do |_file_set, _checksum_
   nil
 end
 
+# Trigger the event for Oembed Error
+Hyrax.config.callback.set(:after_oembed_error) do |user, errors|
+  OregonDigital::OembedErrorService.new(user, errors).call
+end
+
 Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
 Rails.application.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
 

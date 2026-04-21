@@ -27,5 +27,11 @@ class FileSet < ActiveFedora::Base
 
   private
 
+  # METHOD: If the oembed_url changed all previous errors are invalid
+  def resolve_oembed_errors
+    errors = OembedError.find_by(document_id: id)
+    errors.delete if oembed_url_changed? && !errors.blank?
+  end
+
   def set_defaults; end
 end
