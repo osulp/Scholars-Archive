@@ -944,6 +944,7 @@ GEM
     ruby-debug-ide (0.7.3)
       rake (>= 0.8.1)
     ruby-next-core (1.0.3)
+    ruby-oembed (0.18.1)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (1.3.0)
@@ -1197,6 +1198,7 @@ DEPENDENCIES
   rubocop (>= 1.50.2)
   rubocop-rspec (>= 2.20.0)
   ruby-debug-ide
+  ruby-oembed
   rubycas-client!
   rubycas-client-rails!
   rubyzip (~> 1.3.0)
