@@ -17,7 +17,6 @@
     <dd class="col-7"><%= @presenter.fixity_check_status %></dd>
   </div>
   <%# OVERRIDE FROM HYRAX to show oembed_url %>
-  <%BREAK%>
   <% if @presenter.solr_document['oembed_url_tesim'].present? %>
     <div class="row">
       <dt class="col-5"><%= t(".oembed_url") %></dt>
