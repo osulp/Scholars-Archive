@@ -26,4 +26,23 @@ RSpec.describe FileSet do
       expect(model.ext_relation?).to be true
     end
   end
+
+  # TEST NO.3: Testing to make sure the oembed url exist
+  describe 'oembed_url_metadata' do
+    it 'accepts oembed_url metadata' do
+      expect(model).to respond_to(:oembed_url)
+    end
+  end
+
+  # TEST NO.4: Test to make sure it can handle if the item has link or not
+  describe 'oembed_url' do
+    it 'returns false when an oembed_url is not present' do
+      expect(model.oembed_url?).to be false
+    end
+
+    it 'returns true when an oembed_url is present' do
+      model.oembed_url = url
+      expect(model.oembed_url?).to be true
+    end
+  end
 end

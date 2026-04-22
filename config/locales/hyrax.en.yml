@@ -193,6 +193,7 @@ en:
         save: Save
         title: Title
         ext_relation: External Resource
+        oembed_url: oEmbed URL
         edit_url: Edit URL
 
     notifications:
