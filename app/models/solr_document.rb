@@ -211,6 +211,7 @@ class SolrDocument
     documentation
     web_of_science_uid
     ext_relation
+    oembed_url
   ]
 
   field_semantics.merge!(

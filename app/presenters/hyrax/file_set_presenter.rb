@@ -3,6 +3,7 @@
 # frozen_string_literal: true
 
 module Hyrax
+  # rubocop:disable Metrics/ClassLength
   # File Set Presenter
   class FileSetPresenter
     include ModelProxy
@@ -24,19 +25,19 @@ module Hyrax
 
     # CurationConcern methods
     delegate :stringify_keys, :human_readable_type, :collection?, :image?, :video?,
-             :audio?, :pdf?, :office_document?, :representative_id, :ext_relation?, :to_s, to: :solr_document
+             :audio?, :pdf?, :office_document?, :representative_id, :ext_relation?, :oembed_url?, :to_s, to: :solr_document
 
     # Methods used by blacklight helpers
     delegate :has?, :first, :fetch, to: :solr_document
 
     # Metadata Methods
-    # ADD: Put in :ext_relation to the presenter
+    # ADD: Put in :ext_relation & :oembed_url to the presenter
     delegate :title, :label, :description, :creator, :contributor, :subject,
              :publisher, :language, :date_uploaded,
              :embargo_release_date, :lease_expiration_date,
              :depositor, :keyword, :title_or_label, :keyword,
              :date_created, :date_modified, :itemtype,
-             :original_file_id, :ext_relation,
+             :original_file_id, :ext_relation, :oembed_url,
              to: :solr_document
 
     delegate :member_of_collection_ids, to: :parent
@@ -122,11 +123,25 @@ module Hyrax
       ext?(solr_document, false)
     end
 
+    # METHOD: Declare two methods to fetch out the :oembed_url & check if it exist
+    def oembed_url?
+      oem?(solr_document, true)
+    end
+
+    def oembed_url
+      oem?(solr_document, false)
+    end
+
     private
 
     def ext?(solr_document, control_stm)
       curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id, use_valkyrie: false)
       control_stm ? !curation_concern.ext_relation.blank? : curation_concern.ext_relation
+    end
+
+    def oem?(solr_document, control_stm)
+      curation_concern = Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: solr_document.id, use_valkyrie: false)
+      control_stm ? !curation_concern.oembed_url.blank? : curation_concern.oembed_url
     end
 
     def link_presenter_class
@@ -149,4 +164,5 @@ module Hyrax
     end
     # rubocop:enable Metrics/MethodLength
   end
+  # rubocop:enable Metrics/ClassLength
 end

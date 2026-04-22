@@ -45,10 +45,31 @@ module ScholarsArchive
       ext_url
     end
 
+    # METHOD: Add in a method to check if oembed_url exist & fetch the value
+    def oembed_url?
+      file_set_presenters.any? do |presenter|
+        oem?(presenter, true)
+      end
+    end
+
+    def oembed_url
+      oem_url = ''
+
+      file_set_presenters.any? do |presenter|
+        oem_url = oem?(presenter, false)
+      end
+
+      oem_url
+    end
+
     private
 
     def ext?(presenter, control_stm)
       control_stm ? !presenter.ext_relation.blank? : presenter.ext_relation
+    end
+
+    def oem?(presenter, control_stm)
+      control_stm ? !presenter.oembed_url.blank? : presenter.oembed_url
     end
   end
 end
