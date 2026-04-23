@@ -286,7 +286,7 @@ end
 
 # Trigger the event for Oembed Error
 Hyrax.config.callback.set(:after_oembed_error) do |user, errors|
-  OregonDigital::OembedErrorService.new(user, errors).call
+  ScholarsArchive::OembedErrorService.new(user, errors).call
 end
 
 Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options
