@@ -37,12 +37,12 @@ RSpec.describe FileSet do
   # TEST NO.4: Test to make sure it can handle if the item has link or not
   describe 'oembed_url' do
     it 'returns false when an oembed_url is not present' do
-      expect(model.oembed_url?).to be false
+      expect(model.oembed?).to be false
     end
 
     it 'returns true when an oembed_url is present' do
       model.oembed_url = url
-      expect(model.oembed_url?).to be true
+      expect(model.oembed?).to be true
     end
   end
 end
