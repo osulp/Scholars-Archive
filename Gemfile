@@ -98,6 +98,7 @@ gem 'libhoney', '>= 2.2.0'
 
 # Oembed content
 gem 'ruby-oembed'
+gem 'blacklight-oembed'
 
 # Yabeda
 gem 'yabeda'

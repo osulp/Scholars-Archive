@@ -752,3 +752,10 @@ button.btn-secondary {
   margin-top: 0;
   top: auto !important;
 }
+
+// ADD: Create a custom size to fit around with oEmbed content
+.oembed-widget-preview iframe,
+.oembed-widget-preview .oembed iframe {
+  width: 250px !important;
+  height: 150px !important;
+}

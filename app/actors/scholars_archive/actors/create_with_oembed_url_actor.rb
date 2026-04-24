@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'oembed'
-
 module ScholarsArchive
   module Actors
     # If there is a key `:oembed_urls' in the attributes, it extracts the URLs, creates a fileset, addes the URL as metadata, and attaches a dummy image

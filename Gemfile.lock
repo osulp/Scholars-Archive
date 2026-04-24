@@ -154,6 +154,11 @@ GEM
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
       rails
+    blacklight-oembed (0.3.0)
+      blacklight (>= 5.0, < 7)
+      bootstrap-sass (~> 3.0)
+      rails
+      ruby-oembed
     blacklight_advanced_search (6.4.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
@@ -1146,6 +1151,7 @@ PLATFORMS
 DEPENDENCIES
   addressable (= 2.8.0)
   bagit (~> 0.6)
+  blacklight-oembed
   blacklight_advanced_search
   blacklight_oai_provider
   blacklight_range_limit
