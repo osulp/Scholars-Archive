@@ -57,8 +57,12 @@ module ScholarsArchive
     # We can use Hyrax::WorksControllerBehavior definition and add on additional params we want
     def attributes_for_actor
       attributes = super
+
       ext_relation = params.fetch(:ext_relation, [])
       attributes[:ext_relation] = ext_relation
+
+      oembed_url = params.fetch(:oembed_url, [])
+      attributes[:oembed_url] = oembed_url
 
       attributes
     end
