@@ -200,3 +200,9 @@ en:
       oembed_error:
         message: 'The oEmbed URL attached to a work you deposited has encountered an error (either broken or non-allowlisted URI): %{messages}'
         subject: 'Erroring oEmbed content'
+    
+    dashboard:
+      my:
+        heading:
+          favorite: Favorite
+        favorite_collections: Favorite Collections

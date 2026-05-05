@@ -366,11 +366,11 @@ ActiveRecord::Schema.define(version: 2026_05_01_222301) do
   end
 
   create_table "oembed_errors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "document_id", null: false
+    t.string "document_id"
     t.text "oembed_errors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["document_id"], name: "index_oembed_errors_on_document_id"
+    t.index ["document_id"], name: "index_oembed_errors_on_document_id", unique: true
   end
 
   create_table "other_options", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
