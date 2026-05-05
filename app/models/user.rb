@@ -17,6 +17,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :cas_authenticatable
 
+  # Add in relation to the favorite collections to user
+  has_many :favorite_collections, dependent: :destroy
+
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for
   # the account.

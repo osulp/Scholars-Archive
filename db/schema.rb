@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_04_17_215549) do
+ActiveRecord::Schema.define(version: 2026_05_01_222301) do
 
   create_table "bookmarks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -217,6 +217,15 @@ ActiveRecord::Schema.define(version: 2026_04_17_215549) do
     t.index ["user_id"], name: "index_curation_concerns_operations_on_user_id"
   end
 
+  create_table "favorite_collections", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "collection_id"], name: "index_favorite_collections_on_user_id_and_collection_id", unique: true
+    t.index ["user_id"], name: "index_favorite_collections_on_user_id"
+  end
+
   create_table "featured_works", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "order", default: 5
     t.string "work_id"
@@ -357,11 +366,11 @@ ActiveRecord::Schema.define(version: 2026_04_17_215549) do
   end
 
   create_table "oembed_errors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "document_id"
+    t.string "document_id", null: false
     t.text "oembed_errors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["document_id"], name: "index_oembed_errors_on_document_id", unique: true
+    t.index ["document_id"], name: "index_oembed_errors_on_document_id"
   end
 
   create_table "other_options", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
