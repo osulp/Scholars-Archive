@@ -1,0 +1,42 @@
+<%# PARTIAL: List out all of favorite collections %>
+<table class="table table-striped text-center">
+  <thead>
+    <tr>
+      <th class="text-left"><%= t("hyrax.dashboard.my.heading.title") %></th>
+      <th class="text-center"><%= t("hyrax.dashboard.my.heading.type") %></th>
+      <th class="text-center"><%= t("hyrax.dashboard.my.heading.last_modified") %></th>
+      <th class="text-center"><%= t("hyrax.dashboard.my.heading.items") %></th>
+      <th class="text-center"><%= t("hyrax.dashboard.my.heading.collection.visibility") %></th>
+      <th class="text-center"><%= t("hyrax.dashboard.my.heading.favorite") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorite_collections.each do |presenter| %>
+      <tr>
+        <td>
+          <div class="thumbnail-title-wrapper">
+            <div class="thumbnail-wrapper">
+              <% if presenter.thumbnail_path.nil? %>
+                <span class="<%= Hyrax::ModelIcon.css_class_for(::Collection) %> collection-icon-small pull-left"></span>
+              <% else %>
+                <%= image_tag(presenter.thumbnail_path) %>
+              <% end %>
+            </div>
+            <%= link_to presenter.title_or_label, hyrax.dashboard_collection_path(presenter.id) %>
+          </div>
+        </td>
+        <td><%= presenter.collection_type_badge %></td>
+        <td><%= presenter.modified_date %></td>
+        <td><%= presenter.total_viewable_items %></td>
+        <td><%= presenter.permission_badge %></td>
+        <td>
+          <%= button_to '★ Unfavorite',
+              Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: presenter.id),
+              method: :delete,
+              class: "btn btn-danger btn-sm",
+              title: 'Remove from Favorites' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -206,3 +206,9 @@ en:
         heading:
           favorite: Favorite
         favorite_collections: Favorite Collections
+
+    my:
+      count:
+        collections:
+          collections_listing: Collections listing
+          your_favorite: "<strong>%{total_count} collections</strong> you have favorited in the repository"

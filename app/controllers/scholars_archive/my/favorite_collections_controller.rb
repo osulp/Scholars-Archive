@@ -13,6 +13,7 @@ module ScholarsArchive
         add_breadcrumb t(:'hyrax.dashboard.breadcrumbs.admin'), hyrax.dashboard_path
         add_breadcrumb t(:'hyrax.admin.sidebar.collections'), hyrax.my_collections_path
 
+        # GET: Get all the favorite_collections
         @favorite_collections = current_user.favorite_collections.map do |favorite|
           solr_doc = ::SolrDocument.find(favorite.collection_id)
           Hyrax::CollectionPresenter.new(solr_doc, current_ability)
@@ -32,6 +33,21 @@ module ScholarsArchive
         favorite = current_user.favorite_collections.find_by(collection_id: params[:collection_id])
         favorite&.destroy
         redirect_back fallback_location: root_path, notice: 'Collection was removed from Favorites.'
+      end
+
+      private
+
+      # METHOD: To add filter to the favorite collections
+      def search_action_url(*args)
+        Rails.application.routes.url_helpers.my_favorite_collections_url(*args)
+      end
+
+      # OVERRIDE: Override to limit Blacklight search to only favorited collection IDs
+      def search_builder
+        favorite_ids = current_user.favorite_collections.pluck(:collection_id)
+        super.tap do |builder|
+          builder.with(fq: "id:(#{favorite_ids.join(' OR ')})")
+        end
       end
     end
   end
