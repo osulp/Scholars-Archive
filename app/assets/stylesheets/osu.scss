@@ -36,12 +36,22 @@ body {
   background-color: unset;
 }
 
+.navbar-brand {
+  padding-left: 15px;
+}
+
 #masthead {
+  padding: 0px;
   margin-bottom: 0px;
+  height: 100px;
 }
 
 #masthead .navbar-header {
   height: 100px;
+}
+
+#top-navbar-collapse {
+  margin-top: -50px;
 }
 
 #lower-banner-border-masthead {
@@ -55,7 +65,7 @@ body {
 
 #lower-banner-border-masthead h1 a {
   color: #fff;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   text-decoration: none;
 }
@@ -564,7 +574,9 @@ button.copy-single-use-link {
 // Added so Bootstrap buttons in Mac Chrome don't have a white fill color
 button.btn-secondary {
   -webkit-appearance: none!important;
-  border-color: #ccc
+  border-color: #ccc;
+  background-color: white;
+  color: black;
 }
 
 .public-collapse > p {
@@ -597,6 +609,7 @@ button.btn-secondary {
   border-bottom:1px dashed #ccc;
   margin-bottom:30px;
   padding-bottom:0;
+}
 
 // TWEAK: Add spacing between image & text
 .theses-title, .honors-title {
@@ -612,8 +625,32 @@ button.btn-secondary {
   white-space: nowrap;
 }
 
+.nav-item:hover {
+  background-color: #eeeeee !important;
+}
+ 
+.image-masthead > nav {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  padding: 5px 5px 5px 5px !important;
+}
+
+.image-masthead > nav > ul > .nav-item > .nav-link{
+  color: white;
+}
+
+.image-masthead > nav > ul > .nav-item.active {
+  background-color: #585050 !important;
+  .nav-link {
+    color: white !important;
+  }
+}
+
 .nav-tabs > li {
   float: none;
+}
+
+.sidebar .nav-pills > li > a {
+  padding: 12px 10px 12px 12px;
 }
 
 .collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
@@ -626,7 +663,6 @@ button.btn-secondary {
 
 .search-result-wrapper > .col-md-6 {
   width: 80% !important;
-}
 
   & > .col-md-6 {
     width: 80% !important;
