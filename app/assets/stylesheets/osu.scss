@@ -579,12 +579,25 @@ button.btn-secondary {
   color: black;
 }
 
+.card.facet-limit {
+  margin-bottom: 5px;
+}
+
 .public-collapse > p {
   margin-bottom: 0px;
 }
 
+.btn-outline-secondary.active {
+  background-color: #e6e6e6 !important;
+  color: black !important;
+}
+
 .btn-date-remove {
   color: #d9534f;
+}
+
+.facet-field-heading > .text-start {
+  font-size: 18px;
 }
 
 .nested-field {
@@ -611,9 +624,16 @@ button.btn-secondary {
   padding-bottom:0;
 }
 
+.search-result-wrapper s.list-thumbnail {
+  justify-content: left !important;
+}
 // TWEAK: Add spacing between image & text
 .theses-title, .honors-title {
   margin-left: 10px;
+}
+
+.badge {
+  font-size: 90% !important;
 }
 
 // TWEAK: Fix the display to make sure all tabs are viewable in the space
