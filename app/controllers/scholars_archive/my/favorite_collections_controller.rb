@@ -16,6 +16,10 @@ module ScholarsArchive
         # GET: Get all the favorite_collections
         @favorite_collections = current_user.favorite_collections.map do |favorite|
           solr_doc = ::SolrDocument.find(favorite.collection_id)
+
+          # Skip admin sets, only show regular collections
+          next if solr_doc.admin_set?
+
           Hyrax::CollectionPresenter.new(solr_doc, current_ability)
         rescue Blacklight::Exceptions::RecordNotFound
           nil
