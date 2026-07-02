@@ -120,6 +120,6 @@ class ApplicationController < ActionController::Base
 
   # Set cache-control header to allow upstream caching
   def allow_page_caching
-    expires_in(ENV.fetch('PAGE_CACHE_DURATION', '15').to_i.minutes, public: true) if ENV.fetch('ALLOW_PAGE_CACHING', 'false')
+    expires_in(ENV.fetch('PROXY_PAGE_CACHE_DURATION', '15').to_i.minutes, public: true) if ENV.fetch('PROXY_ALLOW_PAGE_CACHING', 'false')
   end
 end

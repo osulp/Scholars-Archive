@@ -36,6 +36,8 @@ services:
       - FITS_PATH=/opt/fits/fits.sh
       - HONEYCOMB_ENABLED=false
       - INVISIBLE_CAPTCHA_SECRET=12341234
+      - PROXY_PAGE_CACHE_DURATION=0
+      - PROXY_ALLOW_PAGE_CACHING=false
       - RAILS_CACHE_STORE_URL=memcache
       - RAILS_ENV=development
       - RAILS_LOG_TO_STDOUT=true
