@@ -5,6 +5,9 @@
 # Need to sub-class CatalogController so we get all other plugins behavior
 # for our own "inside a search context" lookup of facets.
 class BlacklightAdvancedSearch::AdvancedController < CatalogController
+  # Allow upstream caching of pages
+  before_action :allow_page_caching
+
   def index
     @response = get_advanced_search_facets unless request.method == :post
   end
