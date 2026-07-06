@@ -32,6 +32,9 @@ RUN apt update && apt -y upgrade && \
   python-is-python3 \
   ffmpeg mediainfo exiftool
 
+# Update RubyGems to latest supported version
+RUN gem update --system 3.4.22
+
 # Install ImageMagick with full support
 RUN t=$(mktemp) && \
   wget 'https://raw.githubusercontent.com/SoftCreatR/imei/main/imei.sh' -qO "$t" && \
@@ -71,10 +74,6 @@ RUN ./build/install_gems.sh && bundle clean --force
 ## Add code to the container, clean up any garbage
 ##########################################################################
 FROM gems AS code
-
-#USER root
-# Uninstall any dev tools we don't need at runtime
-RUN apt --purge -y autoremove gcc g++
 
 ADD . /data
 
