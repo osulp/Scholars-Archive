@@ -5,6 +5,12 @@
 # Need to sub-class CatalogController so we get all other plugins behavior
 # for our own "inside a search context" lookup of facets.
 class BlacklightAdvancedSearch::AdvancedController < CatalogController
+  
+  # Enforces the bot detection for the advanced controller unless it's an oai request
+  before_action except: :oai do |controller|
+    BotDetectionController.bot_detection_enforce_filter(controller) unless valid_bot?
+  end
+
   def index
     @response = get_advanced_search_facets unless request.method == :post
   end
