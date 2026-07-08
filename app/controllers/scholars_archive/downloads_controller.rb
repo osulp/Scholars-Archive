@@ -34,5 +34,6 @@ module ScholarsArchive
       end
       false
     end
+    before_action :allow_page_caching
   end
 end

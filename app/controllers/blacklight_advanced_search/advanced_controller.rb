@@ -25,6 +25,8 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
     end
     false
   end
+  # Allow upstream caching of pages
+  before_action :allow_page_caching
 
   def index
     @response = get_advanced_search_facets unless request.method == :post
