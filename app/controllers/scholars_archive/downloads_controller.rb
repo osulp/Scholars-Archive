@@ -12,9 +12,10 @@ module ScholarsArchive
       # Deny access if the work containing this file is restricted by a workflow
       return unless workflow_restriction?(file_set_parent(params[asset_param_key]), ability: current_ability)
       return if valid_bot?
+
       raise Hyrax::WorkflowAuthorizationException
     rescue CanCan::AccessDenied, Hyrax::WorkflowAuthorizationException
-      unauthorized_image = Rails.root.join("app", "assets", "images", "unauthorized.png")
+      unauthorized_image = Rails.root.join('app', 'assets', 'images', 'unauthorized.png')
       send_file unauthorized_image, status: :unauthorized
     end
 
