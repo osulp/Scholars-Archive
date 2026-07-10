@@ -33,10 +33,7 @@ RUN apt update && apt -y upgrade && \
   ffmpeg mediainfo exiftool \
   libpng-dev libjpeg-dev libtiff-dev libwebp-dev \
   libfreetype6-dev libfontconfig1-dev \
-  libxml2-dev libyaml-dev libltdl-dev
-
-# Update RubyGems to latest supported version
-RUN gem update --system 3.4.22
+  libxml2-dev libltdl-dev
 
 # Install ImageMagick 7 from source directly
 RUN wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.0.11-14.tar.gz -O /tmp/im.tar.gz && \
@@ -79,6 +76,10 @@ RUN ./build/install_gems.sh && bundle clean --force
 ## Add code to the container, clean up any garbage
 ##########################################################################
 FROM gems AS code
+
+#USER root
+# Uninstall any dev tools we don't need at runtime
+RUN apt --purge -y autoremove gcc g++
 
 ADD . /data
 
