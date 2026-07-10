@@ -7,6 +7,7 @@ class Hyrax::HomepageController < ApplicationController
   include Blacklight::SearchHelper
   include Blacklight::AccessControls::Catalog
 
+  before_action :allow_page_caching, only: [:index]
   class_attribute :presenter_class
   self.presenter_class = Hyrax::HomepagePresenter
   layout 'homepage'
