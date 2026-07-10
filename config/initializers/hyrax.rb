@@ -231,8 +231,16 @@ Hyrax.config do |config|
   # ActiveJob queue to handle ingest-like jobs
   config.ingest_queue_name = :ingest
 
-  # Actor factory add in a custom fileset actor with :ext_relation
-  Hyrax::CurationConcern.actor_factory.insert_before Hyrax::Actors::CreateWithRemoteFilesActor, ScholarsArchive::Actors::CreateWithExtRelationActor
+  # Actor factory add in a custom fileset actor with :ext_relation & :oembed_url
+  Hyrax::CurationConcern.actor_factory.insert_before(
+    Hyrax::Actors::CreateWithRemoteFilesActor,
+    ScholarsArchive::Actors::CreateWithExtRelationActor
+  )
+
+  Hyrax::CurationConcern.actor_factory.insert_before(
+    Hyrax::Actors::CreateWithRemoteFilesActor,
+    ScholarsArchive::Actors::CreateWithOembedUrlActor
+  )
 
   ## Attributes for the lock manager which ensures a single process/thread is mutating a ore:Aggregation at once.
   # How many times to retry to acquire the lock before raising UnableToAcquireLockError
@@ -274,6 +282,11 @@ end
 # Remove :after_fixity_check_failure messages
 Hyrax.config.callback.set(:after_fixity_check_failure) do |_file_set, _checksum_audit_log|
   nil
+end
+
+# Trigger the event for Oembed Error
+Hyrax.config.callback.set(:after_oembed_error) do |user, errors|
+  ScholarsArchive::OembedErrorService.new(user, errors).call
 end
 
 Hyrax::Engine.routes.default_url_options = Rails.application.config.action_mailer.default_url_options

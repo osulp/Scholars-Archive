@@ -4,7 +4,7 @@
   <ul class="visibility">
     <li class="radio">
       <label>
-        <%= f.radio_button :attest, true %>
+        <%= f.radio_button :attest, true, checked: f.object.persisted? %>
         <b>I attest that my work is accessible.</b>
         <ul>
           <li>

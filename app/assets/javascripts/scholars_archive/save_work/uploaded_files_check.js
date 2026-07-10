@@ -9,9 +9,10 @@ $(document).ready(function() {
     // GET: Select the value from the work
     var fileField = $('input[name="uploaded_files[]"]');
     var extFieldNew = $('input[name="ext_relation[]"]:valid');
+    var oembedFieldNew = $('input[name="oembed_url[]"]:valid');
     
     // CHECK: Check to see if the file length or text value is both fill out
-    if (fileField.length > 0 && extFieldNew.val().length > 0) {
+    if ((fileField.length > 0 || oembedFieldNew.val().length > 0) && extFieldNew.val().length > 0) {
       alert('ERROR! Please only submit one of the following, either only a file upload or an URL link');
       return false;
     } else if ((extFieldCurr.text().length != 0) && (extFieldNew.val().length == 0)) {

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# OVERRIDE: Add in this file to create a custom path to display icon for external resource
+# OVERRIDE: Add in this file to create a custom path to display icon for external resource & oembed
 module Hyrax::FileSetHelper
   ##
   # @todo inline the "workflow restriction" into the `can?(:download)` check.
@@ -40,11 +40,15 @@ module Hyrax::FileSetHelper
 
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Style/StringConcatenation
-  # MODIFY: Add in the 'ext_relation' keyword to the display
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  # MODIFY: Add in the 'ext_relation' & 'oembed_url' keyword to the display
   def media_display_partial(file_set)
     'hyrax/file_sets/media_display/' +
       if !file_set.ext_relation.blank?
         'ext_relation'
+      elsif !file_set.oembed_url.blank?
+        'oembed_url'
       elsif file_set.image?
         'image'
       elsif file_set.video?
@@ -61,4 +65,6 @@ module Hyrax::FileSetHelper
   end
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Style/StringConcatenation
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 end

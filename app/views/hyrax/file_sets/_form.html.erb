@@ -8,6 +8,16 @@
 
     <br/>
 
+    <%# ADD: Create the :oembed_url field to edit on the FileSet %>
+    <% if !curation_concern.oembed_url.blank? %>
+      <span class="control-label">
+        <%= label_tag 'file_set[oembed_url]', t('.oembed_url'),  class: "string optional" %>
+      </span>
+      <%= text_field_tag 'file_set[oembed_url]', curation_concern.oembed_url, class: 'form-control', type: 'url', required: true %>
+    <% end %>
+
+    <br/>
+
     <%# ADD: Create the :ext_relation field to edit on the FileSet %>
     <% if !curation_concern.ext_relation.blank? %>
       <h2><%= t('.edit_url') %></h2>

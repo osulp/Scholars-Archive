@@ -96,6 +96,10 @@ gem 'down', '~> 5.0'
 gem 'honeycomb-beeline', '>= 2.10.0'
 gem 'libhoney', '>= 2.2.0'
 
+# Oembed content
+gem 'ruby-oembed'
+gem 'blacklight-oembed'
+
 # Yabeda
 gem 'yabeda'
 gem 'yabeda-prometheus'
