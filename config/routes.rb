@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  mount Bulkrax::Engine, at: '/'
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount BrowseEverything::Engine => '/browse'
+  mount Blacklight::Oembed::Engine => '/oembed'
 
   resources :other_options, only: [:destroy]
 
@@ -95,4 +97,10 @@ Rails.application.routes.draw do
   # bot detection challenge
   get "/challenge", to: "bot_detection#challenge", as: :bot_detect_challenge
   post "/challenge", to: "bot_detection#verify_challenge"
+
+    # override ResourceSync routes from Hyrax, direct to homepage instead, issue 3495
+  get '/.well-known/resourcesync' => 'hyrax/homepage#index'
+  get '/capabilitylist' => 'hyrax/homepage#index'
+  get '/resourcelist' => 'hyrax/homepage#index'
+  get '/changelist' => 'hyrax/homepage#index'
 end

@@ -45,7 +45,7 @@
             "transition_to": "Library Review",
             "notifications": [{
                 "notification_type": "email",
-                "name": "ScholarsArchive::Workflow::DepositedNotification",
+                "name": "ScholarsArchive::Workflow::AdvancedNotification",
                 "to": ["depositing"]
             }],
             "methods": [

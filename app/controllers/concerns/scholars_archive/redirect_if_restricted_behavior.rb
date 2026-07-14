@@ -38,7 +38,7 @@ module ScholarsArchive
 
         # Otherwise, this returns them to the homepage because they got here from elsewhere and need to know this work is embargoed
         # and if its OSU visible, provided a link to login and continue to where they were going
-        if !visible_under_embargo(curation_concern)
+        if visible_under_embargo(curation_concern)
           case curation_concern.embargo.visibility_during_embargo
           when 'restricted'
             flash[:notice] = "The item you are trying to access is under embargo until #{curation_concern.embargo.embargo_release_date.strftime('%B')} #{curation_concern.embargo.embargo_release_date.day}, #{curation_concern.embargo.embargo_release_date.year}."
