@@ -78,7 +78,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # CUSTOM ROUTES #1: Routes to deletion of all file sets
+  # CUSTOM ROUTES: Routes to deletion of all file sets
   namespace :hyrax, path: :concern do
     concerns_to_route.each do |curation_concern_name|
       namespaced_resources curation_concern_name, only: [] do
@@ -98,9 +98,19 @@ Rails.application.routes.draw do
   get "/challenge", to: "bot_detection#challenge", as: :bot_detect_challenge
   post "/challenge", to: "bot_detection#verify_challenge"
 
-    # override ResourceSync routes from Hyrax, direct to homepage instead, issue 3495
+  # override ResourceSync routes from Hyrax, direct to homepage instead, issue 3495
   get '/.well-known/resourcesync' => 'hyrax/homepage#index'
   get '/capabilitylist' => 'hyrax/homepage#index'
   get '/resourcelist' => 'hyrax/homepage#index'
   get '/changelist' => 'hyrax/homepage#index'
+
+  # FAV COLLECTION: Add in routes to the new model for favorite collections
+  scope module: 'scholars_archive', path: 'dashboard' do
+    get 'my/favorite_collections', to: 'my/favorite_collections#index', as: :my_favorite_collections
+  end
+
+  scope module: 'scholars_archive/my' do
+    post 'favorite_collections', to: 'favorite_collections#create', as: :add_favorite_collections
+    delete 'favorite_collections/:collection_id', to: 'favorite_collections#destroy', as: :destroy_favorite_collections
+  end
 end
