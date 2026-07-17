@@ -45,7 +45,7 @@ namespace :scholars_archive do
     # APPEND: Attach additional information to the log
     Rails.logger.info "'START TIME': #{start_time.strftime("%B %-d, %Y %l:%M:%S:%L %p").to_s}"
     Rails.logger.info "'END TIME': #{end_time.strftime("%B %-d, %Y %l:%M:%S:%L %p").to_s}"
-    Rails.logger.info "'No. of File Sets [CHECKED]': #{file_checked.to_s}"
+    Rails.logger.info "'No. of File Sets [TOTAL CHECKED]': #{file_checked.to_s}"
     Rails.logger.info "'No. of File Sets [PASSED]': #{file_passed.to_s}"
     Rails.logger.info "'No. of File Sets [FAILED]': #{file_failed.to_s}\n"
 
