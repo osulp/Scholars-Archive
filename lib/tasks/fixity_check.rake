@@ -32,9 +32,9 @@ namespace :scholars_archive do
 
     # QUERY #1: Query data from the ChecksumAuditLog
     latest_file = ChecksumAuditLog.where("updated_at >= ?", start_time)
-    file_checked = latest_file.count
     file_passed = latest_file.where("passed = true").count
     file_failed = failed_item
+    file_checked = latest_file.count + failed_item
 
     # QUERY #2: Get all the ids that failed via checking with fixity
     failed_arr += latest_file.where("passed = false").map(&:file_set_id)
