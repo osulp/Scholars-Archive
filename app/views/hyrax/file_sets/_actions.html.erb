@@ -40,7 +40,7 @@
           </li>
         <% end %>
 
-        <% if can?(:download, file_set.id) && @presenter.ext_relation.blank? %>
+        <% if can?(:download, file_set.id) && @presenter.ext_relation.blank? && file_set.oembed_url.blank? %>
           <li role="menuitem" tabindex="-1">
             <%= link_to t('.download'),
                         hyrax.download_path(file_set),
