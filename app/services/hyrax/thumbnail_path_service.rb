@@ -19,6 +19,8 @@ module Hyrax
           audio_image
         elsif ext_relation?(thumb)
           ext_relation_image
+        elsif oembed_url?(thumb)
+          oembed_image
         elsif thumbnail?(thumb)
           thumbnail_path(thumb)
         else
@@ -38,6 +40,12 @@ module Hyrax
       def ext_relation?(thumb)
         service = thumb.respond_to?(:ext_relation) ? thumb : Hyrax::FileSetTypeService.new(file_set: thumb)
         !service.ext_relation.blank?
+      end
+
+      # METHOD: Add method to fetch thumbnail if oembed_url exist
+      def oembed_url?(thumb)
+        service = thumb.respond_to?(:oembed_url) ? thumb : Hyrax::FileSetTypeService.new(file_set: thumb)
+        !service.oembed_url.blank?
       end
 
       def fetch_thumbnail(object)
@@ -66,6 +74,10 @@ module Hyrax
 
       def ext_relation_image
         ActionController::Base.helpers.image_path 'ext_relation.png'
+      end
+
+      def oembed_image
+        ActionController::Base.helpers.image_path 'default-oembed.png'
       end
 
       # @return true if there a file on disk for this object, otherwise false
