@@ -7,6 +7,8 @@ module Hyrax
     class << self
       # @param [#id] object - to get the thumbnail for
       # @return [String] a path to the thumbnail
+      # rubocop:disable Metrics/CyclomaticComplexity
+      # rubocop:disable Metrics/PerceivedComplexity
       def call(object)
         return default_image if object.try(:thumbnail_id).blank?
 
@@ -28,6 +30,8 @@ module Hyrax
         end
       end
       # rubocop:enable Metrics/MethodLength
+      # rubocop:enable Metrics/CyclomaticComplexity
+      # rubocop:enable Metrics/PerceivedComplexity
 
       private
 
