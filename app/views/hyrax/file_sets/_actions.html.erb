@@ -1,13 +1,15 @@
 <%# OVERRIDE: Add in couple statements to disable option for :ext_relation %>
 <% if (can?(:download, file_set.id) || can?(:destroy, file_set.id) || can?(:edit, file_set.id)) && !workflow_restriction?(@parent) %>
   <% if can?(:download, file_set.id) && !(can?(:edit, file_set.id) || can?(:destroy, file_set.id)) %>
-    <%= link_to t('.download'),
-                hyrax.download_path(file_set),
-                class: 'btn btn-default btn-sm',
-                title: t('.download_title', file_set: file_set),
-                target: "_blank",
-                id: "file_download",
-                data: { label: file_set.id, work_id: @presenter.id, collection_ids: @presenter.member_of_collection_ids } %>
+    <% if file_set.oembed_url.blank? %>
+      <%= link_to t('.download'),
+                  hyrax.download_path(file_set),
+                  class: 'btn btn-default btn-sm',
+                  title: t('.download_title', file_set: file_set),
+                  target: "_blank",
+                  id: "file_download",
+                  data: { label: file_set.id, work_id: @presenter.id, collection_ids: @presenter.member_of_collection_ids } %>
+    <% end %>
   <% else %>
     <div class="btn-group">
       <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" id="dropdownMenu_<%= file_set.id %>" aria-haspopup="true" aria-expanded="false">
@@ -22,7 +24,7 @@
             <%= link_to t('.edit'), edit_polymorphic_path([main_app, file_set]),
               { title: t('.edit_title', file_set: file_set) } %>
           </li>
-          
+
           <%# ADD: Add a check to make sure version will not display when ext_relation exist %>
           <% if @presenter.ext_relation.blank? %>
             <li role="menuitem" tabindex="-1">
