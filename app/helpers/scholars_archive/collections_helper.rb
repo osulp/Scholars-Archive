@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 module ScholarsArchive
+  # Helper method for collections. Locks down the ability to brand collections to only administrators.
   module CollectionsHelper
     include Hyrax::CollectionsHelper
 
     def collection_brandable?(collection:)
-      flash[:notice] = "To brand this collection, you must be an administrator. Please email through the contact form for branding assistance." unless current_user.admin?
+      flash[:notice] = 'To brand this collection, you must be an administrator. Please email through the contact form for branding assistance.' unless current_user.admin?
       case collection
       when Valkyrie::Resource
         CollectionType
