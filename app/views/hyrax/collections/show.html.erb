@@ -69,6 +69,23 @@
 
     </div>
     <div class="col-md-4 hyc-metadata">
+      <%# FAVORITE: Render Favorite buttons here %>
+      <% if (current_user && @presenter.visibility == 'open') || current_user.admin? %>
+        <h2><%= 'Favorite the Collection' %></h2>
+        <% if current_user.favorite_collections.exists?(collection_id: @presenter.id) %>
+          <%= button_to '★ Unfavorite',
+              Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: @presenter.id),
+              method: :delete,
+              class: 'btn btn-lg btn-warning' %>
+        <% else %>
+          <%= button_to '☆ Favorite',
+              Rails.application.routes.url_helpers.add_favorite_collections_path(collection_id: @presenter.id),
+              method: :post,
+              class: 'btn btn-lg btn-outline-warning' %>
+        <% end %>
+        <br><br>
+      <% end %>
+
       <%= render 'hyrax/collections/media_display', presenter: @presenter %>
       <% unless collection_search_parameters? %>
           <h2><%= t('hyrax.dashboard.collections.show.metadata_header') %></h2>
@@ -127,4 +144,3 @@
 
 
 <span class='hide analytics-event' data-category="collection" data-action="collection-page-view" data-name="<%= @presenter.id %>" >
-
