@@ -1,0 +1,10 @@
+<%# NEW TABS: Create a special tab for non-admin users to render the favorite tabs %>
+<ul class="nav nav-tabs" id="my_nav" role="navigation">
+  <li<%= ' class="active"'.html_safe if current_page?(hyrax.my_collections_path(locale: nil)) %>>
+    <%= link_to t('hyrax.dashboard.my.your_collections'), hyrax.my_collections_path %>
+  </li>
+  <%# NEW: Favorites tab add into the collection tab section %>
+  <li<%= ' class="active"'.html_safe if current_page?(Rails.application.routes.url_helpers.my_favorite_collections_path(locale: nil)) %>>
+    <%= link_to t('hyrax.dashboard.my.favorite_collections'), Rails.application.routes.url_helpers.my_favorite_collections_path %>
+  </li>
+</ul>

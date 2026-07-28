@@ -8,7 +8,7 @@
 <div class="collections-wrapper">
   <section class="tabs-row">
     <!-- Page tabs -->
-    <nav><%= render 'hyrax/my/collections/tabs' %></nav>
+    <nav><%= current_user.admin? ? render('hyrax/my/collections/tabs') : render('hyrax/my/collections/user_tabs')  %></nav>
   </section>
 
   <%# Favorite Collections list %>

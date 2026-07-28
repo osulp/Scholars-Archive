@@ -74,15 +74,17 @@
   <%# NEW: Favorite button to favorite a collection in my collection area %>
   <td>
     <% if current_user.favorite_collections.exists?(collection_id: collection_presenter.id) %>
-      <%= button_to '★',
-          Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: collection_presenter.id),
+      <%= button_to Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: collection_presenter.id),
           method: :delete,
-          class: 'btn btn-sm btn-warning' %>
+          class: 'btn btn-sm btn-warning' do %>
+        <span style="font-size: 15px;">★</span> Unfavorite
+      <% end %>
     <% else %>
-      <%= button_to '☆',
-          Rails.application.routes.url_helpers.add_favorite_collections_path(collection_id: collection_presenter.id),
+      <%= button_to Rails.application.routes.url_helpers.add_favorite_collections_path(collection_id: collection_presenter.id),
           method: :post,
-          class: 'btn btn-sm btn-outline-warning' %>
+          class: 'btn btn-sm btn-outline-warning' do %>
+        <span style="font-size: 15px;">☆</span> Favorite
+      <% end %>
     <% end %>
   </td>
 </tr>
