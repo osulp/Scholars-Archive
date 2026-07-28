@@ -30,11 +30,11 @@
         <td><%= presenter.total_viewable_items %></td>
         <td><%= presenter.permission_badge %></td>
         <td>
-          <%= button_to '★ Unfavorite',
-              Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: presenter.id),
+          <%= button_to Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: presenter.id),
               method: :delete,
-              class: "btn btn-danger btn-sm",
-              title: 'Remove from Favorites' %>
+              class: 'btn btn-sm btn-danger' do %>
+            <span style="font-size: 15px;">★</span> Unfavorite
+          <% end %>
         </td>
       </tr>
     <% end %>
