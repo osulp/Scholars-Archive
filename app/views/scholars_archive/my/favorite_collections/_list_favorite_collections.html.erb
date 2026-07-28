@@ -22,7 +22,11 @@
                 <%= image_tag(presenter.thumbnail_path) %>
               <% end %>
             </div>
-            <%= link_to presenter.title_or_label, hyrax.dashboard_collection_path(presenter.id) %>
+            <% if current_user&.admin? || current_ability.can?(:edit, presenter.id) %>
+              <%= link_to presenter.title_or_label, hyrax.dashboard_collection_path(presenter.id) %>
+            <% else %>
+              <%= link_to presenter.title_or_label, hyrax.collection_path(presenter.id) %>
+            <% end %>
           </div>
         </td>
         <td><%= presenter.collection_type_badge %></td>
