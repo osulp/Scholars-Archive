@@ -70,7 +70,7 @@
     </div>
     <div class="col-md-4 hyc-metadata">
       <%# FAVORITE: Render Favorite buttons here %>
-      <% if (current_user && @presenter.visibility == 'open') || current_user.admin? %>
+      <% if current_user && (@presenter.visibility == 'open' || current_ability.can?(:edit, @presenter.id) || current_user.admin?) %>
         <% if current_user.favorite_collections.exists?(collection_id: @presenter.id) %>
           <%= button_to Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: @presenter.id),
               method: :delete,
