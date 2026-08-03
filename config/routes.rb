@@ -78,14 +78,22 @@ Rails.application.routes.draw do
     end
   end
 
-  # CUSTOM ROUTES: Routes to deletion of all file sets
+  # CUSTOM ROUTES #1: Routes to deletion of all file sets
   namespace :hyrax, path: :concern do
     concerns_to_route.each do |curation_concern_name|
       namespaced_resources curation_concern_name, only: [] do
         member do
           delete :destroy_all_files
+          post :reindex
         end
       end
+    end
+  end
+
+  # CUSTOM ROUTES #2: Reindex for Collections
+  resources :collections, controller: 'hyrax/collections', only: [] do
+    member do
+      post :reindex
     end
   end
 

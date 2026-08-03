@@ -54,6 +54,14 @@ module ScholarsArchive
       super
     end
 
+    # METHOD: Add in a reindexing method to the works
+    def reindex
+      curation_concern.update_index
+      redirect_to [main_app, curation_concern], notice: 'Reindex Work was completed successfully.'
+    rescue StandardError => e
+      redirect_to [main_app, curation_concern], alert: "Reindex Failed: #{e.message}"
+    end
+
     # We can use Hyrax::WorksControllerBehavior definition and add on additional params we want
     def attributes_for_actor
       attributes = super
