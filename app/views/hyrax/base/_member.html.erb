@@ -1,6 +1,6 @@
 <tr class="<%= dom_class(member) %> attributes">
   <td class="thumbnail">
-    <% if member.oembed_url.present? %>
+    <% if member.is_a?(Hyrax::FileSetPresenter) && member.oembed_url.present? %>
       <%= image_tag 'default-oembed.png', alt: 'default oembed image' %>
     <% else %>
       <%= image_tag 'default.png', alt: 'default image' %>
