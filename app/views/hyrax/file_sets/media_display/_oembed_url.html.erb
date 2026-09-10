@@ -1,0 +1,10 @@
+<%# VIEW: Add in an iframe view to the embedded video %>
+<div class='oembed-widget-preview'>
+  <%= content_tag(:div, '',
+      data: {
+        embed_url:
+          Blacklight::Oembed::Engine.routes.url_helpers.embed_path(url: Hyrax.query_service.find_by_alternate_identifier(alternate_identifier: @presenter.class.name.include?('FileSetPresenter') ? @presenter.id : @presenter.representative_id, use_valkyrie: false).oembed_url)
+      }
+    )
+  %>
+</div>

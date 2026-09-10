@@ -11,6 +11,8 @@ class CatalogController < ApplicationController
 
   # This filter applies the hydra access controls
   before_action :enforce_show_permissions, only: :show
+  # Allow upstream caching of pages
+  before_action :allow_page_caching
 
   before_action except: :oai do |controller|
     BotDetectionController.bot_detection_enforce_filter(controller) unless valid_bot?

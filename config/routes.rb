@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount Bulkrax::Engine, at: '/'
   mount Riiif::Engine => 'images', as: :riiif if Hyrax.config.iiif_image_server?
   mount BrowseEverything::Engine => '/browse'
+  mount Blacklight::Oembed::Engine => '/oembed'
 
   resources :other_options, only: [:destroy]
 
@@ -83,8 +84,16 @@ Rails.application.routes.draw do
       namespaced_resources curation_concern_name, only: [] do
         member do
           delete :destroy_all_files
+          post :reindex
         end
       end
+    end
+  end
+
+  # CUSTOM ROUTES #2: Reindex for Collections
+  resources :collections, controller: 'hyrax/collections', only: [] do
+    member do
+      post :reindex
     end
   end
 
@@ -97,9 +106,19 @@ Rails.application.routes.draw do
   get "/challenge", to: "bot_detection#challenge", as: :bot_detect_challenge
   post "/challenge", to: "bot_detection#verify_challenge"
 
-    # override ResourceSync routes from Hyrax, direct to homepage instead, issue 3495
+  # override ResourceSync routes from Hyrax, direct to homepage instead, issue 3495
   get '/.well-known/resourcesync' => 'hyrax/homepage#index'
   get '/capabilitylist' => 'hyrax/homepage#index'
   get '/resourcelist' => 'hyrax/homepage#index'
   get '/changelist' => 'hyrax/homepage#index'
+
+  # FAV COLLECTION: Add in routes to the new model for favorite collections
+  scope module: 'scholars_archive', path: 'dashboard' do
+    get 'my/favorite_collections', to: 'my/favorite_collections#index', as: :my_favorite_collections
+  end
+
+  scope module: 'scholars_archive/my' do
+    post 'favorite_collections', to: 'favorite_collections#create', as: :add_favorite_collections
+    delete 'favorite_collections/:collection_id', to: 'favorite_collections#destroy', as: :destroy_favorite_collections
+  end
 end

@@ -7,6 +7,7 @@ export class UploadedFiles {
     this.element.bind('fileuploadcompleted', callback)
     this.element.bind('fileuploaddestroyed', callback)
     $('#ext_relation').bind('blur', callback)
+    $('#oembed_url').bind('blur', callback)
   }
 
   get hasFileRequirement() {
@@ -22,8 +23,9 @@ export class UploadedFiles {
   get hasFiles() {
     let fileField = this.form.find('input[name="uploaded_files[]"]')
     let extField = this.form.find('input[name="ext_relation[]"]:valid')
+    let oembedField = this.form.find('input[name="oembed_url[]"]:valid')
     
-    return (fileField.length > 0 && !extField.val()) || (extField.val() && fileField.length < 1)
+    return ((fileField.length > 0 || oembedField.val()) && !extField.val()) || (extField.val() && (fileField.length < 1 || !oembedField.val()))
   }
 
   get hasNewFiles() {

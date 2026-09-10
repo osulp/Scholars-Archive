@@ -10,6 +10,11 @@ module ScholarsArchive
         solr_doc['ext_relation_sim'] = object.ext_relation
         solr_doc['ext_relation_ssim'] = object.ext_relation
         solr_doc['ext_relation_tesim'] = object.ext_relation
+
+        # ADD: Solrize the :oembed_url
+        solr_doc['oembed_url_sim'] = object.oembed_url
+        solr_doc['oembed_url_ssim'] = object.oembed_url
+        solr_doc['oembed_url_tesim'] = object.oembed_url
       end
     end
   end
