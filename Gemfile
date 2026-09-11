@@ -136,7 +136,7 @@ end
 group :development, :test do
   gem 'addressable', '2.8.0'
   gem 'byebug', platform: :mri
-  gem 'debase', '>= 0.2.5.beta2'
+  gem 'debase', '>= 0.2.9'
   gem 'debase-ruby_core_source'
   gem 'pry-rails'
   gem 'ruby-debug-ide'

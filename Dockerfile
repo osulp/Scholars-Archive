@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:3.2.1-slim-bullseye AS bundler
+FROM ruby:3.2-slim-bookworm AS bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -17,13 +17,13 @@ RUN apt update && apt -y upgrade && \
   nodejs \
   ghostscript \
   vim \
-  yarn \
+  yarnpkg \
   git \
   cron \
   mariadb-client libmariadb-dev \
   curl wget \
   less \
-  build-essential gcc g++ \
+  build-essential gcc g++ cmake \
   tzdata \
   zip \
   libtool \
@@ -79,7 +79,7 @@ FROM gems AS code
 
 #USER root
 # Uninstall any dev tools we don't need at runtime
-RUN apt --purge -y autoremove gcc g++
+RUN apt --purge -y autoremove gcc g++ cmake
 
 ADD . /data
 
