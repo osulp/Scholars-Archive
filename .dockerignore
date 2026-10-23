@@ -1,26 +1,35 @@
+# Version control
 .circleci
 .git
 .github
-.env
-.dockerignore
 .gitignore
+
+# Environment & config
+.env
+
+# Docs & misc
 .rspec
 .rubocop_fix_me.yml
 .rubocop.yml
 .ruby-version
 .version
-docker-compose.*
 Dockerfile
-.circleci/*
-.github/*
-solr/*
-coverage/
-config/local_env.*
-config/mysql/
-config/blazegraph/
-config/puma/development.rb
-config/nginx_rewrites.conf
-build/build.sh
+docker-compose.*
 m1/*
+solr/*
+
+# Build & tmp
+build/build.sh
 tmp/*
+vendor/bundle/
+node_modules/
+coverage/
+
+# Runtime artifacts
+log/
+*.log
+public/assets/
+
+# Development tools
 spec/
+test/
