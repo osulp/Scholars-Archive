@@ -4,8 +4,9 @@
  *= require_self
 */
 
-@import "bootstrap-sprockets";
+@import "_variables";
 @import 'bootstrap';
+@import "browse_everything/browse_everything_bootstrap4";
 @import 'blacklight/blacklight';
 @import "font-awesome";
 @import "blacklight_gallery/gallery";

@@ -30,6 +30,9 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+
+  config.hosts << "test.library.oregonstate.edu"
+  config.hosts << "test.lib.oregonstate.edu"
   config.action_mailer.default_url_options = { :host => 'test.library.oregonstate.edu:3000' }
 
   config.action_mailer.perform_caching = false

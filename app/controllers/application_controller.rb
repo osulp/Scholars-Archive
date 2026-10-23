@@ -13,9 +13,6 @@ class ApplicationController < ActionController::Base
   include Hyrax::ThemedLayoutController
   with_themed_layout '1_column'
 
-  # Hyrax 2.1 migration
-  skip_after_action :discard_flash_if_xhr
-
   protect_from_forgery with: :exception, unless: :http_header_auth?
   skip_before_action :verify_authenticity_token, unless: :http_header_auth?
   before_action :http_header_auth_login

@@ -35,6 +35,7 @@ services:
       - BROWSEEVERYTHING_FILESYSTEM_PATH='/tmp/browse-everything'
       - FITS_PATH=/opt/fits/fits.sh
       - HONEYCOMB_ENABLED=false
+      - HYRAX_ANALYTICS=false
       - INVISIBLE_CAPTCHA_SECRET=12341234
       - PROXY_PAGE_CACHE_DURATION=0
       - PROXY_ALLOW_PAGE_CACHING=false

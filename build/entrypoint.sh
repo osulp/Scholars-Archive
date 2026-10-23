@@ -24,13 +24,13 @@ if [ "${RAILS_ENV}" != 'production' ]; then
 fi
 
 # Submit a marker to honeycomb marking the time the application starts booting
-if [ "${RAILS_ENV}" == 'production' -o "${RAILS_ENV}" == 'staging' ]; then
+if [ "${RAILS_ENV}" = 'production' -o "${RAILS_ENV}" = 'staging' ]; then
   echo "Creating Honeycomb deployment marker in $HONEYCOMB_DATASET"
   curl -sL https://api.honeycomb.io/1/markers/$HONEYCOMB_DATASET -X POST -H "X-Honeycomb-Team: ${HONEYCOMB_WRITEKEY}" -d "{\"message\":\"${RAILS_ENV} - ${DEPLOYED_VERSION} - Rails booting\", \"type\":\"deploy\"}"
 fi
 
 # Precompile assets
-if [ "${RAILS_ENV}" == 'production' -o "${RAILS_ENV}" == 'staging' ]; then
+if [ "${RAILS_ENV}" = 'production' -o "${RAILS_ENV}" = 'staging' ]; then
    timestamp=`date +'%Y-%m-%d %H:%M:%S'`
    echo "[$timestamp] Precompiling assets ($RAILS_ENV)"
    RAILS_ENV=$RAILS_ENV SECRET_KEY_BASE=temporary bundle exec rails assets:precompile

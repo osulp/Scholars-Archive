@@ -47,6 +47,8 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    config.view.gallery(document_component: Blacklight::Gallery::DocumentComponent)
+    config.view.masonry(document_component: Blacklight::Gallery::DocumentComponent)
     # default advanced config values
     config.advanced_search = {
       qt: 'search',
@@ -64,6 +66,10 @@ class CatalogController < ApplicationController
     config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
     config.show.partials.insert(1, :openseadragon)
     config.search_builder_class = ScholarsArchive::CatalogSearchBuilder
+
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
 
     # Show gallery view
     config.view.gallery.partials = %i[index_header index]

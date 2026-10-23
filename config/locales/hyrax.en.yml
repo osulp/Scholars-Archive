@@ -128,6 +128,8 @@ en:
           label:          "Search %{application_name}"
           placeholder:    "Enter search terms or select 'Go' to browse"
     visibility:
+      open:
+        warning_html: '<p> <strong>Please note</strong>, making something visible to the world (i.e. marking this as %{label}) may be viewed as publishing which could impact your ability to: </p> <ul> <li>Patent your work</li> <li>Publish your work in a journal</li> </ul> <p> Check out <a href="https://openpolicyfinder.jisc.ac.uk/">Jisc</a> for more information about publisher copyright policies. </p>'
       embargo:
         note_html: "Temporarily restrict access to your work."
         text: "Embargo"

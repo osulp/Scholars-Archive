@@ -6,9 +6,11 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.5'
+gem 'rails', '~> 6.0.6'
 # Use Puma as the app server
 gem 'puma', '~> 5.6.7'
+
+gem 'concurrent-ruby', '1.3.4'
 
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
@@ -18,10 +20,15 @@ gem 'chosen-rails', '~> 1.9'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+# And bootstrap as a CSS library
+gem 'bootstrap', '~> 4.0'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -30,10 +37,11 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 # Sidekiq for background job processing with Redis
 gem 'sidekiq', '5.2.10'
+gem 'sprockets', '3.7.2'
 gem 'ffi', '~> 1.15.0'
 
 gem 'blacklight_oai_provider'
-gem 'blacklight_range_limit'
+gem "blacklight_range_limit", "~> 7.0"
 gem 'edtf', '~> 3.1.1'
 
 gem 'blacklight_advanced_search'
@@ -49,11 +57,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'browse-everything'
 gem 'devise'
 gem 'devise_cas_authenticatable', '~> 1.0'
-gem 'faraday'
-gem 'hyrax', '3.6.0'
+gem 'faraday', '~> 1.0'
+gem 'hyrax', '4.0.0'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'invisible_captcha'
-gem 'rsolr'
+gem 'rsolr', '>= 1.0', '< 3'
 gem 'staccato'
 gem 'dalli'
 # CAS Authentication gems
@@ -81,7 +89,7 @@ gem 'rest-client', '~> 2.0'
 gem 'haml'
 
 gem 'bagit', '~>0.6'
-gem 'riiif', '~> 1.1'
+gem 'riiif', '~> 2.5'
 
 # Security update
 gem 'rubyzip', '~> 1.3.0'
@@ -111,7 +119,9 @@ gem 'yabeda-http_requests'
 # Pin rdf down because Hyrax has a superclass mismatch
 # https://github.com/ruby-rdf/rdf/blob/3.2.5/lib/rdf/model/literal/datetime.rb#L7
 # https://github.com/samvera/active_fedora/blob/v12.1.1/lib/active_fedora.rb#L16
-gem 'rdf', '3.2.4'
+gem 'rdf', '3.3.2'
+gem 'linkeddata', '3.3.1'
+gem 'sparql', '3.3.0'
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -126,7 +136,7 @@ end
 group :development, :test do
   gem 'addressable', '2.8.0'
   gem 'byebug', platform: :mri
-  gem 'debase', '>= 0.2.5.beta2'
+  gem 'debase', '>= 0.2.9'
   gem 'debase-ruby_core_source'
   gem 'pry-rails'
   gem 'ruby-debug-ide'

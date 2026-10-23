@@ -63,7 +63,6 @@ module ScholarsArchive
       query.execute(graph).to_a
     end
 
-    # rubocop:disable Metrics/PerceivedComplexity
     # rubocop:disable Metrics/CyclomaticComplexity
     def predicate_labels(graph)
       labels = {}
@@ -71,10 +70,7 @@ module ScholarsArchive
 
       rdf_label_predicates.each do |predicate|
         # GET: Fetch all the labels
-        all_labels = graph
-                     .query(predicate: predicate)
-                     .reject { |statement| statement.is_a?(Array) }
-                     .map(&:object)
+        all_labels = fetched_graph(predicate, graph)
 
         # ASSIGN: Assign all the labels to the labels arr
         labels[predicate.to_s] = all_labels.map(&:to_s)
@@ -88,7 +84,10 @@ module ScholarsArchive
       labels
     end
     # rubocop:enable Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/PerceivedComplexity
+
+    def fetched_graph(predicate, graph)
+      graph.query([:s, predicate, :o]).reject { |statement| statement.is_a?(Array) }.map(&:object)
+    end
 
     def rdf_label_predicates
       [

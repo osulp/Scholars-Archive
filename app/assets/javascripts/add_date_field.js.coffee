@@ -70,9 +70,9 @@
 
     toggle_header = (row_count) ->
       if (row_count == 0)
-        $('#date_fields table thead tr').addClass('hidden')
+        $('#date_fields table thead tr').addClass('d-none')
       else
-        $('#date_fields table thead tr').removeClass('hidden')
+        $('#date_fields table thead tr').removeClass('d-none')
 
     # hide table header if empty
     row_count = $('#date_fields table tbody tr:visible').length
@@ -192,7 +192,7 @@
       $('#date_fields tr.date_field.'+selected_date+' .date-input input').val("")
 
       # hide the date field
-      $('tr.date_field.'+selected_date).addClass('hidden')
+      $('tr.date_field.'+selected_date).addClass('d-none')
 
       # hide table header if empty
       row_count = $('#date_fields table tbody tr:visible').length

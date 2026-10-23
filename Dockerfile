@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:2.7-slim-bullseye AS bundler
+FROM ruby:3.2-slim-bookworm AS bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -17,13 +17,13 @@ RUN apt update && apt -y upgrade && \
   nodejs \
   ghostscript \
   vim \
-  yarn \
+  yarnpkg \
   git \
   cron \
   mariadb-client libmariadb-dev \
   curl wget \
   less \
-  build-essential \
+  build-essential gcc g++ cmake \
   tzdata \
   zip \
   libtool \
@@ -37,11 +37,11 @@ RUN apt update && apt -y upgrade && \
 
 # Install ImageMagick 7 from source directly
 RUN wget https://github.com/ImageMagick/ImageMagick/archive/refs/tags/7.0.11-14.tar.gz -O /tmp/im.tar.gz && \
-    tar xzf /tmp/im.tar.gz -C /tmp && \
-    cd /tmp/ImageMagick-7.0.11-14 && \
-    ./configure --with-jpeg --with-png --with-tiff --with-webp --with-freetype --with-xml && \
-    make -j$(nproc) && make install && ldconfig && \
-    rm -rf /tmp/im.tar.gz /tmp/ImageMagick-7.0.11-14
+  tar xzf /tmp/im.tar.gz -C /tmp && \
+  cd /tmp/ImageMagick-7.0.11-14 && \
+  ./configure --with-jpeg --with-png --with-tiff --with-webp --with-freetype --with-xml && \
+  make -j$(nproc) && make install && ldconfig && \
+  rm -rf /tmp/im.tar.gz /tmp/ImageMagick-7.0.11-14
 
 # Set the timezone to America/Los_Angeles (Pacific) then get rid of tzdata
 RUN cp -f /usr/share/zoneinfo/America/Los_Angeles /etc/localtime && \
@@ -79,7 +79,7 @@ FROM gems AS code
 
 #USER root
 # Uninstall any dev tools we don't need at runtime
-RUN apt --purge -y autoremove gcc g++
+RUN apt --purge -y autoremove gcc g++ cmake
 
 ADD . /data
 
