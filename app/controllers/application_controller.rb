@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   skip_after_action :discard_flash_if_xhr
 
   protect_from_forgery with: :exception, unless: :http_header_auth?
-  skip_before_action :verify_authenticity_token, unless: :http_header_auth?
+  skip_before_action :verify_authenticity_token, if: :http_header_auth?
   before_action :http_header_auth_login
   before_action :update_from_person_api
 
