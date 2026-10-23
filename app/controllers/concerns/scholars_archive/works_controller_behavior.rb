@@ -7,6 +7,7 @@ module ScholarsArchive
     extend ActiveSupport::Concern
     include Hyrax::WorksControllerBehavior
     included do
+      before_action :authenticate_user!, only: %i[reindex destroy_all_files]
       before_action :redirect_mismatched_work, only: [:show]
       before_action :scrub_params, only: %i[update create]
       after_action :email_for_accessibility_attestation, only: %i[create]
@@ -56,6 +57,7 @@ module ScholarsArchive
 
     # METHOD: Add in a reindexing method to the works
     def reindex
+      authorize! :edit, curation_concern
       curation_concern.update_index
       redirect_to [main_app, curation_concern], notice: 'Reindex Work was completed successfully.'
     rescue StandardError => e
