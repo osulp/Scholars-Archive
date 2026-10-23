@@ -26,29 +26,30 @@ RSpec.describe OtherOptionsController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    before do
-      login_as user
-      # expect(controller).to receive(:authorize!).with(:destroy, FeaturedWork).and_return(true)
-    end
-
-    context 'without permission to destroy' do
-      it 'does not destroy the requested date_range' do
-        date_range = OtherOption.create! valid_attributes
-        expect do
-          delete :destroy, params: { id: date_range.to_param }
-        end.not_to change(OtherOption, :count)
-      end
-    end
-
     context 'with permission to destroy' do
       before do
-        allow(user).to receive(:admin?).and_return(true)
+        # Disables the Devise authentication filter to allow testing as unauthorized user
+        OtherOptionsController.skip_before_action :authenticate_user!
       end
       it 'destroys the requested date_range' do
         date_range = OtherOption.create! valid_attributes
         expect do
           delete :destroy, params: { id: date_range.to_param }
         end.to change(OtherOption, :count).by(-1)
+      end
+    end
+
+    context 'without permission to destroy' do
+      before do
+        # Re-enables the Devise authentication filter to allow testing as authorized user
+        OtherOptionsController.before_action :authenticate_user!
+      end
+
+      it 'does not destroy the requested date_range' do
+        date_range = OtherOption.create! valid_attributes
+        expect do
+          delete :destroy, params: { id: date_range.to_param }
+        end.not_to change(OtherOption, :count)
       end
     end
   end
