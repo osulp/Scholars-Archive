@@ -20,15 +20,12 @@ module ScholarsArchive::Embargoes
 
         logger.warn("Processing work id: #{work.id}")
 
-        work.embargo_visibility!
-        work.deactivate_embargo!
-        work.embargo.save!
-        work.save!(validate: false)
+        Hyrax::Actors::EmbargoActor.new(work).destroy
         if work.file_set?
           work.visibility = work.to_solr['visibility_after_embargo_ssim']
           work.save!(validate: false)
         elsif !work.file_set?
-          work.copy_visibility_to_files
+          Hyrax::VisibilityPropagator.for(source: work).propagate
         end
       rescue StandardError => e
         logger.error("Couldnt process #{work.id}")

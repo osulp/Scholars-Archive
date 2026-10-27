@@ -4,7 +4,6 @@
 class Hyrax::HomepageController < ApplicationController
   # Adds Hydra behaviors into the application controller
   include Blacklight::SearchContext
-  include Blacklight::SearchHelper
   include Blacklight::AccessControls::Catalog
 
   before_action :allow_page_caching, only: [:index]

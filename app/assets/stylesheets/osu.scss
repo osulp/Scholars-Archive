@@ -1,6 +1,8 @@
 @import "osu_settings";
 
-/* Temporary override to disable 'Explore Collections' tab */
+html {
+  font-size: 11pt !important;
+}
 
 body {
   font-family: 'Open Sans', sans-serif !important;
@@ -34,12 +36,22 @@ body {
   background-color: unset;
 }
 
+.navbar-brand {
+  padding-left: 15px;
+}
+
 #masthead {
+  padding: 0px;
   margin-bottom: 0px;
+  height: 100px;
 }
 
 #masthead .navbar-header {
   height: 100px;
+}
+
+#top-navbar-collapse {
+  margin-top: -50px;
 }
 
 #lower-banner-border-masthead {
@@ -53,7 +65,7 @@ body {
 
 #lower-banner-border-masthead h1 a {
   color: #fff;
-  font-size: 2.2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   text-decoration: none;
 }
@@ -107,6 +119,10 @@ a:focus {
   }
 }
 
+#search-form-header {
+  margin-bottom: 10px;
+}
+
 .work-type .work-type-tag {
   font-size: 36px;
 }
@@ -128,6 +144,10 @@ a:focus {
     vertical-align: baseline;
     border-radius: .25em;
    }
+}
+
+.show-actions {
+  gap: 0.5em 1em;
 }
 
 div.facets h3 {
@@ -198,11 +218,6 @@ div#geo_wrapper {
   max-width: 100% !important;
 }
 
-.input-group-addon,
-.input-group-btn {
-  width: 1% !important;
-}
-
 .select2-container {
   width: 75% !important;
   border: none !important;
@@ -254,6 +269,7 @@ table[data-behavior="child-relationships"] > tbody > tr > td {
 
 div .modal-dialog {
   width: 65%;
+  max-width: unset;
 }
 
 div .select-worktype {
@@ -318,6 +334,27 @@ footer.site-footer {
   background: linear-gradient(top, #39393a 0%, #252525 100%);
   /* W3C */
   border-top: 4px solid $osu-orange;
+
+  .navbar-right {
+    margin-right: 15px;
+  }
+  .navbar-text {
+    margin: 0 15px;
+  }
+
+  .navbar-image {
+    margin: -10px 15px;
+    float: right;
+  }
+    .navbar-image_image-custom {
+      height: 80px;
+      width: 80px;
+    }
+
+  .deployed {
+    color: rgba($color: #fff, $alpha: 0.2);
+    font-size: 12px;
+  }
 }
 
 footer.site-footer a.navbar-link {
@@ -415,38 +452,9 @@ hr.deposit-help {
   margin: 0 0 10px 0;
 }
 
-.site-footer {
-  height: 150px !important;
-  bottom: -25px !important;
-
-  .navbar-right {
-    margin-right: 15px;
-  }
-  .navbar-text {
-    margin: 0 15px;
-  }
-
-  .navbar-image {
-    margin: -10px 15px;
-    float: right;
-  }
-    .navbar-image_image-custom {
-      height: 80px;
-      width: 80px;
-    }
-
-  .deployed {
-    color: rgba($color: #fff, $alpha: 0.2);
-    font-size: 12px;
-  }
-}
-
 .modal-footer {
   .pagination {
     margin: 0;
-    ul.pagination {
-      margin: 0;
-    }
   }
 }
 
@@ -457,95 +465,6 @@ li.attribute {
 .field-wrapper {
   textarea {
     resize: vertical;
-  }
-}
-
-ol.dd-list.dd-dragel {
-  display: inherit;
-  .dd-item {
-    display: table;
-  }
-  .dd3-handle.dd-handle {
-    display: table-cell;
-    position: inherit;
-  }
-}
-
-.ordered-field-container {
-  position: inherit;
-  display: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  .draggable-order {
-    .dd-item {
-      display: table;
-    }
-    .dd3-handle.dd-handle {
-      display: table-cell;
-      position: inherit;
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-    }
-    .dd-handle.dd3-handle {
-      max-width: 30px;
-      padding: 0px;
-    }
-
-    .glyphicon {
-      display: inline-block;
-      position: inherit;
-    }
-
-    input textarea {
-      font-size: initial;
-      padding-left: 5px;
-    }
-  }
-  .group-up-down-arrows {
-    button {
-      margin-right: 2px;
-    }
-    button.up-arrow {
-      margin-left: 2px;
-    }
-  }
-
-  .text-area-dd-handle {
-    height: 68px !important;
-    position: absolute !important;
-    z-index: 1;
-  }
-
-  .text-area-nested-field {
-    width: 78px !important;
-    height: 68px;
-
-    button.down-arrow {
-      float: right;
-      top: 34px;
-      position: absolute;
-      width: 53%;
-      height: 34px;
-      margin-left: 33px !important;
-      margin-right: 2px;
-    }
-    button.up-arrow {
-      top: 0px;
-      position: absolute;
-      width: 53%;
-      height: 34px;
-      margin-right: 2px;
-      margin-left: 33px;
-    }
-    .glyphicon {
-      top: 10px;
-      right: 11px;
-    }
-  }
-  .multi-input-nested-item {
-    button.down-arrow {
-      float: right;
-    }
   }
 }
 
@@ -583,6 +502,12 @@ textarea.nested-field {
   min-height: 68px !important;
 }
 
+#metadata .dd-item {
+  display: flex !important;
+}
+.dd-handle {
+  z-index: 1;
+}
 .dd-dragel {
   .text-area-dd-handle {
     height: 68px !important;
@@ -647,14 +572,30 @@ button.copy-single-use-link {
 // Added so Bootstrap buttons in Mac Chrome don't have a white fill color
 button.btn-secondary {
   -webkit-appearance: none!important;
+  border-color: #ccc;
+  background-color: white;
+  color: black;
+}
+
+.card.facet-limit {
+  margin-bottom: 5px;
 }
 
 .public-collapse > p {
   margin-bottom: 0px;
 }
 
+.btn-outline-secondary.active {
+  background-color: #e6e6e6 !important;
+  color: black !important;
+}
+
 .btn-date-remove {
   color: #d9534f;
+}
+
+.facet-field-heading > .text-start {
+  font-size: 18px;
 }
 
 .nested-field {
@@ -675,9 +616,22 @@ button.btn-secondary {
   margin-top: 15px;
 }
 
+.search-result-wrapper {
+  border-bottom:1px dashed #ccc;
+  margin-bottom:30px;
+  padding-bottom:0;
+}
+
+.search-result-wrapper s.list-thumbnail {
+  justify-content: left !important;
+}
 // TWEAK: Add spacing between image & text
 .theses-title, .honors-title {
-  margin-left: 10px;  
+  margin-left: 10px;
+}
+
+.badge {
+  font-size: 90% !important;
 }
 
 // TWEAK: Fix the display to make sure all tabs are viewable in the space
@@ -689,8 +643,36 @@ button.btn-secondary {
   white-space: nowrap;
 }
 
+.nav-item:hover {
+  background-color: #eeeeee !important;
+}
+ 
+.image-masthead > nav {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+  padding: 5px 5px 5px 5px !important;
+}
+
+.image-masthead > nav > ul > .nav-item > .nav-link{
+  color: white;
+}
+
+.image-masthead > nav > ul > .nav-item.active {
+  background-color: #585050 !important;
+  .nav-link {
+    color: white !important;
+  }
+}
+
+.image-masthead > nav > .navbar-nav {
+  margin-top: -40px;
+}
+
 .nav-tabs > li {
   float: none;
+}
+
+.sidebar .nav-pills > li > a {
+  padding: 12px 10px 12px 12px;
 }
 
 .collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
@@ -703,30 +685,23 @@ button.btn-secondary {
 
 .search-result-wrapper > .col-md-6 {
   width: 80% !important;
-}
 
-.form-control.select {
-  width: 100% !important;
-}
-
-.form-control.string {
-  width: 100% !important;
-}
-
-#new_date_type {
-  width: 99% !important;
-}
-
-.form-control.multi_value {
-  width: 100% !important;
-}
-
-.form-control:not(.multi_value) {
- width: 99% !important;
+  & > .col-md-6 {
+    width: 80% !important;
+  }
 }
 
 .tombstone-text {
   word-wrap: break-word;
+}
+
+.homepage-search-buttons {
+  height: 60%;
+}
+
+.homepage-dropdown-aligned {
+  margin-right: -90px !important;
+  margin-top: -25px !important;
 }
 
 /* Override Hyrax CSS so that first multivalue input can be removed */
@@ -744,8 +719,21 @@ button.btn-secondary {
 }
 
 // ADD: Create a bit of spacing on the controlled_vocab
-.input-group .form-control:first-child {
+.input-group .controlled_vocabulary:first-child {
   margin-bottom: 10px;
+}
+/* Settings toggle page */
+.status .badge-disabled {
+  background-color: #6c757d;
+}
+
+/* Bootstrap fixes */
+.dropdown-item {
+  // Hyrax setup bootstrap dropdowns wrong, .dropdown-item is supposed to go on <a> tags
+  // This will make the full length of the link clickable again
+  a {
+    display: block;
+  }
 }
 
 .fixedsticky {

@@ -8,7 +8,8 @@ fi
 echo "Checking ${RAILS_ENV} database migration status and auto-migrating if necessary."
 # If the migration status can't be read or is not fully migrated
 # then update the database with latest migrations
-bundle exec rails db:migrate:status &> /dev/null
+bundle exec rails db:migrate:status
 if [ $? -ne 0 ]; then
+  echo "Running database migrations"
   bundle exec rails db:migrate
 fi
