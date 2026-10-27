@@ -12,6 +12,20 @@ ENV LC_ALL C.UTF-8
 ##########################################################################
 FROM bundler AS dependencies
 
+RUN tee /etc/apt/sources.list <<EOF
+  deb http://archive.debian.org/debian bullseye main contrib non-free
+  deb-src http://archive.debian.org/debian bullseye main contrib non-free
+
+  deb http://archive.debian.org/debian-security bullseye-security main contrib non-free
+  deb-src http://archive.debian.org/debian-security bullseye-security main contrib non-free
+
+  deb http://archive.debian.org/debian bullseye-updates main contrib non-free
+  deb-src http://archive.debian.org/debian bullseye-updates main contrib non-free
+
+  deb http://archive.debian.org/debian bullseye-backports main contrib non-free
+  deb-src http://archive.debian.org/debian bullseye-backports main contrib non-free
+EOF
+
 RUN apt update && apt -y upgrade && \
   apt -y install \
   nodejs \

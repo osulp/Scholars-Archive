@@ -9,6 +9,8 @@ module Hyrax
     include Blacklight::Base
 
     included do
+      before_action :authenticate_user!, only: %i[reindex destroy_all_files]
+
       # include the display_trophy_link view helper method
       helper Hyrax::TrophyHelper
 
@@ -43,6 +45,7 @@ module Hyrax
 
     # METHOD: Add in a reindexing method to the collections
     def reindex
+      authorize! :edit, curation_concern
       collection_object.reindex_extent = 'limited'
       collection_object.update_index
       redirect_to collection_path(collection_object), notice: 'Reindex Collection was completed successfully.'
