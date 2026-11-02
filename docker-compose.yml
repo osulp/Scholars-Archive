@@ -31,6 +31,7 @@ services:
   server: &server
     <<: *app
     environment:
+      - CF_ENABLED=false
       - ACTIVE_JOB_QUEUE_ADAPTER=sidekiq
       - BROWSEEVERYTHING_FILESYSTEM_PATH='/tmp/browse-everything'
       - FITS_PATH=/opt/fits/fits.sh
