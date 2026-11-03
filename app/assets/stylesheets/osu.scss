@@ -642,10 +642,6 @@ button.btn-secondary {
   overflow-y: hidden;
   white-space: nowrap;
 }
-
-.nav-item:hover {
-  background-color: #eeeeee !important;
-}
  
 .image-masthead > nav {
   background-color: rgba(0, 0, 0, 0.6) !important;
@@ -671,8 +667,39 @@ button.btn-secondary {
   float: none;
 }
 
-.sidebar .nav-pills > li > a {
-  padding: 12px 10px 12px 12px;
+.sidebar {/* line 60, ../usr/local/bundle/gems/hyrax-5.2.0/app/assets/stylesheets/hyrax/sidebar.scss */
+  &:not(.maximized) {
+    .sidebar-action-text,
+    a span + span,
+    h5,
+    .documents-list .document .document-title-heading {
+      display: none;
+    }
+
+    .nav li {
+      text-align: center;
+    }
+
+    .nav li a {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .nav li .fa,
+    .nav li .help-icon,
+    .nav li .fa-chevron-right-helper .chevron,
+    .fa-chevron-right-helper .nav li .chevron {
+      margin-right: 0;
+    }
+
+    .nav-item {
+      width: 40px;
+    }
+  }
+
+  .nav-pills > li > a {
+    padding: 12px 10px 12px 12px;
+  }
 }
 
 .collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
