@@ -1,14 +1,14 @@
 <% if !first_page_button %>
   <% if !(prev_page - 1 <= 0) %>
-    <li class=<%= @pagination.current_page == 1 ? "disabled prev_page_button" : "prev_page_button"%>>
-      <a data-ajax-modal="preserve" href=<%= generate_previous_page_link(state, request_keys, page: prev_page) %>>
+    <li class="prev_page_button">
+      <a data-blacklight-modal="preserve" class="btn <%= @pagination.current_page == 1 ? "disabled" : ""%>" href=<%= generate_previous_page_link(state, request_keys, page: prev_page) %>>
         <%= prev_page - 1 %>
       </a>
     </li>
   <% end %>
 <% else %>
-  <li class=<%= @pagination.current_page == 1 ? "disabled" : ""%>>
-    <a data-ajax-modal="preserve" href=<%= generate_previous_page_link(state, request_keys, page: 2) %>>
+  <li>
+    <a data-blacklight-modal="preserve" class="btn <%= @pagination.current_page == 1 ? "disabled" : ""%>" href=<%= generate_previous_page_link(state, request_keys, page: 2) %>>
       First Page
     </a>
   </li>

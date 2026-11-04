@@ -1,6 +1,4 @@
 # Example for exposing the load balancer for local dev and remote debugging; just copy this to docker-compose.override.yml
-version: '3'
-
 services:
   lb:
     expose:

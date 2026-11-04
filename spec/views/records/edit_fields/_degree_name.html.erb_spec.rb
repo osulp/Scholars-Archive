@@ -60,7 +60,7 @@ RSpec.describe 'records/edit_fields/_degree_name.html.erb', type: :view do
 
     it 'has the "other" input hidden in the form' do
       expect(rendered).to have_selector('.degree_name_other input[type="hidden"]', visible: false)
-      expect(rendered).to have_selector('.degree_name_other input.hidden', visible: false)
+      expect(rendered).to have_selector('.degree_name_other input.d-none', visible: false)
     end
   end
 end

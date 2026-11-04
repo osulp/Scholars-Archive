@@ -2,9 +2,9 @@
   Blacklight.onLoad ->
     toggle_header = (row_count) ->
       if (row_count == 0)
-        $('#geo_fields table thead tr').addClass('hidden')
+        $('#geo_fields table thead tr').addClass('d-none')
       else
-        $('#geo_fields table thead tr').removeClass('hidden')
+        $('#geo_fields table thead tr').removeClass('d-none')
 
     # hide table header if empty
     row_count = $('#geo_fields table tbody tr:visible').length
@@ -21,7 +21,7 @@
 
     hide_remove = (term) ->
       if ($('#geo_fields .'+term+' ul.listing li:visible').length == 1)
-        $('#geo_fields .'+term+' ul.listing button.remove_entry').addClass('hidden')
+        $('#geo_fields .'+term+' ul.listing button.remove_entry').addClass('d-none')
 
     # function to add new date field
 
@@ -51,6 +51,6 @@
       term = $(this).attr("data-term")
       regexp = new RegExp($('#new_geo_type').data(selected+'-id'), 'g')
       $(this).before($('#new_geo_type').data(selected).replace(regexp, time))
-      $('#geo_fields .'+term+' ul.listing button.remove_entry').removeClass('hidden')
+      $('#geo_fields .'+term+' ul.listing button.remove_entry').removeClass('d-none')
       event.preventDefault()
 ) jQuery

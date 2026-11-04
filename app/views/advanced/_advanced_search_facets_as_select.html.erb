@@ -7,8 +7,8 @@
 %>
 <% facets_from_request(facet_field_names).each do |display_facet| %>
     <% if should_render_facet?(display_facet) %>
-        <div class="form-group advanced-search-facet">
-            <%= label_tag display_facet.name.parameterize, :class => "col-sm-3 control-label" do %>
+        <div class="form-group advanced-search-facet row">
+            <%= label_tag display_facet.name.parameterize, :class => "col-sm-3 control-label font-weight-bold" do %>
                 <%= facet_field_label(display_facet.name) %>
             <% end %>
 
