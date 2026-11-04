@@ -1,12 +1,12 @@
-<% current_page_dashboard = current_page?(hyrax.dashboard_collections_path(locale: nil)) %>
+<%# NEW TABS: Create a special tab for non-admin users to render the favorite tabs %>
 <ul class="nav nav-tabs" id="my_nav" role="navigation">
-  <li<%= ' class="nav-item"'.html_safe if !current_page_dashboard %>>
+  <li<%= ' class="nav-item"'.html_safe if current_page?(hyrax.my_collections_path(locale: nil)) %>>
     <%= link_to(
       t('hyrax.dashboard.my.your_collections'),
       hyrax.my_collections_path,
       class: "nav-link#{' active' if !current_page_dashboard}") %>
   </li>
-  <li<%= ' class="nav-item"'.html_safe if !current_page_dashboard %>>
+  <li<%= ' class="nav-item"'.html_safe if current_page?(Rails.application.routes.url_helpers.my_favorite_collections_path(locale: nil)) %>>
     <%= link_to(
       t('hyrax.dashboard.my.favorite_collections'),
       Rails.application.routes.url_helpers.my_favorite_collections_path,

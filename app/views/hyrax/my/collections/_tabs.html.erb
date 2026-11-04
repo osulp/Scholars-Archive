@@ -16,6 +16,6 @@
     <%= link_to(
       t('hyrax.dashboard.my.favorite_collections'),
       Rails.application.routes.url_helpers.my_favorite_collections_path,
-      class: "nav-link#{' active' if !current_page_dashboard}") %>
+      class: "nav-link#{' active' if current_page?(Rails.application.routes.url_helpers.my_favorite_collections_path(locale: nil))}") %>
   </li>
 </ul>
