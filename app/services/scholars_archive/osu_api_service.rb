@@ -17,8 +17,8 @@ module ScholarsArchive
     def get_person(onid)
       return @people[onid] if @people[onid]
 
-      url = "#{ENV['OSU_API_HOST']}/v1/directory"
-      params = { q: onid }
+      url = "#{ENV['OSU_API_HOST']}/v2/directory"
+      params = { filter: { onid: onid } }
       header = authorization_header
       @logger.debug("OsuApiService#get_person : fetching user : #{url} with params #{params}")
       response = get(url, params, header)
