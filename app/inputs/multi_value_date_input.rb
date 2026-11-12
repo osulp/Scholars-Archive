@@ -147,7 +147,7 @@ class MultiValueDateInput < MultiValueInput
   end
 
   def calendar_icon
-    '<span class="glyphicon glyphicon-calendar"></span>'.html_safe
+    '<i class="fa fa-calendar"></i>'.html_safe
   end
 
   def date_range?(value)

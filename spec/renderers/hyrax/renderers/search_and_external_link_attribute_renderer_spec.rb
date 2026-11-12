@@ -18,7 +18,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
       %(
       <tr>
       <th>Search and external link</th>
-      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
+      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{label_q}&search_field=academic_affiliation_label">#{label}</a><a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a></li></ul></td>
       </tr>
       )
     end
@@ -47,7 +47,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
         %(
       <tr>
       <th>Search and external link</th>
-      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{linked_data_label}&search_field=based_near_label">#{linked_data_label}</a><a aria-label="Open link in new window" class="btn" href="#{linked_data_uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a></li></ul></td>
+      <td><ul class="tabular"><li class="attribute attribute-search_and_external_link"><a href="/catalog?q=#{linked_data_label}&search_field=based_near_label">#{linked_data_label}</a><a aria-label="Open link in new window" class="btn" href="#{linked_data_uri}" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a></li></ul></td>
       </tr>
         )
       end
@@ -70,7 +70,7 @@ RSpec.describe Hyrax::Renderers::SearchAndExternalLinkAttributeRenderer do
        <th>DOI</th>
        <td><ul class="tabular"><li class="attribute attribute-doi">
        <a href="/catalog?q=#{doi_uri_q}&amp;search_field=doi">#{doi_uri}</a><a aria-label="Open link in new window" class="btn"
-target="_blank" href="#{doi_uri_link}"><span class="glyphicon glyphicon-new-window"></span></a>
+target="_blank" href="#{doi_uri_link}"><i class="fa-solid fa-up-right-from-square"></i></a>
        </li></ul></td>
        </tr>
         )

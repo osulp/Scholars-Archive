@@ -36,7 +36,7 @@ module Hyrax
           end
           links << label if field == 'nested_related_items_label_ssim'
           links << link_to(label, search_path_for(label)) unless label.blank? || field == 'nested_related_items_label_ssim'
-          links << link_to('<span class="glyphicon glyphicon-new-window"></span>'.html_safe, uri, 'aria-label' => 'Open link in new window', class: 'btn', target: '_blank') unless uri.blank?
+          links << link_to('<i class="fa-solid fa-up-right-from-square"></i>'.html_safe, uri, 'aria-label' => 'Open link in new window', class: 'btn', target: '_blank') unless uri.blank?
         end
 
         links.join('')

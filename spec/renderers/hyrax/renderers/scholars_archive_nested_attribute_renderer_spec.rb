@@ -22,7 +22,7 @@ RSpec.describe Hyrax::Renderers::ScholarsArchiveNestedAttributeRenderer do
       <th>Sholars archive nested</th>
       <td><ul class="tabular"><li class="attribute attribute-sholars_archive_nested">          <span itemprop="relatedLink" itemscope itemtype="http://schema.org/relatedLink">
                   <span itemprop="url">
-                    #{label}<a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
+                    #{label}<a aria-label="Open link in new window" class="btn" href="#{uri}" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
                   </span>
                 </span>
       </li></ul></td>
