@@ -20,7 +20,7 @@
     $('#doi-text-box').prop('disabled', 'disabled')
     $('#doi-text-box').val('')
   });
-  $('label[for="dataset_doi_mint-doi"]').append('<i class="glyphicon glyphicon-question-sign" id="doi-tooltip" data-toggle="tooltip" title="Your DOI will be available after you submit. While this DOI won\'t change, it will not be active until the dataset is approved."></i>');
+  $('label[for="dataset_doi_mint-doi"]').append('<i class="fa fa-question" id="doi-tooltip" data-toggle="tooltip" title="Your DOI will be available after you submit. While this DOI won\'t change, it will not be active until the dataset is approved."></i>');
   $('#doi-tooltip').tooltip();
   $('label[for="dataset_doi_custom-doi"]').append('<input type="text" class="string multi_value optional form-control form-control multi-text-field" disabled id="doi-text-box" onkeyup="$(\'#dataset_doi_custom-doi\').val(this.value)">')
 </script>
