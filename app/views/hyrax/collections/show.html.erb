@@ -74,13 +74,13 @@
         <% if current_user.favorite_collections.exists?(collection_id: @presenter.id) %>
           <%= button_to Rails.application.routes.url_helpers.destroy_favorite_collections_path(collection_id: @presenter.id),
               method: :delete,
-              class: 'btn btn-lg btn-warning' do %>
+              class: 'btn btn-lg btn-secondary' do %>
             <span style="font-size: 20px;">★</span> Unfavorite
           <% end %>
         <% else %>
           <%= button_to Rails.application.routes.url_helpers.add_favorite_collections_path(collection_id: @presenter.id),
               method: :post,
-              class: 'btn btn-lg btn-outline-warning' do %>
+              class: 'btn btn-lg btn-outline-secondary' do %>
             <span style="font-size: 20px;">☆</span> Favorite
           <% end %>
         <% end %>

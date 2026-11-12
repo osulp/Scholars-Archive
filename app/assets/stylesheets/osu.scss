@@ -1,4 +1,4 @@
-@import "osu_settings";
+@import 'osu_settings';
 
 html {
   font-size: 11pt !important;
@@ -8,12 +8,7 @@ body {
   font-family: 'Open Sans', sans-serif !important;
 }
 
-#content-wrapper
-  > div
-  > div.row.home-content
-  > div:nth-child(2)
-  > ul
-  > li:nth-child(2) {
+#content-wrapper > div > div.row.home-content > div:nth-child(2) > ul > li:nth-child(2) {
   display: none;
 }
 
@@ -76,7 +71,7 @@ a:focus {
 }
 
 #lower-banner-border-masthead .group-header h1 {
-  font-family: "Open sans", sans-serif;
+  font-family: 'Open sans', sans-serif;
   display: inline;
   padding: 0;
   font-size: 1rem;
@@ -132,9 +127,10 @@ a:focus {
     margin-bottom: 1em;
   }
 
-  .label, td.status span {
+  .label,
+  td.status span {
     display: inline;
-    padding: .2em .6em .3em;
+    padding: 0.2em 0.6em 0.3em;
     font-size: 100%;
     font-weight: 700;
     line-height: 1;
@@ -142,8 +138,8 @@ a:focus {
     text-align: center;
     white-space: nowrap;
     vertical-align: baseline;
-    border-radius: .25em;
-   }
+    border-radius: 0.25em;
+  }
 }
 
 .show-actions {
@@ -227,16 +223,12 @@ div#geo_wrapper {
   width: 75% !important;
 }
 
-table[data-behavior="child-relationships"] > tbody > tr > td {
+table[data-behavior='child-relationships'] > tbody > tr > td {
   max-width: 0;
 }
 
 .form-group.advanced-search-facet {
-  margin-bottom:2em
-}
-
-.form-group .controlled_vocabulary {
-  width: 100% !important;
+  margin-bottom: 2em;
 }
 
 .select2-default {
@@ -305,7 +297,7 @@ div .select-worktype {
   padding: 0 15px 0 15px;
 }
 
-.row.match-my-cols [class*="col-"] {
+.row.match-my-cols [class*='col-'] {
   margin-bottom: -99999px;
   padding-bottom: 99999px;
 }
@@ -346,10 +338,10 @@ footer.site-footer {
     margin: -10px 15px;
     float: right;
   }
-    .navbar-image_image-custom {
-      height: 80px;
-      width: 80px;
-    }
+  .navbar-image_image-custom {
+    height: 80px;
+    width: 80px;
+  }
 
   .deployed {
     color: rgba($color: #fff, $alpha: 0.2);
@@ -367,7 +359,7 @@ footer.site-footer a.navbar-link:hover {
   text-decoration: none;
 }
 
-div[class$="embargo_release_date"] {
+div[class$='embargo_release_date'] {
   width: 100%;
 }
 
@@ -550,7 +542,8 @@ textarea.nested-field {
 dd.preformatted {
   white-space: pre-wrap;
 }
-.dl-horizontal dd.preformatted::before, .dl-horizontal dd.preformatted::after {
+.dl-horizontal dd.preformatted::before,
+.dl-horizontal dd.preformatted::after {
   display: unset;
   content: unset;
 }
@@ -571,7 +564,7 @@ button.copy-single-use-link {
 
 // Added so Bootstrap buttons in Mac Chrome don't have a white fill color
 button.btn-secondary {
-  -webkit-appearance: none!important;
+  -webkit-appearance: none !important;
   border-color: #ccc;
   background-color: white;
   color: black;
@@ -607,26 +600,32 @@ button.btn-secondary {
 }
 
 // MODIFY: Adjust layout for the bbox_nested for lat & lon
-#bbox_nested_label, .bbox_nested_lat, .bbox_nested_lon {
+#bbox_nested_label,
+.bbox_nested_lat,
+.bbox_nested_lon {
   margin-top: 15px;
 }
 
 // MODIFY: Adjust the layout for bbox_nested for N, W, S, E
-#bbox_nested_north, #bbox_nested_west, #bbox_nested_south, #bbox_nested_east {
+#bbox_nested_north,
+#bbox_nested_west,
+#bbox_nested_south,
+#bbox_nested_east {
   margin-top: 15px;
 }
 
 .search-result-wrapper {
-  border-bottom:1px dashed #ccc;
-  margin-bottom:30px;
-  padding-bottom:0;
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 30px;
+  padding-bottom: 0;
 }
 
 .search-result-wrapper s.list-thumbnail {
   justify-content: left !important;
 }
 // TWEAK: Add spacing between image & text
-.theses-title, .honors-title {
+.theses-title,
+.honors-title {
   margin-left: 10px;
 }
 
@@ -642,13 +641,13 @@ button.btn-secondary {
   overflow-y: hidden;
   white-space: nowrap;
 }
- 
+
 .image-masthead > nav {
   background-color: rgba(0, 0, 0, 0.6) !important;
   padding: 5px 5px 5px 5px !important;
 }
 
-.image-masthead > nav > ul > .nav-item > .nav-link{
+.image-masthead > nav > ul > .nav-item > .nav-link {
   color: white;
 }
 
@@ -667,7 +666,8 @@ button.btn-secondary {
   float: none;
 }
 
-.sidebar {/* line 60, ../usr/local/bundle/gems/hyrax-5.2.0/app/assets/stylesheets/hyrax/sidebar.scss */
+.sidebar {
+  /* line 60, ../usr/local/bundle/gems/hyrax-5.2.0/app/assets/stylesheets/hyrax/sidebar.scss */
   &:not(.maximized) {
     .sidebar-action-text,
     a span + span,
@@ -702,11 +702,13 @@ button.btn-secondary {
   }
 }
 
-.collection-theses-highlights li:nth-child(odd), .collection-honors-highlights li:nth-child(odd) {
+.collection-theses-highlights li:nth-child(odd),
+.collection-honors-highlights li:nth-child(odd) {
   background-color: #f9f9f9;
 }
 
-.collection-theses-highlights li, .collection-honors-highlights li {
+.collection-theses-highlights li,
+.collection-honors-highlights li {
   padding: 12px 15px;
 }
 
@@ -773,4 +775,11 @@ button.btn-secondary {
 .oembed-widget-preview .oembed iframe {
   width: 250px !important;
   height: 150px !important;
+}
+
+.media-left {
+  margin-right: 10px;
+}
+form label {
+  font-weight: bold;
 }
