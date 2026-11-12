@@ -1,5 +1,5 @@
 <% other_affiliation_service = ScholarsArchive::OtherAffiliationService.new %>
-<%= f.input :other_affiliation, 
+<%= f.input :other_affiliation,
             as: :multi_value_select_other,
             collection: other_affiliation_service.select_sorted_active_options,
             include_blank: true,
@@ -27,7 +27,7 @@
               </td>
               <td>
                 <a class="btn btn-danger" data-confirm="Are you sure? This action cannot be undone." data-remote="true" rel="nofollow" data-method="delete" href="/other_options/<%= entry.id.to_s %>">
-                  <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
+                  <span aria-hidden="true"><i class="fa fa-trash"></i></span>
                 </a>
               </td>
             </tr>

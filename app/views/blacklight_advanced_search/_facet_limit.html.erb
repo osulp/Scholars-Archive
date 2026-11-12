@@ -10,11 +10,11 @@
           <span class="selected"><%= h(facet_display_value(solr_field, value)) %></span>
           <% if params[:controller] == "advanced" %>
             <%= link_to BlacklightAdvancedSearch::Engine.routes.url_helpers.advanced_search_path(remove_advanced_facet_param(solr_field, value, params)) do %>
-              <span class="glyphicon glyphicon-remove"></span><span class="sr-only">[remove]</span>
+              <i class="fa-solid fa-xmark"></i><span class="sr-only">[remove]</span>
             <% end %>
           <% else %>
             <%= link_to remove_advanced_facet_param(solr_field, value, params) do %>
-              <span class="glyphicon glyphicon-remove"></span><span class="sr-only">[remove]</span>
+              <i class="fa-solid fa-xmark"></i><span class="sr-only">[remove]</span>
             <% end %>
           <% end %>
         </li>

@@ -1,16 +1,16 @@
 <% max_pages = max_page_number(@facet, @pagination, controller) %>
 <div class="prev_next_links btn-group pull-left">
   <div class="pagination">
-    <ul class="pagination">
+    <div class="pagination">
       <!-- Renders the last page link on the modal -->
       <%= render partial: 'previous_page_link', locals: {state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, prev_page: @pagination.current_page - 1, current_page: @pagination.current_page, first_page_button: true} %>
 
       <!-- Renders the next page button on the modal -->
-      <li>
-        <%= link_to_previous_page @pagination, raw(t('views.pagination.previous')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], data: { ajax_modal: "preserve" } do %>
+      <div>
+        <%= link_to_previous_page @pagination, raw(t('views.pagination.previous')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], class: 'btn', data: { blacklight_modal: "preserve" } do %>
           <%= raw("<span class='disabled btn btn-disabled'> #{t('views.pagination.previous')} </span>") %>
         <% end %>
-      </li>
+      </div>
 
       <!-- if not on the first page, render previous page buttons down to 'window size'-->
       <% if @pagination.current_page > 1 %>
@@ -20,11 +20,11 @@
       <% end %>
 
       <!-- Current page -->
-      <li class="active">
-        <a>
+      <div class="active bg-primary">
+        <a class="btn disabled" style="color:white;opacity:1">
           <%= @pagination.current_page %>
         </a>
-      </li>
+      </div>
 
       <!-- If not at the max page, render next pages up to 'window size' -->
       <% if @pagination.current_page < max_pages %>
@@ -34,24 +34,24 @@
       <% end %>
 
       <!-- Renders next page button -->
-      <li>
-        <%= link_to_next_page @pagination, raw(t('views.pagination.next')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], class: 'btn btn-link',  data: { ajax_modal: "preserve" } do %>
+      <div>
+        <%= link_to_next_page @pagination, raw(t('views.pagination.next')), params: search_state.to_h, param_name: blacklight_config.facet_paginator_class.request_keys[:page], class: 'btn',  data: { blacklight_modal: "preserve" } do %>
           <%= raw("<span class='disabled btn btn-disabled'> #{t('views.pagination.next')} </span>") %>
         <% end %>
-      </li>
+      </div>
 
       <!-- renders last page button -->
       <%= render partial: 'next_page_link', locals: {max_pages: max_pages, state: search_state.to_h, request_keys: blacklight_config.facet_paginator_class.request_keys, next_page: @pagination.current_page + 1, last_page_button: true} %>
-    </ul>
+    </div>
   </div>
 </div>
 
 <div class="sort_options btn-group pull-right">
   <% if @pagination.sort == 'index' -%>
     <span class="active az btn btn-default"><%= t('blacklight.search.facets.sort.index') %></span>
-    <%= link_to(t('blacklight.search.facets.sort.count'), @pagination.params_for_resort_url('count', search_state.to_h), class: "sort_change numeric btn btn-default", data: { ajax_modal: "preserve" }) %>
+    <%= link_to(t('blacklight.search.facets.sort.count'), @pagination.params_for_resort_url('count', search_state.to_h), class: "sort_change numeric btn btn-default", data: { blacklight_modal: "preserve" }) %>
   <% elsif @pagination.sort == 'count' -%>
-    <%=  link_to(t('blacklight.search.facets.sort.index'), @pagination.params_for_resort_url('index', search_state.to_h), class: "sort_change az btn btn-default",  data: { ajax_modal: "preserve" }) %>
+    <%=  link_to(t('blacklight.search.facets.sort.index'), @pagination.params_for_resort_url('index', search_state.to_h), class: "sort_change az btn btn-default",  data: { blacklight_modal: "preserve" }) %>
     <span class="active numeric btn btn-default"><%= t('blacklight.search.facets.sort.count') %></span>
   <% end -%>
 </div>

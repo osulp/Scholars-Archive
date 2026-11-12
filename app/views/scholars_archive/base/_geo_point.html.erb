@@ -6,28 +6,28 @@
         <% end %>
     <% end %>
 
-    <%= a.input :label, label:false, aria: { label: "Label" }, placeholder: "Label", input_html: {value: a.object.label.first, class: 'bbox_nested', id: 'bbox_nested_label'}, :wrapper_html => {:class => "col-xs-12"} %>
-    <%= a.input :point, as: :hidden, label:false, aria: { label: "Point" }, placeholder: "Point", input_html: {value: a.object.point.first, class: 'bbox_nested'}, :wrapper_html => {:class => "col-xs-12"} %>
+    <%= a.input :label, label:false, aria: { label: "Label" }, placeholder: "Label", input_html: {value: a.object.label.first, class: 'bbox_nested', id: 'bbox_nested_label'}, :wrapper_html => {:class => "col-12"} %>
+    <%= a.input :point, as: :hidden, label:false, aria: { label: "Point" }, placeholder: "Point", input_html: {value: a.object.point.first, class: 'bbox_nested'}, :wrapper_html => {:class => "col-12"} %>
 
     <%# ADD: Create a field to display text if the latitude if enter incorrectly %>
-    <div class="col-xs-6 latitude-wrapper">
+    <div class="col-5 latitude-wrapper">
       <%= a.input :point_lat, label:false, aria: { label: "Latitude" }, placeholder: "Latitude", input_html: {value: a.object.point_lat, class: 'bbox_nested bbox_nested_lat'} %>
       <div class="lat-error text-danger" style="display:none;">Latitude must be a number from -90 to 90</div>
     </div>
 
     <%# ADD: Create a field to display text if the longitude if enter incorrectly %>
-    <div class="col-xs-6 longitude-wrapper">
+    <div class="col-5 longitude-wrapper">
        <%= a.input :point_lon, label:false, aria: { label: "Longitude" }, placeholder: "Longitude", input_html: {value: a.object.point_lon, class: 'bbox_nested bbox_nested_lon'} %>
       <div class="lon-error text-danger" style="display:none;">Longitude must be a number from -180 to 180</div>
     </div>
 
-    <span class="input-group-btn field-controls">
+    <span class="input-group-btn field-controls m-auto">
       <% unless a.object.new_record? %>
         <%= a.hidden_field :_destroy %>
       <% end %>
       <button type="button" class="btn btn-danger remove remove_entry" data-id="nested_geo_points">
         <%# REPLACE: Add in the trashcan icon rather than the link icon %>
-        <span aria&#45;hidden="true"><i class="glyphicon glyphicon&#45;trash"></i></span>
+        <span aria-hidden="true"><i class="fa fa-trash"></i></span>
         <span class="sr-only"> previous <span class="controls-field-name-text"> Title</span></span>
       </button>
     </span>

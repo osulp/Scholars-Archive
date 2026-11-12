@@ -10,7 +10,7 @@ module ScholarsArchive
 
       def track_download
         # Add in special case to ignore collection of analytic data
-        return if Hyrax.config.google_analytics_id.blank? || params[:file].to_s.downcase == 'thumbnail' || request.path.include?('/admin/')
+        return if Hyrax::Analytics.config.analytics_id.blank? || params[:file].to_s.downcase == 'thumbnail' || request.path.include?('/admin/')
 
         # Staccato works with Google Analytics v1 api:
         # https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
@@ -29,7 +29,7 @@ module ScholarsArchive
 
           file_download_params = {
             'v': '2', # Protocol version
-            'tid': Hyrax.config.google_analytics_id.to_s, # Tracking ID
+            'tid': Hyrax::Analytics.config.analytics_id.to_s, # Tracking ID
             'cid': SecureRandom.uuid.to_s, # Client ID
             'dl': request.url.to_s, # Document Location URL
             'dh': request.server_name.to_s, # Document Host Name
