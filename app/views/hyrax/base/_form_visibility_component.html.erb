@@ -38,11 +38,18 @@
             <br />
             <%= t('hyrax.visibility.embargo.note_html') %>
             <div class="collapse" id="collapseEmbargo">
-              <div class="form-inline">
+              <div class="">
                 <%= f.input :visibility_during_embargo, wrapper: :inline, collection: visibility_options(:restrict), include_blank: false %>
+                <br />
                 <%= t('hyrax.works.form.visibility_until') %>
+                <br />
                 <%= f.date_field :embargo_release_date, wrapper: :inline, value: f.object.embargo_release_date || Date.tomorrow, class: 'datepicker form-control' %>
+                <br />
                 <%= f.input :visibility_after_embargo, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
+                <br />
+                <%= f.input :embargo_reason, :collection => {"Intellectual Property (patent, etc.)" => "Intellectual Property (patent, etc.)", "Pending Publication" => "Pending Publication", "Ongoing Research" => "Ongoing Research", "Existing Confidentiality Agreement" => "Existing Confidentiality Agreement", "Other..." => "Other..."}, :prompt => "Please choose a reason for the embargo", label: "Reason For Embargo", wrapper: :inline, input_html: {id: 'embargo_reason_select' } %>
+                <br />
+                <%= f.input :embargo_reason, wrapper: :inline, label_html: { class: 'd-none'}, input_html: { class: 'd-none other_field fill_column'}, wrapper_html: {class: 'fill_embargo_column'}, placeholder: "Please input the embargo reason" %>
               </div>
             </div>
           </label>
@@ -54,11 +61,15 @@
             <br />
             <%= t('hyrax.visibility.lease.note_html') %>
             <div class="collapse" id="collapseLease">
-              <div class="form-inline">
+              <div class="form-sm">
                 <%= f.input :visibility_during_lease, wrapper: :inline, collection: visibility_options(:loosen), include_blank: false %>
+                <br />
                 <%= t('hyrax.works.form.visibility_until') %>
+                <br />
                 <%= f.date_field :lease_expiration_date, wrapper: :inline, value: f.object.lease_expiration_date || Date.tomorrow, class: 'datepicker form-control' %>
+                <br />
                 <%= f.input :visibility_after_lease, wrapper: :inline, collection: visibility_options(:restrict), include_blank: false %>
+                <br />
               </div>
             </div>
           </label>
