@@ -31,7 +31,7 @@ es:
       contact_info_html: "121 The Valley Library<br/>Corvallis, OR 97331-4501"
       links_html: "<a class='navbar-link' href='contact'>Contacta con nosotros</a><br/><a class='navbar-link' href='https://library.oregonstate.edu/accessibility-services' target='_blank'>Servicios para personas con discapacidades</a>"
       copyright_html: "<strong>Copyright &copy; 2026 Universidad Estatal de Oregon</strong><br/>Con licencia de Apache License, versión 2.0"
-      service_html: Un servicio de <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Bibliotecas y Prensa de la Universidad Estatal de Oregon</a>.
+      service_html: Un servicio de <br /> <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Bibliotecas y Prensa de la Universidad Estatal de Oregon</a>.
     base:
       form_progress:
         proxy_depositors: 'Depositantes apoderados: seleccione el usuario en cuyo nombre está depositando'

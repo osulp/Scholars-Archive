@@ -35,20 +35,6 @@ body {
   padding-left: 15px;
 }
 
-#masthead {
-  padding: 0px;
-  margin-bottom: 0px;
-  height: 100px;
-}
-
-#masthead .navbar-header {
-  height: 100px;
-}
-
-#top-navbar-collapse {
-  margin-top: -50px;
-}
-
 #lower-banner-border-masthead {
   overflow: hidden;
   background: $osu-black;
@@ -322,13 +308,6 @@ footer.site-footer {
   background: linear-gradient(top, #39393a 0%, #252525 100%);
   /* W3C */
   border-top: 4px solid $osu-orange;
-
-  .navbar-right {
-    margin-right: 15px;
-  }
-  .navbar-text {
-    margin: 0 15px;
-  }
 
   .navbar-image {
     margin: -10px 15px;
@@ -652,10 +631,6 @@ button.btn-secondary {
   .nav-link {
     color: white !important;
   }
-}
-
-.image-masthead > nav > .navbar-nav {
-  margin-top: -40px;
 }
 
 .nav-tabs > li {
