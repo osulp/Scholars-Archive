@@ -253,7 +253,7 @@ GEM
     crack (1.0.0)
       bigdecimal
       rexml
-    crass (1.0.6)
+    crass (1.0.8)
     csv (3.3.2)
     dalli (3.2.8)
     database_cleaner (1.8.5)
@@ -668,9 +668,9 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.7.0)
-    loofah (2.24.0)
+    loofah (2.25.3)
       crass (~> 1.0.2)
-      nokogiri (>= 1.12.0)
+      nokogiri (>= 1.19.5)
     mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
@@ -714,9 +714,9 @@ GEM
     noid-rails (3.2.0)
       actionpack (>= 5.0.0, < 8)
       noid (~> 0.9)
-    nokogiri (1.19.2-aarch64-linux-gnu)
+    nokogiri (1.19.7-aarch64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.2-x86_64-linux-gnu)
+    nokogiri (1.19.7-x86_64-linux-gnu)
       racc (~> 1.4)
     oai (1.2.1)
       builder (>= 3.1.0)
@@ -800,8 +800,8 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.6.2)
-      loofah (~> 2.21)
+    rails-html-sanitizer (1.7.2)
+      loofah (~> 2.25, >= 2.25.3)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
     rails_autolink (1.1.8)
       actionview (> 3.1)
