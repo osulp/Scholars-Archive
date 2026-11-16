@@ -246,6 +246,10 @@ workflows:
       - test:
           requires:
             - lint
+          filters:
+            branches:
+              only:
+                - main
       - build_and_push_beavernetes:
           name: build_and_push_beavernetes
           requires:
@@ -255,6 +259,7 @@ workflows:
             branches:
               only:
                 - main
+                - /bugfix\/.*/
                 - /infra\/.*/
                 - /staging\/.*/
                 - /patch\/.*/
