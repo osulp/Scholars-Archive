@@ -214,6 +214,10 @@ jobs:
             echo export TAG="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export DEPLOYED_VERSION="$DATETIME-$GIT_SHORT_HASH" >> $BASH_ENV
             echo export YABEDA_PROMETHEUS_PATH=/tmp/prom >> $BASH_ENV
+      - run:
+          name: Update certificate authorities
+          command: |
+            sudo apt-get update && sudo apt-get install -y ca-certificates
       - setup_remote_docker:
           version: docker23
           docker_layer_caching: false
@@ -242,19 +246,16 @@ workflows:
       - test:
           requires:
             - lint
-          filters:
-            branches:
-              ignore:
-                - /bugfix\/.*/
       - build_and_push_beavernetes:
           name: build_and_push_beavernetes
           requires:
+            - test
             - lint
           filters:
             branches:
               only:
                 - main
-                - /bugfix\/.*/
+                - /infra\/.*/
                 - /staging\/.*/
                 - /patch\/.*/
           repo: sa_web
