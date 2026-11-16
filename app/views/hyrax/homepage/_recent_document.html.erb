@@ -5,7 +5,7 @@
         <%= document_presenter(recent_document)&.thumbnail&.thumbnail_tag(
           { width: 90, alt: "#{recent_document} #{ t('hyrax.homepage.admin_sets.thumbnail')}" },
           { suppress_link: true }
-        ) %><%= recent_document %>
+        ) %>
       <% end %>
     </div>
     <div class="col-md-10">
