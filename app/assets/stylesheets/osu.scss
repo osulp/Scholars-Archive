@@ -6,6 +6,7 @@ html {
 
 body {
   font-family: 'Open Sans', sans-serif !important;
+  margin-bottom: 0 !important;
 }
 
 #content-wrapper > div > div.row.home-content > div:nth-child(2) > ul > li:nth-child(2) {
@@ -286,6 +287,8 @@ div .select-worktype {
 
 footer.site-footer {
   color: #fff;
+  margin-top: calc(118px + 0.75rem);
+  height: auto;
   font-size: 14px;
   line-height: 18px;
   padding: 15px 0 15px 20px;
