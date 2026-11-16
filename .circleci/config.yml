@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  docker: circleci/docker@2.7.1
+  docker: circleci/docker@4.0.2
 jobs:
   checkout_code:
     docker:
@@ -242,16 +242,19 @@ workflows:
       - test:
           requires:
             - lint
+          filters:
+            branches:
+              ignore:
+                - /bugfix\/.*/
       - build_and_push_beavernetes:
           name: build_and_push_beavernetes
           requires:
-            - test
             - lint
           filters:
             branches:
               only:
                 - main
-                - /infra\/.*/
+                - /bugfix\/.*/
                 - /staging\/.*/
                 - /patch\/.*/
           repo: sa_web
