@@ -121,7 +121,7 @@ en:
       contact_info_html: "121 The Valley Library<br/>Corvallis, OR 97331-4501"
       links_html: "<a class='navbar-link' href='contact'>Contact Us</a><br/><a class='navbar-link' href='https://oregonstate.edu/accessibility-statement' target='_blank'>OSU Accessibility Statement</a><br/><a class='navbar-link' href='https://library.oregonstate.edu/accessibility-services' target='_blank'>Services for Persons with Disabilities</a>"
       copyright_html: "<strong>Copyright &copy; 2026 Oregon State University</strong><br/>Licensed under the Apache License, Version 2.0"
-      service_html: Scholars Archive is a service of <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Oregon State University Libraries & Press</a>
+      service_html: Scholars Archive is a service of <br /> <a href="https://library.oregonstate.edu/" class="navbar-link" target="_blank">Oregon State University Libraries & Press</a>
     search:
       form:
         q:
@@ -135,7 +135,7 @@ en:
         text: "Embargo"
     errors:
       graduation_year_error: "Invalid value. Please ensure a year is used in this field (e.g 1908)"
-    
+
 
     works:
       create:
@@ -153,7 +153,7 @@ en:
         ocr_item:
           ocr_heading: OCR Text Debug View
           ocr_none: No OCR Text Detected
-  
+
     homepage:
       featured_works:
         document:
@@ -172,7 +172,7 @@ en:
         thesis_label: Theses & Dissertations Archive
         link_theses_button: Explore More Theses & Dissertations
         link_honors_button: Explore More Honors College Theses
-  
+
     file_set:
       show:
         download: "<strong>Download the File</strong>"
@@ -187,7 +187,7 @@ en:
 
     items:
       ext_relation: "This %{type} is available from an external website: "
-    
+
     file_sets:
       form:
         attach_to: Attach to %{parent}
@@ -202,7 +202,7 @@ en:
       oembed_error:
         message: 'The oEmbed URL attached to a work you deposited has encountered an error (either broken or non-allowlisted URI): %{messages}'
         subject: 'Erroring oEmbed content'
-    
+
     dashboard:
       my:
         heading:
