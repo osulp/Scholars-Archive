@@ -5,7 +5,7 @@
     <% index_fields(document).each do |field_name, field| -%>
       <% if should_render_index_field? document, field %>
         <div class="row">
-          <dt class="col-md-3 col-sm-12 text-right text-sm-left" data-solr-field-name="<%= field_name %>"><%= render_index_field_label document, field: field_name %></dt>
+          <dt class="col-md-3 col-sm-12 text-left text-md-right" data-solr-field-name="<%= field_name %>"><%= render_index_field_label document, field: field_name %></dt>
           <%# OVERRIDE of https://github.com/samvera/hyrax/blob/master/app/views/catalog/_index_list_default.html.erb, per
           ticket https://github.com/osulp/Scholars-Archive/issues/1807 %>
           <dd class="col-md-9 col-sm-12 <%= field_name == 'abstract_tesim' ? "preformatted" : "" %>"><%= doc_presenter.field_value field %></dd>
