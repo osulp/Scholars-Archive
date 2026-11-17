@@ -7,6 +7,12 @@ html {
 body {
   font-family: 'Open Sans', sans-serif !important;
   margin-bottom: 0 !important;
+
+  display: grid;
+  grid-template-rows: auto auto auto auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
 }
 
 #content-wrapper > div > div.row.home-content > div:nth-child(2) > ul > li:nth-child(2) {
@@ -287,7 +293,7 @@ div .select-worktype {
 
 footer.site-footer {
   color: #fff;
-  margin-top: calc(118px + 0.75rem);
+  position: relative;
   height: auto;
   font-size: 14px;
   line-height: 18px;
