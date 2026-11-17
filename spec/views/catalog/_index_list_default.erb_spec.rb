@@ -16,7 +16,7 @@ RSpec.describe 'catalog/_index_list_default.html.erb', type: :view do
     render 'catalog/index_list_default', document: document
   end
 
-  it { expect(rendered).to include 'class="col-7 preformatted"' }
+  it { expect(rendered).to include 'class="col-md-9 col-sm-12 preformatted"' }
   it { expect(rendered).to include 'Abstract:' }
   it { expect(rendered).to include "Testing\nabstract_tesim" }
 end

@@ -139,6 +139,10 @@ a:focus {
   gap: 0.5em 1em;
 }
 
+.facets-header > .navbar-toggler {
+  display: none;
+}
+
 div.facets h3 {
   font-size: 1.2em !important;
 }
@@ -552,10 +556,6 @@ button.btn-secondary {
   border-color: #ccc;
   background-color: white;
   color: black;
-}
-
-.card.facet-limit {
-  margin-bottom: 5px;
 }
 
 .public-collapse > p {
