@@ -139,6 +139,10 @@ a:focus {
   gap: 0.5em 1em;
 }
 
+.facets-header > .navbar-toggler {
+  display: none;
+}
+
 div.facets h3 {
   font-size: 1.2em !important;
 }
@@ -554,10 +558,6 @@ button.btn-secondary {
   color: black;
 }
 
-.card.facet-limit {
-  margin-bottom: 5px;
-}
-
 .public-collapse > p {
   margin-bottom: 0px;
 }
@@ -596,6 +596,10 @@ button.btn-secondary {
 #bbox_nested_south,
 #bbox_nested_east {
   margin-top: 15px;
+}
+
+.search-result-title {
+  font-size: 1.6rem;
 }
 
 .search-result-wrapper {
