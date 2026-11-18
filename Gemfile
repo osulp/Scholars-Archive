@@ -134,7 +134,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'addressable', '2.8.0'
+  gem 'addressable', '2.9.1'
   gem 'byebug', platform: :mri
   gem 'debase', '>= 0.2.9'
   gem 'debase-ruby_core_source'
