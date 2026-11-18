@@ -74,7 +74,7 @@ gem 'sitemap_generator'
 gem 'net-http-persistent'
 gem 'triplestore-adapter', git: 'https://github.com/osulp/triplestore-adapter', branch: 'master'
 
-gem 'bulkrax', '~> 9.1'
+gem 'bulkrax', '~> 9.5'
 
 # simple_form 3.5.1 broke hydra-editor for certain model types;
 #   see: https://github.com/plataformatec/simple_form/issues/1549
