@@ -51,6 +51,17 @@ en:
     admin:
       sidebar:
         role_management: "User Account Roles"
+      workflows:
+        index:
+          heading:
+            work: Work
+            depositor: Depositor
+            creator: Creator
+            submission_date: Submission Date
+            status: Status
+          works_published: "<strong>%{total_count} works</strong> published"
+          works_under_review: "<strong>%{total_count} works</strong> under review"
+          works_listing: Works listing
     workflow:
       unauthorized: The work is not currently available because it has not completed the approval process. If you are the owner of this work, log in to make changes.
     notifications:

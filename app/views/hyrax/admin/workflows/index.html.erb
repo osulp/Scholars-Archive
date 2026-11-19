@@ -5,52 +5,74 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card tabs">
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" href="#under-review" role="tab" data-toggle="tab"><%= t('.tabs.under_review') %></a>
+      <ul class="nav nav-tabs" id="my_nav" role="list">
+        <li<%= ' class="active"'.html_safe if @response.viewing_under_review? %>>
+            <%= link_to t('hyrax.admin.workflows.index.tabs.under_review'),
+              hyrax.admin_workflows_path(state: 'under-review'), class: "nav-link#{' active' if @response.viewing_under_review?}" %>
         </li>
       </ul>
-      <div class="tab-content">
-        <div id="under-review" class="tab-pane show active">
-          <div class="card labels">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-sm table-striped datatable">
-                  <thead>
-                    <tr>
-                      <th width="40%">Work</th>
-                      <th width="15%">Depositor</th>
-                      <th width="15%">Creator</th>
-                      <th width="15%">Submission Date</th>
-                      <th width="15%">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @status_list.sort { |a,b| (b.date_modified <=> a.date_modified) }.each do |document| %>
-                      <tr>
-                        <td>
-                          <%= link_to document, [main_app, document] %>
-                        </td>
-                        <td>
-                          <%= document.depositor %>
-                        </td>
-                        <td>
-                          <%= safe_join(document.creator, tag(:br)) %>
-                        </td>
-                        <td>
-                          <%= local_time_from_utc(document[:date_modified_dtsi]) %>
-                        </td>
-                        <td>
-                          <span class="state state-pending"><%= document.workflow_state %></span>
-                        </td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-              </div>
+      <div class="card-header">
+        <span class="count-display">
+          <% if @response.viewing_under_review? %>
+            <%= I18n.t('hyrax.admin.workflows.index.works_under_review', total_count: @response.total_count).html_safe %>
+          <% else %>
+            <%= I18n.t('hyrax.admin.workflows.index.works_published', total_count: @response.total_count).html_safe %>
+          <% end %>
+        </span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="sort-toggle mt-2">
+              <%= form_tag hyrax.admin_workflows_path, method: :get, class: 'per_page' do %>
+                <fieldset class="col-12">
+                  <legend class="sr-only"><%= t('hyrax.dashboard.my.sr.results_per_page') %></legend>
+                  <%= label_tag :per_page do %>
+                      Show <%= select_tag :per_page, options_for_select(Hyrax.config.range_for_number_of_results_to_display_per_page.map(&:to_s), h(params[:per_page])), title: "entries" %> per page
+                  <% end %>
+                  <%# keep the active tab when changing per-page; this page has no Blacklight search params %>
+                  <%= hidden_field_tag :state, params[:state] if params[:state].present? %>
+                </fieldset>
+              <% end %>
             </div>
           </div>
         </div>
+        <h2 class="sr-only"><%= t('.works_listing') %></h2>
+        <div class="table-responsive">
+          <table class="table table-sm table-striped datatable">
+            <thead>
+              <tr>
+                <th width="40%"><%= t('.heading.work') %></th>
+                <th width="15%"><%= t('.heading.depositor') %></th>
+                <th width="15%"><%= t('.heading.creator') %></th>
+                <th width="15%"><%= t('.heading.submission_date') %></th>
+                <th width="15%"><%= t('.heading.status') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @response.docs.each do |document| %>
+                <tr>
+                  <td>
+                    <%= link_to document, [main_app, document] %>
+                  </td>
+                  <td>
+                    <%= document.depositor %>
+                  </td>
+                  <td>
+                    <%= safe_join(document.creator, tag(:br)) %>
+                  </td>
+                  <td>
+                    <%= local_time_from_utc(document[:date_modified_dtsi]) %>
+                  </td>
+                  <td>
+                    <span class="state state-pending"><%= document.workflow_state %></span>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <%= render 'hyrax/my/results_pagination' %>
       </div>
     </div>
   </div>
