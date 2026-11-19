@@ -12,7 +12,7 @@ Rails.application.config.to_prepare do
 
     ##
     # Restore the 3.6.0 args that 4.0.0 dropped.
-    # Backport of https://github.com/samvera/hyrax/pull/6000. Remove this override when upgrading to Hyrax 5.x.
+    # Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when/if upgrading to Hyrax 5.x
     def solr_documents(page: 1, rows: nil, sort: nil)
       params = {}
       if rows

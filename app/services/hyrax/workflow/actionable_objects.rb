@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # OVERRIDE FROM HYRAX:
-# Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when upgrading to Hyrax 5.x.
+# Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when/if upgrading to Hyrax 5.x
 module Hyrax
   module Workflow
     ##

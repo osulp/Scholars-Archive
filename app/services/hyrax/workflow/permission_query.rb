@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # OVERRIDE FROM HYRAX:
-# Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when upgrading to Hyrax 5.x.
+# Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when/if upgrading to Hyrax 5.x
 # This file is disgusting (as noted below by Samvera devs), We're just gonna have rubocop look the other way for now.
 # rubocop:disable Metrics/ModuleLength, Metrics/MethodLength
 module Hyrax
