@@ -136,10 +136,7 @@ end
 group :development, :test do
   gem 'addressable', '2.8.0'
   gem 'byebug', platform: :mri
-  gem 'debase', '>= 0.2.9'
-  gem 'debase-ruby_core_source'
   gem 'pry-rails'
-  gem 'ruby-debug-ide'
   gem 'rspec-rails'
   gem 'rubocop', '>= 1.50.2'
   gem 'rubocop-rspec', '>= 2.20.0'
