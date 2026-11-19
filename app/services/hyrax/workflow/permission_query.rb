@@ -1,6 +1,9 @@
 # frozen_string_literal: true
+
 # OVERRIDE FROM HYRAX:
 # Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when upgrading to Hyrax 5.x.
+# This file is disgusting (as noted below by Samvera devs), We're just gonna have rubocop look the other way for now.
+# rubocop:disable Metrics/ModuleLength, Metrics/MethodLength
 module Hyrax
   module Workflow
     # Welcome intrepid developer. You have stumbled into some complex data
@@ -71,7 +74,6 @@ module Hyrax
       # @param role [Object] that can be converted into a Sipity::Role
       # @return [ActiveRecord::Relation<Sipity::Agent>] augmented with
       #
-      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength, Metrics/MethodLength
       def scope_agents_associated_with_entity_and_role(entity:, role:)
         entity = Sipity::Entity(entity)
         role = Sipity::Role(role)
@@ -126,7 +128,6 @@ module Hyrax
         # name of the model that I'm using.
         Sipity::Agent.from(agents.create_table_alias(agents_select_manager, agents.table_name)).all
       end
-      # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
       # @api public
       #
@@ -136,6 +137,7 @@ module Hyrax
       def scope_roles_associated_with_the_given_entity(entity:)
         entity = Sipity::Entity(entity)
         return Sipity::Role.none unless entity
+
         Sipity::Role.where(
           Sipity::Role.arel_table[:id].in(
             workflow_roles.project(workflow_roles[:role_id]).where(
@@ -171,6 +173,7 @@ module Hyrax
       def scope_processing_agents_for(user:)
         return Sipity::Agent.none if user.blank?
         return Sipity::Agent.none unless user.persisted?
+
         user_agent = Sipity::Agent(user)
         group_agents = user.groups.map do |g|
           Sipity::Agent(Hyrax::Group.new(g))
@@ -195,7 +198,6 @@ module Hyrax
       #
       # @return [ActiveRecord::Relation<Sipity::Entity>]
       #
-      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       def scope_entities_for_the_user(user:, page: 1, per_page: nil, workflow_state_filter: nil)
         entities = Sipity::Entity.arel_table
         workflow_state_actions = Sipity::WorkflowStateAction.arel_table
@@ -257,8 +259,6 @@ module Hyrax
         end
       end
 
-      # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
-
       # @api public
       #
       # An ActiveRecord::Relation scope that meets the following criteria:
@@ -272,7 +272,6 @@ module Hyrax
       # @param entity an object that can be converted into a Sipity::Entity
       # @return [ActiveRecord::Relation<User>]
       #
-      # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       def scope_users_for_entity_and_roles(entity:, roles:)
         entity = Sipity::Entity(entity)
         role_ids = Array.wrap(roles).map { |role| Sipity::Role(role).id }
@@ -297,8 +296,8 @@ module Hyrax
         # Default to "integer" for adapters like Postgres and Sqlite, but cast
         # to "signed" for Mysql. The type CAST causes a SQL syntax error for an
         # unsupported type depending on which adapter is being used.
-        type = ActiveRecord::Base.connection.adapter_name.casecmp("mysql2").zero? ? "signed" : "integer"
-        cast = Arel::Nodes::NamedFunction.new "CAST", [agent_table[:proxy_for_id].as(type)]
+        type = ActiveRecord::Base.connection.adapter_name.casecmp('mysql2').zero? ? 'signed' : 'integer'
+        cast = Arel::Nodes::NamedFunction.new 'CAST', [agent_table[:proxy_for_id].as(type)]
 
         sub_query_for_user = agent_table.project(cast).where(
           agent_table[:id].in(workflow_agent_id_subquery)
@@ -309,7 +308,6 @@ module Hyrax
 
         ::User.where(user_table[:id].in(sub_query_for_user))
       end
-      # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
       def user_emails_for_entity_and_roles(entity:, roles:)
         scope_users_for_entity_and_roles(entity: entity, roles: roles).pluck(:email)
@@ -369,7 +367,7 @@ module Hyrax
       # @param user [User]
       # @param entity an object that can be converted into a Sipity::Entity
       # @return [ActiveRecord::Relation<Sipity::WorkflowRole>]
-      def scope_processing_workflow_roles_for_user_and_entity_specific(user:, entity:) # rubocop:disable Metrics/MethodLength
+      def scope_processing_workflow_roles_for_user_and_entity_specific(user:, entity:)
         entity = Sipity::Entity(entity)
         agent_scope = scope_processing_agents_for(user: user)
 
@@ -408,7 +406,7 @@ module Hyrax
       # @param entity an object that can be converted into a Sipity::Entity
       # @return [ActiveRecord::Relation<Sipity::WorkflowStateAction>]
       #
-      def scope_permitted_entity_workflow_state_actions(user:, entity:) # rubocop:disable Metrics/MethodLength
+      def scope_permitted_entity_workflow_state_actions(user:, entity:)
         entity = Sipity::Entity(entity)
         workflow_state_actions = Sipity::WorkflowStateAction
         permissions = Sipity::WorkflowStateActionPermission
@@ -469,3 +467,4 @@ module Hyrax
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength, Metrics/AbcSize, Metrics/MethodLength

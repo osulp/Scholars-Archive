@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # OVERRIDE FROM HYRAX:
 # Backport of https://github.com/samvera/hyrax/pull/6000. Remove this overriden file when upgrading to Hyrax 5.x.
 module Hyrax
@@ -47,8 +48,10 @@ module Hyrax
 
       ##
       # @return [Hyrax::Workflow::ObjectInWorkflowDecorator]
+      # rubocop:disable Metrics/MethodLength
       def each
         return enum_for(:each) unless block_given?
+
         ids_and_states = id_state_pairs
         return if ids_and_states.none?
 
@@ -66,6 +69,7 @@ module Hyrax
           yield object
         end
       end
+      # rubocop:enable Metrics/MethodLength
 
       ##
       # @return [Integer] total number of entities selected
@@ -79,6 +83,7 @@ module Hyrax
       ##
       # @api private
       # @return [Array[String, Sipity::WorkflowState]]
+      # rubocop:disable Metrics/MethodLength
       def id_state_pairs
         gids_and_states = PermissionQuery
                           .scope_entities_for_the_user(user: user, page: page, per_page: per_page, workflow_state_filter: workflow_state_filter)
@@ -97,6 +102,7 @@ module Hyrax
            state_by_id[state_id]]
         end
       end
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end

@@ -33,9 +33,11 @@ module Hyrax
         Hyrax::Workflow::ActionableObjects.new(user: current_user)
     end
 
+    # rubocop:disable Naming/MemoizedInstanceVariableName
     def current_page
       @page ||= params.fetch('page', 1).to_i
     end
+    # rubocop:enable Naming/MemoizedInstanceVariableName
 
     def per_page
       @per_page ||= params.fetch('per_page', 10).to_i
@@ -51,6 +53,7 @@ module Hyrax
       @under_review = params['state'] != 'published'
     end
 
+    # Hyrax object workflow response object.
     class WorkflowResponse
       attr_reader :total_count
       attr_reader :current_page
