@@ -35,7 +35,7 @@
     <% end %>
     <% if current_ability.admin? %>
       <%# USER: Add new options for role management %>
-      <%= menu.nav_link(role_management.roles_path) do %>
+      <%= menu.nav_link(role_management.roles_path, class: "nav-link") do %>
         <span class="fa fa-users" aria-hidden="true"></span> <span class="sidebar-action-text"><%= t('hyrax.admin.sidebar.role_management') %></span>
       <% end %>
     <% end %>

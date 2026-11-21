@@ -21,22 +21,6 @@
         </span>
       </div>
       <div class="card-body">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="sort-toggle mt-2">
-              <%= form_tag hyrax.admin_workflows_path, method: :get, class: 'per_page' do %>
-                <fieldset class="col-12">
-                  <legend class="sr-only"><%= t('hyrax.dashboard.my.sr.results_per_page') %></legend>
-                  <%= label_tag :per_page do %>
-                      Show <%= select_tag :per_page, options_for_select(Hyrax.config.range_for_number_of_results_to_display_per_page.map(&:to_s), h(params[:per_page])), title: "entries" %> per page
-                  <% end %>
-                  <%# keep the active tab when changing per-page; this page has no Blacklight search params %>
-                  <%= hidden_field_tag :state, params[:state] if params[:state].present? %>
-                </fieldset>
-              <% end %>
-            </div>
-          </div>
-        </div>
         <h2 class="sr-only"><%= t('.works_listing') %></h2>
         <div class="table-responsive">
           <table class="table table-sm table-striped datatable">
