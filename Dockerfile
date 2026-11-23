@@ -1,7 +1,7 @@
 ##########################################################################
 ## Dockerfile for SA@OSU
 ##########################################################################
-FROM ruby:3.2-slim-bookworm AS bundler
+FROM ruby:3.3.14-slim-trixie AS bundler
 
 # Necessary for bundler to properly install some gems
 ENV LANG C.UTF-8
@@ -11,20 +11,6 @@ ENV LC_ALL C.UTF-8
 ## Install dependencies
 ##########################################################################
 FROM bundler AS dependencies
-
-RUN tee /etc/apt/sources.list <<EOF
-  deb http://archive.debian.org/debian bullseye main contrib non-free
-  deb-src http://archive.debian.org/debian bullseye main contrib non-free
-
-  deb http://archive.debian.org/debian-security bullseye-security main contrib non-free
-  deb-src http://archive.debian.org/debian-security bullseye-security main contrib non-free
-
-  deb http://archive.debian.org/debian bullseye-updates main contrib non-free
-  deb-src http://archive.debian.org/debian bullseye-updates main contrib non-free
-
-  deb http://archive.debian.org/debian bullseye-backports main contrib non-free
-  deb-src http://archive.debian.org/debian bullseye-backports main contrib non-free
-EOF
 
 RUN apt update && apt -y upgrade && \
   apt -y install \
@@ -42,11 +28,11 @@ RUN apt update && apt -y upgrade && \
   zip \
   libtool \
   bash bash-completion \
-  java-common openjdk-17-jre-headless \
+  java-common openjdk-21-jre-headless \
   python-is-python3 \
   ffmpeg mediainfo exiftool \
   libpng-dev libjpeg-dev libtiff-dev libwebp-dev \
-  libfreetype6-dev libfontconfig1-dev \
+  libfreetype-dev libfontconfig1-dev \
   libxml2-dev libltdl-dev
 
 # Install ImageMagick 7 from source directly
@@ -82,6 +68,9 @@ RUN mkdir /data/build
 
 ARG RAILS_ENV=${RAILS_ENV}
 ENV RAILS_ENV=${RAILS_ENV}
+
+# Fix posix-spawn build issues on m-series macs
+RUN gem install posix-spawn -- --with-cflags="-Wno-incompatible-function-pointer-types -Wno-error=incompatible-pointer-types"
 
 ADD ./build/install_gems.sh /data/build
 RUN ./build/install_gems.sh && bundle clean --force
