@@ -1,7 +1,7 @@
 <%# OVERRIDE: (2018-10-15) This file was rebased for Hyrax 2.3.0. Please rebase for future updates. %>
-<aside id="form-progress" class="form-progress panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= t("hyrax.works.progress.header") %></h3>
+<aside id="form-progress" class="form-progress card">
+  <div class="card-header">
+    <h3 class="card-title"><%= t("hyrax.works.progress.header") %></h3>
   </div>
   <div class="list-group">
     <div class="list-group-item">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="set-access-controls list-group-item">
-      <%= render 'form_visibility_component', f: f %>
+      <%= render 'form_visibility_component', f: f, save_work: true %>
     </div>
 
     <% unless f.object.class.to_s.include?('HonorsCollegeThesis') || f.object.class.to_s.include?('GraduateThesisOrDissertation') %>
@@ -46,12 +46,16 @@
     <% end %>
 
     <% if Flipflop.proxy_deposit? && current_user.can_make_deposits_for.any? %>
-      <div class="list-group-item">
-        <%= f.input :on_behalf_of, collection: current_user.can_make_deposits_for.map(&:user_key), prompt: "Yourself" %>
-      </div>
+        <div class="list-group-item">
+          <%= f.input :on_behalf_of, label: t(".proxy_depositors"), collection: current_user.can_make_deposits_for, prompt: t(".yourself"), value_method: :user_key %>
+        </div>
+    <% end %>
+
+    <% form_progress_sections_for(form: f.object).each do |section| %>
+      <%= render "form_progress_#{section}", f: f %>
     <% end %>
   </div>
-  <div class="panel-footer text-center">
+  <div class="card-footer text-center">
     <% if ::Flipflop.show_deposit_agreement? %>
       <% if ::Flipflop.active_deposit_agreement_acceptance? %>
         <label>
@@ -72,14 +76,14 @@
     <%# TODO: If we start using ActionCable, we could listen for object updates and
               alert the user that the object has changed by someone else %>
     <%= f.input Hyrax::Actors::OptimisticLockValidator.version_field, as: :hidden if f.object.persisted? %>
-    <%= f.submit 'Submit', class: 'btn btn-primary', onclick: "confirmation_needed = false;", id: "with_files_submit", name: "save_with_files" %>
+    <%= f.submit class: 'btn btn-primary', onclick: "confirmation_needed = false;", id: "with_files_submit", name: "save_with_files" %>
   </div>
 
   <%# Provide immediate feedback after the form is submitted while the subsequent page is loading %>
-  <div class="panel-footer d-none">
+  <div class="card-footer save-progress" hidden>
     <div class="progress">
-      <div class="progress-bar progress-bar-striped progress-bar-complete active">
-        <span id="form-feedback" aria-live="assertive">Submitting your work. This may take a few moments</span>
+      <div class="progress-bar progress-bar-striped progress-bar-complete progress-bar-animated">
+        <span id="form-feedback" aria-live="assertive"><%= t(".saving_your_work") %></span>
       </div>
     </div>
   </div>
