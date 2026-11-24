@@ -50,8 +50,8 @@
     cancel_save = (e) ->
       e.preventDefault()
       e.stopPropagation()
-      $("#form-progress .panel-footer:first").removeClass("d-none").find("input.btn-primary").attr("disabled", false)
-      $("#form-progress .panel-footer:last").addClass("d-none")
+      $("#form-progress .card-footer:first").removeClass("d-none").find("input.btn-primary").attr("disabled", false)
+      $("#form-progress .card-footer:last").addClass("d-none")
 
     escape_special_chars = (input_str) ->
       return input_str.replace(/\./g, '\\.').replace(/\(/g, '\\(').replace(/\)/g, '\\)')
