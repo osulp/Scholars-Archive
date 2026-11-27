@@ -1,0 +1,8 @@
+pt-BR:
+  hyrax:
+    icons:
+      external_dataset:     'fa fa-file-text-o'
+    select_type:
+      external_dataset:
+        description:        "External dataset obras"
+        name:               "External Dataset"
